@@ -26,6 +26,48 @@ type Product struct {
 	Type *string
 }
 
+func (p *Product) GetLocation() (rv string) {
+	if p != nil && p.Location != nil {
+		return *p.Location
+	}
+	return
+}
+
+func (p *Product) GetProperties() (rv *ProductProperties) {
+	if p != nil {
+		return p.Properties
+	}
+	return
+}
+
+func (p *Product) GetTags() (rv map[string]*string) {
+	if p != nil {
+		return p.Tags
+	}
+	return
+}
+
+func (p *Product) GetID() (rv string) {
+	if p != nil && p.ID != nil {
+		return *p.ID
+	}
+	return
+}
+
+func (p *Product) GetName() (rv string) {
+	if p != nil && p.Name != nil {
+		return *p.Name
+	}
+	return
+}
+
+func (p *Product) GetType() (rv string) {
+	if p != nil && p.Type != nil {
+		return *p.Type
+	}
+	return
+}
+
 type ProductProperties struct {
 	ProvisioningState *string
 
@@ -33,9 +75,37 @@ type ProductProperties struct {
 	ProvisioningStateValues *ProductPropertiesProvisioningStateValues
 }
 
+func (p *ProductProperties) GetProvisioningState() (rv string) {
+	if p != nil && p.ProvisioningState != nil {
+		return *p.ProvisioningState
+	}
+	return
+}
+
+func (p *ProductProperties) GetProvisioningStateValues() (rv *ProductPropertiesProvisioningStateValues) {
+	if p != nil {
+		return p.ProvisioningStateValues
+	}
+	return
+}
+
 type SKU struct {
 	ID   *string
 	Name *string
+}
+
+func (s *SKU) GetID() (rv string) {
+	if s != nil && s.ID != nil {
+		return *s.ID
+	}
+	return
+}
+
+func (s *SKU) GetName() (rv string) {
+	if s != nil && s.Name != nil {
+		return *s.Name
+	}
+	return
 }
 
 type SubProduct struct {
@@ -45,9 +115,37 @@ type SubProduct struct {
 	ID *string
 }
 
+func (s *SubProduct) GetProperties() (rv *SubProductProperties) {
+	if s != nil {
+		return s.Properties
+	}
+	return
+}
+
+func (s *SubProduct) GetID() (rv string) {
+	if s != nil && s.ID != nil {
+		return *s.ID
+	}
+	return
+}
+
 type SubProductProperties struct {
 	ProvisioningState *string
 
 	// READ-ONLY
 	ProvisioningStateValues *SubProductPropertiesProvisioningStateValues
+}
+
+func (s *SubProductProperties) GetProvisioningState() (rv string) {
+	if s != nil && s.ProvisioningState != nil {
+		return *s.ProvisioningState
+	}
+	return
+}
+
+func (s *SubProductProperties) GetProvisioningStateValues() (rv *SubProductPropertiesProvisioningStateValues) {
+	if s != nil {
+		return s.ProvisioningStateValues
+	}
+	return
 }

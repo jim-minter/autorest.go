@@ -28,6 +28,41 @@ type Addon struct {
 	Type *string
 }
 
+func (a *Addon) GetKind() (rv *AddonType) {
+	if a != nil {
+		return a.Kind
+	}
+	return
+}
+
+func (a *Addon) GetID() (rv string) {
+	if a != nil && a.ID != nil {
+		return *a.ID
+	}
+	return
+}
+
+func (a *Addon) GetName() (rv string) {
+	if a != nil && a.Name != nil {
+		return *a.Name
+	}
+	return
+}
+
+func (a *Addon) GetSystemData() (rv *SystemData) {
+	if a != nil {
+		return a.SystemData
+	}
+	return
+}
+
+func (a *Addon) GetType() (rv string) {
+	if a != nil && a.Type != nil {
+		return *a.Type
+	}
+	return
+}
+
 // GetAddon implements the AddonClassification interface for type Addon.
 func (a *Addon) GetAddon() *Addon { return a }
 
@@ -38,6 +73,20 @@ type AddonList struct {
 
 	// READ-ONLY; The Value.
 	Value []AddonClassification
+}
+
+func (a *AddonList) GetNextLink() (rv string) {
+	if a != nil && a.NextLink != nil {
+		return *a.NextLink
+	}
+	return
+}
+
+func (a *AddonList) GetValue() (rv []AddonClassification) {
+	if a != nil {
+		return a.Value
+	}
+	return
 }
 
 // Address - The shipping address of the customer.
@@ -64,6 +113,55 @@ type Address struct {
 	State *string
 }
 
+func (a *Address) GetCountry() (rv string) {
+	if a != nil && a.Country != nil {
+		return *a.Country
+	}
+	return
+}
+
+func (a *Address) GetAddressLine1() (rv string) {
+	if a != nil && a.AddressLine1 != nil {
+		return *a.AddressLine1
+	}
+	return
+}
+
+func (a *Address) GetAddressLine2() (rv string) {
+	if a != nil && a.AddressLine2 != nil {
+		return *a.AddressLine2
+	}
+	return
+}
+
+func (a *Address) GetAddressLine3() (rv string) {
+	if a != nil && a.AddressLine3 != nil {
+		return *a.AddressLine3
+	}
+	return
+}
+
+func (a *Address) GetCity() (rv string) {
+	if a != nil && a.City != nil {
+		return *a.City
+	}
+	return
+}
+
+func (a *Address) GetPostalCode() (rv string) {
+	if a != nil && a.PostalCode != nil {
+		return *a.PostalCode
+	}
+	return
+}
+
+func (a *Address) GetState() (rv string) {
+	if a != nil && a.State != nil {
+		return *a.State
+	}
+	return
+}
+
 // Alert on the data box edge/gateway device.
 type Alert struct {
 	// READ-ONLY; The path ID that uniquely identifies the object.
@@ -82,6 +180,41 @@ type Alert struct {
 	Type *string
 }
 
+func (a *Alert) GetID() (rv string) {
+	if a != nil && a.ID != nil {
+		return *a.ID
+	}
+	return
+}
+
+func (a *Alert) GetName() (rv string) {
+	if a != nil && a.Name != nil {
+		return *a.Name
+	}
+	return
+}
+
+func (a *Alert) GetProperties() (rv *AlertProperties) {
+	if a != nil {
+		return a.Properties
+	}
+	return
+}
+
+func (a *Alert) GetSystemData() (rv *SystemData) {
+	if a != nil {
+		return a.SystemData
+	}
+	return
+}
+
+func (a *Alert) GetType() (rv string) {
+	if a != nil && a.Type != nil {
+		return *a.Type
+	}
+	return
+}
+
 // AlertErrorDetails - Error details for the alert.
 type AlertErrorDetails struct {
 	// READ-ONLY; Error code.
@@ -94,6 +227,27 @@ type AlertErrorDetails struct {
 	Occurrences *int32
 }
 
+func (a *AlertErrorDetails) GetErrorCode() (rv string) {
+	if a != nil && a.ErrorCode != nil {
+		return *a.ErrorCode
+	}
+	return
+}
+
+func (a *AlertErrorDetails) GetErrorMessage() (rv string) {
+	if a != nil && a.ErrorMessage != nil {
+		return *a.ErrorMessage
+	}
+	return
+}
+
+func (a *AlertErrorDetails) GetOccurrences() (rv int32) {
+	if a != nil && a.Occurrences != nil {
+		return *a.Occurrences
+	}
+	return
+}
+
 // AlertList - Collection of alerts.
 type AlertList struct {
 	// READ-ONLY; Link to the next set of results.
@@ -101,6 +255,20 @@ type AlertList struct {
 
 	// READ-ONLY; The value.
 	Value []*Alert
+}
+
+func (a *AlertList) GetNextLink() (rv string) {
+	if a != nil && a.NextLink != nil {
+		return *a.NextLink
+	}
+	return
+}
+
+func (a *AlertList) GetValue() (rv []*Alert) {
+	if a != nil {
+		return a.Value
+	}
+	return
 }
 
 // AlertProperties - Properties of alert.
@@ -127,6 +295,55 @@ type AlertProperties struct {
 	Title *string
 }
 
+func (a *AlertProperties) GetAlertType() (rv string) {
+	if a != nil && a.AlertType != nil {
+		return *a.AlertType
+	}
+	return
+}
+
+func (a *AlertProperties) GetAppearedAtDateTime() (rv *time.Time) {
+	if a != nil {
+		return a.AppearedAtDateTime
+	}
+	return
+}
+
+func (a *AlertProperties) GetDetailedInformation() (rv map[string]*string) {
+	if a != nil {
+		return a.DetailedInformation
+	}
+	return
+}
+
+func (a *AlertProperties) GetErrorDetails() (rv *AlertErrorDetails) {
+	if a != nil {
+		return a.ErrorDetails
+	}
+	return
+}
+
+func (a *AlertProperties) GetRecommendation() (rv string) {
+	if a != nil && a.Recommendation != nil {
+		return *a.Recommendation
+	}
+	return
+}
+
+func (a *AlertProperties) GetSeverity() (rv *AlertSeverity) {
+	if a != nil {
+		return a.Severity
+	}
+	return
+}
+
+func (a *AlertProperties) GetTitle() (rv string) {
+	if a != nil && a.Title != nil {
+		return *a.Title
+	}
+	return
+}
+
 // ArcAddon - Arc Addon.
 type ArcAddon struct {
 	// REQUIRED; Addon type.
@@ -146,6 +363,48 @@ type ArcAddon struct {
 
 	// READ-ONLY; The hierarchical type of the object.
 	Type *string
+}
+
+func (a *ArcAddon) GetKind() (rv *AddonType) {
+	if a != nil {
+		return a.Kind
+	}
+	return
+}
+
+func (a *ArcAddon) GetProperties() (rv *ArcAddonProperties) {
+	if a != nil {
+		return a.Properties
+	}
+	return
+}
+
+func (a *ArcAddon) GetID() (rv string) {
+	if a != nil && a.ID != nil {
+		return *a.ID
+	}
+	return
+}
+
+func (a *ArcAddon) GetName() (rv string) {
+	if a != nil && a.Name != nil {
+		return *a.Name
+	}
+	return
+}
+
+func (a *ArcAddon) GetSystemData() (rv *SystemData) {
+	if a != nil {
+		return a.SystemData
+	}
+	return
+}
+
+func (a *ArcAddon) GetType() (rv string) {
+	if a != nil && a.Type != nil {
+		return *a.Type
+	}
+	return
 }
 
 // GetAddon implements the AddonClassification interface for type ArcAddon.
@@ -186,6 +445,62 @@ type ArcAddonProperties struct {
 	Version *string
 }
 
+func (a *ArcAddonProperties) GetResourceGroupName() (rv string) {
+	if a != nil && a.ResourceGroupName != nil {
+		return *a.ResourceGroupName
+	}
+	return
+}
+
+func (a *ArcAddonProperties) GetResourceLocation() (rv string) {
+	if a != nil && a.ResourceLocation != nil {
+		return *a.ResourceLocation
+	}
+	return
+}
+
+func (a *ArcAddonProperties) GetResourceName() (rv string) {
+	if a != nil && a.ResourceName != nil {
+		return *a.ResourceName
+	}
+	return
+}
+
+func (a *ArcAddonProperties) GetSubscriptionID() (rv string) {
+	if a != nil && a.SubscriptionID != nil {
+		return *a.SubscriptionID
+	}
+	return
+}
+
+func (a *ArcAddonProperties) GetHostPlatform() (rv *PlatformType) {
+	if a != nil {
+		return a.HostPlatform
+	}
+	return
+}
+
+func (a *ArcAddonProperties) GetHostPlatformType() (rv *HostPlatformType) {
+	if a != nil {
+		return a.HostPlatformType
+	}
+	return
+}
+
+func (a *ArcAddonProperties) GetProvisioningState() (rv *AddonState) {
+	if a != nil {
+		return a.ProvisioningState
+	}
+	return
+}
+
+func (a *ArcAddonProperties) GetVersion() (rv string) {
+	if a != nil && a.Version != nil {
+		return *a.Version
+	}
+	return
+}
+
 // AsymmetricEncryptedSecret - Represent the secrets intended for encryption with asymmetric key pair.
 type AsymmetricEncryptedSecret struct {
 	// REQUIRED; The algorithm used to encrypt "Value".
@@ -198,10 +513,38 @@ type AsymmetricEncryptedSecret struct {
 	EncryptionCertThumbprint *string
 }
 
+func (a *AsymmetricEncryptedSecret) GetEncryptionAlgorithm() (rv *EncryptionAlgorithm) {
+	if a != nil {
+		return a.EncryptionAlgorithm
+	}
+	return
+}
+
+func (a *AsymmetricEncryptedSecret) GetValue() (rv string) {
+	if a != nil && a.Value != nil {
+		return *a.Value
+	}
+	return
+}
+
+func (a *AsymmetricEncryptedSecret) GetEncryptionCertThumbprint() (rv string) {
+	if a != nil && a.EncryptionCertThumbprint != nil {
+		return *a.EncryptionCertThumbprint
+	}
+	return
+}
+
 // Authentication mechanism for IoT devices.
 type Authentication struct {
 	// Symmetric key for authentication.
 	SymmetricKey *SymmetricKey
+}
+
+func (a *Authentication) GetSymmetricKey() (rv *SymmetricKey) {
+	if a != nil {
+		return a.SymmetricKey
+	}
+	return
 }
 
 // AzureContainerInfo - Azure container mapping of the endpoint.
@@ -214,6 +557,27 @@ type AzureContainerInfo struct {
 
 	// REQUIRED; ID of the storage account credential used to access storage.
 	StorageAccountCredentialID *string
+}
+
+func (a *AzureContainerInfo) GetContainerName() (rv string) {
+	if a != nil && a.ContainerName != nil {
+		return *a.ContainerName
+	}
+	return
+}
+
+func (a *AzureContainerInfo) GetDataFormat() (rv *AzureContainerDataFormat) {
+	if a != nil {
+		return a.DataFormat
+	}
+	return
+}
+
+func (a *AzureContainerInfo) GetStorageAccountCredentialID() (rv string) {
+	if a != nil && a.StorageAccountCredentialID != nil {
+		return *a.StorageAccountCredentialID
+	}
+	return
 }
 
 // BandwidthSchedule - The bandwidth schedule details.
@@ -234,6 +598,41 @@ type BandwidthSchedule struct {
 	Type *string
 }
 
+func (b *BandwidthSchedule) GetProperties() (rv *BandwidthScheduleProperties) {
+	if b != nil {
+		return b.Properties
+	}
+	return
+}
+
+func (b *BandwidthSchedule) GetID() (rv string) {
+	if b != nil && b.ID != nil {
+		return *b.ID
+	}
+	return
+}
+
+func (b *BandwidthSchedule) GetName() (rv string) {
+	if b != nil && b.Name != nil {
+		return *b.Name
+	}
+	return
+}
+
+func (b *BandwidthSchedule) GetSystemData() (rv *SystemData) {
+	if b != nil {
+		return b.SystemData
+	}
+	return
+}
+
+func (b *BandwidthSchedule) GetType() (rv string) {
+	if b != nil && b.Type != nil {
+		return *b.Type
+	}
+	return
+}
+
 // BandwidthScheduleProperties - The properties of the bandwidth schedule.
 type BandwidthScheduleProperties struct {
 	// REQUIRED; The days of the week when this schedule is applicable.
@@ -249,6 +648,34 @@ type BandwidthScheduleProperties struct {
 	Stop *string
 }
 
+func (b *BandwidthScheduleProperties) GetDays() (rv []*DayOfWeek) {
+	if b != nil {
+		return b.Days
+	}
+	return
+}
+
+func (b *BandwidthScheduleProperties) GetRateInMbps() (rv int32) {
+	if b != nil && b.RateInMbps != nil {
+		return *b.RateInMbps
+	}
+	return
+}
+
+func (b *BandwidthScheduleProperties) GetStart() (rv string) {
+	if b != nil && b.Start != nil {
+		return *b.Start
+	}
+	return
+}
+
+func (b *BandwidthScheduleProperties) GetStop() (rv string) {
+	if b != nil && b.Stop != nil {
+		return *b.Stop
+	}
+	return
+}
+
 // BandwidthSchedulesList - The collection of bandwidth schedules.
 type BandwidthSchedulesList struct {
 	// READ-ONLY; Link to the next set of results.
@@ -258,6 +685,20 @@ type BandwidthSchedulesList struct {
 	Value []*BandwidthSchedule
 }
 
+func (b *BandwidthSchedulesList) GetNextLink() (rv string) {
+	if b != nil && b.NextLink != nil {
+		return *b.NextLink
+	}
+	return
+}
+
+func (b *BandwidthSchedulesList) GetValue() (rv []*BandwidthSchedule) {
+	if b != nil {
+		return b.Value
+	}
+	return
+}
+
 // ClientAccessRight - The mapping between a particular client IP and the type of access client has on the NFS share.
 type ClientAccessRight struct {
 	// REQUIRED; Type of access to be allowed for the client.
@@ -265,6 +706,20 @@ type ClientAccessRight struct {
 
 	// REQUIRED; IP of the client.
 	Client *string
+}
+
+func (c *ClientAccessRight) GetAccessPermission() (rv *ClientPermissionType) {
+	if c != nil {
+		return c.AccessPermission
+	}
+	return
+}
+
+func (c *ClientAccessRight) GetClient() (rv string) {
+	if c != nil && c.Client != nil {
+		return *c.Client
+	}
+	return
 }
 
 // CloudEdgeManagementRole - The preview of Virtual Machine Cloud Management from the Azure supports deploying and managing
@@ -292,6 +747,48 @@ type CloudEdgeManagementRole struct {
 	Type *string
 }
 
+func (c *CloudEdgeManagementRole) GetKind() (rv *RoleTypes) {
+	if c != nil {
+		return c.Kind
+	}
+	return
+}
+
+func (c *CloudEdgeManagementRole) GetProperties() (rv *CloudEdgeManagementRoleProperties) {
+	if c != nil {
+		return c.Properties
+	}
+	return
+}
+
+func (c *CloudEdgeManagementRole) GetID() (rv string) {
+	if c != nil && c.ID != nil {
+		return *c.ID
+	}
+	return
+}
+
+func (c *CloudEdgeManagementRole) GetName() (rv string) {
+	if c != nil && c.Name != nil {
+		return *c.Name
+	}
+	return
+}
+
+func (c *CloudEdgeManagementRole) GetSystemData() (rv *SystemData) {
+	if c != nil {
+		return c.SystemData
+	}
+	return
+}
+
+func (c *CloudEdgeManagementRole) GetType() (rv string) {
+	if c != nil && c.Type != nil {
+		return *c.Type
+	}
+	return
+}
+
 // GetRole implements the RoleClassification interface for type CloudEdgeManagementRole.
 func (c *CloudEdgeManagementRole) GetRole() *Role {
 	return &Role{
@@ -315,6 +812,27 @@ type CloudEdgeManagementRoleProperties struct {
 	LocalManagementStatus *RoleStatus
 }
 
+func (c *CloudEdgeManagementRoleProperties) GetRoleStatus() (rv *RoleStatus) {
+	if c != nil {
+		return c.RoleStatus
+	}
+	return
+}
+
+func (c *CloudEdgeManagementRoleProperties) GetEdgeProfile() (rv *EdgeProfile) {
+	if c != nil {
+		return c.EdgeProfile
+	}
+	return
+}
+
+func (c *CloudEdgeManagementRoleProperties) GetLocalManagementStatus() (rv *RoleStatus) {
+	if c != nil {
+		return c.LocalManagementStatus
+	}
+	return
+}
+
 // CniConfig - Cni configuration
 type CniConfig struct {
 	// READ-ONLY; Pod Subnet
@@ -330,6 +848,34 @@ type CniConfig struct {
 	Version *string
 }
 
+func (c *CniConfig) GetPodSubnet() (rv string) {
+	if c != nil && c.PodSubnet != nil {
+		return *c.PodSubnet
+	}
+	return
+}
+
+func (c *CniConfig) GetServiceSubnet() (rv string) {
+	if c != nil && c.ServiceSubnet != nil {
+		return *c.ServiceSubnet
+	}
+	return
+}
+
+func (c *CniConfig) GetType() (rv string) {
+	if c != nil && c.Type != nil {
+		return *c.Type
+	}
+	return
+}
+
+func (c *CniConfig) GetVersion() (rv string) {
+	if c != nil && c.Version != nil {
+		return *c.Version
+	}
+	return
+}
+
 // ComputeResource - Compute infrastructure Resource
 type ComputeResource struct {
 	// REQUIRED; Memory in GB
@@ -337,6 +883,20 @@ type ComputeResource struct {
 
 	// REQUIRED; Processor count
 	ProcessorCount *int32
+}
+
+func (c *ComputeResource) GetMemoryInGB() (rv int64) {
+	if c != nil && c.MemoryInGB != nil {
+		return *c.MemoryInGB
+	}
+	return
+}
+
+func (c *ComputeResource) GetProcessorCount() (rv int32) {
+	if c != nil && c.ProcessorCount != nil {
+		return *c.ProcessorCount
+	}
+	return
 }
 
 // ContactDetails - Contains all the contact details of the customer.
@@ -352,6 +912,34 @@ type ContactDetails struct {
 
 	// REQUIRED; The phone number.
 	Phone *string
+}
+
+func (c *ContactDetails) GetCompanyName() (rv string) {
+	if c != nil && c.CompanyName != nil {
+		return *c.CompanyName
+	}
+	return
+}
+
+func (c *ContactDetails) GetContactPerson() (rv string) {
+	if c != nil && c.ContactPerson != nil {
+		return *c.ContactPerson
+	}
+	return
+}
+
+func (c *ContactDetails) GetEmailList() (rv []*string) {
+	if c != nil {
+		return c.EmailList
+	}
+	return
+}
+
+func (c *ContactDetails) GetPhone() (rv string) {
+	if c != nil && c.Phone != nil {
+		return *c.Phone
+	}
+	return
 }
 
 // Container - Represents a container on the Data Box Edge/Gateway device.
@@ -372,6 +960,41 @@ type Container struct {
 	Type *string
 }
 
+func (c *Container) GetProperties() (rv *ContainerProperties) {
+	if c != nil {
+		return c.Properties
+	}
+	return
+}
+
+func (c *Container) GetID() (rv string) {
+	if c != nil && c.ID != nil {
+		return *c.ID
+	}
+	return
+}
+
+func (c *Container) GetName() (rv string) {
+	if c != nil && c.Name != nil {
+		return *c.Name
+	}
+	return
+}
+
+func (c *Container) GetSystemData() (rv *SystemData) {
+	if c != nil {
+		return c.SystemData
+	}
+	return
+}
+
+func (c *Container) GetType() (rv string) {
+	if c != nil && c.Type != nil {
+		return *c.Type
+	}
+	return
+}
+
 // ContainerList - Collection of all the containers on the Data Box Edge/Gateway device.
 type ContainerList struct {
 	// READ-ONLY; Link to the next set of results.
@@ -379,6 +1002,20 @@ type ContainerList struct {
 
 	// READ-ONLY; The list of containers.
 	Value []*Container
+}
+
+func (c *ContainerList) GetNextLink() (rv string) {
+	if c != nil && c.NextLink != nil {
+		return *c.NextLink
+	}
+	return
+}
+
+func (c *ContainerList) GetValue() (rv []*Container) {
+	if c != nil {
+		return c.Value
+	}
+	return
 }
 
 // ContainerProperties - The container properties.
@@ -396,10 +1033,45 @@ type ContainerProperties struct {
 	RefreshDetails *RefreshDetails
 }
 
+func (c *ContainerProperties) GetDataFormat() (rv *AzureContainerDataFormat) {
+	if c != nil {
+		return c.DataFormat
+	}
+	return
+}
+
+func (c *ContainerProperties) GetContainerStatus() (rv *ContainerStatus) {
+	if c != nil {
+		return c.ContainerStatus
+	}
+	return
+}
+
+func (c *ContainerProperties) GetCreatedDateTime() (rv *time.Time) {
+	if c != nil {
+		return c.CreatedDateTime
+	}
+	return
+}
+
+func (c *ContainerProperties) GetRefreshDetails() (rv *RefreshDetails) {
+	if c != nil {
+		return c.RefreshDetails
+	}
+	return
+}
+
 // DCAccessCode - DC Access code in the case of Self Managed Shipping.
 type DCAccessCode struct {
 	// DCAccessCode properties.
 	Properties *DCAccessCodeProperties
+}
+
+func (d *DCAccessCode) GetProperties() (rv *DCAccessCodeProperties) {
+	if d != nil {
+		return d.Properties
+	}
+	return
 }
 
 // DCAccessCodeProperties - DCAccessCode Properties.
@@ -408,10 +1080,24 @@ type DCAccessCodeProperties struct {
 	AuthCode *string
 }
 
+func (d *DCAccessCodeProperties) GetAuthCode() (rv string) {
+	if d != nil && d.AuthCode != nil {
+		return *d.AuthCode
+	}
+	return
+}
+
 // DataResidency - Wraps data-residency related information for edge-resource and this should be used with ARM layer.
 type DataResidency struct {
 	// DataResidencyType enum
 	Type *DataResidencyType
+}
+
+func (d *DataResidency) GetType() (rv *DataResidencyType) {
+	if d != nil {
+		return d.Type
+	}
+	return
 }
 
 // Device - The Data Box Edge/Gateway device.
@@ -452,6 +1138,83 @@ type Device struct {
 	Type *string
 }
 
+func (d *Device) GetLocation() (rv string) {
+	if d != nil && d.Location != nil {
+		return *d.Location
+	}
+	return
+}
+
+func (d *Device) GetEtag() (rv string) {
+	if d != nil && d.Etag != nil {
+		return *d.Etag
+	}
+	return
+}
+
+func (d *Device) GetIdentity() (rv *ResourceIdentity) {
+	if d != nil {
+		return d.Identity
+	}
+	return
+}
+
+func (d *Device) GetKind() (rv *DataBoxEdgeDeviceKind) {
+	if d != nil {
+		return d.Kind
+	}
+	return
+}
+
+func (d *Device) GetProperties() (rv *DeviceProperties) {
+	if d != nil {
+		return d.Properties
+	}
+	return
+}
+
+func (d *Device) GetSKU() (rv *SKUType) {
+	if d != nil {
+		return d.SKU
+	}
+	return
+}
+
+func (d *Device) GetTags() (rv map[string]*string) {
+	if d != nil {
+		return d.Tags
+	}
+	return
+}
+
+func (d *Device) GetID() (rv string) {
+	if d != nil && d.ID != nil {
+		return *d.ID
+	}
+	return
+}
+
+func (d *Device) GetName() (rv string) {
+	if d != nil && d.Name != nil {
+		return *d.Name
+	}
+	return
+}
+
+func (d *Device) GetSystemData() (rv *SystemData) {
+	if d != nil {
+		return d.SystemData
+	}
+	return
+}
+
+func (d *Device) GetType() (rv string) {
+	if d != nil && d.Type != nil {
+		return *d.Type
+	}
+	return
+}
+
 // DeviceExtendedInfo - The extended Info of the Data Box Edge/Gateway device.
 type DeviceExtendedInfo struct {
 	// The extended info properties.
@@ -465,6 +1228,34 @@ type DeviceExtendedInfo struct {
 
 	// READ-ONLY; The hierarchical type of the object.
 	Type *string
+}
+
+func (d *DeviceExtendedInfo) GetProperties() (rv *DeviceExtendedInfoProperties) {
+	if d != nil {
+		return d.Properties
+	}
+	return
+}
+
+func (d *DeviceExtendedInfo) GetID() (rv string) {
+	if d != nil && d.ID != nil {
+		return *d.ID
+	}
+	return
+}
+
+func (d *DeviceExtendedInfo) GetName() (rv string) {
+	if d != nil && d.Name != nil {
+		return *d.Name
+	}
+	return
+}
+
+func (d *DeviceExtendedInfo) GetType() (rv string) {
+	if d != nil && d.Type != nil {
+		return *d.Type
+	}
+	return
 }
 
 // DeviceExtendedInfoPatch - The Data Box Edge/Gateway device extended info patch.
@@ -484,6 +1275,41 @@ type DeviceExtendedInfoPatch struct {
 	// For changing or to initiate the resync to key-vault set the status to KeyVaultSyncPending, rest of the status will not
 	// be applicable.
 	SyncStatus *KeyVaultSyncStatus
+}
+
+func (d *DeviceExtendedInfoPatch) GetChannelIntegrityKeyName() (rv string) {
+	if d != nil && d.ChannelIntegrityKeyName != nil {
+		return *d.ChannelIntegrityKeyName
+	}
+	return
+}
+
+func (d *DeviceExtendedInfoPatch) GetChannelIntegrityKeyVersion() (rv string) {
+	if d != nil && d.ChannelIntegrityKeyVersion != nil {
+		return *d.ChannelIntegrityKeyVersion
+	}
+	return
+}
+
+func (d *DeviceExtendedInfoPatch) GetClientSecretStoreID() (rv string) {
+	if d != nil && d.ClientSecretStoreID != nil {
+		return *d.ClientSecretStoreID
+	}
+	return
+}
+
+func (d *DeviceExtendedInfoPatch) GetClientSecretStoreURL() (rv string) {
+	if d != nil && d.ClientSecretStoreURL != nil {
+		return *d.ClientSecretStoreURL
+	}
+	return
+}
+
+func (d *DeviceExtendedInfoPatch) GetSyncStatus() (rv *KeyVaultSyncStatus) {
+	if d != nil {
+		return d.SyncStatus
+	}
+	return
 }
 
 // DeviceExtendedInfoProperties - The properties of the Data Box Edge/Gateway device extended info.
@@ -516,6 +1342,69 @@ type DeviceExtendedInfoProperties struct {
 	ResourceKey *string
 }
 
+func (d *DeviceExtendedInfoProperties) GetChannelIntegrityKeyName() (rv string) {
+	if d != nil && d.ChannelIntegrityKeyName != nil {
+		return *d.ChannelIntegrityKeyName
+	}
+	return
+}
+
+func (d *DeviceExtendedInfoProperties) GetChannelIntegrityKeyVersion() (rv string) {
+	if d != nil && d.ChannelIntegrityKeyVersion != nil {
+		return *d.ChannelIntegrityKeyVersion
+	}
+	return
+}
+
+func (d *DeviceExtendedInfoProperties) GetClientSecretStoreID() (rv string) {
+	if d != nil && d.ClientSecretStoreID != nil {
+		return *d.ClientSecretStoreID
+	}
+	return
+}
+
+func (d *DeviceExtendedInfoProperties) GetClientSecretStoreURL() (rv string) {
+	if d != nil && d.ClientSecretStoreURL != nil {
+		return *d.ClientSecretStoreURL
+	}
+	return
+}
+
+func (d *DeviceExtendedInfoProperties) GetEncryptionKey() (rv string) {
+	if d != nil && d.EncryptionKey != nil {
+		return *d.EncryptionKey
+	}
+	return
+}
+
+func (d *DeviceExtendedInfoProperties) GetEncryptionKeyThumbprint() (rv string) {
+	if d != nil && d.EncryptionKeyThumbprint != nil {
+		return *d.EncryptionKeyThumbprint
+	}
+	return
+}
+
+func (d *DeviceExtendedInfoProperties) GetKeyVaultSyncStatus() (rv *KeyVaultSyncStatus) {
+	if d != nil {
+		return d.KeyVaultSyncStatus
+	}
+	return
+}
+
+func (d *DeviceExtendedInfoProperties) GetDeviceSecrets() (rv map[string]*Secret) {
+	if d != nil {
+		return d.DeviceSecrets
+	}
+	return
+}
+
+func (d *DeviceExtendedInfoProperties) GetResourceKey() (rv string) {
+	if d != nil && d.ResourceKey != nil {
+		return *d.ResourceKey
+	}
+	return
+}
+
 // DeviceList - The collection of Data Box Edge/Gateway devices.
 type DeviceList struct {
 	// READ-ONLY; Link to the next set of results.
@@ -523,6 +1412,20 @@ type DeviceList struct {
 
 	// READ-ONLY; The list of Data Box Edge/Gateway devices.
 	Value []*Device
+}
+
+func (d *DeviceList) GetNextLink() (rv string) {
+	if d != nil && d.NextLink != nil {
+		return *d.NextLink
+	}
+	return
+}
+
+func (d *DeviceList) GetValue() (rv []*Device) {
+	if d != nil {
+		return d.Value
+	}
+	return
 }
 
 // DevicePatch - The Data Box Edge/Gateway device patch.
@@ -535,6 +1438,27 @@ type DevicePatch struct {
 
 	// The tags attached to the Data Box Edge/Gateway resource.
 	Tags map[string]*string
+}
+
+func (d *DevicePatch) GetIdentity() (rv *ResourceIdentity) {
+	if d != nil {
+		return d.Identity
+	}
+	return
+}
+
+func (d *DevicePatch) GetProperties() (rv *DevicePropertiesPatch) {
+	if d != nil {
+		return d.Properties
+	}
+	return
+}
+
+func (d *DevicePatch) GetTags() (rv map[string]*string) {
+	if d != nil {
+		return d.Tags
+	}
+	return
 }
 
 // DeviceProperties - The properties of the Data Box Edge/Gateway device.
@@ -594,10 +1518,143 @@ type DeviceProperties struct {
 	TimeZone *string
 }
 
+func (d *DeviceProperties) GetDataBoxEdgeDeviceStatus() (rv *DataBoxEdgeDeviceStatus) {
+	if d != nil {
+		return d.DataBoxEdgeDeviceStatus
+	}
+	return
+}
+
+func (d *DeviceProperties) GetDataResidency() (rv *DataResidency) {
+	if d != nil {
+		return d.DataResidency
+	}
+	return
+}
+
+func (d *DeviceProperties) GetConfiguredRoleTypes() (rv []*RoleTypes) {
+	if d != nil {
+		return d.ConfiguredRoleTypes
+	}
+	return
+}
+
+func (d *DeviceProperties) GetCulture() (rv string) {
+	if d != nil && d.Culture != nil {
+		return *d.Culture
+	}
+	return
+}
+
+func (d *DeviceProperties) GetDescription() (rv string) {
+	if d != nil && d.Description != nil {
+		return *d.Description
+	}
+	return
+}
+
+func (d *DeviceProperties) GetDeviceHcsVersion() (rv string) {
+	if d != nil && d.DeviceHcsVersion != nil {
+		return *d.DeviceHcsVersion
+	}
+	return
+}
+
+func (d *DeviceProperties) GetDeviceLocalCapacity() (rv int64) {
+	if d != nil && d.DeviceLocalCapacity != nil {
+		return *d.DeviceLocalCapacity
+	}
+	return
+}
+
+func (d *DeviceProperties) GetDeviceModel() (rv string) {
+	if d != nil && d.DeviceModel != nil {
+		return *d.DeviceModel
+	}
+	return
+}
+
+func (d *DeviceProperties) GetDeviceSoftwareVersion() (rv string) {
+	if d != nil && d.DeviceSoftwareVersion != nil {
+		return *d.DeviceSoftwareVersion
+	}
+	return
+}
+
+func (d *DeviceProperties) GetDeviceType() (rv *DeviceType) {
+	if d != nil {
+		return d.DeviceType
+	}
+	return
+}
+
+func (d *DeviceProperties) GetEdgeProfile() (rv *EdgeProfile) {
+	if d != nil {
+		return d.EdgeProfile
+	}
+	return
+}
+
+func (d *DeviceProperties) GetFriendlyName() (rv string) {
+	if d != nil && d.FriendlyName != nil {
+		return *d.FriendlyName
+	}
+	return
+}
+
+func (d *DeviceProperties) GetModelDescription() (rv string) {
+	if d != nil && d.ModelDescription != nil {
+		return *d.ModelDescription
+	}
+	return
+}
+
+func (d *DeviceProperties) GetNodeCount() (rv int32) {
+	if d != nil && d.NodeCount != nil {
+		return *d.NodeCount
+	}
+	return
+}
+
+func (d *DeviceProperties) GetResourceMoveDetails() (rv *ResourceMoveDetails) {
+	if d != nil {
+		return d.ResourceMoveDetails
+	}
+	return
+}
+
+func (d *DeviceProperties) GetSerialNumber() (rv string) {
+	if d != nil && d.SerialNumber != nil {
+		return *d.SerialNumber
+	}
+	return
+}
+
+func (d *DeviceProperties) GetSystemData() (rv *SystemData) {
+	if d != nil {
+		return d.SystemData
+	}
+	return
+}
+
+func (d *DeviceProperties) GetTimeZone() (rv string) {
+	if d != nil && d.TimeZone != nil {
+		return *d.TimeZone
+	}
+	return
+}
+
 // DevicePropertiesPatch - The Data Box Edge/Gateway device properties patch.
 type DevicePropertiesPatch struct {
 	// Edge Profile property of the Data Box Edge/Gateway device
 	EdgeProfile *EdgeProfilePatch
+}
+
+func (d *DevicePropertiesPatch) GetEdgeProfile() (rv *EdgeProfilePatch) {
+	if d != nil {
+		return d.EdgeProfile
+	}
+	return
 }
 
 // DiagnosticProactiveLogCollectionSettings - The diagnostic proactive log collection settings of a device.
@@ -618,6 +1675,41 @@ type DiagnosticProactiveLogCollectionSettings struct {
 	Type *string
 }
 
+func (d *DiagnosticProactiveLogCollectionSettings) GetProperties() (rv *ProactiveLogCollectionSettingsProperties) {
+	if d != nil {
+		return d.Properties
+	}
+	return
+}
+
+func (d *DiagnosticProactiveLogCollectionSettings) GetID() (rv string) {
+	if d != nil && d.ID != nil {
+		return *d.ID
+	}
+	return
+}
+
+func (d *DiagnosticProactiveLogCollectionSettings) GetName() (rv string) {
+	if d != nil && d.Name != nil {
+		return *d.Name
+	}
+	return
+}
+
+func (d *DiagnosticProactiveLogCollectionSettings) GetSystemData() (rv *SystemData) {
+	if d != nil {
+		return d.SystemData
+	}
+	return
+}
+
+func (d *DiagnosticProactiveLogCollectionSettings) GetType() (rv string) {
+	if d != nil && d.Type != nil {
+		return *d.Type
+	}
+	return
+}
+
 // DiagnosticRemoteSupportSettings - The remote support settings of a device.
 type DiagnosticRemoteSupportSettings struct {
 	// REQUIRED; Properties of the remote support settings.
@@ -636,10 +1728,52 @@ type DiagnosticRemoteSupportSettings struct {
 	Type *string
 }
 
+func (d *DiagnosticRemoteSupportSettings) GetProperties() (rv *DiagnosticRemoteSupportSettingsProperties) {
+	if d != nil {
+		return d.Properties
+	}
+	return
+}
+
+func (d *DiagnosticRemoteSupportSettings) GetID() (rv string) {
+	if d != nil && d.ID != nil {
+		return *d.ID
+	}
+	return
+}
+
+func (d *DiagnosticRemoteSupportSettings) GetName() (rv string) {
+	if d != nil && d.Name != nil {
+		return *d.Name
+	}
+	return
+}
+
+func (d *DiagnosticRemoteSupportSettings) GetSystemData() (rv *SystemData) {
+	if d != nil {
+		return d.SystemData
+	}
+	return
+}
+
+func (d *DiagnosticRemoteSupportSettings) GetType() (rv string) {
+	if d != nil && d.Type != nil {
+		return *d.Type
+	}
+	return
+}
+
 // DiagnosticRemoteSupportSettingsProperties - The properties of remote support settings.
 type DiagnosticRemoteSupportSettingsProperties struct {
 	// Remote support settings list according to the RemoteApplicationType
 	RemoteSupportSettingsList []*RemoteSupportSettings
+}
+
+func (d *DiagnosticRemoteSupportSettingsProperties) GetRemoteSupportSettingsList() (rv []*RemoteSupportSettings) {
+	if d != nil {
+		return d.RemoteSupportSettingsList
+	}
+	return
 }
 
 // EdgeProfile - Details about Edge Profile for the resource
@@ -648,10 +1782,24 @@ type EdgeProfile struct {
 	Subscription *EdgeProfileSubscription
 }
 
+func (e *EdgeProfile) GetSubscription() (rv *EdgeProfileSubscription) {
+	if e != nil {
+		return e.Subscription
+	}
+	return
+}
+
 // EdgeProfilePatch - The Data Box Edge/Gateway Edge Profile patch.
 type EdgeProfilePatch struct {
 	// The Data Box Edge/Gateway Edge Profile Subscription patch
 	Subscription *EdgeProfileSubscriptionPatch
+}
+
+func (e *EdgeProfilePatch) GetSubscription() (rv *EdgeProfileSubscriptionPatch) {
+	if e != nil {
+		return e.Subscription
+	}
+	return
 }
 
 // EdgeProfileSubscription - Subscription details for the Edge Profile
@@ -667,10 +1815,59 @@ type EdgeProfileSubscription struct {
 	SubscriptionID *string
 }
 
+func (e *EdgeProfileSubscription) GetID() (rv string) {
+	if e != nil && e.ID != nil {
+		return *e.ID
+	}
+	return
+}
+
+func (e *EdgeProfileSubscription) GetProperties() (rv *SubscriptionProperties) {
+	if e != nil {
+		return e.Properties
+	}
+	return
+}
+
+func (e *EdgeProfileSubscription) GetRegistrationDate() (rv string) {
+	if e != nil && e.RegistrationDate != nil {
+		return *e.RegistrationDate
+	}
+	return
+}
+
+func (e *EdgeProfileSubscription) GetRegistrationID() (rv string) {
+	if e != nil && e.RegistrationID != nil {
+		return *e.RegistrationID
+	}
+	return
+}
+
+func (e *EdgeProfileSubscription) GetState() (rv *SubscriptionState) {
+	if e != nil {
+		return e.State
+	}
+	return
+}
+
+func (e *EdgeProfileSubscription) GetSubscriptionID() (rv string) {
+	if e != nil && e.SubscriptionID != nil {
+		return *e.SubscriptionID
+	}
+	return
+}
+
 // EdgeProfileSubscriptionPatch - The Data Box Edge/Gateway Edge Profile Subscription patch.
 type EdgeProfileSubscriptionPatch struct {
 	// The path ID that uniquely identifies the subscription of the edge profile.
 	ID *string
+}
+
+func (e *EdgeProfileSubscriptionPatch) GetID() (rv string) {
+	if e != nil && e.ID != nil {
+		return *e.ID
+	}
+	return
 }
 
 // EtcdInfo - Etcd configuration
@@ -680,6 +1877,20 @@ type EtcdInfo struct {
 
 	// READ-ONLY; Etcd version
 	Version *string
+}
+
+func (e *EtcdInfo) GetType() (rv string) {
+	if e != nil && e.Type != nil {
+		return *e.Type
+	}
+	return
+}
+
+func (e *EtcdInfo) GetVersion() (rv string) {
+	if e != nil && e.Version != nil {
+		return *e.Version
+	}
+	return
 }
 
 // FileEventTrigger - Trigger details.
@@ -703,6 +1914,48 @@ type FileEventTrigger struct {
 	Type *string
 }
 
+func (f *FileEventTrigger) GetKind() (rv *TriggerEventType) {
+	if f != nil {
+		return f.Kind
+	}
+	return
+}
+
+func (f *FileEventTrigger) GetProperties() (rv *FileTriggerProperties) {
+	if f != nil {
+		return f.Properties
+	}
+	return
+}
+
+func (f *FileEventTrigger) GetID() (rv string) {
+	if f != nil && f.ID != nil {
+		return *f.ID
+	}
+	return
+}
+
+func (f *FileEventTrigger) GetName() (rv string) {
+	if f != nil && f.Name != nil {
+		return *f.Name
+	}
+	return
+}
+
+func (f *FileEventTrigger) GetSystemData() (rv *SystemData) {
+	if f != nil {
+		return f.SystemData
+	}
+	return
+}
+
+func (f *FileEventTrigger) GetType() (rv string) {
+	if f != nil && f.Type != nil {
+		return *f.Type
+	}
+	return
+}
+
 // GetTrigger implements the TriggerClassification interface for type FileEventTrigger.
 func (f *FileEventTrigger) GetTrigger() *Trigger {
 	return &Trigger{
@@ -720,6 +1973,13 @@ type FileSourceInfo struct {
 	ShareID *string
 }
 
+func (f *FileSourceInfo) GetShareID() (rv string) {
+	if f != nil && f.ShareID != nil {
+		return *f.ShareID
+	}
+	return
+}
+
 // FileTriggerProperties - File trigger properties.
 type FileTriggerProperties struct {
 	// REQUIRED; Role sink info.
@@ -734,6 +1994,27 @@ type FileTriggerProperties struct {
 	CustomContextTag *string
 }
 
+func (f *FileTriggerProperties) GetSinkInfo() (rv *RoleSinkInfo) {
+	if f != nil {
+		return f.SinkInfo
+	}
+	return
+}
+
+func (f *FileTriggerProperties) GetSourceInfo() (rv *FileSourceInfo) {
+	if f != nil {
+		return f.SourceInfo
+	}
+	return
+}
+
+func (f *FileTriggerProperties) GetCustomContextTag() (rv string) {
+	if f != nil && f.CustomContextTag != nil {
+		return *f.CustomContextTag
+	}
+	return
+}
+
 // GenerateCertResponse - Used in activation key generation flow.
 type GenerateCertResponse struct {
 	// Gets or sets expiry time in UTC
@@ -744,6 +2025,27 @@ type GenerateCertResponse struct {
 
 	// Gets or sets base64 encoded certificate raw data, this is the public part needed to be uploaded to cert vault
 	PublicKey *string
+}
+
+func (g *GenerateCertResponse) GetExpiryTimeInUTC() (rv string) {
+	if g != nil && g.ExpiryTimeInUTC != nil {
+		return *g.ExpiryTimeInUTC
+	}
+	return
+}
+
+func (g *GenerateCertResponse) GetPrivateKey() (rv string) {
+	if g != nil && g.PrivateKey != nil {
+		return *g.PrivateKey
+	}
+	return
+}
+
+func (g *GenerateCertResponse) GetPublicKey() (rv string) {
+	if g != nil && g.PublicKey != nil {
+		return *g.PublicKey
+	}
+	return
 }
 
 // IPv4Config - Details related to the IPv4 address configuration.
@@ -758,6 +2060,27 @@ type IPv4Config struct {
 	Subnet *string
 }
 
+func (i *IPv4Config) GetGateway() (rv string) {
+	if i != nil && i.Gateway != nil {
+		return *i.Gateway
+	}
+	return
+}
+
+func (i *IPv4Config) GetIPAddress() (rv string) {
+	if i != nil && i.IPAddress != nil {
+		return *i.IPAddress
+	}
+	return
+}
+
+func (i *IPv4Config) GetSubnet() (rv string) {
+	if i != nil && i.Subnet != nil {
+		return *i.Subnet
+	}
+	return
+}
+
 // IPv6Config - Details related to the IPv6 address configuration.
 type IPv6Config struct {
 	// READ-ONLY; The IPv6 gateway of the network adapter.
@@ -770,6 +2093,27 @@ type IPv6Config struct {
 	PrefixLength *int32
 }
 
+func (i *IPv6Config) GetGateway() (rv string) {
+	if i != nil && i.Gateway != nil {
+		return *i.Gateway
+	}
+	return
+}
+
+func (i *IPv6Config) GetIPAddress() (rv string) {
+	if i != nil && i.IPAddress != nil {
+		return *i.IPAddress
+	}
+	return
+}
+
+func (i *IPv6Config) GetPrefixLength() (rv int32) {
+	if i != nil && i.PrefixLength != nil {
+		return *i.PrefixLength
+	}
+	return
+}
+
 // ImageRepositoryCredential - Image repository credential.
 type ImageRepositoryCredential struct {
 	// REQUIRED; Image repository url (e.g.: mcr.microsoft.com).
@@ -780,6 +2124,27 @@ type ImageRepositoryCredential struct {
 
 	// Repository user password.
 	Password *AsymmetricEncryptedSecret
+}
+
+func (i *ImageRepositoryCredential) GetImageRepositoryURL() (rv string) {
+	if i != nil && i.ImageRepositoryURL != nil {
+		return *i.ImageRepositoryURL
+	}
+	return
+}
+
+func (i *ImageRepositoryCredential) GetUserName() (rv string) {
+	if i != nil && i.UserName != nil {
+		return *i.UserName
+	}
+	return
+}
+
+func (i *ImageRepositoryCredential) GetPassword() (rv *AsymmetricEncryptedSecret) {
+	if i != nil {
+		return i.Password
+	}
+	return
 }
 
 // IoTAddon - IoT Addon.
@@ -801,6 +2166,48 @@ type IoTAddon struct {
 
 	// READ-ONLY; The hierarchical type of the object.
 	Type *string
+}
+
+func (i *IoTAddon) GetKind() (rv *AddonType) {
+	if i != nil {
+		return i.Kind
+	}
+	return
+}
+
+func (i *IoTAddon) GetProperties() (rv *IoTAddonProperties) {
+	if i != nil {
+		return i.Properties
+	}
+	return
+}
+
+func (i *IoTAddon) GetID() (rv string) {
+	if i != nil && i.ID != nil {
+		return *i.ID
+	}
+	return
+}
+
+func (i *IoTAddon) GetName() (rv string) {
+	if i != nil && i.Name != nil {
+		return *i.Name
+	}
+	return
+}
+
+func (i *IoTAddon) GetSystemData() (rv *SystemData) {
+	if i != nil {
+		return i.SystemData
+	}
+	return
+}
+
+func (i *IoTAddon) GetType() (rv string) {
+	if i != nil && i.Type != nil {
+		return *i.Type
+	}
+	return
 }
 
 // GetAddon implements the AddonClassification interface for type IoTAddon.
@@ -835,6 +2242,48 @@ type IoTAddonProperties struct {
 	Version *string
 }
 
+func (i *IoTAddonProperties) GetIoTDeviceDetails() (rv *IoTDeviceInfo) {
+	if i != nil {
+		return i.IoTDeviceDetails
+	}
+	return
+}
+
+func (i *IoTAddonProperties) GetIoTEdgeDeviceDetails() (rv *IoTDeviceInfo) {
+	if i != nil {
+		return i.IoTEdgeDeviceDetails
+	}
+	return
+}
+
+func (i *IoTAddonProperties) GetHostPlatform() (rv *PlatformType) {
+	if i != nil {
+		return i.HostPlatform
+	}
+	return
+}
+
+func (i *IoTAddonProperties) GetHostPlatformType() (rv *HostPlatformType) {
+	if i != nil {
+		return i.HostPlatformType
+	}
+	return
+}
+
+func (i *IoTAddonProperties) GetProvisioningState() (rv *AddonState) {
+	if i != nil {
+		return i.ProvisioningState
+	}
+	return
+}
+
+func (i *IoTAddonProperties) GetVersion() (rv string) {
+	if i != nil && i.Version != nil {
+		return *i.Version
+	}
+	return
+}
+
 // IoTDeviceInfo - Metadata of IoT device/IoT Edge device to be configured.
 type IoTDeviceInfo struct {
 	// REQUIRED; ID of the IoT device/edge device.
@@ -850,6 +2299,34 @@ type IoTDeviceInfo struct {
 	IoTHostHubID *string
 }
 
+func (i *IoTDeviceInfo) GetDeviceID() (rv string) {
+	if i != nil && i.DeviceID != nil {
+		return *i.DeviceID
+	}
+	return
+}
+
+func (i *IoTDeviceInfo) GetIoTHostHub() (rv string) {
+	if i != nil && i.IoTHostHub != nil {
+		return *i.IoTHostHub
+	}
+	return
+}
+
+func (i *IoTDeviceInfo) GetAuthentication() (rv *Authentication) {
+	if i != nil {
+		return i.Authentication
+	}
+	return
+}
+
+func (i *IoTDeviceInfo) GetIoTHostHubID() (rv string) {
+	if i != nil && i.IoTHostHubID != nil {
+		return *i.IoTHostHubID
+	}
+	return
+}
+
 // IoTEdgeAgentInfo - IoT edge agent details is optional, this will be used for download system Agent module while bootstrapping
 // IoT Role if specified.
 type IoTEdgeAgentInfo struct {
@@ -861,6 +2338,27 @@ type IoTEdgeAgentInfo struct {
 
 	// Image repository details.
 	ImageRepository *ImageRepositoryCredential
+}
+
+func (i *IoTEdgeAgentInfo) GetImageName() (rv string) {
+	if i != nil && i.ImageName != nil {
+		return *i.ImageName
+	}
+	return
+}
+
+func (i *IoTEdgeAgentInfo) GetTag() (rv string) {
+	if i != nil && i.Tag != nil {
+		return *i.Tag
+	}
+	return
+}
+
+func (i *IoTEdgeAgentInfo) GetImageRepository() (rv *ImageRepositoryCredential) {
+	if i != nil {
+		return i.ImageRepository
+	}
+	return
 }
 
 // IoTRole - Compute role.
@@ -882,6 +2380,48 @@ type IoTRole struct {
 
 	// READ-ONLY; The hierarchical type of the object.
 	Type *string
+}
+
+func (i *IoTRole) GetKind() (rv *RoleTypes) {
+	if i != nil {
+		return i.Kind
+	}
+	return
+}
+
+func (i *IoTRole) GetProperties() (rv *IoTRoleProperties) {
+	if i != nil {
+		return i.Properties
+	}
+	return
+}
+
+func (i *IoTRole) GetID() (rv string) {
+	if i != nil && i.ID != nil {
+		return *i.ID
+	}
+	return
+}
+
+func (i *IoTRole) GetName() (rv string) {
+	if i != nil && i.Name != nil {
+		return *i.Name
+	}
+	return
+}
+
+func (i *IoTRole) GetSystemData() (rv *SystemData) {
+	if i != nil {
+		return i.SystemData
+	}
+	return
+}
+
+func (i *IoTRole) GetType() (rv string) {
+	if i != nil && i.Type != nil {
+		return *i.Type
+	}
+	return
 }
 
 // GetRole implements the RoleClassification interface for type IoTRole.
@@ -922,6 +2462,62 @@ type IoTRoleProperties struct {
 	HostPlatformType *HostPlatformType
 }
 
+func (i *IoTRoleProperties) GetHostPlatform() (rv *PlatformType) {
+	if i != nil {
+		return i.HostPlatform
+	}
+	return
+}
+
+func (i *IoTRoleProperties) GetIoTDeviceDetails() (rv *IoTDeviceInfo) {
+	if i != nil {
+		return i.IoTDeviceDetails
+	}
+	return
+}
+
+func (i *IoTRoleProperties) GetIoTEdgeDeviceDetails() (rv *IoTDeviceInfo) {
+	if i != nil {
+		return i.IoTEdgeDeviceDetails
+	}
+	return
+}
+
+func (i *IoTRoleProperties) GetRoleStatus() (rv *RoleStatus) {
+	if i != nil {
+		return i.RoleStatus
+	}
+	return
+}
+
+func (i *IoTRoleProperties) GetComputeResource() (rv *ComputeResource) {
+	if i != nil {
+		return i.ComputeResource
+	}
+	return
+}
+
+func (i *IoTRoleProperties) GetIoTEdgeAgentInfo() (rv *IoTEdgeAgentInfo) {
+	if i != nil {
+		return i.IoTEdgeAgentInfo
+	}
+	return
+}
+
+func (i *IoTRoleProperties) GetShareMappings() (rv []*MountPointMap) {
+	if i != nil {
+		return i.ShareMappings
+	}
+	return
+}
+
+func (i *IoTRoleProperties) GetHostPlatformType() (rv *HostPlatformType) {
+	if i != nil {
+		return i.HostPlatformType
+	}
+	return
+}
+
 // Job - A device job.
 type Job struct {
 	// READ-ONLY; The UTC date and time at which the job completed.
@@ -952,6 +2548,69 @@ type Job struct {
 	Type *string
 }
 
+func (j *Job) GetEndTime() (rv *time.Time) {
+	if j != nil {
+		return j.EndTime
+	}
+	return
+}
+
+func (j *Job) GetError() (rv *JobErrorDetails) {
+	if j != nil {
+		return j.Error
+	}
+	return
+}
+
+func (j *Job) GetID() (rv string) {
+	if j != nil && j.ID != nil {
+		return *j.ID
+	}
+	return
+}
+
+func (j *Job) GetName() (rv string) {
+	if j != nil && j.Name != nil {
+		return *j.Name
+	}
+	return
+}
+
+func (j *Job) GetPercentComplete() (rv int32) {
+	if j != nil && j.PercentComplete != nil {
+		return *j.PercentComplete
+	}
+	return
+}
+
+func (j *Job) GetProperties() (rv *JobProperties) {
+	if j != nil {
+		return j.Properties
+	}
+	return
+}
+
+func (j *Job) GetStartTime() (rv *time.Time) {
+	if j != nil {
+		return j.StartTime
+	}
+	return
+}
+
+func (j *Job) GetStatus() (rv *JobStatus) {
+	if j != nil {
+		return j.Status
+	}
+	return
+}
+
+func (j *Job) GetType() (rv string) {
+	if j != nil && j.Type != nil {
+		return *j.Type
+	}
+	return
+}
+
 // JobErrorDetails - The job error information containing the list of job errors.
 type JobErrorDetails struct {
 	// READ-ONLY; The code intended for programmatic access.
@@ -964,6 +2623,27 @@ type JobErrorDetails struct {
 	Message *string
 }
 
+func (j *JobErrorDetails) GetCode() (rv string) {
+	if j != nil && j.Code != nil {
+		return *j.Code
+	}
+	return
+}
+
+func (j *JobErrorDetails) GetErrorDetails() (rv []*JobErrorItem) {
+	if j != nil {
+		return j.ErrorDetails
+	}
+	return
+}
+
+func (j *JobErrorDetails) GetMessage() (rv string) {
+	if j != nil && j.Message != nil {
+		return *j.Message
+	}
+	return
+}
+
 // JobErrorItem - The job error items.
 type JobErrorItem struct {
 	// READ-ONLY; The code intended for programmatic access.
@@ -974,6 +2654,27 @@ type JobErrorItem struct {
 
 	// READ-ONLY; The recommended actions.
 	Recommendations []*string
+}
+
+func (j *JobErrorItem) GetCode() (rv string) {
+	if j != nil && j.Code != nil {
+		return *j.Code
+	}
+	return
+}
+
+func (j *JobErrorItem) GetMessage() (rv string) {
+	if j != nil && j.Message != nil {
+		return *j.Message
+	}
+	return
+}
+
+func (j *JobErrorItem) GetRecommendations() (rv []*string) {
+	if j != nil {
+		return j.Recommendations
+	}
+	return
 }
 
 // JobProperties - The properties for the job.
@@ -1004,6 +2705,62 @@ type JobProperties struct {
 	TotalRefreshErrors *int32
 }
 
+func (j *JobProperties) GetFolder() (rv string) {
+	if j != nil && j.Folder != nil {
+		return *j.Folder
+	}
+	return
+}
+
+func (j *JobProperties) GetCurrentStage() (rv *UpdateOperationStage) {
+	if j != nil {
+		return j.CurrentStage
+	}
+	return
+}
+
+func (j *JobProperties) GetDownloadProgress() (rv *UpdateDownloadProgress) {
+	if j != nil {
+		return j.DownloadProgress
+	}
+	return
+}
+
+func (j *JobProperties) GetErrorManifestFile() (rv string) {
+	if j != nil && j.ErrorManifestFile != nil {
+		return *j.ErrorManifestFile
+	}
+	return
+}
+
+func (j *JobProperties) GetInstallProgress() (rv *UpdateInstallProgress) {
+	if j != nil {
+		return j.InstallProgress
+	}
+	return
+}
+
+func (j *JobProperties) GetJobType() (rv *JobType) {
+	if j != nil {
+		return j.JobType
+	}
+	return
+}
+
+func (j *JobProperties) GetRefreshedEntityID() (rv string) {
+	if j != nil && j.RefreshedEntityID != nil {
+		return *j.RefreshedEntityID
+	}
+	return
+}
+
+func (j *JobProperties) GetTotalRefreshErrors() (rv int32) {
+	if j != nil && j.TotalRefreshErrors != nil {
+		return *j.TotalRefreshErrors
+	}
+	return
+}
+
 // KubernetesClusterInfo - Kubernetes cluster configuration
 type KubernetesClusterInfo struct {
 	// REQUIRED; Kubernetes cluster version
@@ -1016,6 +2773,27 @@ type KubernetesClusterInfo struct {
 	Nodes []*NodeInfo
 }
 
+func (k *KubernetesClusterInfo) GetVersion() (rv string) {
+	if k != nil && k.Version != nil {
+		return *k.Version
+	}
+	return
+}
+
+func (k *KubernetesClusterInfo) GetEtcdInfo() (rv *EtcdInfo) {
+	if k != nil {
+		return k.EtcdInfo
+	}
+	return
+}
+
+func (k *KubernetesClusterInfo) GetNodes() (rv []*NodeInfo) {
+	if k != nil {
+		return k.Nodes
+	}
+	return
+}
+
 // KubernetesIPConfiguration - Kubernetes node IP configuration
 type KubernetesIPConfiguration struct {
 	// IP address of the Kubernetes node.
@@ -1023,6 +2801,20 @@ type KubernetesIPConfiguration struct {
 
 	// READ-ONLY; Port of the Kubernetes node.
 	Port *string
+}
+
+func (k *KubernetesIPConfiguration) GetIPAddress() (rv string) {
+	if k != nil && k.IPAddress != nil {
+		return *k.IPAddress
+	}
+	return
+}
+
+func (k *KubernetesIPConfiguration) GetPort() (rv string) {
+	if k != nil && k.Port != nil {
+		return *k.Port
+	}
+	return
 }
 
 // KubernetesRole - The limited preview of Kubernetes Cluster Management from the Azure supports:
@@ -1057,6 +2849,48 @@ type KubernetesRole struct {
 	Type *string
 }
 
+func (k *KubernetesRole) GetKind() (rv *RoleTypes) {
+	if k != nil {
+		return k.Kind
+	}
+	return
+}
+
+func (k *KubernetesRole) GetProperties() (rv *KubernetesRoleProperties) {
+	if k != nil {
+		return k.Properties
+	}
+	return
+}
+
+func (k *KubernetesRole) GetID() (rv string) {
+	if k != nil && k.ID != nil {
+		return *k.ID
+	}
+	return
+}
+
+func (k *KubernetesRole) GetName() (rv string) {
+	if k != nil && k.Name != nil {
+		return *k.Name
+	}
+	return
+}
+
+func (k *KubernetesRole) GetSystemData() (rv *SystemData) {
+	if k != nil {
+		return k.SystemData
+	}
+	return
+}
+
+func (k *KubernetesRole) GetType() (rv string) {
+	if k != nil && k.Type != nil {
+		return *k.Type
+	}
+	return
+}
+
 // GetRole implements the RoleClassification interface for type KubernetesRole.
 func (k *KubernetesRole) GetRole() *Role {
 	return &Role{
@@ -1080,6 +2914,27 @@ type KubernetesRoleCompute struct {
 	ProcessorCount *int32
 }
 
+func (k *KubernetesRoleCompute) GetVMProfile() (rv string) {
+	if k != nil && k.VMProfile != nil {
+		return *k.VMProfile
+	}
+	return
+}
+
+func (k *KubernetesRoleCompute) GetMemoryInBytes() (rv int64) {
+	if k != nil && k.MemoryInBytes != nil {
+		return *k.MemoryInBytes
+	}
+	return
+}
+
+func (k *KubernetesRoleCompute) GetProcessorCount() (rv int32) {
+	if k != nil && k.ProcessorCount != nil {
+		return *k.ProcessorCount
+	}
+	return
+}
+
 // KubernetesRoleNetwork - Kubernetes role network resource
 type KubernetesRoleNetwork struct {
 	// READ-ONLY; Cni configuration
@@ -1087,6 +2942,20 @@ type KubernetesRoleNetwork struct {
 
 	// READ-ONLY; Load balancer configuration
 	LoadBalancerConfig *LoadBalancerConfig
+}
+
+func (k *KubernetesRoleNetwork) GetCniConfig() (rv *CniConfig) {
+	if k != nil {
+		return k.CniConfig
+	}
+	return
+}
+
+func (k *KubernetesRoleNetwork) GetLoadBalancerConfig() (rv *LoadBalancerConfig) {
+	if k != nil {
+		return k.LoadBalancerConfig
+	}
+	return
 }
 
 // KubernetesRoleProperties - Kubernetes role properties.
@@ -1110,6 +2979,48 @@ type KubernetesRoleProperties struct {
 	ProvisioningState *KubernetesState
 }
 
+func (k *KubernetesRoleProperties) GetHostPlatform() (rv *PlatformType) {
+	if k != nil {
+		return k.HostPlatform
+	}
+	return
+}
+
+func (k *KubernetesRoleProperties) GetKubernetesClusterInfo() (rv *KubernetesClusterInfo) {
+	if k != nil {
+		return k.KubernetesClusterInfo
+	}
+	return
+}
+
+func (k *KubernetesRoleProperties) GetKubernetesRoleResources() (rv *KubernetesRoleResources) {
+	if k != nil {
+		return k.KubernetesRoleResources
+	}
+	return
+}
+
+func (k *KubernetesRoleProperties) GetRoleStatus() (rv *RoleStatus) {
+	if k != nil {
+		return k.RoleStatus
+	}
+	return
+}
+
+func (k *KubernetesRoleProperties) GetHostPlatformType() (rv *HostPlatformType) {
+	if k != nil {
+		return k.HostPlatformType
+	}
+	return
+}
+
+func (k *KubernetesRoleProperties) GetProvisioningState() (rv *KubernetesState) {
+	if k != nil {
+		return k.ProvisioningState
+	}
+	return
+}
+
 // KubernetesRoleResources - Kubernetes role resources
 type KubernetesRoleResources struct {
 	// REQUIRED; Kubernetes role compute resource
@@ -1122,6 +3033,27 @@ type KubernetesRoleResources struct {
 	Network *KubernetesRoleNetwork
 }
 
+func (k *KubernetesRoleResources) GetCompute() (rv *KubernetesRoleCompute) {
+	if k != nil {
+		return k.Compute
+	}
+	return
+}
+
+func (k *KubernetesRoleResources) GetStorage() (rv *KubernetesRoleStorage) {
+	if k != nil {
+		return k.Storage
+	}
+	return
+}
+
+func (k *KubernetesRoleResources) GetNetwork() (rv *KubernetesRoleNetwork) {
+	if k != nil {
+		return k.Network
+	}
+	return
+}
+
 // KubernetesRoleStorage - Kubernetes role storage resource
 type KubernetesRoleStorage struct {
 	// Mount points of shares in role(s).
@@ -1129,6 +3061,20 @@ type KubernetesRoleStorage struct {
 
 	// READ-ONLY; Kubernetes storage class info.
 	StorageClasses []*KubernetesRoleStorageClassInfo
+}
+
+func (k *KubernetesRoleStorage) GetEndpoints() (rv []*MountPointMap) {
+	if k != nil {
+		return k.Endpoints
+	}
+	return
+}
+
+func (k *KubernetesRoleStorage) GetStorageClasses() (rv []*KubernetesRoleStorageClassInfo) {
+	if k != nil {
+		return k.StorageClasses
+	}
+	return
 }
 
 // KubernetesRoleStorageClassInfo - Kubernetes storage class info.
@@ -1143,6 +3089,27 @@ type KubernetesRoleStorageClassInfo struct {
 	Type *string
 }
 
+func (k *KubernetesRoleStorageClassInfo) GetName() (rv string) {
+	if k != nil && k.Name != nil {
+		return *k.Name
+	}
+	return
+}
+
+func (k *KubernetesRoleStorageClassInfo) GetPosixCompliant() (rv *PosixComplianceStatus) {
+	if k != nil {
+		return k.PosixCompliant
+	}
+	return
+}
+
+func (k *KubernetesRoleStorageClassInfo) GetType() (rv string) {
+	if k != nil && k.Type != nil {
+		return *k.Type
+	}
+	return
+}
+
 // LoadBalancerConfig - Load balancer configuration
 type LoadBalancerConfig struct {
 	// READ-ONLY; Load balancer type
@@ -1150,6 +3117,20 @@ type LoadBalancerConfig struct {
 
 	// READ-ONLY; Load balancer version
 	Version *string
+}
+
+func (l *LoadBalancerConfig) GetType() (rv string) {
+	if l != nil && l.Type != nil {
+		return *l.Type
+	}
+	return
+}
+
+func (l *LoadBalancerConfig) GetVersion() (rv string) {
+	if l != nil && l.Version != nil {
+		return *l.Version
+	}
+	return
 }
 
 // MECRole - MEC role.
@@ -1171,6 +3152,48 @@ type MECRole struct {
 
 	// READ-ONLY; The hierarchical type of the object.
 	Type *string
+}
+
+func (m *MECRole) GetKind() (rv *RoleTypes) {
+	if m != nil {
+		return m.Kind
+	}
+	return
+}
+
+func (m *MECRole) GetProperties() (rv *MECRoleProperties) {
+	if m != nil {
+		return m.Properties
+	}
+	return
+}
+
+func (m *MECRole) GetID() (rv string) {
+	if m != nil && m.ID != nil {
+		return *m.ID
+	}
+	return
+}
+
+func (m *MECRole) GetName() (rv string) {
+	if m != nil && m.Name != nil {
+		return *m.Name
+	}
+	return
+}
+
+func (m *MECRole) GetSystemData() (rv *SystemData) {
+	if m != nil {
+		return m.SystemData
+	}
+	return
+}
+
+func (m *MECRole) GetType() (rv string) {
+	if m != nil && m.Type != nil {
+		return *m.Type
+	}
+	return
 }
 
 // GetRole implements the RoleClassification interface for type MECRole.
@@ -1199,6 +3222,34 @@ type MECRoleProperties struct {
 	ResourceUniqueID *string
 }
 
+func (m *MECRoleProperties) GetRoleStatus() (rv *RoleStatus) {
+	if m != nil {
+		return m.RoleStatus
+	}
+	return
+}
+
+func (m *MECRoleProperties) GetConnectionString() (rv *AsymmetricEncryptedSecret) {
+	if m != nil {
+		return m.ConnectionString
+	}
+	return
+}
+
+func (m *MECRoleProperties) GetControllerEndpoint() (rv string) {
+	if m != nil && m.ControllerEndpoint != nil {
+		return *m.ControllerEndpoint
+	}
+	return
+}
+
+func (m *MECRoleProperties) GetResourceUniqueID() (rv string) {
+	if m != nil && m.ResourceUniqueID != nil {
+		return *m.ResourceUniqueID
+	}
+	return
+}
+
 // MetricConfiguration - Metric configuration.
 type MetricConfiguration struct {
 	// REQUIRED; Host name for the IoT hub associated to the device.
@@ -1212,6 +3263,34 @@ type MetricConfiguration struct {
 
 	// The MDM namespace to which the counters should be pushed. This is required if MDMAccount is specified
 	MetricNameSpace *string
+}
+
+func (m *MetricConfiguration) GetCounterSets() (rv []*MetricCounterSet) {
+	if m != nil {
+		return m.CounterSets
+	}
+	return
+}
+
+func (m *MetricConfiguration) GetResourceID() (rv string) {
+	if m != nil && m.ResourceID != nil {
+		return *m.ResourceID
+	}
+	return
+}
+
+func (m *MetricConfiguration) GetMdmAccount() (rv string) {
+	if m != nil && m.MdmAccount != nil {
+		return *m.MdmAccount
+	}
+	return
+}
+
+func (m *MetricConfiguration) GetMetricNameSpace() (rv string) {
+	if m != nil && m.MetricNameSpace != nil {
+		return *m.MetricNameSpace
+	}
+	return
 }
 
 // MetricCounter - The metric counter
@@ -1229,10 +3308,45 @@ type MetricCounter struct {
 	Instance *string
 }
 
+func (m *MetricCounter) GetName() (rv string) {
+	if m != nil && m.Name != nil {
+		return *m.Name
+	}
+	return
+}
+
+func (m *MetricCounter) GetAdditionalDimensions() (rv []*MetricDimension) {
+	if m != nil {
+		return m.AdditionalDimensions
+	}
+	return
+}
+
+func (m *MetricCounter) GetDimensionFilter() (rv []*MetricDimension) {
+	if m != nil {
+		return m.DimensionFilter
+	}
+	return
+}
+
+func (m *MetricCounter) GetInstance() (rv string) {
+	if m != nil && m.Instance != nil {
+		return *m.Instance
+	}
+	return
+}
+
 // MetricCounterSet - The metric counter set
 type MetricCounterSet struct {
 	// REQUIRED; The counters that should be collected in this set.
 	Counters []*MetricCounter
+}
+
+func (m *MetricCounterSet) GetCounters() (rv []*MetricCounter) {
+	if m != nil {
+		return m.Counters
+	}
+	return
 }
 
 // MetricDimension - The metric dimension
@@ -1242,6 +3356,20 @@ type MetricDimension struct {
 
 	// REQUIRED; The dimension type.
 	SourceType *string
+}
+
+func (m *MetricDimension) GetSourceName() (rv string) {
+	if m != nil && m.SourceName != nil {
+		return *m.SourceName
+	}
+	return
+}
+
+func (m *MetricDimension) GetSourceType() (rv string) {
+	if m != nil && m.SourceType != nil {
+		return *m.SourceType
+	}
+	return
 }
 
 // MetricDimensionV1 - Metric Dimension v1.
@@ -1254,6 +3382,27 @@ type MetricDimensionV1 struct {
 
 	// To be exported to shoe box.
 	ToBeExportedForShoebox *bool
+}
+
+func (m *MetricDimensionV1) GetDisplayName() (rv string) {
+	if m != nil && m.DisplayName != nil {
+		return *m.DisplayName
+	}
+	return
+}
+
+func (m *MetricDimensionV1) GetName() (rv string) {
+	if m != nil && m.Name != nil {
+		return *m.Name
+	}
+	return
+}
+
+func (m *MetricDimensionV1) GetToBeExportedForShoebox() (rv bool) {
+	if m != nil && m.ToBeExportedForShoebox != nil {
+		return *m.ToBeExportedForShoebox
+	}
+	return
 }
 
 // MetricSpecificationV1 - Metric specification version 1.
@@ -1292,6 +3441,83 @@ type MetricSpecificationV1 struct {
 	Unit *MetricUnit
 }
 
+func (m *MetricSpecificationV1) GetAggregationType() (rv *MetricAggregationType) {
+	if m != nil {
+		return m.AggregationType
+	}
+	return
+}
+
+func (m *MetricSpecificationV1) GetCategory() (rv *MetricCategory) {
+	if m != nil {
+		return m.Category
+	}
+	return
+}
+
+func (m *MetricSpecificationV1) GetDimensions() (rv []*MetricDimensionV1) {
+	if m != nil {
+		return m.Dimensions
+	}
+	return
+}
+
+func (m *MetricSpecificationV1) GetDisplayDescription() (rv string) {
+	if m != nil && m.DisplayDescription != nil {
+		return *m.DisplayDescription
+	}
+	return
+}
+
+func (m *MetricSpecificationV1) GetDisplayName() (rv string) {
+	if m != nil && m.DisplayName != nil {
+		return *m.DisplayName
+	}
+	return
+}
+
+func (m *MetricSpecificationV1) GetFillGapWithZero() (rv bool) {
+	if m != nil && m.FillGapWithZero != nil {
+		return *m.FillGapWithZero
+	}
+	return
+}
+
+func (m *MetricSpecificationV1) GetName() (rv string) {
+	if m != nil && m.Name != nil {
+		return *m.Name
+	}
+	return
+}
+
+func (m *MetricSpecificationV1) GetResourceIDDimensionNameOverride() (rv string) {
+	if m != nil && m.ResourceIDDimensionNameOverride != nil {
+		return *m.ResourceIDDimensionNameOverride
+	}
+	return
+}
+
+func (m *MetricSpecificationV1) GetSupportedAggregationTypes() (rv []*MetricAggregationType) {
+	if m != nil {
+		return m.SupportedAggregationTypes
+	}
+	return
+}
+
+func (m *MetricSpecificationV1) GetSupportedTimeGrainTypes() (rv []*TimeGrain) {
+	if m != nil {
+		return m.SupportedTimeGrainTypes
+	}
+	return
+}
+
+func (m *MetricSpecificationV1) GetUnit() (rv *MetricUnit) {
+	if m != nil {
+		return m.Unit
+	}
+	return
+}
+
 // MonitoringMetricConfiguration - The metric setting details for the role
 type MonitoringMetricConfiguration struct {
 	// REQUIRED; The metric setting properties.
@@ -1310,6 +3536,41 @@ type MonitoringMetricConfiguration struct {
 	Type *string
 }
 
+func (m *MonitoringMetricConfiguration) GetProperties() (rv *MonitoringMetricConfigurationProperties) {
+	if m != nil {
+		return m.Properties
+	}
+	return
+}
+
+func (m *MonitoringMetricConfiguration) GetID() (rv string) {
+	if m != nil && m.ID != nil {
+		return *m.ID
+	}
+	return
+}
+
+func (m *MonitoringMetricConfiguration) GetName() (rv string) {
+	if m != nil && m.Name != nil {
+		return *m.Name
+	}
+	return
+}
+
+func (m *MonitoringMetricConfiguration) GetSystemData() (rv *SystemData) {
+	if m != nil {
+		return m.SystemData
+	}
+	return
+}
+
+func (m *MonitoringMetricConfiguration) GetType() (rv string) {
+	if m != nil && m.Type != nil {
+		return *m.Type
+	}
+	return
+}
+
 // MonitoringMetricConfigurationList - Collection of metric configurations.
 type MonitoringMetricConfigurationList struct {
 	// READ-ONLY; Link to the next set of results.
@@ -1319,10 +3580,31 @@ type MonitoringMetricConfigurationList struct {
 	Value []*MonitoringMetricConfiguration
 }
 
+func (m *MonitoringMetricConfigurationList) GetNextLink() (rv string) {
+	if m != nil && m.NextLink != nil {
+		return *m.NextLink
+	}
+	return
+}
+
+func (m *MonitoringMetricConfigurationList) GetValue() (rv []*MonitoringMetricConfiguration) {
+	if m != nil {
+		return m.Value
+	}
+	return
+}
+
 // MonitoringMetricConfigurationProperties - Metrics properties
 type MonitoringMetricConfigurationProperties struct {
 	// REQUIRED; The metrics configuration details
 	MetricConfigurations []*MetricConfiguration
+}
+
+func (m *MonitoringMetricConfigurationProperties) GetMetricConfigurations() (rv []*MetricConfiguration) {
+	if m != nil {
+		return m.MetricConfigurations
+	}
+	return
 }
 
 // MountPointMap - The share mount point.
@@ -1341,6 +3623,41 @@ type MountPointMap struct {
 
 	// READ-ONLY; Role type.
 	RoleType *RoleTypes
+}
+
+func (m *MountPointMap) GetShareID() (rv string) {
+	if m != nil && m.ShareID != nil {
+		return *m.ShareID
+	}
+	return
+}
+
+func (m *MountPointMap) GetMountPoint() (rv string) {
+	if m != nil && m.MountPoint != nil {
+		return *m.MountPoint
+	}
+	return
+}
+
+func (m *MountPointMap) GetMountType() (rv *MountType) {
+	if m != nil {
+		return m.MountType
+	}
+	return
+}
+
+func (m *MountPointMap) GetRoleID() (rv string) {
+	if m != nil && m.RoleID != nil {
+		return *m.RoleID
+	}
+	return
+}
+
+func (m *MountPointMap) GetRoleType() (rv *RoleTypes) {
+	if m != nil {
+		return m.RoleType
+	}
+	return
 }
 
 // NetworkAdapter - Represents the networkAdapter on a device.
@@ -1391,6 +3708,111 @@ type NetworkAdapter struct {
 	Status *NetworkAdapterStatus
 }
 
+func (n *NetworkAdapter) GetDhcpStatus() (rv *NetworkAdapterDHCPStatus) {
+	if n != nil {
+		return n.DhcpStatus
+	}
+	return
+}
+
+func (n *NetworkAdapter) GetRdmaStatus() (rv *NetworkAdapterRDMAStatus) {
+	if n != nil {
+		return n.RdmaStatus
+	}
+	return
+}
+
+func (n *NetworkAdapter) GetAdapterID() (rv string) {
+	if n != nil && n.AdapterID != nil {
+		return *n.AdapterID
+	}
+	return
+}
+
+func (n *NetworkAdapter) GetAdapterPosition() (rv *NetworkAdapterPosition) {
+	if n != nil {
+		return n.AdapterPosition
+	}
+	return
+}
+
+func (n *NetworkAdapter) GetDNSServers() (rv []*string) {
+	if n != nil {
+		return n.DNSServers
+	}
+	return
+}
+
+func (n *NetworkAdapter) GetIPv4Configuration() (rv *IPv4Config) {
+	if n != nil {
+		return n.IPv4Configuration
+	}
+	return
+}
+
+func (n *NetworkAdapter) GetIPv6Configuration() (rv *IPv6Config) {
+	if n != nil {
+		return n.IPv6Configuration
+	}
+	return
+}
+
+func (n *NetworkAdapter) GetIPv6LinkLocalAddress() (rv string) {
+	if n != nil && n.IPv6LinkLocalAddress != nil {
+		return *n.IPv6LinkLocalAddress
+	}
+	return
+}
+
+func (n *NetworkAdapter) GetIndex() (rv int32) {
+	if n != nil && n.Index != nil {
+		return *n.Index
+	}
+	return
+}
+
+func (n *NetworkAdapter) GetLabel() (rv string) {
+	if n != nil && n.Label != nil {
+		return *n.Label
+	}
+	return
+}
+
+func (n *NetworkAdapter) GetLinkSpeed() (rv int64) {
+	if n != nil && n.LinkSpeed != nil {
+		return *n.LinkSpeed
+	}
+	return
+}
+
+func (n *NetworkAdapter) GetMacAddress() (rv string) {
+	if n != nil && n.MacAddress != nil {
+		return *n.MacAddress
+	}
+	return
+}
+
+func (n *NetworkAdapter) GetNetworkAdapterName() (rv string) {
+	if n != nil && n.NetworkAdapterName != nil {
+		return *n.NetworkAdapterName
+	}
+	return
+}
+
+func (n *NetworkAdapter) GetNodeID() (rv string) {
+	if n != nil && n.NodeID != nil {
+		return *n.NodeID
+	}
+	return
+}
+
+func (n *NetworkAdapter) GetStatus() (rv *NetworkAdapterStatus) {
+	if n != nil {
+		return n.Status
+	}
+	return
+}
+
 // NetworkAdapterPosition - The network adapter position.
 type NetworkAdapterPosition struct {
 	// READ-ONLY; The network group.
@@ -1398,6 +3820,20 @@ type NetworkAdapterPosition struct {
 
 	// READ-ONLY; The port.
 	Port *int32
+}
+
+func (n *NetworkAdapterPosition) GetNetworkGroup() (rv *NetworkGroup) {
+	if n != nil {
+		return n.NetworkGroup
+	}
+	return
+}
+
+func (n *NetworkAdapterPosition) GetPort() (rv int32) {
+	if n != nil && n.Port != nil {
+		return *n.Port
+	}
+	return
 }
 
 // NetworkSettings - The network settings of a device.
@@ -1418,10 +3854,52 @@ type NetworkSettings struct {
 	Type *string
 }
 
+func (n *NetworkSettings) GetID() (rv string) {
+	if n != nil && n.ID != nil {
+		return *n.ID
+	}
+	return
+}
+
+func (n *NetworkSettings) GetName() (rv string) {
+	if n != nil && n.Name != nil {
+		return *n.Name
+	}
+	return
+}
+
+func (n *NetworkSettings) GetProperties() (rv *NetworkSettingsProperties) {
+	if n != nil {
+		return n.Properties
+	}
+	return
+}
+
+func (n *NetworkSettings) GetSystemData() (rv *SystemData) {
+	if n != nil {
+		return n.SystemData
+	}
+	return
+}
+
+func (n *NetworkSettings) GetType() (rv string) {
+	if n != nil && n.Type != nil {
+		return *n.Type
+	}
+	return
+}
+
 // NetworkSettingsProperties - The properties of network settings.
 type NetworkSettingsProperties struct {
 	// READ-ONLY; The network adapter list on the device.
 	NetworkAdapters []*NetworkAdapter
+}
+
+func (n *NetworkSettingsProperties) GetNetworkAdapters() (rv []*NetworkAdapter) {
+	if n != nil {
+		return n.NetworkAdapters
+	}
+	return
 }
 
 // Node - Represents a single node in a Data box Edge/Gateway device Gateway devices, standalone Edge devices and a single
@@ -1441,6 +3919,34 @@ type Node struct {
 	Type *string
 }
 
+func (n *Node) GetID() (rv string) {
+	if n != nil && n.ID != nil {
+		return *n.ID
+	}
+	return
+}
+
+func (n *Node) GetName() (rv string) {
+	if n != nil && n.Name != nil {
+		return *n.Name
+	}
+	return
+}
+
+func (n *Node) GetProperties() (rv *NodeProperties) {
+	if n != nil {
+		return n.Properties
+	}
+	return
+}
+
+func (n *Node) GetType() (rv string) {
+	if n != nil && n.Type != nil {
+		return *n.Type
+	}
+	return
+}
+
 // NodeInfo - Kubernetes node info
 type NodeInfo struct {
 	// IP Configuration of the Kubernetes node.
@@ -1453,6 +3959,27 @@ type NodeInfo struct {
 	Type *KubernetesNodeType
 }
 
+func (n *NodeInfo) GetIPConfiguration() (rv []*KubernetesIPConfiguration) {
+	if n != nil {
+		return n.IPConfiguration
+	}
+	return
+}
+
+func (n *NodeInfo) GetName() (rv string) {
+	if n != nil && n.Name != nil {
+		return *n.Name
+	}
+	return
+}
+
+func (n *NodeInfo) GetType() (rv *KubernetesNodeType) {
+	if n != nil {
+		return n.Type
+	}
+	return
+}
+
 // NodeList - Collection of Nodes.
 type NodeList struct {
 	// READ-ONLY; Link to the next set of results.
@@ -1460,6 +3987,20 @@ type NodeList struct {
 
 	// READ-ONLY; The list of Nodes.
 	Value []*Node
+}
+
+func (n *NodeList) GetNextLink() (rv string) {
+	if n != nil && n.NextLink != nil {
+		return *n.NextLink
+	}
+	return
+}
+
+func (n *NodeList) GetValue() (rv []*Node) {
+	if n != nil {
+		return n.Value
+	}
+	return
 }
 
 // NodeProperties - This class represents the nodes in a highly available cluster
@@ -1486,6 +4027,55 @@ type NodeProperties struct {
 	NodeStatus *NodeStatus
 }
 
+func (n *NodeProperties) GetNodeChassisSerialNumber() (rv string) {
+	if n != nil && n.NodeChassisSerialNumber != nil {
+		return *n.NodeChassisSerialNumber
+	}
+	return
+}
+
+func (n *NodeProperties) GetNodeDisplayName() (rv string) {
+	if n != nil && n.NodeDisplayName != nil {
+		return *n.NodeDisplayName
+	}
+	return
+}
+
+func (n *NodeProperties) GetNodeFriendlySoftwareVersion() (rv string) {
+	if n != nil && n.NodeFriendlySoftwareVersion != nil {
+		return *n.NodeFriendlySoftwareVersion
+	}
+	return
+}
+
+func (n *NodeProperties) GetNodeHcsVersion() (rv string) {
+	if n != nil && n.NodeHcsVersion != nil {
+		return *n.NodeHcsVersion
+	}
+	return
+}
+
+func (n *NodeProperties) GetNodeInstanceID() (rv string) {
+	if n != nil && n.NodeInstanceID != nil {
+		return *n.NodeInstanceID
+	}
+	return
+}
+
+func (n *NodeProperties) GetNodeSerialNumber() (rv string) {
+	if n != nil && n.NodeSerialNumber != nil {
+		return *n.NodeSerialNumber
+	}
+	return
+}
+
+func (n *NodeProperties) GetNodeStatus() (rv *NodeStatus) {
+	if n != nil {
+		return n.NodeStatus
+	}
+	return
+}
+
 // Operations.
 type Operation struct {
 	// Properties displayed for the operation.
@@ -1504,6 +4094,41 @@ type Operation struct {
 	Properties *OperationProperties
 }
 
+func (o *Operation) GetDisplay() (rv *OperationDisplay) {
+	if o != nil {
+		return o.Display
+	}
+	return
+}
+
+func (o *Operation) GetIsDataAction() (rv bool) {
+	if o != nil && o.IsDataAction != nil {
+		return *o.IsDataAction
+	}
+	return
+}
+
+func (o *Operation) GetName() (rv string) {
+	if o != nil && o.Name != nil {
+		return *o.Name
+	}
+	return
+}
+
+func (o *Operation) GetOrigin() (rv string) {
+	if o != nil && o.Origin != nil {
+		return *o.Origin
+	}
+	return
+}
+
+func (o *Operation) GetProperties() (rv *OperationProperties) {
+	if o != nil {
+		return o.Properties
+	}
+	return
+}
+
 // OperationDisplay - Operation display properties.
 type OperationDisplay struct {
 	// Description of the operation to be performed.
@@ -1519,10 +4144,45 @@ type OperationDisplay struct {
 	Resource *string
 }
 
+func (o *OperationDisplay) GetDescription() (rv string) {
+	if o != nil && o.Description != nil {
+		return *o.Description
+	}
+	return
+}
+
+func (o *OperationDisplay) GetOperation() (rv string) {
+	if o != nil && o.Operation != nil {
+		return *o.Operation
+	}
+	return
+}
+
+func (o *OperationDisplay) GetProvider() (rv string) {
+	if o != nil && o.Provider != nil {
+		return *o.Provider
+	}
+	return
+}
+
+func (o *OperationDisplay) GetResource() (rv string) {
+	if o != nil && o.Resource != nil {
+		return *o.Resource
+	}
+	return
+}
+
 // OperationProperties - Operation properties.
 type OperationProperties struct {
 	// Service specification.
 	ServiceSpecification *ServiceSpecification
+}
+
+func (o *OperationProperties) GetServiceSpecification() (rv *ServiceSpecification) {
+	if o != nil {
+		return o.ServiceSpecification
+	}
+	return
 }
 
 // OperationsList - The list of operations used for the discovery of available provider operations.
@@ -1532,6 +4192,20 @@ type OperationsList struct {
 
 	// Link to the next set of results.
 	NextLink *string
+}
+
+func (o *OperationsList) GetValue() (rv []*Operation) {
+	if o != nil {
+		return o.Value
+	}
+	return
+}
+
+func (o *OperationsList) GetNextLink() (rv string) {
+	if o != nil && o.NextLink != nil {
+		return *o.NextLink
+	}
+	return
 }
 
 // Order - The order details.
@@ -1552,6 +4226,41 @@ type Order struct {
 	Type *string
 }
 
+func (o *Order) GetProperties() (rv *OrderProperties) {
+	if o != nil {
+		return o.Properties
+	}
+	return
+}
+
+func (o *Order) GetID() (rv string) {
+	if o != nil && o.ID != nil {
+		return *o.ID
+	}
+	return
+}
+
+func (o *Order) GetName() (rv string) {
+	if o != nil && o.Name != nil {
+		return *o.Name
+	}
+	return
+}
+
+func (o *Order) GetSystemData() (rv *SystemData) {
+	if o != nil {
+		return o.SystemData
+	}
+	return
+}
+
+func (o *Order) GetType() (rv string) {
+	if o != nil && o.Type != nil {
+		return *o.Type
+	}
+	return
+}
+
 // OrderList - List of order entities.
 type OrderList struct {
 	// READ-ONLY; Link to the next set of results.
@@ -1559,6 +4268,20 @@ type OrderList struct {
 
 	// READ-ONLY; The list of orders.
 	Value []*Order
+}
+
+func (o *OrderList) GetNextLink() (rv string) {
+	if o != nil && o.NextLink != nil {
+		return *o.NextLink
+	}
+	return
+}
+
+func (o *OrderList) GetValue() (rv []*Order) {
+	if o != nil {
+		return o.Value
+	}
+	return
 }
 
 // OrderProperties - Order properties.
@@ -1589,6 +4312,62 @@ type OrderProperties struct {
 	SerialNumber *string
 }
 
+func (o *OrderProperties) GetContactInformation() (rv *ContactDetails) {
+	if o != nil {
+		return o.ContactInformation
+	}
+	return
+}
+
+func (o *OrderProperties) GetShipmentType() (rv *ShipmentType) {
+	if o != nil {
+		return o.ShipmentType
+	}
+	return
+}
+
+func (o *OrderProperties) GetShippingAddress() (rv *Address) {
+	if o != nil {
+		return o.ShippingAddress
+	}
+	return
+}
+
+func (o *OrderProperties) GetCurrentStatus() (rv *OrderStatus) {
+	if o != nil {
+		return o.CurrentStatus
+	}
+	return
+}
+
+func (o *OrderProperties) GetDeliveryTrackingInfo() (rv []*TrackingInfo) {
+	if o != nil {
+		return o.DeliveryTrackingInfo
+	}
+	return
+}
+
+func (o *OrderProperties) GetOrderHistory() (rv []*OrderStatus) {
+	if o != nil {
+		return o.OrderHistory
+	}
+	return
+}
+
+func (o *OrderProperties) GetReturnTrackingInfo() (rv []*TrackingInfo) {
+	if o != nil {
+		return o.ReturnTrackingInfo
+	}
+	return
+}
+
+func (o *OrderProperties) GetSerialNumber() (rv string) {
+	if o != nil && o.SerialNumber != nil {
+		return *o.SerialNumber
+	}
+	return
+}
+
 // OrderStatus - Represents a single status change.
 type OrderStatus struct {
 	// REQUIRED; Status of the order as per the allowed status types.
@@ -1605,6 +4384,41 @@ type OrderStatus struct {
 
 	// READ-ONLY; Time of status update.
 	UpdateDateTime *time.Time
+}
+
+func (o *OrderStatus) GetStatus() (rv *OrderState) {
+	if o != nil {
+		return o.Status
+	}
+	return
+}
+
+func (o *OrderStatus) GetComments() (rv string) {
+	if o != nil && o.Comments != nil {
+		return *o.Comments
+	}
+	return
+}
+
+func (o *OrderStatus) GetAdditionalOrderDetails() (rv map[string]*string) {
+	if o != nil {
+		return o.AdditionalOrderDetails
+	}
+	return
+}
+
+func (o *OrderStatus) GetTrackingInformation() (rv *TrackingInfo) {
+	if o != nil {
+		return o.TrackingInformation
+	}
+	return
+}
+
+func (o *OrderStatus) GetUpdateDateTime() (rv *time.Time) {
+	if o != nil {
+		return o.UpdateDateTime
+	}
+	return
 }
 
 // PeriodicTimerEventTrigger - Trigger details.
@@ -1626,6 +4440,48 @@ type PeriodicTimerEventTrigger struct {
 
 	// READ-ONLY; The hierarchical type of the object.
 	Type *string
+}
+
+func (p *PeriodicTimerEventTrigger) GetKind() (rv *TriggerEventType) {
+	if p != nil {
+		return p.Kind
+	}
+	return
+}
+
+func (p *PeriodicTimerEventTrigger) GetProperties() (rv *PeriodicTimerProperties) {
+	if p != nil {
+		return p.Properties
+	}
+	return
+}
+
+func (p *PeriodicTimerEventTrigger) GetID() (rv string) {
+	if p != nil && p.ID != nil {
+		return *p.ID
+	}
+	return
+}
+
+func (p *PeriodicTimerEventTrigger) GetName() (rv string) {
+	if p != nil && p.Name != nil {
+		return *p.Name
+	}
+	return
+}
+
+func (p *PeriodicTimerEventTrigger) GetSystemData() (rv *SystemData) {
+	if p != nil {
+		return p.SystemData
+	}
+	return
+}
+
+func (p *PeriodicTimerEventTrigger) GetType() (rv string) {
+	if p != nil && p.Type != nil {
+		return *p.Type
+	}
+	return
 }
 
 // GetTrigger implements the TriggerClassification interface for type PeriodicTimerEventTrigger.
@@ -1653,6 +4509,27 @@ type PeriodicTimerProperties struct {
 	CustomContextTag *string
 }
 
+func (p *PeriodicTimerProperties) GetSinkInfo() (rv *RoleSinkInfo) {
+	if p != nil {
+		return p.SinkInfo
+	}
+	return
+}
+
+func (p *PeriodicTimerProperties) GetSourceInfo() (rv *PeriodicTimerSourceInfo) {
+	if p != nil {
+		return p.SourceInfo
+	}
+	return
+}
+
+func (p *PeriodicTimerProperties) GetCustomContextTag() (rv string) {
+	if p != nil && p.CustomContextTag != nil {
+		return *p.CustomContextTag
+	}
+	return
+}
+
 // PeriodicTimerSourceInfo - Periodic timer event source.
 type PeriodicTimerSourceInfo struct {
 	// REQUIRED; Periodic frequency at which timer event needs to be raised. Supports daily, hourly, minutes, and seconds.
@@ -1667,10 +4544,38 @@ type PeriodicTimerSourceInfo struct {
 	Topic *string
 }
 
+func (p *PeriodicTimerSourceInfo) GetSchedule() (rv string) {
+	if p != nil && p.Schedule != nil {
+		return *p.Schedule
+	}
+	return
+}
+
+func (p *PeriodicTimerSourceInfo) GetStartTime() (rv *time.Time) {
+	if p != nil {
+		return p.StartTime
+	}
+	return
+}
+
+func (p *PeriodicTimerSourceInfo) GetTopic() (rv string) {
+	if p != nil && p.Topic != nil {
+		return *p.Topic
+	}
+	return
+}
+
 // ProactiveLogCollectionSettingsProperties - The properties of proactive log collection settings.
 type ProactiveLogCollectionSettingsProperties struct {
 	// REQUIRED; Proactive diagnostic collection consent flag
 	UserConsent *ProactiveDiagnosticsConsent
+}
+
+func (p *ProactiveLogCollectionSettingsProperties) GetUserConsent() (rv *ProactiveDiagnosticsConsent) {
+	if p != nil {
+		return p.UserConsent
+	}
+	return
 }
 
 // RawCertificateData - Raw Certificate Data.
@@ -1680,6 +4585,20 @@ type RawCertificateData struct {
 
 	// The authentication type.
 	AuthenticationType *AuthenticationType
+}
+
+func (r *RawCertificateData) GetCertificate() (rv string) {
+	if r != nil && r.Certificate != nil {
+		return *r.Certificate
+	}
+	return
+}
+
+func (r *RawCertificateData) GetAuthenticationType() (rv *AuthenticationType) {
+	if r != nil {
+		return r.AuthenticationType
+	}
+	return
 }
 
 // RefreshDetails - Fields for tracking refresh job on the share or container.
@@ -1701,6 +4620,34 @@ type RefreshDetails struct {
 	LastJob *string
 }
 
+func (r *RefreshDetails) GetErrorManifestFile() (rv string) {
+	if r != nil && r.ErrorManifestFile != nil {
+		return *r.ErrorManifestFile
+	}
+	return
+}
+
+func (r *RefreshDetails) GetInProgressRefreshJobID() (rv string) {
+	if r != nil && r.InProgressRefreshJobID != nil {
+		return *r.InProgressRefreshJobID
+	}
+	return
+}
+
+func (r *RefreshDetails) GetLastCompletedRefreshJobTimeInUTC() (rv *time.Time) {
+	if r != nil {
+		return r.LastCompletedRefreshJobTimeInUTC
+	}
+	return
+}
+
+func (r *RefreshDetails) GetLastJob() (rv string) {
+	if r != nil && r.LastJob != nil {
+		return *r.LastJob
+	}
+	return
+}
+
 // RemoteSupportSettings - RemoteApplicationType for which remote support settings is being modified
 type RemoteSupportSettings struct {
 	// Access level allowed for this remote application type
@@ -1711,6 +4658,27 @@ type RemoteSupportSettings struct {
 
 	// Remote application type
 	RemoteApplicationType *RemoteApplicationType
+}
+
+func (r *RemoteSupportSettings) GetAccessLevel() (rv *AccessLevel) {
+	if r != nil {
+		return r.AccessLevel
+	}
+	return
+}
+
+func (r *RemoteSupportSettings) GetExpirationTimeStampInUTC() (rv *time.Time) {
+	if r != nil {
+		return r.ExpirationTimeStampInUTC
+	}
+	return
+}
+
+func (r *RemoteSupportSettings) GetRemoteApplicationType() (rv *RemoteApplicationType) {
+	if r != nil {
+		return r.RemoteApplicationType
+	}
+	return
 }
 
 // ResourceIdentity - Msi identity details of the resource
@@ -1725,6 +4693,27 @@ type ResourceIdentity struct {
 	TenantID *string
 }
 
+func (r *ResourceIdentity) GetType() (rv *MsiIdentityType) {
+	if r != nil {
+		return r.Type
+	}
+	return
+}
+
+func (r *ResourceIdentity) GetPrincipalID() (rv string) {
+	if r != nil && r.PrincipalID != nil {
+		return *r.PrincipalID
+	}
+	return
+}
+
+func (r *ResourceIdentity) GetTenantID() (rv string) {
+	if r != nil && r.TenantID != nil {
+		return *r.TenantID
+	}
+	return
+}
+
 // ResourceMoveDetails - Fields for tracking resource move
 type ResourceMoveDetails struct {
 	// Denotes whether move operation is in progress
@@ -1732,6 +4721,20 @@ type ResourceMoveDetails struct {
 
 	// Denotes the timeout of the operation to finish
 	OperationInProgressLockTimeoutInUTC *time.Time
+}
+
+func (r *ResourceMoveDetails) GetOperationInProgress() (rv *ResourceMoveStatus) {
+	if r != nil {
+		return r.OperationInProgress
+	}
+	return
+}
+
+func (r *ResourceMoveDetails) GetOperationInProgressLockTimeoutInUTC() (rv *time.Time) {
+	if r != nil {
+		return r.OperationInProgressLockTimeoutInUTC
+	}
+	return
 }
 
 // Role - Compute role.
@@ -1752,6 +4755,41 @@ type Role struct {
 	Type *string
 }
 
+func (r *Role) GetKind() (rv *RoleTypes) {
+	if r != nil {
+		return r.Kind
+	}
+	return
+}
+
+func (r *Role) GetID() (rv string) {
+	if r != nil && r.ID != nil {
+		return *r.ID
+	}
+	return
+}
+
+func (r *Role) GetName() (rv string) {
+	if r != nil && r.Name != nil {
+		return *r.Name
+	}
+	return
+}
+
+func (r *Role) GetSystemData() (rv *SystemData) {
+	if r != nil {
+		return r.SystemData
+	}
+	return
+}
+
+func (r *Role) GetType() (rv string) {
+	if r != nil && r.Type != nil {
+		return *r.Type
+	}
+	return
+}
+
 // GetRole implements the RoleClassification interface for type Role.
 func (r *Role) GetRole() *Role { return r }
 
@@ -1764,10 +4802,31 @@ type RoleList struct {
 	Value []RoleClassification
 }
 
+func (r *RoleList) GetNextLink() (rv string) {
+	if r != nil && r.NextLink != nil {
+		return *r.NextLink
+	}
+	return
+}
+
+func (r *RoleList) GetValue() (rv []RoleClassification) {
+	if r != nil {
+		return r.Value
+	}
+	return
+}
+
 // RoleSinkInfo - Compute role against which events will be raised.
 type RoleSinkInfo struct {
 	// REQUIRED; Compute role ID.
 	RoleID *string
+}
+
+func (r *RoleSinkInfo) GetRoleID() (rv string) {
+	if r != nil && r.RoleID != nil {
+		return *r.RoleID
+	}
+	return
 }
 
 // SKU - The Sku information.
@@ -1818,6 +4877,111 @@ type SKU struct {
 	Version *SKUVersion
 }
 
+func (s *SKU) GetAPIVersions() (rv []*string) {
+	if s != nil {
+		return s.APIVersions
+	}
+	return
+}
+
+func (s *SKU) GetAvailability() (rv *SKUAvailability) {
+	if s != nil {
+		return s.Availability
+	}
+	return
+}
+
+func (s *SKU) GetCapabilities() (rv []*SKUCapability) {
+	if s != nil {
+		return s.Capabilities
+	}
+	return
+}
+
+func (s *SKU) GetCosts() (rv []*SKUCost) {
+	if s != nil {
+		return s.Costs
+	}
+	return
+}
+
+func (s *SKU) GetFamily() (rv string) {
+	if s != nil && s.Family != nil {
+		return *s.Family
+	}
+	return
+}
+
+func (s *SKU) GetKind() (rv string) {
+	if s != nil && s.Kind != nil {
+		return *s.Kind
+	}
+	return
+}
+
+func (s *SKU) GetLocationInfo() (rv []*SKULocationInfo) {
+	if s != nil {
+		return s.LocationInfo
+	}
+	return
+}
+
+func (s *SKU) GetLocations() (rv []*string) {
+	if s != nil {
+		return s.Locations
+	}
+	return
+}
+
+func (s *SKU) GetName() (rv *SKUName) {
+	if s != nil {
+		return s.Name
+	}
+	return
+}
+
+func (s *SKU) GetResourceType() (rv string) {
+	if s != nil && s.ResourceType != nil {
+		return *s.ResourceType
+	}
+	return
+}
+
+func (s *SKU) GetShipmentTypes() (rv []*ShipmentType) {
+	if s != nil {
+		return s.ShipmentTypes
+	}
+	return
+}
+
+func (s *SKU) GetSignupOption() (rv *SKUSignupOption) {
+	if s != nil {
+		return s.SignupOption
+	}
+	return
+}
+
+func (s *SKU) GetSize() (rv string) {
+	if s != nil && s.Size != nil {
+		return *s.Size
+	}
+	return
+}
+
+func (s *SKU) GetTier() (rv *SKUTier) {
+	if s != nil {
+		return s.Tier
+	}
+	return
+}
+
+func (s *SKU) GetVersion() (rv *SKUVersion) {
+	if s != nil {
+		return s.Version
+	}
+	return
+}
+
 // SKUCapability - The metadata to describe the capability.
 type SKUCapability struct {
 	// READ-ONLY; An invariant to describe the feature.
@@ -1825,6 +4989,20 @@ type SKUCapability struct {
 
 	// READ-ONLY; An invariant if the feature is measured by quantity.
 	Value *string
+}
+
+func (s *SKUCapability) GetName() (rv string) {
+	if s != nil && s.Name != nil {
+		return *s.Name
+	}
+	return
+}
+
+func (s *SKUCapability) GetValue() (rv string) {
+	if s != nil && s.Value != nil {
+		return *s.Value
+	}
+	return
 }
 
 // SKUCost - The metadata for retrieving price info.
@@ -1839,6 +5017,27 @@ type SKUCost struct {
 	Quantity *int64
 }
 
+func (s *SKUCost) GetExtendedUnit() (rv string) {
+	if s != nil && s.ExtendedUnit != nil {
+		return *s.ExtendedUnit
+	}
+	return
+}
+
+func (s *SKUCost) GetMeterID() (rv string) {
+	if s != nil && s.MeterID != nil {
+		return *s.MeterID
+	}
+	return
+}
+
+func (s *SKUCost) GetQuantity() (rv int64) {
+	if s != nil && s.Quantity != nil {
+		return *s.Quantity
+	}
+	return
+}
+
 // SKUList - List of SKU Information objects.
 type SKUList struct {
 	// READ-ONLY; Links to the next set of results
@@ -1846,6 +5045,20 @@ type SKUList struct {
 
 	// READ-ONLY; List of ResourceType Sku
 	Value []*SKU
+}
+
+func (s *SKUList) GetNextLink() (rv string) {
+	if s != nil && s.NextLink != nil {
+		return *s.NextLink
+	}
+	return
+}
+
+func (s *SKUList) GetValue() (rv []*SKU) {
+	if s != nil {
+		return s.Value
+	}
+	return
 }
 
 // SKULocationInfo - The location info.
@@ -1860,6 +5073,27 @@ type SKULocationInfo struct {
 	Zones []*string
 }
 
+func (s *SKULocationInfo) GetLocation() (rv string) {
+	if s != nil && s.Location != nil {
+		return *s.Location
+	}
+	return
+}
+
+func (s *SKULocationInfo) GetSites() (rv []*string) {
+	if s != nil {
+		return s.Sites
+	}
+	return
+}
+
+func (s *SKULocationInfo) GetZones() (rv []*string) {
+	if s != nil {
+		return s.Zones
+	}
+	return
+}
+
 // SKUType - The SKU type.
 type SKUType struct {
 	// SKU name.
@@ -1869,6 +5103,20 @@ type SKUType struct {
 	Tier *SKUTier
 }
 
+func (s *SKUType) GetName() (rv *SKUName) {
+	if s != nil {
+		return s.Name
+	}
+	return
+}
+
+func (s *SKUType) GetTier() (rv *SKUTier) {
+	if s != nil {
+		return s.Tier
+	}
+	return
+}
+
 // Secret - Holds device secret either as a KeyVault reference or as an encrypted value.
 type Secret struct {
 	// Encrypted (using device public key) secret value.
@@ -1876,6 +5124,20 @@ type Secret struct {
 
 	// Id of the Key-Vault where secret is stored (ex: secrets/AuthClientSecret/82ef4346187a4033a10d629cde07d740).
 	KeyVaultID *string
+}
+
+func (s *Secret) GetEncryptedSecret() (rv *AsymmetricEncryptedSecret) {
+	if s != nil {
+		return s.EncryptedSecret
+	}
+	return
+}
+
+func (s *Secret) GetKeyVaultID() (rv string) {
+	if s != nil && s.KeyVaultID != nil {
+		return *s.KeyVaultID
+	}
+	return
 }
 
 // SecuritySettings - The security settings of a device.
@@ -1893,6 +5155,34 @@ type SecuritySettings struct {
 	Type *string
 }
 
+func (s *SecuritySettings) GetProperties() (rv *SecuritySettingsProperties) {
+	if s != nil {
+		return s.Properties
+	}
+	return
+}
+
+func (s *SecuritySettings) GetID() (rv string) {
+	if s != nil && s.ID != nil {
+		return *s.ID
+	}
+	return
+}
+
+func (s *SecuritySettings) GetName() (rv string) {
+	if s != nil && s.Name != nil {
+		return *s.Name
+	}
+	return
+}
+
+func (s *SecuritySettings) GetType() (rv string) {
+	if s != nil && s.Type != nil {
+		return *s.Type
+	}
+	return
+}
+
 // SecuritySettingsProperties - The properties of security settings.
 type SecuritySettingsProperties struct {
 	// REQUIRED; Device administrator password as an encrypted string (encrypted using RSA PKCS #1) is used to sign into the local
@@ -1901,10 +5191,24 @@ type SecuritySettingsProperties struct {
 	DeviceAdminPassword *AsymmetricEncryptedSecret
 }
 
+func (s *SecuritySettingsProperties) GetDeviceAdminPassword() (rv *AsymmetricEncryptedSecret) {
+	if s != nil {
+		return s.DeviceAdminPassword
+	}
+	return
+}
+
 // ServiceSpecification - Service specification.
 type ServiceSpecification struct {
 	// Metric specification as defined by shoebox.
 	MetricSpecifications []*MetricSpecificationV1
+}
+
+func (s *ServiceSpecification) GetMetricSpecifications() (rv []*MetricSpecificationV1) {
+	if s != nil {
+		return s.MetricSpecifications
+	}
+	return
 }
 
 // Share - Represents a share on the Data Box Edge/Gateway device.
@@ -1925,6 +5229,41 @@ type Share struct {
 	Type *string
 }
 
+func (s *Share) GetProperties() (rv *ShareProperties) {
+	if s != nil {
+		return s.Properties
+	}
+	return
+}
+
+func (s *Share) GetID() (rv string) {
+	if s != nil && s.ID != nil {
+		return *s.ID
+	}
+	return
+}
+
+func (s *Share) GetName() (rv string) {
+	if s != nil && s.Name != nil {
+		return *s.Name
+	}
+	return
+}
+
+func (s *Share) GetSystemData() (rv *SystemData) {
+	if s != nil {
+		return s.SystemData
+	}
+	return
+}
+
+func (s *Share) GetType() (rv string) {
+	if s != nil && s.Type != nil {
+		return *s.Type
+	}
+	return
+}
+
 // ShareAccessRight - Specifies the mapping between this particular user and the type of access he has on shares on this device.
 type ShareAccessRight struct {
 	// REQUIRED; Type of access to be allowed on the share for this user.
@@ -1934,6 +5273,20 @@ type ShareAccessRight struct {
 	ShareID *string
 }
 
+func (s *ShareAccessRight) GetAccessType() (rv *ShareAccessType) {
+	if s != nil {
+		return s.AccessType
+	}
+	return
+}
+
+func (s *ShareAccessRight) GetShareID() (rv string) {
+	if s != nil && s.ShareID != nil {
+		return *s.ShareID
+	}
+	return
+}
+
 // ShareList - Collection of all the shares on the Data Box Edge/Gateway device.
 type ShareList struct {
 	// READ-ONLY; Link to the next set of results.
@@ -1941,6 +5294,20 @@ type ShareList struct {
 
 	// READ-ONLY; The list of shares.
 	Value []*Share
+}
+
+func (s *ShareList) GetNextLink() (rv string) {
+	if s != nil && s.NextLink != nil {
+		return *s.NextLink
+	}
+	return
+}
+
+func (s *ShareList) GetValue() (rv []*Share) {
+	if s != nil {
+		return s.Value
+	}
+	return
 }
 
 // ShareProperties - The share properties.
@@ -1976,6 +5343,76 @@ type ShareProperties struct {
 	ShareMappings []*MountPointMap
 }
 
+func (s *ShareProperties) GetAccessProtocol() (rv *ShareAccessProtocol) {
+	if s != nil {
+		return s.AccessProtocol
+	}
+	return
+}
+
+func (s *ShareProperties) GetMonitoringStatus() (rv *MonitoringStatus) {
+	if s != nil {
+		return s.MonitoringStatus
+	}
+	return
+}
+
+func (s *ShareProperties) GetShareStatus() (rv *ShareStatus) {
+	if s != nil {
+		return s.ShareStatus
+	}
+	return
+}
+
+func (s *ShareProperties) GetAzureContainerInfo() (rv *AzureContainerInfo) {
+	if s != nil {
+		return s.AzureContainerInfo
+	}
+	return
+}
+
+func (s *ShareProperties) GetClientAccessRights() (rv []*ClientAccessRight) {
+	if s != nil {
+		return s.ClientAccessRights
+	}
+	return
+}
+
+func (s *ShareProperties) GetDataPolicy() (rv *DataPolicy) {
+	if s != nil {
+		return s.DataPolicy
+	}
+	return
+}
+
+func (s *ShareProperties) GetDescription() (rv string) {
+	if s != nil && s.Description != nil {
+		return *s.Description
+	}
+	return
+}
+
+func (s *ShareProperties) GetRefreshDetails() (rv *RefreshDetails) {
+	if s != nil {
+		return s.RefreshDetails
+	}
+	return
+}
+
+func (s *ShareProperties) GetUserAccessRights() (rv []*UserAccessRight) {
+	if s != nil {
+		return s.UserAccessRights
+	}
+	return
+}
+
+func (s *ShareProperties) GetShareMappings() (rv []*MountPointMap) {
+	if s != nil {
+		return s.ShareMappings
+	}
+	return
+}
+
 // StorageAccount - Represents a Storage Account on the Data Box Edge/Gateway device.
 type StorageAccount struct {
 	// REQUIRED; The Storage Account properties.
@@ -1992,6 +5429,41 @@ type StorageAccount struct {
 
 	// READ-ONLY; The hierarchical type of the object.
 	Type *string
+}
+
+func (s *StorageAccount) GetProperties() (rv *StorageAccountProperties) {
+	if s != nil {
+		return s.Properties
+	}
+	return
+}
+
+func (s *StorageAccount) GetID() (rv string) {
+	if s != nil && s.ID != nil {
+		return *s.ID
+	}
+	return
+}
+
+func (s *StorageAccount) GetName() (rv string) {
+	if s != nil && s.Name != nil {
+		return *s.Name
+	}
+	return
+}
+
+func (s *StorageAccount) GetSystemData() (rv *SystemData) {
+	if s != nil {
+		return s.SystemData
+	}
+	return
+}
+
+func (s *StorageAccount) GetType() (rv string) {
+	if s != nil && s.Type != nil {
+		return *s.Type
+	}
+	return
 }
 
 // StorageAccountCredential - The storage account credential.
@@ -2012,6 +5484,41 @@ type StorageAccountCredential struct {
 	Type *string
 }
 
+func (s *StorageAccountCredential) GetProperties() (rv *StorageAccountCredentialProperties) {
+	if s != nil {
+		return s.Properties
+	}
+	return
+}
+
+func (s *StorageAccountCredential) GetID() (rv string) {
+	if s != nil && s.ID != nil {
+		return *s.ID
+	}
+	return
+}
+
+func (s *StorageAccountCredential) GetName() (rv string) {
+	if s != nil && s.Name != nil {
+		return *s.Name
+	}
+	return
+}
+
+func (s *StorageAccountCredential) GetSystemData() (rv *SystemData) {
+	if s != nil {
+		return s.SystemData
+	}
+	return
+}
+
+func (s *StorageAccountCredential) GetType() (rv string) {
+	if s != nil && s.Type != nil {
+		return *s.Type
+	}
+	return
+}
+
 // StorageAccountCredentialList - The collection of storage account credentials.
 type StorageAccountCredentialList struct {
 	// READ-ONLY; Link to the next set of results.
@@ -2019,6 +5526,20 @@ type StorageAccountCredentialList struct {
 
 	// READ-ONLY; The value.
 	Value []*StorageAccountCredential
+}
+
+func (s *StorageAccountCredentialList) GetNextLink() (rv string) {
+	if s != nil && s.NextLink != nil {
+		return *s.NextLink
+	}
+	return
+}
+
+func (s *StorageAccountCredentialList) GetValue() (rv []*StorageAccountCredential) {
+	if s != nil {
+		return s.Value
+	}
+	return
 }
 
 // StorageAccountCredentialProperties - The storage account credential properties.
@@ -2048,6 +5569,62 @@ type StorageAccountCredentialProperties struct {
 	UserName *string
 }
 
+func (s *StorageAccountCredentialProperties) GetAccountType() (rv *AccountType) {
+	if s != nil {
+		return s.AccountType
+	}
+	return
+}
+
+func (s *StorageAccountCredentialProperties) GetAlias() (rv string) {
+	if s != nil && s.Alias != nil {
+		return *s.Alias
+	}
+	return
+}
+
+func (s *StorageAccountCredentialProperties) GetSSLStatus() (rv *SSLStatus) {
+	if s != nil {
+		return s.SSLStatus
+	}
+	return
+}
+
+func (s *StorageAccountCredentialProperties) GetAccountKey() (rv *AsymmetricEncryptedSecret) {
+	if s != nil {
+		return s.AccountKey
+	}
+	return
+}
+
+func (s *StorageAccountCredentialProperties) GetBlobDomainName() (rv string) {
+	if s != nil && s.BlobDomainName != nil {
+		return *s.BlobDomainName
+	}
+	return
+}
+
+func (s *StorageAccountCredentialProperties) GetConnectionString() (rv string) {
+	if s != nil && s.ConnectionString != nil {
+		return *s.ConnectionString
+	}
+	return
+}
+
+func (s *StorageAccountCredentialProperties) GetStorageAccountID() (rv string) {
+	if s != nil && s.StorageAccountID != nil {
+		return *s.StorageAccountID
+	}
+	return
+}
+
+func (s *StorageAccountCredentialProperties) GetUserName() (rv string) {
+	if s != nil && s.UserName != nil {
+		return *s.UserName
+	}
+	return
+}
+
 // StorageAccountList - Collection of all the Storage Accounts on the Data Box Edge/Gateway device.
 type StorageAccountList struct {
 	// READ-ONLY; Link to the next set of results.
@@ -2055,6 +5632,20 @@ type StorageAccountList struct {
 
 	// READ-ONLY; The list of storageAccounts.
 	Value []*StorageAccount
+}
+
+func (s *StorageAccountList) GetNextLink() (rv string) {
+	if s != nil && s.NextLink != nil {
+		return *s.NextLink
+	}
+	return
+}
+
+func (s *StorageAccountList) GetValue() (rv []*StorageAccount) {
+	if s != nil {
+		return s.Value
+	}
+	return
 }
 
 // StorageAccountProperties - The storage account properties.
@@ -2078,6 +5669,48 @@ type StorageAccountProperties struct {
 	ContainerCount *int32
 }
 
+func (s *StorageAccountProperties) GetDataPolicy() (rv *DataPolicy) {
+	if s != nil {
+		return s.DataPolicy
+	}
+	return
+}
+
+func (s *StorageAccountProperties) GetDescription() (rv string) {
+	if s != nil && s.Description != nil {
+		return *s.Description
+	}
+	return
+}
+
+func (s *StorageAccountProperties) GetStorageAccountCredentialID() (rv string) {
+	if s != nil && s.StorageAccountCredentialID != nil {
+		return *s.StorageAccountCredentialID
+	}
+	return
+}
+
+func (s *StorageAccountProperties) GetStorageAccountStatus() (rv *StorageAccountStatus) {
+	if s != nil {
+		return s.StorageAccountStatus
+	}
+	return
+}
+
+func (s *StorageAccountProperties) GetBlobEndpoint() (rv string) {
+	if s != nil && s.BlobEndpoint != nil {
+		return *s.BlobEndpoint
+	}
+	return
+}
+
+func (s *StorageAccountProperties) GetContainerCount() (rv int32) {
+	if s != nil && s.ContainerCount != nil {
+		return *s.ContainerCount
+	}
+	return
+}
+
 type SubscriptionProperties struct {
 	LocationPlacementID *string
 	QuotaID             *string
@@ -2086,9 +5719,58 @@ type SubscriptionProperties struct {
 	TenantID            *string
 }
 
+func (s *SubscriptionProperties) GetLocationPlacementID() (rv string) {
+	if s != nil && s.LocationPlacementID != nil {
+		return *s.LocationPlacementID
+	}
+	return
+}
+
+func (s *SubscriptionProperties) GetQuotaID() (rv string) {
+	if s != nil && s.QuotaID != nil {
+		return *s.QuotaID
+	}
+	return
+}
+
+func (s *SubscriptionProperties) GetRegisteredFeatures() (rv []*SubscriptionRegisteredFeatures) {
+	if s != nil {
+		return s.RegisteredFeatures
+	}
+	return
+}
+
+func (s *SubscriptionProperties) GetSerializedDetails() (rv string) {
+	if s != nil && s.SerializedDetails != nil {
+		return *s.SerializedDetails
+	}
+	return
+}
+
+func (s *SubscriptionProperties) GetTenantID() (rv string) {
+	if s != nil && s.TenantID != nil {
+		return *s.TenantID
+	}
+	return
+}
+
 type SubscriptionRegisteredFeatures struct {
 	Name  *string
 	State *string
+}
+
+func (s *SubscriptionRegisteredFeatures) GetName() (rv string) {
+	if s != nil && s.Name != nil {
+		return *s.Name
+	}
+	return
+}
+
+func (s *SubscriptionRegisteredFeatures) GetState() (rv string) {
+	if s != nil && s.State != nil {
+		return *s.State
+	}
+	return
 }
 
 // SupportPackageRequestProperties - The share properties.
@@ -2104,10 +5786,38 @@ type SupportPackageRequestProperties struct {
 	MinimumTimeStamp *time.Time
 }
 
+func (s *SupportPackageRequestProperties) GetInclude() (rv string) {
+	if s != nil && s.Include != nil {
+		return *s.Include
+	}
+	return
+}
+
+func (s *SupportPackageRequestProperties) GetMaximumTimeStamp() (rv *time.Time) {
+	if s != nil {
+		return s.MaximumTimeStamp
+	}
+	return
+}
+
+func (s *SupportPackageRequestProperties) GetMinimumTimeStamp() (rv *time.Time) {
+	if s != nil {
+		return s.MinimumTimeStamp
+	}
+	return
+}
+
 // SymmetricKey - Symmetric key for authentication.
 type SymmetricKey struct {
 	// Connection string based on the symmetric key.
 	ConnectionString *AsymmetricEncryptedSecret
+}
+
+func (s *SymmetricKey) GetConnectionString() (rv *AsymmetricEncryptedSecret) {
+	if s != nil {
+		return s.ConnectionString
+	}
+	return
 }
 
 // SystemData - Metadata pertaining to creation and last modification of the resource.
@@ -2131,6 +5841,48 @@ type SystemData struct {
 	LastModifiedByType *CreatedByType
 }
 
+func (s *SystemData) GetCreatedAt() (rv *time.Time) {
+	if s != nil {
+		return s.CreatedAt
+	}
+	return
+}
+
+func (s *SystemData) GetCreatedBy() (rv string) {
+	if s != nil && s.CreatedBy != nil {
+		return *s.CreatedBy
+	}
+	return
+}
+
+func (s *SystemData) GetCreatedByType() (rv *CreatedByType) {
+	if s != nil {
+		return s.CreatedByType
+	}
+	return
+}
+
+func (s *SystemData) GetLastModifiedAt() (rv *time.Time) {
+	if s != nil {
+		return s.LastModifiedAt
+	}
+	return
+}
+
+func (s *SystemData) GetLastModifiedBy() (rv string) {
+	if s != nil && s.LastModifiedBy != nil {
+		return *s.LastModifiedBy
+	}
+	return
+}
+
+func (s *SystemData) GetLastModifiedByType() (rv *CreatedByType) {
+	if s != nil {
+		return s.LastModifiedByType
+	}
+	return
+}
+
 // TrackingInfo - Tracking courier information.
 type TrackingInfo struct {
 	// Name of the carrier used in the delivery.
@@ -2144,6 +5896,34 @@ type TrackingInfo struct {
 
 	// Tracking URL of the shipment.
 	TrackingURL *string
+}
+
+func (t *TrackingInfo) GetCarrierName() (rv string) {
+	if t != nil && t.CarrierName != nil {
+		return *t.CarrierName
+	}
+	return
+}
+
+func (t *TrackingInfo) GetSerialNumber() (rv string) {
+	if t != nil && t.SerialNumber != nil {
+		return *t.SerialNumber
+	}
+	return
+}
+
+func (t *TrackingInfo) GetTrackingID() (rv string) {
+	if t != nil && t.TrackingID != nil {
+		return *t.TrackingID
+	}
+	return
+}
+
+func (t *TrackingInfo) GetTrackingURL() (rv string) {
+	if t != nil && t.TrackingURL != nil {
+		return *t.TrackingURL
+	}
+	return
 }
 
 // Trigger details.
@@ -2164,6 +5944,41 @@ type Trigger struct {
 	Type *string
 }
 
+func (t *Trigger) GetKind() (rv *TriggerEventType) {
+	if t != nil {
+		return t.Kind
+	}
+	return
+}
+
+func (t *Trigger) GetID() (rv string) {
+	if t != nil && t.ID != nil {
+		return *t.ID
+	}
+	return
+}
+
+func (t *Trigger) GetName() (rv string) {
+	if t != nil && t.Name != nil {
+		return *t.Name
+	}
+	return
+}
+
+func (t *Trigger) GetSystemData() (rv *SystemData) {
+	if t != nil {
+		return t.SystemData
+	}
+	return
+}
+
+func (t *Trigger) GetType() (rv string) {
+	if t != nil && t.Type != nil {
+		return *t.Type
+	}
+	return
+}
+
 // GetTrigger implements the TriggerClassification interface for type Trigger.
 func (t *Trigger) GetTrigger() *Trigger { return t }
 
@@ -2174,6 +5989,20 @@ type TriggerList struct {
 
 	// READ-ONLY; The list of triggers.
 	Value []TriggerClassification
+}
+
+func (t *TriggerList) GetNextLink() (rv string) {
+	if t != nil && t.NextLink != nil {
+		return *t.NextLink
+	}
+	return
+}
+
+func (t *TriggerList) GetValue() (rv []TriggerClassification) {
+	if t != nil {
+		return t.Value
+	}
+	return
 }
 
 // TriggerSupportPackageRequest - The request object for trigger support package.
@@ -2189,6 +6018,34 @@ type TriggerSupportPackageRequest struct {
 
 	// READ-ONLY; The hierarchical type of the object.
 	Type *string
+}
+
+func (t *TriggerSupportPackageRequest) GetProperties() (rv *SupportPackageRequestProperties) {
+	if t != nil {
+		return t.Properties
+	}
+	return
+}
+
+func (t *TriggerSupportPackageRequest) GetID() (rv string) {
+	if t != nil && t.ID != nil {
+		return *t.ID
+	}
+	return
+}
+
+func (t *TriggerSupportPackageRequest) GetName() (rv string) {
+	if t != nil && t.Name != nil {
+		return *t.Name
+	}
+	return
+}
+
+func (t *TriggerSupportPackageRequest) GetType() (rv string) {
+	if t != nil && t.Type != nil {
+		return *t.Type
+	}
+	return
 }
 
 // UpdateDetails - Update Specific attributes
@@ -2221,6 +6078,69 @@ type UpdateDetails struct {
 	UpdateType *UpdateType
 }
 
+func (u *UpdateDetails) GetEstimatedInstallTimeInMins() (rv int32) {
+	if u != nil && u.EstimatedInstallTimeInMins != nil {
+		return *u.EstimatedInstallTimeInMins
+	}
+	return
+}
+
+func (u *UpdateDetails) GetFriendlyVersionNumber() (rv string) {
+	if u != nil && u.FriendlyVersionNumber != nil {
+		return *u.FriendlyVersionNumber
+	}
+	return
+}
+
+func (u *UpdateDetails) GetInstallationImpact() (rv *InstallationImpact) {
+	if u != nil {
+		return u.InstallationImpact
+	}
+	return
+}
+
+func (u *UpdateDetails) GetRebootBehavior() (rv *InstallRebootBehavior) {
+	if u != nil {
+		return u.RebootBehavior
+	}
+	return
+}
+
+func (u *UpdateDetails) GetStatus() (rv *UpdateStatus) {
+	if u != nil {
+		return u.Status
+	}
+	return
+}
+
+func (u *UpdateDetails) GetTargetVersion() (rv string) {
+	if u != nil && u.TargetVersion != nil {
+		return *u.TargetVersion
+	}
+	return
+}
+
+func (u *UpdateDetails) GetUpdateSize() (rv float64) {
+	if u != nil && u.UpdateSize != nil {
+		return *u.UpdateSize
+	}
+	return
+}
+
+func (u *UpdateDetails) GetUpdateTitle() (rv string) {
+	if u != nil && u.UpdateTitle != nil {
+		return *u.UpdateTitle
+	}
+	return
+}
+
+func (u *UpdateDetails) GetUpdateType() (rv *UpdateType) {
+	if u != nil {
+		return u.UpdateType
+	}
+	return
+}
+
 // UpdateDownloadProgress - Details about the download progress of update.
 type UpdateDownloadProgress struct {
 	// READ-ONLY; The download phase.
@@ -2242,6 +6162,48 @@ type UpdateDownloadProgress struct {
 	TotalBytesToDownload *float64
 }
 
+func (u *UpdateDownloadProgress) GetDownloadPhase() (rv *DownloadPhase) {
+	if u != nil {
+		return u.DownloadPhase
+	}
+	return
+}
+
+func (u *UpdateDownloadProgress) GetNumberOfUpdatesDownloaded() (rv int32) {
+	if u != nil && u.NumberOfUpdatesDownloaded != nil {
+		return *u.NumberOfUpdatesDownloaded
+	}
+	return
+}
+
+func (u *UpdateDownloadProgress) GetNumberOfUpdatesToDownload() (rv int32) {
+	if u != nil && u.NumberOfUpdatesToDownload != nil {
+		return *u.NumberOfUpdatesToDownload
+	}
+	return
+}
+
+func (u *UpdateDownloadProgress) GetPercentComplete() (rv int32) {
+	if u != nil && u.PercentComplete != nil {
+		return *u.PercentComplete
+	}
+	return
+}
+
+func (u *UpdateDownloadProgress) GetTotalBytesDownloaded() (rv float64) {
+	if u != nil && u.TotalBytesDownloaded != nil {
+		return *u.TotalBytesDownloaded
+	}
+	return
+}
+
+func (u *UpdateDownloadProgress) GetTotalBytesToDownload() (rv float64) {
+	if u != nil && u.TotalBytesToDownload != nil {
+		return *u.TotalBytesToDownload
+	}
+	return
+}
+
 // UpdateInstallProgress - Progress details during installation of updates.
 type UpdateInstallProgress struct {
 	// READ-ONLY; Number of updates installed.
@@ -2252,6 +6214,27 @@ type UpdateInstallProgress struct {
 
 	// READ-ONLY; Percentage completed.
 	PercentComplete *int32
+}
+
+func (u *UpdateInstallProgress) GetNumberOfUpdatesInstalled() (rv int32) {
+	if u != nil && u.NumberOfUpdatesInstalled != nil {
+		return *u.NumberOfUpdatesInstalled
+	}
+	return
+}
+
+func (u *UpdateInstallProgress) GetNumberOfUpdatesToInstall() (rv int32) {
+	if u != nil && u.NumberOfUpdatesToInstall != nil {
+		return *u.NumberOfUpdatesToInstall
+	}
+	return
+}
+
+func (u *UpdateInstallProgress) GetPercentComplete() (rv int32) {
+	if u != nil && u.PercentComplete != nil {
+		return *u.PercentComplete
+	}
+	return
 }
 
 // UpdateSummary - Details about ongoing updates and availability of updates on the device.
@@ -2270,6 +6253,41 @@ type UpdateSummary struct {
 
 	// READ-ONLY; The hierarchical type of the object.
 	Type *string
+}
+
+func (u *UpdateSummary) GetProperties() (rv *UpdateSummaryProperties) {
+	if u != nil {
+		return u.Properties
+	}
+	return
+}
+
+func (u *UpdateSummary) GetID() (rv string) {
+	if u != nil && u.ID != nil {
+		return *u.ID
+	}
+	return
+}
+
+func (u *UpdateSummary) GetName() (rv string) {
+	if u != nil && u.Name != nil {
+		return *u.Name
+	}
+	return
+}
+
+func (u *UpdateSummary) GetSystemData() (rv *SystemData) {
+	if u != nil {
+		return u.SystemData
+	}
+	return
+}
+
+func (u *UpdateSummary) GetType() (rv string) {
+	if u != nil && u.Type != nil {
+		return *u.Type
+	}
+	return
 }
 
 // UpdateSummaryProperties - The device update information summary.
@@ -2350,10 +6368,192 @@ type UpdateSummaryProperties struct {
 	Updates []*UpdateDetails
 }
 
+func (u *UpdateSummaryProperties) GetDeviceLastScannedDateTime() (rv *time.Time) {
+	if u != nil {
+		return u.DeviceLastScannedDateTime
+	}
+	return
+}
+
+func (u *UpdateSummaryProperties) GetDeviceVersionNumber() (rv string) {
+	if u != nil && u.DeviceVersionNumber != nil {
+		return *u.DeviceVersionNumber
+	}
+	return
+}
+
+func (u *UpdateSummaryProperties) GetFriendlyDeviceVersionName() (rv string) {
+	if u != nil && u.FriendlyDeviceVersionName != nil {
+		return *u.FriendlyDeviceVersionName
+	}
+	return
+}
+
+func (u *UpdateSummaryProperties) GetLastCompletedScanJobDateTime() (rv *time.Time) {
+	if u != nil {
+		return u.LastCompletedScanJobDateTime
+	}
+	return
+}
+
+func (u *UpdateSummaryProperties) GetLastSuccessfulInstallJobDateTime() (rv *time.Time) {
+	if u != nil {
+		return u.LastSuccessfulInstallJobDateTime
+	}
+	return
+}
+
+func (u *UpdateSummaryProperties) GetLastSuccessfulScanJobTime() (rv *time.Time) {
+	if u != nil {
+		return u.LastSuccessfulScanJobTime
+	}
+	return
+}
+
+func (u *UpdateSummaryProperties) GetInProgressDownloadJobID() (rv string) {
+	if u != nil && u.InProgressDownloadJobID != nil {
+		return *u.InProgressDownloadJobID
+	}
+	return
+}
+
+func (u *UpdateSummaryProperties) GetInProgressDownloadJobStartedDateTime() (rv *time.Time) {
+	if u != nil {
+		return u.InProgressDownloadJobStartedDateTime
+	}
+	return
+}
+
+func (u *UpdateSummaryProperties) GetInProgressInstallJobID() (rv string) {
+	if u != nil && u.InProgressInstallJobID != nil {
+		return *u.InProgressInstallJobID
+	}
+	return
+}
+
+func (u *UpdateSummaryProperties) GetInProgressInstallJobStartedDateTime() (rv *time.Time) {
+	if u != nil {
+		return u.InProgressInstallJobStartedDateTime
+	}
+	return
+}
+
+func (u *UpdateSummaryProperties) GetLastCompletedDownloadJobDateTime() (rv *time.Time) {
+	if u != nil {
+		return u.LastCompletedDownloadJobDateTime
+	}
+	return
+}
+
+func (u *UpdateSummaryProperties) GetLastCompletedDownloadJobID() (rv string) {
+	if u != nil && u.LastCompletedDownloadJobID != nil {
+		return *u.LastCompletedDownloadJobID
+	}
+	return
+}
+
+func (u *UpdateSummaryProperties) GetLastCompletedInstallJobDateTime() (rv *time.Time) {
+	if u != nil {
+		return u.LastCompletedInstallJobDateTime
+	}
+	return
+}
+
+func (u *UpdateSummaryProperties) GetLastCompletedInstallJobID() (rv string) {
+	if u != nil && u.LastCompletedInstallJobID != nil {
+		return *u.LastCompletedInstallJobID
+	}
+	return
+}
+
+func (u *UpdateSummaryProperties) GetLastDownloadJobStatus() (rv *JobStatus) {
+	if u != nil {
+		return u.LastDownloadJobStatus
+	}
+	return
+}
+
+func (u *UpdateSummaryProperties) GetLastInstallJobStatus() (rv *JobStatus) {
+	if u != nil {
+		return u.LastInstallJobStatus
+	}
+	return
+}
+
+func (u *UpdateSummaryProperties) GetOngoingUpdateOperation() (rv *UpdateOperation) {
+	if u != nil {
+		return u.OngoingUpdateOperation
+	}
+	return
+}
+
+func (u *UpdateSummaryProperties) GetRebootBehavior() (rv *InstallRebootBehavior) {
+	if u != nil {
+		return u.RebootBehavior
+	}
+	return
+}
+
+func (u *UpdateSummaryProperties) GetTotalNumberOfUpdatesAvailable() (rv int32) {
+	if u != nil && u.TotalNumberOfUpdatesAvailable != nil {
+		return *u.TotalNumberOfUpdatesAvailable
+	}
+	return
+}
+
+func (u *UpdateSummaryProperties) GetTotalNumberOfUpdatesPendingDownload() (rv int32) {
+	if u != nil && u.TotalNumberOfUpdatesPendingDownload != nil {
+		return *u.TotalNumberOfUpdatesPendingDownload
+	}
+	return
+}
+
+func (u *UpdateSummaryProperties) GetTotalNumberOfUpdatesPendingInstall() (rv int32) {
+	if u != nil && u.TotalNumberOfUpdatesPendingInstall != nil {
+		return *u.TotalNumberOfUpdatesPendingInstall
+	}
+	return
+}
+
+func (u *UpdateSummaryProperties) GetTotalTimeInMinutes() (rv int32) {
+	if u != nil && u.TotalTimeInMinutes != nil {
+		return *u.TotalTimeInMinutes
+	}
+	return
+}
+
+func (u *UpdateSummaryProperties) GetTotalUpdateSizeInBytes() (rv float64) {
+	if u != nil && u.TotalUpdateSizeInBytes != nil {
+		return *u.TotalUpdateSizeInBytes
+	}
+	return
+}
+
+func (u *UpdateSummaryProperties) GetUpdateTitles() (rv []*string) {
+	if u != nil {
+		return u.UpdateTitles
+	}
+	return
+}
+
+func (u *UpdateSummaryProperties) GetUpdates() (rv []*UpdateDetails) {
+	if u != nil {
+		return u.Updates
+	}
+	return
+}
+
 // UploadCertificateRequest - The upload certificate request.
 type UploadCertificateRequest struct {
 	// REQUIRED; The Base 64 encoded certificate raw data.
 	Properties *RawCertificateData
+}
+
+func (u *UploadCertificateRequest) GetProperties() (rv *RawCertificateData) {
+	if u != nil {
+		return u.Properties
+	}
+	return
 }
 
 // UploadCertificateResponse - The upload registration certificate response.
@@ -2383,6 +6583,62 @@ type UploadCertificateResponse struct {
 	ServicePrincipalObjectID *string
 }
 
+func (u *UploadCertificateResponse) GetAuthType() (rv *AuthenticationType) {
+	if u != nil {
+		return u.AuthType
+	}
+	return
+}
+
+func (u *UploadCertificateResponse) GetAADAudience() (rv string) {
+	if u != nil && u.AADAudience != nil {
+		return *u.AADAudience
+	}
+	return
+}
+
+func (u *UploadCertificateResponse) GetAADAuthority() (rv string) {
+	if u != nil && u.AADAuthority != nil {
+		return *u.AADAuthority
+	}
+	return
+}
+
+func (u *UploadCertificateResponse) GetAADTenantID() (rv string) {
+	if u != nil && u.AADTenantID != nil {
+		return *u.AADTenantID
+	}
+	return
+}
+
+func (u *UploadCertificateResponse) GetAzureManagementEndpointAudience() (rv string) {
+	if u != nil && u.AzureManagementEndpointAudience != nil {
+		return *u.AzureManagementEndpointAudience
+	}
+	return
+}
+
+func (u *UploadCertificateResponse) GetResourceID() (rv string) {
+	if u != nil && u.ResourceID != nil {
+		return *u.ResourceID
+	}
+	return
+}
+
+func (u *UploadCertificateResponse) GetServicePrincipalClientID() (rv string) {
+	if u != nil && u.ServicePrincipalClientID != nil {
+		return *u.ServicePrincipalClientID
+	}
+	return
+}
+
+func (u *UploadCertificateResponse) GetServicePrincipalObjectID() (rv string) {
+	if u != nil && u.ServicePrincipalObjectID != nil {
+		return *u.ServicePrincipalObjectID
+	}
+	return
+}
+
 // User - Represents a user who has access to one or more shares on the Data Box Edge/Gateway device.
 type User struct {
 	// REQUIRED; The storage account credential properties.
@@ -2401,6 +6657,41 @@ type User struct {
 	Type *string
 }
 
+func (u *User) GetProperties() (rv *UserProperties) {
+	if u != nil {
+		return u.Properties
+	}
+	return
+}
+
+func (u *User) GetID() (rv string) {
+	if u != nil && u.ID != nil {
+		return *u.ID
+	}
+	return
+}
+
+func (u *User) GetName() (rv string) {
+	if u != nil && u.Name != nil {
+		return *u.Name
+	}
+	return
+}
+
+func (u *User) GetSystemData() (rv *SystemData) {
+	if u != nil {
+		return u.SystemData
+	}
+	return
+}
+
+func (u *User) GetType() (rv string) {
+	if u != nil && u.Type != nil {
+		return *u.Type
+	}
+	return
+}
+
 // UserAccessRight - The mapping between a particular user and the access type on the SMB share.
 type UserAccessRight struct {
 	// REQUIRED; Type of access to be allowed for the user.
@@ -2410,6 +6701,20 @@ type UserAccessRight struct {
 	UserID *string
 }
 
+func (u *UserAccessRight) GetAccessType() (rv *ShareAccessType) {
+	if u != nil {
+		return u.AccessType
+	}
+	return
+}
+
+func (u *UserAccessRight) GetUserID() (rv string) {
+	if u != nil && u.UserID != nil {
+		return *u.UserID
+	}
+	return
+}
+
 // UserList - Collection of users.
 type UserList struct {
 	// READ-ONLY; Link to the next set of results.
@@ -2417,6 +6722,20 @@ type UserList struct {
 
 	// READ-ONLY; The list of users.
 	Value []*User
+}
+
+func (u *UserList) GetNextLink() (rv string) {
+	if u != nil && u.NextLink != nil {
+		return *u.NextLink
+	}
+	return
+}
+
+func (u *UserList) GetValue() (rv []*User) {
+	if u != nil {
+		return u.Value
+	}
+	return
 }
 
 // UserProperties - The user properties.
@@ -2429,4 +6748,25 @@ type UserProperties struct {
 
 	// READ-ONLY; List of shares that the user has rights on. This field should not be specified during user creation.
 	ShareAccessRights []*ShareAccessRight
+}
+
+func (u *UserProperties) GetUserType() (rv *UserType) {
+	if u != nil {
+		return u.UserType
+	}
+	return
+}
+
+func (u *UserProperties) GetEncryptedPassword() (rv *AsymmetricEncryptedSecret) {
+	if u != nil {
+		return u.EncryptedPassword
+	}
+	return
+}
+
+func (u *UserProperties) GetShareAccessRights() (rv []*ShareAccessRight) {
+	if u != nil {
+		return u.ShareAccessRights
+	}
+	return
 }

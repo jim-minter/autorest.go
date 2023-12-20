@@ -12,3 +12,17 @@ type ODataFilter struct {
 	ID   *int32
 	Name *string
 }
+
+func (o *ODataFilter) GetID() (rv int32) {
+	if o != nil && o.ID != nil {
+		return *o.ID
+	}
+	return
+}
+
+func (o *ODataFilter) GetName() (rv string) {
+	if o != nil && o.Name != nil {
+		return *o.Name
+	}
+	return
+}

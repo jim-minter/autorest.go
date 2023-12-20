@@ -18,6 +18,20 @@ type ChildProduct struct {
 	Count *int32
 }
 
+func (c *ChildProduct) GetConstProperty() (rv *string) {
+	if c != nil {
+		return c.ConstProperty
+	}
+	return
+}
+
+func (c *ChildProduct) GetCount() (rv int32) {
+	if c != nil && c.Count != nil {
+		return *c.Count
+	}
+	return
+}
+
 // ConstantProduct - The product documentation.
 type ConstantProduct struct {
 	// CONSTANT; Constant string
@@ -27,6 +41,20 @@ type ConstantProduct struct {
 	// CONSTANT; Constant string2
 	// Field has constant value "constant2", any specified value is ignored.
 	ConstProperty2 *string
+}
+
+func (c *ConstantProduct) GetConstProperty() (rv *string) {
+	if c != nil {
+		return c.ConstProperty
+	}
+	return
+}
+
+func (c *ConstantProduct) GetConstProperty2() (rv *string) {
+	if c != nil {
+		return c.ConstProperty2
+	}
+	return
 }
 
 // Product - The product documentation.
@@ -56,4 +84,60 @@ type Product struct {
 
 	// Image URL representing the product.
 	Image *string
+}
+
+func (p *Product) GetChild() (rv *ChildProduct) {
+	if p != nil {
+		return p.Child
+	}
+	return
+}
+
+func (p *Product) GetConstChild() (rv *ConstantProduct) {
+	if p != nil {
+		return p.ConstChild
+	}
+	return
+}
+
+func (p *Product) GetConstInt() (rv *int32) {
+	if p != nil {
+		return p.ConstInt
+	}
+	return
+}
+
+func (p *Product) GetConstString() (rv *string) {
+	if p != nil {
+		return p.ConstString
+	}
+	return
+}
+
+func (p *Product) GetCapacity() (rv int32) {
+	if p != nil && p.Capacity != nil {
+		return *p.Capacity
+	}
+	return
+}
+
+func (p *Product) GetConstStringAsEnum() (rv *string) {
+	if p != nil {
+		return p.ConstStringAsEnum
+	}
+	return
+}
+
+func (p *Product) GetDisplayNames() (rv []*string) {
+	if p != nil {
+		return p.DisplayNames
+	}
+	return
+}
+
+func (p *Product) GetImage() (rv string) {
+	if p != nil && p.Image != nil {
+		return *p.Image
+	}
+	return
 }

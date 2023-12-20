@@ -19,6 +19,20 @@ type Amount struct {
 	Value *float64
 }
 
+func (a *Amount) GetCurrency() (rv string) {
+	if a != nil && a.Currency != nil {
+		return *a.Currency
+	}
+	return
+}
+
+func (a *Amount) GetValue() (rv float64) {
+	if a != nil && a.Value != nil {
+		return *a.Value
+	}
+	return
+}
+
 // AmountWithExchangeRate - Reseller details
 type AmountWithExchangeRate struct {
 	// READ-ONLY; Amount currency.
@@ -32,6 +46,34 @@ type AmountWithExchangeRate struct {
 
 	// READ-ONLY; Amount.
 	Value *float64
+}
+
+func (a *AmountWithExchangeRate) GetCurrency() (rv string) {
+	if a != nil && a.Currency != nil {
+		return *a.Currency
+	}
+	return
+}
+
+func (a *AmountWithExchangeRate) GetExchangeRate() (rv float64) {
+	if a != nil && a.ExchangeRate != nil {
+		return *a.ExchangeRate
+	}
+	return
+}
+
+func (a *AmountWithExchangeRate) GetExchangeRateMonth() (rv float32) {
+	if a != nil && a.ExchangeRateMonth != nil {
+		return *a.ExchangeRateMonth
+	}
+	return
+}
+
+func (a *AmountWithExchangeRate) GetValue() (rv float64) {
+	if a != nil && a.Value != nil {
+		return *a.Value
+	}
+	return
 }
 
 // Balance - A balance resource.
@@ -53,6 +95,48 @@ type Balance struct {
 
 	// READ-ONLY; Resource type.
 	Type *string
+}
+
+func (b *Balance) GetProperties() (rv *BalanceProperties) {
+	if b != nil {
+		return b.Properties
+	}
+	return
+}
+
+func (b *Balance) GetEtag() (rv string) {
+	if b != nil && b.Etag != nil {
+		return *b.Etag
+	}
+	return
+}
+
+func (b *Balance) GetID() (rv string) {
+	if b != nil && b.ID != nil {
+		return *b.ID
+	}
+	return
+}
+
+func (b *Balance) GetName() (rv string) {
+	if b != nil && b.Name != nil {
+		return *b.Name
+	}
+	return
+}
+
+func (b *Balance) GetTags() (rv map[string]*string) {
+	if b != nil {
+		return b.Tags
+	}
+	return
+}
+
+func (b *Balance) GetType() (rv string) {
+	if b != nil && b.Type != nil {
+		return *b.Type
+	}
+	return
 }
 
 // BalanceProperties - The properties of the balance.
@@ -103,6 +187,111 @@ type BalanceProperties struct {
 	Utilized *float64
 }
 
+func (b *BalanceProperties) GetBillingFrequency() (rv *BillingFrequency) {
+	if b != nil {
+		return b.BillingFrequency
+	}
+	return
+}
+
+func (b *BalanceProperties) GetAdjustmentDetails() (rv []*BalancePropertiesAdjustmentDetailsItem) {
+	if b != nil {
+		return b.AdjustmentDetails
+	}
+	return
+}
+
+func (b *BalanceProperties) GetAdjustments() (rv float64) {
+	if b != nil && b.Adjustments != nil {
+		return *b.Adjustments
+	}
+	return
+}
+
+func (b *BalanceProperties) GetAzureMarketplaceServiceCharges() (rv float64) {
+	if b != nil && b.AzureMarketplaceServiceCharges != nil {
+		return *b.AzureMarketplaceServiceCharges
+	}
+	return
+}
+
+func (b *BalanceProperties) GetBeginningBalance() (rv float64) {
+	if b != nil && b.BeginningBalance != nil {
+		return *b.BeginningBalance
+	}
+	return
+}
+
+func (b *BalanceProperties) GetChargesBilledSeparately() (rv float64) {
+	if b != nil && b.ChargesBilledSeparately != nil {
+		return *b.ChargesBilledSeparately
+	}
+	return
+}
+
+func (b *BalanceProperties) GetCurrency() (rv string) {
+	if b != nil && b.Currency != nil {
+		return *b.Currency
+	}
+	return
+}
+
+func (b *BalanceProperties) GetEndingBalance() (rv float64) {
+	if b != nil && b.EndingBalance != nil {
+		return *b.EndingBalance
+	}
+	return
+}
+
+func (b *BalanceProperties) GetNewPurchases() (rv float64) {
+	if b != nil && b.NewPurchases != nil {
+		return *b.NewPurchases
+	}
+	return
+}
+
+func (b *BalanceProperties) GetNewPurchasesDetails() (rv []*BalancePropertiesNewPurchasesDetailsItem) {
+	if b != nil {
+		return b.NewPurchasesDetails
+	}
+	return
+}
+
+func (b *BalanceProperties) GetPriceHidden() (rv bool) {
+	if b != nil && b.PriceHidden != nil {
+		return *b.PriceHidden
+	}
+	return
+}
+
+func (b *BalanceProperties) GetServiceOverage() (rv float64) {
+	if b != nil && b.ServiceOverage != nil {
+		return *b.ServiceOverage
+	}
+	return
+}
+
+func (b *BalanceProperties) GetTotalOverage() (rv float64) {
+	if b != nil && b.TotalOverage != nil {
+		return *b.TotalOverage
+	}
+	return
+}
+
+func (b *BalanceProperties) GetTotalUsage() (rv float64) {
+	if b != nil && b.TotalUsage != nil {
+		return *b.TotalUsage
+	}
+	return
+}
+
+func (b *BalanceProperties) GetUtilized() (rv float64) {
+	if b != nil && b.Utilized != nil {
+		return *b.Utilized
+	}
+	return
+}
+
 type BalancePropertiesAdjustmentDetailsItem struct {
 	// READ-ONLY; the name of new adjustment.
 	Name *string
@@ -111,12 +300,40 @@ type BalancePropertiesAdjustmentDetailsItem struct {
 	Value *float64
 }
 
+func (b *BalancePropertiesAdjustmentDetailsItem) GetName() (rv string) {
+	if b != nil && b.Name != nil {
+		return *b.Name
+	}
+	return
+}
+
+func (b *BalancePropertiesAdjustmentDetailsItem) GetValue() (rv float64) {
+	if b != nil && b.Value != nil {
+		return *b.Value
+	}
+	return
+}
+
 type BalancePropertiesNewPurchasesDetailsItem struct {
 	// READ-ONLY; the name of new purchase.
 	Name *string
 
 	// READ-ONLY; the value of new purchase.
 	Value *float64
+}
+
+func (b *BalancePropertiesNewPurchasesDetailsItem) GetName() (rv string) {
+	if b != nil && b.Name != nil {
+		return *b.Name
+	}
+	return
+}
+
+func (b *BalancePropertiesNewPurchasesDetailsItem) GetValue() (rv float64) {
+	if b != nil && b.Value != nil {
+		return *b.Value
+	}
+	return
 }
 
 // Budget - A budget resource.
@@ -138,6 +355,41 @@ type Budget struct {
 	Type *string
 }
 
+func (b *Budget) GetETag() (rv string) {
+	if b != nil && b.ETag != nil {
+		return *b.ETag
+	}
+	return
+}
+
+func (b *Budget) GetProperties() (rv *BudgetProperties) {
+	if b != nil {
+		return b.Properties
+	}
+	return
+}
+
+func (b *Budget) GetID() (rv string) {
+	if b != nil && b.ID != nil {
+		return *b.ID
+	}
+	return
+}
+
+func (b *Budget) GetName() (rv string) {
+	if b != nil && b.Name != nil {
+		return *b.Name
+	}
+	return
+}
+
+func (b *Budget) GetType() (rv string) {
+	if b != nil && b.Type != nil {
+		return *b.Type
+	}
+	return
+}
+
 // BudgetComparisonExpression - The comparison expression to be used in the budgets.
 type BudgetComparisonExpression struct {
 	// REQUIRED; The name of the column to use in comparison.
@@ -148,6 +400,27 @@ type BudgetComparisonExpression struct {
 
 	// REQUIRED; Array of values to use for comparison
 	Values []*string
+}
+
+func (b *BudgetComparisonExpression) GetName() (rv string) {
+	if b != nil && b.Name != nil {
+		return *b.Name
+	}
+	return
+}
+
+func (b *BudgetComparisonExpression) GetOperator() (rv *BudgetOperatorType) {
+	if b != nil {
+		return b.Operator
+	}
+	return
+}
+
+func (b *BudgetComparisonExpression) GetValues() (rv []*string) {
+	if b != nil {
+		return b.Values
+	}
+	return
 }
 
 // BudgetFilter - May be used to filter budgets by resource group, resource, or meter.
@@ -165,6 +438,34 @@ type BudgetFilter struct {
 	Tags *BudgetComparisonExpression
 }
 
+func (b *BudgetFilter) GetAnd() (rv []*BudgetFilterProperties) {
+	if b != nil {
+		return b.And
+	}
+	return
+}
+
+func (b *BudgetFilter) GetDimensions() (rv *BudgetComparisonExpression) {
+	if b != nil {
+		return b.Dimensions
+	}
+	return
+}
+
+func (b *BudgetFilter) GetNot() (rv *BudgetFilterProperties) {
+	if b != nil {
+		return b.Not
+	}
+	return
+}
+
+func (b *BudgetFilter) GetTags() (rv *BudgetComparisonExpression) {
+	if b != nil {
+		return b.Tags
+	}
+	return
+}
+
 // BudgetFilterProperties - The Dimensions or Tags to filter a budget by.
 type BudgetFilterProperties struct {
 	// Has comparison expression for a dimension
@@ -172,6 +473,20 @@ type BudgetFilterProperties struct {
 
 	// Has comparison expression for a tag
 	Tags *BudgetComparisonExpression
+}
+
+func (b *BudgetFilterProperties) GetDimensions() (rv *BudgetComparisonExpression) {
+	if b != nil {
+		return b.Dimensions
+	}
+	return
+}
+
+func (b *BudgetFilterProperties) GetTags() (rv *BudgetComparisonExpression) {
+	if b != nil {
+		return b.Tags
+	}
+	return
 }
 
 // BudgetProperties - The properties of the budget.
@@ -205,6 +520,62 @@ type BudgetProperties struct {
 	ForecastSpend *ForecastSpend
 }
 
+func (b *BudgetProperties) GetAmount() (rv float64) {
+	if b != nil && b.Amount != nil {
+		return *b.Amount
+	}
+	return
+}
+
+func (b *BudgetProperties) GetCategory() (rv *CategoryType) {
+	if b != nil {
+		return b.Category
+	}
+	return
+}
+
+func (b *BudgetProperties) GetTimeGrain() (rv *TimeGrainType) {
+	if b != nil {
+		return b.TimeGrain
+	}
+	return
+}
+
+func (b *BudgetProperties) GetTimePeriod() (rv *BudgetTimePeriod) {
+	if b != nil {
+		return b.TimePeriod
+	}
+	return
+}
+
+func (b *BudgetProperties) GetFilter() (rv *BudgetFilter) {
+	if b != nil {
+		return b.Filter
+	}
+	return
+}
+
+func (b *BudgetProperties) GetNotifications() (rv map[string]*Notification) {
+	if b != nil {
+		return b.Notifications
+	}
+	return
+}
+
+func (b *BudgetProperties) GetCurrentSpend() (rv *CurrentSpend) {
+	if b != nil {
+		return b.CurrentSpend
+	}
+	return
+}
+
+func (b *BudgetProperties) GetForecastSpend() (rv *ForecastSpend) {
+	if b != nil {
+		return b.ForecastSpend
+	}
+	return
+}
+
 // BudgetTimePeriod - The start and end date for a budget.
 type BudgetTimePeriod struct {
 	// REQUIRED; The start date for the budget.
@@ -214,6 +585,20 @@ type BudgetTimePeriod struct {
 	EndDate *time.Time
 }
 
+func (b *BudgetTimePeriod) GetStartDate() (rv *time.Time) {
+	if b != nil {
+		return b.StartDate
+	}
+	return
+}
+
+func (b *BudgetTimePeriod) GetEndDate() (rv *time.Time) {
+	if b != nil {
+		return b.EndDate
+	}
+	return
+}
+
 // BudgetsListResult - Result of listing budgets. It contains a list of available budgets in the scope provided.
 type BudgetsListResult struct {
 	// READ-ONLY; The link (url) to the next page of results.
@@ -221,6 +606,20 @@ type BudgetsListResult struct {
 
 	// READ-ONLY; The list of budgets.
 	Value []*Budget
+}
+
+func (b *BudgetsListResult) GetNextLink() (rv string) {
+	if b != nil && b.NextLink != nil {
+		return *b.NextLink
+	}
+	return
+}
+
+func (b *BudgetsListResult) GetValue() (rv []*Budget) {
+	if b != nil {
+		return b.Value
+	}
+	return
 }
 
 // ChargeSummary - A charge summary resource.
@@ -244,6 +643,48 @@ type ChargeSummary struct {
 	Type *string
 }
 
+func (c *ChargeSummary) GetKind() (rv *ChargeSummaryKind) {
+	if c != nil {
+		return c.Kind
+	}
+	return
+}
+
+func (c *ChargeSummary) GetETag() (rv string) {
+	if c != nil && c.ETag != nil {
+		return *c.ETag
+	}
+	return
+}
+
+func (c *ChargeSummary) GetID() (rv string) {
+	if c != nil && c.ID != nil {
+		return *c.ID
+	}
+	return
+}
+
+func (c *ChargeSummary) GetName() (rv string) {
+	if c != nil && c.Name != nil {
+		return *c.Name
+	}
+	return
+}
+
+func (c *ChargeSummary) GetTags() (rv map[string]*string) {
+	if c != nil {
+		return c.Tags
+	}
+	return
+}
+
+func (c *ChargeSummary) GetType() (rv string) {
+	if c != nil && c.Type != nil {
+		return *c.Type
+	}
+	return
+}
+
 // GetChargeSummary implements the ChargeSummaryClassification interface for type ChargeSummary.
 func (c *ChargeSummary) GetChargeSummary() *ChargeSummary { return c }
 
@@ -251,6 +692,13 @@ func (c *ChargeSummary) GetChargeSummary() *ChargeSummary { return c }
 type ChargesListResult struct {
 	// READ-ONLY; The list of charge summary
 	Value []ChargeSummaryClassification
+}
+
+func (c *ChargesListResult) GetValue() (rv []ChargeSummaryClassification) {
+	if c != nil {
+		return c.Value
+	}
+	return
 }
 
 // CreditBalanceSummary - Summary of credit balances.
@@ -266,6 +714,34 @@ type CreditBalanceSummary struct {
 
 	// READ-ONLY; Current balance.
 	EstimatedBalanceInBillingCurrency *AmountWithExchangeRate
+}
+
+func (c *CreditBalanceSummary) GetCurrentBalance() (rv *Amount) {
+	if c != nil {
+		return c.CurrentBalance
+	}
+	return
+}
+
+func (c *CreditBalanceSummary) GetCurrentBalanceInBillingCurrency() (rv *AmountWithExchangeRate) {
+	if c != nil {
+		return c.CurrentBalanceInBillingCurrency
+	}
+	return
+}
+
+func (c *CreditBalanceSummary) GetEstimatedBalance() (rv *Amount) {
+	if c != nil {
+		return c.EstimatedBalance
+	}
+	return
+}
+
+func (c *CreditBalanceSummary) GetEstimatedBalanceInBillingCurrency() (rv *AmountWithExchangeRate) {
+	if c != nil {
+		return c.EstimatedBalanceInBillingCurrency
+	}
+	return
 }
 
 // CreditSummary - A credit summary resource.
@@ -285,6 +761,41 @@ type CreditSummary struct {
 
 	// READ-ONLY; Resource type.
 	Type *string
+}
+
+func (c *CreditSummary) GetETag() (rv string) {
+	if c != nil && c.ETag != nil {
+		return *c.ETag
+	}
+	return
+}
+
+func (c *CreditSummary) GetProperties() (rv *CreditSummaryProperties) {
+	if c != nil {
+		return c.Properties
+	}
+	return
+}
+
+func (c *CreditSummary) GetID() (rv string) {
+	if c != nil && c.ID != nil {
+		return *c.ID
+	}
+	return
+}
+
+func (c *CreditSummary) GetName() (rv string) {
+	if c != nil && c.Name != nil {
+		return *c.Name
+	}
+	return
+}
+
+func (c *CreditSummary) GetType() (rv string) {
+	if c != nil && c.Type != nil {
+		return *c.Type
+	}
+	return
 }
 
 // CreditSummaryProperties - The properties of the credit summary.
@@ -311,6 +822,55 @@ type CreditSummaryProperties struct {
 	Reseller *Reseller
 }
 
+func (c *CreditSummaryProperties) GetBalanceSummary() (rv *CreditBalanceSummary) {
+	if c != nil {
+		return c.BalanceSummary
+	}
+	return
+}
+
+func (c *CreditSummaryProperties) GetBillingCurrency() (rv string) {
+	if c != nil && c.BillingCurrency != nil {
+		return *c.BillingCurrency
+	}
+	return
+}
+
+func (c *CreditSummaryProperties) GetCreditCurrency() (rv string) {
+	if c != nil && c.CreditCurrency != nil {
+		return *c.CreditCurrency
+	}
+	return
+}
+
+func (c *CreditSummaryProperties) GetExpiredCredit() (rv *Amount) {
+	if c != nil {
+		return c.ExpiredCredit
+	}
+	return
+}
+
+func (c *CreditSummaryProperties) GetPendingCreditAdjustments() (rv *Amount) {
+	if c != nil {
+		return c.PendingCreditAdjustments
+	}
+	return
+}
+
+func (c *CreditSummaryProperties) GetPendingEligibleCharges() (rv *Amount) {
+	if c != nil {
+		return c.PendingEligibleCharges
+	}
+	return
+}
+
+func (c *CreditSummaryProperties) GetReseller() (rv *Reseller) {
+	if c != nil {
+		return c.Reseller
+	}
+	return
+}
+
 // CurrentSpend - The current amount of cost which is being tracked for a budget.
 type CurrentSpend struct {
 	// READ-ONLY; The total amount of cost which is being tracked by the budget.
@@ -318,6 +878,20 @@ type CurrentSpend struct {
 
 	// READ-ONLY; The unit of measure for the budget amount.
 	Unit *string
+}
+
+func (c *CurrentSpend) GetAmount() (rv float64) {
+	if c != nil && c.Amount != nil {
+		return *c.Amount
+	}
+	return
+}
+
+func (c *CurrentSpend) GetUnit() (rv string) {
+	if c != nil && c.Unit != nil {
+		return *c.Unit
+	}
+	return
 }
 
 // EventProperties - The event properties.
@@ -374,6 +948,125 @@ type EventProperties struct {
 	TransactionDate *time.Time
 }
 
+func (e *EventProperties) GetEventType() (rv *EventType) {
+	if e != nil {
+		return e.EventType
+	}
+	return
+}
+
+func (e *EventProperties) GetAdjustments() (rv *Amount) {
+	if e != nil {
+		return e.Adjustments
+	}
+	return
+}
+
+func (e *EventProperties) GetAdjustmentsInBillingCurrency() (rv *AmountWithExchangeRate) {
+	if e != nil {
+		return e.AdjustmentsInBillingCurrency
+	}
+	return
+}
+
+func (e *EventProperties) GetBillingCurrency() (rv string) {
+	if e != nil && e.BillingCurrency != nil {
+		return *e.BillingCurrency
+	}
+	return
+}
+
+func (e *EventProperties) GetCharges() (rv *Amount) {
+	if e != nil {
+		return e.Charges
+	}
+	return
+}
+
+func (e *EventProperties) GetChargesInBillingCurrency() (rv *AmountWithExchangeRate) {
+	if e != nil {
+		return e.ChargesInBillingCurrency
+	}
+	return
+}
+
+func (e *EventProperties) GetClosedBalance() (rv *Amount) {
+	if e != nil {
+		return e.ClosedBalance
+	}
+	return
+}
+
+func (e *EventProperties) GetClosedBalanceInBillingCurrency() (rv *AmountWithExchangeRate) {
+	if e != nil {
+		return e.ClosedBalanceInBillingCurrency
+	}
+	return
+}
+
+func (e *EventProperties) GetCreditCurrency() (rv string) {
+	if e != nil && e.CreditCurrency != nil {
+		return *e.CreditCurrency
+	}
+	return
+}
+
+func (e *EventProperties) GetCreditExpired() (rv *Amount) {
+	if e != nil {
+		return e.CreditExpired
+	}
+	return
+}
+
+func (e *EventProperties) GetCreditExpiredInBillingCurrency() (rv *AmountWithExchangeRate) {
+	if e != nil {
+		return e.CreditExpiredInBillingCurrency
+	}
+	return
+}
+
+func (e *EventProperties) GetDescription() (rv string) {
+	if e != nil && e.Description != nil {
+		return *e.Description
+	}
+	return
+}
+
+func (e *EventProperties) GetInvoiceNumber() (rv string) {
+	if e != nil && e.InvoiceNumber != nil {
+		return *e.InvoiceNumber
+	}
+	return
+}
+
+func (e *EventProperties) GetNewCredit() (rv *Amount) {
+	if e != nil {
+		return e.NewCredit
+	}
+	return
+}
+
+func (e *EventProperties) GetNewCreditInBillingCurrency() (rv *AmountWithExchangeRate) {
+	if e != nil {
+		return e.NewCreditInBillingCurrency
+	}
+	return
+}
+
+func (e *EventProperties) GetReseller() (rv *Reseller) {
+	if e != nil {
+		return e.Reseller
+	}
+	return
+}
+
+func (e *EventProperties) GetTransactionDate() (rv *time.Time) {
+	if e != nil {
+		return e.TransactionDate
+	}
+	return
+}
+
 // EventSummary - An event summary resource.
 type EventSummary struct {
 	// eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating
@@ -393,6 +1086,41 @@ type EventSummary struct {
 	Type *string
 }
 
+func (e *EventSummary) GetETag() (rv string) {
+	if e != nil && e.ETag != nil {
+		return *e.ETag
+	}
+	return
+}
+
+func (e *EventSummary) GetProperties() (rv *EventProperties) {
+	if e != nil {
+		return e.Properties
+	}
+	return
+}
+
+func (e *EventSummary) GetID() (rv string) {
+	if e != nil && e.ID != nil {
+		return *e.ID
+	}
+	return
+}
+
+func (e *EventSummary) GetName() (rv string) {
+	if e != nil && e.Name != nil {
+		return *e.Name
+	}
+	return
+}
+
+func (e *EventSummary) GetType() (rv string) {
+	if e != nil && e.Type != nil {
+		return *e.Type
+	}
+	return
+}
+
 // Events - Result of listing event summary.
 type Events struct {
 	// READ-ONLY; The link (url) to the next page of results.
@@ -400,6 +1128,20 @@ type Events struct {
 
 	// READ-ONLY; The list of event summary.
 	Value []*EventSummary
+}
+
+func (e *Events) GetNextLink() (rv string) {
+	if e != nil && e.NextLink != nil {
+		return *e.NextLink
+	}
+	return
+}
+
+func (e *Events) GetValue() (rv []*EventSummary) {
+	if e != nil {
+		return e.Value
+	}
+	return
 }
 
 // Forecast - A forecast resource.
@@ -421,6 +1163,48 @@ type Forecast struct {
 
 	// READ-ONLY; Resource type.
 	Type *string
+}
+
+func (f *Forecast) GetProperties() (rv *ForecastProperties) {
+	if f != nil {
+		return f.Properties
+	}
+	return
+}
+
+func (f *Forecast) GetEtag() (rv string) {
+	if f != nil && f.Etag != nil {
+		return *f.Etag
+	}
+	return
+}
+
+func (f *Forecast) GetID() (rv string) {
+	if f != nil && f.ID != nil {
+		return *f.ID
+	}
+	return
+}
+
+func (f *Forecast) GetName() (rv string) {
+	if f != nil && f.Name != nil {
+		return *f.Name
+	}
+	return
+}
+
+func (f *Forecast) GetTags() (rv map[string]*string) {
+	if f != nil {
+		return f.Tags
+	}
+	return
+}
+
+func (f *Forecast) GetType() (rv string) {
+	if f != nil && f.Type != nil {
+		return *f.Type
+	}
+	return
 }
 
 // ForecastProperties - The properties of the forecast charge.
@@ -446,6 +1230,48 @@ type ForecastProperties struct {
 	UsageDate *string
 }
 
+func (f *ForecastProperties) GetChargeType() (rv *ChargeType) {
+	if f != nil {
+		return f.ChargeType
+	}
+	return
+}
+
+func (f *ForecastProperties) GetGrain() (rv *Grain) {
+	if f != nil {
+		return f.Grain
+	}
+	return
+}
+
+func (f *ForecastProperties) GetCharge() (rv float64) {
+	if f != nil && f.Charge != nil {
+		return *f.Charge
+	}
+	return
+}
+
+func (f *ForecastProperties) GetConfidenceLevels() (rv []*ForecastPropertiesConfidenceLevelsItem) {
+	if f != nil {
+		return f.ConfidenceLevels
+	}
+	return
+}
+
+func (f *ForecastProperties) GetCurrency() (rv string) {
+	if f != nil && f.Currency != nil {
+		return *f.Currency
+	}
+	return
+}
+
+func (f *ForecastProperties) GetUsageDate() (rv string) {
+	if f != nil && f.UsageDate != nil {
+		return *f.UsageDate
+	}
+	return
+}
+
 type ForecastPropertiesConfidenceLevelsItem struct {
 	// The boundary of the percentage, values could be 'Upper' or 'Lower'
 	Bound *Bound
@@ -455,6 +1281,27 @@ type ForecastPropertiesConfidenceLevelsItem struct {
 
 	// READ-ONLY; The amount of forecast within the percentage level
 	Value *float64
+}
+
+func (f *ForecastPropertiesConfidenceLevelsItem) GetBound() (rv *Bound) {
+	if f != nil {
+		return f.Bound
+	}
+	return
+}
+
+func (f *ForecastPropertiesConfidenceLevelsItem) GetPercentage() (rv float64) {
+	if f != nil && f.Percentage != nil {
+		return *f.Percentage
+	}
+	return
+}
+
+func (f *ForecastPropertiesConfidenceLevelsItem) GetValue() (rv float64) {
+	if f != nil && f.Value != nil {
+		return *f.Value
+	}
+	return
 }
 
 // ForecastSpend - The forecasted cost which is being tracked for a budget.
@@ -467,10 +1314,31 @@ type ForecastSpend struct {
 	Unit *string
 }
 
+func (f *ForecastSpend) GetAmount() (rv float64) {
+	if f != nil && f.Amount != nil {
+		return *f.Amount
+	}
+	return
+}
+
+func (f *ForecastSpend) GetUnit() (rv string) {
+	if f != nil && f.Unit != nil {
+		return *f.Unit
+	}
+	return
+}
+
 // ForecastsListResult - Result of listing forecasts. It contains a list of available forecasts.
 type ForecastsListResult struct {
 	// READ-ONLY; The list of forecasts.
 	Value []*Forecast
+}
+
+func (f *ForecastsListResult) GetValue() (rv []*Forecast) {
+	if f != nil {
+		return f.Value
+	}
+	return
 }
 
 // LegacyChargeSummary - Legacy charge summary.
@@ -495,6 +1363,55 @@ type LegacyChargeSummary struct {
 
 	// READ-ONLY; Resource type.
 	Type *string
+}
+
+func (l *LegacyChargeSummary) GetKind() (rv *ChargeSummaryKind) {
+	if l != nil {
+		return l.Kind
+	}
+	return
+}
+
+func (l *LegacyChargeSummary) GetProperties() (rv *LegacyChargeSummaryProperties) {
+	if l != nil {
+		return l.Properties
+	}
+	return
+}
+
+func (l *LegacyChargeSummary) GetETag() (rv string) {
+	if l != nil && l.ETag != nil {
+		return *l.ETag
+	}
+	return
+}
+
+func (l *LegacyChargeSummary) GetID() (rv string) {
+	if l != nil && l.ID != nil {
+		return *l.ID
+	}
+	return
+}
+
+func (l *LegacyChargeSummary) GetName() (rv string) {
+	if l != nil && l.Name != nil {
+		return *l.Name
+	}
+	return
+}
+
+func (l *LegacyChargeSummary) GetTags() (rv map[string]*string) {
+	if l != nil {
+		return l.Tags
+	}
+	return
+}
+
+func (l *LegacyChargeSummary) GetType() (rv string) {
+	if l != nil && l.Type != nil {
+		return *l.Type
+	}
+	return
 }
 
 // GetChargeSummary implements the ChargeSummaryClassification interface for type LegacyChargeSummary.
@@ -533,6 +1450,55 @@ type LegacyChargeSummaryProperties struct {
 	UsageStart *string
 }
 
+func (l *LegacyChargeSummaryProperties) GetAzureCharges() (rv float64) {
+	if l != nil && l.AzureCharges != nil {
+		return *l.AzureCharges
+	}
+	return
+}
+
+func (l *LegacyChargeSummaryProperties) GetAzureMarketplaceCharges() (rv float64) {
+	if l != nil && l.AzureMarketplaceCharges != nil {
+		return *l.AzureMarketplaceCharges
+	}
+	return
+}
+
+func (l *LegacyChargeSummaryProperties) GetBillingPeriodID() (rv string) {
+	if l != nil && l.BillingPeriodID != nil {
+		return *l.BillingPeriodID
+	}
+	return
+}
+
+func (l *LegacyChargeSummaryProperties) GetChargesBilledSeparately() (rv float64) {
+	if l != nil && l.ChargesBilledSeparately != nil {
+		return *l.ChargesBilledSeparately
+	}
+	return
+}
+
+func (l *LegacyChargeSummaryProperties) GetCurrency() (rv string) {
+	if l != nil && l.Currency != nil {
+		return *l.Currency
+	}
+	return
+}
+
+func (l *LegacyChargeSummaryProperties) GetUsageEnd() (rv string) {
+	if l != nil && l.UsageEnd != nil {
+		return *l.UsageEnd
+	}
+	return
+}
+
+func (l *LegacyChargeSummaryProperties) GetUsageStart() (rv string) {
+	if l != nil && l.UsageStart != nil {
+		return *l.UsageStart
+	}
+	return
+}
+
 // LegacyReservationRecommendation - Legacy reservation recommendation.
 type LegacyReservationRecommendation struct {
 	// REQUIRED; Specifies the kind of reservation recommendation.
@@ -561,6 +1527,69 @@ type LegacyReservationRecommendation struct {
 
 	// READ-ONLY; Resource type.
 	Type *string
+}
+
+func (l *LegacyReservationRecommendation) GetKind() (rv *ReservationRecommendationKind) {
+	if l != nil {
+		return l.Kind
+	}
+	return
+}
+
+func (l *LegacyReservationRecommendation) GetProperties() (rv *LegacyReservationRecommendationProperties) {
+	if l != nil {
+		return l.Properties
+	}
+	return
+}
+
+func (l *LegacyReservationRecommendation) GetETag() (rv string) {
+	if l != nil && l.ETag != nil {
+		return *l.ETag
+	}
+	return
+}
+
+func (l *LegacyReservationRecommendation) GetID() (rv string) {
+	if l != nil && l.ID != nil {
+		return *l.ID
+	}
+	return
+}
+
+func (l *LegacyReservationRecommendation) GetLocation() (rv string) {
+	if l != nil && l.Location != nil {
+		return *l.Location
+	}
+	return
+}
+
+func (l *LegacyReservationRecommendation) GetName() (rv string) {
+	if l != nil && l.Name != nil {
+		return *l.Name
+	}
+	return
+}
+
+func (l *LegacyReservationRecommendation) GetSKU() (rv string) {
+	if l != nil && l.SKU != nil {
+		return *l.SKU
+	}
+	return
+}
+
+func (l *LegacyReservationRecommendation) GetTags() (rv map[string]*string) {
+	if l != nil {
+		return l.Tags
+	}
+	return
+}
+
+func (l *LegacyReservationRecommendation) GetType() (rv string) {
+	if l != nil && l.Type != nil {
+		return *l.Type
+	}
+	return
 }
 
 // GetReservationRecommendation implements the ReservationRecommendationClassification interface for type LegacyReservationRecommendation.
@@ -623,6 +1652,111 @@ type LegacyReservationRecommendationProperties struct {
 
 	// READ-ONLY; The total amount of cost with reserved instances.
 	TotalCostWithReservedInstances *float64
+}
+
+func (l *LegacyReservationRecommendationProperties) GetCostWithNoReservedInstances() (rv float64) {
+	if l != nil && l.CostWithNoReservedInstances != nil {
+		return *l.CostWithNoReservedInstances
+	}
+	return
+}
+
+func (l *LegacyReservationRecommendationProperties) GetFirstUsageDate() (rv *time.Time) {
+	if l != nil {
+		return l.FirstUsageDate
+	}
+	return
+}
+
+func (l *LegacyReservationRecommendationProperties) GetInstanceFlexibilityGroup() (rv string) {
+	if l != nil && l.InstanceFlexibilityGroup != nil {
+		return *l.InstanceFlexibilityGroup
+	}
+	return
+}
+
+func (l *LegacyReservationRecommendationProperties) GetInstanceFlexibilityRatio() (rv float32) {
+	if l != nil && l.InstanceFlexibilityRatio != nil {
+		return *l.InstanceFlexibilityRatio
+	}
+	return
+}
+
+func (l *LegacyReservationRecommendationProperties) GetLookBackPeriod() (rv string) {
+	if l != nil && l.LookBackPeriod != nil {
+		return *l.LookBackPeriod
+	}
+	return
+}
+
+func (l *LegacyReservationRecommendationProperties) GetMeterID() (rv string) {
+	if l != nil && l.MeterID != nil {
+		return *l.MeterID
+	}
+	return
+}
+
+func (l *LegacyReservationRecommendationProperties) GetNetSavings() (rv float64) {
+	if l != nil && l.NetSavings != nil {
+		return *l.NetSavings
+	}
+	return
+}
+
+func (l *LegacyReservationRecommendationProperties) GetNormalizedSize() (rv string) {
+	if l != nil && l.NormalizedSize != nil {
+		return *l.NormalizedSize
+	}
+	return
+}
+
+func (l *LegacyReservationRecommendationProperties) GetRecommendedQuantity() (rv float64) {
+	if l != nil && l.RecommendedQuantity != nil {
+		return *l.RecommendedQuantity
+	}
+	return
+}
+
+func (l *LegacyReservationRecommendationProperties) GetRecommendedQuantityNormalized() (rv float32) {
+	if l != nil && l.RecommendedQuantityNormalized != nil {
+		return *l.RecommendedQuantityNormalized
+	}
+	return
+}
+
+func (l *LegacyReservationRecommendationProperties) GetResourceType() (rv string) {
+	if l != nil && l.ResourceType != nil {
+		return *l.ResourceType
+	}
+	return
+}
+
+func (l *LegacyReservationRecommendationProperties) GetSKUProperties() (rv []*SKUProperty) {
+	if l != nil {
+		return l.SKUProperties
+	}
+	return
+}
+
+func (l *LegacyReservationRecommendationProperties) GetScope() (rv string) {
+	if l != nil && l.Scope != nil {
+		return *l.Scope
+	}
+	return
+}
+
+func (l *LegacyReservationRecommendationProperties) GetTerm() (rv string) {
+	if l != nil && l.Term != nil {
+		return *l.Term
+	}
+	return
+}
+
+func (l *LegacyReservationRecommendationProperties) GetTotalCostWithReservedInstances() (rv float64) {
+	if l != nil && l.TotalCostWithReservedInstances != nil {
+		return *l.TotalCostWithReservedInstances
+	}
+	return
 }
 
 // LegacyReservationTransactionProperties - The properties of a legacy reservation transaction.
@@ -690,6 +1824,146 @@ type LegacyReservationTransactionProperties struct {
 	Term *string
 }
 
+func (l *LegacyReservationTransactionProperties) GetAccountName() (rv string) {
+	if l != nil && l.AccountName != nil {
+		return *l.AccountName
+	}
+	return
+}
+
+func (l *LegacyReservationTransactionProperties) GetAccountOwnerEmail() (rv string) {
+	if l != nil && l.AccountOwnerEmail != nil {
+		return *l.AccountOwnerEmail
+	}
+	return
+}
+
+func (l *LegacyReservationTransactionProperties) GetAmount() (rv float64) {
+	if l != nil && l.Amount != nil {
+		return *l.Amount
+	}
+	return
+}
+
+func (l *LegacyReservationTransactionProperties) GetArmSKUName() (rv string) {
+	if l != nil && l.ArmSKUName != nil {
+		return *l.ArmSKUName
+	}
+	return
+}
+
+func (l *LegacyReservationTransactionProperties) GetBillingFrequency() (rv string) {
+	if l != nil && l.BillingFrequency != nil {
+		return *l.BillingFrequency
+	}
+	return
+}
+
+func (l *LegacyReservationTransactionProperties) GetCostCenter() (rv string) {
+	if l != nil && l.CostCenter != nil {
+		return *l.CostCenter
+	}
+	return
+}
+
+func (l *LegacyReservationTransactionProperties) GetCurrency() (rv string) {
+	if l != nil && l.Currency != nil {
+		return *l.Currency
+	}
+	return
+}
+
+func (l *LegacyReservationTransactionProperties) GetCurrentEnrollment() (rv string) {
+	if l != nil && l.CurrentEnrollment != nil {
+		return *l.CurrentEnrollment
+	}
+	return
+}
+
+func (l *LegacyReservationTransactionProperties) GetDepartmentName() (rv string) {
+	if l != nil && l.DepartmentName != nil {
+		return *l.DepartmentName
+	}
+	return
+}
+
+func (l *LegacyReservationTransactionProperties) GetDescription() (rv string) {
+	if l != nil && l.Description != nil {
+		return *l.Description
+	}
+	return
+}
+
+func (l *LegacyReservationTransactionProperties) GetEventDate() (rv *time.Time) {
+	if l != nil {
+		return l.EventDate
+	}
+	return
+}
+
+func (l *LegacyReservationTransactionProperties) GetEventType() (rv string) {
+	if l != nil && l.EventType != nil {
+		return *l.EventType
+	}
+	return
+}
+
+func (l *LegacyReservationTransactionProperties) GetPurchasingEnrollment() (rv string) {
+	if l != nil && l.PurchasingEnrollment != nil {
+		return *l.PurchasingEnrollment
+	}
+	return
+}
+
+func (l *LegacyReservationTransactionProperties) GetPurchasingSubscriptionGUID() (rv string) {
+	if l != nil && l.PurchasingSubscriptionGUID != nil {
+		return *l.PurchasingSubscriptionGUID
+	}
+	return
+}
+
+func (l *LegacyReservationTransactionProperties) GetPurchasingSubscriptionName() (rv string) {
+	if l != nil && l.PurchasingSubscriptionName != nil {
+		return *l.PurchasingSubscriptionName
+	}
+	return
+}
+
+func (l *LegacyReservationTransactionProperties) GetQuantity() (rv float64) {
+	if l != nil && l.Quantity != nil {
+		return *l.Quantity
+	}
+	return
+}
+
+func (l *LegacyReservationTransactionProperties) GetRegion() (rv string) {
+	if l != nil && l.Region != nil {
+		return *l.Region
+	}
+	return
+}
+
+func (l *LegacyReservationTransactionProperties) GetReservationOrderID() (rv string) {
+	if l != nil && l.ReservationOrderID != nil {
+		return *l.ReservationOrderID
+	}
+	return
+}
+
+func (l *LegacyReservationTransactionProperties) GetReservationOrderName() (rv string) {
+	if l != nil && l.ReservationOrderName != nil {
+		return *l.ReservationOrderName
+	}
+	return
+}
+
+func (l *LegacyReservationTransactionProperties) GetTerm() (rv string) {
+	if l != nil && l.Term != nil {
+		return *l.Term
+	}
+	return
+}
+
 // LegacyUsageDetail - Legacy usage detail.
 type LegacyUsageDetail struct {
 	// REQUIRED; Specifies the kind of usage details.
@@ -712,6 +1986,55 @@ type LegacyUsageDetail struct {
 
 	// READ-ONLY; Resource type.
 	Type *string
+}
+
+func (l *LegacyUsageDetail) GetKind() (rv *UsageDetailsKind) {
+	if l != nil {
+		return l.Kind
+	}
+	return
+}
+
+func (l *LegacyUsageDetail) GetProperties() (rv *LegacyUsageDetailProperties) {
+	if l != nil {
+		return l.Properties
+	}
+	return
+}
+
+func (l *LegacyUsageDetail) GetEtag() (rv string) {
+	if l != nil && l.Etag != nil {
+		return *l.Etag
+	}
+	return
+}
+
+func (l *LegacyUsageDetail) GetID() (rv string) {
+	if l != nil && l.ID != nil {
+		return *l.ID
+	}
+	return
+}
+
+func (l *LegacyUsageDetail) GetName() (rv string) {
+	if l != nil && l.Name != nil {
+		return *l.Name
+	}
+	return
+}
+
+func (l *LegacyUsageDetail) GetTags() (rv map[string]*string) {
+	if l != nil {
+		return l.Tags
+	}
+	return
+}
+
+func (l *LegacyUsageDetail) GetType() (rv string) {
+	if l != nil && l.Type != nil {
+		return *l.Type
+	}
+	return
 }
 
 // GetUsageDetail implements the UsageDetailClassification interface for type LegacyUsageDetail.
@@ -863,6 +2186,300 @@ type LegacyUsageDetailProperties struct {
 	UnitPrice *float64
 }
 
+func (l *LegacyUsageDetailProperties) GetAccountName() (rv string) {
+	if l != nil && l.AccountName != nil {
+		return *l.AccountName
+	}
+	return
+}
+
+func (l *LegacyUsageDetailProperties) GetAccountOwnerID() (rv string) {
+	if l != nil && l.AccountOwnerID != nil {
+		return *l.AccountOwnerID
+	}
+	return
+}
+
+func (l *LegacyUsageDetailProperties) GetAdditionalInfo() (rv string) {
+	if l != nil && l.AdditionalInfo != nil {
+		return *l.AdditionalInfo
+	}
+	return
+}
+
+func (l *LegacyUsageDetailProperties) GetBillingAccountID() (rv string) {
+	if l != nil && l.BillingAccountID != nil {
+		return *l.BillingAccountID
+	}
+	return
+}
+
+func (l *LegacyUsageDetailProperties) GetBillingAccountName() (rv string) {
+	if l != nil && l.BillingAccountName != nil {
+		return *l.BillingAccountName
+	}
+	return
+}
+
+func (l *LegacyUsageDetailProperties) GetBillingCurrency() (rv string) {
+	if l != nil && l.BillingCurrency != nil {
+		return *l.BillingCurrency
+	}
+	return
+}
+
+func (l *LegacyUsageDetailProperties) GetBillingPeriodEndDate() (rv *time.Time) {
+	if l != nil {
+		return l.BillingPeriodEndDate
+	}
+	return
+}
+
+func (l *LegacyUsageDetailProperties) GetBillingPeriodStartDate() (rv *time.Time) {
+	if l != nil {
+		return l.BillingPeriodStartDate
+	}
+	return
+}
+
+func (l *LegacyUsageDetailProperties) GetBillingProfileID() (rv string) {
+	if l != nil && l.BillingProfileID != nil {
+		return *l.BillingProfileID
+	}
+	return
+}
+
+func (l *LegacyUsageDetailProperties) GetBillingProfileName() (rv string) {
+	if l != nil && l.BillingProfileName != nil {
+		return *l.BillingProfileName
+	}
+	return
+}
+
+func (l *LegacyUsageDetailProperties) GetChargeType() (rv string) {
+	if l != nil && l.ChargeType != nil {
+		return *l.ChargeType
+	}
+	return
+}
+
+func (l *LegacyUsageDetailProperties) GetConsumedService() (rv string) {
+	if l != nil && l.ConsumedService != nil {
+		return *l.ConsumedService
+	}
+	return
+}
+
+func (l *LegacyUsageDetailProperties) GetCost() (rv float64) {
+	if l != nil && l.Cost != nil {
+		return *l.Cost
+	}
+	return
+}
+
+func (l *LegacyUsageDetailProperties) GetCostCenter() (rv string) {
+	if l != nil && l.CostCenter != nil {
+		return *l.CostCenter
+	}
+	return
+}
+
+func (l *LegacyUsageDetailProperties) GetDate() (rv *time.Time) {
+	if l != nil {
+		return l.Date
+	}
+	return
+}
+
+func (l *LegacyUsageDetailProperties) GetEffectivePrice() (rv float64) {
+	if l != nil && l.EffectivePrice != nil {
+		return *l.EffectivePrice
+	}
+	return
+}
+
+func (l *LegacyUsageDetailProperties) GetFrequency() (rv string) {
+	if l != nil && l.Frequency != nil {
+		return *l.Frequency
+	}
+	return
+}
+
+func (l *LegacyUsageDetailProperties) GetInvoiceSection() (rv string) {
+	if l != nil && l.InvoiceSection != nil {
+		return *l.InvoiceSection
+	}
+	return
+}
+
+func (l *LegacyUsageDetailProperties) GetIsAzureCreditEligible() (rv bool) {
+	if l != nil && l.IsAzureCreditEligible != nil {
+		return *l.IsAzureCreditEligible
+	}
+	return
+}
+
+func (l *LegacyUsageDetailProperties) GetMeterDetails() (rv *MeterDetailsResponse) {
+	if l != nil {
+		return l.MeterDetails
+	}
+	return
+}
+
+func (l *LegacyUsageDetailProperties) GetMeterID() (rv string) {
+	if l != nil && l.MeterID != nil {
+		return *l.MeterID
+	}
+	return
+}
+
+func (l *LegacyUsageDetailProperties) GetOfferID() (rv string) {
+	if l != nil && l.OfferID != nil {
+		return *l.OfferID
+	}
+	return
+}
+
+func (l *LegacyUsageDetailProperties) GetPartNumber() (rv string) {
+	if l != nil && l.PartNumber != nil {
+		return *l.PartNumber
+	}
+	return
+}
+
+func (l *LegacyUsageDetailProperties) GetPlanName() (rv string) {
+	if l != nil && l.PlanName != nil {
+		return *l.PlanName
+	}
+	return
+}
+
+func (l *LegacyUsageDetailProperties) GetProduct() (rv string) {
+	if l != nil && l.Product != nil {
+		return *l.Product
+	}
+	return
+}
+
+func (l *LegacyUsageDetailProperties) GetProductOrderID() (rv string) {
+	if l != nil && l.ProductOrderID != nil {
+		return *l.ProductOrderID
+	}
+	return
+}
+
+func (l *LegacyUsageDetailProperties) GetProductOrderName() (rv string) {
+	if l != nil && l.ProductOrderName != nil {
+		return *l.ProductOrderName
+	}
+	return
+}
+
+func (l *LegacyUsageDetailProperties) GetPublisherName() (rv string) {
+	if l != nil && l.PublisherName != nil {
+		return *l.PublisherName
+	}
+	return
+}
+
+func (l *LegacyUsageDetailProperties) GetPublisherType() (rv string) {
+	if l != nil && l.PublisherType != nil {
+		return *l.PublisherType
+	}
+	return
+}
+
+func (l *LegacyUsageDetailProperties) GetQuantity() (rv float64) {
+	if l != nil && l.Quantity != nil {
+		return *l.Quantity
+	}
+	return
+}
+
+func (l *LegacyUsageDetailProperties) GetReservationID() (rv string) {
+	if l != nil && l.ReservationID != nil {
+		return *l.ReservationID
+	}
+	return
+}
+
+func (l *LegacyUsageDetailProperties) GetReservationName() (rv string) {
+	if l != nil && l.ReservationName != nil {
+		return *l.ReservationName
+	}
+	return
+}
+
+func (l *LegacyUsageDetailProperties) GetResourceGroup() (rv string) {
+	if l != nil && l.ResourceGroup != nil {
+		return *l.ResourceGroup
+	}
+	return
+}
+
+func (l *LegacyUsageDetailProperties) GetResourceID() (rv string) {
+	if l != nil && l.ResourceID != nil {
+		return *l.ResourceID
+	}
+	return
+}
+
+func (l *LegacyUsageDetailProperties) GetResourceLocation() (rv string) {
+	if l != nil && l.ResourceLocation != nil {
+		return *l.ResourceLocation
+	}
+	return
+}
+
+func (l *LegacyUsageDetailProperties) GetResourceName() (rv string) {
+	if l != nil && l.ResourceName != nil {
+		return *l.ResourceName
+	}
+	return
+}
+
+func (l *LegacyUsageDetailProperties) GetServiceInfo1() (rv string) {
+	if l != nil && l.ServiceInfo1 != nil {
+		return *l.ServiceInfo1
+	}
+	return
+}
+
+func (l *LegacyUsageDetailProperties) GetServiceInfo2() (rv string) {
+	if l != nil && l.ServiceInfo2 != nil {
+		return *l.ServiceInfo2
+	}
+	return
+}
+
+func (l *LegacyUsageDetailProperties) GetSubscriptionID() (rv string) {
+	if l != nil && l.SubscriptionID != nil {
+		return *l.SubscriptionID
+	}
+	return
+}
+
+func (l *LegacyUsageDetailProperties) GetSubscriptionName() (rv string) {
+	if l != nil && l.SubscriptionName != nil {
+		return *l.SubscriptionName
+	}
+	return
+}
+
+func (l *LegacyUsageDetailProperties) GetTerm() (rv string) {
+	if l != nil && l.Term != nil {
+		return *l.Term
+	}
+	return
+}
+
+func (l *LegacyUsageDetailProperties) GetUnitPrice() (rv float64) {
+	if l != nil && l.UnitPrice != nil {
+		return *l.UnitPrice
+	}
+	return
+}
+
 // LotProperties - The lot properties.
 type LotProperties struct {
 	// READ-ONLY; Billing Currency.
@@ -899,6 +2516,83 @@ type LotProperties struct {
 	StartDate *time.Time
 }
 
+func (l *LotProperties) GetBillingCurrency() (rv string) {
+	if l != nil && l.BillingCurrency != nil {
+		return *l.BillingCurrency
+	}
+	return
+}
+
+func (l *LotProperties) GetClosedBalance() (rv *Amount) {
+	if l != nil {
+		return l.ClosedBalance
+	}
+	return
+}
+
+func (l *LotProperties) GetClosedBalanceInBillingCurrency() (rv *AmountWithExchangeRate) {
+	if l != nil {
+		return l.ClosedBalanceInBillingCurrency
+	}
+	return
+}
+
+func (l *LotProperties) GetCreditCurrency() (rv string) {
+	if l != nil && l.CreditCurrency != nil {
+		return *l.CreditCurrency
+	}
+	return
+}
+
+func (l *LotProperties) GetExpirationDate() (rv *time.Time) {
+	if l != nil {
+		return l.ExpirationDate
+	}
+	return
+}
+
+func (l *LotProperties) GetOriginalAmount() (rv *Amount) {
+	if l != nil {
+		return l.OriginalAmount
+	}
+	return
+}
+
+func (l *LotProperties) GetOriginalAmountInBillingCurrency() (rv *AmountWithExchangeRate) {
+	if l != nil {
+		return l.OriginalAmountInBillingCurrency
+	}
+	return
+}
+
+func (l *LotProperties) GetPoNumber() (rv string) {
+	if l != nil && l.PoNumber != nil {
+		return *l.PoNumber
+	}
+	return
+}
+
+func (l *LotProperties) GetReseller() (rv *Reseller) {
+	if l != nil {
+		return l.Reseller
+	}
+	return
+}
+
+func (l *LotProperties) GetSource() (rv *LotSource) {
+	if l != nil {
+		return l.Source
+	}
+	return
+}
+
+func (l *LotProperties) GetStartDate() (rv *time.Time) {
+	if l != nil {
+		return l.StartDate
+	}
+	return
+}
+
 // LotSummary - A lot summary resource.
 type LotSummary struct {
 	// eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating
@@ -918,6 +2612,41 @@ type LotSummary struct {
 	Type *string
 }
 
+func (l *LotSummary) GetETag() (rv string) {
+	if l != nil && l.ETag != nil {
+		return *l.ETag
+	}
+	return
+}
+
+func (l *LotSummary) GetProperties() (rv *LotProperties) {
+	if l != nil {
+		return l.Properties
+	}
+	return
+}
+
+func (l *LotSummary) GetID() (rv string) {
+	if l != nil && l.ID != nil {
+		return *l.ID
+	}
+	return
+}
+
+func (l *LotSummary) GetName() (rv string) {
+	if l != nil && l.Name != nil {
+		return *l.Name
+	}
+	return
+}
+
+func (l *LotSummary) GetType() (rv string) {
+	if l != nil && l.Type != nil {
+		return *l.Type
+	}
+	return
+}
+
 // Lots - Result of listing lot summary.
 type Lots struct {
 	// READ-ONLY; The link (url) to the next page of results.
@@ -925,6 +2654,20 @@ type Lots struct {
 
 	// READ-ONLY; The list of lot summary.
 	Value []*LotSummary
+}
+
+func (l *Lots) GetNextLink() (rv string) {
+	if l != nil && l.NextLink != nil {
+		return *l.NextLink
+	}
+	return
+}
+
+func (l *Lots) GetValue() (rv []*LotSummary) {
+	if l != nil {
+		return l.Value
+	}
+	return
 }
 
 // ManagementGroupAggregatedCostProperties - The properties of the Management Group Aggregated Cost.
@@ -960,6 +2703,76 @@ type ManagementGroupAggregatedCostProperties struct {
 	UsageStart *time.Time
 }
 
+func (m *ManagementGroupAggregatedCostProperties) GetChildren() (rv []*ManagementGroupAggregatedCostResult) {
+	if m != nil {
+		return m.Children
+	}
+	return
+}
+
+func (m *ManagementGroupAggregatedCostProperties) GetExcludedSubscriptions() (rv []*string) {
+	if m != nil {
+		return m.ExcludedSubscriptions
+	}
+	return
+}
+
+func (m *ManagementGroupAggregatedCostProperties) GetIncludedSubscriptions() (rv []*string) {
+	if m != nil {
+		return m.IncludedSubscriptions
+	}
+	return
+}
+
+func (m *ManagementGroupAggregatedCostProperties) GetAzureCharges() (rv float64) {
+	if m != nil && m.AzureCharges != nil {
+		return *m.AzureCharges
+	}
+	return
+}
+
+func (m *ManagementGroupAggregatedCostProperties) GetBillingPeriodID() (rv string) {
+	if m != nil && m.BillingPeriodID != nil {
+		return *m.BillingPeriodID
+	}
+	return
+}
+
+func (m *ManagementGroupAggregatedCostProperties) GetChargesBilledSeparately() (rv float64) {
+	if m != nil && m.ChargesBilledSeparately != nil {
+		return *m.ChargesBilledSeparately
+	}
+	return
+}
+
+func (m *ManagementGroupAggregatedCostProperties) GetCurrency() (rv string) {
+	if m != nil && m.Currency != nil {
+		return *m.Currency
+	}
+	return
+}
+
+func (m *ManagementGroupAggregatedCostProperties) GetMarketplaceCharges() (rv float64) {
+	if m != nil && m.MarketplaceCharges != nil {
+		return *m.MarketplaceCharges
+	}
+	return
+}
+
+func (m *ManagementGroupAggregatedCostProperties) GetUsageEnd() (rv *time.Time) {
+	if m != nil {
+		return m.UsageEnd
+	}
+	return
+}
+
+func (m *ManagementGroupAggregatedCostProperties) GetUsageStart() (rv *time.Time) {
+	if m != nil {
+		return m.UsageStart
+	}
+	return
+}
+
 // ManagementGroupAggregatedCostResult - A management group aggregated cost resource.
 type ManagementGroupAggregatedCostResult struct {
 	// The properties of the Management Group Aggregated Cost.
@@ -981,6 +2794,48 @@ type ManagementGroupAggregatedCostResult struct {
 	Type *string
 }
 
+func (m *ManagementGroupAggregatedCostResult) GetProperties() (rv *ManagementGroupAggregatedCostProperties) {
+	if m != nil {
+		return m.Properties
+	}
+	return
+}
+
+func (m *ManagementGroupAggregatedCostResult) GetEtag() (rv string) {
+	if m != nil && m.Etag != nil {
+		return *m.Etag
+	}
+	return
+}
+
+func (m *ManagementGroupAggregatedCostResult) GetID() (rv string) {
+	if m != nil && m.ID != nil {
+		return *m.ID
+	}
+	return
+}
+
+func (m *ManagementGroupAggregatedCostResult) GetName() (rv string) {
+	if m != nil && m.Name != nil {
+		return *m.Name
+	}
+	return
+}
+
+func (m *ManagementGroupAggregatedCostResult) GetTags() (rv map[string]*string) {
+	if m != nil {
+		return m.Tags
+	}
+	return
+}
+
+func (m *ManagementGroupAggregatedCostResult) GetType() (rv string) {
+	if m != nil && m.Type != nil {
+		return *m.Type
+	}
+	return
+}
+
 // Marketplace - An marketplace resource.
 type Marketplace struct {
 	// The properties of the marketplace usage detail.
@@ -1000,6 +2855,48 @@ type Marketplace struct {
 
 	// READ-ONLY; Resource type.
 	Type *string
+}
+
+func (m *Marketplace) GetProperties() (rv *MarketplaceProperties) {
+	if m != nil {
+		return m.Properties
+	}
+	return
+}
+
+func (m *Marketplace) GetEtag() (rv string) {
+	if m != nil && m.Etag != nil {
+		return *m.Etag
+	}
+	return
+}
+
+func (m *Marketplace) GetID() (rv string) {
+	if m != nil && m.ID != nil {
+		return *m.ID
+	}
+	return
+}
+
+func (m *Marketplace) GetName() (rv string) {
+	if m != nil && m.Name != nil {
+		return *m.Name
+	}
+	return
+}
+
+func (m *Marketplace) GetTags() (rv map[string]*string) {
+	if m != nil {
+		return m.Tags
+	}
+	return
+}
+
+func (m *Marketplace) GetType() (rv string) {
+	if m != nil && m.Type != nil {
+		return *m.Type
+	}
+	return
 }
 
 // MarketplaceProperties - The properties of the marketplace usage detail.
@@ -1083,6 +2980,188 @@ type MarketplaceProperties struct {
 	UsageStart *time.Time
 }
 
+func (m *MarketplaceProperties) GetAccountName() (rv string) {
+	if m != nil && m.AccountName != nil {
+		return *m.AccountName
+	}
+	return
+}
+
+func (m *MarketplaceProperties) GetAdditionalInfo() (rv string) {
+	if m != nil && m.AdditionalInfo != nil {
+		return *m.AdditionalInfo
+	}
+	return
+}
+
+func (m *MarketplaceProperties) GetAdditionalProperties() (rv string) {
+	if m != nil && m.AdditionalProperties != nil {
+		return *m.AdditionalProperties
+	}
+	return
+}
+
+func (m *MarketplaceProperties) GetBillingPeriodID() (rv string) {
+	if m != nil && m.BillingPeriodID != nil {
+		return *m.BillingPeriodID
+	}
+	return
+}
+
+func (m *MarketplaceProperties) GetConsumedQuantity() (rv float64) {
+	if m != nil && m.ConsumedQuantity != nil {
+		return *m.ConsumedQuantity
+	}
+	return
+}
+
+func (m *MarketplaceProperties) GetConsumedService() (rv string) {
+	if m != nil && m.ConsumedService != nil {
+		return *m.ConsumedService
+	}
+	return
+}
+
+func (m *MarketplaceProperties) GetCostCenter() (rv string) {
+	if m != nil && m.CostCenter != nil {
+		return *m.CostCenter
+	}
+	return
+}
+
+func (m *MarketplaceProperties) GetCurrency() (rv string) {
+	if m != nil && m.Currency != nil {
+		return *m.Currency
+	}
+	return
+}
+
+func (m *MarketplaceProperties) GetDepartmentName() (rv string) {
+	if m != nil && m.DepartmentName != nil {
+		return *m.DepartmentName
+	}
+	return
+}
+
+func (m *MarketplaceProperties) GetInstanceID() (rv string) {
+	if m != nil && m.InstanceID != nil {
+		return *m.InstanceID
+	}
+	return
+}
+
+func (m *MarketplaceProperties) GetInstanceName() (rv string) {
+	if m != nil && m.InstanceName != nil {
+		return *m.InstanceName
+	}
+	return
+}
+
+func (m *MarketplaceProperties) GetIsEstimated() (rv bool) {
+	if m != nil && m.IsEstimated != nil {
+		return *m.IsEstimated
+	}
+	return
+}
+
+func (m *MarketplaceProperties) GetIsRecurringCharge() (rv bool) {
+	if m != nil && m.IsRecurringCharge != nil {
+		return *m.IsRecurringCharge
+	}
+	return
+}
+
+func (m *MarketplaceProperties) GetMeterID() (rv string) {
+	if m != nil && m.MeterID != nil {
+		return *m.MeterID
+	}
+	return
+}
+
+func (m *MarketplaceProperties) GetOfferName() (rv string) {
+	if m != nil && m.OfferName != nil {
+		return *m.OfferName
+	}
+	return
+}
+
+func (m *MarketplaceProperties) GetOrderNumber() (rv string) {
+	if m != nil && m.OrderNumber != nil {
+		return *m.OrderNumber
+	}
+	return
+}
+
+func (m *MarketplaceProperties) GetPlanName() (rv string) {
+	if m != nil && m.PlanName != nil {
+		return *m.PlanName
+	}
+	return
+}
+
+func (m *MarketplaceProperties) GetPretaxCost() (rv float64) {
+	if m != nil && m.PretaxCost != nil {
+		return *m.PretaxCost
+	}
+	return
+}
+
+func (m *MarketplaceProperties) GetPublisherName() (rv string) {
+	if m != nil && m.PublisherName != nil {
+		return *m.PublisherName
+	}
+	return
+}
+
+func (m *MarketplaceProperties) GetResourceGroup() (rv string) {
+	if m != nil && m.ResourceGroup != nil {
+		return *m.ResourceGroup
+	}
+	return
+}
+
+func (m *MarketplaceProperties) GetResourceRate() (rv float64) {
+	if m != nil && m.ResourceRate != nil {
+		return *m.ResourceRate
+	}
+	return
+}
+
+func (m *MarketplaceProperties) GetSubscriptionGUID() (rv string) {
+	if m != nil && m.SubscriptionGUID != nil {
+		return *m.SubscriptionGUID
+	}
+	return
+}
+
+func (m *MarketplaceProperties) GetSubscriptionName() (rv string) {
+	if m != nil && m.SubscriptionName != nil {
+		return *m.SubscriptionName
+	}
+	return
+}
+
+func (m *MarketplaceProperties) GetUnitOfMeasure() (rv string) {
+	if m != nil && m.UnitOfMeasure != nil {
+		return *m.UnitOfMeasure
+	}
+	return
+}
+
+func (m *MarketplaceProperties) GetUsageEnd() (rv *time.Time) {
+	if m != nil {
+		return m.UsageEnd
+	}
+	return
+}
+
+func (m *MarketplaceProperties) GetUsageStart() (rv *time.Time) {
+	if m != nil {
+		return m.UsageStart
+	}
+	return
+}
+
 // MarketplacesListResult - Result of listing marketplaces. It contains a list of available marketplaces in reverse chronological
 // order by billing period.
 type MarketplacesListResult struct {
@@ -1091,6 +3170,20 @@ type MarketplacesListResult struct {
 
 	// READ-ONLY; The list of marketplaces.
 	Value []*Marketplace
+}
+
+func (m *MarketplacesListResult) GetNextLink() (rv string) {
+	if m != nil && m.NextLink != nil {
+		return *m.NextLink
+	}
+	return
+}
+
+func (m *MarketplacesListResult) GetValue() (rv []*Marketplace) {
+	if m != nil {
+		return m.Value
+	}
+	return
 }
 
 // MeterDetails - The properties of the meter detail.
@@ -1123,6 +3216,69 @@ type MeterDetails struct {
 	Unit *string
 }
 
+func (m *MeterDetails) GetMeterCategory() (rv string) {
+	if m != nil && m.MeterCategory != nil {
+		return *m.MeterCategory
+	}
+	return
+}
+
+func (m *MeterDetails) GetMeterLocation() (rv string) {
+	if m != nil && m.MeterLocation != nil {
+		return *m.MeterLocation
+	}
+	return
+}
+
+func (m *MeterDetails) GetMeterName() (rv string) {
+	if m != nil && m.MeterName != nil {
+		return *m.MeterName
+	}
+	return
+}
+
+func (m *MeterDetails) GetMeterSubCategory() (rv string) {
+	if m != nil && m.MeterSubCategory != nil {
+		return *m.MeterSubCategory
+	}
+	return
+}
+
+func (m *MeterDetails) GetPretaxStandardRate() (rv float64) {
+	if m != nil && m.PretaxStandardRate != nil {
+		return *m.PretaxStandardRate
+	}
+	return
+}
+
+func (m *MeterDetails) GetServiceName() (rv string) {
+	if m != nil && m.ServiceName != nil {
+		return *m.ServiceName
+	}
+	return
+}
+
+func (m *MeterDetails) GetServiceTier() (rv string) {
+	if m != nil && m.ServiceTier != nil {
+		return *m.ServiceTier
+	}
+	return
+}
+
+func (m *MeterDetails) GetTotalIncludedQuantity() (rv float64) {
+	if m != nil && m.TotalIncludedQuantity != nil {
+		return *m.TotalIncludedQuantity
+	}
+	return
+}
+
+func (m *MeterDetails) GetUnit() (rv string) {
+	if m != nil && m.Unit != nil {
+		return *m.Unit
+	}
+	return
+}
+
 // MeterDetailsResponse - The properties of the meter detail.
 type MeterDetailsResponse struct {
 	// READ-ONLY; The category of the meter, for example, 'Cloud services', 'Networking', etc..
@@ -1139,6 +3295,41 @@ type MeterDetailsResponse struct {
 
 	// READ-ONLY; The unit in which the meter consumption is charged, for example, 'Hours', 'GB', etc.
 	UnitOfMeasure *string
+}
+
+func (m *MeterDetailsResponse) GetMeterCategory() (rv string) {
+	if m != nil && m.MeterCategory != nil {
+		return *m.MeterCategory
+	}
+	return
+}
+
+func (m *MeterDetailsResponse) GetMeterName() (rv string) {
+	if m != nil && m.MeterName != nil {
+		return *m.MeterName
+	}
+	return
+}
+
+func (m *MeterDetailsResponse) GetMeterSubCategory() (rv string) {
+	if m != nil && m.MeterSubCategory != nil {
+		return *m.MeterSubCategory
+	}
+	return
+}
+
+func (m *MeterDetailsResponse) GetServiceFamily() (rv string) {
+	if m != nil && m.ServiceFamily != nil {
+		return *m.ServiceFamily
+	}
+	return
+}
+
+func (m *MeterDetailsResponse) GetUnitOfMeasure() (rv string) {
+	if m != nil && m.UnitOfMeasure != nil {
+		return *m.UnitOfMeasure
+	}
+	return
 }
 
 // ModernChargeSummary - Modern charge summary.
@@ -1163,6 +3354,55 @@ type ModernChargeSummary struct {
 
 	// READ-ONLY; Resource type.
 	Type *string
+}
+
+func (m *ModernChargeSummary) GetKind() (rv *ChargeSummaryKind) {
+	if m != nil {
+		return m.Kind
+	}
+	return
+}
+
+func (m *ModernChargeSummary) GetProperties() (rv *ModernChargeSummaryProperties) {
+	if m != nil {
+		return m.Properties
+	}
+	return
+}
+
+func (m *ModernChargeSummary) GetETag() (rv string) {
+	if m != nil && m.ETag != nil {
+		return *m.ETag
+	}
+	return
+}
+
+func (m *ModernChargeSummary) GetID() (rv string) {
+	if m != nil && m.ID != nil {
+		return *m.ID
+	}
+	return
+}
+
+func (m *ModernChargeSummary) GetName() (rv string) {
+	if m != nil && m.Name != nil {
+		return *m.Name
+	}
+	return
+}
+
+func (m *ModernChargeSummary) GetTags() (rv map[string]*string) {
+	if m != nil {
+		return m.Tags
+	}
+	return
+}
+
+func (m *ModernChargeSummary) GetType() (rv string) {
+	if m != nil && m.Type != nil {
+		return *m.Type
+	}
+	return
 }
 
 // GetChargeSummary implements the ChargeSummaryClassification interface for type ModernChargeSummary.
@@ -1216,6 +3456,90 @@ type ModernChargeSummaryProperties struct {
 	UsageStart *string
 }
 
+func (m *ModernChargeSummaryProperties) GetAzureCharges() (rv *Amount) {
+	if m != nil {
+		return m.AzureCharges
+	}
+	return
+}
+
+func (m *ModernChargeSummaryProperties) GetBillingAccountID() (rv string) {
+	if m != nil && m.BillingAccountID != nil {
+		return *m.BillingAccountID
+	}
+	return
+}
+
+func (m *ModernChargeSummaryProperties) GetBillingPeriodID() (rv string) {
+	if m != nil && m.BillingPeriodID != nil {
+		return *m.BillingPeriodID
+	}
+	return
+}
+
+func (m *ModernChargeSummaryProperties) GetBillingProfileID() (rv string) {
+	if m != nil && m.BillingProfileID != nil {
+		return *m.BillingProfileID
+	}
+	return
+}
+
+func (m *ModernChargeSummaryProperties) GetChargesBilledSeparately() (rv *Amount) {
+	if m != nil {
+		return m.ChargesBilledSeparately
+	}
+	return
+}
+
+func (m *ModernChargeSummaryProperties) GetCustomerID() (rv string) {
+	if m != nil && m.CustomerID != nil {
+		return *m.CustomerID
+	}
+	return
+}
+
+func (m *ModernChargeSummaryProperties) GetInvoiceSectionID() (rv string) {
+	if m != nil && m.InvoiceSectionID != nil {
+		return *m.InvoiceSectionID
+	}
+	return
+}
+
+func (m *ModernChargeSummaryProperties) GetIsInvoiced() (rv bool) {
+	if m != nil && m.IsInvoiced != nil {
+		return *m.IsInvoiced
+	}
+	return
+}
+
+func (m *ModernChargeSummaryProperties) GetMarketplaceCharges() (rv *Amount) {
+	if m != nil {
+		return m.MarketplaceCharges
+	}
+	return
+}
+
+func (m *ModernChargeSummaryProperties) GetSubscriptionID() (rv string) {
+	if m != nil && m.SubscriptionID != nil {
+		return *m.SubscriptionID
+	}
+	return
+}
+
+func (m *ModernChargeSummaryProperties) GetUsageEnd() (rv string) {
+	if m != nil && m.UsageEnd != nil {
+		return *m.UsageEnd
+	}
+	return
+}
+
+func (m *ModernChargeSummaryProperties) GetUsageStart() (rv string) {
+	if m != nil && m.UsageStart != nil {
+		return *m.UsageStart
+	}
+	return
+}
+
 // ModernReservationRecommendation - Modern reservation recommendation.
 type ModernReservationRecommendation struct {
 	// REQUIRED; Specifies the kind of reservation recommendation.
@@ -1244,6 +3568,69 @@ type ModernReservationRecommendation struct {
 
 	// READ-ONLY; Resource type.
 	Type *string
+}
+
+func (m *ModernReservationRecommendation) GetKind() (rv *ReservationRecommendationKind) {
+	if m != nil {
+		return m.Kind
+	}
+	return
+}
+
+func (m *ModernReservationRecommendation) GetProperties() (rv *ModernReservationRecommendationProperties) {
+	if m != nil {
+		return m.Properties
+	}
+	return
+}
+
+func (m *ModernReservationRecommendation) GetETag() (rv string) {
+	if m != nil && m.ETag != nil {
+		return *m.ETag
+	}
+	return
+}
+
+func (m *ModernReservationRecommendation) GetID() (rv string) {
+	if m != nil && m.ID != nil {
+		return *m.ID
+	}
+	return
+}
+
+func (m *ModernReservationRecommendation) GetLocation() (rv string) {
+	if m != nil && m.Location != nil {
+		return *m.Location
+	}
+	return
+}
+
+func (m *ModernReservationRecommendation) GetName() (rv string) {
+	if m != nil && m.Name != nil {
+		return *m.Name
+	}
+	return
+}
+
+func (m *ModernReservationRecommendation) GetSKU() (rv string) {
+	if m != nil && m.SKU != nil {
+		return *m.SKU
+	}
+	return
+}
+
+func (m *ModernReservationRecommendation) GetTags() (rv map[string]*string) {
+	if m != nil {
+		return m.Tags
+	}
+	return
+}
+
+func (m *ModernReservationRecommendation) GetType() (rv string) {
+	if m != nil && m.Type != nil {
+		return *m.Type
+	}
+	return
 }
 
 // GetReservationRecommendation implements the ReservationRecommendationClassification interface for type ModernReservationRecommendation.
@@ -1317,6 +3704,132 @@ type ModernReservationRecommendationProperties struct {
 	TotalCostWithReservedInstances *Amount
 }
 
+func (m *ModernReservationRecommendationProperties) GetCostWithNoReservedInstances() (rv *Amount) {
+	if m != nil {
+		return m.CostWithNoReservedInstances
+	}
+	return
+}
+
+func (m *ModernReservationRecommendationProperties) GetFirstUsageDate() (rv *time.Time) {
+	if m != nil {
+		return m.FirstUsageDate
+	}
+	return
+}
+
+func (m *ModernReservationRecommendationProperties) GetInstanceFlexibilityGroup() (rv string) {
+	if m != nil && m.InstanceFlexibilityGroup != nil {
+		return *m.InstanceFlexibilityGroup
+	}
+	return
+}
+
+func (m *ModernReservationRecommendationProperties) GetInstanceFlexibilityRatio() (rv float32) {
+	if m != nil && m.InstanceFlexibilityRatio != nil {
+		return *m.InstanceFlexibilityRatio
+	}
+	return
+}
+
+func (m *ModernReservationRecommendationProperties) GetLocation() (rv string) {
+	if m != nil && m.Location != nil {
+		return *m.Location
+	}
+	return
+}
+
+func (m *ModernReservationRecommendationProperties) GetLookBackPeriod() (rv int32) {
+	if m != nil && m.LookBackPeriod != nil {
+		return *m.LookBackPeriod
+	}
+	return
+}
+
+func (m *ModernReservationRecommendationProperties) GetMeterID() (rv string) {
+	if m != nil && m.MeterID != nil {
+		return *m.MeterID
+	}
+	return
+}
+
+func (m *ModernReservationRecommendationProperties) GetNetSavings() (rv *Amount) {
+	if m != nil {
+		return m.NetSavings
+	}
+	return
+}
+
+func (m *ModernReservationRecommendationProperties) GetNormalizedSize() (rv string) {
+	if m != nil && m.NormalizedSize != nil {
+		return *m.NormalizedSize
+	}
+	return
+}
+
+func (m *ModernReservationRecommendationProperties) GetRecommendedQuantity() (rv float64) {
+	if m != nil && m.RecommendedQuantity != nil {
+		return *m.RecommendedQuantity
+	}
+	return
+}
+
+func (m *ModernReservationRecommendationProperties) GetRecommendedQuantityNormalized() (rv float32) {
+	if m != nil && m.RecommendedQuantityNormalized != nil {
+		return *m.RecommendedQuantityNormalized
+	}
+	return
+}
+
+func (m *ModernReservationRecommendationProperties) GetResourceType() (rv string) {
+	if m != nil && m.ResourceType != nil {
+		return *m.ResourceType
+	}
+	return
+}
+
+func (m *ModernReservationRecommendationProperties) GetSKUName() (rv string) {
+	if m != nil && m.SKUName != nil {
+		return *m.SKUName
+	}
+	return
+}
+
+func (m *ModernReservationRecommendationProperties) GetSKUProperties() (rv []*SKUProperty) {
+	if m != nil {
+		return m.SKUProperties
+	}
+	return
+}
+
+func (m *ModernReservationRecommendationProperties) GetScope() (rv int32) {
+	if m != nil && m.Scope != nil {
+		return *m.Scope
+	}
+	return
+}
+
+func (m *ModernReservationRecommendationProperties) GetSubscriptionID() (rv string) {
+	if m != nil && m.SubscriptionID != nil {
+		return *m.SubscriptionID
+	}
+	return
+}
+
+func (m *ModernReservationRecommendationProperties) GetTerm() (rv string) {
+	if m != nil && m.Term != nil {
+		return *m.Term
+	}
+	return
+}
+
+func (m *ModernReservationRecommendationProperties) GetTotalCostWithReservedInstances() (rv *Amount) {
+	if m != nil {
+		return m.TotalCostWithReservedInstances
+	}
+	return
+}
+
 // ModernReservationTransaction - Modern Reservation transaction resource.
 type ModernReservationTransaction struct {
 	// REQUIRED; The properties of a modern reservation transaction.
@@ -1333,6 +3846,41 @@ type ModernReservationTransaction struct {
 
 	// READ-ONLY; Resource type.
 	Type *string
+}
+
+func (m *ModernReservationTransaction) GetProperties() (rv *ModernReservationTransactionProperties) {
+	if m != nil {
+		return m.Properties
+	}
+	return
+}
+
+func (m *ModernReservationTransaction) GetID() (rv string) {
+	if m != nil && m.ID != nil {
+		return *m.ID
+	}
+	return
+}
+
+func (m *ModernReservationTransaction) GetName() (rv string) {
+	if m != nil && m.Name != nil {
+		return *m.Name
+	}
+	return
+}
+
+func (m *ModernReservationTransaction) GetTags() (rv []*string) {
+	if m != nil {
+		return m.Tags
+	}
+	return
+}
+
+func (m *ModernReservationTransaction) GetType() (rv string) {
+	if m != nil && m.Type != nil {
+		return *m.Type
+	}
+	return
 }
 
 // ModernReservationTransactionProperties - The properties of a modern reservation transaction.
@@ -1400,6 +3948,146 @@ type ModernReservationTransactionProperties struct {
 	Term *string
 }
 
+func (m *ModernReservationTransactionProperties) GetAmount() (rv float64) {
+	if m != nil && m.Amount != nil {
+		return *m.Amount
+	}
+	return
+}
+
+func (m *ModernReservationTransactionProperties) GetArmSKUName() (rv string) {
+	if m != nil && m.ArmSKUName != nil {
+		return *m.ArmSKUName
+	}
+	return
+}
+
+func (m *ModernReservationTransactionProperties) GetBillingFrequency() (rv string) {
+	if m != nil && m.BillingFrequency != nil {
+		return *m.BillingFrequency
+	}
+	return
+}
+
+func (m *ModernReservationTransactionProperties) GetBillingProfileID() (rv string) {
+	if m != nil && m.BillingProfileID != nil {
+		return *m.BillingProfileID
+	}
+	return
+}
+
+func (m *ModernReservationTransactionProperties) GetBillingProfileName() (rv string) {
+	if m != nil && m.BillingProfileName != nil {
+		return *m.BillingProfileName
+	}
+	return
+}
+
+func (m *ModernReservationTransactionProperties) GetCurrency() (rv string) {
+	if m != nil && m.Currency != nil {
+		return *m.Currency
+	}
+	return
+}
+
+func (m *ModernReservationTransactionProperties) GetDescription() (rv string) {
+	if m != nil && m.Description != nil {
+		return *m.Description
+	}
+	return
+}
+
+func (m *ModernReservationTransactionProperties) GetEventDate() (rv *time.Time) {
+	if m != nil {
+		return m.EventDate
+	}
+	return
+}
+
+func (m *ModernReservationTransactionProperties) GetEventType() (rv string) {
+	if m != nil && m.EventType != nil {
+		return *m.EventType
+	}
+	return
+}
+
+func (m *ModernReservationTransactionProperties) GetInvoice() (rv string) {
+	if m != nil && m.Invoice != nil {
+		return *m.Invoice
+	}
+	return
+}
+
+func (m *ModernReservationTransactionProperties) GetInvoiceID() (rv string) {
+	if m != nil && m.InvoiceID != nil {
+		return *m.InvoiceID
+	}
+	return
+}
+
+func (m *ModernReservationTransactionProperties) GetInvoiceSectionID() (rv string) {
+	if m != nil && m.InvoiceSectionID != nil {
+		return *m.InvoiceSectionID
+	}
+	return
+}
+
+func (m *ModernReservationTransactionProperties) GetInvoiceSectionName() (rv string) {
+	if m != nil && m.InvoiceSectionName != nil {
+		return *m.InvoiceSectionName
+	}
+	return
+}
+
+func (m *ModernReservationTransactionProperties) GetPurchasingSubscriptionGUID() (rv string) {
+	if m != nil && m.PurchasingSubscriptionGUID != nil {
+		return *m.PurchasingSubscriptionGUID
+	}
+	return
+}
+
+func (m *ModernReservationTransactionProperties) GetPurchasingSubscriptionName() (rv string) {
+	if m != nil && m.PurchasingSubscriptionName != nil {
+		return *m.PurchasingSubscriptionName
+	}
+	return
+}
+
+func (m *ModernReservationTransactionProperties) GetQuantity() (rv float64) {
+	if m != nil && m.Quantity != nil {
+		return *m.Quantity
+	}
+	return
+}
+
+func (m *ModernReservationTransactionProperties) GetRegion() (rv string) {
+	if m != nil && m.Region != nil {
+		return *m.Region
+	}
+	return
+}
+
+func (m *ModernReservationTransactionProperties) GetReservationOrderID() (rv string) {
+	if m != nil && m.ReservationOrderID != nil {
+		return *m.ReservationOrderID
+	}
+	return
+}
+
+func (m *ModernReservationTransactionProperties) GetReservationOrderName() (rv string) {
+	if m != nil && m.ReservationOrderName != nil {
+		return *m.ReservationOrderName
+	}
+	return
+}
+
+func (m *ModernReservationTransactionProperties) GetTerm() (rv string) {
+	if m != nil && m.Term != nil {
+		return *m.Term
+	}
+	return
+}
+
 // ModernReservationTransactionsListResult - Result of listing reservation recommendations.
 type ModernReservationTransactionsListResult struct {
 	// READ-ONLY; The link (url) to the next page of results.
@@ -1407,6 +4095,20 @@ type ModernReservationTransactionsListResult struct {
 
 	// READ-ONLY; The list of reservation recommendations.
 	Value []*ModernReservationTransaction
+}
+
+func (m *ModernReservationTransactionsListResult) GetNextLink() (rv string) {
+	if m != nil && m.NextLink != nil {
+		return *m.NextLink
+	}
+	return
+}
+
+func (m *ModernReservationTransactionsListResult) GetValue() (rv []*ModernReservationTransaction) {
+	if m != nil {
+		return m.Value
+	}
+	return
 }
 
 // ModernUsageDetail - Modern usage detail.
@@ -1431,6 +4133,55 @@ type ModernUsageDetail struct {
 
 	// READ-ONLY; Resource type.
 	Type *string
+}
+
+func (m *ModernUsageDetail) GetKind() (rv *UsageDetailsKind) {
+	if m != nil {
+		return m.Kind
+	}
+	return
+}
+
+func (m *ModernUsageDetail) GetProperties() (rv *ModernUsageDetailProperties) {
+	if m != nil {
+		return m.Properties
+	}
+	return
+}
+
+func (m *ModernUsageDetail) GetEtag() (rv string) {
+	if m != nil && m.Etag != nil {
+		return *m.Etag
+	}
+	return
+}
+
+func (m *ModernUsageDetail) GetID() (rv string) {
+	if m != nil && m.ID != nil {
+		return *m.ID
+	}
+	return
+}
+
+func (m *ModernUsageDetail) GetName() (rv string) {
+	if m != nil && m.Name != nil {
+		return *m.Name
+	}
+	return
+}
+
+func (m *ModernUsageDetail) GetTags() (rv map[string]*string) {
+	if m != nil {
+		return m.Tags
+	}
+	return
+}
+
+func (m *ModernUsageDetail) GetType() (rv string) {
+	if m != nil && m.Type != nil {
+		return *m.Type
+	}
+	return
 }
 
 // GetUsageDetail implements the UsageDetailClassification interface for type ModernUsageDetail.
@@ -1665,6 +4416,468 @@ type ModernUsageDetailProperties struct {
 	UnitPrice *float64
 }
 
+func (m *ModernUsageDetailProperties) GetAdditionalInfo() (rv string) {
+	if m != nil && m.AdditionalInfo != nil {
+		return *m.AdditionalInfo
+	}
+	return
+}
+
+func (m *ModernUsageDetailProperties) GetBillingAccountID() (rv string) {
+	if m != nil && m.BillingAccountID != nil {
+		return *m.BillingAccountID
+	}
+	return
+}
+
+func (m *ModernUsageDetailProperties) GetBillingAccountName() (rv string) {
+	if m != nil && m.BillingAccountName != nil {
+		return *m.BillingAccountName
+	}
+	return
+}
+
+func (m *ModernUsageDetailProperties) GetBillingCurrencyCode() (rv string) {
+	if m != nil && m.BillingCurrencyCode != nil {
+		return *m.BillingCurrencyCode
+	}
+	return
+}
+
+func (m *ModernUsageDetailProperties) GetBillingPeriodEndDate() (rv *time.Time) {
+	if m != nil {
+		return m.BillingPeriodEndDate
+	}
+	return
+}
+
+func (m *ModernUsageDetailProperties) GetBillingPeriodStartDate() (rv *time.Time) {
+	if m != nil {
+		return m.BillingPeriodStartDate
+	}
+	return
+}
+
+func (m *ModernUsageDetailProperties) GetBillingProfileID() (rv string) {
+	if m != nil && m.BillingProfileID != nil {
+		return *m.BillingProfileID
+	}
+	return
+}
+
+func (m *ModernUsageDetailProperties) GetBillingProfileName() (rv string) {
+	if m != nil && m.BillingProfileName != nil {
+		return *m.BillingProfileName
+	}
+	return
+}
+
+func (m *ModernUsageDetailProperties) GetChargeType() (rv string) {
+	if m != nil && m.ChargeType != nil {
+		return *m.ChargeType
+	}
+	return
+}
+
+func (m *ModernUsageDetailProperties) GetConsumedService() (rv string) {
+	if m != nil && m.ConsumedService != nil {
+		return *m.ConsumedService
+	}
+	return
+}
+
+func (m *ModernUsageDetailProperties) GetCostCenter() (rv string) {
+	if m != nil && m.CostCenter != nil {
+		return *m.CostCenter
+	}
+	return
+}
+
+func (m *ModernUsageDetailProperties) GetCostInBillingCurrency() (rv float64) {
+	if m != nil && m.CostInBillingCurrency != nil {
+		return *m.CostInBillingCurrency
+	}
+	return
+}
+
+func (m *ModernUsageDetailProperties) GetCostInPricingCurrency() (rv float64) {
+	if m != nil && m.CostInPricingCurrency != nil {
+		return *m.CostInPricingCurrency
+	}
+	return
+}
+
+func (m *ModernUsageDetailProperties) GetCostInUSD() (rv float64) {
+	if m != nil && m.CostInUSD != nil {
+		return *m.CostInUSD
+	}
+	return
+}
+
+func (m *ModernUsageDetailProperties) GetCustomerName() (rv string) {
+	if m != nil && m.CustomerName != nil {
+		return *m.CustomerName
+	}
+	return
+}
+
+func (m *ModernUsageDetailProperties) GetCustomerTenantID() (rv string) {
+	if m != nil && m.CustomerTenantID != nil {
+		return *m.CustomerTenantID
+	}
+	return
+}
+
+func (m *ModernUsageDetailProperties) GetDate() (rv *time.Time) {
+	if m != nil {
+		return m.Date
+	}
+	return
+}
+
+func (m *ModernUsageDetailProperties) GetExchangeRate() (rv string) {
+	if m != nil && m.ExchangeRate != nil {
+		return *m.ExchangeRate
+	}
+	return
+}
+
+func (m *ModernUsageDetailProperties) GetExchangeRateDate() (rv *time.Time) {
+	if m != nil {
+		return m.ExchangeRateDate
+	}
+	return
+}
+
+func (m *ModernUsageDetailProperties) GetExchangeRatePricingToBilling() (rv float64) {
+	if m != nil && m.ExchangeRatePricingToBilling != nil {
+		return *m.ExchangeRatePricingToBilling
+	}
+	return
+}
+
+func (m *ModernUsageDetailProperties) GetFrequency() (rv string) {
+	if m != nil && m.Frequency != nil {
+		return *m.Frequency
+	}
+	return
+}
+
+func (m *ModernUsageDetailProperties) GetInstanceName() (rv string) {
+	if m != nil && m.InstanceName != nil {
+		return *m.InstanceName
+	}
+	return
+}
+
+func (m *ModernUsageDetailProperties) GetInvoiceID() (rv string) {
+	if m != nil && m.InvoiceID != nil {
+		return *m.InvoiceID
+	}
+	return
+}
+
+func (m *ModernUsageDetailProperties) GetInvoiceSectionID() (rv string) {
+	if m != nil && m.InvoiceSectionID != nil {
+		return *m.InvoiceSectionID
+	}
+	return
+}
+
+func (m *ModernUsageDetailProperties) GetInvoiceSectionName() (rv string) {
+	if m != nil && m.InvoiceSectionName != nil {
+		return *m.InvoiceSectionName
+	}
+	return
+}
+
+func (m *ModernUsageDetailProperties) GetIsAzureCreditEligible() (rv bool) {
+	if m != nil && m.IsAzureCreditEligible != nil {
+		return *m.IsAzureCreditEligible
+	}
+	return
+}
+
+func (m *ModernUsageDetailProperties) GetMarketPrice() (rv float64) {
+	if m != nil && m.MarketPrice != nil {
+		return *m.MarketPrice
+	}
+	return
+}
+
+func (m *ModernUsageDetailProperties) GetMeterCategory() (rv string) {
+	if m != nil && m.MeterCategory != nil {
+		return *m.MeterCategory
+	}
+	return
+}
+
+func (m *ModernUsageDetailProperties) GetMeterID() (rv string) {
+	if m != nil && m.MeterID != nil {
+		return *m.MeterID
+	}
+	return
+}
+
+func (m *ModernUsageDetailProperties) GetMeterName() (rv string) {
+	if m != nil && m.MeterName != nil {
+		return *m.MeterName
+	}
+	return
+}
+
+func (m *ModernUsageDetailProperties) GetMeterRegion() (rv string) {
+	if m != nil && m.MeterRegion != nil {
+		return *m.MeterRegion
+	}
+	return
+}
+
+func (m *ModernUsageDetailProperties) GetMeterSubCategory() (rv string) {
+	if m != nil && m.MeterSubCategory != nil {
+		return *m.MeterSubCategory
+	}
+	return
+}
+
+func (m *ModernUsageDetailProperties) GetPartnerEarnedCreditApplied() (rv string) {
+	if m != nil && m.PartnerEarnedCreditApplied != nil {
+		return *m.PartnerEarnedCreditApplied
+	}
+	return
+}
+
+func (m *ModernUsageDetailProperties) GetPartnerEarnedCreditRate() (rv float64) {
+	if m != nil && m.PartnerEarnedCreditRate != nil {
+		return *m.PartnerEarnedCreditRate
+	}
+	return
+}
+
+func (m *ModernUsageDetailProperties) GetPartnerName() (rv string) {
+	if m != nil && m.PartnerName != nil {
+		return *m.PartnerName
+	}
+	return
+}
+
+func (m *ModernUsageDetailProperties) GetPartnerTenantID() (rv string) {
+	if m != nil && m.PartnerTenantID != nil {
+		return *m.PartnerTenantID
+	}
+	return
+}
+
+func (m *ModernUsageDetailProperties) GetPayGPrice() (rv float64) {
+	if m != nil && m.PayGPrice != nil {
+		return *m.PayGPrice
+	}
+	return
+}
+
+func (m *ModernUsageDetailProperties) GetPaygCostInBillingCurrency() (rv float64) {
+	if m != nil && m.PaygCostInBillingCurrency != nil {
+		return *m.PaygCostInBillingCurrency
+	}
+	return
+}
+
+func (m *ModernUsageDetailProperties) GetPaygCostInUSD() (rv float64) {
+	if m != nil && m.PaygCostInUSD != nil {
+		return *m.PaygCostInUSD
+	}
+	return
+}
+
+func (m *ModernUsageDetailProperties) GetPreviousInvoiceID() (rv string) {
+	if m != nil && m.PreviousInvoiceID != nil {
+		return *m.PreviousInvoiceID
+	}
+	return
+}
+
+func (m *ModernUsageDetailProperties) GetPricingCurrencyCode() (rv string) {
+	if m != nil && m.PricingCurrencyCode != nil {
+		return *m.PricingCurrencyCode
+	}
+	return
+}
+
+func (m *ModernUsageDetailProperties) GetProduct() (rv string) {
+	if m != nil && m.Product != nil {
+		return *m.Product
+	}
+	return
+}
+
+func (m *ModernUsageDetailProperties) GetProductIdentifier() (rv string) {
+	if m != nil && m.ProductIdentifier != nil {
+		return *m.ProductIdentifier
+	}
+	return
+}
+
+func (m *ModernUsageDetailProperties) GetProductOrderID() (rv string) {
+	if m != nil && m.ProductOrderID != nil {
+		return *m.ProductOrderID
+	}
+	return
+}
+
+func (m *ModernUsageDetailProperties) GetProductOrderName() (rv string) {
+	if m != nil && m.ProductOrderName != nil {
+		return *m.ProductOrderName
+	}
+	return
+}
+
+func (m *ModernUsageDetailProperties) GetPublisherID() (rv string) {
+	if m != nil && m.PublisherID != nil {
+		return *m.PublisherID
+	}
+	return
+}
+
+func (m *ModernUsageDetailProperties) GetPublisherName() (rv string) {
+	if m != nil && m.PublisherName != nil {
+		return *m.PublisherName
+	}
+	return
+}
+
+func (m *ModernUsageDetailProperties) GetPublisherType() (rv string) {
+	if m != nil && m.PublisherType != nil {
+		return *m.PublisherType
+	}
+	return
+}
+
+func (m *ModernUsageDetailProperties) GetQuantity() (rv float64) {
+	if m != nil && m.Quantity != nil {
+		return *m.Quantity
+	}
+	return
+}
+
+func (m *ModernUsageDetailProperties) GetResellerMpnID() (rv string) {
+	if m != nil && m.ResellerMpnID != nil {
+		return *m.ResellerMpnID
+	}
+	return
+}
+
+func (m *ModernUsageDetailProperties) GetResellerName() (rv string) {
+	if m != nil && m.ResellerName != nil {
+		return *m.ResellerName
+	}
+	return
+}
+
+func (m *ModernUsageDetailProperties) GetReservationID() (rv string) {
+	if m != nil && m.ReservationID != nil {
+		return *m.ReservationID
+	}
+	return
+}
+
+func (m *ModernUsageDetailProperties) GetReservationName() (rv string) {
+	if m != nil && m.ReservationName != nil {
+		return *m.ReservationName
+	}
+	return
+}
+
+func (m *ModernUsageDetailProperties) GetResourceGroup() (rv string) {
+	if m != nil && m.ResourceGroup != nil {
+		return *m.ResourceGroup
+	}
+	return
+}
+
+func (m *ModernUsageDetailProperties) GetResourceLocation() (rv string) {
+	if m != nil && m.ResourceLocation != nil {
+		return *m.ResourceLocation
+	}
+	return
+}
+
+func (m *ModernUsageDetailProperties) GetResourceLocationNormalized() (rv string) {
+	if m != nil && m.ResourceLocationNormalized != nil {
+		return *m.ResourceLocationNormalized
+	}
+	return
+}
+
+func (m *ModernUsageDetailProperties) GetServiceFamily() (rv string) {
+	if m != nil && m.ServiceFamily != nil {
+		return *m.ServiceFamily
+	}
+	return
+}
+
+func (m *ModernUsageDetailProperties) GetServiceInfo1() (rv string) {
+	if m != nil && m.ServiceInfo1 != nil {
+		return *m.ServiceInfo1
+	}
+	return
+}
+
+func (m *ModernUsageDetailProperties) GetServiceInfo2() (rv string) {
+	if m != nil && m.ServiceInfo2 != nil {
+		return *m.ServiceInfo2
+	}
+	return
+}
+
+func (m *ModernUsageDetailProperties) GetServicePeriodEndDate() (rv *time.Time) {
+	if m != nil {
+		return m.ServicePeriodEndDate
+	}
+	return
+}
+
+func (m *ModernUsageDetailProperties) GetServicePeriodStartDate() (rv *time.Time) {
+	if m != nil {
+		return m.ServicePeriodStartDate
+	}
+	return
+}
+
+func (m *ModernUsageDetailProperties) GetSubscriptionGUID() (rv string) {
+	if m != nil && m.SubscriptionGUID != nil {
+		return *m.SubscriptionGUID
+	}
+	return
+}
+
+func (m *ModernUsageDetailProperties) GetSubscriptionName() (rv string) {
+	if m != nil && m.SubscriptionName != nil {
+		return *m.SubscriptionName
+	}
+	return
+}
+
+func (m *ModernUsageDetailProperties) GetTerm() (rv string) {
+	if m != nil && m.Term != nil {
+		return *m.Term
+	}
+	return
+}
+
+func (m *ModernUsageDetailProperties) GetUnitOfMeasure() (rv string) {
+	if m != nil && m.UnitOfMeasure != nil {
+		return *m.UnitOfMeasure
+	}
+	return
+}
+
+func (m *ModernUsageDetailProperties) GetUnitPrice() (rv float64) {
+	if m != nil && m.UnitPrice != nil {
+		return *m.UnitPrice
+	}
+	return
+}
+
 // Notification - The notification associated with a budget.
 type Notification struct {
 	// REQUIRED; Email addresses to send the budget notification to when the threshold is exceeded. Must have at least one contact
@@ -1696,6 +4909,62 @@ type Notification struct {
 	ThresholdType *ThresholdType
 }
 
+func (n *Notification) GetContactEmails() (rv []*string) {
+	if n != nil {
+		return n.ContactEmails
+	}
+	return
+}
+
+func (n *Notification) GetEnabled() (rv bool) {
+	if n != nil && n.Enabled != nil {
+		return *n.Enabled
+	}
+	return
+}
+
+func (n *Notification) GetOperator() (rv *OperatorType) {
+	if n != nil {
+		return n.Operator
+	}
+	return
+}
+
+func (n *Notification) GetThreshold() (rv float64) {
+	if n != nil && n.Threshold != nil {
+		return *n.Threshold
+	}
+	return
+}
+
+func (n *Notification) GetContactGroups() (rv []*string) {
+	if n != nil {
+		return n.ContactGroups
+	}
+	return
+}
+
+func (n *Notification) GetContactRoles() (rv []*string) {
+	if n != nil {
+		return n.ContactRoles
+	}
+	return
+}
+
+func (n *Notification) GetLocale() (rv *CultureCode) {
+	if n != nil {
+		return n.Locale
+	}
+	return
+}
+
+func (n *Notification) GetThresholdType() (rv *ThresholdType) {
+	if n != nil {
+		return n.ThresholdType
+	}
+	return
+}
+
 // Operation - A Consumption REST API operation.
 type Operation struct {
 	// The object that represents the operation.
@@ -1706,6 +4975,27 @@ type Operation struct {
 
 	// READ-ONLY; Operation name: {provider}/{resource}/{operation}.
 	Name *string
+}
+
+func (o *Operation) GetDisplay() (rv *OperationDisplay) {
+	if o != nil {
+		return o.Display
+	}
+	return
+}
+
+func (o *Operation) GetID() (rv string) {
+	if o != nil && o.ID != nil {
+		return *o.ID
+	}
+	return
+}
+
+func (o *Operation) GetName() (rv string) {
+	if o != nil && o.Name != nil {
+		return *o.Name
+	}
+	return
 }
 
 // OperationDisplay - The object that represents the operation.
@@ -1723,6 +5013,34 @@ type OperationDisplay struct {
 	Resource *string
 }
 
+func (o *OperationDisplay) GetDescription() (rv string) {
+	if o != nil && o.Description != nil {
+		return *o.Description
+	}
+	return
+}
+
+func (o *OperationDisplay) GetOperation() (rv string) {
+	if o != nil && o.Operation != nil {
+		return *o.Operation
+	}
+	return
+}
+
+func (o *OperationDisplay) GetProvider() (rv string) {
+	if o != nil && o.Provider != nil {
+		return *o.Provider
+	}
+	return
+}
+
+func (o *OperationDisplay) GetResource() (rv string) {
+	if o != nil && o.Resource != nil {
+		return *o.Resource
+	}
+	return
+}
+
 // OperationListResult - Result of listing consumption operations. It contains a list of operations and a URL link to get
 // the next set of results.
 type OperationListResult struct {
@@ -1731,6 +5049,20 @@ type OperationListResult struct {
 
 	// READ-ONLY; List of consumption operations supported by the Microsoft.Consumption resource provider.
 	Value []*Operation
+}
+
+func (o *OperationListResult) GetNextLink() (rv string) {
+	if o != nil && o.NextLink != nil {
+		return *o.NextLink
+	}
+	return
+}
+
+func (o *OperationListResult) GetValue() (rv []*Operation) {
+	if o != nil {
+		return o.Value
+	}
+	return
 }
 
 // PriceSheetModel - price sheet result. It contains the pricesheet associated with billing period
@@ -1743,6 +5075,27 @@ type PriceSheetModel struct {
 
 	// READ-ONLY; Price sheet
 	Pricesheets []*PriceSheetProperties
+}
+
+func (p *PriceSheetModel) GetDownload() (rv *MeterDetails) {
+	if p != nil {
+		return p.Download
+	}
+	return
+}
+
+func (p *PriceSheetModel) GetNextLink() (rv string) {
+	if p != nil && p.NextLink != nil {
+		return *p.NextLink
+	}
+	return
+}
+
+func (p *PriceSheetModel) GetPricesheets() (rv []*PriceSheetProperties) {
+	if p != nil {
+		return p.Pricesheets
+	}
+	return
 }
 
 // PriceSheetProperties - The properties of the price sheet.
@@ -1775,6 +5128,69 @@ type PriceSheetProperties struct {
 	UnitPrice *float64
 }
 
+func (p *PriceSheetProperties) GetBillingPeriodID() (rv string) {
+	if p != nil && p.BillingPeriodID != nil {
+		return *p.BillingPeriodID
+	}
+	return
+}
+
+func (p *PriceSheetProperties) GetCurrencyCode() (rv string) {
+	if p != nil && p.CurrencyCode != nil {
+		return *p.CurrencyCode
+	}
+	return
+}
+
+func (p *PriceSheetProperties) GetIncludedQuantity() (rv float64) {
+	if p != nil && p.IncludedQuantity != nil {
+		return *p.IncludedQuantity
+	}
+	return
+}
+
+func (p *PriceSheetProperties) GetMeterDetails() (rv *MeterDetails) {
+	if p != nil {
+		return p.MeterDetails
+	}
+	return
+}
+
+func (p *PriceSheetProperties) GetMeterID() (rv string) {
+	if p != nil && p.MeterID != nil {
+		return *p.MeterID
+	}
+	return
+}
+
+func (p *PriceSheetProperties) GetOfferID() (rv string) {
+	if p != nil && p.OfferID != nil {
+		return *p.OfferID
+	}
+	return
+}
+
+func (p *PriceSheetProperties) GetPartNumber() (rv string) {
+	if p != nil && p.PartNumber != nil {
+		return *p.PartNumber
+	}
+	return
+}
+
+func (p *PriceSheetProperties) GetUnitOfMeasure() (rv string) {
+	if p != nil && p.UnitOfMeasure != nil {
+		return *p.UnitOfMeasure
+	}
+	return
+}
+
+func (p *PriceSheetProperties) GetUnitPrice() (rv float64) {
+	if p != nil && p.UnitPrice != nil {
+		return *p.UnitPrice
+	}
+	return
+}
+
 // PriceSheetResult - An pricesheet resource.
 type PriceSheetResult struct {
 	// price sheet result. It contains the pricesheet associated with billing period
@@ -1796,6 +5212,48 @@ type PriceSheetResult struct {
 	Type *string
 }
 
+func (p *PriceSheetResult) GetProperties() (rv *PriceSheetModel) {
+	if p != nil {
+		return p.Properties
+	}
+	return
+}
+
+func (p *PriceSheetResult) GetEtag() (rv string) {
+	if p != nil && p.Etag != nil {
+		return *p.Etag
+	}
+	return
+}
+
+func (p *PriceSheetResult) GetID() (rv string) {
+	if p != nil && p.ID != nil {
+		return *p.ID
+	}
+	return
+}
+
+func (p *PriceSheetResult) GetName() (rv string) {
+	if p != nil && p.Name != nil {
+		return *p.Name
+	}
+	return
+}
+
+func (p *PriceSheetResult) GetTags() (rv map[string]*string) {
+	if p != nil {
+		return p.Tags
+	}
+	return
+}
+
+func (p *PriceSheetResult) GetType() (rv string) {
+	if p != nil && p.Type != nil {
+		return *p.Type
+	}
+	return
+}
+
 // Reseller details
 type Reseller struct {
 	// READ-ONLY; Reseller Description.
@@ -1803,6 +5261,20 @@ type Reseller struct {
 
 	// READ-ONLY; Reseller id.
 	ResellerID *string
+}
+
+func (r *Reseller) GetResellerDescription() (rv string) {
+	if r != nil && r.ResellerDescription != nil {
+		return *r.ResellerDescription
+	}
+	return
+}
+
+func (r *Reseller) GetResellerID() (rv string) {
+	if r != nil && r.ResellerID != nil {
+		return *r.ResellerID
+	}
+	return
 }
 
 // ReservationDetail - reservation detail resource.
@@ -1824,6 +5296,48 @@ type ReservationDetail struct {
 
 	// READ-ONLY; Resource type.
 	Type *string
+}
+
+func (r *ReservationDetail) GetProperties() (rv *ReservationDetailProperties) {
+	if r != nil {
+		return r.Properties
+	}
+	return
+}
+
+func (r *ReservationDetail) GetETag() (rv string) {
+	if r != nil && r.ETag != nil {
+		return *r.ETag
+	}
+	return
+}
+
+func (r *ReservationDetail) GetID() (rv string) {
+	if r != nil && r.ID != nil {
+		return *r.ID
+	}
+	return
+}
+
+func (r *ReservationDetail) GetName() (rv string) {
+	if r != nil && r.Name != nil {
+		return *r.Name
+	}
+	return
+}
+
+func (r *ReservationDetail) GetTags() (rv map[string]*string) {
+	if r != nil {
+		return r.Tags
+	}
+	return
+}
+
+func (r *ReservationDetail) GetType() (rv string) {
+	if r != nil && r.Type != nil {
+		return *r.Type
+	}
+	return
 }
 
 // ReservationDetailProperties - The properties of the reservation detail.
@@ -1867,6 +5381,83 @@ type ReservationDetailProperties struct {
 	UsedHours *float64
 }
 
+func (r *ReservationDetailProperties) GetInstanceFlexibilityGroup() (rv string) {
+	if r != nil && r.InstanceFlexibilityGroup != nil {
+		return *r.InstanceFlexibilityGroup
+	}
+	return
+}
+
+func (r *ReservationDetailProperties) GetInstanceFlexibilityRatio() (rv string) {
+	if r != nil && r.InstanceFlexibilityRatio != nil {
+		return *r.InstanceFlexibilityRatio
+	}
+	return
+}
+
+func (r *ReservationDetailProperties) GetInstanceID() (rv string) {
+	if r != nil && r.InstanceID != nil {
+		return *r.InstanceID
+	}
+	return
+}
+
+func (r *ReservationDetailProperties) GetKind() (rv string) {
+	if r != nil && r.Kind != nil {
+		return *r.Kind
+	}
+	return
+}
+
+func (r *ReservationDetailProperties) GetReservationID() (rv string) {
+	if r != nil && r.ReservationID != nil {
+		return *r.ReservationID
+	}
+	return
+}
+
+func (r *ReservationDetailProperties) GetReservationOrderID() (rv string) {
+	if r != nil && r.ReservationOrderID != nil {
+		return *r.ReservationOrderID
+	}
+	return
+}
+
+func (r *ReservationDetailProperties) GetReservedHours() (rv float64) {
+	if r != nil && r.ReservedHours != nil {
+		return *r.ReservedHours
+	}
+	return
+}
+
+func (r *ReservationDetailProperties) GetSKUName() (rv string) {
+	if r != nil && r.SKUName != nil {
+		return *r.SKUName
+	}
+	return
+}
+
+func (r *ReservationDetailProperties) GetTotalReservedQuantity() (rv float64) {
+	if r != nil && r.TotalReservedQuantity != nil {
+		return *r.TotalReservedQuantity
+	}
+	return
+}
+
+func (r *ReservationDetailProperties) GetUsageDate() (rv *time.Time) {
+	if r != nil {
+		return r.UsageDate
+	}
+	return
+}
+
+func (r *ReservationDetailProperties) GetUsedHours() (rv float64) {
+	if r != nil && r.UsedHours != nil {
+		return *r.UsedHours
+	}
+	return
+}
+
 // ReservationDetailsListResult - Result of listing reservation details.
 type ReservationDetailsListResult struct {
 	// READ-ONLY; The link (url) to the next page of results.
@@ -1874,6 +5465,20 @@ type ReservationDetailsListResult struct {
 
 	// READ-ONLY; The list of reservation details.
 	Value []*ReservationDetail
+}
+
+func (r *ReservationDetailsListResult) GetNextLink() (rv string) {
+	if r != nil && r.NextLink != nil {
+		return *r.NextLink
+	}
+	return
+}
+
+func (r *ReservationDetailsListResult) GetValue() (rv []*ReservationDetail) {
+	if r != nil {
+		return r.Value
+	}
+	return
 }
 
 // ReservationRecommendation - A reservation recommendation resource.
@@ -1901,6 +5506,62 @@ type ReservationRecommendation struct {
 
 	// READ-ONLY; Resource type.
 	Type *string
+}
+
+func (r *ReservationRecommendation) GetKind() (rv *ReservationRecommendationKind) {
+	if r != nil {
+		return r.Kind
+	}
+	return
+}
+
+func (r *ReservationRecommendation) GetETag() (rv string) {
+	if r != nil && r.ETag != nil {
+		return *r.ETag
+	}
+	return
+}
+
+func (r *ReservationRecommendation) GetID() (rv string) {
+	if r != nil && r.ID != nil {
+		return *r.ID
+	}
+	return
+}
+
+func (r *ReservationRecommendation) GetLocation() (rv string) {
+	if r != nil && r.Location != nil {
+		return *r.Location
+	}
+	return
+}
+
+func (r *ReservationRecommendation) GetName() (rv string) {
+	if r != nil && r.Name != nil {
+		return *r.Name
+	}
+	return
+}
+
+func (r *ReservationRecommendation) GetSKU() (rv string) {
+	if r != nil && r.SKU != nil {
+		return *r.SKU
+	}
+	return
+}
+
+func (r *ReservationRecommendation) GetTags() (rv map[string]*string) {
+	if r != nil {
+		return r.Tags
+	}
+	return
+}
+
+func (r *ReservationRecommendation) GetType() (rv string) {
+	if r != nil && r.Type != nil {
+		return *r.Type
+	}
+	return
 }
 
 // GetReservationRecommendation implements the ReservationRecommendationClassification interface for type ReservationRecommendation.
@@ -1932,6 +5593,55 @@ type ReservationRecommendationDetailsCalculatedSavingsProperties struct {
 	TotalReservationCost *float32
 }
 
+func (r *ReservationRecommendationDetailsCalculatedSavingsProperties) GetReservedUnitCount() (rv float32) {
+	if r != nil && r.ReservedUnitCount != nil {
+		return *r.ReservedUnitCount
+	}
+	return
+}
+
+func (r *ReservationRecommendationDetailsCalculatedSavingsProperties) GetOnDemandCost() (rv float32) {
+	if r != nil && r.OnDemandCost != nil {
+		return *r.OnDemandCost
+	}
+	return
+}
+
+func (r *ReservationRecommendationDetailsCalculatedSavingsProperties) GetOverageCost() (rv float32) {
+	if r != nil && r.OverageCost != nil {
+		return *r.OverageCost
+	}
+	return
+}
+
+func (r *ReservationRecommendationDetailsCalculatedSavingsProperties) GetQuantity() (rv float32) {
+	if r != nil && r.Quantity != nil {
+		return *r.Quantity
+	}
+	return
+}
+
+func (r *ReservationRecommendationDetailsCalculatedSavingsProperties) GetReservationCost() (rv float32) {
+	if r != nil && r.ReservationCost != nil {
+		return *r.ReservationCost
+	}
+	return
+}
+
+func (r *ReservationRecommendationDetailsCalculatedSavingsProperties) GetSavings() (rv float32) {
+	if r != nil && r.Savings != nil {
+		return *r.Savings
+	}
+	return
+}
+
+func (r *ReservationRecommendationDetailsCalculatedSavingsProperties) GetTotalReservationCost() (rv float32) {
+	if r != nil && r.TotalReservationCost != nil {
+		return *r.TotalReservationCost
+	}
+	return
+}
+
 // ReservationRecommendationDetailsModel - Reservation recommendation details.
 type ReservationRecommendationDetailsModel struct {
 	// Resource Location.
@@ -1959,6 +5669,62 @@ type ReservationRecommendationDetailsModel struct {
 	Type *string
 }
 
+func (r *ReservationRecommendationDetailsModel) GetLocation() (rv string) {
+	if r != nil && r.Location != nil {
+		return *r.Location
+	}
+	return
+}
+
+func (r *ReservationRecommendationDetailsModel) GetProperties() (rv *ReservationRecommendationDetailsProperties) {
+	if r != nil {
+		return r.Properties
+	}
+	return
+}
+
+func (r *ReservationRecommendationDetailsModel) GetSKU() (rv string) {
+	if r != nil && r.SKU != nil {
+		return *r.SKU
+	}
+	return
+}
+
+func (r *ReservationRecommendationDetailsModel) GetEtag() (rv string) {
+	if r != nil && r.Etag != nil {
+		return *r.Etag
+	}
+	return
+}
+
+func (r *ReservationRecommendationDetailsModel) GetID() (rv string) {
+	if r != nil && r.ID != nil {
+		return *r.ID
+	}
+	return
+}
+
+func (r *ReservationRecommendationDetailsModel) GetName() (rv string) {
+	if r != nil && r.Name != nil {
+		return *r.Name
+	}
+	return
+}
+
+func (r *ReservationRecommendationDetailsModel) GetTags() (rv map[string]*string) {
+	if r != nil {
+		return r.Tags
+	}
+	return
+}
+
+func (r *ReservationRecommendationDetailsModel) GetType() (rv string) {
+	if r != nil && r.Type != nil {
+		return *r.Type
+	}
+	return
+}
+
 // ReservationRecommendationDetailsProperties - The properties of the reservation recommendation.
 type ReservationRecommendationDetailsProperties struct {
 	// READ-ONLY; An ISO 4217 currency code identifier for the costs and savings
@@ -1978,6 +5744,48 @@ type ReservationRecommendationDetailsProperties struct {
 
 	// READ-ONLY; Historical usage details used to calculate the estimated savings.
 	Usage *ReservationRecommendationDetailsUsageProperties
+}
+
+func (r *ReservationRecommendationDetailsProperties) GetCurrency() (rv string) {
+	if r != nil && r.Currency != nil {
+		return *r.Currency
+	}
+	return
+}
+
+func (r *ReservationRecommendationDetailsProperties) GetResource() (rv *ReservationRecommendationDetailsResourceProperties) {
+	if r != nil {
+		return r.Resource
+	}
+	return
+}
+
+func (r *ReservationRecommendationDetailsProperties) GetResourceGroup() (rv string) {
+	if r != nil && r.ResourceGroup != nil {
+		return *r.ResourceGroup
+	}
+	return
+}
+
+func (r *ReservationRecommendationDetailsProperties) GetSavings() (rv *ReservationRecommendationDetailsSavingsProperties) {
+	if r != nil {
+		return r.Savings
+	}
+	return
+}
+
+func (r *ReservationRecommendationDetailsProperties) GetScope() (rv string) {
+	if r != nil && r.Scope != nil {
+		return *r.Scope
+	}
+	return
+}
+
+func (r *ReservationRecommendationDetailsProperties) GetUsage() (rv *ReservationRecommendationDetailsUsageProperties) {
+	if r != nil {
+		return r.Usage
+	}
+	return
 }
 
 // ReservationRecommendationDetailsResourceProperties - Details of the resource.
@@ -2001,6 +5809,48 @@ type ReservationRecommendationDetailsResourceProperties struct {
 	ResourceType *string
 }
 
+func (r *ReservationRecommendationDetailsResourceProperties) GetAppliedScopes() (rv []*string) {
+	if r != nil {
+		return r.AppliedScopes
+	}
+	return
+}
+
+func (r *ReservationRecommendationDetailsResourceProperties) GetOnDemandRate() (rv float32) {
+	if r != nil && r.OnDemandRate != nil {
+		return *r.OnDemandRate
+	}
+	return
+}
+
+func (r *ReservationRecommendationDetailsResourceProperties) GetProduct() (rv string) {
+	if r != nil && r.Product != nil {
+		return *r.Product
+	}
+	return
+}
+
+func (r *ReservationRecommendationDetailsResourceProperties) GetRegion() (rv string) {
+	if r != nil && r.Region != nil {
+		return *r.Region
+	}
+	return
+}
+
+func (r *ReservationRecommendationDetailsResourceProperties) GetReservationRate() (rv float32) {
+	if r != nil && r.ReservationRate != nil {
+		return *r.ReservationRate
+	}
+	return
+}
+
+func (r *ReservationRecommendationDetailsResourceProperties) GetResourceType() (rv string) {
+	if r != nil && r.ResourceType != nil {
+		return *r.ResourceType
+	}
+	return
+}
+
 // ReservationRecommendationDetailsSavingsProperties - Details of the estimated savings.
 type ReservationRecommendationDetailsSavingsProperties struct {
 	// List of calculated savings.
@@ -2020,6 +5870,48 @@ type ReservationRecommendationDetailsSavingsProperties struct {
 
 	// READ-ONLY; Measurement unit ex: hour etc.
 	UnitOfMeasure *string
+}
+
+func (r *ReservationRecommendationDetailsSavingsProperties) GetCalculatedSavings() (rv []*ReservationRecommendationDetailsCalculatedSavingsProperties) {
+	if r != nil {
+		return r.CalculatedSavings
+	}
+	return
+}
+
+func (r *ReservationRecommendationDetailsSavingsProperties) GetLookBackPeriod() (rv int32) {
+	if r != nil && r.LookBackPeriod != nil {
+		return *r.LookBackPeriod
+	}
+	return
+}
+
+func (r *ReservationRecommendationDetailsSavingsProperties) GetRecommendedQuantity() (rv float32) {
+	if r != nil && r.RecommendedQuantity != nil {
+		return *r.RecommendedQuantity
+	}
+	return
+}
+
+func (r *ReservationRecommendationDetailsSavingsProperties) GetReservationOrderTerm() (rv string) {
+	if r != nil && r.ReservationOrderTerm != nil {
+		return *r.ReservationOrderTerm
+	}
+	return
+}
+
+func (r *ReservationRecommendationDetailsSavingsProperties) GetSavingsType() (rv string) {
+	if r != nil && r.SavingsType != nil {
+		return *r.SavingsType
+	}
+	return
+}
+
+func (r *ReservationRecommendationDetailsSavingsProperties) GetUnitOfMeasure() (rv string) {
+	if r != nil && r.UnitOfMeasure != nil {
+		return *r.UnitOfMeasure
+	}
+	return
 }
 
 // ReservationRecommendationDetailsUsageProperties - Details about historical usage data that has been used for computing
@@ -2042,6 +5934,41 @@ type ReservationRecommendationDetailsUsageProperties struct {
 	UsageGrain *string
 }
 
+func (r *ReservationRecommendationDetailsUsageProperties) GetFirstConsumptionDate() (rv string) {
+	if r != nil && r.FirstConsumptionDate != nil {
+		return *r.FirstConsumptionDate
+	}
+	return
+}
+
+func (r *ReservationRecommendationDetailsUsageProperties) GetLastConsumptionDate() (rv string) {
+	if r != nil && r.LastConsumptionDate != nil {
+		return *r.LastConsumptionDate
+	}
+	return
+}
+
+func (r *ReservationRecommendationDetailsUsageProperties) GetLookBackUnitType() (rv string) {
+	if r != nil && r.LookBackUnitType != nil {
+		return *r.LookBackUnitType
+	}
+	return
+}
+
+func (r *ReservationRecommendationDetailsUsageProperties) GetUsageData() (rv []*float32) {
+	if r != nil {
+		return r.UsageData
+	}
+	return
+}
+
+func (r *ReservationRecommendationDetailsUsageProperties) GetUsageGrain() (rv string) {
+	if r != nil && r.UsageGrain != nil {
+		return *r.UsageGrain
+	}
+	return
+}
+
 // ReservationRecommendationsListResult - Result of listing reservation recommendations.
 type ReservationRecommendationsListResult struct {
 	// READ-ONLY; The link (url) to the next page of results.
@@ -2057,6 +5984,34 @@ type ReservationRecommendationsListResult struct {
 	Value []ReservationRecommendationClassification
 }
 
+func (r *ReservationRecommendationsListResult) GetNextLink() (rv string) {
+	if r != nil && r.NextLink != nil {
+		return *r.NextLink
+	}
+	return
+}
+
+func (r *ReservationRecommendationsListResult) GetPreviousLink() (rv string) {
+	if r != nil && r.PreviousLink != nil {
+		return *r.PreviousLink
+	}
+	return
+}
+
+func (r *ReservationRecommendationsListResult) GetTotalCost() (rv string) {
+	if r != nil && r.TotalCost != nil {
+		return *r.TotalCost
+	}
+	return
+}
+
+func (r *ReservationRecommendationsListResult) GetValue() (rv []ReservationRecommendationClassification) {
+	if r != nil {
+		return r.Value
+	}
+	return
+}
+
 // ReservationSummariesListResult - Result of listing reservation summaries.
 type ReservationSummariesListResult struct {
 	// READ-ONLY; The link (url) to the next page of results.
@@ -2064,6 +6019,20 @@ type ReservationSummariesListResult struct {
 
 	// READ-ONLY; The list of reservation summaries.
 	Value []*ReservationSummary
+}
+
+func (r *ReservationSummariesListResult) GetNextLink() (rv string) {
+	if r != nil && r.NextLink != nil {
+		return *r.NextLink
+	}
+	return
+}
+
+func (r *ReservationSummariesListResult) GetValue() (rv []*ReservationSummary) {
+	if r != nil {
+		return r.Value
+	}
+	return
 }
 
 // ReservationSummary - reservation summary resource.
@@ -2085,6 +6054,48 @@ type ReservationSummary struct {
 
 	// READ-ONLY; Resource type.
 	Type *string
+}
+
+func (r *ReservationSummary) GetProperties() (rv *ReservationSummaryProperties) {
+	if r != nil {
+		return r.Properties
+	}
+	return
+}
+
+func (r *ReservationSummary) GetETag() (rv string) {
+	if r != nil && r.ETag != nil {
+		return *r.ETag
+	}
+	return
+}
+
+func (r *ReservationSummary) GetID() (rv string) {
+	if r != nil && r.ID != nil {
+		return *r.ID
+	}
+	return
+}
+
+func (r *ReservationSummary) GetName() (rv string) {
+	if r != nil && r.Name != nil {
+		return *r.Name
+	}
+	return
+}
+
+func (r *ReservationSummary) GetTags() (rv map[string]*string) {
+	if r != nil {
+		return r.Tags
+	}
+	return
+}
+
+func (r *ReservationSummary) GetType() (rv string) {
+	if r != nil && r.Type != nil {
+		return *r.Type
+	}
+	return
 }
 
 // ReservationSummaryProperties - The properties of the reservation summary.
@@ -2144,6 +6155,111 @@ type ReservationSummaryProperties struct {
 	UtilizedPercentage *float64
 }
 
+func (r *ReservationSummaryProperties) GetAvgUtilizationPercentage() (rv float64) {
+	if r != nil && r.AvgUtilizationPercentage != nil {
+		return *r.AvgUtilizationPercentage
+	}
+	return
+}
+
+func (r *ReservationSummaryProperties) GetKind() (rv string) {
+	if r != nil && r.Kind != nil {
+		return *r.Kind
+	}
+	return
+}
+
+func (r *ReservationSummaryProperties) GetMaxUtilizationPercentage() (rv float64) {
+	if r != nil && r.MaxUtilizationPercentage != nil {
+		return *r.MaxUtilizationPercentage
+	}
+	return
+}
+
+func (r *ReservationSummaryProperties) GetMinUtilizationPercentage() (rv float64) {
+	if r != nil && r.MinUtilizationPercentage != nil {
+		return *r.MinUtilizationPercentage
+	}
+	return
+}
+
+func (r *ReservationSummaryProperties) GetPurchasedQuantity() (rv float64) {
+	if r != nil && r.PurchasedQuantity != nil {
+		return *r.PurchasedQuantity
+	}
+	return
+}
+
+func (r *ReservationSummaryProperties) GetRemainingQuantity() (rv float64) {
+	if r != nil && r.RemainingQuantity != nil {
+		return *r.RemainingQuantity
+	}
+	return
+}
+
+func (r *ReservationSummaryProperties) GetReservationID() (rv string) {
+	if r != nil && r.ReservationID != nil {
+		return *r.ReservationID
+	}
+	return
+}
+
+func (r *ReservationSummaryProperties) GetReservationOrderID() (rv string) {
+	if r != nil && r.ReservationOrderID != nil {
+		return *r.ReservationOrderID
+	}
+	return
+}
+
+func (r *ReservationSummaryProperties) GetReservedHours() (rv float64) {
+	if r != nil && r.ReservedHours != nil {
+		return *r.ReservedHours
+	}
+	return
+}
+
+func (r *ReservationSummaryProperties) GetSKUName() (rv string) {
+	if r != nil && r.SKUName != nil {
+		return *r.SKUName
+	}
+	return
+}
+
+func (r *ReservationSummaryProperties) GetTotalReservedQuantity() (rv float64) {
+	if r != nil && r.TotalReservedQuantity != nil {
+		return *r.TotalReservedQuantity
+	}
+	return
+}
+
+func (r *ReservationSummaryProperties) GetUsageDate() (rv *time.Time) {
+	if r != nil {
+		return r.UsageDate
+	}
+	return
+}
+
+func (r *ReservationSummaryProperties) GetUsedHours() (rv float64) {
+	if r != nil && r.UsedHours != nil {
+		return *r.UsedHours
+	}
+	return
+}
+
+func (r *ReservationSummaryProperties) GetUsedQuantity() (rv float64) {
+	if r != nil && r.UsedQuantity != nil {
+		return *r.UsedQuantity
+	}
+	return
+}
+
+func (r *ReservationSummaryProperties) GetUtilizedPercentage() (rv float64) {
+	if r != nil && r.UtilizedPercentage != nil {
+		return *r.UtilizedPercentage
+	}
+	return
+}
+
 // ReservationTransaction - Reservation transaction resource.
 type ReservationTransaction struct {
 	// The properties of a legacy reservation transaction.
@@ -2162,6 +6278,41 @@ type ReservationTransaction struct {
 	Type *string
 }
 
+func (r *ReservationTransaction) GetProperties() (rv *LegacyReservationTransactionProperties) {
+	if r != nil {
+		return r.Properties
+	}
+	return
+}
+
+func (r *ReservationTransaction) GetID() (rv string) {
+	if r != nil && r.ID != nil {
+		return *r.ID
+	}
+	return
+}
+
+func (r *ReservationTransaction) GetName() (rv string) {
+	if r != nil && r.Name != nil {
+		return *r.Name
+	}
+	return
+}
+
+func (r *ReservationTransaction) GetTags() (rv []*string) {
+	if r != nil {
+		return r.Tags
+	}
+	return
+}
+
+func (r *ReservationTransaction) GetType() (rv string) {
+	if r != nil && r.Type != nil {
+		return *r.Type
+	}
+	return
+}
+
 // ReservationTransactionsListResult - Result of listing reservation recommendations.
 type ReservationTransactionsListResult struct {
 	// READ-ONLY; The link (url) to the next page of results.
@@ -2169,6 +6320,20 @@ type ReservationTransactionsListResult struct {
 
 	// READ-ONLY; The list of reservation recommendations.
 	Value []*ReservationTransaction
+}
+
+func (r *ReservationTransactionsListResult) GetNextLink() (rv string) {
+	if r != nil && r.NextLink != nil {
+		return *r.NextLink
+	}
+	return
+}
+
+func (r *ReservationTransactionsListResult) GetValue() (rv []*ReservationTransaction) {
+	if r != nil {
+		return r.Value
+	}
+	return
 }
 
 // SKUProperty - The Sku property
@@ -2180,6 +6345,20 @@ type SKUProperty struct {
 	Value *string
 }
 
+func (s *SKUProperty) GetName() (rv string) {
+	if s != nil && s.Name != nil {
+		return *s.Name
+	}
+	return
+}
+
+func (s *SKUProperty) GetValue() (rv string) {
+	if s != nil && s.Value != nil {
+		return *s.Value
+	}
+	return
+}
+
 // Tag - The tag resource.
 type Tag struct {
 	// Tag key.
@@ -2187,6 +6366,20 @@ type Tag struct {
 
 	// Tag values.
 	Value []*string
+}
+
+func (t *Tag) GetKey() (rv string) {
+	if t != nil && t.Key != nil {
+		return *t.Key
+	}
+	return
+}
+
+func (t *Tag) GetValue() (rv []*string) {
+	if t != nil {
+		return t.Value
+	}
+	return
 }
 
 // TagProperties - The properties of the tag.
@@ -2199,6 +6392,27 @@ type TagProperties struct {
 
 	// READ-ONLY; The link (url) to the previous page of results.
 	PreviousLink *string
+}
+
+func (t *TagProperties) GetTags() (rv []*Tag) {
+	if t != nil {
+		return t.Tags
+	}
+	return
+}
+
+func (t *TagProperties) GetNextLink() (rv string) {
+	if t != nil && t.NextLink != nil {
+		return *t.NextLink
+	}
+	return
+}
+
+func (t *TagProperties) GetPreviousLink() (rv string) {
+	if t != nil && t.PreviousLink != nil {
+		return *t.PreviousLink
+	}
+	return
 }
 
 // TagsResult - A resource listing all tags.
@@ -2218,6 +6432,41 @@ type TagsResult struct {
 
 	// READ-ONLY; Resource type.
 	Type *string
+}
+
+func (t *TagsResult) GetETag() (rv string) {
+	if t != nil && t.ETag != nil {
+		return *t.ETag
+	}
+	return
+}
+
+func (t *TagsResult) GetProperties() (rv *TagProperties) {
+	if t != nil {
+		return t.Properties
+	}
+	return
+}
+
+func (t *TagsResult) GetID() (rv string) {
+	if t != nil && t.ID != nil {
+		return *t.ID
+	}
+	return
+}
+
+func (t *TagsResult) GetName() (rv string) {
+	if t != nil && t.Name != nil {
+		return *t.Name
+	}
+	return
+}
+
+func (t *TagsResult) GetType() (rv string) {
+	if t != nil && t.Type != nil {
+		return *t.Type
+	}
+	return
 }
 
 // UsageDetail - An usage detail resource.
@@ -2241,6 +6490,48 @@ type UsageDetail struct {
 	Type *string
 }
 
+func (u *UsageDetail) GetKind() (rv *UsageDetailsKind) {
+	if u != nil {
+		return u.Kind
+	}
+	return
+}
+
+func (u *UsageDetail) GetEtag() (rv string) {
+	if u != nil && u.Etag != nil {
+		return *u.Etag
+	}
+	return
+}
+
+func (u *UsageDetail) GetID() (rv string) {
+	if u != nil && u.ID != nil {
+		return *u.ID
+	}
+	return
+}
+
+func (u *UsageDetail) GetName() (rv string) {
+	if u != nil && u.Name != nil {
+		return *u.Name
+	}
+	return
+}
+
+func (u *UsageDetail) GetTags() (rv map[string]*string) {
+	if u != nil {
+		return u.Tags
+	}
+	return
+}
+
+func (u *UsageDetail) GetType() (rv string) {
+	if u != nil && u.Type != nil {
+		return *u.Type
+	}
+	return
+}
+
 // GetUsageDetail implements the UsageDetailClassification interface for type UsageDetail.
 func (u *UsageDetail) GetUsageDetail() *UsageDetail { return u }
 
@@ -2252,4 +6543,18 @@ type UsageDetailsListResult struct {
 
 	// READ-ONLY; The list of usage details.
 	Value []UsageDetailClassification
+}
+
+func (u *UsageDetailsListResult) GetNextLink() (rv string) {
+	if u != nil && u.NextLink != nil {
+		return *u.NextLink
+	}
+	return
+}
+
+func (u *UsageDetailsListResult) GetValue() (rv []UsageDetailClassification) {
+	if u != nil {
+		return u.Value
+	}
+	return
 }

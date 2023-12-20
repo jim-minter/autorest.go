@@ -22,6 +22,27 @@ type AccessPolicy struct {
 	Start *time.Time `xml:"Start"`
 }
 
+func (a *AccessPolicy) GetExpiry() (rv *time.Time) {
+	if a != nil {
+		return a.Expiry
+	}
+	return
+}
+
+func (a *AccessPolicy) GetPermission() (rv string) {
+	if a != nil && a.Permission != nil {
+		return *a.Permission
+	}
+	return
+}
+
+func (a *AccessPolicy) GetStart() (rv *time.Time) {
+	if a != nil {
+		return a.Start
+	}
+	return
+}
+
 // CorsRule - CORS is an HTTP feature that enables a web application running under one domain to access resources in another
 // domain. Web browsers implement a security restriction known as same-origin policy that
 // prevents a web page from calling APIs in a different domain; CORS provides a secure way to allow one domain (the origin
@@ -47,6 +68,41 @@ type CorsRule struct {
 	MaxAgeInSeconds *int32 `xml:"MaxAgeInSeconds"`
 }
 
+func (c *CorsRule) GetAllowedHeaders() (rv string) {
+	if c != nil && c.AllowedHeaders != nil {
+		return *c.AllowedHeaders
+	}
+	return
+}
+
+func (c *CorsRule) GetAllowedMethods() (rv string) {
+	if c != nil && c.AllowedMethods != nil {
+		return *c.AllowedMethods
+	}
+	return
+}
+
+func (c *CorsRule) GetAllowedOrigins() (rv string) {
+	if c != nil && c.AllowedOrigins != nil {
+		return *c.AllowedOrigins
+	}
+	return
+}
+
+func (c *CorsRule) GetExposedHeaders() (rv string) {
+	if c != nil && c.ExposedHeaders != nil {
+		return *c.ExposedHeaders
+	}
+	return
+}
+
+func (c *CorsRule) GetMaxAgeInSeconds() (rv int32) {
+	if c != nil && c.MaxAgeInSeconds != nil {
+		return *c.MaxAgeInSeconds
+	}
+	return
+}
+
 // EntityQueryResponse - The properties for the table entity query response.
 type EntityQueryResponse struct {
 	// The metadata response of the table.
@@ -54,6 +110,20 @@ type EntityQueryResponse struct {
 
 	// List of table entities.
 	Value []map[string]any
+}
+
+func (e *EntityQueryResponse) GetODataMetadata() (rv string) {
+	if e != nil && e.ODataMetadata != nil {
+		return *e.ODataMetadata
+	}
+	return
+}
+
+func (e *EntityQueryResponse) GetValue() (rv []map[string]any) {
+	if e != nil {
+		return e.Value
+	}
+	return
 }
 
 type GeoReplication struct {
@@ -64,6 +134,20 @@ type GeoReplication struct {
 
 	// REQUIRED; The status of the secondary location.
 	Status *GeoReplicationStatusType `xml:"Status"`
+}
+
+func (g *GeoReplication) GetLastSyncTime() (rv *time.Time) {
+	if g != nil {
+		return g.LastSyncTime
+	}
+	return
+}
+
+func (g *GeoReplication) GetStatus() (rv *GeoReplicationStatusType) {
+	if g != nil {
+		return g.Status
+	}
+	return
 }
 
 // Logging - Azure Analytics Logging settings.
@@ -84,6 +168,41 @@ type Logging struct {
 	Write *bool `xml:"Write"`
 }
 
+func (l *Logging) GetDelete() (rv bool) {
+	if l != nil && l.Delete != nil {
+		return *l.Delete
+	}
+	return
+}
+
+func (l *Logging) GetRead() (rv bool) {
+	if l != nil && l.Read != nil {
+		return *l.Read
+	}
+	return
+}
+
+func (l *Logging) GetRetentionPolicy() (rv *RetentionPolicy) {
+	if l != nil {
+		return l.RetentionPolicy
+	}
+	return
+}
+
+func (l *Logging) GetVersion() (rv string) {
+	if l != nil && l.Version != nil {
+		return *l.Version
+	}
+	return
+}
+
+func (l *Logging) GetWrite() (rv bool) {
+	if l != nil && l.Write != nil {
+		return *l.Write
+	}
+	return
+}
+
 type Metrics struct {
 	// REQUIRED; Indicates whether metrics are enabled for the Table service.
 	Enabled *bool `xml:"Enabled"`
@@ -98,10 +217,45 @@ type Metrics struct {
 	Version *string `xml:"Version"`
 }
 
+func (m *Metrics) GetEnabled() (rv bool) {
+	if m != nil && m.Enabled != nil {
+		return *m.Enabled
+	}
+	return
+}
+
+func (m *Metrics) GetIncludeAPIs() (rv bool) {
+	if m != nil && m.IncludeAPIs != nil {
+		return *m.IncludeAPIs
+	}
+	return
+}
+
+func (m *Metrics) GetRetentionPolicy() (rv *RetentionPolicy) {
+	if m != nil {
+		return m.RetentionPolicy
+	}
+	return
+}
+
+func (m *Metrics) GetVersion() (rv string) {
+	if m != nil && m.Version != nil {
+		return *m.Version
+	}
+	return
+}
+
 // Properties - The properties for creating a table.
 type Properties struct {
 	// The name of the table to create.
 	TableName *string
+}
+
+func (p *Properties) GetTableName() (rv string) {
+	if p != nil && p.TableName != nil {
+		return *p.TableName
+	}
+	return
 }
 
 // QueryResponse - The properties for the table query response.
@@ -111,6 +265,20 @@ type QueryResponse struct {
 
 	// List of tables.
 	Value []*ResponseProperties
+}
+
+func (q *QueryResponse) GetODataMetadata() (rv string) {
+	if q != nil && q.ODataMetadata != nil {
+		return *q.ODataMetadata
+	}
+	return
+}
+
+func (q *QueryResponse) GetValue() (rv []*ResponseProperties) {
+	if q != nil {
+		return q.Value
+	}
+	return
 }
 
 // Response - The response for a single table.
@@ -131,6 +299,41 @@ type Response struct {
 	TableName *string
 }
 
+func (r *Response) GetODataEditLink() (rv string) {
+	if r != nil && r.ODataEditLink != nil {
+		return *r.ODataEditLink
+	}
+	return
+}
+
+func (r *Response) GetODataID() (rv string) {
+	if r != nil && r.ODataID != nil {
+		return *r.ODataID
+	}
+	return
+}
+
+func (r *Response) GetODataMetadata() (rv string) {
+	if r != nil && r.ODataMetadata != nil {
+		return *r.ODataMetadata
+	}
+	return
+}
+
+func (r *Response) GetODataType() (rv string) {
+	if r != nil && r.ODataType != nil {
+		return *r.ODataType
+	}
+	return
+}
+
+func (r *Response) GetTableName() (rv string) {
+	if r != nil && r.TableName != nil {
+		return *r.TableName
+	}
+	return
+}
+
 // ResponseProperties - The properties for the table response.
 type ResponseProperties struct {
 	// The edit link of the table.
@@ -146,6 +349,34 @@ type ResponseProperties struct {
 	TableName *string
 }
 
+func (r *ResponseProperties) GetODataEditLink() (rv string) {
+	if r != nil && r.ODataEditLink != nil {
+		return *r.ODataEditLink
+	}
+	return
+}
+
+func (r *ResponseProperties) GetODataID() (rv string) {
+	if r != nil && r.ODataID != nil {
+		return *r.ODataID
+	}
+	return
+}
+
+func (r *ResponseProperties) GetODataType() (rv string) {
+	if r != nil && r.ODataType != nil {
+		return *r.ODataType
+	}
+	return
+}
+
+func (r *ResponseProperties) GetTableName() (rv string) {
+	if r != nil && r.TableName != nil {
+		return *r.TableName
+	}
+	return
+}
+
 // RetentionPolicy - The retention policy.
 type RetentionPolicy struct {
 	// REQUIRED; Indicates whether a retention policy is enabled for the service.
@@ -156,10 +387,31 @@ type RetentionPolicy struct {
 	Days *int32 `xml:"Days"`
 }
 
+func (r *RetentionPolicy) GetEnabled() (rv bool) {
+	if r != nil && r.Enabled != nil {
+		return *r.Enabled
+	}
+	return
+}
+
+func (r *RetentionPolicy) GetDays() (rv int32) {
+	if r != nil && r.Days != nil {
+		return *r.Days
+	}
+	return
+}
+
 // ServiceError - Table Service error.
 type ServiceError struct {
 	// The error message.
 	Message *string
+}
+
+func (s *ServiceError) GetMessage() (rv string) {
+	if s != nil && s.Message != nil {
+		return *s.Message
+	}
+	return
 }
 
 // ServiceProperties - Table Service Properties.
@@ -177,10 +429,45 @@ type ServiceProperties struct {
 	MinuteMetrics *Metrics `xml:"MinuteMetrics"`
 }
 
+func (s *ServiceProperties) GetCors() (rv []*CorsRule) {
+	if s != nil {
+		return s.Cors
+	}
+	return
+}
+
+func (s *ServiceProperties) GetHourMetrics() (rv *Metrics) {
+	if s != nil {
+		return s.HourMetrics
+	}
+	return
+}
+
+func (s *ServiceProperties) GetLogging() (rv *Logging) {
+	if s != nil {
+		return s.Logging
+	}
+	return
+}
+
+func (s *ServiceProperties) GetMinuteMetrics() (rv *Metrics) {
+	if s != nil {
+		return s.MinuteMetrics
+	}
+	return
+}
+
 // ServiceStats - Stats for the service.
 type ServiceStats struct {
 	// Geo-Replication information for the Secondary Storage Service.
 	GeoReplication *GeoReplication `xml:"GeoReplication"`
+}
+
+func (s *ServiceStats) GetGeoReplication() (rv *GeoReplication) {
+	if s != nil {
+		return s.GeoReplication
+	}
+	return
 }
 
 // SignedIdentifier - A signed identifier.
@@ -190,4 +477,18 @@ type SignedIdentifier struct {
 
 	// REQUIRED; A unique id.
 	ID *string `xml:"Id"`
+}
+
+func (s *SignedIdentifier) GetAccessPolicy() (rv *AccessPolicy) {
+	if s != nil {
+		return s.AccessPolicy
+	}
+	return
+}
+
+func (s *SignedIdentifier) GetID() (rv string) {
+	if s != nil && s.ID != nil {
+		return *s.ID
+	}
+	return
 }

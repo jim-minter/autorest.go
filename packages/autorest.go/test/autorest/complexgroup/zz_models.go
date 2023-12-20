@@ -14,6 +14,13 @@ type ArrayWrapper struct {
 	Array []*string
 }
 
+func (a *ArrayWrapper) GetArray() (rv []*string) {
+	if a != nil {
+		return a.Array
+	}
+	return
+}
+
 type Basic struct {
 	Color *CMYKColors
 
@@ -24,13 +31,55 @@ type Basic struct {
 	Name *string
 }
 
+func (b *Basic) GetColor() (rv *CMYKColors) {
+	if b != nil {
+		return b.Color
+	}
+	return
+}
+
+func (b *Basic) GetID() (rv int32) {
+	if b != nil && b.ID != nil {
+		return *b.ID
+	}
+	return
+}
+
+func (b *Basic) GetName() (rv string) {
+	if b != nil && b.Name != nil {
+		return *b.Name
+	}
+	return
+}
+
 type BooleanWrapper struct {
 	FieldFalse *bool
 	FieldTrue  *bool
 }
 
+func (b *BooleanWrapper) GetFieldFalse() (rv bool) {
+	if b != nil && b.FieldFalse != nil {
+		return *b.FieldFalse
+	}
+	return
+}
+
+func (b *BooleanWrapper) GetFieldTrue() (rv bool) {
+	if b != nil && b.FieldTrue != nil {
+		return *b.FieldTrue
+	}
+	return
+}
+
 type ByteWrapper struct {
 	Field []byte
+}
+
+func (b *ByteWrapper) GetField() (rv []byte) {
+	if b != nil {
+		return b.Field
+	}
+	return
 }
 
 type Cookiecuttershark struct {
@@ -45,6 +94,48 @@ type Cookiecuttershark struct {
 	Age      *int32
 	Siblings []FishClassification
 	Species  *string
+}
+
+func (c *Cookiecuttershark) GetBirthday() (rv *time.Time) {
+	if c != nil {
+		return c.Birthday
+	}
+	return
+}
+
+func (c *Cookiecuttershark) GetFishtype() (rv string) {
+	if c != nil && c.Fishtype != nil {
+		return *c.Fishtype
+	}
+	return
+}
+
+func (c *Cookiecuttershark) GetLength() (rv float32) {
+	if c != nil && c.Length != nil {
+		return *c.Length
+	}
+	return
+}
+
+func (c *Cookiecuttershark) GetAge() (rv int32) {
+	if c != nil && c.Age != nil {
+		return *c.Age
+	}
+	return
+}
+
+func (c *Cookiecuttershark) GetSiblings() (rv []FishClassification) {
+	if c != nil {
+		return c.Siblings
+	}
+	return
+}
+
+func (c *Cookiecuttershark) GetSpecies() (rv string) {
+	if c != nil && c.Species != nil {
+		return *c.Species
+	}
+	return
 }
 
 // GetFish implements the FishClassification interface for type Cookiecuttershark.
@@ -74,9 +165,37 @@ type DateWrapper struct {
 	Leap  *time.Time
 }
 
+func (d *DateWrapper) GetField() (rv *time.Time) {
+	if d != nil {
+		return d.Field
+	}
+	return
+}
+
+func (d *DateWrapper) GetLeap() (rv *time.Time) {
+	if d != nil {
+		return d.Leap
+	}
+	return
+}
+
 type DatetimeWrapper struct {
 	Field *time.Time
 	Now   *time.Time
+}
+
+func (d *DatetimeWrapper) GetField() (rv *time.Time) {
+	if d != nil {
+		return d.Field
+	}
+	return
+}
+
+func (d *DatetimeWrapper) GetNow() (rv *time.Time) {
+	if d != nil {
+		return d.Now
+	}
+	return
 }
 
 type Datetimerfc1123Wrapper struct {
@@ -84,9 +203,30 @@ type Datetimerfc1123Wrapper struct {
 	Now   *time.Time
 }
 
+func (d *Datetimerfc1123Wrapper) GetField() (rv *time.Time) {
+	if d != nil {
+		return d.Field
+	}
+	return
+}
+
+func (d *Datetimerfc1123Wrapper) GetNow() (rv *time.Time) {
+	if d != nil {
+		return d.Now
+	}
+	return
+}
+
 type DictionaryWrapper struct {
 	// Dictionary of
 	DefaultProgram map[string]*string
+}
+
+func (d *DictionaryWrapper) GetDefaultProgram() (rv map[string]*string) {
+	if d != nil {
+		return d.DefaultProgram
+	}
+	return
 }
 
 type Dog struct {
@@ -95,10 +235,45 @@ type Dog struct {
 	Name *string
 }
 
+func (d *Dog) GetFood() (rv string) {
+	if d != nil && d.Food != nil {
+		return *d.Food
+	}
+	return
+}
+
+func (d *Dog) GetID() (rv int32) {
+	if d != nil && d.ID != nil {
+		return *d.ID
+	}
+	return
+}
+
+func (d *Dog) GetName() (rv string) {
+	if d != nil && d.Name != nil {
+		return *d.Name
+	}
+	return
+}
+
 type DotFish struct {
 	// REQUIRED
 	FishType *string
 	Species  *string
+}
+
+func (d *DotFish) GetFishType() (rv string) {
+	if d != nil && d.FishType != nil {
+		return *d.FishType
+	}
+	return
+}
+
+func (d *DotFish) GetSpecies() (rv string) {
+	if d != nil && d.Species != nil {
+		return *d.Species
+	}
+	return
 }
 
 // GetDotFish implements the DotFishClassification interface for type DotFish.
@@ -111,12 +286,68 @@ type DotFishMarket struct {
 	SampleSalmon *DotSalmon
 }
 
+func (d *DotFishMarket) GetFishes() (rv []DotFishClassification) {
+	if d != nil {
+		return d.Fishes
+	}
+	return
+}
+
+func (d *DotFishMarket) GetSalmons() (rv []*DotSalmon) {
+	if d != nil {
+		return d.Salmons
+	}
+	return
+}
+
+func (d *DotFishMarket) GetSampleFish() (rv DotFishClassification) {
+	if d != nil {
+		return d.SampleFish
+	}
+	return
+}
+
+func (d *DotFishMarket) GetSampleSalmon() (rv *DotSalmon) {
+	if d != nil {
+		return d.SampleSalmon
+	}
+	return
+}
+
 type DotSalmon struct {
 	// REQUIRED
 	FishType *string
 	Iswild   *bool
 	Location *string
 	Species  *string
+}
+
+func (d *DotSalmon) GetFishType() (rv string) {
+	if d != nil && d.FishType != nil {
+		return *d.FishType
+	}
+	return
+}
+
+func (d *DotSalmon) GetIswild() (rv bool) {
+	if d != nil && d.Iswild != nil {
+		return *d.Iswild
+	}
+	return
+}
+
+func (d *DotSalmon) GetLocation() (rv string) {
+	if d != nil && d.Location != nil {
+		return *d.Location
+	}
+	return
+}
+
+func (d *DotSalmon) GetSpecies() (rv string) {
+	if d != nil && d.Species != nil {
+		return *d.Species
+	}
+	return
 }
 
 // GetDotFish implements the DotFishClassification interface for type DotSalmon.
@@ -132,8 +363,29 @@ type DoubleWrapper struct {
 	Field56ZerosAfterTheDotAndNegativeZeroBeforeDotAndThisIsALongFieldNameOnPurpose *float64
 }
 
+func (d *DoubleWrapper) GetField1() (rv float64) {
+	if d != nil && d.Field1 != nil {
+		return *d.Field1
+	}
+	return
+}
+
+func (d *DoubleWrapper) GetField56ZerosAfterTheDotAndNegativeZeroBeforeDotAndThisIsALongFieldNameOnPurpose() (rv float64) {
+	if d != nil && d.Field56ZerosAfterTheDotAndNegativeZeroBeforeDotAndThisIsALongFieldNameOnPurpose != nil {
+		return *d.Field56ZerosAfterTheDotAndNegativeZeroBeforeDotAndThisIsALongFieldNameOnPurpose
+	}
+	return
+}
+
 type DurationWrapper struct {
 	Field *string
+}
+
+func (d *DurationWrapper) GetField() (rv string) {
+	if d != nil && d.Field != nil {
+		return *d.Field
+	}
+	return
 }
 
 type Fish struct {
@@ -146,12 +398,54 @@ type Fish struct {
 	Species  *string
 }
 
+func (f *Fish) GetFishtype() (rv string) {
+	if f != nil && f.Fishtype != nil {
+		return *f.Fishtype
+	}
+	return
+}
+
+func (f *Fish) GetLength() (rv float32) {
+	if f != nil && f.Length != nil {
+		return *f.Length
+	}
+	return
+}
+
+func (f *Fish) GetSiblings() (rv []FishClassification) {
+	if f != nil {
+		return f.Siblings
+	}
+	return
+}
+
+func (f *Fish) GetSpecies() (rv string) {
+	if f != nil && f.Species != nil {
+		return *f.Species
+	}
+	return
+}
+
 // GetFish implements the FishClassification interface for type Fish.
 func (f *Fish) GetFish() *Fish { return f }
 
 type FloatWrapper struct {
 	Field1 *float32
 	Field2 *float32
+}
+
+func (f *FloatWrapper) GetField1() (rv float32) {
+	if f != nil && f.Field1 != nil {
+		return *f.Field1
+	}
+	return
+}
+
+func (f *FloatWrapper) GetField2() (rv float32) {
+	if f != nil && f.Field2 != nil {
+		return *f.Field2
+	}
+	return
 }
 
 type Goblinshark struct {
@@ -170,6 +464,62 @@ type Goblinshark struct {
 	Jawsize  *int32
 	Siblings []FishClassification
 	Species  *string
+}
+
+func (g *Goblinshark) GetBirthday() (rv *time.Time) {
+	if g != nil {
+		return g.Birthday
+	}
+	return
+}
+
+func (g *Goblinshark) GetFishtype() (rv string) {
+	if g != nil && g.Fishtype != nil {
+		return *g.Fishtype
+	}
+	return
+}
+
+func (g *Goblinshark) GetLength() (rv float32) {
+	if g != nil && g.Length != nil {
+		return *g.Length
+	}
+	return
+}
+
+func (g *Goblinshark) GetAge() (rv int32) {
+	if g != nil && g.Age != nil {
+		return *g.Age
+	}
+	return
+}
+
+func (g *Goblinshark) GetColor() (rv *GoblinSharkColor) {
+	if g != nil {
+		return g.Color
+	}
+	return
+}
+
+func (g *Goblinshark) GetJawsize() (rv int32) {
+	if g != nil && g.Jawsize != nil {
+		return *g.Jawsize
+	}
+	return
+}
+
+func (g *Goblinshark) GetSiblings() (rv []FishClassification) {
+	if g != nil {
+		return g.Siblings
+	}
+	return
+}
+
+func (g *Goblinshark) GetSpecies() (rv string) {
+	if g != nil && g.Species != nil {
+		return *g.Species
+	}
+	return
 }
 
 // GetFish implements the FishClassification interface for type Goblinshark.
@@ -199,13 +549,48 @@ type IntWrapper struct {
 	Field2 *int32
 }
 
+func (i *IntWrapper) GetField1() (rv int32) {
+	if i != nil && i.Field1 != nil {
+		return *i.Field1
+	}
+	return
+}
+
+func (i *IntWrapper) GetField2() (rv int32) {
+	if i != nil && i.Field2 != nil {
+		return *i.Field2
+	}
+	return
+}
+
 type LongWrapper struct {
 	Field1 *int64
 	Field2 *int64
 }
 
+func (l *LongWrapper) GetField1() (rv int64) {
+	if l != nil && l.Field1 != nil {
+		return *l.Field1
+	}
+	return
+}
+
+func (l *LongWrapper) GetField2() (rv int64) {
+	if l != nil && l.Field2 != nil {
+		return *l.Field2
+	}
+	return
+}
+
 type MyBaseHelperType struct {
 	PropBH1 *string
+}
+
+func (m *MyBaseHelperType) GetPropBH1() (rv string) {
+	if m != nil && m.PropBH1 != nil {
+		return *m.PropBH1
+	}
+	return
 }
 
 type MyBaseType struct {
@@ -213,6 +598,27 @@ type MyBaseType struct {
 	Kind   *MyKind
 	Helper *MyBaseHelperType
 	PropB1 *string
+}
+
+func (m *MyBaseType) GetKind() (rv *MyKind) {
+	if m != nil {
+		return m.Kind
+	}
+	return
+}
+
+func (m *MyBaseType) GetHelper() (rv *MyBaseHelperType) {
+	if m != nil {
+		return m.Helper
+	}
+	return
+}
+
+func (m *MyBaseType) GetPropB1() (rv string) {
+	if m != nil && m.PropB1 != nil {
+		return *m.PropB1
+	}
+	return
 }
 
 // GetMyBaseType implements the MyBaseTypeClassification interface for type MyBaseType.
@@ -224,6 +630,34 @@ type MyDerivedType struct {
 	Helper *MyBaseHelperType
 	PropB1 *string
 	PropD1 *string
+}
+
+func (m *MyDerivedType) GetKind() (rv *MyKind) {
+	if m != nil {
+		return m.Kind
+	}
+	return
+}
+
+func (m *MyDerivedType) GetHelper() (rv *MyBaseHelperType) {
+	if m != nil {
+		return m.Helper
+	}
+	return
+}
+
+func (m *MyDerivedType) GetPropB1() (rv string) {
+	if m != nil && m.PropB1 != nil {
+		return *m.PropB1
+	}
+	return
+}
+
+func (m *MyDerivedType) GetPropD1() (rv string) {
+	if m != nil && m.PropD1 != nil {
+		return *m.PropD1
+	}
+	return
 }
 
 // GetMyBaseType implements the MyBaseTypeClassification interface for type MyDerivedType.
@@ -242,6 +676,20 @@ type ReadonlyObj struct {
 	ID *string
 }
 
+func (r *ReadonlyObj) GetSize() (rv int32) {
+	if r != nil && r.Size != nil {
+		return *r.Size
+	}
+	return
+}
+
+func (r *ReadonlyObj) GetID() (rv string) {
+	if r != nil && r.ID != nil {
+		return *r.ID
+	}
+	return
+}
+
 type Salmon struct {
 	// REQUIRED
 	Fishtype *string
@@ -252,6 +700,48 @@ type Salmon struct {
 	Location *string
 	Siblings []FishClassification
 	Species  *string
+}
+
+func (s *Salmon) GetFishtype() (rv string) {
+	if s != nil && s.Fishtype != nil {
+		return *s.Fishtype
+	}
+	return
+}
+
+func (s *Salmon) GetLength() (rv float32) {
+	if s != nil && s.Length != nil {
+		return *s.Length
+	}
+	return
+}
+
+func (s *Salmon) GetIswild() (rv bool) {
+	if s != nil && s.Iswild != nil {
+		return *s.Iswild
+	}
+	return
+}
+
+func (s *Salmon) GetLocation() (rv string) {
+	if s != nil && s.Location != nil {
+		return *s.Location
+	}
+	return
+}
+
+func (s *Salmon) GetSiblings() (rv []FishClassification) {
+	if s != nil {
+		return s.Siblings
+	}
+	return
+}
+
+func (s *Salmon) GetSpecies() (rv string) {
+	if s != nil && s.Species != nil {
+		return *s.Species
+	}
+	return
 }
 
 // GetFish implements the FishClassification interface for type Salmon.
@@ -280,6 +770,55 @@ type Sawshark struct {
 	Picture  []byte
 	Siblings []FishClassification
 	Species  *string
+}
+
+func (s *Sawshark) GetBirthday() (rv *time.Time) {
+	if s != nil {
+		return s.Birthday
+	}
+	return
+}
+
+func (s *Sawshark) GetFishtype() (rv string) {
+	if s != nil && s.Fishtype != nil {
+		return *s.Fishtype
+	}
+	return
+}
+
+func (s *Sawshark) GetLength() (rv float32) {
+	if s != nil && s.Length != nil {
+		return *s.Length
+	}
+	return
+}
+
+func (s *Sawshark) GetAge() (rv int32) {
+	if s != nil && s.Age != nil {
+		return *s.Age
+	}
+	return
+}
+
+func (s *Sawshark) GetPicture() (rv []byte) {
+	if s != nil {
+		return s.Picture
+	}
+	return
+}
+
+func (s *Sawshark) GetSiblings() (rv []FishClassification) {
+	if s != nil {
+		return s.Siblings
+	}
+	return
+}
+
+func (s *Sawshark) GetSpecies() (rv string) {
+	if s != nil && s.Species != nil {
+		return *s.Species
+	}
+	return
 }
 
 // GetFish implements the FishClassification interface for type Sawshark.
@@ -318,6 +857,48 @@ type Shark struct {
 	Species  *string
 }
 
+func (s *Shark) GetBirthday() (rv *time.Time) {
+	if s != nil {
+		return s.Birthday
+	}
+	return
+}
+
+func (s *Shark) GetFishtype() (rv string) {
+	if s != nil && s.Fishtype != nil {
+		return *s.Fishtype
+	}
+	return
+}
+
+func (s *Shark) GetLength() (rv float32) {
+	if s != nil && s.Length != nil {
+		return *s.Length
+	}
+	return
+}
+
+func (s *Shark) GetAge() (rv int32) {
+	if s != nil && s.Age != nil {
+		return *s.Age
+	}
+	return
+}
+
+func (s *Shark) GetSiblings() (rv []FishClassification) {
+	if s != nil {
+		return s.Siblings
+	}
+	return
+}
+
+func (s *Shark) GetSpecies() (rv string) {
+	if s != nil && s.Species != nil {
+		return *s.Species
+	}
+	return
+}
+
 // GetFish implements the FishClassification interface for type Shark.
 func (s *Shark) GetFish() *Fish {
 	return &Fish{
@@ -339,6 +920,41 @@ type Siamese struct {
 	Name  *string
 }
 
+func (s *Siamese) GetBreed() (rv string) {
+	if s != nil && s.Breed != nil {
+		return *s.Breed
+	}
+	return
+}
+
+func (s *Siamese) GetColor() (rv string) {
+	if s != nil && s.Color != nil {
+		return *s.Color
+	}
+	return
+}
+
+func (s *Siamese) GetHates() (rv []*Dog) {
+	if s != nil {
+		return s.Hates
+	}
+	return
+}
+
+func (s *Siamese) GetID() (rv int32) {
+	if s != nil && s.ID != nil {
+		return *s.ID
+	}
+	return
+}
+
+func (s *Siamese) GetName() (rv string) {
+	if s != nil && s.Name != nil {
+		return *s.Name
+	}
+	return
+}
+
 type SmartSalmon struct {
 	// REQUIRED
 	Fishtype *string
@@ -353,6 +969,62 @@ type SmartSalmon struct {
 	Location             *string
 	Siblings             []FishClassification
 	Species              *string
+}
+
+func (s *SmartSalmon) GetFishtype() (rv string) {
+	if s != nil && s.Fishtype != nil {
+		return *s.Fishtype
+	}
+	return
+}
+
+func (s *SmartSalmon) GetLength() (rv float32) {
+	if s != nil && s.Length != nil {
+		return *s.Length
+	}
+	return
+}
+
+func (s *SmartSalmon) GetAdditionalProperties() (rv map[string]any) {
+	if s != nil {
+		return s.AdditionalProperties
+	}
+	return
+}
+
+func (s *SmartSalmon) GetCollegeDegree() (rv string) {
+	if s != nil && s.CollegeDegree != nil {
+		return *s.CollegeDegree
+	}
+	return
+}
+
+func (s *SmartSalmon) GetIswild() (rv bool) {
+	if s != nil && s.Iswild != nil {
+		return *s.Iswild
+	}
+	return
+}
+
+func (s *SmartSalmon) GetLocation() (rv string) {
+	if s != nil && s.Location != nil {
+		return *s.Location
+	}
+	return
+}
+
+func (s *SmartSalmon) GetSiblings() (rv []FishClassification) {
+	if s != nil {
+		return s.Siblings
+	}
+	return
+}
+
+func (s *SmartSalmon) GetSpecies() (rv string) {
+	if s != nil && s.Species != nil {
+		return *s.Species
+	}
+	return
 }
 
 // GetFish implements the FishClassification interface for type SmartSalmon.
@@ -381,4 +1053,25 @@ type StringWrapper struct {
 	Empty *string
 	Field *string
 	Null  *string
+}
+
+func (s *StringWrapper) GetEmpty() (rv string) {
+	if s != nil && s.Empty != nil {
+		return *s.Empty
+	}
+	return
+}
+
+func (s *StringWrapper) GetField() (rv string) {
+	if s != nil && s.Field != nil {
+		return *s.Field
+	}
+	return
+}
+
+func (s *StringWrapper) GetNull() (rv string) {
+	if s != nil && s.Null != nil {
+		return *s.Null
+	}
+	return
 }

@@ -16,15 +16,71 @@ type Cat struct {
 	Meows     *bool
 }
 
+func (c *Cat) GetName() (rv string) {
+	if c != nil && c.Name != nil {
+		return *c.Name
+	}
+	return
+}
+
+func (c *Cat) GetHisses() (rv bool) {
+	if c != nil && c.Hisses != nil {
+		return *c.Hisses
+	}
+	return
+}
+
+func (c *Cat) GetLikesMilk() (rv bool) {
+	if c != nil && c.LikesMilk != nil {
+		return *c.LikesMilk
+	}
+	return
+}
+
+func (c *Cat) GetMeows() (rv bool) {
+	if c != nil && c.Meows != nil {
+		return *c.Meows
+	}
+	return
+}
+
 type Feline struct {
 	Hisses *bool
 	Meows  *bool
+}
+
+func (f *Feline) GetHisses() (rv bool) {
+	if f != nil && f.Hisses != nil {
+		return *f.Hisses
+	}
+	return
+}
+
+func (f *Feline) GetMeows() (rv bool) {
+	if f != nil && f.Meows != nil {
+		return *f.Meows
+	}
+	return
 }
 
 type Horse struct {
 	// REQUIRED
 	Name         *string
 	IsAShowHorse *bool
+}
+
+func (h *Horse) GetName() (rv string) {
+	if h != nil && h.Name != nil {
+		return *h.Name
+	}
+	return
+}
+
+func (h *Horse) GetIsAShowHorse() (rv bool) {
+	if h != nil && h.IsAShowHorse != nil {
+		return *h.IsAShowHorse
+	}
+	return
 }
 
 type Kitten struct {
@@ -36,7 +92,49 @@ type Kitten struct {
 	Meows       *bool
 }
 
+func (k *Kitten) GetName() (rv string) {
+	if k != nil && k.Name != nil {
+		return *k.Name
+	}
+	return
+}
+
+func (k *Kitten) GetEatsMiceYet() (rv bool) {
+	if k != nil && k.EatsMiceYet != nil {
+		return *k.EatsMiceYet
+	}
+	return
+}
+
+func (k *Kitten) GetHisses() (rv bool) {
+	if k != nil && k.Hisses != nil {
+		return *k.Hisses
+	}
+	return
+}
+
+func (k *Kitten) GetLikesMilk() (rv bool) {
+	if k != nil && k.LikesMilk != nil {
+		return *k.LikesMilk
+	}
+	return
+}
+
+func (k *Kitten) GetMeows() (rv bool) {
+	if k != nil && k.Meows != nil {
+		return *k.Meows
+	}
+	return
+}
+
 type Pet struct {
 	// REQUIRED
 	Name *string
+}
+
+func (p *Pet) GetName() (rv string) {
+	if p != nil && p.Name != nil {
+		return *p.Name
+	}
+	return
 }

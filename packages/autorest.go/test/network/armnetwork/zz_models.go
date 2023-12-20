@@ -22,6 +22,27 @@ type AADAuthenticationParameters struct {
 	AADTenant *string
 }
 
+func (a *AADAuthenticationParameters) GetAADAudience() (rv string) {
+	if a != nil && a.AADAudience != nil {
+		return *a.AADAudience
+	}
+	return
+}
+
+func (a *AADAuthenticationParameters) GetAADIssuer() (rv string) {
+	if a != nil && a.AADIssuer != nil {
+		return *a.AADIssuer
+	}
+	return
+}
+
+func (a *AADAuthenticationParameters) GetAADTenant() (rv string) {
+	if a != nil && a.AADTenant != nil {
+		return *a.AADTenant
+	}
+	return
+}
+
 // Action to be taken on a route matching a RouteMap criterion.
 type Action struct {
 	// List of parameters relevant to the action.For instance if type is drop then parameters has list of prefixes to be dropped.If
@@ -30,6 +51,20 @@ type Action struct {
 
 	// Type of action to be taken. Supported types are 'Remove', 'Add', 'Replace', and 'Drop.'
 	Type *RouteMapActionType
+}
+
+func (a *Action) GetParameters() (rv []*Parameter) {
+	if a != nil {
+		return a.Parameters
+	}
+	return
+}
+
+func (a *Action) GetType() (rv *RouteMapActionType) {
+	if a != nil {
+		return a.Type
+	}
+	return
 }
 
 // ActiveBaseSecurityAdminRule - Network base admin rule.
@@ -59,6 +94,62 @@ type ActiveBaseSecurityAdminRule struct {
 	RuleGroups []*ConfigurationGroup
 }
 
+func (a *ActiveBaseSecurityAdminRule) GetKind() (rv *EffectiveAdminRuleKind) {
+	if a != nil {
+		return a.Kind
+	}
+	return
+}
+
+func (a *ActiveBaseSecurityAdminRule) GetCommitTime() (rv *time.Time) {
+	if a != nil {
+		return a.CommitTime
+	}
+	return
+}
+
+func (a *ActiveBaseSecurityAdminRule) GetConfigurationDescription() (rv string) {
+	if a != nil && a.ConfigurationDescription != nil {
+		return *a.ConfigurationDescription
+	}
+	return
+}
+
+func (a *ActiveBaseSecurityAdminRule) GetID() (rv string) {
+	if a != nil && a.ID != nil {
+		return *a.ID
+	}
+	return
+}
+
+func (a *ActiveBaseSecurityAdminRule) GetRegion() (rv string) {
+	if a != nil && a.Region != nil {
+		return *a.Region
+	}
+	return
+}
+
+func (a *ActiveBaseSecurityAdminRule) GetRuleCollectionAppliesToGroups() (rv []*ManagerSecurityGroupItem) {
+	if a != nil {
+		return a.RuleCollectionAppliesToGroups
+	}
+	return
+}
+
+func (a *ActiveBaseSecurityAdminRule) GetRuleCollectionDescription() (rv string) {
+	if a != nil && a.RuleCollectionDescription != nil {
+		return *a.RuleCollectionDescription
+	}
+	return
+}
+
+func (a *ActiveBaseSecurityAdminRule) GetRuleGroups() (rv []*ConfigurationGroup) {
+	if a != nil {
+		return a.RuleGroups
+	}
+	return
+}
+
 // GetActiveBaseSecurityAdminRule implements the ActiveBaseSecurityAdminRuleClassification interface for type ActiveBaseSecurityAdminRule.
 func (a *ActiveBaseSecurityAdminRule) GetActiveBaseSecurityAdminRule() *ActiveBaseSecurityAdminRule {
 	return a
@@ -72,6 +163,20 @@ type ActiveConfigurationParameter struct {
 	// When present, the value can be passed to a subsequent query call (together with the same query and scopes used in the current
 	// request) to retrieve the next page of data.
 	SkipToken *string
+}
+
+func (a *ActiveConfigurationParameter) GetRegions() (rv []*string) {
+	if a != nil {
+		return a.Regions
+	}
+	return
+}
+
+func (a *ActiveConfigurationParameter) GetSkipToken() (rv string) {
+	if a != nil && a.SkipToken != nil {
+		return *a.SkipToken
+	}
+	return
 }
 
 // ActiveConnectivityConfiguration - Active connectivity configuration.
@@ -92,6 +197,41 @@ type ActiveConnectivityConfiguration struct {
 	Region *string
 }
 
+func (a *ActiveConnectivityConfiguration) GetCommitTime() (rv *time.Time) {
+	if a != nil {
+		return a.CommitTime
+	}
+	return
+}
+
+func (a *ActiveConnectivityConfiguration) GetConfigurationGroups() (rv []*ConfigurationGroup) {
+	if a != nil {
+		return a.ConfigurationGroups
+	}
+	return
+}
+
+func (a *ActiveConnectivityConfiguration) GetID() (rv string) {
+	if a != nil && a.ID != nil {
+		return *a.ID
+	}
+	return
+}
+
+func (a *ActiveConnectivityConfiguration) GetProperties() (rv *ConnectivityConfigurationProperties) {
+	if a != nil {
+		return a.Properties
+	}
+	return
+}
+
+func (a *ActiveConnectivityConfiguration) GetRegion() (rv string) {
+	if a != nil && a.Region != nil {
+		return *a.Region
+	}
+	return
+}
+
 // ActiveConnectivityConfigurationsListResult - Result of the request to list active connectivity configurations. It contains
 // a list of active connectivity configurations and a skiptoken to get the next set of results.
 type ActiveConnectivityConfigurationsListResult struct {
@@ -101,6 +241,20 @@ type ActiveConnectivityConfigurationsListResult struct {
 
 	// Gets a page of active connectivity configurations.
 	Value []*ActiveConnectivityConfiguration
+}
+
+func (a *ActiveConnectivityConfigurationsListResult) GetSkipToken() (rv string) {
+	if a != nil && a.SkipToken != nil {
+		return *a.SkipToken
+	}
+	return
+}
+
+func (a *ActiveConnectivityConfigurationsListResult) GetValue() (rv []*ActiveConnectivityConfiguration) {
+	if a != nil {
+		return a.Value
+	}
+	return
 }
 
 // ActiveDefaultSecurityAdminRule - Network default admin rule.
@@ -131,6 +285,69 @@ type ActiveDefaultSecurityAdminRule struct {
 
 	// Effective configuration groups.
 	RuleGroups []*ConfigurationGroup
+}
+
+func (a *ActiveDefaultSecurityAdminRule) GetKind() (rv *EffectiveAdminRuleKind) {
+	if a != nil {
+		return a.Kind
+	}
+	return
+}
+
+func (a *ActiveDefaultSecurityAdminRule) GetCommitTime() (rv *time.Time) {
+	if a != nil {
+		return a.CommitTime
+	}
+	return
+}
+
+func (a *ActiveDefaultSecurityAdminRule) GetConfigurationDescription() (rv string) {
+	if a != nil && a.ConfigurationDescription != nil {
+		return *a.ConfigurationDescription
+	}
+	return
+}
+
+func (a *ActiveDefaultSecurityAdminRule) GetID() (rv string) {
+	if a != nil && a.ID != nil {
+		return *a.ID
+	}
+	return
+}
+
+func (a *ActiveDefaultSecurityAdminRule) GetProperties() (rv *DefaultAdminPropertiesFormat) {
+	if a != nil {
+		return a.Properties
+	}
+	return
+}
+
+func (a *ActiveDefaultSecurityAdminRule) GetRegion() (rv string) {
+	if a != nil && a.Region != nil {
+		return *a.Region
+	}
+	return
+}
+
+func (a *ActiveDefaultSecurityAdminRule) GetRuleCollectionAppliesToGroups() (rv []*ManagerSecurityGroupItem) {
+	if a != nil {
+		return a.RuleCollectionAppliesToGroups
+	}
+	return
+}
+
+func (a *ActiveDefaultSecurityAdminRule) GetRuleCollectionDescription() (rv string) {
+	if a != nil && a.RuleCollectionDescription != nil {
+		return *a.RuleCollectionDescription
+	}
+	return
+}
+
+func (a *ActiveDefaultSecurityAdminRule) GetRuleGroups() (rv []*ConfigurationGroup) {
+	if a != nil {
+		return a.RuleGroups
+	}
+	return
 }
 
 // GetActiveBaseSecurityAdminRule implements the ActiveBaseSecurityAdminRuleClassification interface for type ActiveDefaultSecurityAdminRule.
@@ -177,6 +394,69 @@ type ActiveSecurityAdminRule struct {
 	RuleGroups []*ConfigurationGroup
 }
 
+func (a *ActiveSecurityAdminRule) GetKind() (rv *EffectiveAdminRuleKind) {
+	if a != nil {
+		return a.Kind
+	}
+	return
+}
+
+func (a *ActiveSecurityAdminRule) GetCommitTime() (rv *time.Time) {
+	if a != nil {
+		return a.CommitTime
+	}
+	return
+}
+
+func (a *ActiveSecurityAdminRule) GetConfigurationDescription() (rv string) {
+	if a != nil && a.ConfigurationDescription != nil {
+		return *a.ConfigurationDescription
+	}
+	return
+}
+
+func (a *ActiveSecurityAdminRule) GetID() (rv string) {
+	if a != nil && a.ID != nil {
+		return *a.ID
+	}
+	return
+}
+
+func (a *ActiveSecurityAdminRule) GetProperties() (rv *AdminPropertiesFormat) {
+	if a != nil {
+		return a.Properties
+	}
+	return
+}
+
+func (a *ActiveSecurityAdminRule) GetRegion() (rv string) {
+	if a != nil && a.Region != nil {
+		return *a.Region
+	}
+	return
+}
+
+func (a *ActiveSecurityAdminRule) GetRuleCollectionAppliesToGroups() (rv []*ManagerSecurityGroupItem) {
+	if a != nil {
+		return a.RuleCollectionAppliesToGroups
+	}
+	return
+}
+
+func (a *ActiveSecurityAdminRule) GetRuleCollectionDescription() (rv string) {
+	if a != nil && a.RuleCollectionDescription != nil {
+		return *a.RuleCollectionDescription
+	}
+	return
+}
+
+func (a *ActiveSecurityAdminRule) GetRuleGroups() (rv []*ConfigurationGroup) {
+	if a != nil {
+		return a.RuleGroups
+	}
+	return
+}
+
 // GetActiveBaseSecurityAdminRule implements the ActiveBaseSecurityAdminRuleClassification interface for type ActiveSecurityAdminRule.
 func (a *ActiveSecurityAdminRule) GetActiveBaseSecurityAdminRule() *ActiveBaseSecurityAdminRule {
 	return &ActiveBaseSecurityAdminRule{
@@ -202,6 +482,20 @@ type ActiveSecurityAdminRulesListResult struct {
 	Value []ActiveBaseSecurityAdminRuleClassification
 }
 
+func (a *ActiveSecurityAdminRulesListResult) GetSkipToken() (rv string) {
+	if a != nil && a.SkipToken != nil {
+		return *a.SkipToken
+	}
+	return
+}
+
+func (a *ActiveSecurityAdminRulesListResult) GetValue() (rv []ActiveBaseSecurityAdminRuleClassification) {
+	if a != nil {
+		return a.Value
+	}
+	return
+}
+
 // AddressPrefixItem - Address prefix item.
 type AddressPrefixItem struct {
 	// Address prefix.
@@ -211,10 +505,31 @@ type AddressPrefixItem struct {
 	AddressPrefixType *AddressPrefixType
 }
 
+func (a *AddressPrefixItem) GetAddressPrefix() (rv string) {
+	if a != nil && a.AddressPrefix != nil {
+		return *a.AddressPrefix
+	}
+	return
+}
+
+func (a *AddressPrefixItem) GetAddressPrefixType() (rv *AddressPrefixType) {
+	if a != nil {
+		return a.AddressPrefixType
+	}
+	return
+}
+
 // AddressSpace contains an array of IP address ranges that can be used by subnets of the virtual network.
 type AddressSpace struct {
 	// A list of address blocks reserved for this virtual network in CIDR notation.
 	AddressPrefixes []*string
+}
+
+func (a *AddressSpace) GetAddressPrefixes() (rv []*string) {
+	if a != nil {
+		return a.AddressPrefixes
+	}
+	return
 }
 
 // AdminPropertiesFormat - Security admin rule resource.
@@ -251,6 +566,76 @@ type AdminPropertiesFormat struct {
 	ProvisioningState *ProvisioningState
 }
 
+func (a *AdminPropertiesFormat) GetAccess() (rv *SecurityConfigurationRuleAccess) {
+	if a != nil {
+		return a.Access
+	}
+	return
+}
+
+func (a *AdminPropertiesFormat) GetDirection() (rv *SecurityConfigurationRuleDirection) {
+	if a != nil {
+		return a.Direction
+	}
+	return
+}
+
+func (a *AdminPropertiesFormat) GetPriority() (rv int32) {
+	if a != nil && a.Priority != nil {
+		return *a.Priority
+	}
+	return
+}
+
+func (a *AdminPropertiesFormat) GetProtocol() (rv *SecurityConfigurationRuleProtocol) {
+	if a != nil {
+		return a.Protocol
+	}
+	return
+}
+
+func (a *AdminPropertiesFormat) GetDescription() (rv string) {
+	if a != nil && a.Description != nil {
+		return *a.Description
+	}
+	return
+}
+
+func (a *AdminPropertiesFormat) GetDestinationPortRanges() (rv []*string) {
+	if a != nil {
+		return a.DestinationPortRanges
+	}
+	return
+}
+
+func (a *AdminPropertiesFormat) GetDestinations() (rv []*AddressPrefixItem) {
+	if a != nil {
+		return a.Destinations
+	}
+	return
+}
+
+func (a *AdminPropertiesFormat) GetSourcePortRanges() (rv []*string) {
+	if a != nil {
+		return a.SourcePortRanges
+	}
+	return
+}
+
+func (a *AdminPropertiesFormat) GetSources() (rv []*AddressPrefixItem) {
+	if a != nil {
+		return a.Sources
+	}
+	return
+}
+
+func (a *AdminPropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if a != nil {
+		return a.ProvisioningState
+	}
+	return
+}
+
 // AdminRule - Network admin rule.
 type AdminRule struct {
 	// REQUIRED; Whether the rule is custom or default.
@@ -273,6 +658,55 @@ type AdminRule struct {
 
 	// READ-ONLY; Resource type.
 	Type *string
+}
+
+func (a *AdminRule) GetKind() (rv *AdminRuleKind) {
+	if a != nil {
+		return a.Kind
+	}
+	return
+}
+
+func (a *AdminRule) GetProperties() (rv *AdminPropertiesFormat) {
+	if a != nil {
+		return a.Properties
+	}
+	return
+}
+
+func (a *AdminRule) GetEtag() (rv string) {
+	if a != nil && a.Etag != nil {
+		return *a.Etag
+	}
+	return
+}
+
+func (a *AdminRule) GetID() (rv string) {
+	if a != nil && a.ID != nil {
+		return *a.ID
+	}
+	return
+}
+
+func (a *AdminRule) GetName() (rv string) {
+	if a != nil && a.Name != nil {
+		return *a.Name
+	}
+	return
+}
+
+func (a *AdminRule) GetSystemData() (rv *SystemData) {
+	if a != nil {
+		return a.SystemData
+	}
+	return
+}
+
+func (a *AdminRule) GetType() (rv string) {
+	if a != nil && a.Type != nil {
+		return *a.Type
+	}
+	return
 }
 
 // GetBaseAdminRule implements the BaseAdminRuleClassification interface for type AdminRule.
@@ -308,6 +742,48 @@ type AdminRuleCollection struct {
 	Type *string
 }
 
+func (a *AdminRuleCollection) GetProperties() (rv *AdminRuleCollectionPropertiesFormat) {
+	if a != nil {
+		return a.Properties
+	}
+	return
+}
+
+func (a *AdminRuleCollection) GetEtag() (rv string) {
+	if a != nil && a.Etag != nil {
+		return *a.Etag
+	}
+	return
+}
+
+func (a *AdminRuleCollection) GetID() (rv string) {
+	if a != nil && a.ID != nil {
+		return *a.ID
+	}
+	return
+}
+
+func (a *AdminRuleCollection) GetName() (rv string) {
+	if a != nil && a.Name != nil {
+		return *a.Name
+	}
+	return
+}
+
+func (a *AdminRuleCollection) GetSystemData() (rv *SystemData) {
+	if a != nil {
+		return a.SystemData
+	}
+	return
+}
+
+func (a *AdminRuleCollection) GetType() (rv string) {
+	if a != nil && a.Type != nil {
+		return *a.Type
+	}
+	return
+}
+
 // AdminRuleCollectionListResult - Security admin configuration rule collection list result.
 type AdminRuleCollectionListResult struct {
 	// Gets the URL to get the next set of results.
@@ -315,6 +791,20 @@ type AdminRuleCollectionListResult struct {
 
 	// A list of network manager security admin configuration rule collections
 	Value []*AdminRuleCollection
+}
+
+func (a *AdminRuleCollectionListResult) GetNextLink() (rv string) {
+	if a != nil && a.NextLink != nil {
+		return *a.NextLink
+	}
+	return
+}
+
+func (a *AdminRuleCollectionListResult) GetValue() (rv []*AdminRuleCollection) {
+	if a != nil {
+		return a.Value
+	}
+	return
 }
 
 // AdminRuleCollectionPropertiesFormat - Defines the admin rule collection properties.
@@ -329,6 +819,27 @@ type AdminRuleCollectionPropertiesFormat struct {
 	ProvisioningState *ProvisioningState
 }
 
+func (a *AdminRuleCollectionPropertiesFormat) GetAppliesToGroups() (rv []*ManagerSecurityGroupItem) {
+	if a != nil {
+		return a.AppliesToGroups
+	}
+	return
+}
+
+func (a *AdminRuleCollectionPropertiesFormat) GetDescription() (rv string) {
+	if a != nil && a.Description != nil {
+		return *a.Description
+	}
+	return
+}
+
+func (a *AdminRuleCollectionPropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if a != nil {
+		return a.ProvisioningState
+	}
+	return
+}
+
 // AdminRuleListResult - security configuration admin rule list result.
 type AdminRuleListResult struct {
 	// The URL to get the next set of results.
@@ -336,6 +847,20 @@ type AdminRuleListResult struct {
 
 	// A list of admin rules
 	Value []BaseAdminRuleClassification
+}
+
+func (a *AdminRuleListResult) GetNextLink() (rv string) {
+	if a != nil && a.NextLink != nil {
+		return *a.NextLink
+	}
+	return
+}
+
+func (a *AdminRuleListResult) GetValue() (rv []BaseAdminRuleClassification) {
+	if a != nil {
+		return a.Value
+	}
+	return
 }
 
 // ApplicationGateway - Application gateway resource.
@@ -368,6 +893,69 @@ type ApplicationGateway struct {
 	Type *string
 }
 
+func (a *ApplicationGateway) GetID() (rv string) {
+	if a != nil && a.ID != nil {
+		return *a.ID
+	}
+	return
+}
+
+func (a *ApplicationGateway) GetIdentity() (rv *ManagedServiceIdentity) {
+	if a != nil {
+		return a.Identity
+	}
+	return
+}
+
+func (a *ApplicationGateway) GetLocation() (rv string) {
+	if a != nil && a.Location != nil {
+		return *a.Location
+	}
+	return
+}
+
+func (a *ApplicationGateway) GetProperties() (rv *ApplicationGatewayPropertiesFormat) {
+	if a != nil {
+		return a.Properties
+	}
+	return
+}
+
+func (a *ApplicationGateway) GetTags() (rv map[string]*string) {
+	if a != nil {
+		return a.Tags
+	}
+	return
+}
+
+func (a *ApplicationGateway) GetZones() (rv []*string) {
+	if a != nil {
+		return a.Zones
+	}
+	return
+}
+
+func (a *ApplicationGateway) GetEtag() (rv string) {
+	if a != nil && a.Etag != nil {
+		return *a.Etag
+	}
+	return
+}
+
+func (a *ApplicationGateway) GetName() (rv string) {
+	if a != nil && a.Name != nil {
+		return *a.Name
+	}
+	return
+}
+
+func (a *ApplicationGateway) GetType() (rv string) {
+	if a != nil && a.Type != nil {
+		return *a.Type
+	}
+	return
+}
+
 // ApplicationGatewayAuthenticationCertificate - Authentication certificates of an application gateway.
 type ApplicationGatewayAuthenticationCertificate struct {
 	// Resource ID.
@@ -386,6 +974,41 @@ type ApplicationGatewayAuthenticationCertificate struct {
 	Type *string
 }
 
+func (a *ApplicationGatewayAuthenticationCertificate) GetID() (rv string) {
+	if a != nil && a.ID != nil {
+		return *a.ID
+	}
+	return
+}
+
+func (a *ApplicationGatewayAuthenticationCertificate) GetName() (rv string) {
+	if a != nil && a.Name != nil {
+		return *a.Name
+	}
+	return
+}
+
+func (a *ApplicationGatewayAuthenticationCertificate) GetProperties() (rv *ApplicationGatewayAuthenticationCertificatePropertiesFormat) {
+	if a != nil {
+		return a.Properties
+	}
+	return
+}
+
+func (a *ApplicationGatewayAuthenticationCertificate) GetEtag() (rv string) {
+	if a != nil && a.Etag != nil {
+		return *a.Etag
+	}
+	return
+}
+
+func (a *ApplicationGatewayAuthenticationCertificate) GetType() (rv string) {
+	if a != nil && a.Type != nil {
+		return *a.Type
+	}
+	return
+}
+
 // ApplicationGatewayAuthenticationCertificatePropertiesFormat - Authentication certificates properties of an application
 // gateway.
 type ApplicationGatewayAuthenticationCertificatePropertiesFormat struct {
@@ -396,6 +1019,20 @@ type ApplicationGatewayAuthenticationCertificatePropertiesFormat struct {
 	ProvisioningState *ProvisioningState
 }
 
+func (a *ApplicationGatewayAuthenticationCertificatePropertiesFormat) GetData() (rv string) {
+	if a != nil && a.Data != nil {
+		return *a.Data
+	}
+	return
+}
+
+func (a *ApplicationGatewayAuthenticationCertificatePropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if a != nil {
+		return a.ProvisioningState
+	}
+	return
+}
+
 // ApplicationGatewayAutoscaleConfiguration - Application Gateway autoscale configuration.
 type ApplicationGatewayAutoscaleConfiguration struct {
 	// REQUIRED; Lower bound on number of Application Gateway capacity.
@@ -403,6 +1040,20 @@ type ApplicationGatewayAutoscaleConfiguration struct {
 
 	// Upper bound on number of Application Gateway capacity.
 	MaxCapacity *int32
+}
+
+func (a *ApplicationGatewayAutoscaleConfiguration) GetMinCapacity() (rv int32) {
+	if a != nil && a.MinCapacity != nil {
+		return *a.MinCapacity
+	}
+	return
+}
+
+func (a *ApplicationGatewayAutoscaleConfiguration) GetMaxCapacity() (rv int32) {
+	if a != nil && a.MaxCapacity != nil {
+		return *a.MaxCapacity
+	}
+	return
 }
 
 // ApplicationGatewayAvailableSSLOptions - Response for ApplicationGatewayAvailableSslOptions API service call.
@@ -426,6 +1077,48 @@ type ApplicationGatewayAvailableSSLOptions struct {
 	Type *string
 }
 
+func (a *ApplicationGatewayAvailableSSLOptions) GetID() (rv string) {
+	if a != nil && a.ID != nil {
+		return *a.ID
+	}
+	return
+}
+
+func (a *ApplicationGatewayAvailableSSLOptions) GetLocation() (rv string) {
+	if a != nil && a.Location != nil {
+		return *a.Location
+	}
+	return
+}
+
+func (a *ApplicationGatewayAvailableSSLOptions) GetProperties() (rv *ApplicationGatewayAvailableSSLOptionsPropertiesFormat) {
+	if a != nil {
+		return a.Properties
+	}
+	return
+}
+
+func (a *ApplicationGatewayAvailableSSLOptions) GetTags() (rv map[string]*string) {
+	if a != nil {
+		return a.Tags
+	}
+	return
+}
+
+func (a *ApplicationGatewayAvailableSSLOptions) GetName() (rv string) {
+	if a != nil && a.Name != nil {
+		return *a.Name
+	}
+	return
+}
+
+func (a *ApplicationGatewayAvailableSSLOptions) GetType() (rv string) {
+	if a != nil && a.Type != nil {
+		return *a.Type
+	}
+	return
+}
+
 // ApplicationGatewayAvailableSSLOptionsPropertiesFormat - Properties of ApplicationGatewayAvailableSslOptions.
 type ApplicationGatewayAvailableSSLOptionsPropertiesFormat struct {
 	// List of available Ssl cipher suites.
@@ -441,6 +1134,34 @@ type ApplicationGatewayAvailableSSLOptionsPropertiesFormat struct {
 	PredefinedPolicies []*SubResource
 }
 
+func (a *ApplicationGatewayAvailableSSLOptionsPropertiesFormat) GetAvailableCipherSuites() (rv []*ApplicationGatewaySSLCipherSuite) {
+	if a != nil {
+		return a.AvailableCipherSuites
+	}
+	return
+}
+
+func (a *ApplicationGatewayAvailableSSLOptionsPropertiesFormat) GetAvailableProtocols() (rv []*ApplicationGatewaySSLProtocol) {
+	if a != nil {
+		return a.AvailableProtocols
+	}
+	return
+}
+
+func (a *ApplicationGatewayAvailableSSLOptionsPropertiesFormat) GetDefaultPolicy() (rv *ApplicationGatewaySSLPolicyName) {
+	if a != nil {
+		return a.DefaultPolicy
+	}
+	return
+}
+
+func (a *ApplicationGatewayAvailableSSLOptionsPropertiesFormat) GetPredefinedPolicies() (rv []*SubResource) {
+	if a != nil {
+		return a.PredefinedPolicies
+	}
+	return
+}
+
 // ApplicationGatewayAvailableSSLPredefinedPolicies - Response for ApplicationGatewayAvailableSslOptions API service call.
 type ApplicationGatewayAvailableSSLPredefinedPolicies struct {
 	// URL to get the next set of results.
@@ -450,10 +1171,31 @@ type ApplicationGatewayAvailableSSLPredefinedPolicies struct {
 	Value []*ApplicationGatewaySSLPredefinedPolicy
 }
 
+func (a *ApplicationGatewayAvailableSSLPredefinedPolicies) GetNextLink() (rv string) {
+	if a != nil && a.NextLink != nil {
+		return *a.NextLink
+	}
+	return
+}
+
+func (a *ApplicationGatewayAvailableSSLPredefinedPolicies) GetValue() (rv []*ApplicationGatewaySSLPredefinedPolicy) {
+	if a != nil {
+		return a.Value
+	}
+	return
+}
+
 // ApplicationGatewayAvailableWafRuleSetsResult - Response for ApplicationGatewayAvailableWafRuleSets API service call.
 type ApplicationGatewayAvailableWafRuleSetsResult struct {
 	// The list of application gateway rule sets.
 	Value []*ApplicationGatewayFirewallRuleSet
+}
+
+func (a *ApplicationGatewayAvailableWafRuleSetsResult) GetValue() (rv []*ApplicationGatewayFirewallRuleSet) {
+	if a != nil {
+		return a.Value
+	}
+	return
 }
 
 // ApplicationGatewayBackendAddress - Backend address of an application gateway.
@@ -463,6 +1205,20 @@ type ApplicationGatewayBackendAddress struct {
 
 	// IP address.
 	IPAddress *string
+}
+
+func (a *ApplicationGatewayBackendAddress) GetFqdn() (rv string) {
+	if a != nil && a.Fqdn != nil {
+		return *a.Fqdn
+	}
+	return
+}
+
+func (a *ApplicationGatewayBackendAddress) GetIPAddress() (rv string) {
+	if a != nil && a.IPAddress != nil {
+		return *a.IPAddress
+	}
+	return
 }
 
 // ApplicationGatewayBackendAddressPool - Backend Address Pool of an application gateway.
@@ -483,6 +1239,41 @@ type ApplicationGatewayBackendAddressPool struct {
 	Type *string
 }
 
+func (a *ApplicationGatewayBackendAddressPool) GetID() (rv string) {
+	if a != nil && a.ID != nil {
+		return *a.ID
+	}
+	return
+}
+
+func (a *ApplicationGatewayBackendAddressPool) GetName() (rv string) {
+	if a != nil && a.Name != nil {
+		return *a.Name
+	}
+	return
+}
+
+func (a *ApplicationGatewayBackendAddressPool) GetProperties() (rv *ApplicationGatewayBackendAddressPoolPropertiesFormat) {
+	if a != nil {
+		return a.Properties
+	}
+	return
+}
+
+func (a *ApplicationGatewayBackendAddressPool) GetEtag() (rv string) {
+	if a != nil && a.Etag != nil {
+		return *a.Etag
+	}
+	return
+}
+
+func (a *ApplicationGatewayBackendAddressPool) GetType() (rv string) {
+	if a != nil && a.Type != nil {
+		return *a.Type
+	}
+	return
+}
+
 // ApplicationGatewayBackendAddressPoolPropertiesFormat - Properties of Backend Address Pool of an application gateway.
 type ApplicationGatewayBackendAddressPoolPropertiesFormat struct {
 	// Backend addresses.
@@ -493,6 +1284,27 @@ type ApplicationGatewayBackendAddressPoolPropertiesFormat struct {
 
 	// READ-ONLY; The provisioning state of the backend address pool resource.
 	ProvisioningState *ProvisioningState
+}
+
+func (a *ApplicationGatewayBackendAddressPoolPropertiesFormat) GetBackendAddresses() (rv []*ApplicationGatewayBackendAddress) {
+	if a != nil {
+		return a.BackendAddresses
+	}
+	return
+}
+
+func (a *ApplicationGatewayBackendAddressPoolPropertiesFormat) GetBackendIPConfigurations() (rv []*InterfaceIPConfiguration) {
+	if a != nil {
+		return a.BackendIPConfigurations
+	}
+	return
+}
+
+func (a *ApplicationGatewayBackendAddressPoolPropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if a != nil {
+		return a.ProvisioningState
+	}
+	return
 }
 
 // ApplicationGatewayBackendHTTPSettings - Backend address pool settings of an application gateway.
@@ -511,6 +1323,41 @@ type ApplicationGatewayBackendHTTPSettings struct {
 
 	// READ-ONLY; Type of the resource.
 	Type *string
+}
+
+func (a *ApplicationGatewayBackendHTTPSettings) GetID() (rv string) {
+	if a != nil && a.ID != nil {
+		return *a.ID
+	}
+	return
+}
+
+func (a *ApplicationGatewayBackendHTTPSettings) GetName() (rv string) {
+	if a != nil && a.Name != nil {
+		return *a.Name
+	}
+	return
+}
+
+func (a *ApplicationGatewayBackendHTTPSettings) GetProperties() (rv *ApplicationGatewayBackendHTTPSettingsPropertiesFormat) {
+	if a != nil {
+		return a.Properties
+	}
+	return
+}
+
+func (a *ApplicationGatewayBackendHTTPSettings) GetEtag() (rv string) {
+	if a != nil && a.Etag != nil {
+		return *a.Etag
+	}
+	return
+}
+
+func (a *ApplicationGatewayBackendHTTPSettings) GetType() (rv string) {
+	if a != nil && a.Type != nil {
+		return *a.Type
+	}
+	return
 }
 
 // ApplicationGatewayBackendHTTPSettingsPropertiesFormat - Properties of Backend address pool settings of an application gateway.
@@ -559,10 +1406,115 @@ type ApplicationGatewayBackendHTTPSettingsPropertiesFormat struct {
 	ProvisioningState *ProvisioningState
 }
 
+func (a *ApplicationGatewayBackendHTTPSettingsPropertiesFormat) GetAffinityCookieName() (rv string) {
+	if a != nil && a.AffinityCookieName != nil {
+		return *a.AffinityCookieName
+	}
+	return
+}
+
+func (a *ApplicationGatewayBackendHTTPSettingsPropertiesFormat) GetAuthenticationCertificates() (rv []*SubResource) {
+	if a != nil {
+		return a.AuthenticationCertificates
+	}
+	return
+}
+
+func (a *ApplicationGatewayBackendHTTPSettingsPropertiesFormat) GetConnectionDraining() (rv *ApplicationGatewayConnectionDraining) {
+	if a != nil {
+		return a.ConnectionDraining
+	}
+	return
+}
+
+func (a *ApplicationGatewayBackendHTTPSettingsPropertiesFormat) GetCookieBasedAffinity() (rv *ApplicationGatewayCookieBasedAffinity) {
+	if a != nil {
+		return a.CookieBasedAffinity
+	}
+	return
+}
+
+func (a *ApplicationGatewayBackendHTTPSettingsPropertiesFormat) GetHostName() (rv string) {
+	if a != nil && a.HostName != nil {
+		return *a.HostName
+	}
+	return
+}
+
+func (a *ApplicationGatewayBackendHTTPSettingsPropertiesFormat) GetPath() (rv string) {
+	if a != nil && a.Path != nil {
+		return *a.Path
+	}
+	return
+}
+
+func (a *ApplicationGatewayBackendHTTPSettingsPropertiesFormat) GetPickHostNameFromBackendAddress() (rv bool) {
+	if a != nil && a.PickHostNameFromBackendAddress != nil {
+		return *a.PickHostNameFromBackendAddress
+	}
+	return
+}
+
+func (a *ApplicationGatewayBackendHTTPSettingsPropertiesFormat) GetPort() (rv int32) {
+	if a != nil && a.Port != nil {
+		return *a.Port
+	}
+	return
+}
+
+func (a *ApplicationGatewayBackendHTTPSettingsPropertiesFormat) GetProbe() (rv *SubResource) {
+	if a != nil {
+		return a.Probe
+	}
+	return
+}
+
+func (a *ApplicationGatewayBackendHTTPSettingsPropertiesFormat) GetProbeEnabled() (rv bool) {
+	if a != nil && a.ProbeEnabled != nil {
+		return *a.ProbeEnabled
+	}
+	return
+}
+
+func (a *ApplicationGatewayBackendHTTPSettingsPropertiesFormat) GetProtocol() (rv *ApplicationGatewayProtocol) {
+	if a != nil {
+		return a.Protocol
+	}
+	return
+}
+
+func (a *ApplicationGatewayBackendHTTPSettingsPropertiesFormat) GetRequestTimeout() (rv int32) {
+	if a != nil && a.RequestTimeout != nil {
+		return *a.RequestTimeout
+	}
+	return
+}
+
+func (a *ApplicationGatewayBackendHTTPSettingsPropertiesFormat) GetTrustedRootCertificates() (rv []*SubResource) {
+	if a != nil {
+		return a.TrustedRootCertificates
+	}
+	return
+}
+
+func (a *ApplicationGatewayBackendHTTPSettingsPropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if a != nil {
+		return a.ProvisioningState
+	}
+	return
+}
+
 // ApplicationGatewayBackendHealth - Response for ApplicationGatewayBackendHealth API service call.
 type ApplicationGatewayBackendHealth struct {
 	// A list of ApplicationGatewayBackendHealthPool resources.
 	BackendAddressPools []*ApplicationGatewayBackendHealthPool
+}
+
+func (a *ApplicationGatewayBackendHealth) GetBackendAddressPools() (rv []*ApplicationGatewayBackendHealthPool) {
+	if a != nil {
+		return a.BackendAddressPools
+	}
+	return
 }
 
 // ApplicationGatewayBackendHealthHTTPSettings - Application gateway BackendHealthHttp settings.
@@ -574,6 +1526,20 @@ type ApplicationGatewayBackendHealthHTTPSettings struct {
 	Servers []*ApplicationGatewayBackendHealthServer
 }
 
+func (a *ApplicationGatewayBackendHealthHTTPSettings) GetBackendHTTPSettings() (rv *ApplicationGatewayBackendHTTPSettings) {
+	if a != nil {
+		return a.BackendHTTPSettings
+	}
+	return
+}
+
+func (a *ApplicationGatewayBackendHealthHTTPSettings) GetServers() (rv []*ApplicationGatewayBackendHealthServer) {
+	if a != nil {
+		return a.Servers
+	}
+	return
+}
+
 // ApplicationGatewayBackendHealthOnDemand - Result of on demand test probe.
 type ApplicationGatewayBackendHealthOnDemand struct {
 	// Reference to an ApplicationGatewayBackendAddressPool resource.
@@ -583,6 +1549,20 @@ type ApplicationGatewayBackendHealthOnDemand struct {
 	BackendHealthHTTPSettings *ApplicationGatewayBackendHealthHTTPSettings
 }
 
+func (a *ApplicationGatewayBackendHealthOnDemand) GetBackendAddressPool() (rv *ApplicationGatewayBackendAddressPool) {
+	if a != nil {
+		return a.BackendAddressPool
+	}
+	return
+}
+
+func (a *ApplicationGatewayBackendHealthOnDemand) GetBackendHealthHTTPSettings() (rv *ApplicationGatewayBackendHealthHTTPSettings) {
+	if a != nil {
+		return a.BackendHealthHTTPSettings
+	}
+	return
+}
+
 // ApplicationGatewayBackendHealthPool - Application gateway BackendHealth pool.
 type ApplicationGatewayBackendHealthPool struct {
 	// Reference to an ApplicationGatewayBackendAddressPool resource.
@@ -590,6 +1570,20 @@ type ApplicationGatewayBackendHealthPool struct {
 
 	// List of ApplicationGatewayBackendHealthHttpSettings resources.
 	BackendHTTPSettingsCollection []*ApplicationGatewayBackendHealthHTTPSettings
+}
+
+func (a *ApplicationGatewayBackendHealthPool) GetBackendAddressPool() (rv *ApplicationGatewayBackendAddressPool) {
+	if a != nil {
+		return a.BackendAddressPool
+	}
+	return
+}
+
+func (a *ApplicationGatewayBackendHealthPool) GetBackendHTTPSettingsCollection() (rv []*ApplicationGatewayBackendHealthHTTPSettings) {
+	if a != nil {
+		return a.BackendHTTPSettingsCollection
+	}
+	return
 }
 
 // ApplicationGatewayBackendHealthServer - Application gateway backendhealth http settings.
@@ -605,6 +1599,34 @@ type ApplicationGatewayBackendHealthServer struct {
 
 	// Reference to IP configuration of backend server.
 	IPConfiguration *InterfaceIPConfiguration
+}
+
+func (a *ApplicationGatewayBackendHealthServer) GetAddress() (rv string) {
+	if a != nil && a.Address != nil {
+		return *a.Address
+	}
+	return
+}
+
+func (a *ApplicationGatewayBackendHealthServer) GetHealth() (rv *ApplicationGatewayBackendHealthServerHealth) {
+	if a != nil {
+		return a.Health
+	}
+	return
+}
+
+func (a *ApplicationGatewayBackendHealthServer) GetHealthProbeLog() (rv string) {
+	if a != nil && a.HealthProbeLog != nil {
+		return *a.HealthProbeLog
+	}
+	return
+}
+
+func (a *ApplicationGatewayBackendHealthServer) GetIPConfiguration() (rv *InterfaceIPConfiguration) {
+	if a != nil {
+		return a.IPConfiguration
+	}
+	return
 }
 
 // ApplicationGatewayBackendSettings - Backend address pool settings of an application gateway.
@@ -623,6 +1645,41 @@ type ApplicationGatewayBackendSettings struct {
 
 	// READ-ONLY; Type of the resource.
 	Type *string
+}
+
+func (a *ApplicationGatewayBackendSettings) GetID() (rv string) {
+	if a != nil && a.ID != nil {
+		return *a.ID
+	}
+	return
+}
+
+func (a *ApplicationGatewayBackendSettings) GetName() (rv string) {
+	if a != nil && a.Name != nil {
+		return *a.Name
+	}
+	return
+}
+
+func (a *ApplicationGatewayBackendSettings) GetProperties() (rv *ApplicationGatewayBackendSettingsPropertiesFormat) {
+	if a != nil {
+		return a.Properties
+	}
+	return
+}
+
+func (a *ApplicationGatewayBackendSettings) GetEtag() (rv string) {
+	if a != nil && a.Etag != nil {
+		return *a.Etag
+	}
+	return
+}
+
+func (a *ApplicationGatewayBackendSettings) GetType() (rv string) {
+	if a != nil && a.Type != nil {
+		return *a.Type
+	}
+	return
 }
 
 // ApplicationGatewayBackendSettingsPropertiesFormat - Properties of Backend address pool settings of an application gateway.
@@ -653,6 +1710,62 @@ type ApplicationGatewayBackendSettingsPropertiesFormat struct {
 	ProvisioningState *ProvisioningState
 }
 
+func (a *ApplicationGatewayBackendSettingsPropertiesFormat) GetHostName() (rv string) {
+	if a != nil && a.HostName != nil {
+		return *a.HostName
+	}
+	return
+}
+
+func (a *ApplicationGatewayBackendSettingsPropertiesFormat) GetPickHostNameFromBackendAddress() (rv bool) {
+	if a != nil && a.PickHostNameFromBackendAddress != nil {
+		return *a.PickHostNameFromBackendAddress
+	}
+	return
+}
+
+func (a *ApplicationGatewayBackendSettingsPropertiesFormat) GetPort() (rv int32) {
+	if a != nil && a.Port != nil {
+		return *a.Port
+	}
+	return
+}
+
+func (a *ApplicationGatewayBackendSettingsPropertiesFormat) GetProbe() (rv *SubResource) {
+	if a != nil {
+		return a.Probe
+	}
+	return
+}
+
+func (a *ApplicationGatewayBackendSettingsPropertiesFormat) GetProtocol() (rv *ApplicationGatewayProtocol) {
+	if a != nil {
+		return a.Protocol
+	}
+	return
+}
+
+func (a *ApplicationGatewayBackendSettingsPropertiesFormat) GetTimeout() (rv int32) {
+	if a != nil && a.Timeout != nil {
+		return *a.Timeout
+	}
+	return
+}
+
+func (a *ApplicationGatewayBackendSettingsPropertiesFormat) GetTrustedRootCertificates() (rv []*SubResource) {
+	if a != nil {
+		return a.TrustedRootCertificates
+	}
+	return
+}
+
+func (a *ApplicationGatewayBackendSettingsPropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if a != nil {
+		return a.ProvisioningState
+	}
+	return
+}
+
 // ApplicationGatewayClientAuthConfiguration - Application gateway client authentication configuration.
 type ApplicationGatewayClientAuthConfiguration struct {
 	// Verify client certificate issuer name on the application gateway.
@@ -660,6 +1773,20 @@ type ApplicationGatewayClientAuthConfiguration struct {
 
 	// Verify client certificate revocation status.
 	VerifyClientRevocation *ApplicationGatewayClientRevocationOptions
+}
+
+func (a *ApplicationGatewayClientAuthConfiguration) GetVerifyClientCertIssuerDN() (rv bool) {
+	if a != nil && a.VerifyClientCertIssuerDN != nil {
+		return *a.VerifyClientCertIssuerDN
+	}
+	return
+}
+
+func (a *ApplicationGatewayClientAuthConfiguration) GetVerifyClientRevocation() (rv *ApplicationGatewayClientRevocationOptions) {
+	if a != nil {
+		return a.VerifyClientRevocation
+	}
+	return
 }
 
 // ApplicationGatewayConnectionDraining - Connection draining allows open connections to a backend server to be active for
@@ -672,6 +1799,20 @@ type ApplicationGatewayConnectionDraining struct {
 	Enabled *bool
 }
 
+func (a *ApplicationGatewayConnectionDraining) GetDrainTimeoutInSec() (rv int32) {
+	if a != nil && a.DrainTimeoutInSec != nil {
+		return *a.DrainTimeoutInSec
+	}
+	return
+}
+
+func (a *ApplicationGatewayConnectionDraining) GetEnabled() (rv bool) {
+	if a != nil && a.Enabled != nil {
+		return *a.Enabled
+	}
+	return
+}
+
 // ApplicationGatewayCustomError - Custom error of an application gateway.
 type ApplicationGatewayCustomError struct {
 	// Error page URL of the application gateway custom error.
@@ -681,6 +1822,20 @@ type ApplicationGatewayCustomError struct {
 	StatusCode *ApplicationGatewayCustomErrorStatusCode
 }
 
+func (a *ApplicationGatewayCustomError) GetCustomErrorPageURL() (rv string) {
+	if a != nil && a.CustomErrorPageURL != nil {
+		return *a.CustomErrorPageURL
+	}
+	return
+}
+
+func (a *ApplicationGatewayCustomError) GetStatusCode() (rv *ApplicationGatewayCustomErrorStatusCode) {
+	if a != nil {
+		return a.StatusCode
+	}
+	return
+}
+
 // ApplicationGatewayFirewallDisabledRuleGroup - Allows to disable rules within a rule group or an entire rule group.
 type ApplicationGatewayFirewallDisabledRuleGroup struct {
 	// REQUIRED; The name of the rule group that will be disabled.
@@ -688,6 +1843,20 @@ type ApplicationGatewayFirewallDisabledRuleGroup struct {
 
 	// The list of rules that will be disabled. If null, all rules of the rule group will be disabled.
 	Rules []*int32
+}
+
+func (a *ApplicationGatewayFirewallDisabledRuleGroup) GetRuleGroupName() (rv string) {
+	if a != nil && a.RuleGroupName != nil {
+		return *a.RuleGroupName
+	}
+	return
+}
+
+func (a *ApplicationGatewayFirewallDisabledRuleGroup) GetRules() (rv []*int32) {
+	if a != nil {
+		return a.Rules
+	}
+	return
 }
 
 // ApplicationGatewayFirewallExclusion - Allow to exclude some variable satisfy the condition for the WAF check.
@@ -702,6 +1871,27 @@ type ApplicationGatewayFirewallExclusion struct {
 	// REQUIRED; When matchVariable is a collection, operate on the selector to specify which elements in the collection this
 	// exclusion applies to.
 	SelectorMatchOperator *string
+}
+
+func (a *ApplicationGatewayFirewallExclusion) GetMatchVariable() (rv string) {
+	if a != nil && a.MatchVariable != nil {
+		return *a.MatchVariable
+	}
+	return
+}
+
+func (a *ApplicationGatewayFirewallExclusion) GetSelector() (rv string) {
+	if a != nil && a.Selector != nil {
+		return *a.Selector
+	}
+	return
+}
+
+func (a *ApplicationGatewayFirewallExclusion) GetSelectorMatchOperator() (rv string) {
+	if a != nil && a.SelectorMatchOperator != nil {
+		return *a.SelectorMatchOperator
+	}
+	return
 }
 
 // ApplicationGatewayFirewallManifestRuleSet - Properties of the web application firewall rule set.
@@ -722,6 +1912,41 @@ type ApplicationGatewayFirewallManifestRuleSet struct {
 	Tiers []*ApplicationGatewayTierTypes
 }
 
+func (a *ApplicationGatewayFirewallManifestRuleSet) GetRuleGroups() (rv []*ApplicationGatewayFirewallRuleGroup) {
+	if a != nil {
+		return a.RuleGroups
+	}
+	return
+}
+
+func (a *ApplicationGatewayFirewallManifestRuleSet) GetRuleSetType() (rv string) {
+	if a != nil && a.RuleSetType != nil {
+		return *a.RuleSetType
+	}
+	return
+}
+
+func (a *ApplicationGatewayFirewallManifestRuleSet) GetRuleSetVersion() (rv string) {
+	if a != nil && a.RuleSetVersion != nil {
+		return *a.RuleSetVersion
+	}
+	return
+}
+
+func (a *ApplicationGatewayFirewallManifestRuleSet) GetStatus() (rv *ApplicationGatewayRuleSetStatusOptions) {
+	if a != nil {
+		return a.Status
+	}
+	return
+}
+
+func (a *ApplicationGatewayFirewallManifestRuleSet) GetTiers() (rv []*ApplicationGatewayTierTypes) {
+	if a != nil {
+		return a.Tiers
+	}
+	return
+}
+
 // ApplicationGatewayFirewallRule - A web application firewall rule.
 type ApplicationGatewayFirewallRule struct {
 	// REQUIRED; The identifier of the web application firewall rule.
@@ -740,6 +1965,41 @@ type ApplicationGatewayFirewallRule struct {
 	State *ApplicationGatewayWafRuleStateTypes
 }
 
+func (a *ApplicationGatewayFirewallRule) GetRuleID() (rv int32) {
+	if a != nil && a.RuleID != nil {
+		return *a.RuleID
+	}
+	return
+}
+
+func (a *ApplicationGatewayFirewallRule) GetAction() (rv *ApplicationGatewayWafRuleActionTypes) {
+	if a != nil {
+		return a.Action
+	}
+	return
+}
+
+func (a *ApplicationGatewayFirewallRule) GetDescription() (rv string) {
+	if a != nil && a.Description != nil {
+		return *a.Description
+	}
+	return
+}
+
+func (a *ApplicationGatewayFirewallRule) GetRuleIDString() (rv string) {
+	if a != nil && a.RuleIDString != nil {
+		return *a.RuleIDString
+	}
+	return
+}
+
+func (a *ApplicationGatewayFirewallRule) GetState() (rv *ApplicationGatewayWafRuleStateTypes) {
+	if a != nil {
+		return a.State
+	}
+	return
+}
+
 // ApplicationGatewayFirewallRuleGroup - A web application firewall rule group.
 type ApplicationGatewayFirewallRuleGroup struct {
 	// REQUIRED; The name of the web application firewall rule group.
@@ -750,6 +2010,27 @@ type ApplicationGatewayFirewallRuleGroup struct {
 
 	// The description of the web application firewall rule group.
 	Description *string
+}
+
+func (a *ApplicationGatewayFirewallRuleGroup) GetRuleGroupName() (rv string) {
+	if a != nil && a.RuleGroupName != nil {
+		return *a.RuleGroupName
+	}
+	return
+}
+
+func (a *ApplicationGatewayFirewallRuleGroup) GetRules() (rv []*ApplicationGatewayFirewallRule) {
+	if a != nil {
+		return a.Rules
+	}
+	return
+}
+
+func (a *ApplicationGatewayFirewallRuleGroup) GetDescription() (rv string) {
+	if a != nil && a.Description != nil {
+		return *a.Description
+	}
+	return
 }
 
 // ApplicationGatewayFirewallRuleSet - A web application firewall rule set.
@@ -773,6 +2054,48 @@ type ApplicationGatewayFirewallRuleSet struct {
 	Type *string
 }
 
+func (a *ApplicationGatewayFirewallRuleSet) GetID() (rv string) {
+	if a != nil && a.ID != nil {
+		return *a.ID
+	}
+	return
+}
+
+func (a *ApplicationGatewayFirewallRuleSet) GetLocation() (rv string) {
+	if a != nil && a.Location != nil {
+		return *a.Location
+	}
+	return
+}
+
+func (a *ApplicationGatewayFirewallRuleSet) GetProperties() (rv *ApplicationGatewayFirewallRuleSetPropertiesFormat) {
+	if a != nil {
+		return a.Properties
+	}
+	return
+}
+
+func (a *ApplicationGatewayFirewallRuleSet) GetTags() (rv map[string]*string) {
+	if a != nil {
+		return a.Tags
+	}
+	return
+}
+
+func (a *ApplicationGatewayFirewallRuleSet) GetName() (rv string) {
+	if a != nil && a.Name != nil {
+		return *a.Name
+	}
+	return
+}
+
+func (a *ApplicationGatewayFirewallRuleSet) GetType() (rv string) {
+	if a != nil && a.Type != nil {
+		return *a.Type
+	}
+	return
+}
+
 // ApplicationGatewayFirewallRuleSetPropertiesFormat - Properties of the web application firewall rule set.
 type ApplicationGatewayFirewallRuleSetPropertiesFormat struct {
 	// REQUIRED; The rule groups of the web application firewall rule set.
@@ -791,6 +2114,41 @@ type ApplicationGatewayFirewallRuleSetPropertiesFormat struct {
 	ProvisioningState *ProvisioningState
 }
 
+func (a *ApplicationGatewayFirewallRuleSetPropertiesFormat) GetRuleGroups() (rv []*ApplicationGatewayFirewallRuleGroup) {
+	if a != nil {
+		return a.RuleGroups
+	}
+	return
+}
+
+func (a *ApplicationGatewayFirewallRuleSetPropertiesFormat) GetRuleSetType() (rv string) {
+	if a != nil && a.RuleSetType != nil {
+		return *a.RuleSetType
+	}
+	return
+}
+
+func (a *ApplicationGatewayFirewallRuleSetPropertiesFormat) GetRuleSetVersion() (rv string) {
+	if a != nil && a.RuleSetVersion != nil {
+		return *a.RuleSetVersion
+	}
+	return
+}
+
+func (a *ApplicationGatewayFirewallRuleSetPropertiesFormat) GetTiers() (rv []*ApplicationGatewayTierTypes) {
+	if a != nil {
+		return a.Tiers
+	}
+	return
+}
+
+func (a *ApplicationGatewayFirewallRuleSetPropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if a != nil {
+		return a.ProvisioningState
+	}
+	return
+}
+
 // ApplicationGatewayFrontendIPConfiguration - Frontend IP configuration of an application gateway.
 type ApplicationGatewayFrontendIPConfiguration struct {
 	// Resource ID.
@@ -807,6 +2165,41 @@ type ApplicationGatewayFrontendIPConfiguration struct {
 
 	// READ-ONLY; Type of the resource.
 	Type *string
+}
+
+func (a *ApplicationGatewayFrontendIPConfiguration) GetID() (rv string) {
+	if a != nil && a.ID != nil {
+		return *a.ID
+	}
+	return
+}
+
+func (a *ApplicationGatewayFrontendIPConfiguration) GetName() (rv string) {
+	if a != nil && a.Name != nil {
+		return *a.Name
+	}
+	return
+}
+
+func (a *ApplicationGatewayFrontendIPConfiguration) GetProperties() (rv *ApplicationGatewayFrontendIPConfigurationPropertiesFormat) {
+	if a != nil {
+		return a.Properties
+	}
+	return
+}
+
+func (a *ApplicationGatewayFrontendIPConfiguration) GetEtag() (rv string) {
+	if a != nil && a.Etag != nil {
+		return *a.Etag
+	}
+	return
+}
+
+func (a *ApplicationGatewayFrontendIPConfiguration) GetType() (rv string) {
+	if a != nil && a.Type != nil {
+		return *a.Type
+	}
+	return
 }
 
 // ApplicationGatewayFrontendIPConfigurationPropertiesFormat - Properties of Frontend IP configuration of an application gateway.
@@ -830,6 +2223,48 @@ type ApplicationGatewayFrontendIPConfigurationPropertiesFormat struct {
 	ProvisioningState *ProvisioningState
 }
 
+func (a *ApplicationGatewayFrontendIPConfigurationPropertiesFormat) GetPrivateIPAddress() (rv string) {
+	if a != nil && a.PrivateIPAddress != nil {
+		return *a.PrivateIPAddress
+	}
+	return
+}
+
+func (a *ApplicationGatewayFrontendIPConfigurationPropertiesFormat) GetPrivateIPAllocationMethod() (rv *IPAllocationMethod) {
+	if a != nil {
+		return a.PrivateIPAllocationMethod
+	}
+	return
+}
+
+func (a *ApplicationGatewayFrontendIPConfigurationPropertiesFormat) GetPrivateLinkConfiguration() (rv *SubResource) {
+	if a != nil {
+		return a.PrivateLinkConfiguration
+	}
+	return
+}
+
+func (a *ApplicationGatewayFrontendIPConfigurationPropertiesFormat) GetPublicIPAddress() (rv *SubResource) {
+	if a != nil {
+		return a.PublicIPAddress
+	}
+	return
+}
+
+func (a *ApplicationGatewayFrontendIPConfigurationPropertiesFormat) GetSubnet() (rv *SubResource) {
+	if a != nil {
+		return a.Subnet
+	}
+	return
+}
+
+func (a *ApplicationGatewayFrontendIPConfigurationPropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if a != nil {
+		return a.ProvisioningState
+	}
+	return
+}
+
 // ApplicationGatewayFrontendPort - Frontend port of an application gateway.
 type ApplicationGatewayFrontendPort struct {
 	// Resource ID.
@@ -848,6 +2283,41 @@ type ApplicationGatewayFrontendPort struct {
 	Type *string
 }
 
+func (a *ApplicationGatewayFrontendPort) GetID() (rv string) {
+	if a != nil && a.ID != nil {
+		return *a.ID
+	}
+	return
+}
+
+func (a *ApplicationGatewayFrontendPort) GetName() (rv string) {
+	if a != nil && a.Name != nil {
+		return *a.Name
+	}
+	return
+}
+
+func (a *ApplicationGatewayFrontendPort) GetProperties() (rv *ApplicationGatewayFrontendPortPropertiesFormat) {
+	if a != nil {
+		return a.Properties
+	}
+	return
+}
+
+func (a *ApplicationGatewayFrontendPort) GetEtag() (rv string) {
+	if a != nil && a.Etag != nil {
+		return *a.Etag
+	}
+	return
+}
+
+func (a *ApplicationGatewayFrontendPort) GetType() (rv string) {
+	if a != nil && a.Type != nil {
+		return *a.Type
+	}
+	return
+}
+
 // ApplicationGatewayFrontendPortPropertiesFormat - Properties of Frontend port of an application gateway.
 type ApplicationGatewayFrontendPortPropertiesFormat struct {
 	// Frontend port.
@@ -857,6 +2327,20 @@ type ApplicationGatewayFrontendPortPropertiesFormat struct {
 	ProvisioningState *ProvisioningState
 }
 
+func (a *ApplicationGatewayFrontendPortPropertiesFormat) GetPort() (rv int32) {
+	if a != nil && a.Port != nil {
+		return *a.Port
+	}
+	return
+}
+
+func (a *ApplicationGatewayFrontendPortPropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if a != nil {
+		return a.ProvisioningState
+	}
+	return
+}
+
 // ApplicationGatewayGlobalConfiguration - Application Gateway global configuration.
 type ApplicationGatewayGlobalConfiguration struct {
 	// Enable request buffering.
@@ -864,6 +2348,20 @@ type ApplicationGatewayGlobalConfiguration struct {
 
 	// Enable response buffering.
 	EnableResponseBuffering *bool
+}
+
+func (a *ApplicationGatewayGlobalConfiguration) GetEnableRequestBuffering() (rv bool) {
+	if a != nil && a.EnableRequestBuffering != nil {
+		return *a.EnableRequestBuffering
+	}
+	return
+}
+
+func (a *ApplicationGatewayGlobalConfiguration) GetEnableResponseBuffering() (rv bool) {
+	if a != nil && a.EnableResponseBuffering != nil {
+		return *a.EnableResponseBuffering
+	}
+	return
 }
 
 // ApplicationGatewayHTTPListener - Http listener of an application gateway.
@@ -882,6 +2380,41 @@ type ApplicationGatewayHTTPListener struct {
 
 	// READ-ONLY; Type of the resource.
 	Type *string
+}
+
+func (a *ApplicationGatewayHTTPListener) GetID() (rv string) {
+	if a != nil && a.ID != nil {
+		return *a.ID
+	}
+	return
+}
+
+func (a *ApplicationGatewayHTTPListener) GetName() (rv string) {
+	if a != nil && a.Name != nil {
+		return *a.Name
+	}
+	return
+}
+
+func (a *ApplicationGatewayHTTPListener) GetProperties() (rv *ApplicationGatewayHTTPListenerPropertiesFormat) {
+	if a != nil {
+		return a.Properties
+	}
+	return
+}
+
+func (a *ApplicationGatewayHTTPListener) GetEtag() (rv string) {
+	if a != nil && a.Etag != nil {
+		return *a.Etag
+	}
+	return
+}
+
+func (a *ApplicationGatewayHTTPListener) GetType() (rv string) {
+	if a != nil && a.Type != nil {
+		return *a.Type
+	}
+	return
 }
 
 // ApplicationGatewayHTTPListenerPropertiesFormat - Properties of HTTP listener of an application gateway.
@@ -920,6 +2453,83 @@ type ApplicationGatewayHTTPListenerPropertiesFormat struct {
 	ProvisioningState *ProvisioningState
 }
 
+func (a *ApplicationGatewayHTTPListenerPropertiesFormat) GetCustomErrorConfigurations() (rv []*ApplicationGatewayCustomError) {
+	if a != nil {
+		return a.CustomErrorConfigurations
+	}
+	return
+}
+
+func (a *ApplicationGatewayHTTPListenerPropertiesFormat) GetFirewallPolicy() (rv *SubResource) {
+	if a != nil {
+		return a.FirewallPolicy
+	}
+	return
+}
+
+func (a *ApplicationGatewayHTTPListenerPropertiesFormat) GetFrontendIPConfiguration() (rv *SubResource) {
+	if a != nil {
+		return a.FrontendIPConfiguration
+	}
+	return
+}
+
+func (a *ApplicationGatewayHTTPListenerPropertiesFormat) GetFrontendPort() (rv *SubResource) {
+	if a != nil {
+		return a.FrontendPort
+	}
+	return
+}
+
+func (a *ApplicationGatewayHTTPListenerPropertiesFormat) GetHostName() (rv string) {
+	if a != nil && a.HostName != nil {
+		return *a.HostName
+	}
+	return
+}
+
+func (a *ApplicationGatewayHTTPListenerPropertiesFormat) GetHostNames() (rv []*string) {
+	if a != nil {
+		return a.HostNames
+	}
+	return
+}
+
+func (a *ApplicationGatewayHTTPListenerPropertiesFormat) GetProtocol() (rv *ApplicationGatewayProtocol) {
+	if a != nil {
+		return a.Protocol
+	}
+	return
+}
+
+func (a *ApplicationGatewayHTTPListenerPropertiesFormat) GetRequireServerNameIndication() (rv bool) {
+	if a != nil && a.RequireServerNameIndication != nil {
+		return *a.RequireServerNameIndication
+	}
+	return
+}
+
+func (a *ApplicationGatewayHTTPListenerPropertiesFormat) GetSSLCertificate() (rv *SubResource) {
+	if a != nil {
+		return a.SSLCertificate
+	}
+	return
+}
+
+func (a *ApplicationGatewayHTTPListenerPropertiesFormat) GetSSLProfile() (rv *SubResource) {
+	if a != nil {
+		return a.SSLProfile
+	}
+	return
+}
+
+func (a *ApplicationGatewayHTTPListenerPropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if a != nil {
+		return a.ProvisioningState
+	}
+	return
+}
+
 // ApplicationGatewayHeaderConfiguration - Header configuration of the Actions set in Application Gateway.
 type ApplicationGatewayHeaderConfiguration struct {
 	// Header name of the header configuration.
@@ -927,6 +2537,20 @@ type ApplicationGatewayHeaderConfiguration struct {
 
 	// Header value of the header configuration.
 	HeaderValue *string
+}
+
+func (a *ApplicationGatewayHeaderConfiguration) GetHeaderName() (rv string) {
+	if a != nil && a.HeaderName != nil {
+		return *a.HeaderName
+	}
+	return
+}
+
+func (a *ApplicationGatewayHeaderConfiguration) GetHeaderValue() (rv string) {
+	if a != nil && a.HeaderValue != nil {
+		return *a.HeaderValue
+	}
+	return
 }
 
 // ApplicationGatewayIPConfiguration - IP configuration of an application gateway. Currently 1 public and 1 private IP configuration
@@ -948,6 +2572,41 @@ type ApplicationGatewayIPConfiguration struct {
 	Type *string
 }
 
+func (a *ApplicationGatewayIPConfiguration) GetID() (rv string) {
+	if a != nil && a.ID != nil {
+		return *a.ID
+	}
+	return
+}
+
+func (a *ApplicationGatewayIPConfiguration) GetName() (rv string) {
+	if a != nil && a.Name != nil {
+		return *a.Name
+	}
+	return
+}
+
+func (a *ApplicationGatewayIPConfiguration) GetProperties() (rv *ApplicationGatewayIPConfigurationPropertiesFormat) {
+	if a != nil {
+		return a.Properties
+	}
+	return
+}
+
+func (a *ApplicationGatewayIPConfiguration) GetEtag() (rv string) {
+	if a != nil && a.Etag != nil {
+		return *a.Etag
+	}
+	return
+}
+
+func (a *ApplicationGatewayIPConfiguration) GetType() (rv string) {
+	if a != nil && a.Type != nil {
+		return *a.Type
+	}
+	return
+}
+
 // ApplicationGatewayIPConfigurationPropertiesFormat - Properties of IP configuration of an application gateway.
 type ApplicationGatewayIPConfigurationPropertiesFormat struct {
 	// Reference to the subnet resource. A subnet from where application gateway gets its private address.
@@ -957,6 +2616,20 @@ type ApplicationGatewayIPConfigurationPropertiesFormat struct {
 	ProvisioningState *ProvisioningState
 }
 
+func (a *ApplicationGatewayIPConfigurationPropertiesFormat) GetSubnet() (rv *SubResource) {
+	if a != nil {
+		return a.Subnet
+	}
+	return
+}
+
+func (a *ApplicationGatewayIPConfigurationPropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if a != nil {
+		return a.ProvisioningState
+	}
+	return
+}
+
 // ApplicationGatewayListResult - Response for ListApplicationGateways API service call.
 type ApplicationGatewayListResult struct {
 	// URL to get the next set of results.
@@ -964,6 +2637,20 @@ type ApplicationGatewayListResult struct {
 
 	// List of an application gateways in a resource group.
 	Value []*ApplicationGateway
+}
+
+func (a *ApplicationGatewayListResult) GetNextLink() (rv string) {
+	if a != nil && a.NextLink != nil {
+		return *a.NextLink
+	}
+	return
+}
+
+func (a *ApplicationGatewayListResult) GetValue() (rv []*ApplicationGateway) {
+	if a != nil {
+		return a.Value
+	}
+	return
 }
 
 // ApplicationGatewayListener - Listener of an application gateway.
@@ -982,6 +2669,41 @@ type ApplicationGatewayListener struct {
 
 	// READ-ONLY; Type of the resource.
 	Type *string
+}
+
+func (a *ApplicationGatewayListener) GetID() (rv string) {
+	if a != nil && a.ID != nil {
+		return *a.ID
+	}
+	return
+}
+
+func (a *ApplicationGatewayListener) GetName() (rv string) {
+	if a != nil && a.Name != nil {
+		return *a.Name
+	}
+	return
+}
+
+func (a *ApplicationGatewayListener) GetProperties() (rv *ApplicationGatewayListenerPropertiesFormat) {
+	if a != nil {
+		return a.Properties
+	}
+	return
+}
+
+func (a *ApplicationGatewayListener) GetEtag() (rv string) {
+	if a != nil && a.Etag != nil {
+		return *a.Etag
+	}
+	return
+}
+
+func (a *ApplicationGatewayListener) GetType() (rv string) {
+	if a != nil && a.Type != nil {
+		return *a.Type
+	}
+	return
 }
 
 // ApplicationGatewayListenerPropertiesFormat - Properties of listener of an application gateway.
@@ -1005,6 +2727,48 @@ type ApplicationGatewayListenerPropertiesFormat struct {
 	ProvisioningState *ProvisioningState
 }
 
+func (a *ApplicationGatewayListenerPropertiesFormat) GetFrontendIPConfiguration() (rv *SubResource) {
+	if a != nil {
+		return a.FrontendIPConfiguration
+	}
+	return
+}
+
+func (a *ApplicationGatewayListenerPropertiesFormat) GetFrontendPort() (rv *SubResource) {
+	if a != nil {
+		return a.FrontendPort
+	}
+	return
+}
+
+func (a *ApplicationGatewayListenerPropertiesFormat) GetProtocol() (rv *ApplicationGatewayProtocol) {
+	if a != nil {
+		return a.Protocol
+	}
+	return
+}
+
+func (a *ApplicationGatewayListenerPropertiesFormat) GetSSLCertificate() (rv *SubResource) {
+	if a != nil {
+		return a.SSLCertificate
+	}
+	return
+}
+
+func (a *ApplicationGatewayListenerPropertiesFormat) GetSSLProfile() (rv *SubResource) {
+	if a != nil {
+		return a.SSLProfile
+	}
+	return
+}
+
+func (a *ApplicationGatewayListenerPropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if a != nil {
+		return a.ProvisioningState
+	}
+	return
+}
+
 // ApplicationGatewayLoadDistributionPolicy - Load Distribution Policy of an application gateway.
 type ApplicationGatewayLoadDistributionPolicy struct {
 	// Resource ID.
@@ -1023,6 +2787,41 @@ type ApplicationGatewayLoadDistributionPolicy struct {
 	Type *string
 }
 
+func (a *ApplicationGatewayLoadDistributionPolicy) GetID() (rv string) {
+	if a != nil && a.ID != nil {
+		return *a.ID
+	}
+	return
+}
+
+func (a *ApplicationGatewayLoadDistributionPolicy) GetName() (rv string) {
+	if a != nil && a.Name != nil {
+		return *a.Name
+	}
+	return
+}
+
+func (a *ApplicationGatewayLoadDistributionPolicy) GetProperties() (rv *ApplicationGatewayLoadDistributionPolicyPropertiesFormat) {
+	if a != nil {
+		return a.Properties
+	}
+	return
+}
+
+func (a *ApplicationGatewayLoadDistributionPolicy) GetEtag() (rv string) {
+	if a != nil && a.Etag != nil {
+		return *a.Etag
+	}
+	return
+}
+
+func (a *ApplicationGatewayLoadDistributionPolicy) GetType() (rv string) {
+	if a != nil && a.Type != nil {
+		return *a.Type
+	}
+	return
+}
+
 // ApplicationGatewayLoadDistributionPolicyPropertiesFormat - Properties of Load Distribution Policy of an application gateway.
 type ApplicationGatewayLoadDistributionPolicyPropertiesFormat struct {
 	// Load Distribution Targets resource of an application gateway.
@@ -1033,6 +2832,27 @@ type ApplicationGatewayLoadDistributionPolicyPropertiesFormat struct {
 
 	// READ-ONLY; The provisioning state of the Load Distribution Policy resource.
 	ProvisioningState *ProvisioningState
+}
+
+func (a *ApplicationGatewayLoadDistributionPolicyPropertiesFormat) GetLoadDistributionAlgorithm() (rv *ApplicationGatewayLoadDistributionAlgorithm) {
+	if a != nil {
+		return a.LoadDistributionAlgorithm
+	}
+	return
+}
+
+func (a *ApplicationGatewayLoadDistributionPolicyPropertiesFormat) GetLoadDistributionTargets() (rv []*ApplicationGatewayLoadDistributionTarget) {
+	if a != nil {
+		return a.LoadDistributionTargets
+	}
+	return
+}
+
+func (a *ApplicationGatewayLoadDistributionPolicyPropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if a != nil {
+		return a.ProvisioningState
+	}
+	return
 }
 
 // ApplicationGatewayLoadDistributionTarget - Load Distribution Target of an application gateway.
@@ -1053,12 +2873,61 @@ type ApplicationGatewayLoadDistributionTarget struct {
 	Type *string
 }
 
+func (a *ApplicationGatewayLoadDistributionTarget) GetID() (rv string) {
+	if a != nil && a.ID != nil {
+		return *a.ID
+	}
+	return
+}
+
+func (a *ApplicationGatewayLoadDistributionTarget) GetName() (rv string) {
+	if a != nil && a.Name != nil {
+		return *a.Name
+	}
+	return
+}
+
+func (a *ApplicationGatewayLoadDistributionTarget) GetProperties() (rv *ApplicationGatewayLoadDistributionTargetPropertiesFormat) {
+	if a != nil {
+		return a.Properties
+	}
+	return
+}
+
+func (a *ApplicationGatewayLoadDistributionTarget) GetEtag() (rv string) {
+	if a != nil && a.Etag != nil {
+		return *a.Etag
+	}
+	return
+}
+
+func (a *ApplicationGatewayLoadDistributionTarget) GetType() (rv string) {
+	if a != nil && a.Type != nil {
+		return *a.Type
+	}
+	return
+}
+
 type ApplicationGatewayLoadDistributionTargetPropertiesFormat struct {
 	// Backend address pool resource of the application gateway.
 	BackendAddressPool *SubResource
 
 	// Weight per server. Range between 1 and 100.
 	WeightPerServer *int32
+}
+
+func (a *ApplicationGatewayLoadDistributionTargetPropertiesFormat) GetBackendAddressPool() (rv *SubResource) {
+	if a != nil {
+		return a.BackendAddressPool
+	}
+	return
+}
+
+func (a *ApplicationGatewayLoadDistributionTargetPropertiesFormat) GetWeightPerServer() (rv int32) {
+	if a != nil && a.WeightPerServer != nil {
+		return *a.WeightPerServer
+	}
+	return
 }
 
 // ApplicationGatewayOnDemandProbe - Details of on demand test probe request.
@@ -1089,6 +2958,62 @@ type ApplicationGatewayOnDemandProbe struct {
 	Timeout *int32
 }
 
+func (a *ApplicationGatewayOnDemandProbe) GetBackendAddressPool() (rv *SubResource) {
+	if a != nil {
+		return a.BackendAddressPool
+	}
+	return
+}
+
+func (a *ApplicationGatewayOnDemandProbe) GetBackendHTTPSettings() (rv *SubResource) {
+	if a != nil {
+		return a.BackendHTTPSettings
+	}
+	return
+}
+
+func (a *ApplicationGatewayOnDemandProbe) GetHost() (rv string) {
+	if a != nil && a.Host != nil {
+		return *a.Host
+	}
+	return
+}
+
+func (a *ApplicationGatewayOnDemandProbe) GetMatch() (rv *ApplicationGatewayProbeHealthResponseMatch) {
+	if a != nil {
+		return a.Match
+	}
+	return
+}
+
+func (a *ApplicationGatewayOnDemandProbe) GetPath() (rv string) {
+	if a != nil && a.Path != nil {
+		return *a.Path
+	}
+	return
+}
+
+func (a *ApplicationGatewayOnDemandProbe) GetPickHostNameFromBackendHTTPSettings() (rv bool) {
+	if a != nil && a.PickHostNameFromBackendHTTPSettings != nil {
+		return *a.PickHostNameFromBackendHTTPSettings
+	}
+	return
+}
+
+func (a *ApplicationGatewayOnDemandProbe) GetProtocol() (rv *ApplicationGatewayProtocol) {
+	if a != nil {
+		return a.Protocol
+	}
+	return
+}
+
+func (a *ApplicationGatewayOnDemandProbe) GetTimeout() (rv int32) {
+	if a != nil && a.Timeout != nil {
+		return *a.Timeout
+	}
+	return
+}
+
 // ApplicationGatewayPathRule - Path rule of URL path map of an application gateway.
 type ApplicationGatewayPathRule struct {
 	// Resource ID.
@@ -1105,6 +3030,41 @@ type ApplicationGatewayPathRule struct {
 
 	// READ-ONLY; Type of the resource.
 	Type *string
+}
+
+func (a *ApplicationGatewayPathRule) GetID() (rv string) {
+	if a != nil && a.ID != nil {
+		return *a.ID
+	}
+	return
+}
+
+func (a *ApplicationGatewayPathRule) GetName() (rv string) {
+	if a != nil && a.Name != nil {
+		return *a.Name
+	}
+	return
+}
+
+func (a *ApplicationGatewayPathRule) GetProperties() (rv *ApplicationGatewayPathRulePropertiesFormat) {
+	if a != nil {
+		return a.Properties
+	}
+	return
+}
+
+func (a *ApplicationGatewayPathRule) GetEtag() (rv string) {
+	if a != nil && a.Etag != nil {
+		return *a.Etag
+	}
+	return
+}
+
+func (a *ApplicationGatewayPathRule) GetType() (rv string) {
+	if a != nil && a.Type != nil {
+		return *a.Type
+	}
+	return
 }
 
 // ApplicationGatewayPathRulePropertiesFormat - Properties of path rule of an application gateway.
@@ -1134,6 +3094,62 @@ type ApplicationGatewayPathRulePropertiesFormat struct {
 	ProvisioningState *ProvisioningState
 }
 
+func (a *ApplicationGatewayPathRulePropertiesFormat) GetBackendAddressPool() (rv *SubResource) {
+	if a != nil {
+		return a.BackendAddressPool
+	}
+	return
+}
+
+func (a *ApplicationGatewayPathRulePropertiesFormat) GetBackendHTTPSettings() (rv *SubResource) {
+	if a != nil {
+		return a.BackendHTTPSettings
+	}
+	return
+}
+
+func (a *ApplicationGatewayPathRulePropertiesFormat) GetFirewallPolicy() (rv *SubResource) {
+	if a != nil {
+		return a.FirewallPolicy
+	}
+	return
+}
+
+func (a *ApplicationGatewayPathRulePropertiesFormat) GetLoadDistributionPolicy() (rv *SubResource) {
+	if a != nil {
+		return a.LoadDistributionPolicy
+	}
+	return
+}
+
+func (a *ApplicationGatewayPathRulePropertiesFormat) GetPaths() (rv []*string) {
+	if a != nil {
+		return a.Paths
+	}
+	return
+}
+
+func (a *ApplicationGatewayPathRulePropertiesFormat) GetRedirectConfiguration() (rv *SubResource) {
+	if a != nil {
+		return a.RedirectConfiguration
+	}
+	return
+}
+
+func (a *ApplicationGatewayPathRulePropertiesFormat) GetRewriteRuleSet() (rv *SubResource) {
+	if a != nil {
+		return a.RewriteRuleSet
+	}
+	return
+}
+
+func (a *ApplicationGatewayPathRulePropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if a != nil {
+		return a.ProvisioningState
+	}
+	return
+}
+
 // ApplicationGatewayPrivateEndpointConnection - Private Endpoint connection on an application gateway.
 type ApplicationGatewayPrivateEndpointConnection struct {
 	// Resource ID.
@@ -1152,6 +3168,41 @@ type ApplicationGatewayPrivateEndpointConnection struct {
 	Type *string
 }
 
+func (a *ApplicationGatewayPrivateEndpointConnection) GetID() (rv string) {
+	if a != nil && a.ID != nil {
+		return *a.ID
+	}
+	return
+}
+
+func (a *ApplicationGatewayPrivateEndpointConnection) GetName() (rv string) {
+	if a != nil && a.Name != nil {
+		return *a.Name
+	}
+	return
+}
+
+func (a *ApplicationGatewayPrivateEndpointConnection) GetProperties() (rv *ApplicationGatewayPrivateEndpointConnectionProperties) {
+	if a != nil {
+		return a.Properties
+	}
+	return
+}
+
+func (a *ApplicationGatewayPrivateEndpointConnection) GetEtag() (rv string) {
+	if a != nil && a.Etag != nil {
+		return *a.Etag
+	}
+	return
+}
+
+func (a *ApplicationGatewayPrivateEndpointConnection) GetType() (rv string) {
+	if a != nil && a.Type != nil {
+		return *a.Type
+	}
+	return
+}
+
 // ApplicationGatewayPrivateEndpointConnectionListResult - Response for ListApplicationGatewayPrivateEndpointConnection API
 // service call. Gets all private endpoint connections for an application gateway.
 type ApplicationGatewayPrivateEndpointConnectionListResult struct {
@@ -1160,6 +3211,20 @@ type ApplicationGatewayPrivateEndpointConnectionListResult struct {
 
 	// List of private endpoint connections on an application gateway.
 	Value []*ApplicationGatewayPrivateEndpointConnection
+}
+
+func (a *ApplicationGatewayPrivateEndpointConnectionListResult) GetNextLink() (rv string) {
+	if a != nil && a.NextLink != nil {
+		return *a.NextLink
+	}
+	return
+}
+
+func (a *ApplicationGatewayPrivateEndpointConnectionListResult) GetValue() (rv []*ApplicationGatewayPrivateEndpointConnection) {
+	if a != nil {
+		return a.Value
+	}
+	return
 }
 
 // ApplicationGatewayPrivateEndpointConnectionProperties - Properties of Private Link Resource of an application gateway.
@@ -1175,6 +3240,34 @@ type ApplicationGatewayPrivateEndpointConnectionProperties struct {
 
 	// READ-ONLY; The provisioning state of the application gateway private endpoint connection resource.
 	ProvisioningState *ProvisioningState
+}
+
+func (a *ApplicationGatewayPrivateEndpointConnectionProperties) GetPrivateLinkServiceConnectionState() (rv *PrivateLinkServiceConnectionState) {
+	if a != nil {
+		return a.PrivateLinkServiceConnectionState
+	}
+	return
+}
+
+func (a *ApplicationGatewayPrivateEndpointConnectionProperties) GetLinkIdentifier() (rv string) {
+	if a != nil && a.LinkIdentifier != nil {
+		return *a.LinkIdentifier
+	}
+	return
+}
+
+func (a *ApplicationGatewayPrivateEndpointConnectionProperties) GetPrivateEndpoint() (rv *PrivateEndpoint) {
+	if a != nil {
+		return a.PrivateEndpoint
+	}
+	return
+}
+
+func (a *ApplicationGatewayPrivateEndpointConnectionProperties) GetProvisioningState() (rv *ProvisioningState) {
+	if a != nil {
+		return a.ProvisioningState
+	}
+	return
 }
 
 // ApplicationGatewayPrivateLinkConfiguration - Private Link Configuration on an application gateway.
@@ -1195,6 +3288,41 @@ type ApplicationGatewayPrivateLinkConfiguration struct {
 	Type *string
 }
 
+func (a *ApplicationGatewayPrivateLinkConfiguration) GetID() (rv string) {
+	if a != nil && a.ID != nil {
+		return *a.ID
+	}
+	return
+}
+
+func (a *ApplicationGatewayPrivateLinkConfiguration) GetName() (rv string) {
+	if a != nil && a.Name != nil {
+		return *a.Name
+	}
+	return
+}
+
+func (a *ApplicationGatewayPrivateLinkConfiguration) GetProperties() (rv *ApplicationGatewayPrivateLinkConfigurationProperties) {
+	if a != nil {
+		return a.Properties
+	}
+	return
+}
+
+func (a *ApplicationGatewayPrivateLinkConfiguration) GetEtag() (rv string) {
+	if a != nil && a.Etag != nil {
+		return *a.Etag
+	}
+	return
+}
+
+func (a *ApplicationGatewayPrivateLinkConfiguration) GetType() (rv string) {
+	if a != nil && a.Type != nil {
+		return *a.Type
+	}
+	return
+}
+
 // ApplicationGatewayPrivateLinkConfigurationProperties - Properties of private link configuration on an application gateway.
 type ApplicationGatewayPrivateLinkConfigurationProperties struct {
 	// An array of application gateway private link ip configurations.
@@ -1202,6 +3330,20 @@ type ApplicationGatewayPrivateLinkConfigurationProperties struct {
 
 	// READ-ONLY; The provisioning state of the application gateway private link configuration.
 	ProvisioningState *ProvisioningState
+}
+
+func (a *ApplicationGatewayPrivateLinkConfigurationProperties) GetIPConfigurations() (rv []*ApplicationGatewayPrivateLinkIPConfiguration) {
+	if a != nil {
+		return a.IPConfigurations
+	}
+	return
+}
+
+func (a *ApplicationGatewayPrivateLinkConfigurationProperties) GetProvisioningState() (rv *ProvisioningState) {
+	if a != nil {
+		return a.ProvisioningState
+	}
+	return
 }
 
 // ApplicationGatewayPrivateLinkIPConfiguration - The application gateway private link ip configuration.
@@ -1222,6 +3364,41 @@ type ApplicationGatewayPrivateLinkIPConfiguration struct {
 	Type *string
 }
 
+func (a *ApplicationGatewayPrivateLinkIPConfiguration) GetID() (rv string) {
+	if a != nil && a.ID != nil {
+		return *a.ID
+	}
+	return
+}
+
+func (a *ApplicationGatewayPrivateLinkIPConfiguration) GetName() (rv string) {
+	if a != nil && a.Name != nil {
+		return *a.Name
+	}
+	return
+}
+
+func (a *ApplicationGatewayPrivateLinkIPConfiguration) GetProperties() (rv *ApplicationGatewayPrivateLinkIPConfigurationProperties) {
+	if a != nil {
+		return a.Properties
+	}
+	return
+}
+
+func (a *ApplicationGatewayPrivateLinkIPConfiguration) GetEtag() (rv string) {
+	if a != nil && a.Etag != nil {
+		return *a.Etag
+	}
+	return
+}
+
+func (a *ApplicationGatewayPrivateLinkIPConfiguration) GetType() (rv string) {
+	if a != nil && a.Type != nil {
+		return *a.Type
+	}
+	return
+}
+
 // ApplicationGatewayPrivateLinkIPConfigurationProperties - Properties of an application gateway private link IP configuration.
 type ApplicationGatewayPrivateLinkIPConfigurationProperties struct {
 	// Whether the ip configuration is primary or not.
@@ -1238,6 +3415,41 @@ type ApplicationGatewayPrivateLinkIPConfigurationProperties struct {
 
 	// READ-ONLY; The provisioning state of the application gateway private link IP configuration.
 	ProvisioningState *ProvisioningState
+}
+
+func (a *ApplicationGatewayPrivateLinkIPConfigurationProperties) GetPrimary() (rv bool) {
+	if a != nil && a.Primary != nil {
+		return *a.Primary
+	}
+	return
+}
+
+func (a *ApplicationGatewayPrivateLinkIPConfigurationProperties) GetPrivateIPAddress() (rv string) {
+	if a != nil && a.PrivateIPAddress != nil {
+		return *a.PrivateIPAddress
+	}
+	return
+}
+
+func (a *ApplicationGatewayPrivateLinkIPConfigurationProperties) GetPrivateIPAllocationMethod() (rv *IPAllocationMethod) {
+	if a != nil {
+		return a.PrivateIPAllocationMethod
+	}
+	return
+}
+
+func (a *ApplicationGatewayPrivateLinkIPConfigurationProperties) GetSubnet() (rv *SubResource) {
+	if a != nil {
+		return a.Subnet
+	}
+	return
+}
+
+func (a *ApplicationGatewayPrivateLinkIPConfigurationProperties) GetProvisioningState() (rv *ProvisioningState) {
+	if a != nil {
+		return a.ProvisioningState
+	}
+	return
 }
 
 // ApplicationGatewayPrivateLinkResource - PrivateLink Resource of an application gateway.
@@ -1258,6 +3470,41 @@ type ApplicationGatewayPrivateLinkResource struct {
 	Type *string
 }
 
+func (a *ApplicationGatewayPrivateLinkResource) GetID() (rv string) {
+	if a != nil && a.ID != nil {
+		return *a.ID
+	}
+	return
+}
+
+func (a *ApplicationGatewayPrivateLinkResource) GetName() (rv string) {
+	if a != nil && a.Name != nil {
+		return *a.Name
+	}
+	return
+}
+
+func (a *ApplicationGatewayPrivateLinkResource) GetProperties() (rv *ApplicationGatewayPrivateLinkResourceProperties) {
+	if a != nil {
+		return a.Properties
+	}
+	return
+}
+
+func (a *ApplicationGatewayPrivateLinkResource) GetEtag() (rv string) {
+	if a != nil && a.Etag != nil {
+		return *a.Etag
+	}
+	return
+}
+
+func (a *ApplicationGatewayPrivateLinkResource) GetType() (rv string) {
+	if a != nil && a.Type != nil {
+		return *a.Type
+	}
+	return
+}
+
 // ApplicationGatewayPrivateLinkResourceListResult - Response for ListApplicationGatewayPrivateLinkResources API service call.
 // Gets all private link resources for an application gateway.
 type ApplicationGatewayPrivateLinkResourceListResult struct {
@@ -1266,6 +3513,20 @@ type ApplicationGatewayPrivateLinkResourceListResult struct {
 
 	// List of private link resources of an application gateway.
 	Value []*ApplicationGatewayPrivateLinkResource
+}
+
+func (a *ApplicationGatewayPrivateLinkResourceListResult) GetNextLink() (rv string) {
+	if a != nil && a.NextLink != nil {
+		return *a.NextLink
+	}
+	return
+}
+
+func (a *ApplicationGatewayPrivateLinkResourceListResult) GetValue() (rv []*ApplicationGatewayPrivateLinkResource) {
+	if a != nil {
+		return a.Value
+	}
+	return
 }
 
 // ApplicationGatewayPrivateLinkResourceProperties - Properties of a private link resource.
@@ -1278,6 +3539,27 @@ type ApplicationGatewayPrivateLinkResourceProperties struct {
 
 	// READ-ONLY; Required member names of private link resource.
 	RequiredMembers []*string
+}
+
+func (a *ApplicationGatewayPrivateLinkResourceProperties) GetRequiredZoneNames() (rv []*string) {
+	if a != nil {
+		return a.RequiredZoneNames
+	}
+	return
+}
+
+func (a *ApplicationGatewayPrivateLinkResourceProperties) GetGroupID() (rv string) {
+	if a != nil && a.GroupID != nil {
+		return *a.GroupID
+	}
+	return
+}
+
+func (a *ApplicationGatewayPrivateLinkResourceProperties) GetRequiredMembers() (rv []*string) {
+	if a != nil {
+		return a.RequiredMembers
+	}
+	return
 }
 
 // ApplicationGatewayProbe - Probe of the application gateway.
@@ -1298,6 +3580,41 @@ type ApplicationGatewayProbe struct {
 	Type *string
 }
 
+func (a *ApplicationGatewayProbe) GetID() (rv string) {
+	if a != nil && a.ID != nil {
+		return *a.ID
+	}
+	return
+}
+
+func (a *ApplicationGatewayProbe) GetName() (rv string) {
+	if a != nil && a.Name != nil {
+		return *a.Name
+	}
+	return
+}
+
+func (a *ApplicationGatewayProbe) GetProperties() (rv *ApplicationGatewayProbePropertiesFormat) {
+	if a != nil {
+		return a.Properties
+	}
+	return
+}
+
+func (a *ApplicationGatewayProbe) GetEtag() (rv string) {
+	if a != nil && a.Etag != nil {
+		return *a.Etag
+	}
+	return
+}
+
+func (a *ApplicationGatewayProbe) GetType() (rv string) {
+	if a != nil && a.Type != nil {
+		return *a.Type
+	}
+	return
+}
+
 // ApplicationGatewayProbeHealthResponseMatch - Application gateway probe health response match.
 type ApplicationGatewayProbeHealthResponseMatch struct {
 	// Body that must be contained in the health response. Default value is empty.
@@ -1305,6 +3622,20 @@ type ApplicationGatewayProbeHealthResponseMatch struct {
 
 	// Allowed ranges of healthy status codes. Default range of healthy status codes is 200-399.
 	StatusCodes []*string
+}
+
+func (a *ApplicationGatewayProbeHealthResponseMatch) GetBody() (rv string) {
+	if a != nil && a.Body != nil {
+		return *a.Body
+	}
+	return
+}
+
+func (a *ApplicationGatewayProbeHealthResponseMatch) GetStatusCodes() (rv []*string) {
+	if a != nil {
+		return a.StatusCodes
+	}
+	return
 }
 
 // ApplicationGatewayProbePropertiesFormat - Properties of probe of an application gateway.
@@ -1349,6 +3680,90 @@ type ApplicationGatewayProbePropertiesFormat struct {
 
 	// READ-ONLY; The provisioning state of the probe resource.
 	ProvisioningState *ProvisioningState
+}
+
+func (a *ApplicationGatewayProbePropertiesFormat) GetHost() (rv string) {
+	if a != nil && a.Host != nil {
+		return *a.Host
+	}
+	return
+}
+
+func (a *ApplicationGatewayProbePropertiesFormat) GetInterval() (rv int32) {
+	if a != nil && a.Interval != nil {
+		return *a.Interval
+	}
+	return
+}
+
+func (a *ApplicationGatewayProbePropertiesFormat) GetMatch() (rv *ApplicationGatewayProbeHealthResponseMatch) {
+	if a != nil {
+		return a.Match
+	}
+	return
+}
+
+func (a *ApplicationGatewayProbePropertiesFormat) GetMinServers() (rv int32) {
+	if a != nil && a.MinServers != nil {
+		return *a.MinServers
+	}
+	return
+}
+
+func (a *ApplicationGatewayProbePropertiesFormat) GetPath() (rv string) {
+	if a != nil && a.Path != nil {
+		return *a.Path
+	}
+	return
+}
+
+func (a *ApplicationGatewayProbePropertiesFormat) GetPickHostNameFromBackendHTTPSettings() (rv bool) {
+	if a != nil && a.PickHostNameFromBackendHTTPSettings != nil {
+		return *a.PickHostNameFromBackendHTTPSettings
+	}
+	return
+}
+
+func (a *ApplicationGatewayProbePropertiesFormat) GetPickHostNameFromBackendSettings() (rv bool) {
+	if a != nil && a.PickHostNameFromBackendSettings != nil {
+		return *a.PickHostNameFromBackendSettings
+	}
+	return
+}
+
+func (a *ApplicationGatewayProbePropertiesFormat) GetPort() (rv int32) {
+	if a != nil && a.Port != nil {
+		return *a.Port
+	}
+	return
+}
+
+func (a *ApplicationGatewayProbePropertiesFormat) GetProtocol() (rv *ApplicationGatewayProtocol) {
+	if a != nil {
+		return a.Protocol
+	}
+	return
+}
+
+func (a *ApplicationGatewayProbePropertiesFormat) GetTimeout() (rv int32) {
+	if a != nil && a.Timeout != nil {
+		return *a.Timeout
+	}
+	return
+}
+
+func (a *ApplicationGatewayProbePropertiesFormat) GetUnhealthyThreshold() (rv int32) {
+	if a != nil && a.UnhealthyThreshold != nil {
+		return *a.UnhealthyThreshold
+	}
+	return
+}
+
+func (a *ApplicationGatewayProbePropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if a != nil {
+		return a.ProvisioningState
+	}
+	return
 }
 
 // ApplicationGatewayPropertiesFormat - Properties of the application gateway.
@@ -1468,6 +3883,251 @@ type ApplicationGatewayPropertiesFormat struct {
 	ResourceGUID *string
 }
 
+func (a *ApplicationGatewayPropertiesFormat) GetAuthenticationCertificates() (rv []*ApplicationGatewayAuthenticationCertificate) {
+	if a != nil {
+		return a.AuthenticationCertificates
+	}
+	return
+}
+
+func (a *ApplicationGatewayPropertiesFormat) GetAutoscaleConfiguration() (rv *ApplicationGatewayAutoscaleConfiguration) {
+	if a != nil {
+		return a.AutoscaleConfiguration
+	}
+	return
+}
+
+func (a *ApplicationGatewayPropertiesFormat) GetBackendAddressPools() (rv []*ApplicationGatewayBackendAddressPool) {
+	if a != nil {
+		return a.BackendAddressPools
+	}
+	return
+}
+
+func (a *ApplicationGatewayPropertiesFormat) GetBackendHTTPSettingsCollection() (rv []*ApplicationGatewayBackendHTTPSettings) {
+	if a != nil {
+		return a.BackendHTTPSettingsCollection
+	}
+	return
+}
+
+func (a *ApplicationGatewayPropertiesFormat) GetBackendSettingsCollection() (rv []*ApplicationGatewayBackendSettings) {
+	if a != nil {
+		return a.BackendSettingsCollection
+	}
+	return
+}
+
+func (a *ApplicationGatewayPropertiesFormat) GetCustomErrorConfigurations() (rv []*ApplicationGatewayCustomError) {
+	if a != nil {
+		return a.CustomErrorConfigurations
+	}
+	return
+}
+
+func (a *ApplicationGatewayPropertiesFormat) GetEnableFips() (rv bool) {
+	if a != nil && a.EnableFips != nil {
+		return *a.EnableFips
+	}
+	return
+}
+
+func (a *ApplicationGatewayPropertiesFormat) GetEnableHTTP2() (rv bool) {
+	if a != nil && a.EnableHTTP2 != nil {
+		return *a.EnableHTTP2
+	}
+	return
+}
+
+func (a *ApplicationGatewayPropertiesFormat) GetFirewallPolicy() (rv *SubResource) {
+	if a != nil {
+		return a.FirewallPolicy
+	}
+	return
+}
+
+func (a *ApplicationGatewayPropertiesFormat) GetForceFirewallPolicyAssociation() (rv bool) {
+	if a != nil && a.ForceFirewallPolicyAssociation != nil {
+		return *a.ForceFirewallPolicyAssociation
+	}
+	return
+}
+
+func (a *ApplicationGatewayPropertiesFormat) GetFrontendIPConfigurations() (rv []*ApplicationGatewayFrontendIPConfiguration) {
+	if a != nil {
+		return a.FrontendIPConfigurations
+	}
+	return
+}
+
+func (a *ApplicationGatewayPropertiesFormat) GetFrontendPorts() (rv []*ApplicationGatewayFrontendPort) {
+	if a != nil {
+		return a.FrontendPorts
+	}
+	return
+}
+
+func (a *ApplicationGatewayPropertiesFormat) GetGatewayIPConfigurations() (rv []*ApplicationGatewayIPConfiguration) {
+	if a != nil {
+		return a.GatewayIPConfigurations
+	}
+	return
+}
+
+func (a *ApplicationGatewayPropertiesFormat) GetGlobalConfiguration() (rv *ApplicationGatewayGlobalConfiguration) {
+	if a != nil {
+		return a.GlobalConfiguration
+	}
+	return
+}
+
+func (a *ApplicationGatewayPropertiesFormat) GetHTTPListeners() (rv []*ApplicationGatewayHTTPListener) {
+	if a != nil {
+		return a.HTTPListeners
+	}
+	return
+}
+
+func (a *ApplicationGatewayPropertiesFormat) GetListeners() (rv []*ApplicationGatewayListener) {
+	if a != nil {
+		return a.Listeners
+	}
+	return
+}
+
+func (a *ApplicationGatewayPropertiesFormat) GetLoadDistributionPolicies() (rv []*ApplicationGatewayLoadDistributionPolicy) {
+	if a != nil {
+		return a.LoadDistributionPolicies
+	}
+	return
+}
+
+func (a *ApplicationGatewayPropertiesFormat) GetPrivateLinkConfigurations() (rv []*ApplicationGatewayPrivateLinkConfiguration) {
+	if a != nil {
+		return a.PrivateLinkConfigurations
+	}
+	return
+}
+
+func (a *ApplicationGatewayPropertiesFormat) GetProbes() (rv []*ApplicationGatewayProbe) {
+	if a != nil {
+		return a.Probes
+	}
+	return
+}
+
+func (a *ApplicationGatewayPropertiesFormat) GetRedirectConfigurations() (rv []*ApplicationGatewayRedirectConfiguration) {
+	if a != nil {
+		return a.RedirectConfigurations
+	}
+	return
+}
+
+func (a *ApplicationGatewayPropertiesFormat) GetRequestRoutingRules() (rv []*ApplicationGatewayRequestRoutingRule) {
+	if a != nil {
+		return a.RequestRoutingRules
+	}
+	return
+}
+
+func (a *ApplicationGatewayPropertiesFormat) GetRewriteRuleSets() (rv []*ApplicationGatewayRewriteRuleSet) {
+	if a != nil {
+		return a.RewriteRuleSets
+	}
+	return
+}
+
+func (a *ApplicationGatewayPropertiesFormat) GetRoutingRules() (rv []*ApplicationGatewayRoutingRule) {
+	if a != nil {
+		return a.RoutingRules
+	}
+	return
+}
+
+func (a *ApplicationGatewayPropertiesFormat) GetSKU() (rv *ApplicationGatewaySKU) {
+	if a != nil {
+		return a.SKU
+	}
+	return
+}
+
+func (a *ApplicationGatewayPropertiesFormat) GetSSLCertificates() (rv []*ApplicationGatewaySSLCertificate) {
+	if a != nil {
+		return a.SSLCertificates
+	}
+	return
+}
+
+func (a *ApplicationGatewayPropertiesFormat) GetSSLPolicy() (rv *ApplicationGatewaySSLPolicy) {
+	if a != nil {
+		return a.SSLPolicy
+	}
+	return
+}
+
+func (a *ApplicationGatewayPropertiesFormat) GetSSLProfiles() (rv []*ApplicationGatewaySSLProfile) {
+	if a != nil {
+		return a.SSLProfiles
+	}
+	return
+}
+
+func (a *ApplicationGatewayPropertiesFormat) GetTrustedClientCertificates() (rv []*ApplicationGatewayTrustedClientCertificate) {
+	if a != nil {
+		return a.TrustedClientCertificates
+	}
+	return
+}
+
+func (a *ApplicationGatewayPropertiesFormat) GetTrustedRootCertificates() (rv []*ApplicationGatewayTrustedRootCertificate) {
+	if a != nil {
+		return a.TrustedRootCertificates
+	}
+	return
+}
+
+func (a *ApplicationGatewayPropertiesFormat) GetURLPathMaps() (rv []*ApplicationGatewayURLPathMap) {
+	if a != nil {
+		return a.URLPathMaps
+	}
+	return
+}
+
+func (a *ApplicationGatewayPropertiesFormat) GetWebApplicationFirewallConfiguration() (rv *ApplicationGatewayWebApplicationFirewallConfiguration) {
+	if a != nil {
+		return a.WebApplicationFirewallConfiguration
+	}
+	return
+}
+
+func (a *ApplicationGatewayPropertiesFormat) GetOperationalState() (rv *ApplicationGatewayOperationalState) {
+	if a != nil {
+		return a.OperationalState
+	}
+	return
+}
+
+func (a *ApplicationGatewayPropertiesFormat) GetPrivateEndpointConnections() (rv []*ApplicationGatewayPrivateEndpointConnection) {
+	if a != nil {
+		return a.PrivateEndpointConnections
+	}
+	return
+}
+
+func (a *ApplicationGatewayPropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if a != nil {
+		return a.ProvisioningState
+	}
+	return
+}
+
+func (a *ApplicationGatewayPropertiesFormat) GetResourceGUID() (rv string) {
+	if a != nil && a.ResourceGUID != nil {
+		return *a.ResourceGUID
+	}
+	return
+}
+
 // ApplicationGatewayRedirectConfiguration - Redirect configuration of an application gateway.
 type ApplicationGatewayRedirectConfiguration struct {
 	// Resource ID.
@@ -1484,6 +4144,41 @@ type ApplicationGatewayRedirectConfiguration struct {
 
 	// READ-ONLY; Type of the resource.
 	Type *string
+}
+
+func (a *ApplicationGatewayRedirectConfiguration) GetID() (rv string) {
+	if a != nil && a.ID != nil {
+		return *a.ID
+	}
+	return
+}
+
+func (a *ApplicationGatewayRedirectConfiguration) GetName() (rv string) {
+	if a != nil && a.Name != nil {
+		return *a.Name
+	}
+	return
+}
+
+func (a *ApplicationGatewayRedirectConfiguration) GetProperties() (rv *ApplicationGatewayRedirectConfigurationPropertiesFormat) {
+	if a != nil {
+		return a.Properties
+	}
+	return
+}
+
+func (a *ApplicationGatewayRedirectConfiguration) GetEtag() (rv string) {
+	if a != nil && a.Etag != nil {
+		return *a.Etag
+	}
+	return
+}
+
+func (a *ApplicationGatewayRedirectConfiguration) GetType() (rv string) {
+	if a != nil && a.Type != nil {
+		return *a.Type
+	}
+	return
 }
 
 // ApplicationGatewayRedirectConfigurationPropertiesFormat - Properties of redirect configuration of the application gateway.
@@ -1513,6 +4208,62 @@ type ApplicationGatewayRedirectConfigurationPropertiesFormat struct {
 	URLPathMaps []*SubResource
 }
 
+func (a *ApplicationGatewayRedirectConfigurationPropertiesFormat) GetIncludePath() (rv bool) {
+	if a != nil && a.IncludePath != nil {
+		return *a.IncludePath
+	}
+	return
+}
+
+func (a *ApplicationGatewayRedirectConfigurationPropertiesFormat) GetIncludeQueryString() (rv bool) {
+	if a != nil && a.IncludeQueryString != nil {
+		return *a.IncludeQueryString
+	}
+	return
+}
+
+func (a *ApplicationGatewayRedirectConfigurationPropertiesFormat) GetPathRules() (rv []*SubResource) {
+	if a != nil {
+		return a.PathRules
+	}
+	return
+}
+
+func (a *ApplicationGatewayRedirectConfigurationPropertiesFormat) GetRedirectType() (rv *ApplicationGatewayRedirectType) {
+	if a != nil {
+		return a.RedirectType
+	}
+	return
+}
+
+func (a *ApplicationGatewayRedirectConfigurationPropertiesFormat) GetRequestRoutingRules() (rv []*SubResource) {
+	if a != nil {
+		return a.RequestRoutingRules
+	}
+	return
+}
+
+func (a *ApplicationGatewayRedirectConfigurationPropertiesFormat) GetTargetListener() (rv *SubResource) {
+	if a != nil {
+		return a.TargetListener
+	}
+	return
+}
+
+func (a *ApplicationGatewayRedirectConfigurationPropertiesFormat) GetTargetURL() (rv string) {
+	if a != nil && a.TargetURL != nil {
+		return *a.TargetURL
+	}
+	return
+}
+
+func (a *ApplicationGatewayRedirectConfigurationPropertiesFormat) GetURLPathMaps() (rv []*SubResource) {
+	if a != nil {
+		return a.URLPathMaps
+	}
+	return
+}
+
 // ApplicationGatewayRequestRoutingRule - Request routing rule of an application gateway.
 type ApplicationGatewayRequestRoutingRule struct {
 	// Resource ID.
@@ -1529,6 +4280,41 @@ type ApplicationGatewayRequestRoutingRule struct {
 
 	// READ-ONLY; Type of the resource.
 	Type *string
+}
+
+func (a *ApplicationGatewayRequestRoutingRule) GetID() (rv string) {
+	if a != nil && a.ID != nil {
+		return *a.ID
+	}
+	return
+}
+
+func (a *ApplicationGatewayRequestRoutingRule) GetName() (rv string) {
+	if a != nil && a.Name != nil {
+		return *a.Name
+	}
+	return
+}
+
+func (a *ApplicationGatewayRequestRoutingRule) GetProperties() (rv *ApplicationGatewayRequestRoutingRulePropertiesFormat) {
+	if a != nil {
+		return a.Properties
+	}
+	return
+}
+
+func (a *ApplicationGatewayRequestRoutingRule) GetEtag() (rv string) {
+	if a != nil && a.Etag != nil {
+		return *a.Etag
+	}
+	return
+}
+
+func (a *ApplicationGatewayRequestRoutingRule) GetType() (rv string) {
+	if a != nil && a.Type != nil {
+		return *a.Type
+	}
+	return
 }
 
 // ApplicationGatewayRequestRoutingRulePropertiesFormat - Properties of request routing rule of the application gateway.
@@ -1564,6 +4350,76 @@ type ApplicationGatewayRequestRoutingRulePropertiesFormat struct {
 	ProvisioningState *ProvisioningState
 }
 
+func (a *ApplicationGatewayRequestRoutingRulePropertiesFormat) GetBackendAddressPool() (rv *SubResource) {
+	if a != nil {
+		return a.BackendAddressPool
+	}
+	return
+}
+
+func (a *ApplicationGatewayRequestRoutingRulePropertiesFormat) GetBackendHTTPSettings() (rv *SubResource) {
+	if a != nil {
+		return a.BackendHTTPSettings
+	}
+	return
+}
+
+func (a *ApplicationGatewayRequestRoutingRulePropertiesFormat) GetHTTPListener() (rv *SubResource) {
+	if a != nil {
+		return a.HTTPListener
+	}
+	return
+}
+
+func (a *ApplicationGatewayRequestRoutingRulePropertiesFormat) GetLoadDistributionPolicy() (rv *SubResource) {
+	if a != nil {
+		return a.LoadDistributionPolicy
+	}
+	return
+}
+
+func (a *ApplicationGatewayRequestRoutingRulePropertiesFormat) GetPriority() (rv int32) {
+	if a != nil && a.Priority != nil {
+		return *a.Priority
+	}
+	return
+}
+
+func (a *ApplicationGatewayRequestRoutingRulePropertiesFormat) GetRedirectConfiguration() (rv *SubResource) {
+	if a != nil {
+		return a.RedirectConfiguration
+	}
+	return
+}
+
+func (a *ApplicationGatewayRequestRoutingRulePropertiesFormat) GetRewriteRuleSet() (rv *SubResource) {
+	if a != nil {
+		return a.RewriteRuleSet
+	}
+	return
+}
+
+func (a *ApplicationGatewayRequestRoutingRulePropertiesFormat) GetRuleType() (rv *ApplicationGatewayRequestRoutingRuleType) {
+	if a != nil {
+		return a.RuleType
+	}
+	return
+}
+
+func (a *ApplicationGatewayRequestRoutingRulePropertiesFormat) GetURLPathMap() (rv *SubResource) {
+	if a != nil {
+		return a.URLPathMap
+	}
+	return
+}
+
+func (a *ApplicationGatewayRequestRoutingRulePropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if a != nil {
+		return a.ProvisioningState
+	}
+	return
+}
+
 // ApplicationGatewayRewriteRule - Rewrite rule of an application gateway.
 type ApplicationGatewayRewriteRule struct {
 	// Set of actions to be done as part of the rewrite Rule.
@@ -1579,6 +4435,34 @@ type ApplicationGatewayRewriteRule struct {
 	RuleSequence *int32
 }
 
+func (a *ApplicationGatewayRewriteRule) GetActionSet() (rv *ApplicationGatewayRewriteRuleActionSet) {
+	if a != nil {
+		return a.ActionSet
+	}
+	return
+}
+
+func (a *ApplicationGatewayRewriteRule) GetConditions() (rv []*ApplicationGatewayRewriteRuleCondition) {
+	if a != nil {
+		return a.Conditions
+	}
+	return
+}
+
+func (a *ApplicationGatewayRewriteRule) GetName() (rv string) {
+	if a != nil && a.Name != nil {
+		return *a.Name
+	}
+	return
+}
+
+func (a *ApplicationGatewayRewriteRule) GetRuleSequence() (rv int32) {
+	if a != nil && a.RuleSequence != nil {
+		return *a.RuleSequence
+	}
+	return
+}
+
 // ApplicationGatewayRewriteRuleActionSet - Set of actions in the Rewrite Rule in Application Gateway.
 type ApplicationGatewayRewriteRuleActionSet struct {
 	// Request Header Actions in the Action Set.
@@ -1589,6 +4473,27 @@ type ApplicationGatewayRewriteRuleActionSet struct {
 
 	// Url Configuration Action in the Action Set.
 	URLConfiguration *ApplicationGatewayURLConfiguration
+}
+
+func (a *ApplicationGatewayRewriteRuleActionSet) GetRequestHeaderConfigurations() (rv []*ApplicationGatewayHeaderConfiguration) {
+	if a != nil {
+		return a.RequestHeaderConfigurations
+	}
+	return
+}
+
+func (a *ApplicationGatewayRewriteRuleActionSet) GetResponseHeaderConfigurations() (rv []*ApplicationGatewayHeaderConfiguration) {
+	if a != nil {
+		return a.ResponseHeaderConfigurations
+	}
+	return
+}
+
+func (a *ApplicationGatewayRewriteRuleActionSet) GetURLConfiguration() (rv *ApplicationGatewayURLConfiguration) {
+	if a != nil {
+		return a.URLConfiguration
+	}
+	return
 }
 
 // ApplicationGatewayRewriteRuleCondition - Set of conditions in the Rewrite Rule in Application Gateway.
@@ -1606,6 +4511,34 @@ type ApplicationGatewayRewriteRuleCondition struct {
 	Variable *string
 }
 
+func (a *ApplicationGatewayRewriteRuleCondition) GetIgnoreCase() (rv bool) {
+	if a != nil && a.IgnoreCase != nil {
+		return *a.IgnoreCase
+	}
+	return
+}
+
+func (a *ApplicationGatewayRewriteRuleCondition) GetNegate() (rv bool) {
+	if a != nil && a.Negate != nil {
+		return *a.Negate
+	}
+	return
+}
+
+func (a *ApplicationGatewayRewriteRuleCondition) GetPattern() (rv string) {
+	if a != nil && a.Pattern != nil {
+		return *a.Pattern
+	}
+	return
+}
+
+func (a *ApplicationGatewayRewriteRuleCondition) GetVariable() (rv string) {
+	if a != nil && a.Variable != nil {
+		return *a.Variable
+	}
+	return
+}
+
 // ApplicationGatewayRewriteRuleSet - Rewrite rule set of an application gateway.
 type ApplicationGatewayRewriteRuleSet struct {
 	// Resource ID.
@@ -1621,6 +4554,34 @@ type ApplicationGatewayRewriteRuleSet struct {
 	Etag *string
 }
 
+func (a *ApplicationGatewayRewriteRuleSet) GetID() (rv string) {
+	if a != nil && a.ID != nil {
+		return *a.ID
+	}
+	return
+}
+
+func (a *ApplicationGatewayRewriteRuleSet) GetName() (rv string) {
+	if a != nil && a.Name != nil {
+		return *a.Name
+	}
+	return
+}
+
+func (a *ApplicationGatewayRewriteRuleSet) GetProperties() (rv *ApplicationGatewayRewriteRuleSetPropertiesFormat) {
+	if a != nil {
+		return a.Properties
+	}
+	return
+}
+
+func (a *ApplicationGatewayRewriteRuleSet) GetEtag() (rv string) {
+	if a != nil && a.Etag != nil {
+		return *a.Etag
+	}
+	return
+}
+
 // ApplicationGatewayRewriteRuleSetPropertiesFormat - Properties of rewrite rule set of the application gateway.
 type ApplicationGatewayRewriteRuleSetPropertiesFormat struct {
 	// Rewrite rules in the rewrite rule set.
@@ -1628,6 +4589,20 @@ type ApplicationGatewayRewriteRuleSetPropertiesFormat struct {
 
 	// READ-ONLY; The provisioning state of the rewrite rule set resource.
 	ProvisioningState *ProvisioningState
+}
+
+func (a *ApplicationGatewayRewriteRuleSetPropertiesFormat) GetRewriteRules() (rv []*ApplicationGatewayRewriteRule) {
+	if a != nil {
+		return a.RewriteRules
+	}
+	return
+}
+
+func (a *ApplicationGatewayRewriteRuleSetPropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if a != nil {
+		return a.ProvisioningState
+	}
+	return
 }
 
 // ApplicationGatewayRoutingRule - Routing rule of an application gateway.
@@ -1646,6 +4621,41 @@ type ApplicationGatewayRoutingRule struct {
 
 	// READ-ONLY; Type of the resource.
 	Type *string
+}
+
+func (a *ApplicationGatewayRoutingRule) GetID() (rv string) {
+	if a != nil && a.ID != nil {
+		return *a.ID
+	}
+	return
+}
+
+func (a *ApplicationGatewayRoutingRule) GetName() (rv string) {
+	if a != nil && a.Name != nil {
+		return *a.Name
+	}
+	return
+}
+
+func (a *ApplicationGatewayRoutingRule) GetProperties() (rv *ApplicationGatewayRoutingRulePropertiesFormat) {
+	if a != nil {
+		return a.Properties
+	}
+	return
+}
+
+func (a *ApplicationGatewayRoutingRule) GetEtag() (rv string) {
+	if a != nil && a.Etag != nil {
+		return *a.Etag
+	}
+	return
+}
+
+func (a *ApplicationGatewayRoutingRule) GetType() (rv string) {
+	if a != nil && a.Type != nil {
+		return *a.Type
+	}
+	return
 }
 
 // ApplicationGatewayRoutingRulePropertiesFormat - Properties of routing rule of the application gateway.
@@ -1669,6 +4679,48 @@ type ApplicationGatewayRoutingRulePropertiesFormat struct {
 	ProvisioningState *ProvisioningState
 }
 
+func (a *ApplicationGatewayRoutingRulePropertiesFormat) GetPriority() (rv int32) {
+	if a != nil && a.Priority != nil {
+		return *a.Priority
+	}
+	return
+}
+
+func (a *ApplicationGatewayRoutingRulePropertiesFormat) GetBackendAddressPool() (rv *SubResource) {
+	if a != nil {
+		return a.BackendAddressPool
+	}
+	return
+}
+
+func (a *ApplicationGatewayRoutingRulePropertiesFormat) GetBackendSettings() (rv *SubResource) {
+	if a != nil {
+		return a.BackendSettings
+	}
+	return
+}
+
+func (a *ApplicationGatewayRoutingRulePropertiesFormat) GetListener() (rv *SubResource) {
+	if a != nil {
+		return a.Listener
+	}
+	return
+}
+
+func (a *ApplicationGatewayRoutingRulePropertiesFormat) GetRuleType() (rv *ApplicationGatewayRequestRoutingRuleType) {
+	if a != nil {
+		return a.RuleType
+	}
+	return
+}
+
+func (a *ApplicationGatewayRoutingRulePropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if a != nil {
+		return a.ProvisioningState
+	}
+	return
+}
+
 // ApplicationGatewaySKU - SKU of an application gateway.
 type ApplicationGatewaySKU struct {
 	// Capacity (instance count) of an application gateway.
@@ -1679,6 +4731,27 @@ type ApplicationGatewaySKU struct {
 
 	// Tier of an application gateway.
 	Tier *ApplicationGatewayTier
+}
+
+func (a *ApplicationGatewaySKU) GetCapacity() (rv int32) {
+	if a != nil && a.Capacity != nil {
+		return *a.Capacity
+	}
+	return
+}
+
+func (a *ApplicationGatewaySKU) GetName() (rv *ApplicationGatewaySKUName) {
+	if a != nil {
+		return a.Name
+	}
+	return
+}
+
+func (a *ApplicationGatewaySKU) GetTier() (rv *ApplicationGatewayTier) {
+	if a != nil {
+		return a.Tier
+	}
+	return
 }
 
 // ApplicationGatewaySSLCertificate - SSL certificates of an application gateway.
@@ -1699,6 +4772,41 @@ type ApplicationGatewaySSLCertificate struct {
 	Type *string
 }
 
+func (a *ApplicationGatewaySSLCertificate) GetID() (rv string) {
+	if a != nil && a.ID != nil {
+		return *a.ID
+	}
+	return
+}
+
+func (a *ApplicationGatewaySSLCertificate) GetName() (rv string) {
+	if a != nil && a.Name != nil {
+		return *a.Name
+	}
+	return
+}
+
+func (a *ApplicationGatewaySSLCertificate) GetProperties() (rv *ApplicationGatewaySSLCertificatePropertiesFormat) {
+	if a != nil {
+		return a.Properties
+	}
+	return
+}
+
+func (a *ApplicationGatewaySSLCertificate) GetEtag() (rv string) {
+	if a != nil && a.Etag != nil {
+		return *a.Etag
+	}
+	return
+}
+
+func (a *ApplicationGatewaySSLCertificate) GetType() (rv string) {
+	if a != nil && a.Type != nil {
+		return *a.Type
+	}
+	return
+}
+
 // ApplicationGatewaySSLCertificatePropertiesFormat - Properties of SSL certificates of an application gateway.
 type ApplicationGatewaySSLCertificatePropertiesFormat struct {
 	// Base-64 encoded pfx certificate. Only applicable in PUT Request.
@@ -1715,6 +4823,41 @@ type ApplicationGatewaySSLCertificatePropertiesFormat struct {
 
 	// READ-ONLY; Base-64 encoded Public cert data corresponding to pfx specified in data. Only applicable in GET request.
 	PublicCertData *string
+}
+
+func (a *ApplicationGatewaySSLCertificatePropertiesFormat) GetData() (rv string) {
+	if a != nil && a.Data != nil {
+		return *a.Data
+	}
+	return
+}
+
+func (a *ApplicationGatewaySSLCertificatePropertiesFormat) GetKeyVaultSecretID() (rv string) {
+	if a != nil && a.KeyVaultSecretID != nil {
+		return *a.KeyVaultSecretID
+	}
+	return
+}
+
+func (a *ApplicationGatewaySSLCertificatePropertiesFormat) GetPassword() (rv string) {
+	if a != nil && a.Password != nil {
+		return *a.Password
+	}
+	return
+}
+
+func (a *ApplicationGatewaySSLCertificatePropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if a != nil {
+		return a.ProvisioningState
+	}
+	return
+}
+
+func (a *ApplicationGatewaySSLCertificatePropertiesFormat) GetPublicCertData() (rv string) {
+	if a != nil && a.PublicCertData != nil {
+		return *a.PublicCertData
+	}
+	return
 }
 
 // ApplicationGatewaySSLPolicy - Application Gateway Ssl policy.
@@ -1735,6 +4878,41 @@ type ApplicationGatewaySSLPolicy struct {
 	PolicyType *ApplicationGatewaySSLPolicyType
 }
 
+func (a *ApplicationGatewaySSLPolicy) GetCipherSuites() (rv []*ApplicationGatewaySSLCipherSuite) {
+	if a != nil {
+		return a.CipherSuites
+	}
+	return
+}
+
+func (a *ApplicationGatewaySSLPolicy) GetDisabledSSLProtocols() (rv []*ApplicationGatewaySSLProtocol) {
+	if a != nil {
+		return a.DisabledSSLProtocols
+	}
+	return
+}
+
+func (a *ApplicationGatewaySSLPolicy) GetMinProtocolVersion() (rv *ApplicationGatewaySSLProtocol) {
+	if a != nil {
+		return a.MinProtocolVersion
+	}
+	return
+}
+
+func (a *ApplicationGatewaySSLPolicy) GetPolicyName() (rv *ApplicationGatewaySSLPolicyName) {
+	if a != nil {
+		return a.PolicyName
+	}
+	return
+}
+
+func (a *ApplicationGatewaySSLPolicy) GetPolicyType() (rv *ApplicationGatewaySSLPolicyType) {
+	if a != nil {
+		return a.PolicyType
+	}
+	return
+}
+
 // ApplicationGatewaySSLPredefinedPolicy - An Ssl predefined policy.
 type ApplicationGatewaySSLPredefinedPolicy struct {
 	// Resource ID.
@@ -1747,6 +4925,27 @@ type ApplicationGatewaySSLPredefinedPolicy struct {
 	Properties *ApplicationGatewaySSLPredefinedPolicyPropertiesFormat
 }
 
+func (a *ApplicationGatewaySSLPredefinedPolicy) GetID() (rv string) {
+	if a != nil && a.ID != nil {
+		return *a.ID
+	}
+	return
+}
+
+func (a *ApplicationGatewaySSLPredefinedPolicy) GetName() (rv string) {
+	if a != nil && a.Name != nil {
+		return *a.Name
+	}
+	return
+}
+
+func (a *ApplicationGatewaySSLPredefinedPolicy) GetProperties() (rv *ApplicationGatewaySSLPredefinedPolicyPropertiesFormat) {
+	if a != nil {
+		return a.Properties
+	}
+	return
+}
+
 // ApplicationGatewaySSLPredefinedPolicyPropertiesFormat - Properties of ApplicationGatewaySslPredefinedPolicy.
 type ApplicationGatewaySSLPredefinedPolicyPropertiesFormat struct {
 	// Ssl cipher suites to be enabled in the specified order for application gateway.
@@ -1754,6 +4953,20 @@ type ApplicationGatewaySSLPredefinedPolicyPropertiesFormat struct {
 
 	// Minimum version of Ssl protocol to be supported on application gateway.
 	MinProtocolVersion *ApplicationGatewaySSLProtocol
+}
+
+func (a *ApplicationGatewaySSLPredefinedPolicyPropertiesFormat) GetCipherSuites() (rv []*ApplicationGatewaySSLCipherSuite) {
+	if a != nil {
+		return a.CipherSuites
+	}
+	return
+}
+
+func (a *ApplicationGatewaySSLPredefinedPolicyPropertiesFormat) GetMinProtocolVersion() (rv *ApplicationGatewaySSLProtocol) {
+	if a != nil {
+		return a.MinProtocolVersion
+	}
+	return
 }
 
 // ApplicationGatewaySSLProfile - SSL profile of an application gateway.
@@ -1774,6 +4987,41 @@ type ApplicationGatewaySSLProfile struct {
 	Type *string
 }
 
+func (a *ApplicationGatewaySSLProfile) GetID() (rv string) {
+	if a != nil && a.ID != nil {
+		return *a.ID
+	}
+	return
+}
+
+func (a *ApplicationGatewaySSLProfile) GetName() (rv string) {
+	if a != nil && a.Name != nil {
+		return *a.Name
+	}
+	return
+}
+
+func (a *ApplicationGatewaySSLProfile) GetProperties() (rv *ApplicationGatewaySSLProfilePropertiesFormat) {
+	if a != nil {
+		return a.Properties
+	}
+	return
+}
+
+func (a *ApplicationGatewaySSLProfile) GetEtag() (rv string) {
+	if a != nil && a.Etag != nil {
+		return *a.Etag
+	}
+	return
+}
+
+func (a *ApplicationGatewaySSLProfile) GetType() (rv string) {
+	if a != nil && a.Type != nil {
+		return *a.Type
+	}
+	return
+}
+
 // ApplicationGatewaySSLProfilePropertiesFormat - Properties of SSL profile of an application gateway.
 type ApplicationGatewaySSLProfilePropertiesFormat struct {
 	// Client authentication configuration of the application gateway resource.
@@ -1787,6 +5035,34 @@ type ApplicationGatewaySSLProfilePropertiesFormat struct {
 
 	// READ-ONLY; The provisioning state of the HTTP listener resource.
 	ProvisioningState *ProvisioningState
+}
+
+func (a *ApplicationGatewaySSLProfilePropertiesFormat) GetClientAuthConfiguration() (rv *ApplicationGatewayClientAuthConfiguration) {
+	if a != nil {
+		return a.ClientAuthConfiguration
+	}
+	return
+}
+
+func (a *ApplicationGatewaySSLProfilePropertiesFormat) GetSSLPolicy() (rv *ApplicationGatewaySSLPolicy) {
+	if a != nil {
+		return a.SSLPolicy
+	}
+	return
+}
+
+func (a *ApplicationGatewaySSLProfilePropertiesFormat) GetTrustedClientCertificates() (rv []*SubResource) {
+	if a != nil {
+		return a.TrustedClientCertificates
+	}
+	return
+}
+
+func (a *ApplicationGatewaySSLProfilePropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if a != nil {
+		return a.ProvisioningState
+	}
+	return
 }
 
 // ApplicationGatewayTrustedClientCertificate - Trusted client certificates of an application gateway.
@@ -1807,6 +5083,41 @@ type ApplicationGatewayTrustedClientCertificate struct {
 	Type *string
 }
 
+func (a *ApplicationGatewayTrustedClientCertificate) GetID() (rv string) {
+	if a != nil && a.ID != nil {
+		return *a.ID
+	}
+	return
+}
+
+func (a *ApplicationGatewayTrustedClientCertificate) GetName() (rv string) {
+	if a != nil && a.Name != nil {
+		return *a.Name
+	}
+	return
+}
+
+func (a *ApplicationGatewayTrustedClientCertificate) GetProperties() (rv *ApplicationGatewayTrustedClientCertificatePropertiesFormat) {
+	if a != nil {
+		return a.Properties
+	}
+	return
+}
+
+func (a *ApplicationGatewayTrustedClientCertificate) GetEtag() (rv string) {
+	if a != nil && a.Etag != nil {
+		return *a.Etag
+	}
+	return
+}
+
+func (a *ApplicationGatewayTrustedClientCertificate) GetType() (rv string) {
+	if a != nil && a.Type != nil {
+		return *a.Type
+	}
+	return
+}
+
 // ApplicationGatewayTrustedClientCertificatePropertiesFormat - Trusted client certificates properties of an application gateway.
 type ApplicationGatewayTrustedClientCertificatePropertiesFormat struct {
 	// Certificate public data.
@@ -1820,6 +5131,34 @@ type ApplicationGatewayTrustedClientCertificatePropertiesFormat struct {
 
 	// READ-ONLY; Validated certificate data.
 	ValidatedCertData *string
+}
+
+func (a *ApplicationGatewayTrustedClientCertificatePropertiesFormat) GetData() (rv string) {
+	if a != nil && a.Data != nil {
+		return *a.Data
+	}
+	return
+}
+
+func (a *ApplicationGatewayTrustedClientCertificatePropertiesFormat) GetClientCertIssuerDN() (rv string) {
+	if a != nil && a.ClientCertIssuerDN != nil {
+		return *a.ClientCertIssuerDN
+	}
+	return
+}
+
+func (a *ApplicationGatewayTrustedClientCertificatePropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if a != nil {
+		return a.ProvisioningState
+	}
+	return
+}
+
+func (a *ApplicationGatewayTrustedClientCertificatePropertiesFormat) GetValidatedCertData() (rv string) {
+	if a != nil && a.ValidatedCertData != nil {
+		return *a.ValidatedCertData
+	}
+	return
 }
 
 // ApplicationGatewayTrustedRootCertificate - Trusted Root certificates of an application gateway.
@@ -1840,6 +5179,41 @@ type ApplicationGatewayTrustedRootCertificate struct {
 	Type *string
 }
 
+func (a *ApplicationGatewayTrustedRootCertificate) GetID() (rv string) {
+	if a != nil && a.ID != nil {
+		return *a.ID
+	}
+	return
+}
+
+func (a *ApplicationGatewayTrustedRootCertificate) GetName() (rv string) {
+	if a != nil && a.Name != nil {
+		return *a.Name
+	}
+	return
+}
+
+func (a *ApplicationGatewayTrustedRootCertificate) GetProperties() (rv *ApplicationGatewayTrustedRootCertificatePropertiesFormat) {
+	if a != nil {
+		return a.Properties
+	}
+	return
+}
+
+func (a *ApplicationGatewayTrustedRootCertificate) GetEtag() (rv string) {
+	if a != nil && a.Etag != nil {
+		return *a.Etag
+	}
+	return
+}
+
+func (a *ApplicationGatewayTrustedRootCertificate) GetType() (rv string) {
+	if a != nil && a.Type != nil {
+		return *a.Type
+	}
+	return
+}
+
 // ApplicationGatewayTrustedRootCertificatePropertiesFormat - Trusted Root certificates properties of an application gateway.
 type ApplicationGatewayTrustedRootCertificatePropertiesFormat struct {
 	// Certificate public data.
@@ -1850,6 +5224,27 @@ type ApplicationGatewayTrustedRootCertificatePropertiesFormat struct {
 
 	// READ-ONLY; The provisioning state of the trusted root certificate resource.
 	ProvisioningState *ProvisioningState
+}
+
+func (a *ApplicationGatewayTrustedRootCertificatePropertiesFormat) GetData() (rv string) {
+	if a != nil && a.Data != nil {
+		return *a.Data
+	}
+	return
+}
+
+func (a *ApplicationGatewayTrustedRootCertificatePropertiesFormat) GetKeyVaultSecretID() (rv string) {
+	if a != nil && a.KeyVaultSecretID != nil {
+		return *a.KeyVaultSecretID
+	}
+	return
+}
+
+func (a *ApplicationGatewayTrustedRootCertificatePropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if a != nil {
+		return a.ProvisioningState
+	}
+	return
 }
 
 // ApplicationGatewayURLConfiguration - Url configuration of the Actions set in Application Gateway.
@@ -1863,6 +5258,27 @@ type ApplicationGatewayURLConfiguration struct {
 	// If set as true, it will re-evaluate the url path map provided in path based request routing rules using modified path.
 	// Default value is false.
 	Reroute *bool
+}
+
+func (a *ApplicationGatewayURLConfiguration) GetModifiedPath() (rv string) {
+	if a != nil && a.ModifiedPath != nil {
+		return *a.ModifiedPath
+	}
+	return
+}
+
+func (a *ApplicationGatewayURLConfiguration) GetModifiedQueryString() (rv string) {
+	if a != nil && a.ModifiedQueryString != nil {
+		return *a.ModifiedQueryString
+	}
+	return
+}
+
+func (a *ApplicationGatewayURLConfiguration) GetReroute() (rv bool) {
+	if a != nil && a.Reroute != nil {
+		return *a.Reroute
+	}
+	return
 }
 
 // ApplicationGatewayURLPathMap - UrlPathMaps give a url path to the backend mapping information for PathBasedRouting.
@@ -1881,6 +5297,41 @@ type ApplicationGatewayURLPathMap struct {
 
 	// READ-ONLY; Type of the resource.
 	Type *string
+}
+
+func (a *ApplicationGatewayURLPathMap) GetID() (rv string) {
+	if a != nil && a.ID != nil {
+		return *a.ID
+	}
+	return
+}
+
+func (a *ApplicationGatewayURLPathMap) GetName() (rv string) {
+	if a != nil && a.Name != nil {
+		return *a.Name
+	}
+	return
+}
+
+func (a *ApplicationGatewayURLPathMap) GetProperties() (rv *ApplicationGatewayURLPathMapPropertiesFormat) {
+	if a != nil {
+		return a.Properties
+	}
+	return
+}
+
+func (a *ApplicationGatewayURLPathMap) GetEtag() (rv string) {
+	if a != nil && a.Etag != nil {
+		return *a.Etag
+	}
+	return
+}
+
+func (a *ApplicationGatewayURLPathMap) GetType() (rv string) {
+	if a != nil && a.Type != nil {
+		return *a.Type
+	}
+	return
 }
 
 // ApplicationGatewayURLPathMapPropertiesFormat - Properties of UrlPathMap of the application gateway.
@@ -1907,6 +5358,55 @@ type ApplicationGatewayURLPathMapPropertiesFormat struct {
 	ProvisioningState *ProvisioningState
 }
 
+func (a *ApplicationGatewayURLPathMapPropertiesFormat) GetDefaultBackendAddressPool() (rv *SubResource) {
+	if a != nil {
+		return a.DefaultBackendAddressPool
+	}
+	return
+}
+
+func (a *ApplicationGatewayURLPathMapPropertiesFormat) GetDefaultBackendHTTPSettings() (rv *SubResource) {
+	if a != nil {
+		return a.DefaultBackendHTTPSettings
+	}
+	return
+}
+
+func (a *ApplicationGatewayURLPathMapPropertiesFormat) GetDefaultLoadDistributionPolicy() (rv *SubResource) {
+	if a != nil {
+		return a.DefaultLoadDistributionPolicy
+	}
+	return
+}
+
+func (a *ApplicationGatewayURLPathMapPropertiesFormat) GetDefaultRedirectConfiguration() (rv *SubResource) {
+	if a != nil {
+		return a.DefaultRedirectConfiguration
+	}
+	return
+}
+
+func (a *ApplicationGatewayURLPathMapPropertiesFormat) GetDefaultRewriteRuleSet() (rv *SubResource) {
+	if a != nil {
+		return a.DefaultRewriteRuleSet
+	}
+	return
+}
+
+func (a *ApplicationGatewayURLPathMapPropertiesFormat) GetPathRules() (rv []*ApplicationGatewayPathRule) {
+	if a != nil {
+		return a.PathRules
+	}
+	return
+}
+
+func (a *ApplicationGatewayURLPathMapPropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if a != nil {
+		return a.ProvisioningState
+	}
+	return
+}
+
 // ApplicationGatewayWafDynamicManifestPropertiesResult - Properties of ApplicationGatewayWafDynamicManifest.
 type ApplicationGatewayWafDynamicManifestPropertiesResult struct {
 	// The available rulesets.
@@ -1914,6 +5414,20 @@ type ApplicationGatewayWafDynamicManifestPropertiesResult struct {
 
 	// The default ruleset.
 	DefaultRuleSet *DefaultRuleSetPropertyFormat
+}
+
+func (a *ApplicationGatewayWafDynamicManifestPropertiesResult) GetAvailableRuleSets() (rv []*ApplicationGatewayFirewallManifestRuleSet) {
+	if a != nil {
+		return a.AvailableRuleSets
+	}
+	return
+}
+
+func (a *ApplicationGatewayWafDynamicManifestPropertiesResult) GetDefaultRuleSet() (rv *DefaultRuleSetPropertyFormat) {
+	if a != nil {
+		return a.DefaultRuleSet
+	}
+	return
 }
 
 // ApplicationGatewayWafDynamicManifestResult - Response for ApplicationGatewayWafDynamicManifest API service call.
@@ -1931,6 +5445,34 @@ type ApplicationGatewayWafDynamicManifestResult struct {
 	Type *string
 }
 
+func (a *ApplicationGatewayWafDynamicManifestResult) GetID() (rv string) {
+	if a != nil && a.ID != nil {
+		return *a.ID
+	}
+	return
+}
+
+func (a *ApplicationGatewayWafDynamicManifestResult) GetProperties() (rv *ApplicationGatewayWafDynamicManifestPropertiesResult) {
+	if a != nil {
+		return a.Properties
+	}
+	return
+}
+
+func (a *ApplicationGatewayWafDynamicManifestResult) GetName() (rv string) {
+	if a != nil && a.Name != nil {
+		return *a.Name
+	}
+	return
+}
+
+func (a *ApplicationGatewayWafDynamicManifestResult) GetType() (rv string) {
+	if a != nil && a.Type != nil {
+		return *a.Type
+	}
+	return
+}
+
 // ApplicationGatewayWafDynamicManifestResultList - Response for ApplicationGatewayWafDynamicManifests API service call.
 type ApplicationGatewayWafDynamicManifestResultList struct {
 	// URL to get the next set of results.
@@ -1938,6 +5480,20 @@ type ApplicationGatewayWafDynamicManifestResultList struct {
 
 	// The list of application gateway waf manifest.
 	Value []*ApplicationGatewayWafDynamicManifestResult
+}
+
+func (a *ApplicationGatewayWafDynamicManifestResultList) GetNextLink() (rv string) {
+	if a != nil && a.NextLink != nil {
+		return *a.NextLink
+	}
+	return
+}
+
+func (a *ApplicationGatewayWafDynamicManifestResultList) GetValue() (rv []*ApplicationGatewayWafDynamicManifestResult) {
+	if a != nil {
+		return a.Value
+	}
+	return
 }
 
 // ApplicationGatewayWebApplicationFirewallConfiguration - Application gateway web application firewall configuration.
@@ -1971,6 +5527,76 @@ type ApplicationGatewayWebApplicationFirewallConfiguration struct {
 
 	// Whether allow WAF to check request Body.
 	RequestBodyCheck *bool
+}
+
+func (a *ApplicationGatewayWebApplicationFirewallConfiguration) GetEnabled() (rv bool) {
+	if a != nil && a.Enabled != nil {
+		return *a.Enabled
+	}
+	return
+}
+
+func (a *ApplicationGatewayWebApplicationFirewallConfiguration) GetFirewallMode() (rv *ApplicationGatewayFirewallMode) {
+	if a != nil {
+		return a.FirewallMode
+	}
+	return
+}
+
+func (a *ApplicationGatewayWebApplicationFirewallConfiguration) GetRuleSetType() (rv string) {
+	if a != nil && a.RuleSetType != nil {
+		return *a.RuleSetType
+	}
+	return
+}
+
+func (a *ApplicationGatewayWebApplicationFirewallConfiguration) GetRuleSetVersion() (rv string) {
+	if a != nil && a.RuleSetVersion != nil {
+		return *a.RuleSetVersion
+	}
+	return
+}
+
+func (a *ApplicationGatewayWebApplicationFirewallConfiguration) GetDisabledRuleGroups() (rv []*ApplicationGatewayFirewallDisabledRuleGroup) {
+	if a != nil {
+		return a.DisabledRuleGroups
+	}
+	return
+}
+
+func (a *ApplicationGatewayWebApplicationFirewallConfiguration) GetExclusions() (rv []*ApplicationGatewayFirewallExclusion) {
+	if a != nil {
+		return a.Exclusions
+	}
+	return
+}
+
+func (a *ApplicationGatewayWebApplicationFirewallConfiguration) GetFileUploadLimitInMb() (rv int32) {
+	if a != nil && a.FileUploadLimitInMb != nil {
+		return *a.FileUploadLimitInMb
+	}
+	return
+}
+
+func (a *ApplicationGatewayWebApplicationFirewallConfiguration) GetMaxRequestBodySize() (rv int32) {
+	if a != nil && a.MaxRequestBodySize != nil {
+		return *a.MaxRequestBodySize
+	}
+	return
+}
+
+func (a *ApplicationGatewayWebApplicationFirewallConfiguration) GetMaxRequestBodySizeInKb() (rv int32) {
+	if a != nil && a.MaxRequestBodySizeInKb != nil {
+		return *a.MaxRequestBodySizeInKb
+	}
+	return
+}
+
+func (a *ApplicationGatewayWebApplicationFirewallConfiguration) GetRequestBodyCheck() (rv bool) {
+	if a != nil && a.RequestBodyCheck != nil {
+		return *a.RequestBodyCheck
+	}
+	return
 }
 
 // ApplicationRule - Rule of type application.
@@ -2012,6 +5638,90 @@ type ApplicationRule struct {
 	WebCategories []*string
 }
 
+func (a *ApplicationRule) GetRuleType() (rv *FirewallPolicyRuleType) {
+	if a != nil {
+		return a.RuleType
+	}
+	return
+}
+
+func (a *ApplicationRule) GetDescription() (rv string) {
+	if a != nil && a.Description != nil {
+		return *a.Description
+	}
+	return
+}
+
+func (a *ApplicationRule) GetDestinationAddresses() (rv []*string) {
+	if a != nil {
+		return a.DestinationAddresses
+	}
+	return
+}
+
+func (a *ApplicationRule) GetFqdnTags() (rv []*string) {
+	if a != nil {
+		return a.FqdnTags
+	}
+	return
+}
+
+func (a *ApplicationRule) GetName() (rv string) {
+	if a != nil && a.Name != nil {
+		return *a.Name
+	}
+	return
+}
+
+func (a *ApplicationRule) GetProtocols() (rv []*FirewallPolicyRuleApplicationProtocol) {
+	if a != nil {
+		return a.Protocols
+	}
+	return
+}
+
+func (a *ApplicationRule) GetSourceAddresses() (rv []*string) {
+	if a != nil {
+		return a.SourceAddresses
+	}
+	return
+}
+
+func (a *ApplicationRule) GetSourceIPGroups() (rv []*string) {
+	if a != nil {
+		return a.SourceIPGroups
+	}
+	return
+}
+
+func (a *ApplicationRule) GetTargetFqdns() (rv []*string) {
+	if a != nil {
+		return a.TargetFqdns
+	}
+	return
+}
+
+func (a *ApplicationRule) GetTargetUrls() (rv []*string) {
+	if a != nil {
+		return a.TargetUrls
+	}
+	return
+}
+
+func (a *ApplicationRule) GetTerminateTLS() (rv bool) {
+	if a != nil && a.TerminateTLS != nil {
+		return *a.TerminateTLS
+	}
+	return
+}
+
+func (a *ApplicationRule) GetWebCategories() (rv []*string) {
+	if a != nil {
+		return a.WebCategories
+	}
+	return
+}
+
 // GetFirewallPolicyRule implements the FirewallPolicyRuleClassification interface for type ApplicationRule.
 func (a *ApplicationRule) GetFirewallPolicyRule() *FirewallPolicyRule {
 	return &FirewallPolicyRule{
@@ -2045,6 +5755,55 @@ type ApplicationSecurityGroup struct {
 	Type *string
 }
 
+func (a *ApplicationSecurityGroup) GetID() (rv string) {
+	if a != nil && a.ID != nil {
+		return *a.ID
+	}
+	return
+}
+
+func (a *ApplicationSecurityGroup) GetLocation() (rv string) {
+	if a != nil && a.Location != nil {
+		return *a.Location
+	}
+	return
+}
+
+func (a *ApplicationSecurityGroup) GetProperties() (rv *ApplicationSecurityGroupPropertiesFormat) {
+	if a != nil {
+		return a.Properties
+	}
+	return
+}
+
+func (a *ApplicationSecurityGroup) GetTags() (rv map[string]*string) {
+	if a != nil {
+		return a.Tags
+	}
+	return
+}
+
+func (a *ApplicationSecurityGroup) GetEtag() (rv string) {
+	if a != nil && a.Etag != nil {
+		return *a.Etag
+	}
+	return
+}
+
+func (a *ApplicationSecurityGroup) GetName() (rv string) {
+	if a != nil && a.Name != nil {
+		return *a.Name
+	}
+	return
+}
+
+func (a *ApplicationSecurityGroup) GetType() (rv string) {
+	if a != nil && a.Type != nil {
+		return *a.Type
+	}
+	return
+}
+
 // ApplicationSecurityGroupListResult - A list of application security groups.
 type ApplicationSecurityGroupListResult struct {
 	// A list of application security groups.
@@ -2052,6 +5811,20 @@ type ApplicationSecurityGroupListResult struct {
 
 	// READ-ONLY; The URL to get the next set of results.
 	NextLink *string
+}
+
+func (a *ApplicationSecurityGroupListResult) GetValue() (rv []*ApplicationSecurityGroup) {
+	if a != nil {
+		return a.Value
+	}
+	return
+}
+
+func (a *ApplicationSecurityGroupListResult) GetNextLink() (rv string) {
+	if a != nil && a.NextLink != nil {
+		return *a.NextLink
+	}
+	return
 }
 
 // ApplicationSecurityGroupPropertiesFormat - Application security group properties.
@@ -2065,6 +5838,20 @@ type ApplicationSecurityGroupPropertiesFormat struct {
 	ResourceGUID *string
 }
 
+func (a *ApplicationSecurityGroupPropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if a != nil {
+		return a.ProvisioningState
+	}
+	return
+}
+
+func (a *ApplicationSecurityGroupPropertiesFormat) GetResourceGUID() (rv string) {
+	if a != nil && a.ResourceGUID != nil {
+		return *a.ResourceGUID
+	}
+	return
+}
+
 // AuthorizationListResult - Response for ListAuthorizations API service call retrieves all authorizations that belongs to
 // an ExpressRouteCircuit.
 type AuthorizationListResult struct {
@@ -2073,6 +5860,20 @@ type AuthorizationListResult struct {
 
 	// The authorizations in an ExpressRoute Circuit.
 	Value []*ExpressRouteCircuitAuthorization
+}
+
+func (a *AuthorizationListResult) GetNextLink() (rv string) {
+	if a != nil && a.NextLink != nil {
+		return *a.NextLink
+	}
+	return
+}
+
+func (a *AuthorizationListResult) GetValue() (rv []*ExpressRouteCircuitAuthorization) {
+	if a != nil {
+		return a.Value
+	}
+	return
 }
 
 // AuthorizationPropertiesFormat - Properties of ExpressRouteCircuitAuthorization.
@@ -2087,10 +5888,38 @@ type AuthorizationPropertiesFormat struct {
 	ProvisioningState *ProvisioningState
 }
 
+func (a *AuthorizationPropertiesFormat) GetAuthorizationKey() (rv string) {
+	if a != nil && a.AuthorizationKey != nil {
+		return *a.AuthorizationKey
+	}
+	return
+}
+
+func (a *AuthorizationPropertiesFormat) GetAuthorizationUseStatus() (rv *AuthorizationUseStatus) {
+	if a != nil {
+		return a.AuthorizationUseStatus
+	}
+	return
+}
+
+func (a *AuthorizationPropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if a != nil {
+		return a.ProvisioningState
+	}
+	return
+}
+
 // AutoApprovedPrivateLinkService - The information of an AutoApprovedPrivateLinkService.
 type AutoApprovedPrivateLinkService struct {
 	// The id of the private link service resource.
 	PrivateLinkService *string
+}
+
+func (a *AutoApprovedPrivateLinkService) GetPrivateLinkService() (rv string) {
+	if a != nil && a.PrivateLinkService != nil {
+		return *a.PrivateLinkService
+	}
+	return
 }
 
 // AutoApprovedPrivateLinkServicesResult - An array of private link service id that can be linked to a private end point with
@@ -2103,6 +5932,20 @@ type AutoApprovedPrivateLinkServicesResult struct {
 	NextLink *string
 }
 
+func (a *AutoApprovedPrivateLinkServicesResult) GetValue() (rv []*AutoApprovedPrivateLinkService) {
+	if a != nil {
+		return a.Value
+	}
+	return
+}
+
+func (a *AutoApprovedPrivateLinkServicesResult) GetNextLink() (rv string) {
+	if a != nil && a.NextLink != nil {
+		return *a.NextLink
+	}
+	return
+}
+
 // Availability of the metric.
 type Availability struct {
 	// Duration of the availability blob.
@@ -2113,6 +5956,27 @@ type Availability struct {
 
 	// The time grain of the availability.
 	TimeGrain *string
+}
+
+func (a *Availability) GetBlobDuration() (rv string) {
+	if a != nil && a.BlobDuration != nil {
+		return *a.BlobDuration
+	}
+	return
+}
+
+func (a *Availability) GetRetention() (rv string) {
+	if a != nil && a.Retention != nil {
+		return *a.Retention
+	}
+	return
+}
+
+func (a *Availability) GetTimeGrain() (rv string) {
+	if a != nil && a.TimeGrain != nil {
+		return *a.TimeGrain
+	}
+	return
 }
 
 // AvailableDelegation - The serviceName of an AvailableDelegation indicates a possible delegation for a subnet.
@@ -2133,6 +5997,41 @@ type AvailableDelegation struct {
 	Type *string
 }
 
+func (a *AvailableDelegation) GetActions() (rv []*string) {
+	if a != nil {
+		return a.Actions
+	}
+	return
+}
+
+func (a *AvailableDelegation) GetID() (rv string) {
+	if a != nil && a.ID != nil {
+		return *a.ID
+	}
+	return
+}
+
+func (a *AvailableDelegation) GetName() (rv string) {
+	if a != nil && a.Name != nil {
+		return *a.Name
+	}
+	return
+}
+
+func (a *AvailableDelegation) GetServiceName() (rv string) {
+	if a != nil && a.ServiceName != nil {
+		return *a.ServiceName
+	}
+	return
+}
+
+func (a *AvailableDelegation) GetType() (rv string) {
+	if a != nil && a.Type != nil {
+		return *a.Type
+	}
+	return
+}
+
 // AvailableDelegationsResult - An array of available delegations.
 type AvailableDelegationsResult struct {
 	// An array of available delegations.
@@ -2140,6 +6039,20 @@ type AvailableDelegationsResult struct {
 
 	// READ-ONLY; The URL to get the next set of results.
 	NextLink *string
+}
+
+func (a *AvailableDelegationsResult) GetValue() (rv []*AvailableDelegation) {
+	if a != nil {
+		return a.Value
+	}
+	return
+}
+
+func (a *AvailableDelegationsResult) GetNextLink() (rv string) {
+	if a != nil && a.NextLink != nil {
+		return *a.NextLink
+	}
+	return
 }
 
 // AvailablePrivateEndpointType - The information of an AvailablePrivateEndpointType.
@@ -2160,6 +6073,41 @@ type AvailablePrivateEndpointType struct {
 	Type *string
 }
 
+func (a *AvailablePrivateEndpointType) GetDisplayName() (rv string) {
+	if a != nil && a.DisplayName != nil {
+		return *a.DisplayName
+	}
+	return
+}
+
+func (a *AvailablePrivateEndpointType) GetID() (rv string) {
+	if a != nil && a.ID != nil {
+		return *a.ID
+	}
+	return
+}
+
+func (a *AvailablePrivateEndpointType) GetName() (rv string) {
+	if a != nil && a.Name != nil {
+		return *a.Name
+	}
+	return
+}
+
+func (a *AvailablePrivateEndpointType) GetResourceName() (rv string) {
+	if a != nil && a.ResourceName != nil {
+		return *a.ResourceName
+	}
+	return
+}
+
+func (a *AvailablePrivateEndpointType) GetType() (rv string) {
+	if a != nil && a.Type != nil {
+		return *a.Type
+	}
+	return
+}
+
 // AvailablePrivateEndpointTypesResult - An array of available PrivateEndpoint types.
 type AvailablePrivateEndpointTypesResult struct {
 	// An array of available privateEndpoint type.
@@ -2169,10 +6117,31 @@ type AvailablePrivateEndpointTypesResult struct {
 	NextLink *string
 }
 
+func (a *AvailablePrivateEndpointTypesResult) GetValue() (rv []*AvailablePrivateEndpointType) {
+	if a != nil {
+		return a.Value
+	}
+	return
+}
+
+func (a *AvailablePrivateEndpointTypesResult) GetNextLink() (rv string) {
+	if a != nil && a.NextLink != nil {
+		return *a.NextLink
+	}
+	return
+}
+
 // AvailableProvidersList - List of available countries with details.
 type AvailableProvidersList struct {
 	// REQUIRED; List of available countries.
 	Countries []*AvailableProvidersListCountry
+}
+
+func (a *AvailableProvidersList) GetCountries() (rv []*AvailableProvidersListCountry) {
+	if a != nil {
+		return a.Countries
+	}
+	return
 }
 
 // AvailableProvidersListCity - City or town details.
@@ -2182,6 +6151,20 @@ type AvailableProvidersListCity struct {
 
 	// A list of Internet service providers.
 	Providers []*string
+}
+
+func (a *AvailableProvidersListCity) GetCityName() (rv string) {
+	if a != nil && a.CityName != nil {
+		return *a.CityName
+	}
+	return
+}
+
+func (a *AvailableProvidersListCity) GetProviders() (rv []*string) {
+	if a != nil {
+		return a.Providers
+	}
+	return
 }
 
 // AvailableProvidersListCountry - Country details.
@@ -2194,6 +6177,27 @@ type AvailableProvidersListCountry struct {
 
 	// List of available states in the country.
 	States []*AvailableProvidersListState
+}
+
+func (a *AvailableProvidersListCountry) GetCountryName() (rv string) {
+	if a != nil && a.CountryName != nil {
+		return *a.CountryName
+	}
+	return
+}
+
+func (a *AvailableProvidersListCountry) GetProviders() (rv []*string) {
+	if a != nil {
+		return a.Providers
+	}
+	return
+}
+
+func (a *AvailableProvidersListCountry) GetStates() (rv []*AvailableProvidersListState) {
+	if a != nil {
+		return a.States
+	}
+	return
 }
 
 // AvailableProvidersListParameters - Constraints that determine the list of available Internet service providers.
@@ -2211,6 +6215,34 @@ type AvailableProvidersListParameters struct {
 	State *string
 }
 
+func (a *AvailableProvidersListParameters) GetAzureLocations() (rv []*string) {
+	if a != nil {
+		return a.AzureLocations
+	}
+	return
+}
+
+func (a *AvailableProvidersListParameters) GetCity() (rv string) {
+	if a != nil && a.City != nil {
+		return *a.City
+	}
+	return
+}
+
+func (a *AvailableProvidersListParameters) GetCountry() (rv string) {
+	if a != nil && a.Country != nil {
+		return *a.Country
+	}
+	return
+}
+
+func (a *AvailableProvidersListParameters) GetState() (rv string) {
+	if a != nil && a.State != nil {
+		return *a.State
+	}
+	return
+}
+
 // AvailableProvidersListState - State details.
 type AvailableProvidersListState struct {
 	// List of available cities or towns in the state.
@@ -2221,6 +6253,27 @@ type AvailableProvidersListState struct {
 
 	// The state name.
 	StateName *string
+}
+
+func (a *AvailableProvidersListState) GetCities() (rv []*AvailableProvidersListCity) {
+	if a != nil {
+		return a.Cities
+	}
+	return
+}
+
+func (a *AvailableProvidersListState) GetProviders() (rv []*string) {
+	if a != nil {
+		return a.Providers
+	}
+	return
+}
+
+func (a *AvailableProvidersListState) GetStateName() (rv string) {
+	if a != nil && a.StateName != nil {
+		return *a.StateName
+	}
+	return
 }
 
 // AvailableServiceAlias - The available service alias.
@@ -2238,6 +6291,34 @@ type AvailableServiceAlias struct {
 	Type *string
 }
 
+func (a *AvailableServiceAlias) GetID() (rv string) {
+	if a != nil && a.ID != nil {
+		return *a.ID
+	}
+	return
+}
+
+func (a *AvailableServiceAlias) GetName() (rv string) {
+	if a != nil && a.Name != nil {
+		return *a.Name
+	}
+	return
+}
+
+func (a *AvailableServiceAlias) GetResourceName() (rv string) {
+	if a != nil && a.ResourceName != nil {
+		return *a.ResourceName
+	}
+	return
+}
+
+func (a *AvailableServiceAlias) GetType() (rv string) {
+	if a != nil && a.Type != nil {
+		return *a.Type
+	}
+	return
+}
+
 // AvailableServiceAliasesResult - An array of available service aliases.
 type AvailableServiceAliasesResult struct {
 	// An array of available service aliases.
@@ -2245,6 +6326,20 @@ type AvailableServiceAliasesResult struct {
 
 	// READ-ONLY; The URL to get the next set of results.
 	NextLink *string
+}
+
+func (a *AvailableServiceAliasesResult) GetValue() (rv []*AvailableServiceAlias) {
+	if a != nil {
+		return a.Value
+	}
+	return
+}
+
+func (a *AvailableServiceAliasesResult) GetNextLink() (rv string) {
+	if a != nil && a.NextLink != nil {
+		return *a.NextLink
+	}
+	return
 }
 
 // AzureFirewall - Azure Firewall resource.
@@ -2274,6 +6369,62 @@ type AzureFirewall struct {
 	Type *string
 }
 
+func (a *AzureFirewall) GetID() (rv string) {
+	if a != nil && a.ID != nil {
+		return *a.ID
+	}
+	return
+}
+
+func (a *AzureFirewall) GetLocation() (rv string) {
+	if a != nil && a.Location != nil {
+		return *a.Location
+	}
+	return
+}
+
+func (a *AzureFirewall) GetProperties() (rv *AzureFirewallPropertiesFormat) {
+	if a != nil {
+		return a.Properties
+	}
+	return
+}
+
+func (a *AzureFirewall) GetTags() (rv map[string]*string) {
+	if a != nil {
+		return a.Tags
+	}
+	return
+}
+
+func (a *AzureFirewall) GetZones() (rv []*string) {
+	if a != nil {
+		return a.Zones
+	}
+	return
+}
+
+func (a *AzureFirewall) GetEtag() (rv string) {
+	if a != nil && a.Etag != nil {
+		return *a.Etag
+	}
+	return
+}
+
+func (a *AzureFirewall) GetName() (rv string) {
+	if a != nil && a.Name != nil {
+		return *a.Name
+	}
+	return
+}
+
+func (a *AzureFirewall) GetType() (rv string) {
+	if a != nil && a.Type != nil {
+		return *a.Type
+	}
+	return
+}
+
 // AzureFirewallApplicationRule - Properties of an application rule.
 type AzureFirewallApplicationRule struct {
 	// Description of the rule.
@@ -2298,6 +6449,55 @@ type AzureFirewallApplicationRule struct {
 	TargetFqdns []*string
 }
 
+func (a *AzureFirewallApplicationRule) GetDescription() (rv string) {
+	if a != nil && a.Description != nil {
+		return *a.Description
+	}
+	return
+}
+
+func (a *AzureFirewallApplicationRule) GetFqdnTags() (rv []*string) {
+	if a != nil {
+		return a.FqdnTags
+	}
+	return
+}
+
+func (a *AzureFirewallApplicationRule) GetName() (rv string) {
+	if a != nil && a.Name != nil {
+		return *a.Name
+	}
+	return
+}
+
+func (a *AzureFirewallApplicationRule) GetProtocols() (rv []*AzureFirewallApplicationRuleProtocol) {
+	if a != nil {
+		return a.Protocols
+	}
+	return
+}
+
+func (a *AzureFirewallApplicationRule) GetSourceAddresses() (rv []*string) {
+	if a != nil {
+		return a.SourceAddresses
+	}
+	return
+}
+
+func (a *AzureFirewallApplicationRule) GetSourceIPGroups() (rv []*string) {
+	if a != nil {
+		return a.SourceIPGroups
+	}
+	return
+}
+
+func (a *AzureFirewallApplicationRule) GetTargetFqdns() (rv []*string) {
+	if a != nil {
+		return a.TargetFqdns
+	}
+	return
+}
+
 // AzureFirewallApplicationRuleCollection - Application rule collection resource.
 type AzureFirewallApplicationRuleCollection struct {
 	// Resource ID.
@@ -2311,6 +6511,34 @@ type AzureFirewallApplicationRuleCollection struct {
 
 	// READ-ONLY; A unique read-only string that changes whenever the resource is updated.
 	Etag *string
+}
+
+func (a *AzureFirewallApplicationRuleCollection) GetID() (rv string) {
+	if a != nil && a.ID != nil {
+		return *a.ID
+	}
+	return
+}
+
+func (a *AzureFirewallApplicationRuleCollection) GetName() (rv string) {
+	if a != nil && a.Name != nil {
+		return *a.Name
+	}
+	return
+}
+
+func (a *AzureFirewallApplicationRuleCollection) GetProperties() (rv *AzureFirewallApplicationRuleCollectionPropertiesFormat) {
+	if a != nil {
+		return a.Properties
+	}
+	return
+}
+
+func (a *AzureFirewallApplicationRuleCollection) GetEtag() (rv string) {
+	if a != nil && a.Etag != nil {
+		return *a.Etag
+	}
+	return
 }
 
 // AzureFirewallApplicationRuleCollectionPropertiesFormat - Properties of the application rule collection.
@@ -2328,6 +6556,34 @@ type AzureFirewallApplicationRuleCollectionPropertiesFormat struct {
 	ProvisioningState *ProvisioningState
 }
 
+func (a *AzureFirewallApplicationRuleCollectionPropertiesFormat) GetAction() (rv *AzureFirewallRCAction) {
+	if a != nil {
+		return a.Action
+	}
+	return
+}
+
+func (a *AzureFirewallApplicationRuleCollectionPropertiesFormat) GetPriority() (rv int32) {
+	if a != nil && a.Priority != nil {
+		return *a.Priority
+	}
+	return
+}
+
+func (a *AzureFirewallApplicationRuleCollectionPropertiesFormat) GetRules() (rv []*AzureFirewallApplicationRule) {
+	if a != nil {
+		return a.Rules
+	}
+	return
+}
+
+func (a *AzureFirewallApplicationRuleCollectionPropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if a != nil {
+		return a.ProvisioningState
+	}
+	return
+}
+
 // AzureFirewallApplicationRuleProtocol - Properties of the application rule protocol.
 type AzureFirewallApplicationRuleProtocol struct {
 	// Port number for the protocol, cannot be greater than 64000. This field is optional.
@@ -2335,6 +6591,20 @@ type AzureFirewallApplicationRuleProtocol struct {
 
 	// Protocol type.
 	ProtocolType *AzureFirewallApplicationRuleProtocolType
+}
+
+func (a *AzureFirewallApplicationRuleProtocol) GetPort() (rv int32) {
+	if a != nil && a.Port != nil {
+		return *a.Port
+	}
+	return
+}
+
+func (a *AzureFirewallApplicationRuleProtocol) GetProtocolType() (rv *AzureFirewallApplicationRuleProtocolType) {
+	if a != nil {
+		return a.ProtocolType
+	}
+	return
 }
 
 // AzureFirewallFqdnTag - Azure Firewall FQDN Tag Resource.
@@ -2361,6 +6631,55 @@ type AzureFirewallFqdnTag struct {
 	Type *string
 }
 
+func (a *AzureFirewallFqdnTag) GetID() (rv string) {
+	if a != nil && a.ID != nil {
+		return *a.ID
+	}
+	return
+}
+
+func (a *AzureFirewallFqdnTag) GetLocation() (rv string) {
+	if a != nil && a.Location != nil {
+		return *a.Location
+	}
+	return
+}
+
+func (a *AzureFirewallFqdnTag) GetProperties() (rv *AzureFirewallFqdnTagPropertiesFormat) {
+	if a != nil {
+		return a.Properties
+	}
+	return
+}
+
+func (a *AzureFirewallFqdnTag) GetTags() (rv map[string]*string) {
+	if a != nil {
+		return a.Tags
+	}
+	return
+}
+
+func (a *AzureFirewallFqdnTag) GetEtag() (rv string) {
+	if a != nil && a.Etag != nil {
+		return *a.Etag
+	}
+	return
+}
+
+func (a *AzureFirewallFqdnTag) GetName() (rv string) {
+	if a != nil && a.Name != nil {
+		return *a.Name
+	}
+	return
+}
+
+func (a *AzureFirewallFqdnTag) GetType() (rv string) {
+	if a != nil && a.Type != nil {
+		return *a.Type
+	}
+	return
+}
+
 // AzureFirewallFqdnTagListResult - Response for ListAzureFirewallFqdnTags API service call.
 type AzureFirewallFqdnTagListResult struct {
 	// URL to get the next set of results.
@@ -2370,6 +6689,20 @@ type AzureFirewallFqdnTagListResult struct {
 	Value []*AzureFirewallFqdnTag
 }
 
+func (a *AzureFirewallFqdnTagListResult) GetNextLink() (rv string) {
+	if a != nil && a.NextLink != nil {
+		return *a.NextLink
+	}
+	return
+}
+
+func (a *AzureFirewallFqdnTagListResult) GetValue() (rv []*AzureFirewallFqdnTag) {
+	if a != nil {
+		return a.Value
+	}
+	return
+}
+
 // AzureFirewallFqdnTagPropertiesFormat - Azure Firewall FQDN Tag Properties.
 type AzureFirewallFqdnTagPropertiesFormat struct {
 	// READ-ONLY; The name of this FQDN Tag.
@@ -2377,6 +6710,20 @@ type AzureFirewallFqdnTagPropertiesFormat struct {
 
 	// READ-ONLY; The provisioning state of the Azure firewall FQDN tag resource.
 	ProvisioningState *ProvisioningState
+}
+
+func (a *AzureFirewallFqdnTagPropertiesFormat) GetFqdnTagName() (rv string) {
+	if a != nil && a.FqdnTagName != nil {
+		return *a.FqdnTagName
+	}
+	return
+}
+
+func (a *AzureFirewallFqdnTagPropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if a != nil {
+		return a.ProvisioningState
+	}
+	return
 }
 
 // AzureFirewallIPConfiguration - IP configuration of an Azure Firewall.
@@ -2397,6 +6744,41 @@ type AzureFirewallIPConfiguration struct {
 	Type *string
 }
 
+func (a *AzureFirewallIPConfiguration) GetID() (rv string) {
+	if a != nil && a.ID != nil {
+		return *a.ID
+	}
+	return
+}
+
+func (a *AzureFirewallIPConfiguration) GetName() (rv string) {
+	if a != nil && a.Name != nil {
+		return *a.Name
+	}
+	return
+}
+
+func (a *AzureFirewallIPConfiguration) GetProperties() (rv *AzureFirewallIPConfigurationPropertiesFormat) {
+	if a != nil {
+		return a.Properties
+	}
+	return
+}
+
+func (a *AzureFirewallIPConfiguration) GetEtag() (rv string) {
+	if a != nil && a.Etag != nil {
+		return *a.Etag
+	}
+	return
+}
+
+func (a *AzureFirewallIPConfiguration) GetType() (rv string) {
+	if a != nil && a.Type != nil {
+		return *a.Type
+	}
+	return
+}
+
 // AzureFirewallIPConfigurationPropertiesFormat - Properties of IP configuration of an Azure Firewall.
 type AzureFirewallIPConfigurationPropertiesFormat struct {
 	// Reference to the PublicIP resource. This field is a mandatory input if subnet is not null.
@@ -2412,6 +6794,34 @@ type AzureFirewallIPConfigurationPropertiesFormat struct {
 	ProvisioningState *ProvisioningState
 }
 
+func (a *AzureFirewallIPConfigurationPropertiesFormat) GetPublicIPAddress() (rv *SubResource) {
+	if a != nil {
+		return a.PublicIPAddress
+	}
+	return
+}
+
+func (a *AzureFirewallIPConfigurationPropertiesFormat) GetSubnet() (rv *SubResource) {
+	if a != nil {
+		return a.Subnet
+	}
+	return
+}
+
+func (a *AzureFirewallIPConfigurationPropertiesFormat) GetPrivateIPAddress() (rv string) {
+	if a != nil && a.PrivateIPAddress != nil {
+		return *a.PrivateIPAddress
+	}
+	return
+}
+
+func (a *AzureFirewallIPConfigurationPropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if a != nil {
+		return a.ProvisioningState
+	}
+	return
+}
+
 // AzureFirewallIPGroups - IpGroups associated with azure firewall.
 type AzureFirewallIPGroups struct {
 	// READ-ONLY; The iteration number.
@@ -2419,6 +6829,20 @@ type AzureFirewallIPGroups struct {
 
 	// READ-ONLY; Resource ID.
 	ID *string
+}
+
+func (a *AzureFirewallIPGroups) GetChangeNumber() (rv string) {
+	if a != nil && a.ChangeNumber != nil {
+		return *a.ChangeNumber
+	}
+	return
+}
+
+func (a *AzureFirewallIPGroups) GetID() (rv string) {
+	if a != nil && a.ID != nil {
+		return *a.ID
+	}
+	return
 }
 
 // AzureFirewallListResult - Response for ListAzureFirewalls API service call.
@@ -2430,10 +6854,31 @@ type AzureFirewallListResult struct {
 	Value []*AzureFirewall
 }
 
+func (a *AzureFirewallListResult) GetNextLink() (rv string) {
+	if a != nil && a.NextLink != nil {
+		return *a.NextLink
+	}
+	return
+}
+
+func (a *AzureFirewallListResult) GetValue() (rv []*AzureFirewall) {
+	if a != nil {
+		return a.Value
+	}
+	return
+}
+
 // AzureFirewallNatRCAction - AzureFirewall NAT Rule Collection Action.
 type AzureFirewallNatRCAction struct {
 	// The type of action.
 	Type *AzureFirewallNatRCActionType
+}
+
+func (a *AzureFirewallNatRCAction) GetType() (rv *AzureFirewallNatRCActionType) {
+	if a != nil {
+		return a.Type
+	}
+	return
 }
 
 // AzureFirewallNatRule - Properties of a NAT rule.
@@ -2469,6 +6914,76 @@ type AzureFirewallNatRule struct {
 	TranslatedPort *string
 }
 
+func (a *AzureFirewallNatRule) GetDescription() (rv string) {
+	if a != nil && a.Description != nil {
+		return *a.Description
+	}
+	return
+}
+
+func (a *AzureFirewallNatRule) GetDestinationAddresses() (rv []*string) {
+	if a != nil {
+		return a.DestinationAddresses
+	}
+	return
+}
+
+func (a *AzureFirewallNatRule) GetDestinationPorts() (rv []*string) {
+	if a != nil {
+		return a.DestinationPorts
+	}
+	return
+}
+
+func (a *AzureFirewallNatRule) GetName() (rv string) {
+	if a != nil && a.Name != nil {
+		return *a.Name
+	}
+	return
+}
+
+func (a *AzureFirewallNatRule) GetProtocols() (rv []*AzureFirewallNetworkRuleProtocol) {
+	if a != nil {
+		return a.Protocols
+	}
+	return
+}
+
+func (a *AzureFirewallNatRule) GetSourceAddresses() (rv []*string) {
+	if a != nil {
+		return a.SourceAddresses
+	}
+	return
+}
+
+func (a *AzureFirewallNatRule) GetSourceIPGroups() (rv []*string) {
+	if a != nil {
+		return a.SourceIPGroups
+	}
+	return
+}
+
+func (a *AzureFirewallNatRule) GetTranslatedAddress() (rv string) {
+	if a != nil && a.TranslatedAddress != nil {
+		return *a.TranslatedAddress
+	}
+	return
+}
+
+func (a *AzureFirewallNatRule) GetTranslatedFqdn() (rv string) {
+	if a != nil && a.TranslatedFqdn != nil {
+		return *a.TranslatedFqdn
+	}
+	return
+}
+
+func (a *AzureFirewallNatRule) GetTranslatedPort() (rv string) {
+	if a != nil && a.TranslatedPort != nil {
+		return *a.TranslatedPort
+	}
+	return
+}
+
 // AzureFirewallNatRuleCollection - NAT rule collection resource.
 type AzureFirewallNatRuleCollection struct {
 	// Resource ID.
@@ -2484,6 +6999,34 @@ type AzureFirewallNatRuleCollection struct {
 	Etag *string
 }
 
+func (a *AzureFirewallNatRuleCollection) GetID() (rv string) {
+	if a != nil && a.ID != nil {
+		return *a.ID
+	}
+	return
+}
+
+func (a *AzureFirewallNatRuleCollection) GetName() (rv string) {
+	if a != nil && a.Name != nil {
+		return *a.Name
+	}
+	return
+}
+
+func (a *AzureFirewallNatRuleCollection) GetProperties() (rv *AzureFirewallNatRuleCollectionProperties) {
+	if a != nil {
+		return a.Properties
+	}
+	return
+}
+
+func (a *AzureFirewallNatRuleCollection) GetEtag() (rv string) {
+	if a != nil && a.Etag != nil {
+		return *a.Etag
+	}
+	return
+}
+
 // AzureFirewallNatRuleCollectionProperties - Properties of the NAT rule collection.
 type AzureFirewallNatRuleCollectionProperties struct {
 	// The action type of a NAT rule collection.
@@ -2497,6 +7040,34 @@ type AzureFirewallNatRuleCollectionProperties struct {
 
 	// READ-ONLY; The provisioning state of the NAT rule collection resource.
 	ProvisioningState *ProvisioningState
+}
+
+func (a *AzureFirewallNatRuleCollectionProperties) GetAction() (rv *AzureFirewallNatRCAction) {
+	if a != nil {
+		return a.Action
+	}
+	return
+}
+
+func (a *AzureFirewallNatRuleCollectionProperties) GetPriority() (rv int32) {
+	if a != nil && a.Priority != nil {
+		return *a.Priority
+	}
+	return
+}
+
+func (a *AzureFirewallNatRuleCollectionProperties) GetRules() (rv []*AzureFirewallNatRule) {
+	if a != nil {
+		return a.Rules
+	}
+	return
+}
+
+func (a *AzureFirewallNatRuleCollectionProperties) GetProvisioningState() (rv *ProvisioningState) {
+	if a != nil {
+		return a.ProvisioningState
+	}
+	return
 }
 
 // AzureFirewallNetworkRule - Properties of the network rule.
@@ -2529,6 +7100,69 @@ type AzureFirewallNetworkRule struct {
 	SourceIPGroups []*string
 }
 
+func (a *AzureFirewallNetworkRule) GetDescription() (rv string) {
+	if a != nil && a.Description != nil {
+		return *a.Description
+	}
+	return
+}
+
+func (a *AzureFirewallNetworkRule) GetDestinationAddresses() (rv []*string) {
+	if a != nil {
+		return a.DestinationAddresses
+	}
+	return
+}
+
+func (a *AzureFirewallNetworkRule) GetDestinationFqdns() (rv []*string) {
+	if a != nil {
+		return a.DestinationFqdns
+	}
+	return
+}
+
+func (a *AzureFirewallNetworkRule) GetDestinationIPGroups() (rv []*string) {
+	if a != nil {
+		return a.DestinationIPGroups
+	}
+	return
+}
+
+func (a *AzureFirewallNetworkRule) GetDestinationPorts() (rv []*string) {
+	if a != nil {
+		return a.DestinationPorts
+	}
+	return
+}
+
+func (a *AzureFirewallNetworkRule) GetName() (rv string) {
+	if a != nil && a.Name != nil {
+		return *a.Name
+	}
+	return
+}
+
+func (a *AzureFirewallNetworkRule) GetProtocols() (rv []*AzureFirewallNetworkRuleProtocol) {
+	if a != nil {
+		return a.Protocols
+	}
+	return
+}
+
+func (a *AzureFirewallNetworkRule) GetSourceAddresses() (rv []*string) {
+	if a != nil {
+		return a.SourceAddresses
+	}
+	return
+}
+
+func (a *AzureFirewallNetworkRule) GetSourceIPGroups() (rv []*string) {
+	if a != nil {
+		return a.SourceIPGroups
+	}
+	return
+}
+
 // AzureFirewallNetworkRuleCollection - Network rule collection resource.
 type AzureFirewallNetworkRuleCollection struct {
 	// Resource ID.
@@ -2544,6 +7178,34 @@ type AzureFirewallNetworkRuleCollection struct {
 	Etag *string
 }
 
+func (a *AzureFirewallNetworkRuleCollection) GetID() (rv string) {
+	if a != nil && a.ID != nil {
+		return *a.ID
+	}
+	return
+}
+
+func (a *AzureFirewallNetworkRuleCollection) GetName() (rv string) {
+	if a != nil && a.Name != nil {
+		return *a.Name
+	}
+	return
+}
+
+func (a *AzureFirewallNetworkRuleCollection) GetProperties() (rv *AzureFirewallNetworkRuleCollectionPropertiesFormat) {
+	if a != nil {
+		return a.Properties
+	}
+	return
+}
+
+func (a *AzureFirewallNetworkRuleCollection) GetEtag() (rv string) {
+	if a != nil && a.Etag != nil {
+		return *a.Etag
+	}
+	return
+}
+
 // AzureFirewallNetworkRuleCollectionPropertiesFormat - Properties of the network rule collection.
 type AzureFirewallNetworkRuleCollectionPropertiesFormat struct {
 	// The action type of a rule collection.
@@ -2557,6 +7219,34 @@ type AzureFirewallNetworkRuleCollectionPropertiesFormat struct {
 
 	// READ-ONLY; The provisioning state of the network rule collection resource.
 	ProvisioningState *ProvisioningState
+}
+
+func (a *AzureFirewallNetworkRuleCollectionPropertiesFormat) GetAction() (rv *AzureFirewallRCAction) {
+	if a != nil {
+		return a.Action
+	}
+	return
+}
+
+func (a *AzureFirewallNetworkRuleCollectionPropertiesFormat) GetPriority() (rv int32) {
+	if a != nil && a.Priority != nil {
+		return *a.Priority
+	}
+	return
+}
+
+func (a *AzureFirewallNetworkRuleCollectionPropertiesFormat) GetRules() (rv []*AzureFirewallNetworkRule) {
+	if a != nil {
+		return a.Rules
+	}
+	return
+}
+
+func (a *AzureFirewallNetworkRuleCollectionPropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if a != nil {
+		return a.ProvisioningState
+	}
+	return
 }
 
 // AzureFirewallPropertiesFormat - Properties of the Azure Firewall.
@@ -2601,16 +7291,121 @@ type AzureFirewallPropertiesFormat struct {
 	ProvisioningState *ProvisioningState
 }
 
+func (a *AzureFirewallPropertiesFormat) GetAdditionalProperties() (rv map[string]*string) {
+	if a != nil {
+		return a.AdditionalProperties
+	}
+	return
+}
+
+func (a *AzureFirewallPropertiesFormat) GetApplicationRuleCollections() (rv []*AzureFirewallApplicationRuleCollection) {
+	if a != nil {
+		return a.ApplicationRuleCollections
+	}
+	return
+}
+
+func (a *AzureFirewallPropertiesFormat) GetFirewallPolicy() (rv *SubResource) {
+	if a != nil {
+		return a.FirewallPolicy
+	}
+	return
+}
+
+func (a *AzureFirewallPropertiesFormat) GetHubIPAddresses() (rv *HubIPAddresses) {
+	if a != nil {
+		return a.HubIPAddresses
+	}
+	return
+}
+
+func (a *AzureFirewallPropertiesFormat) GetIPConfigurations() (rv []*AzureFirewallIPConfiguration) {
+	if a != nil {
+		return a.IPConfigurations
+	}
+	return
+}
+
+func (a *AzureFirewallPropertiesFormat) GetManagementIPConfiguration() (rv *AzureFirewallIPConfiguration) {
+	if a != nil {
+		return a.ManagementIPConfiguration
+	}
+	return
+}
+
+func (a *AzureFirewallPropertiesFormat) GetNatRuleCollections() (rv []*AzureFirewallNatRuleCollection) {
+	if a != nil {
+		return a.NatRuleCollections
+	}
+	return
+}
+
+func (a *AzureFirewallPropertiesFormat) GetNetworkRuleCollections() (rv []*AzureFirewallNetworkRuleCollection) {
+	if a != nil {
+		return a.NetworkRuleCollections
+	}
+	return
+}
+
+func (a *AzureFirewallPropertiesFormat) GetSKU() (rv *AzureFirewallSKU) {
+	if a != nil {
+		return a.SKU
+	}
+	return
+}
+
+func (a *AzureFirewallPropertiesFormat) GetThreatIntelMode() (rv *AzureFirewallThreatIntelMode) {
+	if a != nil {
+		return a.ThreatIntelMode
+	}
+	return
+}
+
+func (a *AzureFirewallPropertiesFormat) GetVirtualHub() (rv *SubResource) {
+	if a != nil {
+		return a.VirtualHub
+	}
+	return
+}
+
+func (a *AzureFirewallPropertiesFormat) GetIPGroups() (rv []*AzureFirewallIPGroups) {
+	if a != nil {
+		return a.IPGroups
+	}
+	return
+}
+
+func (a *AzureFirewallPropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if a != nil {
+		return a.ProvisioningState
+	}
+	return
+}
+
 // AzureFirewallPublicIPAddress - Public IP Address associated with azure firewall.
 type AzureFirewallPublicIPAddress struct {
 	// Public IP Address value.
 	Address *string
 }
 
+func (a *AzureFirewallPublicIPAddress) GetAddress() (rv string) {
+	if a != nil && a.Address != nil {
+		return *a.Address
+	}
+	return
+}
+
 // AzureFirewallRCAction - Properties of the AzureFirewallRCAction.
 type AzureFirewallRCAction struct {
 	// The type of action.
 	Type *AzureFirewallRCActionType
+}
+
+func (a *AzureFirewallRCAction) GetType() (rv *AzureFirewallRCActionType) {
+	if a != nil {
+		return a.Type
+	}
+	return
 }
 
 // AzureFirewallSKU - SKU of an Azure Firewall.
@@ -2620,6 +7415,20 @@ type AzureFirewallSKU struct {
 
 	// Tier of an Azure Firewall.
 	Tier *AzureFirewallSKUTier
+}
+
+func (a *AzureFirewallSKU) GetName() (rv *AzureFirewallSKUName) {
+	if a != nil {
+		return a.Name
+	}
+	return
+}
+
+func (a *AzureFirewallSKU) GetTier() (rv *AzureFirewallSKUTier) {
+	if a != nil {
+		return a.Tier
+	}
+	return
 }
 
 // AzureReachabilityReport - Azure reachability report details.
@@ -2634,6 +7443,27 @@ type AzureReachabilityReport struct {
 	ReachabilityReport []*AzureReachabilityReportItem
 }
 
+func (a *AzureReachabilityReport) GetAggregationLevel() (rv string) {
+	if a != nil && a.AggregationLevel != nil {
+		return *a.AggregationLevel
+	}
+	return
+}
+
+func (a *AzureReachabilityReport) GetProviderLocation() (rv *AzureReachabilityReportLocation) {
+	if a != nil {
+		return a.ProviderLocation
+	}
+	return
+}
+
+func (a *AzureReachabilityReport) GetReachabilityReport() (rv []*AzureReachabilityReportItem) {
+	if a != nil {
+		return a.ReachabilityReport
+	}
+	return
+}
+
 // AzureReachabilityReportItem - Azure reachability report details for a given provider location.
 type AzureReachabilityReportItem struct {
 	// The Azure region.
@@ -2646,6 +7476,27 @@ type AzureReachabilityReportItem struct {
 	Provider *string
 }
 
+func (a *AzureReachabilityReportItem) GetAzureLocation() (rv string) {
+	if a != nil && a.AzureLocation != nil {
+		return *a.AzureLocation
+	}
+	return
+}
+
+func (a *AzureReachabilityReportItem) GetLatencies() (rv []*AzureReachabilityReportLatencyInfo) {
+	if a != nil {
+		return a.Latencies
+	}
+	return
+}
+
+func (a *AzureReachabilityReportItem) GetProvider() (rv string) {
+	if a != nil && a.Provider != nil {
+		return *a.Provider
+	}
+	return
+}
+
 // AzureReachabilityReportLatencyInfo - Details on latency for a time series.
 type AzureReachabilityReportLatencyInfo struct {
 	// The relative latency score between 1 and 100, higher values indicating a faster connection.
@@ -2653,6 +7504,20 @@ type AzureReachabilityReportLatencyInfo struct {
 
 	// The time stamp.
 	TimeStamp *time.Time
+}
+
+func (a *AzureReachabilityReportLatencyInfo) GetScore() (rv int32) {
+	if a != nil && a.Score != nil {
+		return *a.Score
+	}
+	return
+}
+
+func (a *AzureReachabilityReportLatencyInfo) GetTimeStamp() (rv *time.Time) {
+	if a != nil {
+		return a.TimeStamp
+	}
+	return
 }
 
 // AzureReachabilityReportLocation - Parameters that define a geographic location.
@@ -2665,6 +7530,27 @@ type AzureReachabilityReportLocation struct {
 
 	// The name of the state.
 	State *string
+}
+
+func (a *AzureReachabilityReportLocation) GetCountry() (rv string) {
+	if a != nil && a.Country != nil {
+		return *a.Country
+	}
+	return
+}
+
+func (a *AzureReachabilityReportLocation) GetCity() (rv string) {
+	if a != nil && a.City != nil {
+		return *a.City
+	}
+	return
+}
+
+func (a *AzureReachabilityReportLocation) GetState() (rv string) {
+	if a != nil && a.State != nil {
+		return *a.State
+	}
+	return
 }
 
 // AzureReachabilityReportParameters - Geographic and time constraints for Azure reachability report.
@@ -2685,6 +7571,41 @@ type AzureReachabilityReportParameters struct {
 	Providers []*string
 }
 
+func (a *AzureReachabilityReportParameters) GetEndTime() (rv *time.Time) {
+	if a != nil {
+		return a.EndTime
+	}
+	return
+}
+
+func (a *AzureReachabilityReportParameters) GetProviderLocation() (rv *AzureReachabilityReportLocation) {
+	if a != nil {
+		return a.ProviderLocation
+	}
+	return
+}
+
+func (a *AzureReachabilityReportParameters) GetStartTime() (rv *time.Time) {
+	if a != nil {
+		return a.StartTime
+	}
+	return
+}
+
+func (a *AzureReachabilityReportParameters) GetAzureLocations() (rv []*string) {
+	if a != nil {
+		return a.AzureLocations
+	}
+	return
+}
+
+func (a *AzureReachabilityReportParameters) GetProviders() (rv []*string) {
+	if a != nil {
+		return a.Providers
+	}
+	return
+}
+
 // AzureWebCategory - Azure Web Category Resource.
 type AzureWebCategory struct {
 	// Resource ID.
@@ -2703,6 +7624,41 @@ type AzureWebCategory struct {
 	Type *string
 }
 
+func (a *AzureWebCategory) GetID() (rv string) {
+	if a != nil && a.ID != nil {
+		return *a.ID
+	}
+	return
+}
+
+func (a *AzureWebCategory) GetProperties() (rv *AzureWebCategoryPropertiesFormat) {
+	if a != nil {
+		return a.Properties
+	}
+	return
+}
+
+func (a *AzureWebCategory) GetEtag() (rv string) {
+	if a != nil && a.Etag != nil {
+		return *a.Etag
+	}
+	return
+}
+
+func (a *AzureWebCategory) GetName() (rv string) {
+	if a != nil && a.Name != nil {
+		return *a.Name
+	}
+	return
+}
+
+func (a *AzureWebCategory) GetType() (rv string) {
+	if a != nil && a.Type != nil {
+		return *a.Type
+	}
+	return
+}
+
 // AzureWebCategoryListResult - Response for ListAzureWebCategories API service call.
 type AzureWebCategoryListResult struct {
 	// URL to get the next set of results.
@@ -2712,10 +7668,31 @@ type AzureWebCategoryListResult struct {
 	Value []*AzureWebCategory
 }
 
+func (a *AzureWebCategoryListResult) GetNextLink() (rv string) {
+	if a != nil && a.NextLink != nil {
+		return *a.NextLink
+	}
+	return
+}
+
+func (a *AzureWebCategoryListResult) GetValue() (rv []*AzureWebCategory) {
+	if a != nil {
+		return a.Value
+	}
+	return
+}
+
 // AzureWebCategoryPropertiesFormat - Azure Web Category Properties.
 type AzureWebCategoryPropertiesFormat struct {
 	// READ-ONLY; The name of the group that the category belongs to.
 	Group *string
+}
+
+func (a *AzureWebCategoryPropertiesFormat) GetGroup() (rv string) {
+	if a != nil && a.Group != nil {
+		return *a.Group
+	}
+	return
 }
 
 // BGPCommunity - Contains bgp community information offered in Service Community resources.
@@ -2739,10 +7716,59 @@ type BGPCommunity struct {
 	ServiceSupportedRegion *string
 }
 
+func (b *BGPCommunity) GetCommunityName() (rv string) {
+	if b != nil && b.CommunityName != nil {
+		return *b.CommunityName
+	}
+	return
+}
+
+func (b *BGPCommunity) GetCommunityPrefixes() (rv []*string) {
+	if b != nil {
+		return b.CommunityPrefixes
+	}
+	return
+}
+
+func (b *BGPCommunity) GetCommunityValue() (rv string) {
+	if b != nil && b.CommunityValue != nil {
+		return *b.CommunityValue
+	}
+	return
+}
+
+func (b *BGPCommunity) GetIsAuthorizedToUse() (rv bool) {
+	if b != nil && b.IsAuthorizedToUse != nil {
+		return *b.IsAuthorizedToUse
+	}
+	return
+}
+
+func (b *BGPCommunity) GetServiceGroup() (rv string) {
+	if b != nil && b.ServiceGroup != nil {
+		return *b.ServiceGroup
+	}
+	return
+}
+
+func (b *BGPCommunity) GetServiceSupportedRegion() (rv string) {
+	if b != nil && b.ServiceSupportedRegion != nil {
+		return *b.ServiceSupportedRegion
+	}
+	return
+}
+
 // BackendAddressInboundNatRulePortMappings - The response for a QueryInboundNatRulePortMapping API.
 type BackendAddressInboundNatRulePortMappings struct {
 	// Collection of inbound NAT rule port mappings.
 	InboundNatRulePortMappings []*InboundNatRulePortMapping
+}
+
+func (b *BackendAddressInboundNatRulePortMappings) GetInboundNatRulePortMappings() (rv []*InboundNatRulePortMapping) {
+	if b != nil {
+		return b.InboundNatRulePortMappings
+	}
+	return
 }
 
 // BackendAddressPool - Pool of backend IP addresses.
@@ -2762,6 +7788,41 @@ type BackendAddressPool struct {
 
 	// READ-ONLY; Type of the resource.
 	Type *string
+}
+
+func (b *BackendAddressPool) GetID() (rv string) {
+	if b != nil && b.ID != nil {
+		return *b.ID
+	}
+	return
+}
+
+func (b *BackendAddressPool) GetName() (rv string) {
+	if b != nil && b.Name != nil {
+		return *b.Name
+	}
+	return
+}
+
+func (b *BackendAddressPool) GetProperties() (rv *BackendAddressPoolPropertiesFormat) {
+	if b != nil {
+		return b.Properties
+	}
+	return
+}
+
+func (b *BackendAddressPool) GetEtag() (rv string) {
+	if b != nil && b.Etag != nil {
+		return *b.Etag
+	}
+	return
+}
+
+func (b *BackendAddressPool) GetType() (rv string) {
+	if b != nil && b.Type != nil {
+		return *b.Type
+	}
+	return
 }
 
 // BackendAddressPoolPropertiesFormat - Properties of the backend address pool.
@@ -2800,6 +7861,83 @@ type BackendAddressPoolPropertiesFormat struct {
 	ProvisioningState *ProvisioningState
 }
 
+func (b *BackendAddressPoolPropertiesFormat) GetDrainPeriodInSeconds() (rv int32) {
+	if b != nil && b.DrainPeriodInSeconds != nil {
+		return *b.DrainPeriodInSeconds
+	}
+	return
+}
+
+func (b *BackendAddressPoolPropertiesFormat) GetLoadBalancerBackendAddresses() (rv []*LoadBalancerBackendAddress) {
+	if b != nil {
+		return b.LoadBalancerBackendAddresses
+	}
+	return
+}
+
+func (b *BackendAddressPoolPropertiesFormat) GetLocation() (rv string) {
+	if b != nil && b.Location != nil {
+		return *b.Location
+	}
+	return
+}
+
+func (b *BackendAddressPoolPropertiesFormat) GetTunnelInterfaces() (rv []*GatewayLoadBalancerTunnelInterface) {
+	if b != nil {
+		return b.TunnelInterfaces
+	}
+	return
+}
+
+func (b *BackendAddressPoolPropertiesFormat) GetVirtualNetwork() (rv *SubResource) {
+	if b != nil {
+		return b.VirtualNetwork
+	}
+	return
+}
+
+func (b *BackendAddressPoolPropertiesFormat) GetBackendIPConfigurations() (rv []*InterfaceIPConfiguration) {
+	if b != nil {
+		return b.BackendIPConfigurations
+	}
+	return
+}
+
+func (b *BackendAddressPoolPropertiesFormat) GetInboundNatRules() (rv []*SubResource) {
+	if b != nil {
+		return b.InboundNatRules
+	}
+	return
+}
+
+func (b *BackendAddressPoolPropertiesFormat) GetLoadBalancingRules() (rv []*SubResource) {
+	if b != nil {
+		return b.LoadBalancingRules
+	}
+	return
+}
+
+func (b *BackendAddressPoolPropertiesFormat) GetOutboundRule() (rv *SubResource) {
+	if b != nil {
+		return b.OutboundRule
+	}
+	return
+}
+
+func (b *BackendAddressPoolPropertiesFormat) GetOutboundRules() (rv []*SubResource) {
+	if b != nil {
+		return b.OutboundRules
+	}
+	return
+}
+
+func (b *BackendAddressPoolPropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if b != nil {
+		return b.ProvisioningState
+	}
+	return
+}
+
 // BaseAdminRule - Network base admin rule.
 type BaseAdminRule struct {
 	// REQUIRED; Whether the rule is custom or default.
@@ -2819,6 +7957,48 @@ type BaseAdminRule struct {
 
 	// READ-ONLY; Resource type.
 	Type *string
+}
+
+func (b *BaseAdminRule) GetKind() (rv *AdminRuleKind) {
+	if b != nil {
+		return b.Kind
+	}
+	return
+}
+
+func (b *BaseAdminRule) GetEtag() (rv string) {
+	if b != nil && b.Etag != nil {
+		return *b.Etag
+	}
+	return
+}
+
+func (b *BaseAdminRule) GetID() (rv string) {
+	if b != nil && b.ID != nil {
+		return *b.ID
+	}
+	return
+}
+
+func (b *BaseAdminRule) GetName() (rv string) {
+	if b != nil && b.Name != nil {
+		return *b.Name
+	}
+	return
+}
+
+func (b *BaseAdminRule) GetSystemData() (rv *SystemData) {
+	if b != nil {
+		return b.SystemData
+	}
+	return
+}
+
+func (b *BaseAdminRule) GetType() (rv string) {
+	if b != nil && b.Type != nil {
+		return *b.Type
+	}
+	return
 }
 
 // GetBaseAdminRule implements the BaseAdminRuleClassification interface for type BaseAdminRule.
@@ -2860,6 +8040,83 @@ type BastionActiveSession struct {
 	UserName *string
 }
 
+func (b *BastionActiveSession) GetProtocol() (rv *BastionConnectProtocol) {
+	if b != nil {
+		return b.Protocol
+	}
+	return
+}
+
+func (b *BastionActiveSession) GetResourceType() (rv string) {
+	if b != nil && b.ResourceType != nil {
+		return *b.ResourceType
+	}
+	return
+}
+
+func (b *BastionActiveSession) GetSessionDurationInMins() (rv float32) {
+	if b != nil && b.SessionDurationInMins != nil {
+		return *b.SessionDurationInMins
+	}
+	return
+}
+
+func (b *BastionActiveSession) GetSessionID() (rv string) {
+	if b != nil && b.SessionID != nil {
+		return *b.SessionID
+	}
+	return
+}
+
+func (b *BastionActiveSession) GetStartTime() (rv any) {
+	if b != nil {
+		return b.StartTime
+	}
+	return
+}
+
+func (b *BastionActiveSession) GetTargetHostName() (rv string) {
+	if b != nil && b.TargetHostName != nil {
+		return *b.TargetHostName
+	}
+	return
+}
+
+func (b *BastionActiveSession) GetTargetIPAddress() (rv string) {
+	if b != nil && b.TargetIPAddress != nil {
+		return *b.TargetIPAddress
+	}
+	return
+}
+
+func (b *BastionActiveSession) GetTargetResourceGroup() (rv string) {
+	if b != nil && b.TargetResourceGroup != nil {
+		return *b.TargetResourceGroup
+	}
+	return
+}
+
+func (b *BastionActiveSession) GetTargetResourceID() (rv string) {
+	if b != nil && b.TargetResourceID != nil {
+		return *b.TargetResourceID
+	}
+	return
+}
+
+func (b *BastionActiveSession) GetTargetSubscriptionID() (rv string) {
+	if b != nil && b.TargetSubscriptionID != nil {
+		return *b.TargetSubscriptionID
+	}
+	return
+}
+
+func (b *BastionActiveSession) GetUserName() (rv string) {
+	if b != nil && b.UserName != nil {
+		return *b.UserName
+	}
+	return
+}
+
 // BastionActiveSessionListResult - Response for GetActiveSessions.
 type BastionActiveSessionListResult struct {
 	// The URL to get the next set of results.
@@ -2867,6 +8124,20 @@ type BastionActiveSessionListResult struct {
 
 	// List of active sessions on the bastion.
 	Value []*BastionActiveSession
+}
+
+func (b *BastionActiveSessionListResult) GetNextLink() (rv string) {
+	if b != nil && b.NextLink != nil {
+		return *b.NextLink
+	}
+	return
+}
+
+func (b *BastionActiveSessionListResult) GetValue() (rv []*BastionActiveSession) {
+	if b != nil {
+		return b.Value
+	}
+	return
 }
 
 // BastionHost - Bastion Host resource.
@@ -2896,6 +8167,62 @@ type BastionHost struct {
 	Type *string
 }
 
+func (b *BastionHost) GetID() (rv string) {
+	if b != nil && b.ID != nil {
+		return *b.ID
+	}
+	return
+}
+
+func (b *BastionHost) GetLocation() (rv string) {
+	if b != nil && b.Location != nil {
+		return *b.Location
+	}
+	return
+}
+
+func (b *BastionHost) GetProperties() (rv *BastionHostPropertiesFormat) {
+	if b != nil {
+		return b.Properties
+	}
+	return
+}
+
+func (b *BastionHost) GetSKU() (rv *SKU) {
+	if b != nil {
+		return b.SKU
+	}
+	return
+}
+
+func (b *BastionHost) GetTags() (rv map[string]*string) {
+	if b != nil {
+		return b.Tags
+	}
+	return
+}
+
+func (b *BastionHost) GetEtag() (rv string) {
+	if b != nil && b.Etag != nil {
+		return *b.Etag
+	}
+	return
+}
+
+func (b *BastionHost) GetName() (rv string) {
+	if b != nil && b.Name != nil {
+		return *b.Name
+	}
+	return
+}
+
+func (b *BastionHost) GetType() (rv string) {
+	if b != nil && b.Type != nil {
+		return *b.Type
+	}
+	return
+}
+
 // BastionHostIPConfiguration - IP configuration of an Bastion Host.
 type BastionHostIPConfiguration struct {
 	// Resource ID.
@@ -2914,6 +8241,41 @@ type BastionHostIPConfiguration struct {
 	Type *string
 }
 
+func (b *BastionHostIPConfiguration) GetID() (rv string) {
+	if b != nil && b.ID != nil {
+		return *b.ID
+	}
+	return
+}
+
+func (b *BastionHostIPConfiguration) GetName() (rv string) {
+	if b != nil && b.Name != nil {
+		return *b.Name
+	}
+	return
+}
+
+func (b *BastionHostIPConfiguration) GetProperties() (rv *BastionHostIPConfigurationPropertiesFormat) {
+	if b != nil {
+		return b.Properties
+	}
+	return
+}
+
+func (b *BastionHostIPConfiguration) GetEtag() (rv string) {
+	if b != nil && b.Etag != nil {
+		return *b.Etag
+	}
+	return
+}
+
+func (b *BastionHostIPConfiguration) GetType() (rv string) {
+	if b != nil && b.Type != nil {
+		return *b.Type
+	}
+	return
+}
+
 // BastionHostIPConfigurationPropertiesFormat - Properties of IP configuration of an Bastion Host.
 type BastionHostIPConfigurationPropertiesFormat struct {
 	// REQUIRED; Reference of the PublicIP resource.
@@ -2929,6 +8291,34 @@ type BastionHostIPConfigurationPropertiesFormat struct {
 	ProvisioningState *ProvisioningState
 }
 
+func (b *BastionHostIPConfigurationPropertiesFormat) GetPublicIPAddress() (rv *SubResource) {
+	if b != nil {
+		return b.PublicIPAddress
+	}
+	return
+}
+
+func (b *BastionHostIPConfigurationPropertiesFormat) GetSubnet() (rv *SubResource) {
+	if b != nil {
+		return b.Subnet
+	}
+	return
+}
+
+func (b *BastionHostIPConfigurationPropertiesFormat) GetPrivateIPAllocationMethod() (rv *IPAllocationMethod) {
+	if b != nil {
+		return b.PrivateIPAllocationMethod
+	}
+	return
+}
+
+func (b *BastionHostIPConfigurationPropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if b != nil {
+		return b.ProvisioningState
+	}
+	return
+}
+
 // BastionHostListResult - Response for ListBastionHosts API service call.
 type BastionHostListResult struct {
 	// URL to get the next set of results.
@@ -2936,6 +8326,20 @@ type BastionHostListResult struct {
 
 	// List of Bastion Hosts in a resource group.
 	Value []*BastionHost
+}
+
+func (b *BastionHostListResult) GetNextLink() (rv string) {
+	if b != nil && b.NextLink != nil {
+		return *b.NextLink
+	}
+	return
+}
+
+func (b *BastionHostListResult) GetValue() (rv []*BastionHost) {
+	if b != nil {
+		return b.Value
+	}
+	return
 }
 
 // BastionHostPropertiesFormat - Properties of the Bastion Host.
@@ -2968,6 +8372,69 @@ type BastionHostPropertiesFormat struct {
 	ProvisioningState *ProvisioningState
 }
 
+func (b *BastionHostPropertiesFormat) GetDNSName() (rv string) {
+	if b != nil && b.DNSName != nil {
+		return *b.DNSName
+	}
+	return
+}
+
+func (b *BastionHostPropertiesFormat) GetDisableCopyPaste() (rv bool) {
+	if b != nil && b.DisableCopyPaste != nil {
+		return *b.DisableCopyPaste
+	}
+	return
+}
+
+func (b *BastionHostPropertiesFormat) GetEnableFileCopy() (rv bool) {
+	if b != nil && b.EnableFileCopy != nil {
+		return *b.EnableFileCopy
+	}
+	return
+}
+
+func (b *BastionHostPropertiesFormat) GetEnableIPConnect() (rv bool) {
+	if b != nil && b.EnableIPConnect != nil {
+		return *b.EnableIPConnect
+	}
+	return
+}
+
+func (b *BastionHostPropertiesFormat) GetEnableShareableLink() (rv bool) {
+	if b != nil && b.EnableShareableLink != nil {
+		return *b.EnableShareableLink
+	}
+	return
+}
+
+func (b *BastionHostPropertiesFormat) GetEnableTunneling() (rv bool) {
+	if b != nil && b.EnableTunneling != nil {
+		return *b.EnableTunneling
+	}
+	return
+}
+
+func (b *BastionHostPropertiesFormat) GetIPConfigurations() (rv []*BastionHostIPConfiguration) {
+	if b != nil {
+		return b.IPConfigurations
+	}
+	return
+}
+
+func (b *BastionHostPropertiesFormat) GetScaleUnits() (rv int32) {
+	if b != nil && b.ScaleUnits != nil {
+		return *b.ScaleUnits
+	}
+	return
+}
+
+func (b *BastionHostPropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if b != nil {
+		return b.ProvisioningState
+	}
+	return
+}
+
 // BastionSessionDeleteResult - Response for DisconnectActiveSessions.
 type BastionSessionDeleteResult struct {
 	// The URL to get the next set of results.
@@ -2975,6 +8442,20 @@ type BastionSessionDeleteResult struct {
 
 	// List of sessions with their corresponding state.
 	Value []*BastionSessionState
+}
+
+func (b *BastionSessionDeleteResult) GetNextLink() (rv string) {
+	if b != nil && b.NextLink != nil {
+		return *b.NextLink
+	}
+	return
+}
+
+func (b *BastionSessionDeleteResult) GetValue() (rv []*BastionSessionState) {
+	if b != nil {
+		return b.Value
+	}
+	return
 }
 
 // BastionSessionState - The session state detail for a target.
@@ -2987,6 +8468,27 @@ type BastionSessionState struct {
 
 	// READ-ONLY; The state of the session. Disconnected/Failed/NotFound.
 	State *string
+}
+
+func (b *BastionSessionState) GetMessage() (rv string) {
+	if b != nil && b.Message != nil {
+		return *b.Message
+	}
+	return
+}
+
+func (b *BastionSessionState) GetSessionID() (rv string) {
+	if b != nil && b.SessionID != nil {
+		return *b.SessionID
+	}
+	return
+}
+
+func (b *BastionSessionState) GetState() (rv string) {
+	if b != nil && b.State != nil {
+		return *b.State
+	}
+	return
 }
 
 // BastionShareableLink - Bastion Shareable Link.
@@ -3004,10 +8506,45 @@ type BastionShareableLink struct {
 	Message *string
 }
 
+func (b *BastionShareableLink) GetVM() (rv *VM) {
+	if b != nil {
+		return b.VM
+	}
+	return
+}
+
+func (b *BastionShareableLink) GetBsl() (rv string) {
+	if b != nil && b.Bsl != nil {
+		return *b.Bsl
+	}
+	return
+}
+
+func (b *BastionShareableLink) GetCreatedAt() (rv string) {
+	if b != nil && b.CreatedAt != nil {
+		return *b.CreatedAt
+	}
+	return
+}
+
+func (b *BastionShareableLink) GetMessage() (rv string) {
+	if b != nil && b.Message != nil {
+		return *b.Message
+	}
+	return
+}
+
 // BastionShareableLinkListRequest - Post request for all the Bastion Shareable Link endpoints.
 type BastionShareableLinkListRequest struct {
 	// List of VM references.
 	VMs []*BastionShareableLink
+}
+
+func (b *BastionShareableLinkListRequest) GetVMs() (rv []*BastionShareableLink) {
+	if b != nil {
+		return b.VMs
+	}
+	return
 }
 
 // BastionShareableLinkListResult - Response for all the Bastion Shareable Link endpoints.
@@ -3017,6 +8554,20 @@ type BastionShareableLinkListResult struct {
 
 	// List of Bastion Shareable Links for the request.
 	Value []*BastionShareableLink
+}
+
+func (b *BastionShareableLinkListResult) GetNextLink() (rv string) {
+	if b != nil && b.NextLink != nil {
+		return *b.NextLink
+	}
+	return
+}
+
+func (b *BastionShareableLinkListResult) GetValue() (rv []*BastionShareableLink) {
+	if b != nil {
+		return b.Value
+	}
+	return
 }
 
 // BgpConnection - Virtual Appliance Site resource.
@@ -3037,6 +8588,41 @@ type BgpConnection struct {
 	Type *string
 }
 
+func (b *BgpConnection) GetID() (rv string) {
+	if b != nil && b.ID != nil {
+		return *b.ID
+	}
+	return
+}
+
+func (b *BgpConnection) GetName() (rv string) {
+	if b != nil && b.Name != nil {
+		return *b.Name
+	}
+	return
+}
+
+func (b *BgpConnection) GetProperties() (rv *BgpConnectionProperties) {
+	if b != nil {
+		return b.Properties
+	}
+	return
+}
+
+func (b *BgpConnection) GetEtag() (rv string) {
+	if b != nil && b.Etag != nil {
+		return *b.Etag
+	}
+	return
+}
+
+func (b *BgpConnection) GetType() (rv string) {
+	if b != nil && b.Type != nil {
+		return *b.Type
+	}
+	return
+}
+
 // BgpConnectionProperties - Properties of the bgp connection.
 type BgpConnectionProperties struct {
 	// The reference to the HubVirtualNetworkConnection resource.
@@ -3053,6 +8639,41 @@ type BgpConnectionProperties struct {
 
 	// READ-ONLY; The provisioning state of the resource.
 	ProvisioningState *ProvisioningState
+}
+
+func (b *BgpConnectionProperties) GetHubVirtualNetworkConnection() (rv *SubResource) {
+	if b != nil {
+		return b.HubVirtualNetworkConnection
+	}
+	return
+}
+
+func (b *BgpConnectionProperties) GetPeerAsn() (rv int64) {
+	if b != nil && b.PeerAsn != nil {
+		return *b.PeerAsn
+	}
+	return
+}
+
+func (b *BgpConnectionProperties) GetPeerIP() (rv string) {
+	if b != nil && b.PeerIP != nil {
+		return *b.PeerIP
+	}
+	return
+}
+
+func (b *BgpConnectionProperties) GetConnectionState() (rv *HubBgpConnectionStatus) {
+	if b != nil {
+		return b.ConnectionState
+	}
+	return
+}
+
+func (b *BgpConnectionProperties) GetProvisioningState() (rv *ProvisioningState) {
+	if b != nil {
+		return b.ProvisioningState
+	}
+	return
 }
 
 // BgpPeerStatus - BGP peer status details.
@@ -3082,10 +8703,73 @@ type BgpPeerStatus struct {
 	State *BgpPeerState
 }
 
+func (b *BgpPeerStatus) GetAsn() (rv int64) {
+	if b != nil && b.Asn != nil {
+		return *b.Asn
+	}
+	return
+}
+
+func (b *BgpPeerStatus) GetConnectedDuration() (rv string) {
+	if b != nil && b.ConnectedDuration != nil {
+		return *b.ConnectedDuration
+	}
+	return
+}
+
+func (b *BgpPeerStatus) GetLocalAddress() (rv string) {
+	if b != nil && b.LocalAddress != nil {
+		return *b.LocalAddress
+	}
+	return
+}
+
+func (b *BgpPeerStatus) GetMessagesReceived() (rv int64) {
+	if b != nil && b.MessagesReceived != nil {
+		return *b.MessagesReceived
+	}
+	return
+}
+
+func (b *BgpPeerStatus) GetMessagesSent() (rv int64) {
+	if b != nil && b.MessagesSent != nil {
+		return *b.MessagesSent
+	}
+	return
+}
+
+func (b *BgpPeerStatus) GetNeighbor() (rv string) {
+	if b != nil && b.Neighbor != nil {
+		return *b.Neighbor
+	}
+	return
+}
+
+func (b *BgpPeerStatus) GetRoutesReceived() (rv int64) {
+	if b != nil && b.RoutesReceived != nil {
+		return *b.RoutesReceived
+	}
+	return
+}
+
+func (b *BgpPeerStatus) GetState() (rv *BgpPeerState) {
+	if b != nil {
+		return b.State
+	}
+	return
+}
+
 // BgpPeerStatusListResult - Response for list BGP peer status API service call.
 type BgpPeerStatusListResult struct {
 	// List of BGP peers.
 	Value []*BgpPeerStatus
+}
+
+func (b *BgpPeerStatusListResult) GetValue() (rv []*BgpPeerStatus) {
+	if b != nil {
+		return b.Value
+	}
+	return
 }
 
 // BgpServiceCommunity - Service Community Properties.
@@ -3109,6 +8793,48 @@ type BgpServiceCommunity struct {
 	Type *string
 }
 
+func (b *BgpServiceCommunity) GetID() (rv string) {
+	if b != nil && b.ID != nil {
+		return *b.ID
+	}
+	return
+}
+
+func (b *BgpServiceCommunity) GetLocation() (rv string) {
+	if b != nil && b.Location != nil {
+		return *b.Location
+	}
+	return
+}
+
+func (b *BgpServiceCommunity) GetProperties() (rv *BgpServiceCommunityPropertiesFormat) {
+	if b != nil {
+		return b.Properties
+	}
+	return
+}
+
+func (b *BgpServiceCommunity) GetTags() (rv map[string]*string) {
+	if b != nil {
+		return b.Tags
+	}
+	return
+}
+
+func (b *BgpServiceCommunity) GetName() (rv string) {
+	if b != nil && b.Name != nil {
+		return *b.Name
+	}
+	return
+}
+
+func (b *BgpServiceCommunity) GetType() (rv string) {
+	if b != nil && b.Type != nil {
+		return *b.Type
+	}
+	return
+}
+
 // BgpServiceCommunityListResult - Response for the ListServiceCommunity API service call.
 type BgpServiceCommunityListResult struct {
 	// The URL to get the next set of results.
@@ -3118,6 +8844,20 @@ type BgpServiceCommunityListResult struct {
 	Value []*BgpServiceCommunity
 }
 
+func (b *BgpServiceCommunityListResult) GetNextLink() (rv string) {
+	if b != nil && b.NextLink != nil {
+		return *b.NextLink
+	}
+	return
+}
+
+func (b *BgpServiceCommunityListResult) GetValue() (rv []*BgpServiceCommunity) {
+	if b != nil {
+		return b.Value
+	}
+	return
+}
+
 // BgpServiceCommunityPropertiesFormat - Properties of Service Community.
 type BgpServiceCommunityPropertiesFormat struct {
 	// A list of bgp communities.
@@ -3125,6 +8865,20 @@ type BgpServiceCommunityPropertiesFormat struct {
 
 	// The name of the bgp community. e.g. Skype.
 	ServiceName *string
+}
+
+func (b *BgpServiceCommunityPropertiesFormat) GetBgpCommunities() (rv []*BGPCommunity) {
+	if b != nil {
+		return b.BgpCommunities
+	}
+	return
+}
+
+func (b *BgpServiceCommunityPropertiesFormat) GetServiceName() (rv string) {
+	if b != nil && b.ServiceName != nil {
+		return *b.ServiceName
+	}
+	return
 }
 
 // BgpSettings - BGP settings details.
@@ -3142,6 +8896,34 @@ type BgpSettings struct {
 	PeerWeight *int32
 }
 
+func (b *BgpSettings) GetAsn() (rv int64) {
+	if b != nil && b.Asn != nil {
+		return *b.Asn
+	}
+	return
+}
+
+func (b *BgpSettings) GetBgpPeeringAddress() (rv string) {
+	if b != nil && b.BgpPeeringAddress != nil {
+		return *b.BgpPeeringAddress
+	}
+	return
+}
+
+func (b *BgpSettings) GetBgpPeeringAddresses() (rv []*IPConfigurationBgpPeeringAddress) {
+	if b != nil {
+		return b.BgpPeeringAddresses
+	}
+	return
+}
+
+func (b *BgpSettings) GetPeerWeight() (rv int32) {
+	if b != nil && b.PeerWeight != nil {
+		return *b.PeerWeight
+	}
+	return
+}
+
 // BreakOutCategoryPolicies - Network Virtual Appliance Sku Properties.
 type BreakOutCategoryPolicies struct {
 	// Flag to control breakout of o365 allow category.
@@ -3154,10 +8936,38 @@ type BreakOutCategoryPolicies struct {
 	Optimize *bool
 }
 
+func (b *BreakOutCategoryPolicies) GetAllow() (rv bool) {
+	if b != nil && b.Allow != nil {
+		return *b.Allow
+	}
+	return
+}
+
+func (b *BreakOutCategoryPolicies) GetDefault() (rv bool) {
+	if b != nil && b.Default != nil {
+		return *b.Default
+	}
+	return
+}
+
+func (b *BreakOutCategoryPolicies) GetOptimize() (rv bool) {
+	if b != nil && b.Optimize != nil {
+		return *b.Optimize
+	}
+	return
+}
+
 // CheckPrivateLinkServiceVisibilityRequest - Request body of the CheckPrivateLinkServiceVisibility API service call.
 type CheckPrivateLinkServiceVisibilityRequest struct {
 	// The alias of the private link service.
 	PrivateLinkServiceAlias *string
+}
+
+func (c *CheckPrivateLinkServiceVisibilityRequest) GetPrivateLinkServiceAlias() (rv string) {
+	if c != nil && c.PrivateLinkServiceAlias != nil {
+		return *c.PrivateLinkServiceAlias
+	}
+	return
 }
 
 type Components1Jq1T4ISchemasManagedserviceidentityPropertiesUserassignedidentitiesAdditionalproperties struct {
@@ -3166,6 +8976,20 @@ type Components1Jq1T4ISchemasManagedserviceidentityPropertiesUserassignedidentit
 
 	// READ-ONLY; The principal id of user assigned identity.
 	PrincipalID *string
+}
+
+func (c *Components1Jq1T4ISchemasManagedserviceidentityPropertiesUserassignedidentitiesAdditionalproperties) GetClientID() (rv string) {
+	if c != nil && c.ClientID != nil {
+		return *c.ClientID
+	}
+	return
+}
+
+func (c *Components1Jq1T4ISchemasManagedserviceidentityPropertiesUserassignedidentitiesAdditionalproperties) GetPrincipalID() (rv string) {
+	if c != nil && c.PrincipalID != nil {
+		return *c.PrincipalID
+	}
+	return
 }
 
 // ConfigurationDiagnosticParameters - Parameters to get network configuration diagnostic.
@@ -3179,6 +9003,27 @@ type ConfigurationDiagnosticParameters struct {
 
 	// Verbosity level.
 	VerbosityLevel *VerbosityLevel
+}
+
+func (c *ConfigurationDiagnosticParameters) GetProfiles() (rv []*ConfigurationDiagnosticProfile) {
+	if c != nil {
+		return c.Profiles
+	}
+	return
+}
+
+func (c *ConfigurationDiagnosticParameters) GetTargetResourceID() (rv string) {
+	if c != nil && c.TargetResourceID != nil {
+		return *c.TargetResourceID
+	}
+	return
+}
+
+func (c *ConfigurationDiagnosticParameters) GetVerbosityLevel() (rv *VerbosityLevel) {
+	if c != nil {
+		return c.VerbosityLevel
+	}
+	return
 }
 
 // ConfigurationDiagnosticProfile - Parameters to compare with network configuration.
@@ -3199,10 +9044,52 @@ type ConfigurationDiagnosticProfile struct {
 	Source *string
 }
 
+func (c *ConfigurationDiagnosticProfile) GetDestination() (rv string) {
+	if c != nil && c.Destination != nil {
+		return *c.Destination
+	}
+	return
+}
+
+func (c *ConfigurationDiagnosticProfile) GetDestinationPort() (rv string) {
+	if c != nil && c.DestinationPort != nil {
+		return *c.DestinationPort
+	}
+	return
+}
+
+func (c *ConfigurationDiagnosticProfile) GetDirection() (rv *Direction) {
+	if c != nil {
+		return c.Direction
+	}
+	return
+}
+
+func (c *ConfigurationDiagnosticProfile) GetProtocol() (rv string) {
+	if c != nil && c.Protocol != nil {
+		return *c.Protocol
+	}
+	return
+}
+
+func (c *ConfigurationDiagnosticProfile) GetSource() (rv string) {
+	if c != nil && c.Source != nil {
+		return *c.Source
+	}
+	return
+}
+
 // ConfigurationDiagnosticResponse - Results of network configuration diagnostic on the target resource.
 type ConfigurationDiagnosticResponse struct {
 	// READ-ONLY; List of network configuration diagnostic results.
 	Results []*ConfigurationDiagnosticResult
+}
+
+func (c *ConfigurationDiagnosticResponse) GetResults() (rv []*ConfigurationDiagnosticResult) {
+	if c != nil {
+		return c.Results
+	}
+	return
 }
 
 // ConfigurationDiagnosticResult - Network configuration diagnostic result corresponded to provided traffic query.
@@ -3214,6 +9101,20 @@ type ConfigurationDiagnosticResult struct {
 	Profile *ConfigurationDiagnosticProfile
 }
 
+func (c *ConfigurationDiagnosticResult) GetNetworkSecurityGroupResult() (rv *SecurityGroupResult) {
+	if c != nil {
+		return c.NetworkSecurityGroupResult
+	}
+	return
+}
+
+func (c *ConfigurationDiagnosticResult) GetProfile() (rv *ConfigurationDiagnosticProfile) {
+	if c != nil {
+		return c.Profile
+	}
+	return
+}
+
 // ConfigurationGroup - The network configuration group resource
 type ConfigurationGroup struct {
 	// Network group ID.
@@ -3221,6 +9122,20 @@ type ConfigurationGroup struct {
 
 	// The network configuration group properties
 	Properties *GroupProperties
+}
+
+func (c *ConfigurationGroup) GetID() (rv string) {
+	if c != nil && c.ID != nil {
+		return *c.ID
+	}
+	return
+}
+
+func (c *ConfigurationGroup) GetProperties() (rv *GroupProperties) {
+	if c != nil {
+		return c.Properties
+	}
+	return
 }
 
 // ConnectionMonitor - Parameters that define the operation to create a connection monitor.
@@ -3235,6 +9150,27 @@ type ConnectionMonitor struct {
 	Tags map[string]*string
 }
 
+func (c *ConnectionMonitor) GetProperties() (rv *ConnectionMonitorParameters) {
+	if c != nil {
+		return c.Properties
+	}
+	return
+}
+
+func (c *ConnectionMonitor) GetLocation() (rv string) {
+	if c != nil && c.Location != nil {
+		return *c.Location
+	}
+	return
+}
+
+func (c *ConnectionMonitor) GetTags() (rv map[string]*string) {
+	if c != nil {
+		return c.Tags
+	}
+	return
+}
+
 // ConnectionMonitorDestination - Describes the destination of connection monitor.
 type ConnectionMonitorDestination struct {
 	// Address of the connection monitor destination (IP or domain name).
@@ -3245,6 +9181,27 @@ type ConnectionMonitorDestination struct {
 
 	// The ID of the resource used as the destination by connection monitor.
 	ResourceID *string
+}
+
+func (c *ConnectionMonitorDestination) GetAddress() (rv string) {
+	if c != nil && c.Address != nil {
+		return *c.Address
+	}
+	return
+}
+
+func (c *ConnectionMonitorDestination) GetPort() (rv int32) {
+	if c != nil && c.Port != nil {
+		return *c.Port
+	}
+	return
+}
+
+func (c *ConnectionMonitorDestination) GetResourceID() (rv string) {
+	if c != nil && c.ResourceID != nil {
+		return *c.ResourceID
+	}
+	return
 }
 
 // ConnectionMonitorEndpoint - Describes the connection monitor endpoint.
@@ -3271,6 +9228,55 @@ type ConnectionMonitorEndpoint struct {
 	Type *EndpointType
 }
 
+func (c *ConnectionMonitorEndpoint) GetName() (rv string) {
+	if c != nil && c.Name != nil {
+		return *c.Name
+	}
+	return
+}
+
+func (c *ConnectionMonitorEndpoint) GetAddress() (rv string) {
+	if c != nil && c.Address != nil {
+		return *c.Address
+	}
+	return
+}
+
+func (c *ConnectionMonitorEndpoint) GetCoverageLevel() (rv *CoverageLevel) {
+	if c != nil {
+		return c.CoverageLevel
+	}
+	return
+}
+
+func (c *ConnectionMonitorEndpoint) GetFilter() (rv *ConnectionMonitorEndpointFilter) {
+	if c != nil {
+		return c.Filter
+	}
+	return
+}
+
+func (c *ConnectionMonitorEndpoint) GetResourceID() (rv string) {
+	if c != nil && c.ResourceID != nil {
+		return *c.ResourceID
+	}
+	return
+}
+
+func (c *ConnectionMonitorEndpoint) GetScope() (rv *ConnectionMonitorEndpointScope) {
+	if c != nil {
+		return c.Scope
+	}
+	return
+}
+
+func (c *ConnectionMonitorEndpoint) GetType() (rv *EndpointType) {
+	if c != nil {
+		return c.Type
+	}
+	return
+}
+
 // ConnectionMonitorEndpointFilter - Describes the connection monitor endpoint filter.
 type ConnectionMonitorEndpointFilter struct {
 	// List of items in the filter.
@@ -3278,6 +9284,20 @@ type ConnectionMonitorEndpointFilter struct {
 
 	// The behavior of the endpoint filter. Currently only 'Include' is supported.
 	Type *ConnectionMonitorEndpointFilterType
+}
+
+func (c *ConnectionMonitorEndpointFilter) GetItems() (rv []*ConnectionMonitorEndpointFilterItem) {
+	if c != nil {
+		return c.Items
+	}
+	return
+}
+
+func (c *ConnectionMonitorEndpointFilter) GetType() (rv *ConnectionMonitorEndpointFilterType) {
+	if c != nil {
+		return c.Type
+	}
+	return
 }
 
 // ConnectionMonitorEndpointFilterItem - Describes the connection monitor endpoint filter item.
@@ -3289,6 +9309,20 @@ type ConnectionMonitorEndpointFilterItem struct {
 	Type *ConnectionMonitorEndpointFilterItemType
 }
 
+func (c *ConnectionMonitorEndpointFilterItem) GetAddress() (rv string) {
+	if c != nil && c.Address != nil {
+		return *c.Address
+	}
+	return
+}
+
+func (c *ConnectionMonitorEndpointFilterItem) GetType() (rv *ConnectionMonitorEndpointFilterItemType) {
+	if c != nil {
+		return c.Type
+	}
+	return
+}
+
 // ConnectionMonitorEndpointScope - Describes the connection monitor endpoint scope.
 type ConnectionMonitorEndpointScope struct {
 	// List of items which needs to be excluded from the endpoint scope.
@@ -3298,10 +9332,31 @@ type ConnectionMonitorEndpointScope struct {
 	Include []*ConnectionMonitorEndpointScopeItem
 }
 
+func (c *ConnectionMonitorEndpointScope) GetExclude() (rv []*ConnectionMonitorEndpointScopeItem) {
+	if c != nil {
+		return c.Exclude
+	}
+	return
+}
+
+func (c *ConnectionMonitorEndpointScope) GetInclude() (rv []*ConnectionMonitorEndpointScopeItem) {
+	if c != nil {
+		return c.Include
+	}
+	return
+}
+
 // ConnectionMonitorEndpointScopeItem - Describes the connection monitor endpoint scope item.
 type ConnectionMonitorEndpointScopeItem struct {
 	// The address of the endpoint item. Supported types are IPv4/IPv6 subnet mask or IPv4/IPv6 IP address.
 	Address *string
+}
+
+func (c *ConnectionMonitorEndpointScopeItem) GetAddress() (rv string) {
+	if c != nil && c.Address != nil {
+		return *c.Address
+	}
+	return
 }
 
 // ConnectionMonitorHTTPConfiguration - Describes the HTTP configuration.
@@ -3325,16 +9380,72 @@ type ConnectionMonitorHTTPConfiguration struct {
 	ValidStatusCodeRanges []*string
 }
 
+func (c *ConnectionMonitorHTTPConfiguration) GetMethod() (rv *HTTPConfigurationMethod) {
+	if c != nil {
+		return c.Method
+	}
+	return
+}
+
+func (c *ConnectionMonitorHTTPConfiguration) GetPath() (rv string) {
+	if c != nil && c.Path != nil {
+		return *c.Path
+	}
+	return
+}
+
+func (c *ConnectionMonitorHTTPConfiguration) GetPort() (rv int32) {
+	if c != nil && c.Port != nil {
+		return *c.Port
+	}
+	return
+}
+
+func (c *ConnectionMonitorHTTPConfiguration) GetPreferHTTPS() (rv bool) {
+	if c != nil && c.PreferHTTPS != nil {
+		return *c.PreferHTTPS
+	}
+	return
+}
+
+func (c *ConnectionMonitorHTTPConfiguration) GetRequestHeaders() (rv []*HTTPHeader) {
+	if c != nil {
+		return c.RequestHeaders
+	}
+	return
+}
+
+func (c *ConnectionMonitorHTTPConfiguration) GetValidStatusCodeRanges() (rv []*string) {
+	if c != nil {
+		return c.ValidStatusCodeRanges
+	}
+	return
+}
+
 // ConnectionMonitorIcmpConfiguration - Describes the ICMP configuration.
 type ConnectionMonitorIcmpConfiguration struct {
 	// Value indicating whether path evaluation with trace route should be disabled.
 	DisableTraceRoute *bool
 }
 
+func (c *ConnectionMonitorIcmpConfiguration) GetDisableTraceRoute() (rv bool) {
+	if c != nil && c.DisableTraceRoute != nil {
+		return *c.DisableTraceRoute
+	}
+	return
+}
+
 // ConnectionMonitorListResult - List of connection monitors.
 type ConnectionMonitorListResult struct {
 	// Information about connection monitors.
 	Value []*ConnectionMonitorResult
+}
+
+func (c *ConnectionMonitorListResult) GetValue() (rv []*ConnectionMonitorResult) {
+	if c != nil {
+		return c.Value
+	}
+	return
 }
 
 // ConnectionMonitorOutput - Describes a connection monitor output destination.
@@ -3344,6 +9455,20 @@ type ConnectionMonitorOutput struct {
 
 	// Describes the settings for producing output into a log analytics workspace.
 	WorkspaceSettings *ConnectionMonitorWorkspaceSettings
+}
+
+func (c *ConnectionMonitorOutput) GetType() (rv *OutputType) {
+	if c != nil {
+		return c.Type
+	}
+	return
+}
+
+func (c *ConnectionMonitorOutput) GetWorkspaceSettings() (rv *ConnectionMonitorWorkspaceSettings) {
+	if c != nil {
+		return c.WorkspaceSettings
+	}
+	return
 }
 
 // ConnectionMonitorParameters - Parameters that define the operation to create a connection monitor.
@@ -3376,6 +9501,69 @@ type ConnectionMonitorParameters struct {
 	TestGroups []*ConnectionMonitorTestGroup
 }
 
+func (c *ConnectionMonitorParameters) GetAutoStart() (rv bool) {
+	if c != nil && c.AutoStart != nil {
+		return *c.AutoStart
+	}
+	return
+}
+
+func (c *ConnectionMonitorParameters) GetDestination() (rv *ConnectionMonitorDestination) {
+	if c != nil {
+		return c.Destination
+	}
+	return
+}
+
+func (c *ConnectionMonitorParameters) GetEndpoints() (rv []*ConnectionMonitorEndpoint) {
+	if c != nil {
+		return c.Endpoints
+	}
+	return
+}
+
+func (c *ConnectionMonitorParameters) GetMonitoringIntervalInSeconds() (rv int32) {
+	if c != nil && c.MonitoringIntervalInSeconds != nil {
+		return *c.MonitoringIntervalInSeconds
+	}
+	return
+}
+
+func (c *ConnectionMonitorParameters) GetNotes() (rv string) {
+	if c != nil && c.Notes != nil {
+		return *c.Notes
+	}
+	return
+}
+
+func (c *ConnectionMonitorParameters) GetOutputs() (rv []*ConnectionMonitorOutput) {
+	if c != nil {
+		return c.Outputs
+	}
+	return
+}
+
+func (c *ConnectionMonitorParameters) GetSource() (rv *ConnectionMonitorSource) {
+	if c != nil {
+		return c.Source
+	}
+	return
+}
+
+func (c *ConnectionMonitorParameters) GetTestConfigurations() (rv []*ConnectionMonitorTestConfiguration) {
+	if c != nil {
+		return c.TestConfigurations
+	}
+	return
+}
+
+func (c *ConnectionMonitorParameters) GetTestGroups() (rv []*ConnectionMonitorTestGroup) {
+	if c != nil {
+		return c.TestGroups
+	}
+	return
+}
+
 // ConnectionMonitorQueryResult - List of connection states snapshots.
 type ConnectionMonitorQueryResult struct {
 	// Status of connection monitor source.
@@ -3383,6 +9571,20 @@ type ConnectionMonitorQueryResult struct {
 
 	// Information about connection states.
 	States []*ConnectionStateSnapshot
+}
+
+func (c *ConnectionMonitorQueryResult) GetSourceStatus() (rv *ConnectionMonitorSourceStatus) {
+	if c != nil {
+		return c.SourceStatus
+	}
+	return
+}
+
+func (c *ConnectionMonitorQueryResult) GetStates() (rv []*ConnectionStateSnapshot) {
+	if c != nil {
+		return c.States
+	}
+	return
 }
 
 // ConnectionMonitorResult - Information about the connection monitor.
@@ -3407,6 +9609,55 @@ type ConnectionMonitorResult struct {
 
 	// READ-ONLY; Connection monitor type.
 	Type *string
+}
+
+func (c *ConnectionMonitorResult) GetLocation() (rv string) {
+	if c != nil && c.Location != nil {
+		return *c.Location
+	}
+	return
+}
+
+func (c *ConnectionMonitorResult) GetProperties() (rv *ConnectionMonitorResultProperties) {
+	if c != nil {
+		return c.Properties
+	}
+	return
+}
+
+func (c *ConnectionMonitorResult) GetTags() (rv map[string]*string) {
+	if c != nil {
+		return c.Tags
+	}
+	return
+}
+
+func (c *ConnectionMonitorResult) GetEtag() (rv string) {
+	if c != nil && c.Etag != nil {
+		return *c.Etag
+	}
+	return
+}
+
+func (c *ConnectionMonitorResult) GetID() (rv string) {
+	if c != nil && c.ID != nil {
+		return *c.ID
+	}
+	return
+}
+
+func (c *ConnectionMonitorResult) GetName() (rv string) {
+	if c != nil && c.Name != nil {
+		return *c.Name
+	}
+	return
+}
+
+func (c *ConnectionMonitorResult) GetType() (rv string) {
+	if c != nil && c.Type != nil {
+		return *c.Type
+	}
+	return
 }
 
 // ConnectionMonitorResultProperties - Describes the properties of a connection monitor.
@@ -3451,6 +9702,97 @@ type ConnectionMonitorResultProperties struct {
 	StartTime *time.Time
 }
 
+func (c *ConnectionMonitorResultProperties) GetAutoStart() (rv bool) {
+	if c != nil && c.AutoStart != nil {
+		return *c.AutoStart
+	}
+	return
+}
+
+func (c *ConnectionMonitorResultProperties) GetDestination() (rv *ConnectionMonitorDestination) {
+	if c != nil {
+		return c.Destination
+	}
+	return
+}
+
+func (c *ConnectionMonitorResultProperties) GetEndpoints() (rv []*ConnectionMonitorEndpoint) {
+	if c != nil {
+		return c.Endpoints
+	}
+	return
+}
+
+func (c *ConnectionMonitorResultProperties) GetMonitoringIntervalInSeconds() (rv int32) {
+	if c != nil && c.MonitoringIntervalInSeconds != nil {
+		return *c.MonitoringIntervalInSeconds
+	}
+	return
+}
+
+func (c *ConnectionMonitorResultProperties) GetNotes() (rv string) {
+	if c != nil && c.Notes != nil {
+		return *c.Notes
+	}
+	return
+}
+
+func (c *ConnectionMonitorResultProperties) GetOutputs() (rv []*ConnectionMonitorOutput) {
+	if c != nil {
+		return c.Outputs
+	}
+	return
+}
+
+func (c *ConnectionMonitorResultProperties) GetSource() (rv *ConnectionMonitorSource) {
+	if c != nil {
+		return c.Source
+	}
+	return
+}
+
+func (c *ConnectionMonitorResultProperties) GetTestConfigurations() (rv []*ConnectionMonitorTestConfiguration) {
+	if c != nil {
+		return c.TestConfigurations
+	}
+	return
+}
+
+func (c *ConnectionMonitorResultProperties) GetTestGroups() (rv []*ConnectionMonitorTestGroup) {
+	if c != nil {
+		return c.TestGroups
+	}
+	return
+}
+
+func (c *ConnectionMonitorResultProperties) GetConnectionMonitorType() (rv *ConnectionMonitorType) {
+	if c != nil {
+		return c.ConnectionMonitorType
+	}
+	return
+}
+
+func (c *ConnectionMonitorResultProperties) GetMonitoringStatus() (rv string) {
+	if c != nil && c.MonitoringStatus != nil {
+		return *c.MonitoringStatus
+	}
+	return
+}
+
+func (c *ConnectionMonitorResultProperties) GetProvisioningState() (rv *ProvisioningState) {
+	if c != nil {
+		return c.ProvisioningState
+	}
+	return
+}
+
+func (c *ConnectionMonitorResultProperties) GetStartTime() (rv *time.Time) {
+	if c != nil {
+		return c.StartTime
+	}
+	return
+}
+
 // ConnectionMonitorSource - Describes the source of connection monitor.
 type ConnectionMonitorSource struct {
 	// REQUIRED; The ID of the resource used as the source by connection monitor.
@@ -3460,6 +9802,20 @@ type ConnectionMonitorSource struct {
 	Port *int32
 }
 
+func (c *ConnectionMonitorSource) GetResourceID() (rv string) {
+	if c != nil && c.ResourceID != nil {
+		return *c.ResourceID
+	}
+	return
+}
+
+func (c *ConnectionMonitorSource) GetPort() (rv int32) {
+	if c != nil && c.Port != nil {
+		return *c.Port
+	}
+	return
+}
+
 // ConnectionMonitorSuccessThreshold - Describes the threshold for declaring a test successful.
 type ConnectionMonitorSuccessThreshold struct {
 	// The maximum percentage of failed checks permitted for a test to evaluate as successful.
@@ -3467,6 +9823,20 @@ type ConnectionMonitorSuccessThreshold struct {
 
 	// The maximum round-trip time in milliseconds permitted for a test to evaluate as successful.
 	RoundTripTimeMs *float32
+}
+
+func (c *ConnectionMonitorSuccessThreshold) GetChecksFailedPercent() (rv int32) {
+	if c != nil && c.ChecksFailedPercent != nil {
+		return *c.ChecksFailedPercent
+	}
+	return
+}
+
+func (c *ConnectionMonitorSuccessThreshold) GetRoundTripTimeMs() (rv float32) {
+	if c != nil && c.RoundTripTimeMs != nil {
+		return *c.RoundTripTimeMs
+	}
+	return
 }
 
 // ConnectionMonitorTCPConfiguration - Describes the TCP configuration.
@@ -3479,6 +9849,27 @@ type ConnectionMonitorTCPConfiguration struct {
 
 	// The port to connect to.
 	Port *int32
+}
+
+func (c *ConnectionMonitorTCPConfiguration) GetDestinationPortBehavior() (rv *DestinationPortBehavior) {
+	if c != nil {
+		return c.DestinationPortBehavior
+	}
+	return
+}
+
+func (c *ConnectionMonitorTCPConfiguration) GetDisableTraceRoute() (rv bool) {
+	if c != nil && c.DisableTraceRoute != nil {
+		return *c.DisableTraceRoute
+	}
+	return
+}
+
+func (c *ConnectionMonitorTCPConfiguration) GetPort() (rv int32) {
+	if c != nil && c.Port != nil {
+		return *c.Port
+	}
+	return
 }
 
 // ConnectionMonitorTestConfiguration - Describes a connection monitor test configuration.
@@ -3509,6 +9900,62 @@ type ConnectionMonitorTestConfiguration struct {
 	TestFrequencySec *int32
 }
 
+func (c *ConnectionMonitorTestConfiguration) GetName() (rv string) {
+	if c != nil && c.Name != nil {
+		return *c.Name
+	}
+	return
+}
+
+func (c *ConnectionMonitorTestConfiguration) GetProtocol() (rv *ConnectionMonitorTestConfigurationProtocol) {
+	if c != nil {
+		return c.Protocol
+	}
+	return
+}
+
+func (c *ConnectionMonitorTestConfiguration) GetHTTPConfiguration() (rv *ConnectionMonitorHTTPConfiguration) {
+	if c != nil {
+		return c.HTTPConfiguration
+	}
+	return
+}
+
+func (c *ConnectionMonitorTestConfiguration) GetIcmpConfiguration() (rv *ConnectionMonitorIcmpConfiguration) {
+	if c != nil {
+		return c.IcmpConfiguration
+	}
+	return
+}
+
+func (c *ConnectionMonitorTestConfiguration) GetPreferredIPVersion() (rv *PreferredIPVersion) {
+	if c != nil {
+		return c.PreferredIPVersion
+	}
+	return
+}
+
+func (c *ConnectionMonitorTestConfiguration) GetSuccessThreshold() (rv *ConnectionMonitorSuccessThreshold) {
+	if c != nil {
+		return c.SuccessThreshold
+	}
+	return
+}
+
+func (c *ConnectionMonitorTestConfiguration) GetTCPConfiguration() (rv *ConnectionMonitorTCPConfiguration) {
+	if c != nil {
+		return c.TCPConfiguration
+	}
+	return
+}
+
+func (c *ConnectionMonitorTestConfiguration) GetTestFrequencySec() (rv int32) {
+	if c != nil && c.TestFrequencySec != nil {
+		return *c.TestFrequencySec
+	}
+	return
+}
+
 // ConnectionMonitorTestGroup - Describes the connection monitor test group.
 type ConnectionMonitorTestGroup struct {
 	// REQUIRED; List of destination endpoint names.
@@ -3527,16 +9974,65 @@ type ConnectionMonitorTestGroup struct {
 	Disable *bool
 }
 
+func (c *ConnectionMonitorTestGroup) GetDestinations() (rv []*string) {
+	if c != nil {
+		return c.Destinations
+	}
+	return
+}
+
+func (c *ConnectionMonitorTestGroup) GetName() (rv string) {
+	if c != nil && c.Name != nil {
+		return *c.Name
+	}
+	return
+}
+
+func (c *ConnectionMonitorTestGroup) GetSources() (rv []*string) {
+	if c != nil {
+		return c.Sources
+	}
+	return
+}
+
+func (c *ConnectionMonitorTestGroup) GetTestConfigurations() (rv []*string) {
+	if c != nil {
+		return c.TestConfigurations
+	}
+	return
+}
+
+func (c *ConnectionMonitorTestGroup) GetDisable() (rv bool) {
+	if c != nil && c.Disable != nil {
+		return *c.Disable
+	}
+	return
+}
+
 // ConnectionMonitorWorkspaceSettings - Describes the settings for producing output into a log analytics workspace.
 type ConnectionMonitorWorkspaceSettings struct {
 	// Log analytics workspace resource ID.
 	WorkspaceResourceID *string
 }
 
+func (c *ConnectionMonitorWorkspaceSettings) GetWorkspaceResourceID() (rv string) {
+	if c != nil && c.WorkspaceResourceID != nil {
+		return *c.WorkspaceResourceID
+	}
+	return
+}
+
 // ConnectionResetSharedKey - The virtual network connection reset shared key.
 type ConnectionResetSharedKey struct {
 	// REQUIRED; The virtual network connection reset shared key length, should between 1 and 128.
 	KeyLength *int32
+}
+
+func (c *ConnectionResetSharedKey) GetKeyLength() (rv int32) {
+	if c != nil && c.KeyLength != nil {
+		return *c.KeyLength
+	}
+	return
 }
 
 // ConnectionSharedKey - Response for GetConnectionSharedKey API service call.
@@ -3546,6 +10042,20 @@ type ConnectionSharedKey struct {
 
 	// Resource ID.
 	ID *string
+}
+
+func (c *ConnectionSharedKey) GetValue() (rv string) {
+	if c != nil && c.Value != nil {
+		return *c.Value
+	}
+	return
+}
+
+func (c *ConnectionSharedKey) GetID() (rv string) {
+	if c != nil && c.ID != nil {
+		return *c.ID
+	}
+	return
 }
 
 // ConnectionStateSnapshot - Connection state snapshot.
@@ -3581,6 +10091,76 @@ type ConnectionStateSnapshot struct {
 	Hops []*ConnectivityHop
 }
 
+func (c *ConnectionStateSnapshot) GetAvgLatencyInMs() (rv int64) {
+	if c != nil && c.AvgLatencyInMs != nil {
+		return *c.AvgLatencyInMs
+	}
+	return
+}
+
+func (c *ConnectionStateSnapshot) GetConnectionState() (rv *ConnectionState) {
+	if c != nil {
+		return c.ConnectionState
+	}
+	return
+}
+
+func (c *ConnectionStateSnapshot) GetEndTime() (rv *time.Time) {
+	if c != nil {
+		return c.EndTime
+	}
+	return
+}
+
+func (c *ConnectionStateSnapshot) GetEvaluationState() (rv *EvaluationState) {
+	if c != nil {
+		return c.EvaluationState
+	}
+	return
+}
+
+func (c *ConnectionStateSnapshot) GetMaxLatencyInMs() (rv int64) {
+	if c != nil && c.MaxLatencyInMs != nil {
+		return *c.MaxLatencyInMs
+	}
+	return
+}
+
+func (c *ConnectionStateSnapshot) GetMinLatencyInMs() (rv int64) {
+	if c != nil && c.MinLatencyInMs != nil {
+		return *c.MinLatencyInMs
+	}
+	return
+}
+
+func (c *ConnectionStateSnapshot) GetProbesFailed() (rv int64) {
+	if c != nil && c.ProbesFailed != nil {
+		return *c.ProbesFailed
+	}
+	return
+}
+
+func (c *ConnectionStateSnapshot) GetProbesSent() (rv int64) {
+	if c != nil && c.ProbesSent != nil {
+		return *c.ProbesSent
+	}
+	return
+}
+
+func (c *ConnectionStateSnapshot) GetStartTime() (rv *time.Time) {
+	if c != nil {
+		return c.StartTime
+	}
+	return
+}
+
+func (c *ConnectionStateSnapshot) GetHops() (rv []*ConnectivityHop) {
+	if c != nil {
+		return c.Hops
+	}
+	return
+}
+
 // ConnectivityConfiguration - The network manager connectivity configuration resource
 type ConnectivityConfiguration struct {
 	// Properties of a network manager connectivity configuration
@@ -3602,6 +10182,48 @@ type ConnectivityConfiguration struct {
 	Type *string
 }
 
+func (c *ConnectivityConfiguration) GetProperties() (rv *ConnectivityConfigurationProperties) {
+	if c != nil {
+		return c.Properties
+	}
+	return
+}
+
+func (c *ConnectivityConfiguration) GetEtag() (rv string) {
+	if c != nil && c.Etag != nil {
+		return *c.Etag
+	}
+	return
+}
+
+func (c *ConnectivityConfiguration) GetID() (rv string) {
+	if c != nil && c.ID != nil {
+		return *c.ID
+	}
+	return
+}
+
+func (c *ConnectivityConfiguration) GetName() (rv string) {
+	if c != nil && c.Name != nil {
+		return *c.Name
+	}
+	return
+}
+
+func (c *ConnectivityConfiguration) GetSystemData() (rv *SystemData) {
+	if c != nil {
+		return c.SystemData
+	}
+	return
+}
+
+func (c *ConnectivityConfiguration) GetType() (rv string) {
+	if c != nil && c.Type != nil {
+		return *c.Type
+	}
+	return
+}
+
 // ConnectivityConfigurationListResult - Result of the request to list network manager connectivity configurations. It contains
 // a list of configurations and a link to get the next set of results.
 type ConnectivityConfigurationListResult struct {
@@ -3610,6 +10232,20 @@ type ConnectivityConfigurationListResult struct {
 
 	// Gets a page of Connectivity Configurations
 	Value []*ConnectivityConfiguration
+}
+
+func (c *ConnectivityConfigurationListResult) GetNextLink() (rv string) {
+	if c != nil && c.NextLink != nil {
+		return *c.NextLink
+	}
+	return
+}
+
+func (c *ConnectivityConfigurationListResult) GetValue() (rv []*ConnectivityConfiguration) {
+	if c != nil {
+		return c.Value
+	}
+	return
 }
 
 // ConnectivityConfigurationProperties - Properties of network manager connectivity configuration
@@ -3636,6 +10272,55 @@ type ConnectivityConfigurationProperties struct {
 	ProvisioningState *ProvisioningState
 }
 
+func (c *ConnectivityConfigurationProperties) GetAppliesToGroups() (rv []*ConnectivityGroupItem) {
+	if c != nil {
+		return c.AppliesToGroups
+	}
+	return
+}
+
+func (c *ConnectivityConfigurationProperties) GetConnectivityTopology() (rv *ConnectivityTopology) {
+	if c != nil {
+		return c.ConnectivityTopology
+	}
+	return
+}
+
+func (c *ConnectivityConfigurationProperties) GetDeleteExistingPeering() (rv *DeleteExistingPeering) {
+	if c != nil {
+		return c.DeleteExistingPeering
+	}
+	return
+}
+
+func (c *ConnectivityConfigurationProperties) GetDescription() (rv string) {
+	if c != nil && c.Description != nil {
+		return *c.Description
+	}
+	return
+}
+
+func (c *ConnectivityConfigurationProperties) GetHubs() (rv []*Hub) {
+	if c != nil {
+		return c.Hubs
+	}
+	return
+}
+
+func (c *ConnectivityConfigurationProperties) GetIsGlobal() (rv *IsGlobal) {
+	if c != nil {
+		return c.IsGlobal
+	}
+	return
+}
+
+func (c *ConnectivityConfigurationProperties) GetProvisioningState() (rv *ProvisioningState) {
+	if c != nil {
+		return c.ProvisioningState
+	}
+	return
+}
+
 // ConnectivityDestination - Parameters that define destination of connection.
 type ConnectivityDestination struct {
 	// The IP address or URI the resource to which a connection attempt will be made.
@@ -3646,6 +10331,27 @@ type ConnectivityDestination struct {
 
 	// The ID of the resource to which a connection attempt will be made.
 	ResourceID *string
+}
+
+func (c *ConnectivityDestination) GetAddress() (rv string) {
+	if c != nil && c.Address != nil {
+		return *c.Address
+	}
+	return
+}
+
+func (c *ConnectivityDestination) GetPort() (rv int32) {
+	if c != nil && c.Port != nil {
+		return *c.Port
+	}
+	return
+}
+
+func (c *ConnectivityDestination) GetResourceID() (rv string) {
+	if c != nil && c.ResourceID != nil {
+		return *c.ResourceID
+	}
+	return
 }
 
 // ConnectivityGroupItem - Connectivity group item.
@@ -3661,6 +10367,34 @@ type ConnectivityGroupItem struct {
 
 	// Flag if need to use hub gateway.
 	UseHubGateway *UseHubGateway
+}
+
+func (c *ConnectivityGroupItem) GetGroupConnectivity() (rv *GroupConnectivity) {
+	if c != nil {
+		return c.GroupConnectivity
+	}
+	return
+}
+
+func (c *ConnectivityGroupItem) GetNetworkGroupID() (rv string) {
+	if c != nil && c.NetworkGroupID != nil {
+		return *c.NetworkGroupID
+	}
+	return
+}
+
+func (c *ConnectivityGroupItem) GetIsGlobal() (rv *IsGlobal) {
+	if c != nil {
+		return c.IsGlobal
+	}
+	return
+}
+
+func (c *ConnectivityGroupItem) GetUseHubGateway() (rv *UseHubGateway) {
+	if c != nil {
+		return c.UseHubGateway
+	}
+	return
 }
 
 // ConnectivityHop - Information about a hop between the source and the destination.
@@ -3693,6 +10427,69 @@ type ConnectivityHop struct {
 	Type *string
 }
 
+func (c *ConnectivityHop) GetAddress() (rv string) {
+	if c != nil && c.Address != nil {
+		return *c.Address
+	}
+	return
+}
+
+func (c *ConnectivityHop) GetID() (rv string) {
+	if c != nil && c.ID != nil {
+		return *c.ID
+	}
+	return
+}
+
+func (c *ConnectivityHop) GetIssues() (rv []*ConnectivityIssue) {
+	if c != nil {
+		return c.Issues
+	}
+	return
+}
+
+func (c *ConnectivityHop) GetLinks() (rv []*HopLink) {
+	if c != nil {
+		return c.Links
+	}
+	return
+}
+
+func (c *ConnectivityHop) GetNextHopIDs() (rv []*string) {
+	if c != nil {
+		return c.NextHopIDs
+	}
+	return
+}
+
+func (c *ConnectivityHop) GetPreviousHopIDs() (rv []*string) {
+	if c != nil {
+		return c.PreviousHopIDs
+	}
+	return
+}
+
+func (c *ConnectivityHop) GetPreviousLinks() (rv []*HopLink) {
+	if c != nil {
+		return c.PreviousLinks
+	}
+	return
+}
+
+func (c *ConnectivityHop) GetResourceID() (rv string) {
+	if c != nil && c.ResourceID != nil {
+		return *c.ResourceID
+	}
+	return
+}
+
+func (c *ConnectivityHop) GetType() (rv string) {
+	if c != nil && c.Type != nil {
+		return *c.Type
+	}
+	return
+}
+
 // ConnectivityInformation - Information on the connectivity status.
 type ConnectivityInformation struct {
 	// READ-ONLY; Average latency in milliseconds.
@@ -3717,6 +10514,55 @@ type ConnectivityInformation struct {
 	ProbesSent *int32
 }
 
+func (c *ConnectivityInformation) GetAvgLatencyInMs() (rv int32) {
+	if c != nil && c.AvgLatencyInMs != nil {
+		return *c.AvgLatencyInMs
+	}
+	return
+}
+
+func (c *ConnectivityInformation) GetConnectionStatus() (rv *ConnectionStatus) {
+	if c != nil {
+		return c.ConnectionStatus
+	}
+	return
+}
+
+func (c *ConnectivityInformation) GetHops() (rv []*ConnectivityHop) {
+	if c != nil {
+		return c.Hops
+	}
+	return
+}
+
+func (c *ConnectivityInformation) GetMaxLatencyInMs() (rv int32) {
+	if c != nil && c.MaxLatencyInMs != nil {
+		return *c.MaxLatencyInMs
+	}
+	return
+}
+
+func (c *ConnectivityInformation) GetMinLatencyInMs() (rv int32) {
+	if c != nil && c.MinLatencyInMs != nil {
+		return *c.MinLatencyInMs
+	}
+	return
+}
+
+func (c *ConnectivityInformation) GetProbesFailed() (rv int32) {
+	if c != nil && c.ProbesFailed != nil {
+		return *c.ProbesFailed
+	}
+	return
+}
+
+func (c *ConnectivityInformation) GetProbesSent() (rv int32) {
+	if c != nil && c.ProbesSent != nil {
+		return *c.ProbesSent
+	}
+	return
+}
+
 // ConnectivityIssue - Information about an issue encountered in the process of checking for connectivity.
 type ConnectivityIssue struct {
 	// READ-ONLY; Provides additional context on the issue.
@@ -3730,6 +10576,34 @@ type ConnectivityIssue struct {
 
 	// READ-ONLY; The type of issue.
 	Type *IssueType
+}
+
+func (c *ConnectivityIssue) GetContext() (rv []map[string]*string) {
+	if c != nil {
+		return c.Context
+	}
+	return
+}
+
+func (c *ConnectivityIssue) GetOrigin() (rv *Origin) {
+	if c != nil {
+		return c.Origin
+	}
+	return
+}
+
+func (c *ConnectivityIssue) GetSeverity() (rv *Severity) {
+	if c != nil {
+		return c.Severity
+	}
+	return
+}
+
+func (c *ConnectivityIssue) GetType() (rv *IssueType) {
+	if c != nil {
+		return c.Type
+	}
+	return
 }
 
 // ConnectivityParameters - Parameters that determine how the connectivity check will be performed.
@@ -3750,6 +10624,41 @@ type ConnectivityParameters struct {
 	ProtocolConfiguration *ProtocolConfiguration
 }
 
+func (c *ConnectivityParameters) GetDestination() (rv *ConnectivityDestination) {
+	if c != nil {
+		return c.Destination
+	}
+	return
+}
+
+func (c *ConnectivityParameters) GetSource() (rv *ConnectivitySource) {
+	if c != nil {
+		return c.Source
+	}
+	return
+}
+
+func (c *ConnectivityParameters) GetPreferredIPVersion() (rv *IPVersion) {
+	if c != nil {
+		return c.PreferredIPVersion
+	}
+	return
+}
+
+func (c *ConnectivityParameters) GetProtocol() (rv *Protocol) {
+	if c != nil {
+		return c.Protocol
+	}
+	return
+}
+
+func (c *ConnectivityParameters) GetProtocolConfiguration() (rv *ProtocolConfiguration) {
+	if c != nil {
+		return c.ProtocolConfiguration
+	}
+	return
+}
+
 // ConnectivitySource - Parameters that define the source of the connection.
 type ConnectivitySource struct {
 	// REQUIRED; The ID of the resource from which a connectivity check will be initiated.
@@ -3759,10 +10668,31 @@ type ConnectivitySource struct {
 	Port *int32
 }
 
+func (c *ConnectivitySource) GetResourceID() (rv string) {
+	if c != nil && c.ResourceID != nil {
+		return *c.ResourceID
+	}
+	return
+}
+
+func (c *ConnectivitySource) GetPort() (rv int32) {
+	if c != nil && c.Port != nil {
+		return *c.Port
+	}
+	return
+}
+
 // Container - Reference to container resource in remote resource provider.
 type Container struct {
 	// Resource ID.
 	ID *string
+}
+
+func (c *Container) GetID() (rv string) {
+	if c != nil && c.ID != nil {
+		return *c.ID
+	}
+	return
 }
 
 // ContainerNetworkInterface - Container network interface child resource.
@@ -3783,6 +10713,41 @@ type ContainerNetworkInterface struct {
 	Type *string
 }
 
+func (c *ContainerNetworkInterface) GetID() (rv string) {
+	if c != nil && c.ID != nil {
+		return *c.ID
+	}
+	return
+}
+
+func (c *ContainerNetworkInterface) GetName() (rv string) {
+	if c != nil && c.Name != nil {
+		return *c.Name
+	}
+	return
+}
+
+func (c *ContainerNetworkInterface) GetProperties() (rv *ContainerNetworkInterfacePropertiesFormat) {
+	if c != nil {
+		return c.Properties
+	}
+	return
+}
+
+func (c *ContainerNetworkInterface) GetEtag() (rv string) {
+	if c != nil && c.Etag != nil {
+		return *c.Etag
+	}
+	return
+}
+
+func (c *ContainerNetworkInterface) GetType() (rv string) {
+	if c != nil && c.Type != nil {
+		return *c.Type
+	}
+	return
+}
+
 // ContainerNetworkInterfaceConfiguration - Container network interface configuration child resource.
 type ContainerNetworkInterfaceConfiguration struct {
 	// Resource ID.
@@ -3801,6 +10766,41 @@ type ContainerNetworkInterfaceConfiguration struct {
 	Type *string
 }
 
+func (c *ContainerNetworkInterfaceConfiguration) GetID() (rv string) {
+	if c != nil && c.ID != nil {
+		return *c.ID
+	}
+	return
+}
+
+func (c *ContainerNetworkInterfaceConfiguration) GetName() (rv string) {
+	if c != nil && c.Name != nil {
+		return *c.Name
+	}
+	return
+}
+
+func (c *ContainerNetworkInterfaceConfiguration) GetProperties() (rv *ContainerNetworkInterfaceConfigurationPropertiesFormat) {
+	if c != nil {
+		return c.Properties
+	}
+	return
+}
+
+func (c *ContainerNetworkInterfaceConfiguration) GetEtag() (rv string) {
+	if c != nil && c.Etag != nil {
+		return *c.Etag
+	}
+	return
+}
+
+func (c *ContainerNetworkInterfaceConfiguration) GetType() (rv string) {
+	if c != nil && c.Type != nil {
+		return *c.Type
+	}
+	return
+}
+
 // ContainerNetworkInterfaceConfigurationPropertiesFormat - Container network interface configuration properties.
 type ContainerNetworkInterfaceConfigurationPropertiesFormat struct {
 	// A list of container network interfaces created from this container network interface configuration.
@@ -3811,6 +10811,27 @@ type ContainerNetworkInterfaceConfigurationPropertiesFormat struct {
 
 	// READ-ONLY; The provisioning state of the container network interface configuration resource.
 	ProvisioningState *ProvisioningState
+}
+
+func (c *ContainerNetworkInterfaceConfigurationPropertiesFormat) GetContainerNetworkInterfaces() (rv []*SubResource) {
+	if c != nil {
+		return c.ContainerNetworkInterfaces
+	}
+	return
+}
+
+func (c *ContainerNetworkInterfaceConfigurationPropertiesFormat) GetIPConfigurations() (rv []*IPConfigurationProfile) {
+	if c != nil {
+		return c.IPConfigurations
+	}
+	return
+}
+
+func (c *ContainerNetworkInterfaceConfigurationPropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if c != nil {
+		return c.ProvisioningState
+	}
+	return
 }
 
 // ContainerNetworkInterfaceIPConfiguration - The ip configuration for a container network interface.
@@ -3828,10 +10849,45 @@ type ContainerNetworkInterfaceIPConfiguration struct {
 	Type *string
 }
 
+func (c *ContainerNetworkInterfaceIPConfiguration) GetName() (rv string) {
+	if c != nil && c.Name != nil {
+		return *c.Name
+	}
+	return
+}
+
+func (c *ContainerNetworkInterfaceIPConfiguration) GetProperties() (rv *ContainerNetworkInterfaceIPConfigurationPropertiesFormat) {
+	if c != nil {
+		return c.Properties
+	}
+	return
+}
+
+func (c *ContainerNetworkInterfaceIPConfiguration) GetEtag() (rv string) {
+	if c != nil && c.Etag != nil {
+		return *c.Etag
+	}
+	return
+}
+
+func (c *ContainerNetworkInterfaceIPConfiguration) GetType() (rv string) {
+	if c != nil && c.Type != nil {
+		return *c.Type
+	}
+	return
+}
+
 // ContainerNetworkInterfaceIPConfigurationPropertiesFormat - Properties of the container network interface IP configuration.
 type ContainerNetworkInterfaceIPConfigurationPropertiesFormat struct {
 	// READ-ONLY; The provisioning state of the container network interface IP configuration resource.
 	ProvisioningState *ProvisioningState
+}
+
+func (c *ContainerNetworkInterfaceIPConfigurationPropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if c != nil {
+		return c.ProvisioningState
+	}
+	return
 }
 
 // ContainerNetworkInterfacePropertiesFormat - Properties of container network interface.
@@ -3849,6 +10905,34 @@ type ContainerNetworkInterfacePropertiesFormat struct {
 	ProvisioningState *ProvisioningState
 }
 
+func (c *ContainerNetworkInterfacePropertiesFormat) GetContainer() (rv *Container) {
+	if c != nil {
+		return c.Container
+	}
+	return
+}
+
+func (c *ContainerNetworkInterfacePropertiesFormat) GetContainerNetworkInterfaceConfiguration() (rv *ContainerNetworkInterfaceConfiguration) {
+	if c != nil {
+		return c.ContainerNetworkInterfaceConfiguration
+	}
+	return
+}
+
+func (c *ContainerNetworkInterfacePropertiesFormat) GetIPConfigurations() (rv []*ContainerNetworkInterfaceIPConfiguration) {
+	if c != nil {
+		return c.IPConfigurations
+	}
+	return
+}
+
+func (c *ContainerNetworkInterfacePropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if c != nil {
+		return c.ProvisioningState
+	}
+	return
+}
+
 // Criterion - A matching criteria which matches routes based on route prefix, community, and AS path.
 type Criterion struct {
 	// List of AS paths which this criteria matches.
@@ -3864,6 +10948,34 @@ type Criterion struct {
 	RoutePrefix []*string
 }
 
+func (c *Criterion) GetAsPath() (rv []*string) {
+	if c != nil {
+		return c.AsPath
+	}
+	return
+}
+
+func (c *Criterion) GetCommunity() (rv []*string) {
+	if c != nil {
+		return c.Community
+	}
+	return
+}
+
+func (c *Criterion) GetMatchCondition() (rv *RouteMapMatchCondition) {
+	if c != nil {
+		return c.MatchCondition
+	}
+	return
+}
+
+func (c *Criterion) GetRoutePrefix() (rv []*string) {
+	if c != nil {
+		return c.RoutePrefix
+	}
+	return
+}
+
 // CrossTenantScopes - Cross tenant scopes.
 type CrossTenantScopes struct {
 	// READ-ONLY; List of management groups.
@@ -3876,6 +10988,27 @@ type CrossTenantScopes struct {
 	TenantID *string
 }
 
+func (c *CrossTenantScopes) GetManagementGroups() (rv []*string) {
+	if c != nil {
+		return c.ManagementGroups
+	}
+	return
+}
+
+func (c *CrossTenantScopes) GetSubscriptions() (rv []*string) {
+	if c != nil {
+		return c.Subscriptions
+	}
+	return
+}
+
+func (c *CrossTenantScopes) GetTenantID() (rv string) {
+	if c != nil && c.TenantID != nil {
+		return *c.TenantID
+	}
+	return
+}
+
 // CustomDNSConfigPropertiesFormat - Contains custom Dns resolution configuration from customer.
 type CustomDNSConfigPropertiesFormat struct {
 	// Fqdn that resolves to private endpoint ip address.
@@ -3883,6 +11016,20 @@ type CustomDNSConfigPropertiesFormat struct {
 
 	// A list of private ip addresses of the private endpoint.
 	IPAddresses []*string
+}
+
+func (c *CustomDNSConfigPropertiesFormat) GetFqdn() (rv string) {
+	if c != nil && c.Fqdn != nil {
+		return *c.Fqdn
+	}
+	return
+}
+
+func (c *CustomDNSConfigPropertiesFormat) GetIPAddresses() (rv []*string) {
+	if c != nil {
+		return c.IPAddresses
+	}
+	return
 }
 
 // CustomIPPrefix - Custom IP prefix resource.
@@ -3915,6 +11062,69 @@ type CustomIPPrefix struct {
 	Type *string
 }
 
+func (c *CustomIPPrefix) GetExtendedLocation() (rv *ExtendedLocation) {
+	if c != nil {
+		return c.ExtendedLocation
+	}
+	return
+}
+
+func (c *CustomIPPrefix) GetID() (rv string) {
+	if c != nil && c.ID != nil {
+		return *c.ID
+	}
+	return
+}
+
+func (c *CustomIPPrefix) GetLocation() (rv string) {
+	if c != nil && c.Location != nil {
+		return *c.Location
+	}
+	return
+}
+
+func (c *CustomIPPrefix) GetProperties() (rv *CustomIPPrefixPropertiesFormat) {
+	if c != nil {
+		return c.Properties
+	}
+	return
+}
+
+func (c *CustomIPPrefix) GetTags() (rv map[string]*string) {
+	if c != nil {
+		return c.Tags
+	}
+	return
+}
+
+func (c *CustomIPPrefix) GetZones() (rv []*string) {
+	if c != nil {
+		return c.Zones
+	}
+	return
+}
+
+func (c *CustomIPPrefix) GetEtag() (rv string) {
+	if c != nil && c.Etag != nil {
+		return *c.Etag
+	}
+	return
+}
+
+func (c *CustomIPPrefix) GetName() (rv string) {
+	if c != nil && c.Name != nil {
+		return *c.Name
+	}
+	return
+}
+
+func (c *CustomIPPrefix) GetType() (rv string) {
+	if c != nil && c.Type != nil {
+		return *c.Type
+	}
+	return
+}
+
 // CustomIPPrefixListResult - Response for ListCustomIpPrefixes API service call.
 type CustomIPPrefixListResult struct {
 	// The URL to get the next set of results.
@@ -3922,6 +11132,20 @@ type CustomIPPrefixListResult struct {
 
 	// A list of Custom IP prefixes that exists in a resource group.
 	Value []*CustomIPPrefix
+}
+
+func (c *CustomIPPrefixListResult) GetNextLink() (rv string) {
+	if c != nil && c.NextLink != nil {
+		return *c.NextLink
+	}
+	return
+}
+
+func (c *CustomIPPrefixListResult) GetValue() (rv []*CustomIPPrefix) {
+	if c != nil {
+		return c.Value
+	}
+	return
 }
 
 // CustomIPPrefixPropertiesFormat - Custom IP prefix properties.
@@ -3972,10 +11196,122 @@ type CustomIPPrefixPropertiesFormat struct {
 	ResourceGUID *string
 }
 
+func (c *CustomIPPrefixPropertiesFormat) GetAsn() (rv string) {
+	if c != nil && c.Asn != nil {
+		return *c.Asn
+	}
+	return
+}
+
+func (c *CustomIPPrefixPropertiesFormat) GetAuthorizationMessage() (rv string) {
+	if c != nil && c.AuthorizationMessage != nil {
+		return *c.AuthorizationMessage
+	}
+	return
+}
+
+func (c *CustomIPPrefixPropertiesFormat) GetCidr() (rv string) {
+	if c != nil && c.Cidr != nil {
+		return *c.Cidr
+	}
+	return
+}
+
+func (c *CustomIPPrefixPropertiesFormat) GetCommissionedState() (rv *CommissionedState) {
+	if c != nil {
+		return c.CommissionedState
+	}
+	return
+}
+
+func (c *CustomIPPrefixPropertiesFormat) GetCustomIPPrefixParent() (rv *SubResource) {
+	if c != nil {
+		return c.CustomIPPrefixParent
+	}
+	return
+}
+
+func (c *CustomIPPrefixPropertiesFormat) GetExpressRouteAdvertise() (rv bool) {
+	if c != nil && c.ExpressRouteAdvertise != nil {
+		return *c.ExpressRouteAdvertise
+	}
+	return
+}
+
+func (c *CustomIPPrefixPropertiesFormat) GetGeo() (rv *Geo) {
+	if c != nil {
+		return c.Geo
+	}
+	return
+}
+
+func (c *CustomIPPrefixPropertiesFormat) GetNoInternetAdvertise() (rv bool) {
+	if c != nil && c.NoInternetAdvertise != nil {
+		return *c.NoInternetAdvertise
+	}
+	return
+}
+
+func (c *CustomIPPrefixPropertiesFormat) GetPrefixType() (rv *CustomIPPrefixType) {
+	if c != nil {
+		return c.PrefixType
+	}
+	return
+}
+
+func (c *CustomIPPrefixPropertiesFormat) GetSignedMessage() (rv string) {
+	if c != nil && c.SignedMessage != nil {
+		return *c.SignedMessage
+	}
+	return
+}
+
+func (c *CustomIPPrefixPropertiesFormat) GetChildCustomIPPrefixes() (rv []*SubResource) {
+	if c != nil {
+		return c.ChildCustomIPPrefixes
+	}
+	return
+}
+
+func (c *CustomIPPrefixPropertiesFormat) GetFailedReason() (rv string) {
+	if c != nil && c.FailedReason != nil {
+		return *c.FailedReason
+	}
+	return
+}
+
+func (c *CustomIPPrefixPropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if c != nil {
+		return c.ProvisioningState
+	}
+	return
+}
+
+func (c *CustomIPPrefixPropertiesFormat) GetPublicIPPrefixes() (rv []*SubResource) {
+	if c != nil {
+		return c.PublicIPPrefixes
+	}
+	return
+}
+
+func (c *CustomIPPrefixPropertiesFormat) GetResourceGUID() (rv string) {
+	if c != nil && c.ResourceGUID != nil {
+		return *c.ResourceGUID
+	}
+	return
+}
+
 // DNSNameAvailabilityResult - Response for the CheckDnsNameAvailability API service call.
 type DNSNameAvailabilityResult struct {
 	// Domain availability (True/False).
 	Available *bool
+}
+
+func (d *DNSNameAvailabilityResult) GetAvailable() (rv bool) {
+	if d != nil && d.Available != nil {
+		return *d.Available
+	}
+	return
 }
 
 // DNSSettings - DNS Proxy Settings in Firewall Policy.
@@ -3988,6 +11324,27 @@ type DNSSettings struct {
 
 	// List of Custom DNS Servers.
 	Servers []*string
+}
+
+func (d *DNSSettings) GetEnableProxy() (rv bool) {
+	if d != nil && d.EnableProxy != nil {
+		return *d.EnableProxy
+	}
+	return
+}
+
+func (d *DNSSettings) GetRequireProxyForNetworkRules() (rv bool) {
+	if d != nil && d.RequireProxyForNetworkRules != nil {
+		return *d.RequireProxyForNetworkRules
+	}
+	return
+}
+
+func (d *DNSSettings) GetServers() (rv []*string) {
+	if d != nil {
+		return d.Servers
+	}
+	return
 }
 
 // DdosCustomPolicy - A DDoS custom policy in a resource group.
@@ -4014,6 +11371,55 @@ type DdosCustomPolicy struct {
 	Type *string
 }
 
+func (d *DdosCustomPolicy) GetID() (rv string) {
+	if d != nil && d.ID != nil {
+		return *d.ID
+	}
+	return
+}
+
+func (d *DdosCustomPolicy) GetLocation() (rv string) {
+	if d != nil && d.Location != nil {
+		return *d.Location
+	}
+	return
+}
+
+func (d *DdosCustomPolicy) GetProperties() (rv *DdosCustomPolicyPropertiesFormat) {
+	if d != nil {
+		return d.Properties
+	}
+	return
+}
+
+func (d *DdosCustomPolicy) GetTags() (rv map[string]*string) {
+	if d != nil {
+		return d.Tags
+	}
+	return
+}
+
+func (d *DdosCustomPolicy) GetEtag() (rv string) {
+	if d != nil && d.Etag != nil {
+		return *d.Etag
+	}
+	return
+}
+
+func (d *DdosCustomPolicy) GetName() (rv string) {
+	if d != nil && d.Name != nil {
+		return *d.Name
+	}
+	return
+}
+
+func (d *DdosCustomPolicy) GetType() (rv string) {
+	if d != nil && d.Type != nil {
+		return *d.Type
+	}
+	return
+}
+
 // DdosCustomPolicyPropertiesFormat - DDoS custom policy properties.
 type DdosCustomPolicyPropertiesFormat struct {
 	// READ-ONLY; The provisioning state of the DDoS custom policy resource.
@@ -4022,6 +11428,20 @@ type DdosCustomPolicyPropertiesFormat struct {
 	// READ-ONLY; The resource GUID property of the DDoS custom policy resource. It uniquely identifies the resource, even if
 	// the user changes its name or migrate the resource across subscriptions or resource groups.
 	ResourceGUID *string
+}
+
+func (d *DdosCustomPolicyPropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if d != nil {
+		return d.ProvisioningState
+	}
+	return
+}
+
+func (d *DdosCustomPolicyPropertiesFormat) GetResourceGUID() (rv string) {
+	if d != nil && d.ResourceGUID != nil {
+		return *d.ResourceGUID
+	}
+	return
 }
 
 // DdosProtectionPlan - A DDoS protection plan in a resource group.
@@ -4048,6 +11468,55 @@ type DdosProtectionPlan struct {
 	Type *string
 }
 
+func (d *DdosProtectionPlan) GetLocation() (rv string) {
+	if d != nil && d.Location != nil {
+		return *d.Location
+	}
+	return
+}
+
+func (d *DdosProtectionPlan) GetProperties() (rv *DdosProtectionPlanPropertiesFormat) {
+	if d != nil {
+		return d.Properties
+	}
+	return
+}
+
+func (d *DdosProtectionPlan) GetTags() (rv map[string]*string) {
+	if d != nil {
+		return d.Tags
+	}
+	return
+}
+
+func (d *DdosProtectionPlan) GetEtag() (rv string) {
+	if d != nil && d.Etag != nil {
+		return *d.Etag
+	}
+	return
+}
+
+func (d *DdosProtectionPlan) GetID() (rv string) {
+	if d != nil && d.ID != nil {
+		return *d.ID
+	}
+	return
+}
+
+func (d *DdosProtectionPlan) GetName() (rv string) {
+	if d != nil && d.Name != nil {
+		return *d.Name
+	}
+	return
+}
+
+func (d *DdosProtectionPlan) GetType() (rv string) {
+	if d != nil && d.Type != nil {
+		return *d.Type
+	}
+	return
+}
+
 // DdosProtectionPlanListResult - A list of DDoS protection plans.
 type DdosProtectionPlanListResult struct {
 	// A list of DDoS protection plans.
@@ -4055,6 +11524,20 @@ type DdosProtectionPlanListResult struct {
 
 	// READ-ONLY; The URL to get the next set of results.
 	NextLink *string
+}
+
+func (d *DdosProtectionPlanListResult) GetValue() (rv []*DdosProtectionPlan) {
+	if d != nil {
+		return d.Value
+	}
+	return
+}
+
+func (d *DdosProtectionPlanListResult) GetNextLink() (rv string) {
+	if d != nil && d.NextLink != nil {
+		return *d.NextLink
+	}
+	return
 }
 
 // DdosProtectionPlanPropertiesFormat - DDoS protection plan properties.
@@ -4073,6 +11556,34 @@ type DdosProtectionPlanPropertiesFormat struct {
 	VirtualNetworks []*SubResource
 }
 
+func (d *DdosProtectionPlanPropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if d != nil {
+		return d.ProvisioningState
+	}
+	return
+}
+
+func (d *DdosProtectionPlanPropertiesFormat) GetPublicIPAddresses() (rv []*SubResource) {
+	if d != nil {
+		return d.PublicIPAddresses
+	}
+	return
+}
+
+func (d *DdosProtectionPlanPropertiesFormat) GetResourceGUID() (rv string) {
+	if d != nil && d.ResourceGUID != nil {
+		return *d.ResourceGUID
+	}
+	return
+}
+
+func (d *DdosProtectionPlanPropertiesFormat) GetVirtualNetworks() (rv []*SubResource) {
+	if d != nil {
+		return d.VirtualNetworks
+	}
+	return
+}
+
 // DdosSettings - Contains the DDoS protection settings of the public IP.
 type DdosSettings struct {
 	// The DDoS protection plan associated with the public IP. Can only be set if ProtectionMode is Enabled
@@ -4080,6 +11591,20 @@ type DdosSettings struct {
 
 	// The DDoS protection mode of the public IP
 	ProtectionMode *DdosSettingsProtectionMode
+}
+
+func (d *DdosSettings) GetDdosProtectionPlan() (rv *SubResource) {
+	if d != nil {
+		return d.DdosProtectionPlan
+	}
+	return
+}
+
+func (d *DdosSettings) GetProtectionMode() (rv *DdosSettingsProtectionMode) {
+	if d != nil {
+		return d.ProtectionMode
+	}
+	return
 }
 
 // DefaultAdminPropertiesFormat - Security default admin rule resource.
@@ -4119,6 +11644,83 @@ type DefaultAdminPropertiesFormat struct {
 	Sources []*AddressPrefixItem
 }
 
+func (d *DefaultAdminPropertiesFormat) GetFlag() (rv string) {
+	if d != nil && d.Flag != nil {
+		return *d.Flag
+	}
+	return
+}
+
+func (d *DefaultAdminPropertiesFormat) GetAccess() (rv *SecurityConfigurationRuleAccess) {
+	if d != nil {
+		return d.Access
+	}
+	return
+}
+
+func (d *DefaultAdminPropertiesFormat) GetDescription() (rv string) {
+	if d != nil && d.Description != nil {
+		return *d.Description
+	}
+	return
+}
+
+func (d *DefaultAdminPropertiesFormat) GetDestinationPortRanges() (rv []*string) {
+	if d != nil {
+		return d.DestinationPortRanges
+	}
+	return
+}
+
+func (d *DefaultAdminPropertiesFormat) GetDestinations() (rv []*AddressPrefixItem) {
+	if d != nil {
+		return d.Destinations
+	}
+	return
+}
+
+func (d *DefaultAdminPropertiesFormat) GetDirection() (rv *SecurityConfigurationRuleDirection) {
+	if d != nil {
+		return d.Direction
+	}
+	return
+}
+
+func (d *DefaultAdminPropertiesFormat) GetPriority() (rv int32) {
+	if d != nil && d.Priority != nil {
+		return *d.Priority
+	}
+	return
+}
+
+func (d *DefaultAdminPropertiesFormat) GetProtocol() (rv *SecurityConfigurationRuleProtocol) {
+	if d != nil {
+		return d.Protocol
+	}
+	return
+}
+
+func (d *DefaultAdminPropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if d != nil {
+		return d.ProvisioningState
+	}
+	return
+}
+
+func (d *DefaultAdminPropertiesFormat) GetSourcePortRanges() (rv []*string) {
+	if d != nil {
+		return d.SourcePortRanges
+	}
+	return
+}
+
+func (d *DefaultAdminPropertiesFormat) GetSources() (rv []*AddressPrefixItem) {
+	if d != nil {
+		return d.Sources
+	}
+	return
+}
+
 // DefaultAdminRule - Network default admin rule.
 type DefaultAdminRule struct {
 	// REQUIRED; Whether the rule is custom or default.
@@ -4143,6 +11745,55 @@ type DefaultAdminRule struct {
 	Type *string
 }
 
+func (d *DefaultAdminRule) GetKind() (rv *AdminRuleKind) {
+	if d != nil {
+		return d.Kind
+	}
+	return
+}
+
+func (d *DefaultAdminRule) GetProperties() (rv *DefaultAdminPropertiesFormat) {
+	if d != nil {
+		return d.Properties
+	}
+	return
+}
+
+func (d *DefaultAdminRule) GetEtag() (rv string) {
+	if d != nil && d.Etag != nil {
+		return *d.Etag
+	}
+	return
+}
+
+func (d *DefaultAdminRule) GetID() (rv string) {
+	if d != nil && d.ID != nil {
+		return *d.ID
+	}
+	return
+}
+
+func (d *DefaultAdminRule) GetName() (rv string) {
+	if d != nil && d.Name != nil {
+		return *d.Name
+	}
+	return
+}
+
+func (d *DefaultAdminRule) GetSystemData() (rv *SystemData) {
+	if d != nil {
+		return d.SystemData
+	}
+	return
+}
+
+func (d *DefaultAdminRule) GetType() (rv string) {
+	if d != nil && d.Type != nil {
+		return *d.Type
+	}
+	return
+}
+
 // GetBaseAdminRule implements the BaseAdminRuleClassification interface for type DefaultAdminRule.
 func (d *DefaultAdminRule) GetBaseAdminRule() *BaseAdminRule {
 	return &BaseAdminRule{
@@ -4164,6 +11815,20 @@ type DefaultRuleSetPropertyFormat struct {
 	RuleSetVersion *string
 }
 
+func (d *DefaultRuleSetPropertyFormat) GetRuleSetType() (rv string) {
+	if d != nil && d.RuleSetType != nil {
+		return *d.RuleSetType
+	}
+	return
+}
+
+func (d *DefaultRuleSetPropertyFormat) GetRuleSetVersion() (rv string) {
+	if d != nil && d.RuleSetVersion != nil {
+		return *d.RuleSetVersion
+	}
+	return
+}
+
 // Delegation - Details the service to which the subnet is delegated.
 type Delegation struct {
 	// Resource ID.
@@ -4182,6 +11847,41 @@ type Delegation struct {
 	Etag *string
 }
 
+func (d *Delegation) GetID() (rv string) {
+	if d != nil && d.ID != nil {
+		return *d.ID
+	}
+	return
+}
+
+func (d *Delegation) GetName() (rv string) {
+	if d != nil && d.Name != nil {
+		return *d.Name
+	}
+	return
+}
+
+func (d *Delegation) GetProperties() (rv *ServiceDelegationPropertiesFormat) {
+	if d != nil {
+		return d.Properties
+	}
+	return
+}
+
+func (d *Delegation) GetType() (rv string) {
+	if d != nil && d.Type != nil {
+		return *d.Type
+	}
+	return
+}
+
+func (d *Delegation) GetEtag() (rv string) {
+	if d != nil && d.Etag != nil {
+		return *d.Etag
+	}
+	return
+}
+
 // DelegationProperties - Properties of the delegation.
 type DelegationProperties struct {
 	// The service name to which the NVA is delegated.
@@ -4189,6 +11889,20 @@ type DelegationProperties struct {
 
 	// READ-ONLY; The current provisioning state.
 	ProvisioningState *ProvisioningState
+}
+
+func (d *DelegationProperties) GetServiceName() (rv string) {
+	if d != nil && d.ServiceName != nil {
+		return *d.ServiceName
+	}
+	return
+}
+
+func (d *DelegationProperties) GetProvisioningState() (rv *ProvisioningState) {
+	if d != nil {
+		return d.ProvisioningState
+	}
+	return
 }
 
 // DeviceProperties - List of properties of the device.
@@ -4203,11 +11917,39 @@ type DeviceProperties struct {
 	LinkSpeedInMbps *int32
 }
 
+func (d *DeviceProperties) GetDeviceModel() (rv string) {
+	if d != nil && d.DeviceModel != nil {
+		return *d.DeviceModel
+	}
+	return
+}
+
+func (d *DeviceProperties) GetDeviceVendor() (rv string) {
+	if d != nil && d.DeviceVendor != nil {
+		return *d.DeviceVendor
+	}
+	return
+}
+
+func (d *DeviceProperties) GetLinkSpeedInMbps() (rv int32) {
+	if d != nil && d.LinkSpeedInMbps != nil {
+		return *d.LinkSpeedInMbps
+	}
+	return
+}
+
 // DhcpOptions contains an array of DNS servers available to VMs deployed in the virtual network. Standard DHCP option for
 // a subnet overrides VNET DHCP options.
 type DhcpOptions struct {
 	// The list of DNS servers IP addresses.
 	DNSServers []*string
+}
+
+func (d *DhcpOptions) GetDNSServers() (rv []*string) {
+	if d != nil {
+		return d.DNSServers
+	}
+	return
 }
 
 // Dimension of the metric.
@@ -4220,6 +11962,27 @@ type Dimension struct {
 
 	// The name of the dimension.
 	Name *string
+}
+
+func (d *Dimension) GetDisplayName() (rv string) {
+	if d != nil && d.DisplayName != nil {
+		return *d.DisplayName
+	}
+	return
+}
+
+func (d *Dimension) GetInternalName() (rv string) {
+	if d != nil && d.InternalName != nil {
+		return *d.InternalName
+	}
+	return
+}
+
+func (d *Dimension) GetName() (rv string) {
+	if d != nil && d.Name != nil {
+		return *d.Name
+	}
+	return
 }
 
 // DscpConfiguration - Differentiated Services Code Point configuration for any given network interface
@@ -4246,6 +12009,55 @@ type DscpConfiguration struct {
 	Type *string
 }
 
+func (d *DscpConfiguration) GetID() (rv string) {
+	if d != nil && d.ID != nil {
+		return *d.ID
+	}
+	return
+}
+
+func (d *DscpConfiguration) GetLocation() (rv string) {
+	if d != nil && d.Location != nil {
+		return *d.Location
+	}
+	return
+}
+
+func (d *DscpConfiguration) GetProperties() (rv *DscpConfigurationPropertiesFormat) {
+	if d != nil {
+		return d.Properties
+	}
+	return
+}
+
+func (d *DscpConfiguration) GetTags() (rv map[string]*string) {
+	if d != nil {
+		return d.Tags
+	}
+	return
+}
+
+func (d *DscpConfiguration) GetEtag() (rv string) {
+	if d != nil && d.Etag != nil {
+		return *d.Etag
+	}
+	return
+}
+
+func (d *DscpConfiguration) GetName() (rv string) {
+	if d != nil && d.Name != nil {
+		return *d.Name
+	}
+	return
+}
+
+func (d *DscpConfiguration) GetType() (rv string) {
+	if d != nil && d.Type != nil {
+		return *d.Type
+	}
+	return
+}
+
 // DscpConfigurationListResult - Response for the DscpConfigurationList API service call.
 type DscpConfigurationListResult struct {
 	// A list of dscp configurations in a resource group.
@@ -4253,6 +12065,20 @@ type DscpConfigurationListResult struct {
 
 	// READ-ONLY; The URL to get the next set of results.
 	NextLink *string
+}
+
+func (d *DscpConfigurationListResult) GetValue() (rv []*DscpConfiguration) {
+	if d != nil {
+		return d.Value
+	}
+	return
+}
+
+func (d *DscpConfigurationListResult) GetNextLink() (rv string) {
+	if d != nil && d.NextLink != nil {
+		return *d.NextLink
+	}
+	return
 }
 
 // DscpConfigurationPropertiesFormat - Differentiated Services Code Point configuration properties.
@@ -4291,6 +12117,83 @@ type DscpConfigurationPropertiesFormat struct {
 	ResourceGUID *string
 }
 
+func (d *DscpConfigurationPropertiesFormat) GetDestinationIPRanges() (rv []*QosIPRange) {
+	if d != nil {
+		return d.DestinationIPRanges
+	}
+	return
+}
+
+func (d *DscpConfigurationPropertiesFormat) GetDestinationPortRanges() (rv []*QosPortRange) {
+	if d != nil {
+		return d.DestinationPortRanges
+	}
+	return
+}
+
+func (d *DscpConfigurationPropertiesFormat) GetMarkings() (rv []*int32) {
+	if d != nil {
+		return d.Markings
+	}
+	return
+}
+
+func (d *DscpConfigurationPropertiesFormat) GetProtocol() (rv *ProtocolType) {
+	if d != nil {
+		return d.Protocol
+	}
+	return
+}
+
+func (d *DscpConfigurationPropertiesFormat) GetQosDefinitionCollection() (rv []*QosDefinition) {
+	if d != nil {
+		return d.QosDefinitionCollection
+	}
+	return
+}
+
+func (d *DscpConfigurationPropertiesFormat) GetSourceIPRanges() (rv []*QosIPRange) {
+	if d != nil {
+		return d.SourceIPRanges
+	}
+	return
+}
+
+func (d *DscpConfigurationPropertiesFormat) GetSourcePortRanges() (rv []*QosPortRange) {
+	if d != nil {
+		return d.SourcePortRanges
+	}
+	return
+}
+
+func (d *DscpConfigurationPropertiesFormat) GetAssociatedNetworkInterfaces() (rv []*Interface) {
+	if d != nil {
+		return d.AssociatedNetworkInterfaces
+	}
+	return
+}
+
+func (d *DscpConfigurationPropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if d != nil {
+		return d.ProvisioningState
+	}
+	return
+}
+
+func (d *DscpConfigurationPropertiesFormat) GetQosCollectionID() (rv string) {
+	if d != nil && d.QosCollectionID != nil {
+		return *d.QosCollectionID
+	}
+	return
+}
+
+func (d *DscpConfigurationPropertiesFormat) GetResourceGUID() (rv string) {
+	if d != nil && d.ResourceGUID != nil {
+		return *d.ResourceGUID
+	}
+	return
+}
+
 // EffectiveBaseSecurityAdminRule - Network base admin rule.
 type EffectiveBaseSecurityAdminRule struct {
 	// REQUIRED; Whether the rule is custom or default.
@@ -4312,6 +12215,48 @@ type EffectiveBaseSecurityAdminRule struct {
 	RuleGroups []*ConfigurationGroup
 }
 
+func (e *EffectiveBaseSecurityAdminRule) GetKind() (rv *EffectiveAdminRuleKind) {
+	if e != nil {
+		return e.Kind
+	}
+	return
+}
+
+func (e *EffectiveBaseSecurityAdminRule) GetConfigurationDescription() (rv string) {
+	if e != nil && e.ConfigurationDescription != nil {
+		return *e.ConfigurationDescription
+	}
+	return
+}
+
+func (e *EffectiveBaseSecurityAdminRule) GetID() (rv string) {
+	if e != nil && e.ID != nil {
+		return *e.ID
+	}
+	return
+}
+
+func (e *EffectiveBaseSecurityAdminRule) GetRuleCollectionAppliesToGroups() (rv []*ManagerSecurityGroupItem) {
+	if e != nil {
+		return e.RuleCollectionAppliesToGroups
+	}
+	return
+}
+
+func (e *EffectiveBaseSecurityAdminRule) GetRuleCollectionDescription() (rv string) {
+	if e != nil && e.RuleCollectionDescription != nil {
+		return *e.RuleCollectionDescription
+	}
+	return
+}
+
+func (e *EffectiveBaseSecurityAdminRule) GetRuleGroups() (rv []*ConfigurationGroup) {
+	if e != nil {
+		return e.RuleGroups
+	}
+	return
+}
+
 // GetEffectiveBaseSecurityAdminRule implements the EffectiveBaseSecurityAdminRuleClassification interface for type EffectiveBaseSecurityAdminRule.
 func (e *EffectiveBaseSecurityAdminRule) GetEffectiveBaseSecurityAdminRule() *EffectiveBaseSecurityAdminRule {
 	return e
@@ -4327,6 +12272,27 @@ type EffectiveConnectivityConfiguration struct {
 
 	// Properties of a network manager connectivity configuration
 	Properties *ConnectivityConfigurationProperties
+}
+
+func (e *EffectiveConnectivityConfiguration) GetConfigurationGroups() (rv []*ConfigurationGroup) {
+	if e != nil {
+		return e.ConfigurationGroups
+	}
+	return
+}
+
+func (e *EffectiveConnectivityConfiguration) GetID() (rv string) {
+	if e != nil && e.ID != nil {
+		return *e.ID
+	}
+	return
+}
+
+func (e *EffectiveConnectivityConfiguration) GetProperties() (rv *ConnectivityConfigurationProperties) {
+	if e != nil {
+		return e.Properties
+	}
+	return
 }
 
 // EffectiveDefaultSecurityAdminRule - Network default admin rule.
@@ -4351,6 +12317,55 @@ type EffectiveDefaultSecurityAdminRule struct {
 
 	// Effective configuration groups.
 	RuleGroups []*ConfigurationGroup
+}
+
+func (e *EffectiveDefaultSecurityAdminRule) GetKind() (rv *EffectiveAdminRuleKind) {
+	if e != nil {
+		return e.Kind
+	}
+	return
+}
+
+func (e *EffectiveDefaultSecurityAdminRule) GetConfigurationDescription() (rv string) {
+	if e != nil && e.ConfigurationDescription != nil {
+		return *e.ConfigurationDescription
+	}
+	return
+}
+
+func (e *EffectiveDefaultSecurityAdminRule) GetID() (rv string) {
+	if e != nil && e.ID != nil {
+		return *e.ID
+	}
+	return
+}
+
+func (e *EffectiveDefaultSecurityAdminRule) GetProperties() (rv *DefaultAdminPropertiesFormat) {
+	if e != nil {
+		return e.Properties
+	}
+	return
+}
+
+func (e *EffectiveDefaultSecurityAdminRule) GetRuleCollectionAppliesToGroups() (rv []*ManagerSecurityGroupItem) {
+	if e != nil {
+		return e.RuleCollectionAppliesToGroups
+	}
+	return
+}
+
+func (e *EffectiveDefaultSecurityAdminRule) GetRuleCollectionDescription() (rv string) {
+	if e != nil && e.RuleCollectionDescription != nil {
+		return *e.RuleCollectionDescription
+	}
+	return
+}
+
+func (e *EffectiveDefaultSecurityAdminRule) GetRuleGroups() (rv []*ConfigurationGroup) {
+	if e != nil {
+		return e.RuleGroups
+	}
+	return
 }
 
 // GetEffectiveBaseSecurityAdminRule implements the EffectiveBaseSecurityAdminRuleClassification interface for type EffectiveDefaultSecurityAdminRule.
@@ -4380,6 +12395,34 @@ type EffectiveNetworkSecurityGroup struct {
 	TagMap *string
 }
 
+func (e *EffectiveNetworkSecurityGroup) GetAssociation() (rv *EffectiveNetworkSecurityGroupAssociation) {
+	if e != nil {
+		return e.Association
+	}
+	return
+}
+
+func (e *EffectiveNetworkSecurityGroup) GetEffectiveSecurityRules() (rv []*EffectiveNetworkSecurityRule) {
+	if e != nil {
+		return e.EffectiveSecurityRules
+	}
+	return
+}
+
+func (e *EffectiveNetworkSecurityGroup) GetNetworkSecurityGroup() (rv *SubResource) {
+	if e != nil {
+		return e.NetworkSecurityGroup
+	}
+	return
+}
+
+func (e *EffectiveNetworkSecurityGroup) GetTagMap() (rv string) {
+	if e != nil && e.TagMap != nil {
+		return *e.TagMap
+	}
+	return
+}
+
 // EffectiveNetworkSecurityGroupAssociation - The effective network security group association.
 type EffectiveNetworkSecurityGroupAssociation struct {
 	// The ID of the network interface if assigned.
@@ -4392,6 +12435,27 @@ type EffectiveNetworkSecurityGroupAssociation struct {
 	Subnet *SubResource
 }
 
+func (e *EffectiveNetworkSecurityGroupAssociation) GetNetworkInterface() (rv *SubResource) {
+	if e != nil {
+		return e.NetworkInterface
+	}
+	return
+}
+
+func (e *EffectiveNetworkSecurityGroupAssociation) GetNetworkManager() (rv *SubResource) {
+	if e != nil {
+		return e.NetworkManager
+	}
+	return
+}
+
+func (e *EffectiveNetworkSecurityGroupAssociation) GetSubnet() (rv *SubResource) {
+	if e != nil {
+		return e.Subnet
+	}
+	return
+}
+
 // EffectiveNetworkSecurityGroupListResult - Response for list effective network security groups API service call.
 type EffectiveNetworkSecurityGroupListResult struct {
 	// A list of effective network security groups.
@@ -4399,6 +12463,20 @@ type EffectiveNetworkSecurityGroupListResult struct {
 
 	// READ-ONLY; The URL to get the next set of results.
 	NextLink *string
+}
+
+func (e *EffectiveNetworkSecurityGroupListResult) GetValue() (rv []*EffectiveNetworkSecurityGroup) {
+	if e != nil {
+		return e.Value
+	}
+	return
+}
+
+func (e *EffectiveNetworkSecurityGroupListResult) GetNextLink() (rv string) {
+	if e != nil && e.NextLink != nil {
+		return *e.NextLink
+	}
+	return
 }
 
 // EffectiveNetworkSecurityRule - Effective network security rules.
@@ -4453,6 +12531,111 @@ type EffectiveNetworkSecurityRule struct {
 	SourcePortRanges []*string
 }
 
+func (e *EffectiveNetworkSecurityRule) GetAccess() (rv *SecurityRuleAccess) {
+	if e != nil {
+		return e.Access
+	}
+	return
+}
+
+func (e *EffectiveNetworkSecurityRule) GetDestinationAddressPrefix() (rv string) {
+	if e != nil && e.DestinationAddressPrefix != nil {
+		return *e.DestinationAddressPrefix
+	}
+	return
+}
+
+func (e *EffectiveNetworkSecurityRule) GetDestinationAddressPrefixes() (rv []*string) {
+	if e != nil {
+		return e.DestinationAddressPrefixes
+	}
+	return
+}
+
+func (e *EffectiveNetworkSecurityRule) GetDestinationPortRange() (rv string) {
+	if e != nil && e.DestinationPortRange != nil {
+		return *e.DestinationPortRange
+	}
+	return
+}
+
+func (e *EffectiveNetworkSecurityRule) GetDestinationPortRanges() (rv []*string) {
+	if e != nil {
+		return e.DestinationPortRanges
+	}
+	return
+}
+
+func (e *EffectiveNetworkSecurityRule) GetDirection() (rv *SecurityRuleDirection) {
+	if e != nil {
+		return e.Direction
+	}
+	return
+}
+
+func (e *EffectiveNetworkSecurityRule) GetExpandedDestinationAddressPrefix() (rv []*string) {
+	if e != nil {
+		return e.ExpandedDestinationAddressPrefix
+	}
+	return
+}
+
+func (e *EffectiveNetworkSecurityRule) GetExpandedSourceAddressPrefix() (rv []*string) {
+	if e != nil {
+		return e.ExpandedSourceAddressPrefix
+	}
+	return
+}
+
+func (e *EffectiveNetworkSecurityRule) GetName() (rv string) {
+	if e != nil && e.Name != nil {
+		return *e.Name
+	}
+	return
+}
+
+func (e *EffectiveNetworkSecurityRule) GetPriority() (rv int32) {
+	if e != nil && e.Priority != nil {
+		return *e.Priority
+	}
+	return
+}
+
+func (e *EffectiveNetworkSecurityRule) GetProtocol() (rv *EffectiveSecurityRuleProtocol) {
+	if e != nil {
+		return e.Protocol
+	}
+	return
+}
+
+func (e *EffectiveNetworkSecurityRule) GetSourceAddressPrefix() (rv string) {
+	if e != nil && e.SourceAddressPrefix != nil {
+		return *e.SourceAddressPrefix
+	}
+	return
+}
+
+func (e *EffectiveNetworkSecurityRule) GetSourceAddressPrefixes() (rv []*string) {
+	if e != nil {
+		return e.SourceAddressPrefixes
+	}
+	return
+}
+
+func (e *EffectiveNetworkSecurityRule) GetSourcePortRange() (rv string) {
+	if e != nil && e.SourcePortRange != nil {
+		return *e.SourcePortRange
+	}
+	return
+}
+
+func (e *EffectiveNetworkSecurityRule) GetSourcePortRanges() (rv []*string) {
+	if e != nil {
+		return e.SourcePortRanges
+	}
+	return
+}
+
 // EffectiveRoute - Effective Route.
 type EffectiveRoute struct {
 	// The address prefixes of the effective routes in CIDR notation.
@@ -4477,6 +12660,55 @@ type EffectiveRoute struct {
 	State *EffectiveRouteState
 }
 
+func (e *EffectiveRoute) GetAddressPrefix() (rv []*string) {
+	if e != nil {
+		return e.AddressPrefix
+	}
+	return
+}
+
+func (e *EffectiveRoute) GetDisableBgpRoutePropagation() (rv bool) {
+	if e != nil && e.DisableBgpRoutePropagation != nil {
+		return *e.DisableBgpRoutePropagation
+	}
+	return
+}
+
+func (e *EffectiveRoute) GetName() (rv string) {
+	if e != nil && e.Name != nil {
+		return *e.Name
+	}
+	return
+}
+
+func (e *EffectiveRoute) GetNextHopIPAddress() (rv []*string) {
+	if e != nil {
+		return e.NextHopIPAddress
+	}
+	return
+}
+
+func (e *EffectiveRoute) GetNextHopType() (rv *RouteNextHopType) {
+	if e != nil {
+		return e.NextHopType
+	}
+	return
+}
+
+func (e *EffectiveRoute) GetSource() (rv *EffectiveRouteSource) {
+	if e != nil {
+		return e.Source
+	}
+	return
+}
+
+func (e *EffectiveRoute) GetState() (rv *EffectiveRouteState) {
+	if e != nil {
+		return e.State
+	}
+	return
+}
+
 // EffectiveRouteListResult - Response for list effective route API service call.
 type EffectiveRouteListResult struct {
 	// A list of effective routes.
@@ -4484,6 +12716,20 @@ type EffectiveRouteListResult struct {
 
 	// READ-ONLY; The URL to get the next set of results.
 	NextLink *string
+}
+
+func (e *EffectiveRouteListResult) GetValue() (rv []*EffectiveRoute) {
+	if e != nil {
+		return e.Value
+	}
+	return
+}
+
+func (e *EffectiveRouteListResult) GetNextLink() (rv string) {
+	if e != nil && e.NextLink != nil {
+		return *e.NextLink
+	}
+	return
 }
 
 // EffectiveRoutesParameters - The parameters specifying the resource whose effective routes are being requested.
@@ -4494,6 +12740,20 @@ type EffectiveRoutesParameters struct {
 	// The type of the specified resource like RouteTable, ExpressRouteConnection, HubVirtualNetworkConnection, VpnConnection
 	// and P2SConnection.
 	VirtualWanResourceType *string
+}
+
+func (e *EffectiveRoutesParameters) GetResourceID() (rv string) {
+	if e != nil && e.ResourceID != nil {
+		return *e.ResourceID
+	}
+	return
+}
+
+func (e *EffectiveRoutesParameters) GetVirtualWanResourceType() (rv string) {
+	if e != nil && e.VirtualWanResourceType != nil {
+		return *e.VirtualWanResourceType
+	}
+	return
 }
 
 // EffectiveSecurityAdminRule - Network admin rule.
@@ -4520,6 +12780,55 @@ type EffectiveSecurityAdminRule struct {
 	RuleGroups []*ConfigurationGroup
 }
 
+func (e *EffectiveSecurityAdminRule) GetKind() (rv *EffectiveAdminRuleKind) {
+	if e != nil {
+		return e.Kind
+	}
+	return
+}
+
+func (e *EffectiveSecurityAdminRule) GetConfigurationDescription() (rv string) {
+	if e != nil && e.ConfigurationDescription != nil {
+		return *e.ConfigurationDescription
+	}
+	return
+}
+
+func (e *EffectiveSecurityAdminRule) GetID() (rv string) {
+	if e != nil && e.ID != nil {
+		return *e.ID
+	}
+	return
+}
+
+func (e *EffectiveSecurityAdminRule) GetProperties() (rv *AdminPropertiesFormat) {
+	if e != nil {
+		return e.Properties
+	}
+	return
+}
+
+func (e *EffectiveSecurityAdminRule) GetRuleCollectionAppliesToGroups() (rv []*ManagerSecurityGroupItem) {
+	if e != nil {
+		return e.RuleCollectionAppliesToGroups
+	}
+	return
+}
+
+func (e *EffectiveSecurityAdminRule) GetRuleCollectionDescription() (rv string) {
+	if e != nil && e.RuleCollectionDescription != nil {
+		return *e.RuleCollectionDescription
+	}
+	return
+}
+
+func (e *EffectiveSecurityAdminRule) GetRuleGroups() (rv []*ConfigurationGroup) {
+	if e != nil {
+		return e.RuleGroups
+	}
+	return
+}
+
 // GetEffectiveBaseSecurityAdminRule implements the EffectiveBaseSecurityAdminRuleClassification interface for type EffectiveSecurityAdminRule.
 func (e *EffectiveSecurityAdminRule) GetEffectiveBaseSecurityAdminRule() *EffectiveBaseSecurityAdminRule {
 	return &EffectiveBaseSecurityAdminRule{
@@ -4544,6 +12853,27 @@ type EndpointServiceResult struct {
 	Type *string
 }
 
+func (e *EndpointServiceResult) GetID() (rv string) {
+	if e != nil && e.ID != nil {
+		return *e.ID
+	}
+	return
+}
+
+func (e *EndpointServiceResult) GetName() (rv string) {
+	if e != nil && e.Name != nil {
+		return *e.Name
+	}
+	return
+}
+
+func (e *EndpointServiceResult) GetType() (rv string) {
+	if e != nil && e.Type != nil {
+		return *e.Type
+	}
+	return
+}
+
 // EndpointServicesListResult - Response for the ListAvailableEndpointServices API service call.
 type EndpointServicesListResult struct {
 	// The URL to get the next set of results.
@@ -4551,6 +12881,20 @@ type EndpointServicesListResult struct {
 
 	// List of available endpoint services in a region.
 	Value []*EndpointServiceResult
+}
+
+func (e *EndpointServicesListResult) GetNextLink() (rv string) {
+	if e != nil && e.NextLink != nil {
+		return *e.NextLink
+	}
+	return
+}
+
+func (e *EndpointServicesListResult) GetValue() (rv []*EndpointServiceResult) {
+	if e != nil {
+		return e.Value
+	}
+	return
 }
 
 // EvaluatedNetworkSecurityGroup - Results of network security group evaluation.
@@ -4568,10 +12912,45 @@ type EvaluatedNetworkSecurityGroup struct {
 	RulesEvaluationResult []*SecurityRulesEvaluationResult
 }
 
+func (e *EvaluatedNetworkSecurityGroup) GetAppliedTo() (rv string) {
+	if e != nil && e.AppliedTo != nil {
+		return *e.AppliedTo
+	}
+	return
+}
+
+func (e *EvaluatedNetworkSecurityGroup) GetMatchedRule() (rv *MatchedRule) {
+	if e != nil {
+		return e.MatchedRule
+	}
+	return
+}
+
+func (e *EvaluatedNetworkSecurityGroup) GetNetworkSecurityGroupID() (rv string) {
+	if e != nil && e.NetworkSecurityGroupID != nil {
+		return *e.NetworkSecurityGroupID
+	}
+	return
+}
+
+func (e *EvaluatedNetworkSecurityGroup) GetRulesEvaluationResult() (rv []*SecurityRulesEvaluationResult) {
+	if e != nil {
+		return e.RulesEvaluationResult
+	}
+	return
+}
+
 // ExclusionManagedRule - Defines a managed rule to use for exclusion.
 type ExclusionManagedRule struct {
 	// REQUIRED; Identifier for the managed rule.
 	RuleID *string
+}
+
+func (e *ExclusionManagedRule) GetRuleID() (rv string) {
+	if e != nil && e.RuleID != nil {
+		return *e.RuleID
+	}
+	return
 }
 
 // ExclusionManagedRuleGroup - Defines a managed rule group to use for exclusion.
@@ -4581,6 +12960,20 @@ type ExclusionManagedRuleGroup struct {
 
 	// List of rules that will be excluded. If none specified, all rules in the group will be excluded.
 	Rules []*ExclusionManagedRule
+}
+
+func (e *ExclusionManagedRuleGroup) GetRuleGroupName() (rv string) {
+	if e != nil && e.RuleGroupName != nil {
+		return *e.RuleGroupName
+	}
+	return
+}
+
+func (e *ExclusionManagedRuleGroup) GetRules() (rv []*ExclusionManagedRule) {
+	if e != nil {
+		return e.Rules
+	}
+	return
 }
 
 // ExclusionManagedRuleSet - Defines a managed rule set for Exclusions.
@@ -4593,6 +12986,27 @@ type ExclusionManagedRuleSet struct {
 
 	// Defines the rule groups to apply to the rule set.
 	RuleGroups []*ExclusionManagedRuleGroup
+}
+
+func (e *ExclusionManagedRuleSet) GetRuleSetType() (rv string) {
+	if e != nil && e.RuleSetType != nil {
+		return *e.RuleSetType
+	}
+	return
+}
+
+func (e *ExclusionManagedRuleSet) GetRuleSetVersion() (rv string) {
+	if e != nil && e.RuleSetVersion != nil {
+		return *e.RuleSetVersion
+	}
+	return
+}
+
+func (e *ExclusionManagedRuleSet) GetRuleGroups() (rv []*ExclusionManagedRuleGroup) {
+	if e != nil {
+		return e.RuleGroups
+	}
+	return
 }
 
 // ExplicitProxy - Explicit Proxy Settings in Firewall Policy.
@@ -4614,6 +13028,48 @@ type ExplicitProxy struct {
 
 	// Port number for firewall to serve PAC file.
 	PacFilePort *int32
+}
+
+func (e *ExplicitProxy) GetEnableExplicitProxy() (rv bool) {
+	if e != nil && e.EnableExplicitProxy != nil {
+		return *e.EnableExplicitProxy
+	}
+	return
+}
+
+func (e *ExplicitProxy) GetEnablePacFile() (rv bool) {
+	if e != nil && e.EnablePacFile != nil {
+		return *e.EnablePacFile
+	}
+	return
+}
+
+func (e *ExplicitProxy) GetHTTPPort() (rv int32) {
+	if e != nil && e.HTTPPort != nil {
+		return *e.HTTPPort
+	}
+	return
+}
+
+func (e *ExplicitProxy) GetHTTPSPort() (rv int32) {
+	if e != nil && e.HTTPSPort != nil {
+		return *e.HTTPSPort
+	}
+	return
+}
+
+func (e *ExplicitProxy) GetPacFile() (rv string) {
+	if e != nil && e.PacFile != nil {
+		return *e.PacFile
+	}
+	return
+}
+
+func (e *ExplicitProxy) GetPacFilePort() (rv int32) {
+	if e != nil && e.PacFilePort != nil {
+		return *e.PacFilePort
+	}
+	return
 }
 
 // ExpressRouteCircuit resource.
@@ -4643,6 +13099,62 @@ type ExpressRouteCircuit struct {
 	Type *string
 }
 
+func (e *ExpressRouteCircuit) GetID() (rv string) {
+	if e != nil && e.ID != nil {
+		return *e.ID
+	}
+	return
+}
+
+func (e *ExpressRouteCircuit) GetLocation() (rv string) {
+	if e != nil && e.Location != nil {
+		return *e.Location
+	}
+	return
+}
+
+func (e *ExpressRouteCircuit) GetProperties() (rv *ExpressRouteCircuitPropertiesFormat) {
+	if e != nil {
+		return e.Properties
+	}
+	return
+}
+
+func (e *ExpressRouteCircuit) GetSKU() (rv *ExpressRouteCircuitSKU) {
+	if e != nil {
+		return e.SKU
+	}
+	return
+}
+
+func (e *ExpressRouteCircuit) GetTags() (rv map[string]*string) {
+	if e != nil {
+		return e.Tags
+	}
+	return
+}
+
+func (e *ExpressRouteCircuit) GetEtag() (rv string) {
+	if e != nil && e.Etag != nil {
+		return *e.Etag
+	}
+	return
+}
+
+func (e *ExpressRouteCircuit) GetName() (rv string) {
+	if e != nil && e.Name != nil {
+		return *e.Name
+	}
+	return
+}
+
+func (e *ExpressRouteCircuit) GetType() (rv string) {
+	if e != nil && e.Type != nil {
+		return *e.Type
+	}
+	return
+}
+
 // ExpressRouteCircuitArpTable - The ARP table associated with the ExpressRouteCircuit.
 type ExpressRouteCircuitArpTable struct {
 	// Entry age in minutes.
@@ -4656,6 +13168,34 @@ type ExpressRouteCircuitArpTable struct {
 
 	// The MAC address.
 	MacAddress *string
+}
+
+func (e *ExpressRouteCircuitArpTable) GetAge() (rv int32) {
+	if e != nil && e.Age != nil {
+		return *e.Age
+	}
+	return
+}
+
+func (e *ExpressRouteCircuitArpTable) GetIPAddress() (rv string) {
+	if e != nil && e.IPAddress != nil {
+		return *e.IPAddress
+	}
+	return
+}
+
+func (e *ExpressRouteCircuitArpTable) GetInterface() (rv string) {
+	if e != nil && e.Interface != nil {
+		return *e.Interface
+	}
+	return
+}
+
+func (e *ExpressRouteCircuitArpTable) GetMacAddress() (rv string) {
+	if e != nil && e.MacAddress != nil {
+		return *e.MacAddress
+	}
+	return
 }
 
 // ExpressRouteCircuitAuthorization - Authorization in an ExpressRouteCircuit resource.
@@ -4676,6 +13216,41 @@ type ExpressRouteCircuitAuthorization struct {
 	Type *string
 }
 
+func (e *ExpressRouteCircuitAuthorization) GetID() (rv string) {
+	if e != nil && e.ID != nil {
+		return *e.ID
+	}
+	return
+}
+
+func (e *ExpressRouteCircuitAuthorization) GetName() (rv string) {
+	if e != nil && e.Name != nil {
+		return *e.Name
+	}
+	return
+}
+
+func (e *ExpressRouteCircuitAuthorization) GetProperties() (rv *AuthorizationPropertiesFormat) {
+	if e != nil {
+		return e.Properties
+	}
+	return
+}
+
+func (e *ExpressRouteCircuitAuthorization) GetEtag() (rv string) {
+	if e != nil && e.Etag != nil {
+		return *e.Etag
+	}
+	return
+}
+
+func (e *ExpressRouteCircuitAuthorization) GetType() (rv string) {
+	if e != nil && e.Type != nil {
+		return *e.Type
+	}
+	return
+}
+
 // ExpressRouteCircuitConnection - Express Route Circuit Connection in an ExpressRouteCircuitPeering resource.
 type ExpressRouteCircuitConnection struct {
 	// Resource ID.
@@ -4694,6 +13269,41 @@ type ExpressRouteCircuitConnection struct {
 	Type *string
 }
 
+func (e *ExpressRouteCircuitConnection) GetID() (rv string) {
+	if e != nil && e.ID != nil {
+		return *e.ID
+	}
+	return
+}
+
+func (e *ExpressRouteCircuitConnection) GetName() (rv string) {
+	if e != nil && e.Name != nil {
+		return *e.Name
+	}
+	return
+}
+
+func (e *ExpressRouteCircuitConnection) GetProperties() (rv *ExpressRouteCircuitConnectionPropertiesFormat) {
+	if e != nil {
+		return e.Properties
+	}
+	return
+}
+
+func (e *ExpressRouteCircuitConnection) GetEtag() (rv string) {
+	if e != nil && e.Etag != nil {
+		return *e.Etag
+	}
+	return
+}
+
+func (e *ExpressRouteCircuitConnection) GetType() (rv string) {
+	if e != nil && e.Type != nil {
+		return *e.Type
+	}
+	return
+}
+
 // ExpressRouteCircuitConnectionListResult - Response for ListConnections API service call retrieves all global reach connections
 // that belongs to a Private Peering for an ExpressRouteCircuit.
 type ExpressRouteCircuitConnectionListResult struct {
@@ -4702,6 +13312,20 @@ type ExpressRouteCircuitConnectionListResult struct {
 
 	// The global reach connection associated with Private Peering in an ExpressRoute Circuit.
 	Value []*ExpressRouteCircuitConnection
+}
+
+func (e *ExpressRouteCircuitConnectionListResult) GetNextLink() (rv string) {
+	if e != nil && e.NextLink != nil {
+		return *e.NextLink
+	}
+	return
+}
+
+func (e *ExpressRouteCircuitConnectionListResult) GetValue() (rv []*ExpressRouteCircuitConnection) {
+	if e != nil {
+		return e.Value
+	}
+	return
 }
 
 // ExpressRouteCircuitConnectionPropertiesFormat - Properties of the express route circuit connection.
@@ -4728,6 +13352,55 @@ type ExpressRouteCircuitConnectionPropertiesFormat struct {
 	ProvisioningState *ProvisioningState
 }
 
+func (e *ExpressRouteCircuitConnectionPropertiesFormat) GetAddressPrefix() (rv string) {
+	if e != nil && e.AddressPrefix != nil {
+		return *e.AddressPrefix
+	}
+	return
+}
+
+func (e *ExpressRouteCircuitConnectionPropertiesFormat) GetAuthorizationKey() (rv string) {
+	if e != nil && e.AuthorizationKey != nil {
+		return *e.AuthorizationKey
+	}
+	return
+}
+
+func (e *ExpressRouteCircuitConnectionPropertiesFormat) GetExpressRouteCircuitPeering() (rv *SubResource) {
+	if e != nil {
+		return e.ExpressRouteCircuitPeering
+	}
+	return
+}
+
+func (e *ExpressRouteCircuitConnectionPropertiesFormat) GetIPv6CircuitConnectionConfig() (rv *IPv6CircuitConnectionConfig) {
+	if e != nil {
+		return e.IPv6CircuitConnectionConfig
+	}
+	return
+}
+
+func (e *ExpressRouteCircuitConnectionPropertiesFormat) GetPeerExpressRouteCircuitPeering() (rv *SubResource) {
+	if e != nil {
+		return e.PeerExpressRouteCircuitPeering
+	}
+	return
+}
+
+func (e *ExpressRouteCircuitConnectionPropertiesFormat) GetCircuitConnectionStatus() (rv *CircuitConnectionStatus) {
+	if e != nil {
+		return e.CircuitConnectionStatus
+	}
+	return
+}
+
+func (e *ExpressRouteCircuitConnectionPropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if e != nil {
+		return e.ProvisioningState
+	}
+	return
+}
+
 // ExpressRouteCircuitListResult - Response for ListExpressRouteCircuit API service call.
 type ExpressRouteCircuitListResult struct {
 	// The URL to get the next set of results.
@@ -4735,6 +13408,20 @@ type ExpressRouteCircuitListResult struct {
 
 	// A list of ExpressRouteCircuits in a resource group.
 	Value []*ExpressRouteCircuit
+}
+
+func (e *ExpressRouteCircuitListResult) GetNextLink() (rv string) {
+	if e != nil && e.NextLink != nil {
+		return *e.NextLink
+	}
+	return
+}
+
+func (e *ExpressRouteCircuitListResult) GetValue() (rv []*ExpressRouteCircuit) {
+	if e != nil {
+		return e.Value
+	}
+	return
 }
 
 // ExpressRouteCircuitPeering - Peering in an ExpressRouteCircuit resource.
@@ -4753,6 +13440,41 @@ type ExpressRouteCircuitPeering struct {
 
 	// READ-ONLY; Type of the resource.
 	Type *string
+}
+
+func (e *ExpressRouteCircuitPeering) GetID() (rv string) {
+	if e != nil && e.ID != nil {
+		return *e.ID
+	}
+	return
+}
+
+func (e *ExpressRouteCircuitPeering) GetName() (rv string) {
+	if e != nil && e.Name != nil {
+		return *e.Name
+	}
+	return
+}
+
+func (e *ExpressRouteCircuitPeering) GetProperties() (rv *ExpressRouteCircuitPeeringPropertiesFormat) {
+	if e != nil {
+		return e.Properties
+	}
+	return
+}
+
+func (e *ExpressRouteCircuitPeering) GetEtag() (rv string) {
+	if e != nil && e.Etag != nil {
+		return *e.Etag
+	}
+	return
+}
+
+func (e *ExpressRouteCircuitPeering) GetType() (rv string) {
+	if e != nil && e.Type != nil {
+		return *e.Type
+	}
+	return
 }
 
 // ExpressRouteCircuitPeeringConfig - Specifies the peering configuration.
@@ -4776,10 +13498,59 @@ type ExpressRouteCircuitPeeringConfig struct {
 	AdvertisedPublicPrefixesState *ExpressRouteCircuitPeeringAdvertisedPublicPrefixState
 }
 
+func (e *ExpressRouteCircuitPeeringConfig) GetAdvertisedCommunities() (rv []*string) {
+	if e != nil {
+		return e.AdvertisedCommunities
+	}
+	return
+}
+
+func (e *ExpressRouteCircuitPeeringConfig) GetAdvertisedPublicPrefixes() (rv []*string) {
+	if e != nil {
+		return e.AdvertisedPublicPrefixes
+	}
+	return
+}
+
+func (e *ExpressRouteCircuitPeeringConfig) GetCustomerASN() (rv int32) {
+	if e != nil && e.CustomerASN != nil {
+		return *e.CustomerASN
+	}
+	return
+}
+
+func (e *ExpressRouteCircuitPeeringConfig) GetLegacyMode() (rv int32) {
+	if e != nil && e.LegacyMode != nil {
+		return *e.LegacyMode
+	}
+	return
+}
+
+func (e *ExpressRouteCircuitPeeringConfig) GetRoutingRegistryName() (rv string) {
+	if e != nil && e.RoutingRegistryName != nil {
+		return *e.RoutingRegistryName
+	}
+	return
+}
+
+func (e *ExpressRouteCircuitPeeringConfig) GetAdvertisedPublicPrefixesState() (rv *ExpressRouteCircuitPeeringAdvertisedPublicPrefixState) {
+	if e != nil {
+		return e.AdvertisedPublicPrefixesState
+	}
+	return
+}
+
 // ExpressRouteCircuitPeeringID - ExpressRoute circuit peering identifier.
 type ExpressRouteCircuitPeeringID struct {
 	// The ID of the ExpressRoute circuit peering.
 	ID *string
+}
+
+func (e *ExpressRouteCircuitPeeringID) GetID() (rv string) {
+	if e != nil && e.ID != nil {
+		return *e.ID
+	}
+	return
 }
 
 // ExpressRouteCircuitPeeringListResult - Response for ListPeering API service call retrieves all peerings that belong to
@@ -4790,6 +13561,20 @@ type ExpressRouteCircuitPeeringListResult struct {
 
 	// The peerings in an express route circuit.
 	Value []*ExpressRouteCircuitPeering
+}
+
+func (e *ExpressRouteCircuitPeeringListResult) GetNextLink() (rv string) {
+	if e != nil && e.NextLink != nil {
+		return *e.NextLink
+	}
+	return
+}
+
+func (e *ExpressRouteCircuitPeeringListResult) GetValue() (rv []*ExpressRouteCircuitPeering) {
+	if e != nil {
+		return e.Value
+	}
+	return
 }
 
 // ExpressRouteCircuitPeeringPropertiesFormat - Properties of the express route circuit peering.
@@ -4855,6 +13640,146 @@ type ExpressRouteCircuitPeeringPropertiesFormat struct {
 	ProvisioningState *ProvisioningState
 }
 
+func (e *ExpressRouteCircuitPeeringPropertiesFormat) GetAzureASN() (rv int32) {
+	if e != nil && e.AzureASN != nil {
+		return *e.AzureASN
+	}
+	return
+}
+
+func (e *ExpressRouteCircuitPeeringPropertiesFormat) GetConnections() (rv []*ExpressRouteCircuitConnection) {
+	if e != nil {
+		return e.Connections
+	}
+	return
+}
+
+func (e *ExpressRouteCircuitPeeringPropertiesFormat) GetExpressRouteConnection() (rv *ExpressRouteConnectionID) {
+	if e != nil {
+		return e.ExpressRouteConnection
+	}
+	return
+}
+
+func (e *ExpressRouteCircuitPeeringPropertiesFormat) GetGatewayManagerEtag() (rv string) {
+	if e != nil && e.GatewayManagerEtag != nil {
+		return *e.GatewayManagerEtag
+	}
+	return
+}
+
+func (e *ExpressRouteCircuitPeeringPropertiesFormat) GetIPv6PeeringConfig() (rv *IPv6ExpressRouteCircuitPeeringConfig) {
+	if e != nil {
+		return e.IPv6PeeringConfig
+	}
+	return
+}
+
+func (e *ExpressRouteCircuitPeeringPropertiesFormat) GetMicrosoftPeeringConfig() (rv *ExpressRouteCircuitPeeringConfig) {
+	if e != nil {
+		return e.MicrosoftPeeringConfig
+	}
+	return
+}
+
+func (e *ExpressRouteCircuitPeeringPropertiesFormat) GetPeerASN() (rv int64) {
+	if e != nil && e.PeerASN != nil {
+		return *e.PeerASN
+	}
+	return
+}
+
+func (e *ExpressRouteCircuitPeeringPropertiesFormat) GetPeeringType() (rv *ExpressRoutePeeringType) {
+	if e != nil {
+		return e.PeeringType
+	}
+	return
+}
+
+func (e *ExpressRouteCircuitPeeringPropertiesFormat) GetPrimaryAzurePort() (rv string) {
+	if e != nil && e.PrimaryAzurePort != nil {
+		return *e.PrimaryAzurePort
+	}
+	return
+}
+
+func (e *ExpressRouteCircuitPeeringPropertiesFormat) GetPrimaryPeerAddressPrefix() (rv string) {
+	if e != nil && e.PrimaryPeerAddressPrefix != nil {
+		return *e.PrimaryPeerAddressPrefix
+	}
+	return
+}
+
+func (e *ExpressRouteCircuitPeeringPropertiesFormat) GetRouteFilter() (rv *SubResource) {
+	if e != nil {
+		return e.RouteFilter
+	}
+	return
+}
+
+func (e *ExpressRouteCircuitPeeringPropertiesFormat) GetSecondaryAzurePort() (rv string) {
+	if e != nil && e.SecondaryAzurePort != nil {
+		return *e.SecondaryAzurePort
+	}
+	return
+}
+
+func (e *ExpressRouteCircuitPeeringPropertiesFormat) GetSecondaryPeerAddressPrefix() (rv string) {
+	if e != nil && e.SecondaryPeerAddressPrefix != nil {
+		return *e.SecondaryPeerAddressPrefix
+	}
+	return
+}
+
+func (e *ExpressRouteCircuitPeeringPropertiesFormat) GetSharedKey() (rv string) {
+	if e != nil && e.SharedKey != nil {
+		return *e.SharedKey
+	}
+	return
+}
+
+func (e *ExpressRouteCircuitPeeringPropertiesFormat) GetState() (rv *ExpressRoutePeeringState) {
+	if e != nil {
+		return e.State
+	}
+	return
+}
+
+func (e *ExpressRouteCircuitPeeringPropertiesFormat) GetStats() (rv *ExpressRouteCircuitStats) {
+	if e != nil {
+		return e.Stats
+	}
+	return
+}
+
+func (e *ExpressRouteCircuitPeeringPropertiesFormat) GetVlanID() (rv int32) {
+	if e != nil && e.VlanID != nil {
+		return *e.VlanID
+	}
+	return
+}
+
+func (e *ExpressRouteCircuitPeeringPropertiesFormat) GetLastModifiedBy() (rv string) {
+	if e != nil && e.LastModifiedBy != nil {
+		return *e.LastModifiedBy
+	}
+	return
+}
+
+func (e *ExpressRouteCircuitPeeringPropertiesFormat) GetPeeredConnections() (rv []*PeerExpressRouteCircuitConnection) {
+	if e != nil {
+		return e.PeeredConnections
+	}
+	return
+}
+
+func (e *ExpressRouteCircuitPeeringPropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if e != nil {
+		return e.ProvisioningState
+	}
+	return
+}
+
 // ExpressRouteCircuitPropertiesFormat - Properties of ExpressRouteCircuit.
 type ExpressRouteCircuitPropertiesFormat struct {
 	// Allow classic operations.
@@ -4906,10 +13831,129 @@ type ExpressRouteCircuitPropertiesFormat struct {
 	Stag *int32
 }
 
+func (e *ExpressRouteCircuitPropertiesFormat) GetAllowClassicOperations() (rv bool) {
+	if e != nil && e.AllowClassicOperations != nil {
+		return *e.AllowClassicOperations
+	}
+	return
+}
+
+func (e *ExpressRouteCircuitPropertiesFormat) GetAuthorizationKey() (rv string) {
+	if e != nil && e.AuthorizationKey != nil {
+		return *e.AuthorizationKey
+	}
+	return
+}
+
+func (e *ExpressRouteCircuitPropertiesFormat) GetAuthorizations() (rv []*ExpressRouteCircuitAuthorization) {
+	if e != nil {
+		return e.Authorizations
+	}
+	return
+}
+
+func (e *ExpressRouteCircuitPropertiesFormat) GetBandwidthInGbps() (rv float32) {
+	if e != nil && e.BandwidthInGbps != nil {
+		return *e.BandwidthInGbps
+	}
+	return
+}
+
+func (e *ExpressRouteCircuitPropertiesFormat) GetCircuitProvisioningState() (rv string) {
+	if e != nil && e.CircuitProvisioningState != nil {
+		return *e.CircuitProvisioningState
+	}
+	return
+}
+
+func (e *ExpressRouteCircuitPropertiesFormat) GetExpressRoutePort() (rv *SubResource) {
+	if e != nil {
+		return e.ExpressRoutePort
+	}
+	return
+}
+
+func (e *ExpressRouteCircuitPropertiesFormat) GetGatewayManagerEtag() (rv string) {
+	if e != nil && e.GatewayManagerEtag != nil {
+		return *e.GatewayManagerEtag
+	}
+	return
+}
+
+func (e *ExpressRouteCircuitPropertiesFormat) GetGlobalReachEnabled() (rv bool) {
+	if e != nil && e.GlobalReachEnabled != nil {
+		return *e.GlobalReachEnabled
+	}
+	return
+}
+
+func (e *ExpressRouteCircuitPropertiesFormat) GetPeerings() (rv []*ExpressRouteCircuitPeering) {
+	if e != nil {
+		return e.Peerings
+	}
+	return
+}
+
+func (e *ExpressRouteCircuitPropertiesFormat) GetServiceKey() (rv string) {
+	if e != nil && e.ServiceKey != nil {
+		return *e.ServiceKey
+	}
+	return
+}
+
+func (e *ExpressRouteCircuitPropertiesFormat) GetServiceProviderNotes() (rv string) {
+	if e != nil && e.ServiceProviderNotes != nil {
+		return *e.ServiceProviderNotes
+	}
+	return
+}
+
+func (e *ExpressRouteCircuitPropertiesFormat) GetServiceProviderProperties() (rv *ExpressRouteCircuitServiceProviderProperties) {
+	if e != nil {
+		return e.ServiceProviderProperties
+	}
+	return
+}
+
+func (e *ExpressRouteCircuitPropertiesFormat) GetServiceProviderProvisioningState() (rv *ServiceProviderProvisioningState) {
+	if e != nil {
+		return e.ServiceProviderProvisioningState
+	}
+	return
+}
+
+func (e *ExpressRouteCircuitPropertiesFormat) GetAuthorizationStatus() (rv string) {
+	if e != nil && e.AuthorizationStatus != nil {
+		return *e.AuthorizationStatus
+	}
+	return
+}
+
+func (e *ExpressRouteCircuitPropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if e != nil {
+		return e.ProvisioningState
+	}
+	return
+}
+
+func (e *ExpressRouteCircuitPropertiesFormat) GetStag() (rv int32) {
+	if e != nil && e.Stag != nil {
+		return *e.Stag
+	}
+	return
+}
+
 // ExpressRouteCircuitReference - Reference to an express route circuit.
 type ExpressRouteCircuitReference struct {
 	// Corresponding Express Route Circuit Id.
 	ID *string
+}
+
+func (e *ExpressRouteCircuitReference) GetID() (rv string) {
+	if e != nil && e.ID != nil {
+		return *e.ID
+	}
+	return
 }
 
 // ExpressRouteCircuitRoutesTable - The routes table associated with the ExpressRouteCircuit.
@@ -4928,6 +13972,41 @@ type ExpressRouteCircuitRoutesTable struct {
 
 	// Route Weight.
 	Weight *int32
+}
+
+func (e *ExpressRouteCircuitRoutesTable) GetLocPrf() (rv string) {
+	if e != nil && e.LocPrf != nil {
+		return *e.LocPrf
+	}
+	return
+}
+
+func (e *ExpressRouteCircuitRoutesTable) GetNetwork() (rv string) {
+	if e != nil && e.Network != nil {
+		return *e.Network
+	}
+	return
+}
+
+func (e *ExpressRouteCircuitRoutesTable) GetNextHop() (rv string) {
+	if e != nil && e.NextHop != nil {
+		return *e.NextHop
+	}
+	return
+}
+
+func (e *ExpressRouteCircuitRoutesTable) GetPath() (rv string) {
+	if e != nil && e.Path != nil {
+		return *e.Path
+	}
+	return
+}
+
+func (e *ExpressRouteCircuitRoutesTable) GetWeight() (rv int32) {
+	if e != nil && e.Weight != nil {
+		return *e.Weight
+	}
+	return
 }
 
 // ExpressRouteCircuitRoutesTableSummary - The routes table associated with the ExpressRouteCircuit.
@@ -4949,6 +14028,41 @@ type ExpressRouteCircuitRoutesTableSummary struct {
 	V *int32
 }
 
+func (e *ExpressRouteCircuitRoutesTableSummary) GetAs() (rv int32) {
+	if e != nil && e.As != nil {
+		return *e.As
+	}
+	return
+}
+
+func (e *ExpressRouteCircuitRoutesTableSummary) GetNeighbor() (rv string) {
+	if e != nil && e.Neighbor != nil {
+		return *e.Neighbor
+	}
+	return
+}
+
+func (e *ExpressRouteCircuitRoutesTableSummary) GetStatePfxRcd() (rv string) {
+	if e != nil && e.StatePfxRcd != nil {
+		return *e.StatePfxRcd
+	}
+	return
+}
+
+func (e *ExpressRouteCircuitRoutesTableSummary) GetUpDown() (rv string) {
+	if e != nil && e.UpDown != nil {
+		return *e.UpDown
+	}
+	return
+}
+
+func (e *ExpressRouteCircuitRoutesTableSummary) GetV() (rv int32) {
+	if e != nil && e.V != nil {
+		return *e.V
+	}
+	return
+}
+
 // ExpressRouteCircuitSKU - Contains SKU in an ExpressRouteCircuit.
 type ExpressRouteCircuitSKU struct {
 	// The family of the SKU.
@@ -4961,6 +14075,27 @@ type ExpressRouteCircuitSKU struct {
 	Tier *ExpressRouteCircuitSKUTier
 }
 
+func (e *ExpressRouteCircuitSKU) GetFamily() (rv *ExpressRouteCircuitSKUFamily) {
+	if e != nil {
+		return e.Family
+	}
+	return
+}
+
+func (e *ExpressRouteCircuitSKU) GetName() (rv string) {
+	if e != nil && e.Name != nil {
+		return *e.Name
+	}
+	return
+}
+
+func (e *ExpressRouteCircuitSKU) GetTier() (rv *ExpressRouteCircuitSKUTier) {
+	if e != nil {
+		return e.Tier
+	}
+	return
+}
+
 // ExpressRouteCircuitServiceProviderProperties - Contains ServiceProviderProperties in an ExpressRouteCircuit.
 type ExpressRouteCircuitServiceProviderProperties struct {
 	// The BandwidthInMbps.
@@ -4971,6 +14106,27 @@ type ExpressRouteCircuitServiceProviderProperties struct {
 
 	// The serviceProviderName.
 	ServiceProviderName *string
+}
+
+func (e *ExpressRouteCircuitServiceProviderProperties) GetBandwidthInMbps() (rv int32) {
+	if e != nil && e.BandwidthInMbps != nil {
+		return *e.BandwidthInMbps
+	}
+	return
+}
+
+func (e *ExpressRouteCircuitServiceProviderProperties) GetPeeringLocation() (rv string) {
+	if e != nil && e.PeeringLocation != nil {
+		return *e.PeeringLocation
+	}
+	return
+}
+
+func (e *ExpressRouteCircuitServiceProviderProperties) GetServiceProviderName() (rv string) {
+	if e != nil && e.ServiceProviderName != nil {
+		return *e.ServiceProviderName
+	}
+	return
 }
 
 // ExpressRouteCircuitStats - Contains stats associated with the peering.
@@ -4988,6 +14144,34 @@ type ExpressRouteCircuitStats struct {
 	SecondarybytesOut *int64
 }
 
+func (e *ExpressRouteCircuitStats) GetPrimarybytesIn() (rv int64) {
+	if e != nil && e.PrimarybytesIn != nil {
+		return *e.PrimarybytesIn
+	}
+	return
+}
+
+func (e *ExpressRouteCircuitStats) GetPrimarybytesOut() (rv int64) {
+	if e != nil && e.PrimarybytesOut != nil {
+		return *e.PrimarybytesOut
+	}
+	return
+}
+
+func (e *ExpressRouteCircuitStats) GetSecondarybytesIn() (rv int64) {
+	if e != nil && e.SecondarybytesIn != nil {
+		return *e.SecondarybytesIn
+	}
+	return
+}
+
+func (e *ExpressRouteCircuitStats) GetSecondarybytesOut() (rv int64) {
+	if e != nil && e.SecondarybytesOut != nil {
+		return *e.SecondarybytesOut
+	}
+	return
+}
+
 // ExpressRouteCircuitsArpTableListResult - Response for ListArpTable associated with the Express Route Circuits API.
 type ExpressRouteCircuitsArpTableListResult struct {
 	// The URL to get the next set of results.
@@ -4995,6 +14179,20 @@ type ExpressRouteCircuitsArpTableListResult struct {
 
 	// A list of the ARP tables.
 	Value []*ExpressRouteCircuitArpTable
+}
+
+func (e *ExpressRouteCircuitsArpTableListResult) GetNextLink() (rv string) {
+	if e != nil && e.NextLink != nil {
+		return *e.NextLink
+	}
+	return
+}
+
+func (e *ExpressRouteCircuitsArpTableListResult) GetValue() (rv []*ExpressRouteCircuitArpTable) {
+	if e != nil {
+		return e.Value
+	}
+	return
 }
 
 // ExpressRouteCircuitsRoutesTableListResult - Response for ListRoutesTable associated with the Express Route Circuits API.
@@ -5006,6 +14204,20 @@ type ExpressRouteCircuitsRoutesTableListResult struct {
 	Value []*ExpressRouteCircuitRoutesTable
 }
 
+func (e *ExpressRouteCircuitsRoutesTableListResult) GetNextLink() (rv string) {
+	if e != nil && e.NextLink != nil {
+		return *e.NextLink
+	}
+	return
+}
+
+func (e *ExpressRouteCircuitsRoutesTableListResult) GetValue() (rv []*ExpressRouteCircuitRoutesTable) {
+	if e != nil {
+		return e.Value
+	}
+	return
+}
+
 // ExpressRouteCircuitsRoutesTableSummaryListResult - Response for ListRoutesTable associated with the Express Route Circuits
 // API.
 type ExpressRouteCircuitsRoutesTableSummaryListResult struct {
@@ -5014,6 +14226,20 @@ type ExpressRouteCircuitsRoutesTableSummaryListResult struct {
 
 	// A list of the routes table.
 	Value []*ExpressRouteCircuitRoutesTableSummary
+}
+
+func (e *ExpressRouteCircuitsRoutesTableSummaryListResult) GetNextLink() (rv string) {
+	if e != nil && e.NextLink != nil {
+		return *e.NextLink
+	}
+	return
+}
+
+func (e *ExpressRouteCircuitsRoutesTableSummaryListResult) GetValue() (rv []*ExpressRouteCircuitRoutesTableSummary) {
+	if e != nil {
+		return e.Value
+	}
+	return
 }
 
 // ExpressRouteConnection resource.
@@ -5028,16 +14254,51 @@ type ExpressRouteConnection struct {
 	Properties *ExpressRouteConnectionProperties
 }
 
+func (e *ExpressRouteConnection) GetName() (rv string) {
+	if e != nil && e.Name != nil {
+		return *e.Name
+	}
+	return
+}
+
+func (e *ExpressRouteConnection) GetID() (rv string) {
+	if e != nil && e.ID != nil {
+		return *e.ID
+	}
+	return
+}
+
+func (e *ExpressRouteConnection) GetProperties() (rv *ExpressRouteConnectionProperties) {
+	if e != nil {
+		return e.Properties
+	}
+	return
+}
+
 // ExpressRouteConnectionID - The ID of the ExpressRouteConnection.
 type ExpressRouteConnectionID struct {
 	// READ-ONLY; The ID of the ExpressRouteConnection.
 	ID *string
 }
 
+func (e *ExpressRouteConnectionID) GetID() (rv string) {
+	if e != nil && e.ID != nil {
+		return *e.ID
+	}
+	return
+}
+
 // ExpressRouteConnectionList - ExpressRouteConnection list.
 type ExpressRouteConnectionList struct {
 	// The list of ExpressRoute connections.
 	Value []*ExpressRouteConnection
+}
+
+func (e *ExpressRouteConnectionList) GetValue() (rv []*ExpressRouteConnection) {
+	if e != nil {
+		return e.Value
+	}
+	return
 }
 
 // ExpressRouteConnectionProperties - Properties of the ExpressRouteConnection subresource.
@@ -5068,6 +14329,62 @@ type ExpressRouteConnectionProperties struct {
 	ProvisioningState *ProvisioningState
 }
 
+func (e *ExpressRouteConnectionProperties) GetExpressRouteCircuitPeering() (rv *ExpressRouteCircuitPeeringID) {
+	if e != nil {
+		return e.ExpressRouteCircuitPeering
+	}
+	return
+}
+
+func (e *ExpressRouteConnectionProperties) GetAuthorizationKey() (rv string) {
+	if e != nil && e.AuthorizationKey != nil {
+		return *e.AuthorizationKey
+	}
+	return
+}
+
+func (e *ExpressRouteConnectionProperties) GetEnableInternetSecurity() (rv bool) {
+	if e != nil && e.EnableInternetSecurity != nil {
+		return *e.EnableInternetSecurity
+	}
+	return
+}
+
+func (e *ExpressRouteConnectionProperties) GetEnablePrivateLinkFastPath() (rv bool) {
+	if e != nil && e.EnablePrivateLinkFastPath != nil {
+		return *e.EnablePrivateLinkFastPath
+	}
+	return
+}
+
+func (e *ExpressRouteConnectionProperties) GetExpressRouteGatewayBypass() (rv bool) {
+	if e != nil && e.ExpressRouteGatewayBypass != nil {
+		return *e.ExpressRouteGatewayBypass
+	}
+	return
+}
+
+func (e *ExpressRouteConnectionProperties) GetRoutingConfiguration() (rv *RoutingConfiguration) {
+	if e != nil {
+		return e.RoutingConfiguration
+	}
+	return
+}
+
+func (e *ExpressRouteConnectionProperties) GetRoutingWeight() (rv int32) {
+	if e != nil && e.RoutingWeight != nil {
+		return *e.RoutingWeight
+	}
+	return
+}
+
+func (e *ExpressRouteConnectionProperties) GetProvisioningState() (rv *ProvisioningState) {
+	if e != nil {
+		return e.ProvisioningState
+	}
+	return
+}
+
 // ExpressRouteCrossConnection resource.
 type ExpressRouteCrossConnection struct {
 	// Resource ID.
@@ -5092,6 +14409,55 @@ type ExpressRouteCrossConnection struct {
 	Type *string
 }
 
+func (e *ExpressRouteCrossConnection) GetID() (rv string) {
+	if e != nil && e.ID != nil {
+		return *e.ID
+	}
+	return
+}
+
+func (e *ExpressRouteCrossConnection) GetLocation() (rv string) {
+	if e != nil && e.Location != nil {
+		return *e.Location
+	}
+	return
+}
+
+func (e *ExpressRouteCrossConnection) GetProperties() (rv *ExpressRouteCrossConnectionProperties) {
+	if e != nil {
+		return e.Properties
+	}
+	return
+}
+
+func (e *ExpressRouteCrossConnection) GetTags() (rv map[string]*string) {
+	if e != nil {
+		return e.Tags
+	}
+	return
+}
+
+func (e *ExpressRouteCrossConnection) GetEtag() (rv string) {
+	if e != nil && e.Etag != nil {
+		return *e.Etag
+	}
+	return
+}
+
+func (e *ExpressRouteCrossConnection) GetName() (rv string) {
+	if e != nil && e.Name != nil {
+		return *e.Name
+	}
+	return
+}
+
+func (e *ExpressRouteCrossConnection) GetType() (rv string) {
+	if e != nil && e.Type != nil {
+		return *e.Type
+	}
+	return
+}
+
 // ExpressRouteCrossConnectionListResult - Response for ListExpressRouteCrossConnection API service call.
 type ExpressRouteCrossConnectionListResult struct {
 	// A list of ExpressRouteCrossConnection resources.
@@ -5099,6 +14465,20 @@ type ExpressRouteCrossConnectionListResult struct {
 
 	// READ-ONLY; The URL to get the next set of results.
 	NextLink *string
+}
+
+func (e *ExpressRouteCrossConnectionListResult) GetValue() (rv []*ExpressRouteCrossConnection) {
+	if e != nil {
+		return e.Value
+	}
+	return
+}
+
+func (e *ExpressRouteCrossConnectionListResult) GetNextLink() (rv string) {
+	if e != nil && e.NextLink != nil {
+		return *e.NextLink
+	}
+	return
 }
 
 // ExpressRouteCrossConnectionPeering - Peering in an ExpressRoute Cross Connection resource.
@@ -5116,6 +14496,34 @@ type ExpressRouteCrossConnectionPeering struct {
 	Etag *string
 }
 
+func (e *ExpressRouteCrossConnectionPeering) GetID() (rv string) {
+	if e != nil && e.ID != nil {
+		return *e.ID
+	}
+	return
+}
+
+func (e *ExpressRouteCrossConnectionPeering) GetName() (rv string) {
+	if e != nil && e.Name != nil {
+		return *e.Name
+	}
+	return
+}
+
+func (e *ExpressRouteCrossConnectionPeering) GetProperties() (rv *ExpressRouteCrossConnectionPeeringProperties) {
+	if e != nil {
+		return e.Properties
+	}
+	return
+}
+
+func (e *ExpressRouteCrossConnectionPeering) GetEtag() (rv string) {
+	if e != nil && e.Etag != nil {
+		return *e.Etag
+	}
+	return
+}
+
 // ExpressRouteCrossConnectionPeeringList - Response for ListPeering API service call retrieves all peerings that belong to
 // an ExpressRouteCrossConnection.
 type ExpressRouteCrossConnectionPeeringList struct {
@@ -5124,6 +14532,20 @@ type ExpressRouteCrossConnectionPeeringList struct {
 
 	// READ-ONLY; The URL to get the next set of results.
 	NextLink *string
+}
+
+func (e *ExpressRouteCrossConnectionPeeringList) GetValue() (rv []*ExpressRouteCrossConnectionPeering) {
+	if e != nil {
+		return e.Value
+	}
+	return
+}
+
+func (e *ExpressRouteCrossConnectionPeeringList) GetNextLink() (rv string) {
+	if e != nil && e.NextLink != nil {
+		return *e.NextLink
+	}
+	return
 }
 
 // ExpressRouteCrossConnectionPeeringProperties - Properties of express route cross connection peering.
@@ -5174,6 +14596,111 @@ type ExpressRouteCrossConnectionPeeringProperties struct {
 	SecondaryAzurePort *string
 }
 
+func (e *ExpressRouteCrossConnectionPeeringProperties) GetGatewayManagerEtag() (rv string) {
+	if e != nil && e.GatewayManagerEtag != nil {
+		return *e.GatewayManagerEtag
+	}
+	return
+}
+
+func (e *ExpressRouteCrossConnectionPeeringProperties) GetIPv6PeeringConfig() (rv *IPv6ExpressRouteCircuitPeeringConfig) {
+	if e != nil {
+		return e.IPv6PeeringConfig
+	}
+	return
+}
+
+func (e *ExpressRouteCrossConnectionPeeringProperties) GetMicrosoftPeeringConfig() (rv *ExpressRouteCircuitPeeringConfig) {
+	if e != nil {
+		return e.MicrosoftPeeringConfig
+	}
+	return
+}
+
+func (e *ExpressRouteCrossConnectionPeeringProperties) GetPeerASN() (rv int64) {
+	if e != nil && e.PeerASN != nil {
+		return *e.PeerASN
+	}
+	return
+}
+
+func (e *ExpressRouteCrossConnectionPeeringProperties) GetPeeringType() (rv *ExpressRoutePeeringType) {
+	if e != nil {
+		return e.PeeringType
+	}
+	return
+}
+
+func (e *ExpressRouteCrossConnectionPeeringProperties) GetPrimaryPeerAddressPrefix() (rv string) {
+	if e != nil && e.PrimaryPeerAddressPrefix != nil {
+		return *e.PrimaryPeerAddressPrefix
+	}
+	return
+}
+
+func (e *ExpressRouteCrossConnectionPeeringProperties) GetSecondaryPeerAddressPrefix() (rv string) {
+	if e != nil && e.SecondaryPeerAddressPrefix != nil {
+		return *e.SecondaryPeerAddressPrefix
+	}
+	return
+}
+
+func (e *ExpressRouteCrossConnectionPeeringProperties) GetSharedKey() (rv string) {
+	if e != nil && e.SharedKey != nil {
+		return *e.SharedKey
+	}
+	return
+}
+
+func (e *ExpressRouteCrossConnectionPeeringProperties) GetState() (rv *ExpressRoutePeeringState) {
+	if e != nil {
+		return e.State
+	}
+	return
+}
+
+func (e *ExpressRouteCrossConnectionPeeringProperties) GetVlanID() (rv int32) {
+	if e != nil && e.VlanID != nil {
+		return *e.VlanID
+	}
+	return
+}
+
+func (e *ExpressRouteCrossConnectionPeeringProperties) GetAzureASN() (rv int32) {
+	if e != nil && e.AzureASN != nil {
+		return *e.AzureASN
+	}
+	return
+}
+
+func (e *ExpressRouteCrossConnectionPeeringProperties) GetLastModifiedBy() (rv string) {
+	if e != nil && e.LastModifiedBy != nil {
+		return *e.LastModifiedBy
+	}
+	return
+}
+
+func (e *ExpressRouteCrossConnectionPeeringProperties) GetPrimaryAzurePort() (rv string) {
+	if e != nil && e.PrimaryAzurePort != nil {
+		return *e.PrimaryAzurePort
+	}
+	return
+}
+
+func (e *ExpressRouteCrossConnectionPeeringProperties) GetProvisioningState() (rv *ProvisioningState) {
+	if e != nil {
+		return e.ProvisioningState
+	}
+	return
+}
+
+func (e *ExpressRouteCrossConnectionPeeringProperties) GetSecondaryAzurePort() (rv string) {
+	if e != nil && e.SecondaryAzurePort != nil {
+		return *e.SecondaryAzurePort
+	}
+	return
+}
+
 // ExpressRouteCrossConnectionProperties - Properties of ExpressRouteCrossConnection.
 type ExpressRouteCrossConnectionProperties struct {
 	// The ExpressRouteCircuit.
@@ -5207,6 +14734,76 @@ type ExpressRouteCrossConnectionProperties struct {
 	SecondaryAzurePort *string
 }
 
+func (e *ExpressRouteCrossConnectionProperties) GetExpressRouteCircuit() (rv *ExpressRouteCircuitReference) {
+	if e != nil {
+		return e.ExpressRouteCircuit
+	}
+	return
+}
+
+func (e *ExpressRouteCrossConnectionProperties) GetPeerings() (rv []*ExpressRouteCrossConnectionPeering) {
+	if e != nil {
+		return e.Peerings
+	}
+	return
+}
+
+func (e *ExpressRouteCrossConnectionProperties) GetServiceProviderNotes() (rv string) {
+	if e != nil && e.ServiceProviderNotes != nil {
+		return *e.ServiceProviderNotes
+	}
+	return
+}
+
+func (e *ExpressRouteCrossConnectionProperties) GetServiceProviderProvisioningState() (rv *ServiceProviderProvisioningState) {
+	if e != nil {
+		return e.ServiceProviderProvisioningState
+	}
+	return
+}
+
+func (e *ExpressRouteCrossConnectionProperties) GetBandwidthInMbps() (rv int32) {
+	if e != nil && e.BandwidthInMbps != nil {
+		return *e.BandwidthInMbps
+	}
+	return
+}
+
+func (e *ExpressRouteCrossConnectionProperties) GetPeeringLocation() (rv string) {
+	if e != nil && e.PeeringLocation != nil {
+		return *e.PeeringLocation
+	}
+	return
+}
+
+func (e *ExpressRouteCrossConnectionProperties) GetPrimaryAzurePort() (rv string) {
+	if e != nil && e.PrimaryAzurePort != nil {
+		return *e.PrimaryAzurePort
+	}
+	return
+}
+
+func (e *ExpressRouteCrossConnectionProperties) GetProvisioningState() (rv *ProvisioningState) {
+	if e != nil {
+		return e.ProvisioningState
+	}
+	return
+}
+
+func (e *ExpressRouteCrossConnectionProperties) GetSTag() (rv int32) {
+	if e != nil && e.STag != nil {
+		return *e.STag
+	}
+	return
+}
+
+func (e *ExpressRouteCrossConnectionProperties) GetSecondaryAzurePort() (rv string) {
+	if e != nil && e.SecondaryAzurePort != nil {
+		return *e.SecondaryAzurePort
+	}
+	return
+}
+
 // ExpressRouteCrossConnectionRoutesTableSummary - The routes table associated with the ExpressRouteCircuit.
 type ExpressRouteCrossConnectionRoutesTableSummary struct {
 	// Autonomous system number.
@@ -5223,6 +14820,34 @@ type ExpressRouteCrossConnectionRoutesTableSummary struct {
 	UpDown *string
 }
 
+func (e *ExpressRouteCrossConnectionRoutesTableSummary) GetAsn() (rv int32) {
+	if e != nil && e.Asn != nil {
+		return *e.Asn
+	}
+	return
+}
+
+func (e *ExpressRouteCrossConnectionRoutesTableSummary) GetNeighbor() (rv string) {
+	if e != nil && e.Neighbor != nil {
+		return *e.Neighbor
+	}
+	return
+}
+
+func (e *ExpressRouteCrossConnectionRoutesTableSummary) GetStateOrPrefixesReceived() (rv string) {
+	if e != nil && e.StateOrPrefixesReceived != nil {
+		return *e.StateOrPrefixesReceived
+	}
+	return
+}
+
+func (e *ExpressRouteCrossConnectionRoutesTableSummary) GetUpDown() (rv string) {
+	if e != nil && e.UpDown != nil {
+		return *e.UpDown
+	}
+	return
+}
+
 // ExpressRouteCrossConnectionsRoutesTableSummaryListResult - Response for ListRoutesTable associated with the Express Route
 // Cross Connections.
 type ExpressRouteCrossConnectionsRoutesTableSummaryListResult struct {
@@ -5231,6 +14856,20 @@ type ExpressRouteCrossConnectionsRoutesTableSummaryListResult struct {
 
 	// READ-ONLY; The URL to get the next set of results.
 	NextLink *string
+}
+
+func (e *ExpressRouteCrossConnectionsRoutesTableSummaryListResult) GetValue() (rv []*ExpressRouteCrossConnectionRoutesTableSummary) {
+	if e != nil {
+		return e.Value
+	}
+	return
+}
+
+func (e *ExpressRouteCrossConnectionsRoutesTableSummaryListResult) GetNextLink() (rv string) {
+	if e != nil && e.NextLink != nil {
+		return *e.NextLink
+	}
+	return
 }
 
 // ExpressRouteGateway - ExpressRoute gateway resource.
@@ -5257,10 +14896,66 @@ type ExpressRouteGateway struct {
 	Type *string
 }
 
+func (e *ExpressRouteGateway) GetID() (rv string) {
+	if e != nil && e.ID != nil {
+		return *e.ID
+	}
+	return
+}
+
+func (e *ExpressRouteGateway) GetLocation() (rv string) {
+	if e != nil && e.Location != nil {
+		return *e.Location
+	}
+	return
+}
+
+func (e *ExpressRouteGateway) GetProperties() (rv *ExpressRouteGatewayProperties) {
+	if e != nil {
+		return e.Properties
+	}
+	return
+}
+
+func (e *ExpressRouteGateway) GetTags() (rv map[string]*string) {
+	if e != nil {
+		return e.Tags
+	}
+	return
+}
+
+func (e *ExpressRouteGateway) GetEtag() (rv string) {
+	if e != nil && e.Etag != nil {
+		return *e.Etag
+	}
+	return
+}
+
+func (e *ExpressRouteGateway) GetName() (rv string) {
+	if e != nil && e.Name != nil {
+		return *e.Name
+	}
+	return
+}
+
+func (e *ExpressRouteGateway) GetType() (rv string) {
+	if e != nil && e.Type != nil {
+		return *e.Type
+	}
+	return
+}
+
 // ExpressRouteGatewayList - List of ExpressRoute gateways.
 type ExpressRouteGatewayList struct {
 	// List of ExpressRoute gateways.
 	Value []*ExpressRouteGateway
+}
+
+func (e *ExpressRouteGatewayList) GetValue() (rv []*ExpressRouteGateway) {
+	if e != nil {
+		return e.Value
+	}
+	return
 }
 
 // ExpressRouteGatewayProperties - ExpressRoute gateway resource properties.
@@ -5281,10 +14976,52 @@ type ExpressRouteGatewayProperties struct {
 	ProvisioningState *ProvisioningState
 }
 
+func (e *ExpressRouteGatewayProperties) GetVirtualHub() (rv *VirtualHubID) {
+	if e != nil {
+		return e.VirtualHub
+	}
+	return
+}
+
+func (e *ExpressRouteGatewayProperties) GetAllowNonVirtualWanTraffic() (rv bool) {
+	if e != nil && e.AllowNonVirtualWanTraffic != nil {
+		return *e.AllowNonVirtualWanTraffic
+	}
+	return
+}
+
+func (e *ExpressRouteGatewayProperties) GetAutoScaleConfiguration() (rv *ExpressRouteGatewayPropertiesAutoScaleConfiguration) {
+	if e != nil {
+		return e.AutoScaleConfiguration
+	}
+	return
+}
+
+func (e *ExpressRouteGatewayProperties) GetExpressRouteConnections() (rv []*ExpressRouteConnection) {
+	if e != nil {
+		return e.ExpressRouteConnections
+	}
+	return
+}
+
+func (e *ExpressRouteGatewayProperties) GetProvisioningState() (rv *ProvisioningState) {
+	if e != nil {
+		return e.ProvisioningState
+	}
+	return
+}
+
 // ExpressRouteGatewayPropertiesAutoScaleConfiguration - Configuration for auto scaling.
 type ExpressRouteGatewayPropertiesAutoScaleConfiguration struct {
 	// Minimum and maximum number of scale units to deploy.
 	Bounds *ExpressRouteGatewayPropertiesAutoScaleConfigurationBounds
+}
+
+func (e *ExpressRouteGatewayPropertiesAutoScaleConfiguration) GetBounds() (rv *ExpressRouteGatewayPropertiesAutoScaleConfigurationBounds) {
+	if e != nil {
+		return e.Bounds
+	}
+	return
 }
 
 // ExpressRouteGatewayPropertiesAutoScaleConfigurationBounds - Minimum and maximum number of scale units to deploy.
@@ -5294,6 +15031,20 @@ type ExpressRouteGatewayPropertiesAutoScaleConfigurationBounds struct {
 
 	// Minimum number of scale units deployed for ExpressRoute gateway.
 	Min *int32
+}
+
+func (e *ExpressRouteGatewayPropertiesAutoScaleConfigurationBounds) GetMax() (rv int32) {
+	if e != nil && e.Max != nil {
+		return *e.Max
+	}
+	return
+}
+
+func (e *ExpressRouteGatewayPropertiesAutoScaleConfigurationBounds) GetMin() (rv int32) {
+	if e != nil && e.Min != nil {
+		return *e.Min
+	}
+	return
 }
 
 // ExpressRouteLink child resource definition.
@@ -5311,6 +15062,34 @@ type ExpressRouteLink struct {
 	Etag *string
 }
 
+func (e *ExpressRouteLink) GetID() (rv string) {
+	if e != nil && e.ID != nil {
+		return *e.ID
+	}
+	return
+}
+
+func (e *ExpressRouteLink) GetName() (rv string) {
+	if e != nil && e.Name != nil {
+		return *e.Name
+	}
+	return
+}
+
+func (e *ExpressRouteLink) GetProperties() (rv *ExpressRouteLinkPropertiesFormat) {
+	if e != nil {
+		return e.Properties
+	}
+	return
+}
+
+func (e *ExpressRouteLink) GetEtag() (rv string) {
+	if e != nil && e.Etag != nil {
+		return *e.Etag
+	}
+	return
+}
+
 // ExpressRouteLinkListResult - Response for ListExpressRouteLinks API service call.
 type ExpressRouteLinkListResult struct {
 	// The URL to get the next set of results.
@@ -5318,6 +15097,20 @@ type ExpressRouteLinkListResult struct {
 
 	// The list of ExpressRouteLink sub-resources.
 	Value []*ExpressRouteLink
+}
+
+func (e *ExpressRouteLinkListResult) GetNextLink() (rv string) {
+	if e != nil && e.NextLink != nil {
+		return *e.NextLink
+	}
+	return
+}
+
+func (e *ExpressRouteLinkListResult) GetValue() (rv []*ExpressRouteLink) {
+	if e != nil {
+		return e.Value
+	}
+	return
 }
 
 // ExpressRouteLinkMacSecConfig - ExpressRouteLink Mac Security Configuration.
@@ -5333,6 +15126,34 @@ type ExpressRouteLinkMacSecConfig struct {
 
 	// Sci mode enabled/disabled.
 	SciState *ExpressRouteLinkMacSecSciState
+}
+
+func (e *ExpressRouteLinkMacSecConfig) GetCakSecretIdentifier() (rv string) {
+	if e != nil && e.CakSecretIdentifier != nil {
+		return *e.CakSecretIdentifier
+	}
+	return
+}
+
+func (e *ExpressRouteLinkMacSecConfig) GetCipher() (rv *ExpressRouteLinkMacSecCipher) {
+	if e != nil {
+		return e.Cipher
+	}
+	return
+}
+
+func (e *ExpressRouteLinkMacSecConfig) GetCknSecretIdentifier() (rv string) {
+	if e != nil && e.CknSecretIdentifier != nil {
+		return *e.CknSecretIdentifier
+	}
+	return
+}
+
+func (e *ExpressRouteLinkMacSecConfig) GetSciState() (rv *ExpressRouteLinkMacSecSciState) {
+	if e != nil {
+		return e.SciState
+	}
+	return
 }
 
 // ExpressRouteLinkPropertiesFormat - Properties specific to ExpressRouteLink resources.
@@ -5365,6 +15186,69 @@ type ExpressRouteLinkPropertiesFormat struct {
 	RouterName *string
 }
 
+func (e *ExpressRouteLinkPropertiesFormat) GetAdminState() (rv *ExpressRouteLinkAdminState) {
+	if e != nil {
+		return e.AdminState
+	}
+	return
+}
+
+func (e *ExpressRouteLinkPropertiesFormat) GetMacSecConfig() (rv *ExpressRouteLinkMacSecConfig) {
+	if e != nil {
+		return e.MacSecConfig
+	}
+	return
+}
+
+func (e *ExpressRouteLinkPropertiesFormat) GetColoLocation() (rv string) {
+	if e != nil && e.ColoLocation != nil {
+		return *e.ColoLocation
+	}
+	return
+}
+
+func (e *ExpressRouteLinkPropertiesFormat) GetConnectorType() (rv *ExpressRouteLinkConnectorType) {
+	if e != nil {
+		return e.ConnectorType
+	}
+	return
+}
+
+func (e *ExpressRouteLinkPropertiesFormat) GetInterfaceName() (rv string) {
+	if e != nil && e.InterfaceName != nil {
+		return *e.InterfaceName
+	}
+	return
+}
+
+func (e *ExpressRouteLinkPropertiesFormat) GetPatchPanelID() (rv string) {
+	if e != nil && e.PatchPanelID != nil {
+		return *e.PatchPanelID
+	}
+	return
+}
+
+func (e *ExpressRouteLinkPropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if e != nil {
+		return e.ProvisioningState
+	}
+	return
+}
+
+func (e *ExpressRouteLinkPropertiesFormat) GetRackID() (rv string) {
+	if e != nil && e.RackID != nil {
+		return *e.RackID
+	}
+	return
+}
+
+func (e *ExpressRouteLinkPropertiesFormat) GetRouterName() (rv string) {
+	if e != nil && e.RouterName != nil {
+		return *e.RouterName
+	}
+	return
+}
+
 // ExpressRoutePort resource definition.
 type ExpressRoutePort struct {
 	// Resource ID.
@@ -5392,6 +15276,62 @@ type ExpressRoutePort struct {
 	Type *string
 }
 
+func (e *ExpressRoutePort) GetID() (rv string) {
+	if e != nil && e.ID != nil {
+		return *e.ID
+	}
+	return
+}
+
+func (e *ExpressRoutePort) GetIdentity() (rv *ManagedServiceIdentity) {
+	if e != nil {
+		return e.Identity
+	}
+	return
+}
+
+func (e *ExpressRoutePort) GetLocation() (rv string) {
+	if e != nil && e.Location != nil {
+		return *e.Location
+	}
+	return
+}
+
+func (e *ExpressRoutePort) GetProperties() (rv *ExpressRoutePortPropertiesFormat) {
+	if e != nil {
+		return e.Properties
+	}
+	return
+}
+
+func (e *ExpressRoutePort) GetTags() (rv map[string]*string) {
+	if e != nil {
+		return e.Tags
+	}
+	return
+}
+
+func (e *ExpressRoutePort) GetEtag() (rv string) {
+	if e != nil && e.Etag != nil {
+		return *e.Etag
+	}
+	return
+}
+
+func (e *ExpressRoutePort) GetName() (rv string) {
+	if e != nil && e.Name != nil {
+		return *e.Name
+	}
+	return
+}
+
+func (e *ExpressRoutePort) GetType() (rv string) {
+	if e != nil && e.Type != nil {
+		return *e.Type
+	}
+	return
+}
+
 // ExpressRoutePortAuthorization - ExpressRoutePort Authorization resource definition.
 type ExpressRoutePortAuthorization struct {
 	// Resource ID.
@@ -5410,6 +15350,41 @@ type ExpressRoutePortAuthorization struct {
 	Type *string
 }
 
+func (e *ExpressRoutePortAuthorization) GetID() (rv string) {
+	if e != nil && e.ID != nil {
+		return *e.ID
+	}
+	return
+}
+
+func (e *ExpressRoutePortAuthorization) GetName() (rv string) {
+	if e != nil && e.Name != nil {
+		return *e.Name
+	}
+	return
+}
+
+func (e *ExpressRoutePortAuthorization) GetProperties() (rv *ExpressRoutePortAuthorizationPropertiesFormat) {
+	if e != nil {
+		return e.Properties
+	}
+	return
+}
+
+func (e *ExpressRoutePortAuthorization) GetEtag() (rv string) {
+	if e != nil && e.Etag != nil {
+		return *e.Etag
+	}
+	return
+}
+
+func (e *ExpressRoutePortAuthorization) GetType() (rv string) {
+	if e != nil && e.Type != nil {
+		return *e.Type
+	}
+	return
+}
+
 // ExpressRoutePortAuthorizationListResult - Response for ListExpressRoutePortAuthorizations API service call.
 type ExpressRoutePortAuthorizationListResult struct {
 	// The URL to get the next set of results.
@@ -5417,6 +15392,20 @@ type ExpressRoutePortAuthorizationListResult struct {
 
 	// The authorizations in an ExpressRoute Port.
 	Value []*ExpressRoutePortAuthorization
+}
+
+func (e *ExpressRoutePortAuthorizationListResult) GetNextLink() (rv string) {
+	if e != nil && e.NextLink != nil {
+		return *e.NextLink
+	}
+	return
+}
+
+func (e *ExpressRoutePortAuthorizationListResult) GetValue() (rv []*ExpressRoutePortAuthorization) {
+	if e != nil {
+		return e.Value
+	}
+	return
 }
 
 // ExpressRoutePortAuthorizationPropertiesFormat - Properties of ExpressRoutePort Authorization.
@@ -5434,6 +15423,34 @@ type ExpressRoutePortAuthorizationPropertiesFormat struct {
 	ProvisioningState *ProvisioningState
 }
 
+func (e *ExpressRoutePortAuthorizationPropertiesFormat) GetAuthorizationKey() (rv string) {
+	if e != nil && e.AuthorizationKey != nil {
+		return *e.AuthorizationKey
+	}
+	return
+}
+
+func (e *ExpressRoutePortAuthorizationPropertiesFormat) GetAuthorizationUseStatus() (rv *ExpressRoutePortAuthorizationUseStatus) {
+	if e != nil {
+		return e.AuthorizationUseStatus
+	}
+	return
+}
+
+func (e *ExpressRoutePortAuthorizationPropertiesFormat) GetCircuitResourceURI() (rv string) {
+	if e != nil && e.CircuitResourceURI != nil {
+		return *e.CircuitResourceURI
+	}
+	return
+}
+
+func (e *ExpressRoutePortAuthorizationPropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if e != nil {
+		return e.ProvisioningState
+	}
+	return
+}
+
 // ExpressRoutePortListResult - Response for ListExpressRoutePorts API service call.
 type ExpressRoutePortListResult struct {
 	// The URL to get the next set of results.
@@ -5441,6 +15458,20 @@ type ExpressRoutePortListResult struct {
 
 	// A list of ExpressRoutePort resources.
 	Value []*ExpressRoutePort
+}
+
+func (e *ExpressRoutePortListResult) GetNextLink() (rv string) {
+	if e != nil && e.NextLink != nil {
+		return *e.NextLink
+	}
+	return
+}
+
+func (e *ExpressRoutePortListResult) GetValue() (rv []*ExpressRoutePort) {
+	if e != nil {
+		return e.Value
+	}
+	return
 }
 
 // ExpressRoutePortPropertiesFormat - Properties specific to ExpressRoutePort resources.
@@ -5482,6 +15513,90 @@ type ExpressRoutePortPropertiesFormat struct {
 	ResourceGUID *string
 }
 
+func (e *ExpressRoutePortPropertiesFormat) GetBandwidthInGbps() (rv int32) {
+	if e != nil && e.BandwidthInGbps != nil {
+		return *e.BandwidthInGbps
+	}
+	return
+}
+
+func (e *ExpressRoutePortPropertiesFormat) GetBillingType() (rv *ExpressRoutePortsBillingType) {
+	if e != nil {
+		return e.BillingType
+	}
+	return
+}
+
+func (e *ExpressRoutePortPropertiesFormat) GetEncapsulation() (rv *ExpressRoutePortsEncapsulation) {
+	if e != nil {
+		return e.Encapsulation
+	}
+	return
+}
+
+func (e *ExpressRoutePortPropertiesFormat) GetLinks() (rv []*ExpressRouteLink) {
+	if e != nil {
+		return e.Links
+	}
+	return
+}
+
+func (e *ExpressRoutePortPropertiesFormat) GetPeeringLocation() (rv string) {
+	if e != nil && e.PeeringLocation != nil {
+		return *e.PeeringLocation
+	}
+	return
+}
+
+func (e *ExpressRoutePortPropertiesFormat) GetAllocationDate() (rv string) {
+	if e != nil && e.AllocationDate != nil {
+		return *e.AllocationDate
+	}
+	return
+}
+
+func (e *ExpressRoutePortPropertiesFormat) GetCircuits() (rv []*SubResource) {
+	if e != nil {
+		return e.Circuits
+	}
+	return
+}
+
+func (e *ExpressRoutePortPropertiesFormat) GetEtherType() (rv string) {
+	if e != nil && e.EtherType != nil {
+		return *e.EtherType
+	}
+	return
+}
+
+func (e *ExpressRoutePortPropertiesFormat) GetMtu() (rv string) {
+	if e != nil && e.Mtu != nil {
+		return *e.Mtu
+	}
+	return
+}
+
+func (e *ExpressRoutePortPropertiesFormat) GetProvisionedBandwidthInGbps() (rv float32) {
+	if e != nil && e.ProvisionedBandwidthInGbps != nil {
+		return *e.ProvisionedBandwidthInGbps
+	}
+	return
+}
+
+func (e *ExpressRoutePortPropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if e != nil {
+		return e.ProvisioningState
+	}
+	return
+}
+
+func (e *ExpressRoutePortPropertiesFormat) GetResourceGUID() (rv string) {
+	if e != nil && e.ResourceGUID != nil {
+		return *e.ResourceGUID
+	}
+	return
+}
+
 // ExpressRoutePortsLocation - Definition of the ExpressRoutePorts peering location resource.
 type ExpressRoutePortsLocation struct {
 	// Resource ID.
@@ -5503,6 +15618,48 @@ type ExpressRoutePortsLocation struct {
 	Type *string
 }
 
+func (e *ExpressRoutePortsLocation) GetID() (rv string) {
+	if e != nil && e.ID != nil {
+		return *e.ID
+	}
+	return
+}
+
+func (e *ExpressRoutePortsLocation) GetLocation() (rv string) {
+	if e != nil && e.Location != nil {
+		return *e.Location
+	}
+	return
+}
+
+func (e *ExpressRoutePortsLocation) GetProperties() (rv *ExpressRoutePortsLocationPropertiesFormat) {
+	if e != nil {
+		return e.Properties
+	}
+	return
+}
+
+func (e *ExpressRoutePortsLocation) GetTags() (rv map[string]*string) {
+	if e != nil {
+		return e.Tags
+	}
+	return
+}
+
+func (e *ExpressRoutePortsLocation) GetName() (rv string) {
+	if e != nil && e.Name != nil {
+		return *e.Name
+	}
+	return
+}
+
+func (e *ExpressRoutePortsLocation) GetType() (rv string) {
+	if e != nil && e.Type != nil {
+		return *e.Type
+	}
+	return
+}
+
 // ExpressRoutePortsLocationBandwidths - Real-time inventory of available ExpressRoute port bandwidths.
 type ExpressRoutePortsLocationBandwidths struct {
 	// READ-ONLY; Bandwidth descriptive name.
@@ -5512,6 +15669,20 @@ type ExpressRoutePortsLocationBandwidths struct {
 	ValueInGbps *int32
 }
 
+func (e *ExpressRoutePortsLocationBandwidths) GetOfferName() (rv string) {
+	if e != nil && e.OfferName != nil {
+		return *e.OfferName
+	}
+	return
+}
+
+func (e *ExpressRoutePortsLocationBandwidths) GetValueInGbps() (rv int32) {
+	if e != nil && e.ValueInGbps != nil {
+		return *e.ValueInGbps
+	}
+	return
+}
+
 // ExpressRoutePortsLocationListResult - Response for ListExpressRoutePortsLocations API service call.
 type ExpressRoutePortsLocationListResult struct {
 	// The URL to get the next set of results.
@@ -5519,6 +15690,20 @@ type ExpressRoutePortsLocationListResult struct {
 
 	// The list of all ExpressRoutePort peering locations.
 	Value []*ExpressRoutePortsLocation
+}
+
+func (e *ExpressRoutePortsLocationListResult) GetNextLink() (rv string) {
+	if e != nil && e.NextLink != nil {
+		return *e.NextLink
+	}
+	return
+}
+
+func (e *ExpressRoutePortsLocationListResult) GetValue() (rv []*ExpressRoutePortsLocation) {
+	if e != nil {
+		return e.Value
+	}
+	return
 }
 
 // ExpressRoutePortsLocationPropertiesFormat - Properties specific to ExpressRoutePorts peering location resources.
@@ -5534,6 +15719,34 @@ type ExpressRoutePortsLocationPropertiesFormat struct {
 
 	// READ-ONLY; The provisioning state of the express route port location resource.
 	ProvisioningState *ProvisioningState
+}
+
+func (e *ExpressRoutePortsLocationPropertiesFormat) GetAvailableBandwidths() (rv []*ExpressRoutePortsLocationBandwidths) {
+	if e != nil {
+		return e.AvailableBandwidths
+	}
+	return
+}
+
+func (e *ExpressRoutePortsLocationPropertiesFormat) GetAddress() (rv string) {
+	if e != nil && e.Address != nil {
+		return *e.Address
+	}
+	return
+}
+
+func (e *ExpressRoutePortsLocationPropertiesFormat) GetContact() (rv string) {
+	if e != nil && e.Contact != nil {
+		return *e.Contact
+	}
+	return
+}
+
+func (e *ExpressRoutePortsLocationPropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if e != nil {
+		return e.ProvisioningState
+	}
+	return
 }
 
 // ExpressRouteProviderPort resource.
@@ -5560,6 +15773,55 @@ type ExpressRouteProviderPort struct {
 	Type *string
 }
 
+func (e *ExpressRouteProviderPort) GetID() (rv string) {
+	if e != nil && e.ID != nil {
+		return *e.ID
+	}
+	return
+}
+
+func (e *ExpressRouteProviderPort) GetLocation() (rv string) {
+	if e != nil && e.Location != nil {
+		return *e.Location
+	}
+	return
+}
+
+func (e *ExpressRouteProviderPort) GetProperties() (rv *ExpressRouteProviderPortProperties) {
+	if e != nil {
+		return e.Properties
+	}
+	return
+}
+
+func (e *ExpressRouteProviderPort) GetTags() (rv map[string]*string) {
+	if e != nil {
+		return e.Tags
+	}
+	return
+}
+
+func (e *ExpressRouteProviderPort) GetEtag() (rv string) {
+	if e != nil && e.Etag != nil {
+		return *e.Etag
+	}
+	return
+}
+
+func (e *ExpressRouteProviderPort) GetName() (rv string) {
+	if e != nil && e.Name != nil {
+		return *e.Name
+	}
+	return
+}
+
+func (e *ExpressRouteProviderPort) GetType() (rv string) {
+	if e != nil && e.Type != nil {
+		return *e.Type
+	}
+	return
+}
+
 // ExpressRouteProviderPortListResult - Response for ListExpressRouteProviderPort API service call.
 type ExpressRouteProviderPortListResult struct {
 	// A list of ExpressRouteProviderPort resources.
@@ -5567,6 +15829,20 @@ type ExpressRouteProviderPortListResult struct {
 
 	// READ-ONLY; The URL to get the next set of results.
 	NextLink *string
+}
+
+func (e *ExpressRouteProviderPortListResult) GetValue() (rv []*ExpressRouteProviderPort) {
+	if e != nil {
+		return e.Value
+	}
+	return
+}
+
+func (e *ExpressRouteProviderPortListResult) GetNextLink() (rv string) {
+	if e != nil && e.NextLink != nil {
+		return *e.NextLink
+	}
+	return
 }
 
 // ExpressRouteProviderPortProperties - Properties of ExpressRouteProviderPort.
@@ -5596,6 +15872,62 @@ type ExpressRouteProviderPortProperties struct {
 	SecondaryAzurePort *string
 }
 
+func (e *ExpressRouteProviderPortProperties) GetOverprovisionFactor() (rv int32) {
+	if e != nil && e.OverprovisionFactor != nil {
+		return *e.OverprovisionFactor
+	}
+	return
+}
+
+func (e *ExpressRouteProviderPortProperties) GetPeeringLocation() (rv string) {
+	if e != nil && e.PeeringLocation != nil {
+		return *e.PeeringLocation
+	}
+	return
+}
+
+func (e *ExpressRouteProviderPortProperties) GetPortBandwidthInMbps() (rv int32) {
+	if e != nil && e.PortBandwidthInMbps != nil {
+		return *e.PortBandwidthInMbps
+	}
+	return
+}
+
+func (e *ExpressRouteProviderPortProperties) GetRemainingBandwidthInMbps() (rv int32) {
+	if e != nil && e.RemainingBandwidthInMbps != nil {
+		return *e.RemainingBandwidthInMbps
+	}
+	return
+}
+
+func (e *ExpressRouteProviderPortProperties) GetUsedBandwidthInMbps() (rv int32) {
+	if e != nil && e.UsedBandwidthInMbps != nil {
+		return *e.UsedBandwidthInMbps
+	}
+	return
+}
+
+func (e *ExpressRouteProviderPortProperties) GetPortPairDescriptor() (rv string) {
+	if e != nil && e.PortPairDescriptor != nil {
+		return *e.PortPairDescriptor
+	}
+	return
+}
+
+func (e *ExpressRouteProviderPortProperties) GetPrimaryAzurePort() (rv string) {
+	if e != nil && e.PrimaryAzurePort != nil {
+		return *e.PrimaryAzurePort
+	}
+	return
+}
+
+func (e *ExpressRouteProviderPortProperties) GetSecondaryAzurePort() (rv string) {
+	if e != nil && e.SecondaryAzurePort != nil {
+		return *e.SecondaryAzurePort
+	}
+	return
+}
+
 // ExpressRouteServiceProvider - A ExpressRouteResourceProvider object.
 type ExpressRouteServiceProvider struct {
 	// Resource ID.
@@ -5617,6 +15949,48 @@ type ExpressRouteServiceProvider struct {
 	Type *string
 }
 
+func (e *ExpressRouteServiceProvider) GetID() (rv string) {
+	if e != nil && e.ID != nil {
+		return *e.ID
+	}
+	return
+}
+
+func (e *ExpressRouteServiceProvider) GetLocation() (rv string) {
+	if e != nil && e.Location != nil {
+		return *e.Location
+	}
+	return
+}
+
+func (e *ExpressRouteServiceProvider) GetProperties() (rv *ExpressRouteServiceProviderPropertiesFormat) {
+	if e != nil {
+		return e.Properties
+	}
+	return
+}
+
+func (e *ExpressRouteServiceProvider) GetTags() (rv map[string]*string) {
+	if e != nil {
+		return e.Tags
+	}
+	return
+}
+
+func (e *ExpressRouteServiceProvider) GetName() (rv string) {
+	if e != nil && e.Name != nil {
+		return *e.Name
+	}
+	return
+}
+
+func (e *ExpressRouteServiceProvider) GetType() (rv string) {
+	if e != nil && e.Type != nil {
+		return *e.Type
+	}
+	return
+}
+
 // ExpressRouteServiceProviderBandwidthsOffered - Contains bandwidths offered in ExpressRouteServiceProvider resources.
 type ExpressRouteServiceProviderBandwidthsOffered struct {
 	// The OfferName.
@@ -5626,6 +16000,20 @@ type ExpressRouteServiceProviderBandwidthsOffered struct {
 	ValueInMbps *int32
 }
 
+func (e *ExpressRouteServiceProviderBandwidthsOffered) GetOfferName() (rv string) {
+	if e != nil && e.OfferName != nil {
+		return *e.OfferName
+	}
+	return
+}
+
+func (e *ExpressRouteServiceProviderBandwidthsOffered) GetValueInMbps() (rv int32) {
+	if e != nil && e.ValueInMbps != nil {
+		return *e.ValueInMbps
+	}
+	return
+}
+
 // ExpressRouteServiceProviderListResult - Response for the ListExpressRouteServiceProvider API service call.
 type ExpressRouteServiceProviderListResult struct {
 	// The URL to get the next set of results.
@@ -5633,6 +16021,20 @@ type ExpressRouteServiceProviderListResult struct {
 
 	// A list of ExpressRouteResourceProvider resources.
 	Value []*ExpressRouteServiceProvider
+}
+
+func (e *ExpressRouteServiceProviderListResult) GetNextLink() (rv string) {
+	if e != nil && e.NextLink != nil {
+		return *e.NextLink
+	}
+	return
+}
+
+func (e *ExpressRouteServiceProviderListResult) GetValue() (rv []*ExpressRouteServiceProvider) {
+	if e != nil {
+		return e.Value
+	}
+	return
 }
 
 // ExpressRouteServiceProviderPropertiesFormat - Properties of ExpressRouteServiceProvider.
@@ -5647,6 +16049,27 @@ type ExpressRouteServiceProviderPropertiesFormat struct {
 	ProvisioningState *ProvisioningState
 }
 
+func (e *ExpressRouteServiceProviderPropertiesFormat) GetBandwidthsOffered() (rv []*ExpressRouteServiceProviderBandwidthsOffered) {
+	if e != nil {
+		return e.BandwidthsOffered
+	}
+	return
+}
+
+func (e *ExpressRouteServiceProviderPropertiesFormat) GetPeeringLocations() (rv []*string) {
+	if e != nil {
+		return e.PeeringLocations
+	}
+	return
+}
+
+func (e *ExpressRouteServiceProviderPropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if e != nil {
+		return e.ProvisioningState
+	}
+	return
+}
+
 // ExtendedLocation complex type.
 type ExtendedLocation struct {
 	// The name of the extended location.
@@ -5656,6 +16079,20 @@ type ExtendedLocation struct {
 	Type *ExtendedLocationTypes
 }
 
+func (e *ExtendedLocation) GetName() (rv string) {
+	if e != nil && e.Name != nil {
+		return *e.Name
+	}
+	return
+}
+
+func (e *ExtendedLocation) GetType() (rv *ExtendedLocationTypes) {
+	if e != nil {
+		return e.Type
+	}
+	return
+}
+
 // FilterItems - Will contain the filter name and values to operate on
 type FilterItems struct {
 	// The name of the field we would like to filter
@@ -5663,6 +16100,20 @@ type FilterItems struct {
 
 	// List of values to filter the current field by
 	Values []*string
+}
+
+func (f *FilterItems) GetField() (rv string) {
+	if f != nil && f.Field != nil {
+		return *f.Field
+	}
+	return
+}
+
+func (f *FilterItems) GetValues() (rv []*string) {
+	if f != nil {
+		return f.Values
+	}
+	return
 }
 
 // FirewallPolicy Resource.
@@ -5692,6 +16143,62 @@ type FirewallPolicy struct {
 	Type *string
 }
 
+func (f *FirewallPolicy) GetID() (rv string) {
+	if f != nil && f.ID != nil {
+		return *f.ID
+	}
+	return
+}
+
+func (f *FirewallPolicy) GetIdentity() (rv *ManagedServiceIdentity) {
+	if f != nil {
+		return f.Identity
+	}
+	return
+}
+
+func (f *FirewallPolicy) GetLocation() (rv string) {
+	if f != nil && f.Location != nil {
+		return *f.Location
+	}
+	return
+}
+
+func (f *FirewallPolicy) GetProperties() (rv *FirewallPolicyPropertiesFormat) {
+	if f != nil {
+		return f.Properties
+	}
+	return
+}
+
+func (f *FirewallPolicy) GetTags() (rv map[string]*string) {
+	if f != nil {
+		return f.Tags
+	}
+	return
+}
+
+func (f *FirewallPolicy) GetEtag() (rv string) {
+	if f != nil && f.Etag != nil {
+		return *f.Etag
+	}
+	return
+}
+
+func (f *FirewallPolicy) GetName() (rv string) {
+	if f != nil && f.Name != nil {
+		return *f.Name
+	}
+	return
+}
+
+func (f *FirewallPolicy) GetType() (rv string) {
+	if f != nil && f.Type != nil {
+		return *f.Type
+	}
+	return
+}
+
 // FirewallPolicyCertificateAuthority - Trusted Root certificates properties for tls.
 type FirewallPolicyCertificateAuthority struct {
 	// Secret Id of (base-64 encoded unencrypted pfx) 'Secret' or 'Certificate' object stored in KeyVault.
@@ -5699,6 +16206,20 @@ type FirewallPolicyCertificateAuthority struct {
 
 	// Name of the CA certificate.
 	Name *string
+}
+
+func (f *FirewallPolicyCertificateAuthority) GetKeyVaultSecretID() (rv string) {
+	if f != nil && f.KeyVaultSecretID != nil {
+		return *f.KeyVaultSecretID
+	}
+	return
+}
+
+func (f *FirewallPolicyCertificateAuthority) GetName() (rv string) {
+	if f != nil && f.Name != nil {
+		return *f.Name
+	}
+	return
 }
 
 // FirewallPolicyFilterRuleCollection - Firewall Policy Filter Rule Collection.
@@ -5719,6 +16240,41 @@ type FirewallPolicyFilterRuleCollection struct {
 	Rules []FirewallPolicyRuleClassification
 }
 
+func (f *FirewallPolicyFilterRuleCollection) GetRuleCollectionType() (rv *FirewallPolicyRuleCollectionType) {
+	if f != nil {
+		return f.RuleCollectionType
+	}
+	return
+}
+
+func (f *FirewallPolicyFilterRuleCollection) GetAction() (rv *FirewallPolicyFilterRuleCollectionAction) {
+	if f != nil {
+		return f.Action
+	}
+	return
+}
+
+func (f *FirewallPolicyFilterRuleCollection) GetName() (rv string) {
+	if f != nil && f.Name != nil {
+		return *f.Name
+	}
+	return
+}
+
+func (f *FirewallPolicyFilterRuleCollection) GetPriority() (rv int32) {
+	if f != nil && f.Priority != nil {
+		return *f.Priority
+	}
+	return
+}
+
+func (f *FirewallPolicyFilterRuleCollection) GetRules() (rv []FirewallPolicyRuleClassification) {
+	if f != nil {
+		return f.Rules
+	}
+	return
+}
+
 // GetFirewallPolicyRuleCollection implements the FirewallPolicyRuleCollectionClassification interface for type FirewallPolicyFilterRuleCollection.
 func (f *FirewallPolicyFilterRuleCollection) GetFirewallPolicyRuleCollection() *FirewallPolicyRuleCollection {
 	return &FirewallPolicyRuleCollection{
@@ -5734,6 +16290,13 @@ type FirewallPolicyFilterRuleCollectionAction struct {
 	Type *FirewallPolicyFilterRuleCollectionActionType
 }
 
+func (f *FirewallPolicyFilterRuleCollectionAction) GetType() (rv *FirewallPolicyFilterRuleCollectionActionType) {
+	if f != nil {
+		return f.Type
+	}
+	return
+}
+
 // FirewallPolicyInsights - Firewall Policy Insights.
 type FirewallPolicyInsights struct {
 	// A flag to indicate if the insights are enabled on the policy.
@@ -5746,6 +16309,27 @@ type FirewallPolicyInsights struct {
 	RetentionDays *int32
 }
 
+func (f *FirewallPolicyInsights) GetIsEnabled() (rv bool) {
+	if f != nil && f.IsEnabled != nil {
+		return *f.IsEnabled
+	}
+	return
+}
+
+func (f *FirewallPolicyInsights) GetLogAnalyticsResources() (rv *FirewallPolicyLogAnalyticsResources) {
+	if f != nil {
+		return f.LogAnalyticsResources
+	}
+	return
+}
+
+func (f *FirewallPolicyInsights) GetRetentionDays() (rv int32) {
+	if f != nil && f.RetentionDays != nil {
+		return *f.RetentionDays
+	}
+	return
+}
+
 // FirewallPolicyIntrusionDetection - Configuration for intrusion detection mode and rules.
 type FirewallPolicyIntrusionDetection struct {
 	// Intrusion detection configuration properties.
@@ -5753,6 +16337,20 @@ type FirewallPolicyIntrusionDetection struct {
 
 	// Intrusion detection general state.
 	Mode *FirewallPolicyIntrusionDetectionStateType
+}
+
+func (f *FirewallPolicyIntrusionDetection) GetConfiguration() (rv *FirewallPolicyIntrusionDetectionConfiguration) {
+	if f != nil {
+		return f.Configuration
+	}
+	return
+}
+
+func (f *FirewallPolicyIntrusionDetection) GetMode() (rv *FirewallPolicyIntrusionDetectionStateType) {
+	if f != nil {
+		return f.Mode
+	}
+	return
 }
 
 // FirewallPolicyIntrusionDetectionBypassTrafficSpecifications - Intrusion detection bypass traffic specification.
@@ -5782,6 +16380,62 @@ type FirewallPolicyIntrusionDetectionBypassTrafficSpecifications struct {
 	SourceIPGroups []*string
 }
 
+func (f *FirewallPolicyIntrusionDetectionBypassTrafficSpecifications) GetDescription() (rv string) {
+	if f != nil && f.Description != nil {
+		return *f.Description
+	}
+	return
+}
+
+func (f *FirewallPolicyIntrusionDetectionBypassTrafficSpecifications) GetDestinationAddresses() (rv []*string) {
+	if f != nil {
+		return f.DestinationAddresses
+	}
+	return
+}
+
+func (f *FirewallPolicyIntrusionDetectionBypassTrafficSpecifications) GetDestinationIPGroups() (rv []*string) {
+	if f != nil {
+		return f.DestinationIPGroups
+	}
+	return
+}
+
+func (f *FirewallPolicyIntrusionDetectionBypassTrafficSpecifications) GetDestinationPorts() (rv []*string) {
+	if f != nil {
+		return f.DestinationPorts
+	}
+	return
+}
+
+func (f *FirewallPolicyIntrusionDetectionBypassTrafficSpecifications) GetName() (rv string) {
+	if f != nil && f.Name != nil {
+		return *f.Name
+	}
+	return
+}
+
+func (f *FirewallPolicyIntrusionDetectionBypassTrafficSpecifications) GetProtocol() (rv *FirewallPolicyIntrusionDetectionProtocol) {
+	if f != nil {
+		return f.Protocol
+	}
+	return
+}
+
+func (f *FirewallPolicyIntrusionDetectionBypassTrafficSpecifications) GetSourceAddresses() (rv []*string) {
+	if f != nil {
+		return f.SourceAddresses
+	}
+	return
+}
+
+func (f *FirewallPolicyIntrusionDetectionBypassTrafficSpecifications) GetSourceIPGroups() (rv []*string) {
+	if f != nil {
+		return f.SourceIPGroups
+	}
+	return
+}
+
 // FirewallPolicyIntrusionDetectionConfiguration - The operation for configuring intrusion detection.
 type FirewallPolicyIntrusionDetectionConfiguration struct {
 	// List of rules for traffic to bypass.
@@ -5796,6 +16450,27 @@ type FirewallPolicyIntrusionDetectionConfiguration struct {
 	SignatureOverrides []*FirewallPolicyIntrusionDetectionSignatureSpecification
 }
 
+func (f *FirewallPolicyIntrusionDetectionConfiguration) GetBypassTrafficSettings() (rv []*FirewallPolicyIntrusionDetectionBypassTrafficSpecifications) {
+	if f != nil {
+		return f.BypassTrafficSettings
+	}
+	return
+}
+
+func (f *FirewallPolicyIntrusionDetectionConfiguration) GetPrivateRanges() (rv []*string) {
+	if f != nil {
+		return f.PrivateRanges
+	}
+	return
+}
+
+func (f *FirewallPolicyIntrusionDetectionConfiguration) GetSignatureOverrides() (rv []*FirewallPolicyIntrusionDetectionSignatureSpecification) {
+	if f != nil {
+		return f.SignatureOverrides
+	}
+	return
+}
+
 // FirewallPolicyIntrusionDetectionSignatureSpecification - Intrusion detection signatures specification states.
 type FirewallPolicyIntrusionDetectionSignatureSpecification struct {
 	// Signature id.
@@ -5803,6 +16478,20 @@ type FirewallPolicyIntrusionDetectionSignatureSpecification struct {
 
 	// The signature state.
 	Mode *FirewallPolicyIntrusionDetectionStateType
+}
+
+func (f *FirewallPolicyIntrusionDetectionSignatureSpecification) GetID() (rv string) {
+	if f != nil && f.ID != nil {
+		return *f.ID
+	}
+	return
+}
+
+func (f *FirewallPolicyIntrusionDetectionSignatureSpecification) GetMode() (rv *FirewallPolicyIntrusionDetectionStateType) {
+	if f != nil {
+		return f.Mode
+	}
+	return
 }
 
 // FirewallPolicyListResult - Response for ListFirewallPolicies API service call.
@@ -5814,6 +16503,20 @@ type FirewallPolicyListResult struct {
 	Value []*FirewallPolicy
 }
 
+func (f *FirewallPolicyListResult) GetNextLink() (rv string) {
+	if f != nil && f.NextLink != nil {
+		return *f.NextLink
+	}
+	return
+}
+
+func (f *FirewallPolicyListResult) GetValue() (rv []*FirewallPolicy) {
+	if f != nil {
+		return f.Value
+	}
+	return
+}
+
 // FirewallPolicyLogAnalyticsResources - Log Analytics Resources for Firewall Policy Insights.
 type FirewallPolicyLogAnalyticsResources struct {
 	// The default workspace Id for Firewall Policy Insights.
@@ -5823,6 +16526,20 @@ type FirewallPolicyLogAnalyticsResources struct {
 	Workspaces []*FirewallPolicyLogAnalyticsWorkspace
 }
 
+func (f *FirewallPolicyLogAnalyticsResources) GetDefaultWorkspaceID() (rv *SubResource) {
+	if f != nil {
+		return f.DefaultWorkspaceID
+	}
+	return
+}
+
+func (f *FirewallPolicyLogAnalyticsResources) GetWorkspaces() (rv []*FirewallPolicyLogAnalyticsWorkspace) {
+	if f != nil {
+		return f.Workspaces
+	}
+	return
+}
+
 // FirewallPolicyLogAnalyticsWorkspace - Log Analytics Workspace for Firewall Policy Insights.
 type FirewallPolicyLogAnalyticsWorkspace struct {
 	// Region to configure the Workspace.
@@ -5830,6 +16547,20 @@ type FirewallPolicyLogAnalyticsWorkspace struct {
 
 	// The workspace Id for Firewall Policy Insights.
 	WorkspaceID *SubResource
+}
+
+func (f *FirewallPolicyLogAnalyticsWorkspace) GetRegion() (rv string) {
+	if f != nil && f.Region != nil {
+		return *f.Region
+	}
+	return
+}
+
+func (f *FirewallPolicyLogAnalyticsWorkspace) GetWorkspaceID() (rv *SubResource) {
+	if f != nil {
+		return f.WorkspaceID
+	}
+	return
 }
 
 // FirewallPolicyNatRuleCollection - Firewall Policy NAT Rule Collection.
@@ -5850,6 +16581,41 @@ type FirewallPolicyNatRuleCollection struct {
 	Rules []FirewallPolicyRuleClassification
 }
 
+func (f *FirewallPolicyNatRuleCollection) GetRuleCollectionType() (rv *FirewallPolicyRuleCollectionType) {
+	if f != nil {
+		return f.RuleCollectionType
+	}
+	return
+}
+
+func (f *FirewallPolicyNatRuleCollection) GetAction() (rv *FirewallPolicyNatRuleCollectionAction) {
+	if f != nil {
+		return f.Action
+	}
+	return
+}
+
+func (f *FirewallPolicyNatRuleCollection) GetName() (rv string) {
+	if f != nil && f.Name != nil {
+		return *f.Name
+	}
+	return
+}
+
+func (f *FirewallPolicyNatRuleCollection) GetPriority() (rv int32) {
+	if f != nil && f.Priority != nil {
+		return *f.Priority
+	}
+	return
+}
+
+func (f *FirewallPolicyNatRuleCollection) GetRules() (rv []FirewallPolicyRuleClassification) {
+	if f != nil {
+		return f.Rules
+	}
+	return
+}
+
 // GetFirewallPolicyRuleCollection implements the FirewallPolicyRuleCollectionClassification interface for type FirewallPolicyNatRuleCollection.
 func (f *FirewallPolicyNatRuleCollection) GetFirewallPolicyRuleCollection() *FirewallPolicyRuleCollection {
 	return &FirewallPolicyRuleCollection{
@@ -5863,6 +16629,13 @@ func (f *FirewallPolicyNatRuleCollection) GetFirewallPolicyRuleCollection() *Fir
 type FirewallPolicyNatRuleCollectionAction struct {
 	// The type of action.
 	Type *FirewallPolicyNatRuleCollectionActionType
+}
+
+func (f *FirewallPolicyNatRuleCollectionAction) GetType() (rv *FirewallPolicyNatRuleCollectionActionType) {
+	if f != nil {
+		return f.Type
+	}
+	return
 }
 
 // FirewallPolicyPropertiesFormat - Firewall Policy definition.
@@ -5913,6 +16686,111 @@ type FirewallPolicyPropertiesFormat struct {
 	RuleCollectionGroups []*SubResource
 }
 
+func (f *FirewallPolicyPropertiesFormat) GetBasePolicy() (rv *SubResource) {
+	if f != nil {
+		return f.BasePolicy
+	}
+	return
+}
+
+func (f *FirewallPolicyPropertiesFormat) GetDNSSettings() (rv *DNSSettings) {
+	if f != nil {
+		return f.DNSSettings
+	}
+	return
+}
+
+func (f *FirewallPolicyPropertiesFormat) GetExplicitProxy() (rv *ExplicitProxy) {
+	if f != nil {
+		return f.ExplicitProxy
+	}
+	return
+}
+
+func (f *FirewallPolicyPropertiesFormat) GetInsights() (rv *FirewallPolicyInsights) {
+	if f != nil {
+		return f.Insights
+	}
+	return
+}
+
+func (f *FirewallPolicyPropertiesFormat) GetIntrusionDetection() (rv *FirewallPolicyIntrusionDetection) {
+	if f != nil {
+		return f.IntrusionDetection
+	}
+	return
+}
+
+func (f *FirewallPolicyPropertiesFormat) GetSKU() (rv *FirewallPolicySKU) {
+	if f != nil {
+		return f.SKU
+	}
+	return
+}
+
+func (f *FirewallPolicyPropertiesFormat) GetSQL() (rv *FirewallPolicySQL) {
+	if f != nil {
+		return f.SQL
+	}
+	return
+}
+
+func (f *FirewallPolicyPropertiesFormat) GetSnat() (rv *FirewallPolicySNAT) {
+	if f != nil {
+		return f.Snat
+	}
+	return
+}
+
+func (f *FirewallPolicyPropertiesFormat) GetThreatIntelMode() (rv *AzureFirewallThreatIntelMode) {
+	if f != nil {
+		return f.ThreatIntelMode
+	}
+	return
+}
+
+func (f *FirewallPolicyPropertiesFormat) GetThreatIntelWhitelist() (rv *FirewallPolicyThreatIntelWhitelist) {
+	if f != nil {
+		return f.ThreatIntelWhitelist
+	}
+	return
+}
+
+func (f *FirewallPolicyPropertiesFormat) GetTransportSecurity() (rv *FirewallPolicyTransportSecurity) {
+	if f != nil {
+		return f.TransportSecurity
+	}
+	return
+}
+
+func (f *FirewallPolicyPropertiesFormat) GetChildPolicies() (rv []*SubResource) {
+	if f != nil {
+		return f.ChildPolicies
+	}
+	return
+}
+
+func (f *FirewallPolicyPropertiesFormat) GetFirewalls() (rv []*SubResource) {
+	if f != nil {
+		return f.Firewalls
+	}
+	return
+}
+
+func (f *FirewallPolicyPropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if f != nil {
+		return f.ProvisioningState
+	}
+	return
+}
+
+func (f *FirewallPolicyPropertiesFormat) GetRuleCollectionGroups() (rv []*SubResource) {
+	if f != nil {
+		return f.RuleCollectionGroups
+	}
+	return
+}
+
 // FirewallPolicyRule - Properties of a rule.
 type FirewallPolicyRule struct {
 	// REQUIRED; Rule Type.
@@ -5923,6 +16801,27 @@ type FirewallPolicyRule struct {
 
 	// Name of the rule.
 	Name *string
+}
+
+func (f *FirewallPolicyRule) GetRuleType() (rv *FirewallPolicyRuleType) {
+	if f != nil {
+		return f.RuleType
+	}
+	return
+}
+
+func (f *FirewallPolicyRule) GetDescription() (rv string) {
+	if f != nil && f.Description != nil {
+		return *f.Description
+	}
+	return
+}
+
+func (f *FirewallPolicyRule) GetName() (rv string) {
+	if f != nil && f.Name != nil {
+		return *f.Name
+	}
+	return
 }
 
 // GetFirewallPolicyRule implements the FirewallPolicyRuleClassification interface for type FirewallPolicyRule.
@@ -5937,6 +16836,20 @@ type FirewallPolicyRuleApplicationProtocol struct {
 	ProtocolType *FirewallPolicyRuleApplicationProtocolType
 }
 
+func (f *FirewallPolicyRuleApplicationProtocol) GetPort() (rv int32) {
+	if f != nil && f.Port != nil {
+		return *f.Port
+	}
+	return
+}
+
+func (f *FirewallPolicyRuleApplicationProtocol) GetProtocolType() (rv *FirewallPolicyRuleApplicationProtocolType) {
+	if f != nil {
+		return f.ProtocolType
+	}
+	return
+}
+
 // FirewallPolicyRuleCollection - Properties of the rule collection.
 type FirewallPolicyRuleCollection struct {
 	// REQUIRED; The type of the rule collection.
@@ -5947,6 +16860,27 @@ type FirewallPolicyRuleCollection struct {
 
 	// Priority of the Firewall Policy Rule Collection resource.
 	Priority *int32
+}
+
+func (f *FirewallPolicyRuleCollection) GetRuleCollectionType() (rv *FirewallPolicyRuleCollectionType) {
+	if f != nil {
+		return f.RuleCollectionType
+	}
+	return
+}
+
+func (f *FirewallPolicyRuleCollection) GetName() (rv string) {
+	if f != nil && f.Name != nil {
+		return *f.Name
+	}
+	return
+}
+
+func (f *FirewallPolicyRuleCollection) GetPriority() (rv int32) {
+	if f != nil && f.Priority != nil {
+		return *f.Priority
+	}
+	return
 }
 
 // GetFirewallPolicyRuleCollection implements the FirewallPolicyRuleCollectionClassification interface for type FirewallPolicyRuleCollection.
@@ -5972,6 +16906,41 @@ type FirewallPolicyRuleCollectionGroup struct {
 	Type *string
 }
 
+func (f *FirewallPolicyRuleCollectionGroup) GetID() (rv string) {
+	if f != nil && f.ID != nil {
+		return *f.ID
+	}
+	return
+}
+
+func (f *FirewallPolicyRuleCollectionGroup) GetName() (rv string) {
+	if f != nil && f.Name != nil {
+		return *f.Name
+	}
+	return
+}
+
+func (f *FirewallPolicyRuleCollectionGroup) GetProperties() (rv *FirewallPolicyRuleCollectionGroupProperties) {
+	if f != nil {
+		return f.Properties
+	}
+	return
+}
+
+func (f *FirewallPolicyRuleCollectionGroup) GetEtag() (rv string) {
+	if f != nil && f.Etag != nil {
+		return *f.Etag
+	}
+	return
+}
+
+func (f *FirewallPolicyRuleCollectionGroup) GetType() (rv string) {
+	if f != nil && f.Type != nil {
+		return *f.Type
+	}
+	return
+}
+
 // FirewallPolicyRuleCollectionGroupListResult - Response for ListFirewallPolicyRuleCollectionGroups API service call.
 type FirewallPolicyRuleCollectionGroupListResult struct {
 	// URL to get the next set of results.
@@ -5979,6 +16948,20 @@ type FirewallPolicyRuleCollectionGroupListResult struct {
 
 	// List of FirewallPolicyRuleCollectionGroups in a FirewallPolicy.
 	Value []*FirewallPolicyRuleCollectionGroup
+}
+
+func (f *FirewallPolicyRuleCollectionGroupListResult) GetNextLink() (rv string) {
+	if f != nil && f.NextLink != nil {
+		return *f.NextLink
+	}
+	return
+}
+
+func (f *FirewallPolicyRuleCollectionGroupListResult) GetValue() (rv []*FirewallPolicyRuleCollectionGroup) {
+	if f != nil {
+		return f.Value
+	}
+	return
 }
 
 // FirewallPolicyRuleCollectionGroupProperties - Properties of the rule collection group.
@@ -5993,10 +16976,38 @@ type FirewallPolicyRuleCollectionGroupProperties struct {
 	ProvisioningState *ProvisioningState
 }
 
+func (f *FirewallPolicyRuleCollectionGroupProperties) GetPriority() (rv int32) {
+	if f != nil && f.Priority != nil {
+		return *f.Priority
+	}
+	return
+}
+
+func (f *FirewallPolicyRuleCollectionGroupProperties) GetRuleCollections() (rv []FirewallPolicyRuleCollectionClassification) {
+	if f != nil {
+		return f.RuleCollections
+	}
+	return
+}
+
+func (f *FirewallPolicyRuleCollectionGroupProperties) GetProvisioningState() (rv *ProvisioningState) {
+	if f != nil {
+		return f.ProvisioningState
+	}
+	return
+}
+
 // FirewallPolicySKU - SKU of Firewall policy.
 type FirewallPolicySKU struct {
 	// Tier of Firewall Policy.
 	Tier *FirewallPolicySKUTier
+}
+
+func (f *FirewallPolicySKU) GetTier() (rv *FirewallPolicySKUTier) {
+	if f != nil {
+		return f.Tier
+	}
+	return
 }
 
 // FirewallPolicySNAT - The private IP addresses/IP ranges to which traffic will not be SNAT.
@@ -6008,10 +17019,31 @@ type FirewallPolicySNAT struct {
 	PrivateRanges []*string
 }
 
+func (f *FirewallPolicySNAT) GetAutoLearnPrivateRanges() (rv *AutoLearnPrivateRangesMode) {
+	if f != nil {
+		return f.AutoLearnPrivateRanges
+	}
+	return
+}
+
+func (f *FirewallPolicySNAT) GetPrivateRanges() (rv []*string) {
+	if f != nil {
+		return f.PrivateRanges
+	}
+	return
+}
+
 // FirewallPolicySQL - SQL Settings in Firewall Policy.
 type FirewallPolicySQL struct {
 	// A flag to indicate if SQL Redirect traffic filtering is enabled. Turning on the flag requires no rule using port 11000-11999.
 	AllowSQLRedirect *bool
+}
+
+func (f *FirewallPolicySQL) GetAllowSQLRedirect() (rv bool) {
+	if f != nil && f.AllowSQLRedirect != nil {
+		return *f.AllowSQLRedirect
+	}
+	return
 }
 
 // FirewallPolicyThreatIntelWhitelist - ThreatIntel Whitelist for Firewall Policy.
@@ -6023,10 +17055,31 @@ type FirewallPolicyThreatIntelWhitelist struct {
 	IPAddresses []*string
 }
 
+func (f *FirewallPolicyThreatIntelWhitelist) GetFqdns() (rv []*string) {
+	if f != nil {
+		return f.Fqdns
+	}
+	return
+}
+
+func (f *FirewallPolicyThreatIntelWhitelist) GetIPAddresses() (rv []*string) {
+	if f != nil {
+		return f.IPAddresses
+	}
+	return
+}
+
 // FirewallPolicyTransportSecurity - Configuration needed to perform TLS termination & initiation.
 type FirewallPolicyTransportSecurity struct {
 	// The CA used for intermediate CA generation.
 	CertificateAuthority *FirewallPolicyCertificateAuthority
+}
+
+func (f *FirewallPolicyTransportSecurity) GetCertificateAuthority() (rv *FirewallPolicyCertificateAuthority) {
+	if f != nil {
+		return f.CertificateAuthority
+	}
+	return
 }
 
 // FlowLog - A flow log resource.
@@ -6053,6 +17106,55 @@ type FlowLog struct {
 	Type *string
 }
 
+func (f *FlowLog) GetID() (rv string) {
+	if f != nil && f.ID != nil {
+		return *f.ID
+	}
+	return
+}
+
+func (f *FlowLog) GetLocation() (rv string) {
+	if f != nil && f.Location != nil {
+		return *f.Location
+	}
+	return
+}
+
+func (f *FlowLog) GetProperties() (rv *FlowLogPropertiesFormat) {
+	if f != nil {
+		return f.Properties
+	}
+	return
+}
+
+func (f *FlowLog) GetTags() (rv map[string]*string) {
+	if f != nil {
+		return f.Tags
+	}
+	return
+}
+
+func (f *FlowLog) GetEtag() (rv string) {
+	if f != nil && f.Etag != nil {
+		return *f.Etag
+	}
+	return
+}
+
+func (f *FlowLog) GetName() (rv string) {
+	if f != nil && f.Name != nil {
+		return *f.Name
+	}
+	return
+}
+
+func (f *FlowLog) GetType() (rv string) {
+	if f != nil && f.Type != nil {
+		return *f.Type
+	}
+	return
+}
+
 // FlowLogFormatParameters - Parameters that define the flow log format.
 type FlowLogFormatParameters struct {
 	// The file type of flow log.
@@ -6060,6 +17162,20 @@ type FlowLogFormatParameters struct {
 
 	// The version (revision) of the flow log.
 	Version *int32
+}
+
+func (f *FlowLogFormatParameters) GetType() (rv *FlowLogFormatType) {
+	if f != nil {
+		return f.Type
+	}
+	return
+}
+
+func (f *FlowLogFormatParameters) GetVersion() (rv int32) {
+	if f != nil && f.Version != nil {
+		return *f.Version
+	}
+	return
 }
 
 // FlowLogInformation - Information on the configuration of flow log and traffic analytics (optional) .
@@ -6074,6 +17190,27 @@ type FlowLogInformation struct {
 	FlowAnalyticsConfiguration *TrafficAnalyticsProperties
 }
 
+func (f *FlowLogInformation) GetProperties() (rv *FlowLogProperties) {
+	if f != nil {
+		return f.Properties
+	}
+	return
+}
+
+func (f *FlowLogInformation) GetTargetResourceID() (rv string) {
+	if f != nil && f.TargetResourceID != nil {
+		return *f.TargetResourceID
+	}
+	return
+}
+
+func (f *FlowLogInformation) GetFlowAnalyticsConfiguration() (rv *TrafficAnalyticsProperties) {
+	if f != nil {
+		return f.FlowAnalyticsConfiguration
+	}
+	return
+}
+
 // FlowLogListResult - List of flow logs.
 type FlowLogListResult struct {
 	// Information about flow log resource.
@@ -6081,6 +17218,20 @@ type FlowLogListResult struct {
 
 	// READ-ONLY; The URL to get the next set of results.
 	NextLink *string
+}
+
+func (f *FlowLogListResult) GetValue() (rv []*FlowLog) {
+	if f != nil {
+		return f.Value
+	}
+	return
+}
+
+func (f *FlowLogListResult) GetNextLink() (rv string) {
+	if f != nil && f.NextLink != nil {
+		return *f.NextLink
+	}
+	return
 }
 
 // FlowLogProperties - Parameters that define the configuration of flow log.
@@ -6096,6 +17247,34 @@ type FlowLogProperties struct {
 
 	// Parameters that define the retention policy for flow log.
 	RetentionPolicy *RetentionPolicyParameters
+}
+
+func (f *FlowLogProperties) GetEnabled() (rv bool) {
+	if f != nil && f.Enabled != nil {
+		return *f.Enabled
+	}
+	return
+}
+
+func (f *FlowLogProperties) GetStorageID() (rv string) {
+	if f != nil && f.StorageID != nil {
+		return *f.StorageID
+	}
+	return
+}
+
+func (f *FlowLogProperties) GetFormat() (rv *FlowLogFormatParameters) {
+	if f != nil {
+		return f.Format
+	}
+	return
+}
+
+func (f *FlowLogProperties) GetRetentionPolicy() (rv *RetentionPolicyParameters) {
+	if f != nil {
+		return f.RetentionPolicy
+	}
+	return
 }
 
 // FlowLogPropertiesFormat - Parameters that define the configuration of flow log.
@@ -6125,10 +17304,73 @@ type FlowLogPropertiesFormat struct {
 	TargetResourceGUID *string
 }
 
+func (f *FlowLogPropertiesFormat) GetStorageID() (rv string) {
+	if f != nil && f.StorageID != nil {
+		return *f.StorageID
+	}
+	return
+}
+
+func (f *FlowLogPropertiesFormat) GetTargetResourceID() (rv string) {
+	if f != nil && f.TargetResourceID != nil {
+		return *f.TargetResourceID
+	}
+	return
+}
+
+func (f *FlowLogPropertiesFormat) GetEnabled() (rv bool) {
+	if f != nil && f.Enabled != nil {
+		return *f.Enabled
+	}
+	return
+}
+
+func (f *FlowLogPropertiesFormat) GetFlowAnalyticsConfiguration() (rv *TrafficAnalyticsProperties) {
+	if f != nil {
+		return f.FlowAnalyticsConfiguration
+	}
+	return
+}
+
+func (f *FlowLogPropertiesFormat) GetFormat() (rv *FlowLogFormatParameters) {
+	if f != nil {
+		return f.Format
+	}
+	return
+}
+
+func (f *FlowLogPropertiesFormat) GetRetentionPolicy() (rv *RetentionPolicyParameters) {
+	if f != nil {
+		return f.RetentionPolicy
+	}
+	return
+}
+
+func (f *FlowLogPropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if f != nil {
+		return f.ProvisioningState
+	}
+	return
+}
+
+func (f *FlowLogPropertiesFormat) GetTargetResourceGUID() (rv string) {
+	if f != nil && f.TargetResourceGUID != nil {
+		return *f.TargetResourceGUID
+	}
+	return
+}
+
 // FlowLogStatusParameters - Parameters that define a resource to query flow log and traffic analytics (optional) status.
 type FlowLogStatusParameters struct {
 	// REQUIRED; The target resource where getting the flow log and traffic analytics (optional) status.
 	TargetResourceID *string
+}
+
+func (f *FlowLogStatusParameters) GetTargetResourceID() (rv string) {
+	if f != nil && f.TargetResourceID != nil {
+		return *f.TargetResourceID
+	}
+	return
 }
 
 // FrontendIPConfiguration - Frontend IP address of the load balancer.
@@ -6151,6 +17393,48 @@ type FrontendIPConfiguration struct {
 
 	// READ-ONLY; Type of the resource.
 	Type *string
+}
+
+func (f *FrontendIPConfiguration) GetID() (rv string) {
+	if f != nil && f.ID != nil {
+		return *f.ID
+	}
+	return
+}
+
+func (f *FrontendIPConfiguration) GetName() (rv string) {
+	if f != nil && f.Name != nil {
+		return *f.Name
+	}
+	return
+}
+
+func (f *FrontendIPConfiguration) GetProperties() (rv *FrontendIPConfigurationPropertiesFormat) {
+	if f != nil {
+		return f.Properties
+	}
+	return
+}
+
+func (f *FrontendIPConfiguration) GetZones() (rv []*string) {
+	if f != nil {
+		return f.Zones
+	}
+	return
+}
+
+func (f *FrontendIPConfiguration) GetEtag() (rv string) {
+	if f != nil && f.Etag != nil {
+		return *f.Etag
+	}
+	return
+}
+
+func (f *FrontendIPConfiguration) GetType() (rv string) {
+	if f != nil && f.Type != nil {
+		return *f.Type
+	}
+	return
 }
 
 // FrontendIPConfigurationPropertiesFormat - Properties of Frontend IP Configuration of the load balancer.
@@ -6192,6 +17476,90 @@ type FrontendIPConfigurationPropertiesFormat struct {
 	ProvisioningState *ProvisioningState
 }
 
+func (f *FrontendIPConfigurationPropertiesFormat) GetGatewayLoadBalancer() (rv *SubResource) {
+	if f != nil {
+		return f.GatewayLoadBalancer
+	}
+	return
+}
+
+func (f *FrontendIPConfigurationPropertiesFormat) GetPrivateIPAddress() (rv string) {
+	if f != nil && f.PrivateIPAddress != nil {
+		return *f.PrivateIPAddress
+	}
+	return
+}
+
+func (f *FrontendIPConfigurationPropertiesFormat) GetPrivateIPAddressVersion() (rv *IPVersion) {
+	if f != nil {
+		return f.PrivateIPAddressVersion
+	}
+	return
+}
+
+func (f *FrontendIPConfigurationPropertiesFormat) GetPrivateIPAllocationMethod() (rv *IPAllocationMethod) {
+	if f != nil {
+		return f.PrivateIPAllocationMethod
+	}
+	return
+}
+
+func (f *FrontendIPConfigurationPropertiesFormat) GetPublicIPAddress() (rv *PublicIPAddress) {
+	if f != nil {
+		return f.PublicIPAddress
+	}
+	return
+}
+
+func (f *FrontendIPConfigurationPropertiesFormat) GetPublicIPPrefix() (rv *SubResource) {
+	if f != nil {
+		return f.PublicIPPrefix
+	}
+	return
+}
+
+func (f *FrontendIPConfigurationPropertiesFormat) GetSubnet() (rv *Subnet) {
+	if f != nil {
+		return f.Subnet
+	}
+	return
+}
+
+func (f *FrontendIPConfigurationPropertiesFormat) GetInboundNatPools() (rv []*SubResource) {
+	if f != nil {
+		return f.InboundNatPools
+	}
+	return
+}
+
+func (f *FrontendIPConfigurationPropertiesFormat) GetInboundNatRules() (rv []*SubResource) {
+	if f != nil {
+		return f.InboundNatRules
+	}
+	return
+}
+
+func (f *FrontendIPConfigurationPropertiesFormat) GetLoadBalancingRules() (rv []*SubResource) {
+	if f != nil {
+		return f.LoadBalancingRules
+	}
+	return
+}
+
+func (f *FrontendIPConfigurationPropertiesFormat) GetOutboundRules() (rv []*SubResource) {
+	if f != nil {
+		return f.OutboundRules
+	}
+	return
+}
+
+func (f *FrontendIPConfigurationPropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if f != nil {
+		return f.ProvisioningState
+	}
+	return
+}
+
 // GatewayCustomBgpIPAddressIPConfiguration - GatewayCustomBgpIpAddressIpConfiguration for a virtual network gateway connection.
 type GatewayCustomBgpIPAddressIPConfiguration struct {
 	// REQUIRED; The custom BgpPeeringAddress which belongs to IpconfigurationId.
@@ -6199,6 +17567,20 @@ type GatewayCustomBgpIPAddressIPConfiguration struct {
 
 	// REQUIRED; The IpconfigurationId of ipconfiguration which belongs to gateway.
 	IPConfigurationID *string
+}
+
+func (g *GatewayCustomBgpIPAddressIPConfiguration) GetCustomBgpIPAddress() (rv string) {
+	if g != nil && g.CustomBgpIPAddress != nil {
+		return *g.CustomBgpIPAddress
+	}
+	return
+}
+
+func (g *GatewayCustomBgpIPAddressIPConfiguration) GetIPConfigurationID() (rv string) {
+	if g != nil && g.IPConfigurationID != nil {
+		return *g.IPConfigurationID
+	}
+	return
 }
 
 // GatewayLoadBalancerTunnelInterface - Gateway load balancer tunnel interface of a load balancer backend address pool.
@@ -6214,6 +17596,34 @@ type GatewayLoadBalancerTunnelInterface struct {
 
 	// Traffic type of gateway load balancer tunnel interface.
 	Type *GatewayLoadBalancerTunnelInterfaceType
+}
+
+func (g *GatewayLoadBalancerTunnelInterface) GetIdentifier() (rv int32) {
+	if g != nil && g.Identifier != nil {
+		return *g.Identifier
+	}
+	return
+}
+
+func (g *GatewayLoadBalancerTunnelInterface) GetPort() (rv int32) {
+	if g != nil && g.Port != nil {
+		return *g.Port
+	}
+	return
+}
+
+func (g *GatewayLoadBalancerTunnelInterface) GetProtocol() (rv *GatewayLoadBalancerTunnelProtocol) {
+	if g != nil {
+		return g.Protocol
+	}
+	return
+}
+
+func (g *GatewayLoadBalancerTunnelInterface) GetType() (rv *GatewayLoadBalancerTunnelInterfaceType) {
+	if g != nil {
+		return g.Type
+	}
+	return
 }
 
 // GatewayRoute - Gateway routing details.
@@ -6240,10 +17650,66 @@ type GatewayRoute struct {
 	Weight *int32
 }
 
+func (g *GatewayRoute) GetAsPath() (rv string) {
+	if g != nil && g.AsPath != nil {
+		return *g.AsPath
+	}
+	return
+}
+
+func (g *GatewayRoute) GetLocalAddress() (rv string) {
+	if g != nil && g.LocalAddress != nil {
+		return *g.LocalAddress
+	}
+	return
+}
+
+func (g *GatewayRoute) GetNetwork() (rv string) {
+	if g != nil && g.Network != nil {
+		return *g.Network
+	}
+	return
+}
+
+func (g *GatewayRoute) GetNextHop() (rv string) {
+	if g != nil && g.NextHop != nil {
+		return *g.NextHop
+	}
+	return
+}
+
+func (g *GatewayRoute) GetOrigin() (rv string) {
+	if g != nil && g.Origin != nil {
+		return *g.Origin
+	}
+	return
+}
+
+func (g *GatewayRoute) GetSourcePeer() (rv string) {
+	if g != nil && g.SourcePeer != nil {
+		return *g.SourcePeer
+	}
+	return
+}
+
+func (g *GatewayRoute) GetWeight() (rv int32) {
+	if g != nil && g.Weight != nil {
+		return *g.Weight
+	}
+	return
+}
+
 // GatewayRouteListResult - List of virtual network gateway routes.
 type GatewayRouteListResult struct {
 	// List of gateway routes.
 	Value []*GatewayRoute
+}
+
+func (g *GatewayRouteListResult) GetValue() (rv []*GatewayRoute) {
+	if g != nil {
+		return g.Value
+	}
+	return
 }
 
 // GenerateExpressRoutePortsLOARequest - The customer name to be printed on a letter of authorization.
@@ -6252,10 +17718,24 @@ type GenerateExpressRoutePortsLOARequest struct {
 	CustomerName *string
 }
 
+func (g *GenerateExpressRoutePortsLOARequest) GetCustomerName() (rv string) {
+	if g != nil && g.CustomerName != nil {
+		return *g.CustomerName
+	}
+	return
+}
+
 // GenerateExpressRoutePortsLOAResult - Response for GenerateExpressRoutePortsLOA API service call.
 type GenerateExpressRoutePortsLOAResult struct {
 	// The content as a base64 encoded string.
 	EncodedContent *string
+}
+
+func (g *GenerateExpressRoutePortsLOAResult) GetEncodedContent() (rv string) {
+	if g != nil && g.EncodedContent != nil {
+		return *g.EncodedContent
+	}
+	return
 }
 
 // GetInboundRoutesParameters - The parameters specifying the connection resource whose inbound routes are being requested.
@@ -6268,6 +17748,20 @@ type GetInboundRoutesParameters struct {
 	ResourceURI *string
 }
 
+func (g *GetInboundRoutesParameters) GetConnectionType() (rv string) {
+	if g != nil && g.ConnectionType != nil {
+		return *g.ConnectionType
+	}
+	return
+}
+
+func (g *GetInboundRoutesParameters) GetResourceURI() (rv string) {
+	if g != nil && g.ResourceURI != nil {
+		return *g.ResourceURI
+	}
+	return
+}
+
 // GetOutboundRoutesParameters - The parameters specifying the connection resource whose outbound routes are being requested.
 type GetOutboundRoutesParameters struct {
 	// The type of the specified connection resource like ExpressRouteConnection, HubVirtualNetworkConnection, VpnConnection and
@@ -6278,6 +17772,20 @@ type GetOutboundRoutesParameters struct {
 	ResourceURI *string
 }
 
+func (g *GetOutboundRoutesParameters) GetConnectionType() (rv string) {
+	if g != nil && g.ConnectionType != nil {
+		return *g.ConnectionType
+	}
+	return
+}
+
+func (g *GetOutboundRoutesParameters) GetResourceURI() (rv string) {
+	if g != nil && g.ResourceURI != nil {
+		return *g.ResourceURI
+	}
+	return
+}
+
 // GetVPNSitesConfigurationRequest - List of Vpn-Sites.
 type GetVPNSitesConfigurationRequest struct {
 	// REQUIRED; The sas-url to download the configurations for vpn-sites.
@@ -6285,6 +17793,20 @@ type GetVPNSitesConfigurationRequest struct {
 
 	// List of resource-ids of the vpn-sites for which config is to be downloaded.
 	VPNSites []*string
+}
+
+func (g *GetVPNSitesConfigurationRequest) GetOutputBlobSasURL() (rv string) {
+	if g != nil && g.OutputBlobSasURL != nil {
+		return *g.OutputBlobSasURL
+	}
+	return
+}
+
+func (g *GetVPNSitesConfigurationRequest) GetVPNSites() (rv []*string) {
+	if g != nil {
+		return g.VPNSites
+	}
+	return
 }
 
 // Group - The network group resource
@@ -6308,6 +17830,48 @@ type Group struct {
 	Type *string
 }
 
+func (g *Group) GetProperties() (rv *GroupProperties) {
+	if g != nil {
+		return g.Properties
+	}
+	return
+}
+
+func (g *Group) GetEtag() (rv string) {
+	if g != nil && g.Etag != nil {
+		return *g.Etag
+	}
+	return
+}
+
+func (g *Group) GetID() (rv string) {
+	if g != nil && g.ID != nil {
+		return *g.ID
+	}
+	return
+}
+
+func (g *Group) GetName() (rv string) {
+	if g != nil && g.Name != nil {
+		return *g.Name
+	}
+	return
+}
+
+func (g *Group) GetSystemData() (rv *SystemData) {
+	if g != nil {
+		return g.SystemData
+	}
+	return
+}
+
+func (g *Group) GetType() (rv string) {
+	if g != nil && g.Type != nil {
+		return *g.Type
+	}
+	return
+}
+
 // GroupListResult - Result of the request to list NetworkGroup. It contains a list of groups and a URL link to get the next
 // set of results.
 type GroupListResult struct {
@@ -6318,6 +17882,20 @@ type GroupListResult struct {
 	Value []*Group
 }
 
+func (g *GroupListResult) GetNextLink() (rv string) {
+	if g != nil && g.NextLink != nil {
+		return *g.NextLink
+	}
+	return
+}
+
+func (g *GroupListResult) GetValue() (rv []*Group) {
+	if g != nil {
+		return g.Value
+	}
+	return
+}
+
 // GroupProperties - Properties of network group
 type GroupProperties struct {
 	// A description of the network group.
@@ -6325,6 +17903,20 @@ type GroupProperties struct {
 
 	// READ-ONLY; The provisioning state of the scope assignment resource.
 	ProvisioningState *ProvisioningState
+}
+
+func (g *GroupProperties) GetDescription() (rv string) {
+	if g != nil && g.Description != nil {
+		return *g.Description
+	}
+	return
+}
+
+func (g *GroupProperties) GetProvisioningState() (rv *ProvisioningState) {
+	if g != nil {
+		return g.ProvisioningState
+	}
+	return
 }
 
 // HTTPConfiguration - HTTP configuration of the connectivity check.
@@ -6339,6 +17931,27 @@ type HTTPConfiguration struct {
 	ValidStatusCodes []*int32
 }
 
+func (h *HTTPConfiguration) GetHeaders() (rv []*HTTPHeader) {
+	if h != nil {
+		return h.Headers
+	}
+	return
+}
+
+func (h *HTTPConfiguration) GetMethod() (rv *HTTPMethod) {
+	if h != nil {
+		return h.Method
+	}
+	return
+}
+
+func (h *HTTPConfiguration) GetValidStatusCodes() (rv []*int32) {
+	if h != nil {
+		return h.ValidStatusCodes
+	}
+	return
+}
+
 // HTTPHeader - The HTTP header.
 type HTTPHeader struct {
 	// The name in HTTP header.
@@ -6346,6 +17959,20 @@ type HTTPHeader struct {
 
 	// The value in HTTP header.
 	Value *string
+}
+
+func (h *HTTPHeader) GetName() (rv string) {
+	if h != nil && h.Name != nil {
+		return *h.Name
+	}
+	return
+}
+
+func (h *HTTPHeader) GetValue() (rv string) {
+	if h != nil && h.Value != nil {
+		return *h.Value
+	}
+	return
 }
 
 // HopLink - Hop link.
@@ -6369,6 +17996,48 @@ type HopLink struct {
 	ResourceID *string
 }
 
+func (h *HopLink) GetProperties() (rv *HopLinkProperties) {
+	if h != nil {
+		return h.Properties
+	}
+	return
+}
+
+func (h *HopLink) GetContext() (rv map[string]*string) {
+	if h != nil {
+		return h.Context
+	}
+	return
+}
+
+func (h *HopLink) GetIssues() (rv []*ConnectivityIssue) {
+	if h != nil {
+		return h.Issues
+	}
+	return
+}
+
+func (h *HopLink) GetLinkType() (rv string) {
+	if h != nil && h.LinkType != nil {
+		return *h.LinkType
+	}
+	return
+}
+
+func (h *HopLink) GetNextHopID() (rv string) {
+	if h != nil && h.NextHopID != nil {
+		return *h.NextHopID
+	}
+	return
+}
+
+func (h *HopLink) GetResourceID() (rv string) {
+	if h != nil && h.ResourceID != nil {
+		return *h.ResourceID
+	}
+	return
+}
+
 // HopLinkProperties - Hop link properties.
 type HopLinkProperties struct {
 	// READ-ONLY; Average roundtrip time in milliseconds.
@@ -6381,6 +18050,27 @@ type HopLinkProperties struct {
 	RoundTripTimeMin *int64
 }
 
+func (h *HopLinkProperties) GetRoundTripTimeAvg() (rv int64) {
+	if h != nil && h.RoundTripTimeAvg != nil {
+		return *h.RoundTripTimeAvg
+	}
+	return
+}
+
+func (h *HopLinkProperties) GetRoundTripTimeMax() (rv int64) {
+	if h != nil && h.RoundTripTimeMax != nil {
+		return *h.RoundTripTimeMax
+	}
+	return
+}
+
+func (h *HopLinkProperties) GetRoundTripTimeMin() (rv int64) {
+	if h != nil && h.RoundTripTimeMin != nil {
+		return *h.RoundTripTimeMin
+	}
+	return
+}
+
 // Hub Item.
 type Hub struct {
 	// Resource Id.
@@ -6390,6 +18080,20 @@ type Hub struct {
 	ResourceType *string
 }
 
+func (h *Hub) GetResourceID() (rv string) {
+	if h != nil && h.ResourceID != nil {
+		return *h.ResourceID
+	}
+	return
+}
+
+func (h *Hub) GetResourceType() (rv string) {
+	if h != nil && h.ResourceType != nil {
+		return *h.ResourceType
+	}
+	return
+}
+
 // HubIPAddresses - IP addresses associated with azure firewall.
 type HubIPAddresses struct {
 	// Private IP Address associated with azure firewall.
@@ -6397,6 +18101,20 @@ type HubIPAddresses struct {
 
 	// Public IP addresses associated with azure firewall.
 	PublicIPs *HubPublicIPAddresses
+}
+
+func (h *HubIPAddresses) GetPrivateIPAddress() (rv string) {
+	if h != nil && h.PrivateIPAddress != nil {
+		return *h.PrivateIPAddress
+	}
+	return
+}
+
+func (h *HubIPAddresses) GetPublicIPs() (rv *HubPublicIPAddresses) {
+	if h != nil {
+		return h.PublicIPs
+	}
+	return
 }
 
 // HubIPConfiguration - IpConfigurations.
@@ -6417,6 +18135,41 @@ type HubIPConfiguration struct {
 	Type *string
 }
 
+func (h *HubIPConfiguration) GetID() (rv string) {
+	if h != nil && h.ID != nil {
+		return *h.ID
+	}
+	return
+}
+
+func (h *HubIPConfiguration) GetName() (rv string) {
+	if h != nil && h.Name != nil {
+		return *h.Name
+	}
+	return
+}
+
+func (h *HubIPConfiguration) GetProperties() (rv *HubIPConfigurationPropertiesFormat) {
+	if h != nil {
+		return h.Properties
+	}
+	return
+}
+
+func (h *HubIPConfiguration) GetEtag() (rv string) {
+	if h != nil && h.Etag != nil {
+		return *h.Etag
+	}
+	return
+}
+
+func (h *HubIPConfiguration) GetType() (rv string) {
+	if h != nil && h.Type != nil {
+		return *h.Type
+	}
+	return
+}
+
 // HubIPConfigurationPropertiesFormat - Properties of IP configuration.
 type HubIPConfigurationPropertiesFormat struct {
 	// The private IP address of the IP configuration.
@@ -6435,6 +18188,41 @@ type HubIPConfigurationPropertiesFormat struct {
 	ProvisioningState *ProvisioningState
 }
 
+func (h *HubIPConfigurationPropertiesFormat) GetPrivateIPAddress() (rv string) {
+	if h != nil && h.PrivateIPAddress != nil {
+		return *h.PrivateIPAddress
+	}
+	return
+}
+
+func (h *HubIPConfigurationPropertiesFormat) GetPrivateIPAllocationMethod() (rv *IPAllocationMethod) {
+	if h != nil {
+		return h.PrivateIPAllocationMethod
+	}
+	return
+}
+
+func (h *HubIPConfigurationPropertiesFormat) GetPublicIPAddress() (rv *PublicIPAddress) {
+	if h != nil {
+		return h.PublicIPAddress
+	}
+	return
+}
+
+func (h *HubIPConfigurationPropertiesFormat) GetSubnet() (rv *Subnet) {
+	if h != nil {
+		return h.Subnet
+	}
+	return
+}
+
+func (h *HubIPConfigurationPropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if h != nil {
+		return h.ProvisioningState
+	}
+	return
+}
+
 // HubPublicIPAddresses - Public IP addresses associated with azure firewall.
 type HubPublicIPAddresses struct {
 	// The list of Public IP addresses associated with azure firewall or IP addresses to be retained.
@@ -6442,6 +18230,20 @@ type HubPublicIPAddresses struct {
 
 	// The number of Public IP addresses associated with azure firewall.
 	Count *int32
+}
+
+func (h *HubPublicIPAddresses) GetAddresses() (rv []*AzureFirewallPublicIPAddress) {
+	if h != nil {
+		return h.Addresses
+	}
+	return
+}
+
+func (h *HubPublicIPAddresses) GetCount() (rv int32) {
+	if h != nil && h.Count != nil {
+		return *h.Count
+	}
+	return
 }
 
 // HubRoute - RouteTable route.
@@ -6462,6 +18264,41 @@ type HubRoute struct {
 	NextHopType *string
 }
 
+func (h *HubRoute) GetDestinationType() (rv string) {
+	if h != nil && h.DestinationType != nil {
+		return *h.DestinationType
+	}
+	return
+}
+
+func (h *HubRoute) GetDestinations() (rv []*string) {
+	if h != nil {
+		return h.Destinations
+	}
+	return
+}
+
+func (h *HubRoute) GetName() (rv string) {
+	if h != nil && h.Name != nil {
+		return *h.Name
+	}
+	return
+}
+
+func (h *HubRoute) GetNextHop() (rv string) {
+	if h != nil && h.NextHop != nil {
+		return *h.NextHop
+	}
+	return
+}
+
+func (h *HubRoute) GetNextHopType() (rv string) {
+	if h != nil && h.NextHopType != nil {
+		return *h.NextHopType
+	}
+	return
+}
+
 // HubRouteTable - RouteTable resource in a virtual hub.
 type HubRouteTable struct {
 	// Resource ID.
@@ -6478,6 +18315,41 @@ type HubRouteTable struct {
 
 	// READ-ONLY; Resource type.
 	Type *string
+}
+
+func (h *HubRouteTable) GetID() (rv string) {
+	if h != nil && h.ID != nil {
+		return *h.ID
+	}
+	return
+}
+
+func (h *HubRouteTable) GetName() (rv string) {
+	if h != nil && h.Name != nil {
+		return *h.Name
+	}
+	return
+}
+
+func (h *HubRouteTable) GetProperties() (rv *HubRouteTableProperties) {
+	if h != nil {
+		return h.Properties
+	}
+	return
+}
+
+func (h *HubRouteTable) GetEtag() (rv string) {
+	if h != nil && h.Etag != nil {
+		return *h.Etag
+	}
+	return
+}
+
+func (h *HubRouteTable) GetType() (rv string) {
+	if h != nil && h.Type != nil {
+		return *h.Type
+	}
+	return
 }
 
 // HubRouteTableProperties - Parameters for RouteTable.
@@ -6498,6 +18370,41 @@ type HubRouteTableProperties struct {
 	ProvisioningState *ProvisioningState
 }
 
+func (h *HubRouteTableProperties) GetLabels() (rv []*string) {
+	if h != nil {
+		return h.Labels
+	}
+	return
+}
+
+func (h *HubRouteTableProperties) GetRoutes() (rv []*HubRoute) {
+	if h != nil {
+		return h.Routes
+	}
+	return
+}
+
+func (h *HubRouteTableProperties) GetAssociatedConnections() (rv []*string) {
+	if h != nil {
+		return h.AssociatedConnections
+	}
+	return
+}
+
+func (h *HubRouteTableProperties) GetPropagatingConnections() (rv []*string) {
+	if h != nil {
+		return h.PropagatingConnections
+	}
+	return
+}
+
+func (h *HubRouteTableProperties) GetProvisioningState() (rv *ProvisioningState) {
+	if h != nil {
+		return h.ProvisioningState
+	}
+	return
+}
+
 // HubVirtualNetworkConnection Resource.
 type HubVirtualNetworkConnection struct {
 	// Resource ID.
@@ -6511,6 +18418,34 @@ type HubVirtualNetworkConnection struct {
 
 	// READ-ONLY; A unique read-only string that changes whenever the resource is updated.
 	Etag *string
+}
+
+func (h *HubVirtualNetworkConnection) GetID() (rv string) {
+	if h != nil && h.ID != nil {
+		return *h.ID
+	}
+	return
+}
+
+func (h *HubVirtualNetworkConnection) GetName() (rv string) {
+	if h != nil && h.Name != nil {
+		return *h.Name
+	}
+	return
+}
+
+func (h *HubVirtualNetworkConnection) GetProperties() (rv *HubVirtualNetworkConnectionProperties) {
+	if h != nil {
+		return h.Properties
+	}
+	return
+}
+
+func (h *HubVirtualNetworkConnection) GetEtag() (rv string) {
+	if h != nil && h.Etag != nil {
+		return *h.Etag
+	}
+	return
 }
 
 // HubVirtualNetworkConnectionProperties - Parameters for HubVirtualNetworkConnection.
@@ -6534,6 +18469,48 @@ type HubVirtualNetworkConnectionProperties struct {
 	ProvisioningState *ProvisioningState
 }
 
+func (h *HubVirtualNetworkConnectionProperties) GetAllowHubToRemoteVnetTransit() (rv bool) {
+	if h != nil && h.AllowHubToRemoteVnetTransit != nil {
+		return *h.AllowHubToRemoteVnetTransit
+	}
+	return
+}
+
+func (h *HubVirtualNetworkConnectionProperties) GetAllowRemoteVnetToUseHubVnetGateways() (rv bool) {
+	if h != nil && h.AllowRemoteVnetToUseHubVnetGateways != nil {
+		return *h.AllowRemoteVnetToUseHubVnetGateways
+	}
+	return
+}
+
+func (h *HubVirtualNetworkConnectionProperties) GetEnableInternetSecurity() (rv bool) {
+	if h != nil && h.EnableInternetSecurity != nil {
+		return *h.EnableInternetSecurity
+	}
+	return
+}
+
+func (h *HubVirtualNetworkConnectionProperties) GetRemoteVirtualNetwork() (rv *SubResource) {
+	if h != nil {
+		return h.RemoteVirtualNetwork
+	}
+	return
+}
+
+func (h *HubVirtualNetworkConnectionProperties) GetRoutingConfiguration() (rv *RoutingConfiguration) {
+	if h != nil {
+		return h.RoutingConfiguration
+	}
+	return
+}
+
+func (h *HubVirtualNetworkConnectionProperties) GetProvisioningState() (rv *ProvisioningState) {
+	if h != nil {
+		return h.ProvisioningState
+	}
+	return
+}
+
 // IDPSQueryObject - Will describe the query to run against the IDPS signatures DB
 type IDPSQueryObject struct {
 	// Contain all filters names and values
@@ -6552,6 +18529,41 @@ type IDPSQueryObject struct {
 	Skip *int32
 }
 
+func (i *IDPSQueryObject) GetFilters() (rv []*FilterItems) {
+	if i != nil {
+		return i.Filters
+	}
+	return
+}
+
+func (i *IDPSQueryObject) GetOrderBy() (rv *OrderBy) {
+	if i != nil {
+		return i.OrderBy
+	}
+	return
+}
+
+func (i *IDPSQueryObject) GetResultsPerPage() (rv int32) {
+	if i != nil && i.ResultsPerPage != nil {
+		return *i.ResultsPerPage
+	}
+	return
+}
+
+func (i *IDPSQueryObject) GetSearch() (rv string) {
+	if i != nil && i.Search != nil {
+		return *i.Search
+	}
+	return
+}
+
+func (i *IDPSQueryObject) GetSkip() (rv int32) {
+	if i != nil && i.Skip != nil {
+		return *i.Skip
+	}
+	return
+}
+
 // IPAddressAvailabilityResult - Response for CheckIPAddressAvailability API service call.
 type IPAddressAvailabilityResult struct {
 	// Private IP address availability.
@@ -6562,6 +18574,27 @@ type IPAddressAvailabilityResult struct {
 
 	// Private IP address platform reserved.
 	IsPlatformReserved *bool
+}
+
+func (i *IPAddressAvailabilityResult) GetAvailable() (rv bool) {
+	if i != nil && i.Available != nil {
+		return *i.Available
+	}
+	return
+}
+
+func (i *IPAddressAvailabilityResult) GetAvailableIPAddresses() (rv []*string) {
+	if i != nil {
+		return i.AvailableIPAddresses
+	}
+	return
+}
+
+func (i *IPAddressAvailabilityResult) GetIsPlatformReserved() (rv bool) {
+	if i != nil && i.IsPlatformReserved != nil {
+		return *i.IsPlatformReserved
+	}
+	return
 }
 
 // IPAllocation - IpAllocation resource.
@@ -6588,6 +18621,55 @@ type IPAllocation struct {
 	Type *string
 }
 
+func (i *IPAllocation) GetID() (rv string) {
+	if i != nil && i.ID != nil {
+		return *i.ID
+	}
+	return
+}
+
+func (i *IPAllocation) GetLocation() (rv string) {
+	if i != nil && i.Location != nil {
+		return *i.Location
+	}
+	return
+}
+
+func (i *IPAllocation) GetProperties() (rv *IPAllocationPropertiesFormat) {
+	if i != nil {
+		return i.Properties
+	}
+	return
+}
+
+func (i *IPAllocation) GetTags() (rv map[string]*string) {
+	if i != nil {
+		return i.Tags
+	}
+	return
+}
+
+func (i *IPAllocation) GetEtag() (rv string) {
+	if i != nil && i.Etag != nil {
+		return *i.Etag
+	}
+	return
+}
+
+func (i *IPAllocation) GetName() (rv string) {
+	if i != nil && i.Name != nil {
+		return *i.Name
+	}
+	return
+}
+
+func (i *IPAllocation) GetType() (rv string) {
+	if i != nil && i.Type != nil {
+		return *i.Type
+	}
+	return
+}
+
 // IPAllocationListResult - Response for the ListIpAllocations API service call.
 type IPAllocationListResult struct {
 	// The URL to get the next set of results.
@@ -6595,6 +18677,20 @@ type IPAllocationListResult struct {
 
 	// A list of IpAllocation resources.
 	Value []*IPAllocation
+}
+
+func (i *IPAllocationListResult) GetNextLink() (rv string) {
+	if i != nil && i.NextLink != nil {
+		return *i.NextLink
+	}
+	return
+}
+
+func (i *IPAllocationListResult) GetValue() (rv []*IPAllocation) {
+	if i != nil {
+		return i.Value
+	}
+	return
 }
 
 // IPAllocationPropertiesFormat - Properties of the IpAllocation.
@@ -6624,6 +18720,62 @@ type IPAllocationPropertiesFormat struct {
 	VirtualNetwork *SubResource
 }
 
+func (i *IPAllocationPropertiesFormat) GetAllocationTags() (rv map[string]*string) {
+	if i != nil {
+		return i.AllocationTags
+	}
+	return
+}
+
+func (i *IPAllocationPropertiesFormat) GetIpamAllocationID() (rv string) {
+	if i != nil && i.IpamAllocationID != nil {
+		return *i.IpamAllocationID
+	}
+	return
+}
+
+func (i *IPAllocationPropertiesFormat) GetPrefix() (rv string) {
+	if i != nil && i.Prefix != nil {
+		return *i.Prefix
+	}
+	return
+}
+
+func (i *IPAllocationPropertiesFormat) GetPrefixLength() (rv int32) {
+	if i != nil && i.PrefixLength != nil {
+		return *i.PrefixLength
+	}
+	return
+}
+
+func (i *IPAllocationPropertiesFormat) GetPrefixType() (rv *IPVersion) {
+	if i != nil {
+		return i.PrefixType
+	}
+	return
+}
+
+func (i *IPAllocationPropertiesFormat) GetType() (rv *IPAllocationType) {
+	if i != nil {
+		return i.Type
+	}
+	return
+}
+
+func (i *IPAllocationPropertiesFormat) GetSubnet() (rv *SubResource) {
+	if i != nil {
+		return i.Subnet
+	}
+	return
+}
+
+func (i *IPAllocationPropertiesFormat) GetVirtualNetwork() (rv *SubResource) {
+	if i != nil {
+		return i.VirtualNetwork
+	}
+	return
+}
+
 // IPConfiguration - IP configuration.
 type IPConfiguration struct {
 	// Resource ID.
@@ -6639,6 +18791,34 @@ type IPConfiguration struct {
 	Etag *string
 }
 
+func (i *IPConfiguration) GetID() (rv string) {
+	if i != nil && i.ID != nil {
+		return *i.ID
+	}
+	return
+}
+
+func (i *IPConfiguration) GetName() (rv string) {
+	if i != nil && i.Name != nil {
+		return *i.Name
+	}
+	return
+}
+
+func (i *IPConfiguration) GetProperties() (rv *IPConfigurationPropertiesFormat) {
+	if i != nil {
+		return i.Properties
+	}
+	return
+}
+
+func (i *IPConfiguration) GetEtag() (rv string) {
+	if i != nil && i.Etag != nil {
+		return *i.Etag
+	}
+	return
+}
+
 // IPConfigurationBgpPeeringAddress - Properties of IPConfigurationBgpPeeringAddress.
 type IPConfigurationBgpPeeringAddress struct {
 	// The list of custom BGP peering addresses which belong to IP configuration.
@@ -6652,6 +18832,34 @@ type IPConfigurationBgpPeeringAddress struct {
 
 	// READ-ONLY; The list of tunnel public IP addresses which belong to IP configuration.
 	TunnelIPAddresses []*string
+}
+
+func (i *IPConfigurationBgpPeeringAddress) GetCustomBgpIPAddresses() (rv []*string) {
+	if i != nil {
+		return i.CustomBgpIPAddresses
+	}
+	return
+}
+
+func (i *IPConfigurationBgpPeeringAddress) GetIPConfigurationID() (rv string) {
+	if i != nil && i.IPConfigurationID != nil {
+		return *i.IPConfigurationID
+	}
+	return
+}
+
+func (i *IPConfigurationBgpPeeringAddress) GetDefaultBgpIPAddresses() (rv []*string) {
+	if i != nil {
+		return i.DefaultBgpIPAddresses
+	}
+	return
+}
+
+func (i *IPConfigurationBgpPeeringAddress) GetTunnelIPAddresses() (rv []*string) {
+	if i != nil {
+		return i.TunnelIPAddresses
+	}
+	return
 }
 
 // IPConfigurationProfile - IP configuration profile child resource.
@@ -6672,6 +18880,41 @@ type IPConfigurationProfile struct {
 	Type *string
 }
 
+func (i *IPConfigurationProfile) GetID() (rv string) {
+	if i != nil && i.ID != nil {
+		return *i.ID
+	}
+	return
+}
+
+func (i *IPConfigurationProfile) GetName() (rv string) {
+	if i != nil && i.Name != nil {
+		return *i.Name
+	}
+	return
+}
+
+func (i *IPConfigurationProfile) GetProperties() (rv *IPConfigurationProfilePropertiesFormat) {
+	if i != nil {
+		return i.Properties
+	}
+	return
+}
+
+func (i *IPConfigurationProfile) GetEtag() (rv string) {
+	if i != nil && i.Etag != nil {
+		return *i.Etag
+	}
+	return
+}
+
+func (i *IPConfigurationProfile) GetType() (rv string) {
+	if i != nil && i.Type != nil {
+		return *i.Type
+	}
+	return
+}
+
 // IPConfigurationProfilePropertiesFormat - IP configuration profile properties.
 type IPConfigurationProfilePropertiesFormat struct {
 	// The reference to the subnet resource to create a container network interface ip configuration.
@@ -6679,6 +18922,20 @@ type IPConfigurationProfilePropertiesFormat struct {
 
 	// READ-ONLY; The provisioning state of the IP configuration profile resource.
 	ProvisioningState *ProvisioningState
+}
+
+func (i *IPConfigurationProfilePropertiesFormat) GetSubnet() (rv *Subnet) {
+	if i != nil {
+		return i.Subnet
+	}
+	return
+}
+
+func (i *IPConfigurationProfilePropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if i != nil {
+		return i.ProvisioningState
+	}
+	return
 }
 
 // IPConfigurationPropertiesFormat - Properties of IP configuration.
@@ -6697,6 +18954,41 @@ type IPConfigurationPropertiesFormat struct {
 
 	// READ-ONLY; The provisioning state of the IP configuration resource.
 	ProvisioningState *ProvisioningState
+}
+
+func (i *IPConfigurationPropertiesFormat) GetPrivateIPAddress() (rv string) {
+	if i != nil && i.PrivateIPAddress != nil {
+		return *i.PrivateIPAddress
+	}
+	return
+}
+
+func (i *IPConfigurationPropertiesFormat) GetPrivateIPAllocationMethod() (rv *IPAllocationMethod) {
+	if i != nil {
+		return i.PrivateIPAllocationMethod
+	}
+	return
+}
+
+func (i *IPConfigurationPropertiesFormat) GetPublicIPAddress() (rv *PublicIPAddress) {
+	if i != nil {
+		return i.PublicIPAddress
+	}
+	return
+}
+
+func (i *IPConfigurationPropertiesFormat) GetSubnet() (rv *Subnet) {
+	if i != nil {
+		return i.Subnet
+	}
+	return
+}
+
+func (i *IPConfigurationPropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if i != nil {
+		return i.ProvisioningState
+	}
+	return
 }
 
 // IPGroup - The IpGroups resource information.
@@ -6723,6 +19015,55 @@ type IPGroup struct {
 	Type *string
 }
 
+func (i *IPGroup) GetID() (rv string) {
+	if i != nil && i.ID != nil {
+		return *i.ID
+	}
+	return
+}
+
+func (i *IPGroup) GetLocation() (rv string) {
+	if i != nil && i.Location != nil {
+		return *i.Location
+	}
+	return
+}
+
+func (i *IPGroup) GetProperties() (rv *IPGroupPropertiesFormat) {
+	if i != nil {
+		return i.Properties
+	}
+	return
+}
+
+func (i *IPGroup) GetTags() (rv map[string]*string) {
+	if i != nil {
+		return i.Tags
+	}
+	return
+}
+
+func (i *IPGroup) GetEtag() (rv string) {
+	if i != nil && i.Etag != nil {
+		return *i.Etag
+	}
+	return
+}
+
+func (i *IPGroup) GetName() (rv string) {
+	if i != nil && i.Name != nil {
+		return *i.Name
+	}
+	return
+}
+
+func (i *IPGroup) GetType() (rv string) {
+	if i != nil && i.Type != nil {
+		return *i.Type
+	}
+	return
+}
+
 // IPGroupListResult - Response for the ListIpGroups API service call.
 type IPGroupListResult struct {
 	// URL to get the next set of results.
@@ -6730,6 +19071,20 @@ type IPGroupListResult struct {
 
 	// The list of IpGroups information resources.
 	Value []*IPGroup
+}
+
+func (i *IPGroupListResult) GetNextLink() (rv string) {
+	if i != nil && i.NextLink != nil {
+		return *i.NextLink
+	}
+	return
+}
+
+func (i *IPGroupListResult) GetValue() (rv []*IPGroup) {
+	if i != nil {
+		return i.Value
+	}
+	return
 }
 
 // IPGroupPropertiesFormat - The IpGroups property information.
@@ -6747,10 +19102,45 @@ type IPGroupPropertiesFormat struct {
 	ProvisioningState *ProvisioningState
 }
 
+func (i *IPGroupPropertiesFormat) GetIPAddresses() (rv []*string) {
+	if i != nil {
+		return i.IPAddresses
+	}
+	return
+}
+
+func (i *IPGroupPropertiesFormat) GetFirewallPolicies() (rv []*SubResource) {
+	if i != nil {
+		return i.FirewallPolicies
+	}
+	return
+}
+
+func (i *IPGroupPropertiesFormat) GetFirewalls() (rv []*SubResource) {
+	if i != nil {
+		return i.Firewalls
+	}
+	return
+}
+
+func (i *IPGroupPropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if i != nil {
+		return i.ProvisioningState
+	}
+	return
+}
+
 // IPPrefixesList - List of SNAT IP Prefixes learnt by firewall to not SNAT
 type IPPrefixesList struct {
 	// IP Prefix value.
 	IPPrefixes []*string
+}
+
+func (i *IPPrefixesList) GetIPPrefixes() (rv []*string) {
+	if i != nil {
+		return i.IPPrefixes
+	}
+	return
 }
 
 // IPSecPolicy - An IPSec Policy configuration for a virtual network gateway connection.
@@ -6782,6 +19172,62 @@ type IPSecPolicy struct {
 	SaLifeTimeSeconds *int32
 }
 
+func (i *IPSecPolicy) GetDhGroup() (rv *DhGroup) {
+	if i != nil {
+		return i.DhGroup
+	}
+	return
+}
+
+func (i *IPSecPolicy) GetIPSecEncryption() (rv *IPSecEncryption) {
+	if i != nil {
+		return i.IPSecEncryption
+	}
+	return
+}
+
+func (i *IPSecPolicy) GetIPSecIntegrity() (rv *IPSecIntegrity) {
+	if i != nil {
+		return i.IPSecIntegrity
+	}
+	return
+}
+
+func (i *IPSecPolicy) GetIkeEncryption() (rv *IkeEncryption) {
+	if i != nil {
+		return i.IkeEncryption
+	}
+	return
+}
+
+func (i *IPSecPolicy) GetIkeIntegrity() (rv *IkeIntegrity) {
+	if i != nil {
+		return i.IkeIntegrity
+	}
+	return
+}
+
+func (i *IPSecPolicy) GetPfsGroup() (rv *PfsGroup) {
+	if i != nil {
+		return i.PfsGroup
+	}
+	return
+}
+
+func (i *IPSecPolicy) GetSaDataSizeKilobytes() (rv int32) {
+	if i != nil && i.SaDataSizeKilobytes != nil {
+		return *i.SaDataSizeKilobytes
+	}
+	return
+}
+
+func (i *IPSecPolicy) GetSaLifeTimeSeconds() (rv int32) {
+	if i != nil && i.SaLifeTimeSeconds != nil {
+		return *i.SaLifeTimeSeconds
+	}
+	return
+}
+
 // IPTag - Contains the IpTag associated with the object.
 type IPTag struct {
 	// The IP tag type. Example: FirstPartyUsage.
@@ -6791,6 +19237,20 @@ type IPTag struct {
 	Tag *string
 }
 
+func (i *IPTag) GetIPTagType() (rv string) {
+	if i != nil && i.IPTagType != nil {
+		return *i.IPTagType
+	}
+	return
+}
+
+func (i *IPTag) GetTag() (rv string) {
+	if i != nil && i.Tag != nil {
+		return *i.Tag
+	}
+	return
+}
+
 // IPv6CircuitConnectionConfig - IPv6 Circuit Connection properties for global reach.
 type IPv6CircuitConnectionConfig struct {
 	// /125 IP address space to carve out customer addresses for global reach.
@@ -6798,6 +19258,20 @@ type IPv6CircuitConnectionConfig struct {
 
 	// READ-ONLY; Express Route Circuit connection state.
 	CircuitConnectionStatus *CircuitConnectionStatus
+}
+
+func (i *IPv6CircuitConnectionConfig) GetAddressPrefix() (rv string) {
+	if i != nil && i.AddressPrefix != nil {
+		return *i.AddressPrefix
+	}
+	return
+}
+
+func (i *IPv6CircuitConnectionConfig) GetCircuitConnectionStatus() (rv *CircuitConnectionStatus) {
+	if i != nil {
+		return i.CircuitConnectionStatus
+	}
+	return
 }
 
 // IPv6ExpressRouteCircuitPeeringConfig - Contains IPv6 peering config.
@@ -6818,6 +19292,41 @@ type IPv6ExpressRouteCircuitPeeringConfig struct {
 	State *ExpressRouteCircuitPeeringState
 }
 
+func (i *IPv6ExpressRouteCircuitPeeringConfig) GetMicrosoftPeeringConfig() (rv *ExpressRouteCircuitPeeringConfig) {
+	if i != nil {
+		return i.MicrosoftPeeringConfig
+	}
+	return
+}
+
+func (i *IPv6ExpressRouteCircuitPeeringConfig) GetPrimaryPeerAddressPrefix() (rv string) {
+	if i != nil && i.PrimaryPeerAddressPrefix != nil {
+		return *i.PrimaryPeerAddressPrefix
+	}
+	return
+}
+
+func (i *IPv6ExpressRouteCircuitPeeringConfig) GetRouteFilter() (rv *SubResource) {
+	if i != nil {
+		return i.RouteFilter
+	}
+	return
+}
+
+func (i *IPv6ExpressRouteCircuitPeeringConfig) GetSecondaryPeerAddressPrefix() (rv string) {
+	if i != nil && i.SecondaryPeerAddressPrefix != nil {
+		return *i.SecondaryPeerAddressPrefix
+	}
+	return
+}
+
+func (i *IPv6ExpressRouteCircuitPeeringConfig) GetState() (rv *ExpressRouteCircuitPeeringState) {
+	if i != nil {
+		return i.State
+	}
+	return
+}
+
 // InboundNatPool - Inbound NAT pool of the load balancer.
 type InboundNatPool struct {
 	// Resource ID.
@@ -6835,6 +19344,41 @@ type InboundNatPool struct {
 
 	// READ-ONLY; Type of the resource.
 	Type *string
+}
+
+func (i *InboundNatPool) GetID() (rv string) {
+	if i != nil && i.ID != nil {
+		return *i.ID
+	}
+	return
+}
+
+func (i *InboundNatPool) GetName() (rv string) {
+	if i != nil && i.Name != nil {
+		return *i.Name
+	}
+	return
+}
+
+func (i *InboundNatPool) GetProperties() (rv *InboundNatPoolPropertiesFormat) {
+	if i != nil {
+		return i.Properties
+	}
+	return
+}
+
+func (i *InboundNatPool) GetEtag() (rv string) {
+	if i != nil && i.Etag != nil {
+		return *i.Etag
+	}
+	return
+}
+
+func (i *InboundNatPool) GetType() (rv string) {
+	if i != nil && i.Type != nil {
+		return *i.Type
+	}
+	return
 }
 
 // InboundNatPoolPropertiesFormat - Properties of Inbound NAT pool.
@@ -6873,6 +19417,69 @@ type InboundNatPoolPropertiesFormat struct {
 	ProvisioningState *ProvisioningState
 }
 
+func (i *InboundNatPoolPropertiesFormat) GetBackendPort() (rv int32) {
+	if i != nil && i.BackendPort != nil {
+		return *i.BackendPort
+	}
+	return
+}
+
+func (i *InboundNatPoolPropertiesFormat) GetFrontendPortRangeEnd() (rv int32) {
+	if i != nil && i.FrontendPortRangeEnd != nil {
+		return *i.FrontendPortRangeEnd
+	}
+	return
+}
+
+func (i *InboundNatPoolPropertiesFormat) GetFrontendPortRangeStart() (rv int32) {
+	if i != nil && i.FrontendPortRangeStart != nil {
+		return *i.FrontendPortRangeStart
+	}
+	return
+}
+
+func (i *InboundNatPoolPropertiesFormat) GetProtocol() (rv *TransportProtocol) {
+	if i != nil {
+		return i.Protocol
+	}
+	return
+}
+
+func (i *InboundNatPoolPropertiesFormat) GetEnableFloatingIP() (rv bool) {
+	if i != nil && i.EnableFloatingIP != nil {
+		return *i.EnableFloatingIP
+	}
+	return
+}
+
+func (i *InboundNatPoolPropertiesFormat) GetEnableTCPReset() (rv bool) {
+	if i != nil && i.EnableTCPReset != nil {
+		return *i.EnableTCPReset
+	}
+	return
+}
+
+func (i *InboundNatPoolPropertiesFormat) GetFrontendIPConfiguration() (rv *SubResource) {
+	if i != nil {
+		return i.FrontendIPConfiguration
+	}
+	return
+}
+
+func (i *InboundNatPoolPropertiesFormat) GetIdleTimeoutInMinutes() (rv int32) {
+	if i != nil && i.IdleTimeoutInMinutes != nil {
+		return *i.IdleTimeoutInMinutes
+	}
+	return
+}
+
+func (i *InboundNatPoolPropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if i != nil {
+		return i.ProvisioningState
+	}
+	return
+}
+
 // InboundNatRule - Inbound NAT rule of the load balancer.
 type InboundNatRule struct {
 	// Resource ID.
@@ -6892,6 +19499,41 @@ type InboundNatRule struct {
 	Type *string
 }
 
+func (i *InboundNatRule) GetID() (rv string) {
+	if i != nil && i.ID != nil {
+		return *i.ID
+	}
+	return
+}
+
+func (i *InboundNatRule) GetName() (rv string) {
+	if i != nil && i.Name != nil {
+		return *i.Name
+	}
+	return
+}
+
+func (i *InboundNatRule) GetProperties() (rv *InboundNatRulePropertiesFormat) {
+	if i != nil {
+		return i.Properties
+	}
+	return
+}
+
+func (i *InboundNatRule) GetEtag() (rv string) {
+	if i != nil && i.Etag != nil {
+		return *i.Etag
+	}
+	return
+}
+
+func (i *InboundNatRule) GetType() (rv string) {
+	if i != nil && i.Type != nil {
+		return *i.Type
+	}
+	return
+}
+
 // InboundNatRuleListResult - Response for ListInboundNatRule API service call.
 type InboundNatRuleListResult struct {
 	// A list of inbound NAT rules in a load balancer.
@@ -6899,6 +19541,20 @@ type InboundNatRuleListResult struct {
 
 	// READ-ONLY; The URL to get the next set of results.
 	NextLink *string
+}
+
+func (i *InboundNatRuleListResult) GetValue() (rv []*InboundNatRule) {
+	if i != nil {
+		return i.Value
+	}
+	return
+}
+
+func (i *InboundNatRuleListResult) GetNextLink() (rv string) {
+	if i != nil && i.NextLink != nil {
+		return *i.NextLink
+	}
+	return
 }
 
 // InboundNatRulePortMapping - Individual port mappings for inbound NAT rule created for backend pool.
@@ -6914,6 +19570,34 @@ type InboundNatRulePortMapping struct {
 
 	// READ-ONLY; The reference to the transport protocol used by the inbound NAT rule.
 	Protocol *TransportProtocol
+}
+
+func (i *InboundNatRulePortMapping) GetBackendPort() (rv int32) {
+	if i != nil && i.BackendPort != nil {
+		return *i.BackendPort
+	}
+	return
+}
+
+func (i *InboundNatRulePortMapping) GetFrontendPort() (rv int32) {
+	if i != nil && i.FrontendPort != nil {
+		return *i.FrontendPort
+	}
+	return
+}
+
+func (i *InboundNatRulePortMapping) GetInboundNatRuleName() (rv string) {
+	if i != nil && i.InboundNatRuleName != nil {
+		return *i.InboundNatRuleName
+	}
+	return
+}
+
+func (i *InboundNatRulePortMapping) GetProtocol() (rv *TransportProtocol) {
+	if i != nil {
+		return i.Protocol
+	}
+	return
 }
 
 // InboundNatRulePropertiesFormat - Properties of the inbound NAT rule.
@@ -6965,6 +19649,90 @@ type InboundNatRulePropertiesFormat struct {
 	ProvisioningState *ProvisioningState
 }
 
+func (i *InboundNatRulePropertiesFormat) GetBackendAddressPool() (rv *SubResource) {
+	if i != nil {
+		return i.BackendAddressPool
+	}
+	return
+}
+
+func (i *InboundNatRulePropertiesFormat) GetBackendPort() (rv int32) {
+	if i != nil && i.BackendPort != nil {
+		return *i.BackendPort
+	}
+	return
+}
+
+func (i *InboundNatRulePropertiesFormat) GetEnableFloatingIP() (rv bool) {
+	if i != nil && i.EnableFloatingIP != nil {
+		return *i.EnableFloatingIP
+	}
+	return
+}
+
+func (i *InboundNatRulePropertiesFormat) GetEnableTCPReset() (rv bool) {
+	if i != nil && i.EnableTCPReset != nil {
+		return *i.EnableTCPReset
+	}
+	return
+}
+
+func (i *InboundNatRulePropertiesFormat) GetFrontendIPConfiguration() (rv *SubResource) {
+	if i != nil {
+		return i.FrontendIPConfiguration
+	}
+	return
+}
+
+func (i *InboundNatRulePropertiesFormat) GetFrontendPort() (rv int32) {
+	if i != nil && i.FrontendPort != nil {
+		return *i.FrontendPort
+	}
+	return
+}
+
+func (i *InboundNatRulePropertiesFormat) GetFrontendPortRangeEnd() (rv int32) {
+	if i != nil && i.FrontendPortRangeEnd != nil {
+		return *i.FrontendPortRangeEnd
+	}
+	return
+}
+
+func (i *InboundNatRulePropertiesFormat) GetFrontendPortRangeStart() (rv int32) {
+	if i != nil && i.FrontendPortRangeStart != nil {
+		return *i.FrontendPortRangeStart
+	}
+	return
+}
+
+func (i *InboundNatRulePropertiesFormat) GetIdleTimeoutInMinutes() (rv int32) {
+	if i != nil && i.IdleTimeoutInMinutes != nil {
+		return *i.IdleTimeoutInMinutes
+	}
+	return
+}
+
+func (i *InboundNatRulePropertiesFormat) GetProtocol() (rv *TransportProtocol) {
+	if i != nil {
+		return i.Protocol
+	}
+	return
+}
+
+func (i *InboundNatRulePropertiesFormat) GetBackendIPConfiguration() (rv *InterfaceIPConfiguration) {
+	if i != nil {
+		return i.BackendIPConfiguration
+	}
+	return
+}
+
+func (i *InboundNatRulePropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if i != nil {
+		return i.ProvisioningState
+	}
+	return
+}
+
 // InboundSecurityRule - NVA Inbound Security Rule resource.
 type InboundSecurityRule struct {
 	// Resource ID.
@@ -6983,6 +19751,41 @@ type InboundSecurityRule struct {
 	Type *string
 }
 
+func (i *InboundSecurityRule) GetID() (rv string) {
+	if i != nil && i.ID != nil {
+		return *i.ID
+	}
+	return
+}
+
+func (i *InboundSecurityRule) GetName() (rv string) {
+	if i != nil && i.Name != nil {
+		return *i.Name
+	}
+	return
+}
+
+func (i *InboundSecurityRule) GetProperties() (rv *InboundSecurityRuleProperties) {
+	if i != nil {
+		return i.Properties
+	}
+	return
+}
+
+func (i *InboundSecurityRule) GetEtag() (rv string) {
+	if i != nil && i.Etag != nil {
+		return *i.Etag
+	}
+	return
+}
+
+func (i *InboundSecurityRule) GetType() (rv string) {
+	if i != nil && i.Type != nil {
+		return *i.Type
+	}
+	return
+}
+
 // InboundSecurityRuleProperties - Properties of the Inbound Security Rules resource.
 type InboundSecurityRuleProperties struct {
 	// List of allowed rules.
@@ -6990,6 +19793,20 @@ type InboundSecurityRuleProperties struct {
 
 	// READ-ONLY; The provisioning state of the resource.
 	ProvisioningState *ProvisioningState
+}
+
+func (i *InboundSecurityRuleProperties) GetRules() (rv []*InboundSecurityRules) {
+	if i != nil {
+		return i.Rules
+	}
+	return
+}
+
+func (i *InboundSecurityRuleProperties) GetProvisioningState() (rv *ProvisioningState) {
+	if i != nil {
+		return i.ProvisioningState
+	}
+	return
 }
 
 // InboundSecurityRules - Properties of the Inbound Security Rules resource.
@@ -7002,6 +19819,27 @@ type InboundSecurityRules struct {
 
 	// The CIDR or source IP range. Only /30, /31 and /32 Ip ranges are allowed.
 	SourceAddressPrefix *string
+}
+
+func (i *InboundSecurityRules) GetDestinationPortRange() (rv int32) {
+	if i != nil && i.DestinationPortRange != nil {
+		return *i.DestinationPortRange
+	}
+	return
+}
+
+func (i *InboundSecurityRules) GetProtocol() (rv *InboundSecurityRulesProtocol) {
+	if i != nil {
+		return i.Protocol
+	}
+	return
+}
+
+func (i *InboundSecurityRules) GetSourceAddressPrefix() (rv string) {
+	if i != nil && i.SourceAddressPrefix != nil {
+		return *i.SourceAddressPrefix
+	}
+	return
 }
 
 // IntentPolicy - Network Intent Policy resource.
@@ -7025,6 +19863,48 @@ type IntentPolicy struct {
 	Type *string
 }
 
+func (i *IntentPolicy) GetID() (rv string) {
+	if i != nil && i.ID != nil {
+		return *i.ID
+	}
+	return
+}
+
+func (i *IntentPolicy) GetLocation() (rv string) {
+	if i != nil && i.Location != nil {
+		return *i.Location
+	}
+	return
+}
+
+func (i *IntentPolicy) GetTags() (rv map[string]*string) {
+	if i != nil {
+		return i.Tags
+	}
+	return
+}
+
+func (i *IntentPolicy) GetEtag() (rv string) {
+	if i != nil && i.Etag != nil {
+		return *i.Etag
+	}
+	return
+}
+
+func (i *IntentPolicy) GetName() (rv string) {
+	if i != nil && i.Name != nil {
+		return *i.Name
+	}
+	return
+}
+
+func (i *IntentPolicy) GetType() (rv string) {
+	if i != nil && i.Type != nil {
+		return *i.Type
+	}
+	return
+}
+
 // IntentPolicyConfiguration - Details of NetworkIntentPolicyConfiguration for PrepareNetworkPoliciesRequest.
 type IntentPolicyConfiguration struct {
 	// The name of the Network Intent Policy for storing in target subscription.
@@ -7032,6 +19912,20 @@ type IntentPolicyConfiguration struct {
 
 	// Source network intent policy.
 	SourceNetworkIntentPolicy *IntentPolicy
+}
+
+func (i *IntentPolicyConfiguration) GetNetworkIntentPolicyName() (rv string) {
+	if i != nil && i.NetworkIntentPolicyName != nil {
+		return *i.NetworkIntentPolicyName
+	}
+	return
+}
+
+func (i *IntentPolicyConfiguration) GetSourceNetworkIntentPolicy() (rv *IntentPolicy) {
+	if i != nil {
+		return i.SourceNetworkIntentPolicy
+	}
+	return
 }
 
 // Interface - A network interface in a resource group.
@@ -7061,6 +19955,62 @@ type Interface struct {
 	Type *string
 }
 
+func (i *Interface) GetExtendedLocation() (rv *ExtendedLocation) {
+	if i != nil {
+		return i.ExtendedLocation
+	}
+	return
+}
+
+func (i *Interface) GetID() (rv string) {
+	if i != nil && i.ID != nil {
+		return *i.ID
+	}
+	return
+}
+
+func (i *Interface) GetLocation() (rv string) {
+	if i != nil && i.Location != nil {
+		return *i.Location
+	}
+	return
+}
+
+func (i *Interface) GetProperties() (rv *InterfacePropertiesFormat) {
+	if i != nil {
+		return i.Properties
+	}
+	return
+}
+
+func (i *Interface) GetTags() (rv map[string]*string) {
+	if i != nil {
+		return i.Tags
+	}
+	return
+}
+
+func (i *Interface) GetEtag() (rv string) {
+	if i != nil && i.Etag != nil {
+		return *i.Etag
+	}
+	return
+}
+
+func (i *Interface) GetName() (rv string) {
+	if i != nil && i.Name != nil {
+		return *i.Name
+	}
+	return
+}
+
+func (i *Interface) GetType() (rv string) {
+	if i != nil && i.Type != nil {
+		return *i.Type
+	}
+	return
+}
+
 // InterfaceAssociation - Network interface and its custom security rules.
 type InterfaceAssociation struct {
 	// Collection of custom security rules.
@@ -7068,6 +20018,20 @@ type InterfaceAssociation struct {
 
 	// READ-ONLY; Network interface ID.
 	ID *string
+}
+
+func (i *InterfaceAssociation) GetSecurityRules() (rv []*SecurityRule) {
+	if i != nil {
+		return i.SecurityRules
+	}
+	return
+}
+
+func (i *InterfaceAssociation) GetID() (rv string) {
+	if i != nil && i.ID != nil {
+		return *i.ID
+	}
+	return
 }
 
 // InterfaceDNSSettings - DNS settings of a network interface.
@@ -7094,6 +20058,41 @@ type InterfaceDNSSettings struct {
 	InternalFqdn *string
 }
 
+func (i *InterfaceDNSSettings) GetDNSServers() (rv []*string) {
+	if i != nil {
+		return i.DNSServers
+	}
+	return
+}
+
+func (i *InterfaceDNSSettings) GetInternalDNSNameLabel() (rv string) {
+	if i != nil && i.InternalDNSNameLabel != nil {
+		return *i.InternalDNSNameLabel
+	}
+	return
+}
+
+func (i *InterfaceDNSSettings) GetAppliedDNSServers() (rv []*string) {
+	if i != nil {
+		return i.AppliedDNSServers
+	}
+	return
+}
+
+func (i *InterfaceDNSSettings) GetInternalDomainNameSuffix() (rv string) {
+	if i != nil && i.InternalDomainNameSuffix != nil {
+		return *i.InternalDomainNameSuffix
+	}
+	return
+}
+
+func (i *InterfaceDNSSettings) GetInternalFqdn() (rv string) {
+	if i != nil && i.InternalFqdn != nil {
+		return *i.InternalFqdn
+	}
+	return
+}
+
 // InterfaceIPConfiguration - IPConfiguration in a network interface.
 type InterfaceIPConfiguration struct {
 	// Resource ID.
@@ -7112,6 +20111,41 @@ type InterfaceIPConfiguration struct {
 	Etag *string
 }
 
+func (i *InterfaceIPConfiguration) GetID() (rv string) {
+	if i != nil && i.ID != nil {
+		return *i.ID
+	}
+	return
+}
+
+func (i *InterfaceIPConfiguration) GetName() (rv string) {
+	if i != nil && i.Name != nil {
+		return *i.Name
+	}
+	return
+}
+
+func (i *InterfaceIPConfiguration) GetProperties() (rv *InterfaceIPConfigurationPropertiesFormat) {
+	if i != nil {
+		return i.Properties
+	}
+	return
+}
+
+func (i *InterfaceIPConfiguration) GetType() (rv string) {
+	if i != nil && i.Type != nil {
+		return *i.Type
+	}
+	return
+}
+
+func (i *InterfaceIPConfiguration) GetEtag() (rv string) {
+	if i != nil && i.Etag != nil {
+		return *i.Etag
+	}
+	return
+}
+
 // InterfaceIPConfigurationListResult - Response for list ip configurations API service call.
 type InterfaceIPConfigurationListResult struct {
 	// A list of ip configurations.
@@ -7119,6 +20153,20 @@ type InterfaceIPConfigurationListResult struct {
 
 	// READ-ONLY; The URL to get the next set of results.
 	NextLink *string
+}
+
+func (i *InterfaceIPConfigurationListResult) GetValue() (rv []*InterfaceIPConfiguration) {
+	if i != nil {
+		return i.Value
+	}
+	return
+}
+
+func (i *InterfaceIPConfigurationListResult) GetNextLink() (rv string) {
+	if i != nil && i.NextLink != nil {
+		return *i.NextLink
+	}
+	return
 }
 
 // InterfaceIPConfigurationPrivateLinkConnectionProperties - PrivateLinkConnection properties for the network interface.
@@ -7131,6 +20179,27 @@ type InterfaceIPConfigurationPrivateLinkConnectionProperties struct {
 
 	// READ-ONLY; The required member name for current private link connection.
 	RequiredMemberName *string
+}
+
+func (i *InterfaceIPConfigurationPrivateLinkConnectionProperties) GetFqdns() (rv []*string) {
+	if i != nil {
+		return i.Fqdns
+	}
+	return
+}
+
+func (i *InterfaceIPConfigurationPrivateLinkConnectionProperties) GetGroupID() (rv string) {
+	if i != nil && i.GroupID != nil {
+		return *i.GroupID
+	}
+	return
+}
+
+func (i *InterfaceIPConfigurationPrivateLinkConnectionProperties) GetRequiredMemberName() (rv string) {
+	if i != nil && i.RequiredMemberName != nil {
+		return *i.RequiredMemberName
+	}
+	return
 }
 
 // InterfaceIPConfigurationPropertiesFormat - Properties of IP configuration.
@@ -7178,6 +20247,104 @@ type InterfaceIPConfigurationPropertiesFormat struct {
 	ProvisioningState *ProvisioningState
 }
 
+func (i *InterfaceIPConfigurationPropertiesFormat) GetApplicationGatewayBackendAddressPools() (rv []*ApplicationGatewayBackendAddressPool) {
+	if i != nil {
+		return i.ApplicationGatewayBackendAddressPools
+	}
+	return
+}
+
+func (i *InterfaceIPConfigurationPropertiesFormat) GetApplicationSecurityGroups() (rv []*ApplicationSecurityGroup) {
+	if i != nil {
+		return i.ApplicationSecurityGroups
+	}
+	return
+}
+
+func (i *InterfaceIPConfigurationPropertiesFormat) GetGatewayLoadBalancer() (rv *SubResource) {
+	if i != nil {
+		return i.GatewayLoadBalancer
+	}
+	return
+}
+
+func (i *InterfaceIPConfigurationPropertiesFormat) GetLoadBalancerBackendAddressPools() (rv []*BackendAddressPool) {
+	if i != nil {
+		return i.LoadBalancerBackendAddressPools
+	}
+	return
+}
+
+func (i *InterfaceIPConfigurationPropertiesFormat) GetLoadBalancerInboundNatRules() (rv []*InboundNatRule) {
+	if i != nil {
+		return i.LoadBalancerInboundNatRules
+	}
+	return
+}
+
+func (i *InterfaceIPConfigurationPropertiesFormat) GetPrimary() (rv bool) {
+	if i != nil && i.Primary != nil {
+		return *i.Primary
+	}
+	return
+}
+
+func (i *InterfaceIPConfigurationPropertiesFormat) GetPrivateIPAddress() (rv string) {
+	if i != nil && i.PrivateIPAddress != nil {
+		return *i.PrivateIPAddress
+	}
+	return
+}
+
+func (i *InterfaceIPConfigurationPropertiesFormat) GetPrivateIPAddressVersion() (rv *IPVersion) {
+	if i != nil {
+		return i.PrivateIPAddressVersion
+	}
+	return
+}
+
+func (i *InterfaceIPConfigurationPropertiesFormat) GetPrivateIPAllocationMethod() (rv *IPAllocationMethod) {
+	if i != nil {
+		return i.PrivateIPAllocationMethod
+	}
+	return
+}
+
+func (i *InterfaceIPConfigurationPropertiesFormat) GetPublicIPAddress() (rv *PublicIPAddress) {
+	if i != nil {
+		return i.PublicIPAddress
+	}
+	return
+}
+
+func (i *InterfaceIPConfigurationPropertiesFormat) GetSubnet() (rv *Subnet) {
+	if i != nil {
+		return i.Subnet
+	}
+	return
+}
+
+func (i *InterfaceIPConfigurationPropertiesFormat) GetVirtualNetworkTaps() (rv []*VirtualNetworkTap) {
+	if i != nil {
+		return i.VirtualNetworkTaps
+	}
+	return
+}
+
+func (i *InterfaceIPConfigurationPropertiesFormat) GetPrivateLinkConnectionProperties() (rv *InterfaceIPConfigurationPrivateLinkConnectionProperties) {
+	if i != nil {
+		return i.PrivateLinkConnectionProperties
+	}
+	return
+}
+
+func (i *InterfaceIPConfigurationPropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if i != nil {
+		return i.ProvisioningState
+	}
+	return
+}
+
 // InterfaceListResult - Response for the ListNetworkInterface API service call.
 type InterfaceListResult struct {
 	// A list of network interfaces in a resource group.
@@ -7187,6 +20354,20 @@ type InterfaceListResult struct {
 	NextLink *string
 }
 
+func (i *InterfaceListResult) GetValue() (rv []*Interface) {
+	if i != nil {
+		return i.Value
+	}
+	return
+}
+
+func (i *InterfaceListResult) GetNextLink() (rv string) {
+	if i != nil && i.NextLink != nil {
+		return *i.NextLink
+	}
+	return
+}
+
 // InterfaceLoadBalancerListResult - Response for list ip configurations API service call.
 type InterfaceLoadBalancerListResult struct {
 	// A list of load balancers.
@@ -7194,6 +20375,20 @@ type InterfaceLoadBalancerListResult struct {
 
 	// READ-ONLY; The URL to get the next set of results.
 	NextLink *string
+}
+
+func (i *InterfaceLoadBalancerListResult) GetValue() (rv []*LoadBalancer) {
+	if i != nil {
+		return i.Value
+	}
+	return
+}
+
+func (i *InterfaceLoadBalancerListResult) GetNextLink() (rv string) {
+	if i != nil && i.NextLink != nil {
+		return *i.NextLink
+	}
+	return
 }
 
 // InterfacePropertiesFormat - NetworkInterface properties.
@@ -7263,6 +20458,153 @@ type InterfacePropertiesFormat struct {
 	VnetEncryptionSupported *bool
 }
 
+func (i *InterfacePropertiesFormat) GetAuxiliaryMode() (rv *NetworkInterfaceAuxiliaryMode) {
+	if i != nil {
+		return i.AuxiliaryMode
+	}
+	return
+}
+
+func (i *InterfacePropertiesFormat) GetDNSSettings() (rv *InterfaceDNSSettings) {
+	if i != nil {
+		return i.DNSSettings
+	}
+	return
+}
+
+func (i *InterfacePropertiesFormat) GetDisableTCPStateTracking() (rv bool) {
+	if i != nil && i.DisableTCPStateTracking != nil {
+		return *i.DisableTCPStateTracking
+	}
+	return
+}
+
+func (i *InterfacePropertiesFormat) GetEnableAcceleratedNetworking() (rv bool) {
+	if i != nil && i.EnableAcceleratedNetworking != nil {
+		return *i.EnableAcceleratedNetworking
+	}
+	return
+}
+
+func (i *InterfacePropertiesFormat) GetEnableIPForwarding() (rv bool) {
+	if i != nil && i.EnableIPForwarding != nil {
+		return *i.EnableIPForwarding
+	}
+	return
+}
+
+func (i *InterfacePropertiesFormat) GetIPConfigurations() (rv []*InterfaceIPConfiguration) {
+	if i != nil {
+		return i.IPConfigurations
+	}
+	return
+}
+
+func (i *InterfacePropertiesFormat) GetMigrationPhase() (rv *NetworkInterfaceMigrationPhase) {
+	if i != nil {
+		return i.MigrationPhase
+	}
+	return
+}
+
+func (i *InterfacePropertiesFormat) GetNetworkSecurityGroup() (rv *SecurityGroup) {
+	if i != nil {
+		return i.NetworkSecurityGroup
+	}
+	return
+}
+
+func (i *InterfacePropertiesFormat) GetNicType() (rv *NetworkInterfaceNicType) {
+	if i != nil {
+		return i.NicType
+	}
+	return
+}
+
+func (i *InterfacePropertiesFormat) GetPrivateLinkService() (rv *PrivateLinkService) {
+	if i != nil {
+		return i.PrivateLinkService
+	}
+	return
+}
+
+func (i *InterfacePropertiesFormat) GetWorkloadType() (rv string) {
+	if i != nil && i.WorkloadType != nil {
+		return *i.WorkloadType
+	}
+	return
+}
+
+func (i *InterfacePropertiesFormat) GetDscpConfiguration() (rv *SubResource) {
+	if i != nil {
+		return i.DscpConfiguration
+	}
+	return
+}
+
+func (i *InterfacePropertiesFormat) GetHostedWorkloads() (rv []*string) {
+	if i != nil {
+		return i.HostedWorkloads
+	}
+	return
+}
+
+func (i *InterfacePropertiesFormat) GetMacAddress() (rv string) {
+	if i != nil && i.MacAddress != nil {
+		return *i.MacAddress
+	}
+	return
+}
+
+func (i *InterfacePropertiesFormat) GetPrimary() (rv bool) {
+	if i != nil && i.Primary != nil {
+		return *i.Primary
+	}
+	return
+}
+
+func (i *InterfacePropertiesFormat) GetPrivateEndpoint() (rv *PrivateEndpoint) {
+	if i != nil {
+		return i.PrivateEndpoint
+	}
+	return
+}
+
+func (i *InterfacePropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if i != nil {
+		return i.ProvisioningState
+	}
+	return
+}
+
+func (i *InterfacePropertiesFormat) GetResourceGUID() (rv string) {
+	if i != nil && i.ResourceGUID != nil {
+		return *i.ResourceGUID
+	}
+	return
+}
+
+func (i *InterfacePropertiesFormat) GetTapConfigurations() (rv []*InterfaceTapConfiguration) {
+	if i != nil {
+		return i.TapConfigurations
+	}
+	return
+}
+
+func (i *InterfacePropertiesFormat) GetVirtualMachine() (rv *SubResource) {
+	if i != nil {
+		return i.VirtualMachine
+	}
+	return
+}
+
+func (i *InterfacePropertiesFormat) GetVnetEncryptionSupported() (rv bool) {
+	if i != nil && i.VnetEncryptionSupported != nil {
+		return *i.VnetEncryptionSupported
+	}
+	return
+}
+
 // InterfaceTapConfiguration - Tap configuration in a Network Interface.
 type InterfaceTapConfiguration struct {
 	// Resource ID.
@@ -7281,6 +20623,41 @@ type InterfaceTapConfiguration struct {
 	Type *string
 }
 
+func (i *InterfaceTapConfiguration) GetID() (rv string) {
+	if i != nil && i.ID != nil {
+		return *i.ID
+	}
+	return
+}
+
+func (i *InterfaceTapConfiguration) GetName() (rv string) {
+	if i != nil && i.Name != nil {
+		return *i.Name
+	}
+	return
+}
+
+func (i *InterfaceTapConfiguration) GetProperties() (rv *InterfaceTapConfigurationPropertiesFormat) {
+	if i != nil {
+		return i.Properties
+	}
+	return
+}
+
+func (i *InterfaceTapConfiguration) GetEtag() (rv string) {
+	if i != nil && i.Etag != nil {
+		return *i.Etag
+	}
+	return
+}
+
+func (i *InterfaceTapConfiguration) GetType() (rv string) {
+	if i != nil && i.Type != nil {
+		return *i.Type
+	}
+	return
+}
+
 // InterfaceTapConfigurationListResult - Response for list tap configurations API service call.
 type InterfaceTapConfigurationListResult struct {
 	// A list of tap configurations.
@@ -7288,6 +20665,20 @@ type InterfaceTapConfigurationListResult struct {
 
 	// READ-ONLY; The URL to get the next set of results.
 	NextLink *string
+}
+
+func (i *InterfaceTapConfigurationListResult) GetValue() (rv []*InterfaceTapConfiguration) {
+	if i != nil {
+		return i.Value
+	}
+	return
+}
+
+func (i *InterfaceTapConfigurationListResult) GetNextLink() (rv string) {
+	if i != nil && i.NextLink != nil {
+		return *i.NextLink
+	}
+	return
 }
 
 // InterfaceTapConfigurationPropertiesFormat - Properties of Virtual Network Tap configuration.
@@ -7299,6 +20690,20 @@ type InterfaceTapConfigurationPropertiesFormat struct {
 	ProvisioningState *ProvisioningState
 }
 
+func (i *InterfaceTapConfigurationPropertiesFormat) GetVirtualNetworkTap() (rv *VirtualNetworkTap) {
+	if i != nil {
+		return i.VirtualNetworkTap
+	}
+	return
+}
+
+func (i *InterfaceTapConfigurationPropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if i != nil {
+		return i.ProvisioningState
+	}
+	return
+}
+
 // ListHubRouteTablesResult - List of RouteTables and a URL nextLink to get the next set of results.
 type ListHubRouteTablesResult struct {
 	// URL to get the next set of operation list results if there are any.
@@ -7306,6 +20711,20 @@ type ListHubRouteTablesResult struct {
 
 	// List of RouteTables.
 	Value []*HubRouteTable
+}
+
+func (l *ListHubRouteTablesResult) GetNextLink() (rv string) {
+	if l != nil && l.NextLink != nil {
+		return *l.NextLink
+	}
+	return
+}
+
+func (l *ListHubRouteTablesResult) GetValue() (rv []*HubRouteTable) {
+	if l != nil {
+		return l.Value
+	}
+	return
 }
 
 // ListHubVirtualNetworkConnectionsResult - List of HubVirtualNetworkConnections and a URL nextLink to get the next set of
@@ -7318,6 +20737,20 @@ type ListHubVirtualNetworkConnectionsResult struct {
 	Value []*HubVirtualNetworkConnection
 }
 
+func (l *ListHubVirtualNetworkConnectionsResult) GetNextLink() (rv string) {
+	if l != nil && l.NextLink != nil {
+		return *l.NextLink
+	}
+	return
+}
+
+func (l *ListHubVirtualNetworkConnectionsResult) GetValue() (rv []*HubVirtualNetworkConnection) {
+	if l != nil {
+		return l.Value
+	}
+	return
+}
+
 // ListP2SVPNGatewaysResult - Result of the request to list P2SVpnGateways. It contains a list of P2SVpnGateways and a URL
 // nextLink to get the next set of results.
 type ListP2SVPNGatewaysResult struct {
@@ -7326,6 +20759,20 @@ type ListP2SVPNGatewaysResult struct {
 
 	// List of P2SVpnGateways.
 	Value []*P2SVPNGateway
+}
+
+func (l *ListP2SVPNGatewaysResult) GetNextLink() (rv string) {
+	if l != nil && l.NextLink != nil {
+		return *l.NextLink
+	}
+	return
+}
+
+func (l *ListP2SVPNGatewaysResult) GetValue() (rv []*P2SVPNGateway) {
+	if l != nil {
+		return l.Value
+	}
+	return
 }
 
 // ListRouteMapsResult - List of RouteMaps and a URL nextLink to get the next set of results.
@@ -7337,6 +20784,20 @@ type ListRouteMapsResult struct {
 	Value []*RouteMap
 }
 
+func (l *ListRouteMapsResult) GetNextLink() (rv string) {
+	if l != nil && l.NextLink != nil {
+		return *l.NextLink
+	}
+	return
+}
+
+func (l *ListRouteMapsResult) GetValue() (rv []*RouteMap) {
+	if l != nil {
+		return l.Value
+	}
+	return
+}
+
 // ListRoutingIntentResult - List of the routing intent result and a URL nextLink to get the next set of results.
 type ListRoutingIntentResult struct {
 	// URL to get the next set of operation list results if there are any.
@@ -7344,6 +20805,20 @@ type ListRoutingIntentResult struct {
 
 	// List of RoutingIntent resource.
 	Value []*RoutingIntent
+}
+
+func (l *ListRoutingIntentResult) GetNextLink() (rv string) {
+	if l != nil && l.NextLink != nil {
+		return *l.NextLink
+	}
+	return
+}
+
+func (l *ListRoutingIntentResult) GetValue() (rv []*RoutingIntent) {
+	if l != nil {
+		return l.Value
+	}
+	return
 }
 
 // ListVPNConnectionsResult - Result of the request to list all vpn connections to a virtual wan vpn gateway. It contains
@@ -7356,6 +20831,20 @@ type ListVPNConnectionsResult struct {
 	Value []*VPNConnection
 }
 
+func (l *ListVPNConnectionsResult) GetNextLink() (rv string) {
+	if l != nil && l.NextLink != nil {
+		return *l.NextLink
+	}
+	return
+}
+
+func (l *ListVPNConnectionsResult) GetValue() (rv []*VPNConnection) {
+	if l != nil {
+		return l.Value
+	}
+	return
+}
+
 // ListVPNGatewayNatRulesResult - Result of the request to list all nat rules to a virtual wan vpn gateway. It contains a
 // list of Nat rules and a URL nextLink to get the next set of results.
 type ListVPNGatewayNatRulesResult struct {
@@ -7364,6 +20853,20 @@ type ListVPNGatewayNatRulesResult struct {
 
 	// List of Nat Rules.
 	Value []*VPNGatewayNatRule
+}
+
+func (l *ListVPNGatewayNatRulesResult) GetNextLink() (rv string) {
+	if l != nil && l.NextLink != nil {
+		return *l.NextLink
+	}
+	return
+}
+
+func (l *ListVPNGatewayNatRulesResult) GetValue() (rv []*VPNGatewayNatRule) {
+	if l != nil {
+		return l.Value
+	}
+	return
 }
 
 // ListVPNGatewaysResult - Result of the request to list VpnGateways. It contains a list of VpnGateways and a URL nextLink
@@ -7376,6 +20879,20 @@ type ListVPNGatewaysResult struct {
 	Value []*VPNGateway
 }
 
+func (l *ListVPNGatewaysResult) GetNextLink() (rv string) {
+	if l != nil && l.NextLink != nil {
+		return *l.NextLink
+	}
+	return
+}
+
+func (l *ListVPNGatewaysResult) GetValue() (rv []*VPNGateway) {
+	if l != nil {
+		return l.Value
+	}
+	return
+}
+
 // ListVPNServerConfigurationPolicyGroupsResult - Result of the request to list VpnServerConfigurationPolicyGroups. It contains
 // a list of VpnServerConfigurationPolicyGroups and a URL nextLink to get the next set of results.
 type ListVPNServerConfigurationPolicyGroupsResult struct {
@@ -7384,6 +20901,20 @@ type ListVPNServerConfigurationPolicyGroupsResult struct {
 
 	// List of VpnServerConfigurationPolicyGroups.
 	Value []*VPNServerConfigurationPolicyGroup
+}
+
+func (l *ListVPNServerConfigurationPolicyGroupsResult) GetNextLink() (rv string) {
+	if l != nil && l.NextLink != nil {
+		return *l.NextLink
+	}
+	return
+}
+
+func (l *ListVPNServerConfigurationPolicyGroupsResult) GetValue() (rv []*VPNServerConfigurationPolicyGroup) {
+	if l != nil {
+		return l.Value
+	}
+	return
 }
 
 // ListVPNServerConfigurationsResult - Result of the request to list all VpnServerConfigurations. It contains a list of VpnServerConfigurations
@@ -7396,6 +20927,20 @@ type ListVPNServerConfigurationsResult struct {
 	Value []*VPNServerConfiguration
 }
 
+func (l *ListVPNServerConfigurationsResult) GetNextLink() (rv string) {
+	if l != nil && l.NextLink != nil {
+		return *l.NextLink
+	}
+	return
+}
+
+func (l *ListVPNServerConfigurationsResult) GetValue() (rv []*VPNServerConfiguration) {
+	if l != nil {
+		return l.Value
+	}
+	return
+}
+
 // ListVPNSiteLinkConnectionsResult - Result of the request to list all vpn connections to a virtual wan vpn gateway. It contains
 // a list of Vpn Connections and a URL nextLink to get the next set of results.
 type ListVPNSiteLinkConnectionsResult struct {
@@ -7404,6 +20949,20 @@ type ListVPNSiteLinkConnectionsResult struct {
 
 	// List of VpnSiteLinkConnections.
 	Value []*VPNSiteLinkConnection
+}
+
+func (l *ListVPNSiteLinkConnectionsResult) GetNextLink() (rv string) {
+	if l != nil && l.NextLink != nil {
+		return *l.NextLink
+	}
+	return
+}
+
+func (l *ListVPNSiteLinkConnectionsResult) GetValue() (rv []*VPNSiteLinkConnection) {
+	if l != nil {
+		return l.Value
+	}
+	return
 }
 
 // ListVPNSiteLinksResult - Result of the request to list VpnSiteLinks. It contains a list of VpnSiteLinks and a URL nextLink
@@ -7416,6 +20975,20 @@ type ListVPNSiteLinksResult struct {
 	Value []*VPNSiteLink
 }
 
+func (l *ListVPNSiteLinksResult) GetNextLink() (rv string) {
+	if l != nil && l.NextLink != nil {
+		return *l.NextLink
+	}
+	return
+}
+
+func (l *ListVPNSiteLinksResult) GetValue() (rv []*VPNSiteLink) {
+	if l != nil {
+		return l.Value
+	}
+	return
+}
+
 // ListVPNSitesResult - Result of the request to list VpnSites. It contains a list of VpnSites and a URL nextLink to get the
 // next set of results.
 type ListVPNSitesResult struct {
@@ -7424,6 +20997,20 @@ type ListVPNSitesResult struct {
 
 	// List of VpnSites.
 	Value []*VPNSite
+}
+
+func (l *ListVPNSitesResult) GetNextLink() (rv string) {
+	if l != nil && l.NextLink != nil {
+		return *l.NextLink
+	}
+	return
+}
+
+func (l *ListVPNSitesResult) GetValue() (rv []*VPNSite) {
+	if l != nil {
+		return l.Value
+	}
+	return
 }
 
 // ListVirtualHubBgpConnectionResults - VirtualHubBgpConnections list.
@@ -7435,6 +21022,20 @@ type ListVirtualHubBgpConnectionResults struct {
 	Value []*BgpConnection
 }
 
+func (l *ListVirtualHubBgpConnectionResults) GetNextLink() (rv string) {
+	if l != nil && l.NextLink != nil {
+		return *l.NextLink
+	}
+	return
+}
+
+func (l *ListVirtualHubBgpConnectionResults) GetValue() (rv []*BgpConnection) {
+	if l != nil {
+		return l.Value
+	}
+	return
+}
+
 // ListVirtualHubIPConfigurationResults - VirtualHubIpConfigurations list.
 type ListVirtualHubIPConfigurationResults struct {
 	// URL to get the next set of results.
@@ -7444,6 +21045,20 @@ type ListVirtualHubIPConfigurationResults struct {
 	Value []*HubIPConfiguration
 }
 
+func (l *ListVirtualHubIPConfigurationResults) GetNextLink() (rv string) {
+	if l != nil && l.NextLink != nil {
+		return *l.NextLink
+	}
+	return
+}
+
+func (l *ListVirtualHubIPConfigurationResults) GetValue() (rv []*HubIPConfiguration) {
+	if l != nil {
+		return l.Value
+	}
+	return
+}
+
 // ListVirtualHubRouteTableV2SResult - List of VirtualHubRouteTableV2s and a URL nextLink to get the next set of results.
 type ListVirtualHubRouteTableV2SResult struct {
 	// URL to get the next set of operation list results if there are any.
@@ -7451,6 +21066,20 @@ type ListVirtualHubRouteTableV2SResult struct {
 
 	// List of VirtualHubRouteTableV2s.
 	Value []*VirtualHubRouteTableV2
+}
+
+func (l *ListVirtualHubRouteTableV2SResult) GetNextLink() (rv string) {
+	if l != nil && l.NextLink != nil {
+		return *l.NextLink
+	}
+	return
+}
+
+func (l *ListVirtualHubRouteTableV2SResult) GetValue() (rv []*VirtualHubRouteTableV2) {
+	if l != nil {
+		return l.Value
+	}
+	return
 }
 
 // ListVirtualHubsResult - Result of the request to list VirtualHubs. It contains a list of VirtualHubs and a URL nextLink
@@ -7463,6 +21092,20 @@ type ListVirtualHubsResult struct {
 	Value []*VirtualHub
 }
 
+func (l *ListVirtualHubsResult) GetNextLink() (rv string) {
+	if l != nil && l.NextLink != nil {
+		return *l.NextLink
+	}
+	return
+}
+
+func (l *ListVirtualHubsResult) GetValue() (rv []*VirtualHub) {
+	if l != nil {
+		return l.Value
+	}
+	return
+}
+
 // ListVirtualNetworkGatewayNatRulesResult - Result of the request to list all nat rules to a virtual network gateway. It
 // contains a list of Nat rules and a URL nextLink to get the next set of results.
 type ListVirtualNetworkGatewayNatRulesResult struct {
@@ -7473,6 +21116,20 @@ type ListVirtualNetworkGatewayNatRulesResult struct {
 	Value []*VirtualNetworkGatewayNatRule
 }
 
+func (l *ListVirtualNetworkGatewayNatRulesResult) GetNextLink() (rv string) {
+	if l != nil && l.NextLink != nil {
+		return *l.NextLink
+	}
+	return
+}
+
+func (l *ListVirtualNetworkGatewayNatRulesResult) GetValue() (rv []*VirtualNetworkGatewayNatRule) {
+	if l != nil {
+		return l.Value
+	}
+	return
+}
+
 // ListVirtualWANsResult - Result of the request to list VirtualWANs. It contains a list of VirtualWANs and a URL nextLink
 // to get the next set of results.
 type ListVirtualWANsResult struct {
@@ -7481,6 +21138,20 @@ type ListVirtualWANsResult struct {
 
 	// List of VirtualWANs.
 	Value []*VirtualWAN
+}
+
+func (l *ListVirtualWANsResult) GetNextLink() (rv string) {
+	if l != nil && l.NextLink != nil {
+		return *l.NextLink
+	}
+	return
+}
+
+func (l *ListVirtualWANsResult) GetValue() (rv []*VirtualWAN) {
+	if l != nil {
+		return l.Value
+	}
+	return
 }
 
 // LoadBalancer resource.
@@ -7513,6 +21184,69 @@ type LoadBalancer struct {
 	Type *string
 }
 
+func (l *LoadBalancer) GetExtendedLocation() (rv *ExtendedLocation) {
+	if l != nil {
+		return l.ExtendedLocation
+	}
+	return
+}
+
+func (l *LoadBalancer) GetID() (rv string) {
+	if l != nil && l.ID != nil {
+		return *l.ID
+	}
+	return
+}
+
+func (l *LoadBalancer) GetLocation() (rv string) {
+	if l != nil && l.Location != nil {
+		return *l.Location
+	}
+	return
+}
+
+func (l *LoadBalancer) GetProperties() (rv *LoadBalancerPropertiesFormat) {
+	if l != nil {
+		return l.Properties
+	}
+	return
+}
+
+func (l *LoadBalancer) GetSKU() (rv *LoadBalancerSKU) {
+	if l != nil {
+		return l.SKU
+	}
+	return
+}
+
+func (l *LoadBalancer) GetTags() (rv map[string]*string) {
+	if l != nil {
+		return l.Tags
+	}
+	return
+}
+
+func (l *LoadBalancer) GetEtag() (rv string) {
+	if l != nil && l.Etag != nil {
+		return *l.Etag
+	}
+	return
+}
+
+func (l *LoadBalancer) GetName() (rv string) {
+	if l != nil && l.Name != nil {
+		return *l.Name
+	}
+	return
+}
+
+func (l *LoadBalancer) GetType() (rv string) {
+	if l != nil && l.Type != nil {
+		return *l.Type
+	}
+	return
+}
+
 // LoadBalancerBackendAddress - Load balancer backend addresses.
 type LoadBalancerBackendAddress struct {
 	// Name of the backend address.
@@ -7522,6 +21256,20 @@ type LoadBalancerBackendAddress struct {
 	Properties *LoadBalancerBackendAddressPropertiesFormat
 }
 
+func (l *LoadBalancerBackendAddress) GetName() (rv string) {
+	if l != nil && l.Name != nil {
+		return *l.Name
+	}
+	return
+}
+
+func (l *LoadBalancerBackendAddress) GetProperties() (rv *LoadBalancerBackendAddressPropertiesFormat) {
+	if l != nil {
+		return l.Properties
+	}
+	return
+}
+
 // LoadBalancerBackendAddressPoolListResult - Response for ListBackendAddressPool API service call.
 type LoadBalancerBackendAddressPoolListResult struct {
 	// A list of backend address pools in a load balancer.
@@ -7529,6 +21277,20 @@ type LoadBalancerBackendAddressPoolListResult struct {
 
 	// READ-ONLY; The URL to get the next set of results.
 	NextLink *string
+}
+
+func (l *LoadBalancerBackendAddressPoolListResult) GetValue() (rv []*BackendAddressPool) {
+	if l != nil {
+		return l.Value
+	}
+	return
+}
+
+func (l *LoadBalancerBackendAddressPoolListResult) GetNextLink() (rv string) {
+	if l != nil && l.NextLink != nil {
+		return *l.NextLink
+	}
+	return
 }
 
 // LoadBalancerBackendAddressPropertiesFormat - Properties of the load balancer backend addresses.
@@ -7556,6 +21318,55 @@ type LoadBalancerBackendAddressPropertiesFormat struct {
 	NetworkInterfaceIPConfiguration *SubResource
 }
 
+func (l *LoadBalancerBackendAddressPropertiesFormat) GetAdminState() (rv *LoadBalancerBackendAddressAdminState) {
+	if l != nil {
+		return l.AdminState
+	}
+	return
+}
+
+func (l *LoadBalancerBackendAddressPropertiesFormat) GetIPAddress() (rv string) {
+	if l != nil && l.IPAddress != nil {
+		return *l.IPAddress
+	}
+	return
+}
+
+func (l *LoadBalancerBackendAddressPropertiesFormat) GetLoadBalancerFrontendIPConfiguration() (rv *SubResource) {
+	if l != nil {
+		return l.LoadBalancerFrontendIPConfiguration
+	}
+	return
+}
+
+func (l *LoadBalancerBackendAddressPropertiesFormat) GetSubnet() (rv *SubResource) {
+	if l != nil {
+		return l.Subnet
+	}
+	return
+}
+
+func (l *LoadBalancerBackendAddressPropertiesFormat) GetVirtualNetwork() (rv *SubResource) {
+	if l != nil {
+		return l.VirtualNetwork
+	}
+	return
+}
+
+func (l *LoadBalancerBackendAddressPropertiesFormat) GetInboundNatRulesPortMapping() (rv []*NatRulePortMapping) {
+	if l != nil {
+		return l.InboundNatRulesPortMapping
+	}
+	return
+}
+
+func (l *LoadBalancerBackendAddressPropertiesFormat) GetNetworkInterfaceIPConfiguration() (rv *SubResource) {
+	if l != nil {
+		return l.NetworkInterfaceIPConfiguration
+	}
+	return
+}
+
 // LoadBalancerFrontendIPConfigurationListResult - Response for ListFrontendIPConfiguration API service call.
 type LoadBalancerFrontendIPConfigurationListResult struct {
 	// A list of frontend IP configurations in a load balancer.
@@ -7563,6 +21374,20 @@ type LoadBalancerFrontendIPConfigurationListResult struct {
 
 	// READ-ONLY; The URL to get the next set of results.
 	NextLink *string
+}
+
+func (l *LoadBalancerFrontendIPConfigurationListResult) GetValue() (rv []*FrontendIPConfiguration) {
+	if l != nil {
+		return l.Value
+	}
+	return
+}
+
+func (l *LoadBalancerFrontendIPConfigurationListResult) GetNextLink() (rv string) {
+	if l != nil && l.NextLink != nil {
+		return *l.NextLink
+	}
+	return
 }
 
 // LoadBalancerListResult - Response for ListLoadBalancers API service call.
@@ -7574,6 +21399,20 @@ type LoadBalancerListResult struct {
 	NextLink *string
 }
 
+func (l *LoadBalancerListResult) GetValue() (rv []*LoadBalancer) {
+	if l != nil {
+		return l.Value
+	}
+	return
+}
+
+func (l *LoadBalancerListResult) GetNextLink() (rv string) {
+	if l != nil && l.NextLink != nil {
+		return *l.NextLink
+	}
+	return
+}
+
 // LoadBalancerLoadBalancingRuleListResult - Response for ListLoadBalancingRule API service call.
 type LoadBalancerLoadBalancingRuleListResult struct {
 	// A list of load balancing rules in a load balancer.
@@ -7581,6 +21420,20 @@ type LoadBalancerLoadBalancingRuleListResult struct {
 
 	// READ-ONLY; The URL to get the next set of results.
 	NextLink *string
+}
+
+func (l *LoadBalancerLoadBalancingRuleListResult) GetValue() (rv []*LoadBalancingRule) {
+	if l != nil {
+		return l.Value
+	}
+	return
+}
+
+func (l *LoadBalancerLoadBalancingRuleListResult) GetNextLink() (rv string) {
+	if l != nil && l.NextLink != nil {
+		return *l.NextLink
+	}
+	return
 }
 
 // LoadBalancerOutboundRuleListResult - Response for ListOutboundRule API service call.
@@ -7592,6 +21445,20 @@ type LoadBalancerOutboundRuleListResult struct {
 	NextLink *string
 }
 
+func (l *LoadBalancerOutboundRuleListResult) GetValue() (rv []*OutboundRule) {
+	if l != nil {
+		return l.Value
+	}
+	return
+}
+
+func (l *LoadBalancerOutboundRuleListResult) GetNextLink() (rv string) {
+	if l != nil && l.NextLink != nil {
+		return *l.NextLink
+	}
+	return
+}
+
 // LoadBalancerProbeListResult - Response for ListProbe API service call.
 type LoadBalancerProbeListResult struct {
 	// A list of probes in a load balancer.
@@ -7599,6 +21466,20 @@ type LoadBalancerProbeListResult struct {
 
 	// READ-ONLY; The URL to get the next set of results.
 	NextLink *string
+}
+
+func (l *LoadBalancerProbeListResult) GetValue() (rv []*Probe) {
+	if l != nil {
+		return l.Value
+	}
+	return
+}
+
+func (l *LoadBalancerProbeListResult) GetNextLink() (rv string) {
+	if l != nil && l.NextLink != nil {
+		return *l.NextLink
+	}
+	return
 }
 
 // LoadBalancerPropertiesFormat - Properties of the load balancer.
@@ -7639,6 +21520,69 @@ type LoadBalancerPropertiesFormat struct {
 	ResourceGUID *string
 }
 
+func (l *LoadBalancerPropertiesFormat) GetBackendAddressPools() (rv []*BackendAddressPool) {
+	if l != nil {
+		return l.BackendAddressPools
+	}
+	return
+}
+
+func (l *LoadBalancerPropertiesFormat) GetFrontendIPConfigurations() (rv []*FrontendIPConfiguration) {
+	if l != nil {
+		return l.FrontendIPConfigurations
+	}
+	return
+}
+
+func (l *LoadBalancerPropertiesFormat) GetInboundNatPools() (rv []*InboundNatPool) {
+	if l != nil {
+		return l.InboundNatPools
+	}
+	return
+}
+
+func (l *LoadBalancerPropertiesFormat) GetInboundNatRules() (rv []*InboundNatRule) {
+	if l != nil {
+		return l.InboundNatRules
+	}
+	return
+}
+
+func (l *LoadBalancerPropertiesFormat) GetLoadBalancingRules() (rv []*LoadBalancingRule) {
+	if l != nil {
+		return l.LoadBalancingRules
+	}
+	return
+}
+
+func (l *LoadBalancerPropertiesFormat) GetOutboundRules() (rv []*OutboundRule) {
+	if l != nil {
+		return l.OutboundRules
+	}
+	return
+}
+
+func (l *LoadBalancerPropertiesFormat) GetProbes() (rv []*Probe) {
+	if l != nil {
+		return l.Probes
+	}
+	return
+}
+
+func (l *LoadBalancerPropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if l != nil {
+		return l.ProvisioningState
+	}
+	return
+}
+
+func (l *LoadBalancerPropertiesFormat) GetResourceGUID() (rv string) {
+	if l != nil && l.ResourceGUID != nil {
+		return *l.ResourceGUID
+	}
+	return
+}
+
 // LoadBalancerSKU - SKU of a load balancer.
 type LoadBalancerSKU struct {
 	// Name of a load balancer SKU.
@@ -7648,10 +21592,31 @@ type LoadBalancerSKU struct {
 	Tier *LoadBalancerSKUTier
 }
 
+func (l *LoadBalancerSKU) GetName() (rv *LoadBalancerSKUName) {
+	if l != nil {
+		return l.Name
+	}
+	return
+}
+
+func (l *LoadBalancerSKU) GetTier() (rv *LoadBalancerSKUTier) {
+	if l != nil {
+		return l.Tier
+	}
+	return
+}
+
 // LoadBalancerVipSwapRequest - The request for a VIP swap.
 type LoadBalancerVipSwapRequest struct {
 	// A list of frontend IP configuration resources that should swap VIPs.
 	FrontendIPConfigurations []*LoadBalancerVipSwapRequestFrontendIPConfiguration
+}
+
+func (l *LoadBalancerVipSwapRequest) GetFrontendIPConfigurations() (rv []*LoadBalancerVipSwapRequestFrontendIPConfiguration) {
+	if l != nil {
+		return l.FrontendIPConfigurations
+	}
+	return
 }
 
 // LoadBalancerVipSwapRequestFrontendIPConfiguration - VIP swap request's frontend IP configuration object.
@@ -7663,11 +21628,32 @@ type LoadBalancerVipSwapRequestFrontendIPConfiguration struct {
 	Properties *LoadBalancerVipSwapRequestFrontendIPConfigurationProperties
 }
 
+func (l *LoadBalancerVipSwapRequestFrontendIPConfiguration) GetID() (rv string) {
+	if l != nil && l.ID != nil {
+		return *l.ID
+	}
+	return
+}
+
+func (l *LoadBalancerVipSwapRequestFrontendIPConfiguration) GetProperties() (rv *LoadBalancerVipSwapRequestFrontendIPConfigurationProperties) {
+	if l != nil {
+		return l.Properties
+	}
+	return
+}
+
 // LoadBalancerVipSwapRequestFrontendIPConfigurationProperties - The properties of VIP swap request's frontend IP configuration
 // object.
 type LoadBalancerVipSwapRequestFrontendIPConfigurationProperties struct {
 	// A reference to public IP address resource.
 	PublicIPAddress *SubResource
+}
+
+func (l *LoadBalancerVipSwapRequestFrontendIPConfigurationProperties) GetPublicIPAddress() (rv *SubResource) {
+	if l != nil {
+		return l.PublicIPAddress
+	}
+	return
 }
 
 // LoadBalancingRule - A load balancing rule for a load balancer.
@@ -7687,6 +21673,41 @@ type LoadBalancingRule struct {
 
 	// READ-ONLY; Type of the resource.
 	Type *string
+}
+
+func (l *LoadBalancingRule) GetID() (rv string) {
+	if l != nil && l.ID != nil {
+		return *l.ID
+	}
+	return
+}
+
+func (l *LoadBalancingRule) GetName() (rv string) {
+	if l != nil && l.Name != nil {
+		return *l.Name
+	}
+	return
+}
+
+func (l *LoadBalancingRule) GetProperties() (rv *LoadBalancingRulePropertiesFormat) {
+	if l != nil {
+		return l.Properties
+	}
+	return
+}
+
+func (l *LoadBalancingRule) GetEtag() (rv string) {
+	if l != nil && l.Etag != nil {
+		return *l.Etag
+	}
+	return
+}
+
+func (l *LoadBalancingRule) GetType() (rv string) {
+	if l != nil && l.Type != nil {
+		return *l.Type
+	}
+	return
 }
 
 // LoadBalancingRulePropertiesFormat - Properties of the load balancer.
@@ -7738,6 +21759,97 @@ type LoadBalancingRulePropertiesFormat struct {
 	ProvisioningState *ProvisioningState
 }
 
+func (l *LoadBalancingRulePropertiesFormat) GetFrontendPort() (rv int32) {
+	if l != nil && l.FrontendPort != nil {
+		return *l.FrontendPort
+	}
+	return
+}
+
+func (l *LoadBalancingRulePropertiesFormat) GetProtocol() (rv *TransportProtocol) {
+	if l != nil {
+		return l.Protocol
+	}
+	return
+}
+
+func (l *LoadBalancingRulePropertiesFormat) GetBackendAddressPool() (rv *SubResource) {
+	if l != nil {
+		return l.BackendAddressPool
+	}
+	return
+}
+
+func (l *LoadBalancingRulePropertiesFormat) GetBackendAddressPools() (rv []*SubResource) {
+	if l != nil {
+		return l.BackendAddressPools
+	}
+	return
+}
+
+func (l *LoadBalancingRulePropertiesFormat) GetBackendPort() (rv int32) {
+	if l != nil && l.BackendPort != nil {
+		return *l.BackendPort
+	}
+	return
+}
+
+func (l *LoadBalancingRulePropertiesFormat) GetDisableOutboundSnat() (rv bool) {
+	if l != nil && l.DisableOutboundSnat != nil {
+		return *l.DisableOutboundSnat
+	}
+	return
+}
+
+func (l *LoadBalancingRulePropertiesFormat) GetEnableFloatingIP() (rv bool) {
+	if l != nil && l.EnableFloatingIP != nil {
+		return *l.EnableFloatingIP
+	}
+	return
+}
+
+func (l *LoadBalancingRulePropertiesFormat) GetEnableTCPReset() (rv bool) {
+	if l != nil && l.EnableTCPReset != nil {
+		return *l.EnableTCPReset
+	}
+	return
+}
+
+func (l *LoadBalancingRulePropertiesFormat) GetFrontendIPConfiguration() (rv *SubResource) {
+	if l != nil {
+		return l.FrontendIPConfiguration
+	}
+	return
+}
+
+func (l *LoadBalancingRulePropertiesFormat) GetIdleTimeoutInMinutes() (rv int32) {
+	if l != nil && l.IdleTimeoutInMinutes != nil {
+		return *l.IdleTimeoutInMinutes
+	}
+	return
+}
+
+func (l *LoadBalancingRulePropertiesFormat) GetLoadDistribution() (rv *LoadDistribution) {
+	if l != nil {
+		return l.LoadDistribution
+	}
+	return
+}
+
+func (l *LoadBalancingRulePropertiesFormat) GetProbe() (rv *SubResource) {
+	if l != nil {
+		return l.Probe
+	}
+	return
+}
+
+func (l *LoadBalancingRulePropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if l != nil {
+		return l.ProvisioningState
+	}
+	return
+}
+
 // LocalNetworkGateway - A common class for general resource information.
 type LocalNetworkGateway struct {
 	// REQUIRED; Properties of the local network gateway.
@@ -7762,6 +21874,55 @@ type LocalNetworkGateway struct {
 	Type *string
 }
 
+func (l *LocalNetworkGateway) GetProperties() (rv *LocalNetworkGatewayPropertiesFormat) {
+	if l != nil {
+		return l.Properties
+	}
+	return
+}
+
+func (l *LocalNetworkGateway) GetID() (rv string) {
+	if l != nil && l.ID != nil {
+		return *l.ID
+	}
+	return
+}
+
+func (l *LocalNetworkGateway) GetLocation() (rv string) {
+	if l != nil && l.Location != nil {
+		return *l.Location
+	}
+	return
+}
+
+func (l *LocalNetworkGateway) GetTags() (rv map[string]*string) {
+	if l != nil {
+		return l.Tags
+	}
+	return
+}
+
+func (l *LocalNetworkGateway) GetEtag() (rv string) {
+	if l != nil && l.Etag != nil {
+		return *l.Etag
+	}
+	return
+}
+
+func (l *LocalNetworkGateway) GetName() (rv string) {
+	if l != nil && l.Name != nil {
+		return *l.Name
+	}
+	return
+}
+
+func (l *LocalNetworkGateway) GetType() (rv string) {
+	if l != nil && l.Type != nil {
+		return *l.Type
+	}
+	return
+}
+
 // LocalNetworkGatewayListResult - Response for ListLocalNetworkGateways API service call.
 type LocalNetworkGatewayListResult struct {
 	// A list of local network gateways that exists in a resource group.
@@ -7769,6 +21930,20 @@ type LocalNetworkGatewayListResult struct {
 
 	// READ-ONLY; The URL to get the next set of results.
 	NextLink *string
+}
+
+func (l *LocalNetworkGatewayListResult) GetValue() (rv []*LocalNetworkGateway) {
+	if l != nil {
+		return l.Value
+	}
+	return
+}
+
+func (l *LocalNetworkGatewayListResult) GetNextLink() (rv string) {
+	if l != nil && l.NextLink != nil {
+		return *l.NextLink
+	}
+	return
 }
 
 // LocalNetworkGatewayPropertiesFormat - LocalNetworkGateway properties.
@@ -7792,6 +21967,48 @@ type LocalNetworkGatewayPropertiesFormat struct {
 	ResourceGUID *string
 }
 
+func (l *LocalNetworkGatewayPropertiesFormat) GetBgpSettings() (rv *BgpSettings) {
+	if l != nil {
+		return l.BgpSettings
+	}
+	return
+}
+
+func (l *LocalNetworkGatewayPropertiesFormat) GetFqdn() (rv string) {
+	if l != nil && l.Fqdn != nil {
+		return *l.Fqdn
+	}
+	return
+}
+
+func (l *LocalNetworkGatewayPropertiesFormat) GetGatewayIPAddress() (rv string) {
+	if l != nil && l.GatewayIPAddress != nil {
+		return *l.GatewayIPAddress
+	}
+	return
+}
+
+func (l *LocalNetworkGatewayPropertiesFormat) GetLocalNetworkAddressSpace() (rv *AddressSpace) {
+	if l != nil {
+		return l.LocalNetworkAddressSpace
+	}
+	return
+}
+
+func (l *LocalNetworkGatewayPropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if l != nil {
+		return l.ProvisioningState
+	}
+	return
+}
+
+func (l *LocalNetworkGatewayPropertiesFormat) GetResourceGUID() (rv string) {
+	if l != nil && l.ResourceGUID != nil {
+		return *l.ResourceGUID
+	}
+	return
+}
+
 // LogSpecification - Description of logging specification.
 type LogSpecification struct {
 	// Duration of the blob.
@@ -7804,6 +22021,27 @@ type LogSpecification struct {
 	Name *string
 }
 
+func (l *LogSpecification) GetBlobDuration() (rv string) {
+	if l != nil && l.BlobDuration != nil {
+		return *l.BlobDuration
+	}
+	return
+}
+
+func (l *LogSpecification) GetDisplayName() (rv string) {
+	if l != nil && l.DisplayName != nil {
+		return *l.DisplayName
+	}
+	return
+}
+
+func (l *LogSpecification) GetName() (rv string) {
+	if l != nil && l.Name != nil {
+		return *l.Name
+	}
+	return
+}
+
 // ManagedRuleGroupOverride - Defines a managed rule group override setting.
 type ManagedRuleGroupOverride struct {
 	// REQUIRED; The managed rule group to override.
@@ -7811,6 +22049,20 @@ type ManagedRuleGroupOverride struct {
 
 	// List of rules that will be disabled. If none specified, all rules in the group will be disabled.
 	Rules []*ManagedRuleOverride
+}
+
+func (m *ManagedRuleGroupOverride) GetRuleGroupName() (rv string) {
+	if m != nil && m.RuleGroupName != nil {
+		return *m.RuleGroupName
+	}
+	return
+}
+
+func (m *ManagedRuleGroupOverride) GetRules() (rv []*ManagedRuleOverride) {
+	if m != nil {
+		return m.Rules
+	}
+	return
 }
 
 // ManagedRuleOverride - Defines a managed rule group override setting.
@@ -7825,6 +22077,27 @@ type ManagedRuleOverride struct {
 	State *ManagedRuleEnabledState
 }
 
+func (m *ManagedRuleOverride) GetRuleID() (rv string) {
+	if m != nil && m.RuleID != nil {
+		return *m.RuleID
+	}
+	return
+}
+
+func (m *ManagedRuleOverride) GetAction() (rv *ActionType) {
+	if m != nil {
+		return m.Action
+	}
+	return
+}
+
+func (m *ManagedRuleOverride) GetState() (rv *ManagedRuleEnabledState) {
+	if m != nil {
+		return m.State
+	}
+	return
+}
+
 // ManagedRuleSet - Defines a managed rule set.
 type ManagedRuleSet struct {
 	// REQUIRED; Defines the rule set type to use.
@@ -7837,6 +22110,27 @@ type ManagedRuleSet struct {
 	RuleGroupOverrides []*ManagedRuleGroupOverride
 }
 
+func (m *ManagedRuleSet) GetRuleSetType() (rv string) {
+	if m != nil && m.RuleSetType != nil {
+		return *m.RuleSetType
+	}
+	return
+}
+
+func (m *ManagedRuleSet) GetRuleSetVersion() (rv string) {
+	if m != nil && m.RuleSetVersion != nil {
+		return *m.RuleSetVersion
+	}
+	return
+}
+
+func (m *ManagedRuleSet) GetRuleGroupOverrides() (rv []*ManagedRuleGroupOverride) {
+	if m != nil {
+		return m.RuleGroupOverrides
+	}
+	return
+}
+
 // ManagedRulesDefinition - Allow to exclude some variable satisfy the condition for the WAF check.
 type ManagedRulesDefinition struct {
 	// REQUIRED; The managed rule sets that are associated with the policy.
@@ -7844,6 +22138,20 @@ type ManagedRulesDefinition struct {
 
 	// The Exclusions that are applied on the policy.
 	Exclusions []*OwaspCrsExclusionEntry
+}
+
+func (m *ManagedRulesDefinition) GetManagedRuleSets() (rv []*ManagedRuleSet) {
+	if m != nil {
+		return m.ManagedRuleSets
+	}
+	return
+}
+
+func (m *ManagedRulesDefinition) GetExclusions() (rv []*OwaspCrsExclusionEntry) {
+	if m != nil {
+		return m.Exclusions
+	}
+	return
 }
 
 // ManagedServiceIdentity - Identity for the resource.
@@ -7864,6 +22172,34 @@ type ManagedServiceIdentity struct {
 
 	// READ-ONLY; The tenant id of the system assigned identity. This property will only be provided for a system assigned identity.
 	TenantID *string
+}
+
+func (m *ManagedServiceIdentity) GetType() (rv *ResourceIdentityType) {
+	if m != nil {
+		return m.Type
+	}
+	return
+}
+
+func (m *ManagedServiceIdentity) GetUserAssignedIdentities() (rv map[string]*Components1Jq1T4ISchemasManagedserviceidentityPropertiesUserassignedidentitiesAdditionalproperties) {
+	if m != nil {
+		return m.UserAssignedIdentities
+	}
+	return
+}
+
+func (m *ManagedServiceIdentity) GetPrincipalID() (rv string) {
+	if m != nil && m.PrincipalID != nil {
+		return *m.PrincipalID
+	}
+	return
+}
+
+func (m *ManagedServiceIdentity) GetTenantID() (rv string) {
+	if m != nil && m.TenantID != nil {
+		return *m.TenantID
+	}
+	return
 }
 
 // Manager - The Managed Network resource
@@ -7893,6 +22229,62 @@ type Manager struct {
 	Type *string
 }
 
+func (m *Manager) GetID() (rv string) {
+	if m != nil && m.ID != nil {
+		return *m.ID
+	}
+	return
+}
+
+func (m *Manager) GetLocation() (rv string) {
+	if m != nil && m.Location != nil {
+		return *m.Location
+	}
+	return
+}
+
+func (m *Manager) GetProperties() (rv *ManagerProperties) {
+	if m != nil {
+		return m.Properties
+	}
+	return
+}
+
+func (m *Manager) GetTags() (rv map[string]*string) {
+	if m != nil {
+		return m.Tags
+	}
+	return
+}
+
+func (m *Manager) GetEtag() (rv string) {
+	if m != nil && m.Etag != nil {
+		return *m.Etag
+	}
+	return
+}
+
+func (m *Manager) GetName() (rv string) {
+	if m != nil && m.Name != nil {
+		return *m.Name
+	}
+	return
+}
+
+func (m *Manager) GetSystemData() (rv *SystemData) {
+	if m != nil {
+		return m.SystemData
+	}
+	return
+}
+
+func (m *Manager) GetType() (rv string) {
+	if m != nil && m.Type != nil {
+		return *m.Type
+	}
+	return
+}
+
 // ManagerCommit - Network Manager Commit.
 type ManagerCommit struct {
 	// REQUIRED; Commit Type.
@@ -7906,6 +22298,34 @@ type ManagerCommit struct {
 
 	// READ-ONLY; Commit Id.
 	CommitID *string
+}
+
+func (m *ManagerCommit) GetCommitType() (rv *ConfigurationType) {
+	if m != nil {
+		return m.CommitType
+	}
+	return
+}
+
+func (m *ManagerCommit) GetTargetLocations() (rv []*string) {
+	if m != nil {
+		return m.TargetLocations
+	}
+	return
+}
+
+func (m *ManagerCommit) GetConfigurationIDs() (rv []*string) {
+	if m != nil {
+		return m.ConfigurationIDs
+	}
+	return
+}
+
+func (m *ManagerCommit) GetCommitID() (rv string) {
+	if m != nil && m.CommitID != nil {
+		return *m.CommitID
+	}
+	return
 }
 
 // ManagerConnection - The Network Manager Connection resource
@@ -7929,6 +22349,48 @@ type ManagerConnection struct {
 	Type *string
 }
 
+func (m *ManagerConnection) GetProperties() (rv *ManagerConnectionProperties) {
+	if m != nil {
+		return m.Properties
+	}
+	return
+}
+
+func (m *ManagerConnection) GetEtag() (rv string) {
+	if m != nil && m.Etag != nil {
+		return *m.Etag
+	}
+	return
+}
+
+func (m *ManagerConnection) GetID() (rv string) {
+	if m != nil && m.ID != nil {
+		return *m.ID
+	}
+	return
+}
+
+func (m *ManagerConnection) GetName() (rv string) {
+	if m != nil && m.Name != nil {
+		return *m.Name
+	}
+	return
+}
+
+func (m *ManagerConnection) GetSystemData() (rv *SystemData) {
+	if m != nil {
+		return m.SystemData
+	}
+	return
+}
+
+func (m *ManagerConnection) GetType() (rv string) {
+	if m != nil && m.Type != nil {
+		return *m.Type
+	}
+	return
+}
+
 // ManagerConnectionListResult - List of network manager connections.
 type ManagerConnectionListResult struct {
 	// Gets the URL to get the next page of results.
@@ -7936,6 +22398,20 @@ type ManagerConnectionListResult struct {
 
 	// List of network manager connections.
 	Value []*ManagerConnection
+}
+
+func (m *ManagerConnectionListResult) GetNextLink() (rv string) {
+	if m != nil && m.NextLink != nil {
+		return *m.NextLink
+	}
+	return
+}
+
+func (m *ManagerConnectionListResult) GetValue() (rv []*ManagerConnection) {
+	if m != nil {
+		return m.Value
+	}
+	return
 }
 
 // ManagerConnectionProperties - Information about the network manager connection.
@@ -7948,6 +22424,27 @@ type ManagerConnectionProperties struct {
 
 	// READ-ONLY; Connection state.
 	ConnectionState *ScopeConnectionState
+}
+
+func (m *ManagerConnectionProperties) GetDescription() (rv string) {
+	if m != nil && m.Description != nil {
+		return *m.Description
+	}
+	return
+}
+
+func (m *ManagerConnectionProperties) GetNetworkManagerID() (rv string) {
+	if m != nil && m.NetworkManagerID != nil {
+		return *m.NetworkManagerID
+	}
+	return
+}
+
+func (m *ManagerConnectionProperties) GetConnectionState() (rv *ScopeConnectionState) {
+	if m != nil {
+		return m.ConnectionState
+	}
+	return
 }
 
 // ManagerDeploymentStatus - Network Manager Deployment Status.
@@ -7971,6 +22468,48 @@ type ManagerDeploymentStatus struct {
 	Region *string
 }
 
+func (m *ManagerDeploymentStatus) GetCommitTime() (rv *time.Time) {
+	if m != nil {
+		return m.CommitTime
+	}
+	return
+}
+
+func (m *ManagerDeploymentStatus) GetConfigurationIDs() (rv []*string) {
+	if m != nil {
+		return m.ConfigurationIDs
+	}
+	return
+}
+
+func (m *ManagerDeploymentStatus) GetDeploymentStatus() (rv *DeploymentStatus) {
+	if m != nil {
+		return m.DeploymentStatus
+	}
+	return
+}
+
+func (m *ManagerDeploymentStatus) GetDeploymentType() (rv *ConfigurationType) {
+	if m != nil {
+		return m.DeploymentType
+	}
+	return
+}
+
+func (m *ManagerDeploymentStatus) GetErrorMessage() (rv string) {
+	if m != nil && m.ErrorMessage != nil {
+		return *m.ErrorMessage
+	}
+	return
+}
+
+func (m *ManagerDeploymentStatus) GetRegion() (rv string) {
+	if m != nil && m.Region != nil {
+		return *m.Region
+	}
+	return
+}
+
 // ManagerDeploymentStatusListResult - A list of Network Manager Deployment Status
 type ManagerDeploymentStatusListResult struct {
 	// When present, the value can be passed to a subsequent query call (together with the same query and scopes used in the current
@@ -7979,6 +22518,20 @@ type ManagerDeploymentStatusListResult struct {
 
 	// Gets a page of Network Manager Deployment Status
 	Value []*ManagerDeploymentStatus
+}
+
+func (m *ManagerDeploymentStatusListResult) GetSkipToken() (rv string) {
+	if m != nil && m.SkipToken != nil {
+		return *m.SkipToken
+	}
+	return
+}
+
+func (m *ManagerDeploymentStatusListResult) GetValue() (rv []*ManagerDeploymentStatus) {
+	if m != nil {
+		return m.Value
+	}
+	return
 }
 
 // ManagerDeploymentStatusParameter - Network Manager Deployment Status Parameter.
@@ -7993,6 +22546,27 @@ type ManagerDeploymentStatusParameter struct {
 	SkipToken *string
 }
 
+func (m *ManagerDeploymentStatusParameter) GetDeploymentTypes() (rv []*ConfigurationType) {
+	if m != nil {
+		return m.DeploymentTypes
+	}
+	return
+}
+
+func (m *ManagerDeploymentStatusParameter) GetRegions() (rv []*string) {
+	if m != nil {
+		return m.Regions
+	}
+	return
+}
+
+func (m *ManagerDeploymentStatusParameter) GetSkipToken() (rv string) {
+	if m != nil && m.SkipToken != nil {
+		return *m.SkipToken
+	}
+	return
+}
+
 // ManagerEffectiveConnectivityConfigurationListResult - Result of the request to list networkManagerEffectiveConnectivityConfiguration.
 // It contains a list of groups and a skiptoken to get the next set of results.
 type ManagerEffectiveConnectivityConfigurationListResult struct {
@@ -8002,6 +22576,20 @@ type ManagerEffectiveConnectivityConfigurationListResult struct {
 
 	// Gets a page of NetworkManagerEffectiveConnectivityConfiguration
 	Value []*EffectiveConnectivityConfiguration
+}
+
+func (m *ManagerEffectiveConnectivityConfigurationListResult) GetSkipToken() (rv string) {
+	if m != nil && m.SkipToken != nil {
+		return *m.SkipToken
+	}
+	return
+}
+
+func (m *ManagerEffectiveConnectivityConfigurationListResult) GetValue() (rv []*EffectiveConnectivityConfiguration) {
+	if m != nil {
+		return m.Value
+	}
+	return
 }
 
 // ManagerEffectiveSecurityAdminRulesListResult - Result of the request to list networkManagerEffectiveSecurityAdminRules.
@@ -8015,6 +22603,20 @@ type ManagerEffectiveSecurityAdminRulesListResult struct {
 	Value []EffectiveBaseSecurityAdminRuleClassification
 }
 
+func (m *ManagerEffectiveSecurityAdminRulesListResult) GetSkipToken() (rv string) {
+	if m != nil && m.SkipToken != nil {
+		return *m.SkipToken
+	}
+	return
+}
+
+func (m *ManagerEffectiveSecurityAdminRulesListResult) GetValue() (rv []EffectiveBaseSecurityAdminRuleClassification) {
+	if m != nil {
+		return m.Value
+	}
+	return
+}
+
 // ManagerListResult - Result of the request to list NetworkManager. It contains a list of network managers and a URL link
 // to get the next set of results.
 type ManagerListResult struct {
@@ -8023,6 +22625,20 @@ type ManagerListResult struct {
 
 	// Gets a page of NetworkManager
 	Value []*Manager
+}
+
+func (m *ManagerListResult) GetNextLink() (rv string) {
+	if m != nil && m.NextLink != nil {
+		return *m.NextLink
+	}
+	return
+}
+
+func (m *ManagerListResult) GetValue() (rv []*Manager) {
+	if m != nil {
+		return m.Value
+	}
+	return
 }
 
 // ManagerProperties - Properties of Managed Network
@@ -8040,6 +22656,34 @@ type ManagerProperties struct {
 	ProvisioningState *ProvisioningState
 }
 
+func (m *ManagerProperties) GetNetworkManagerScopeAccesses() (rv []*ConfigurationType) {
+	if m != nil {
+		return m.NetworkManagerScopeAccesses
+	}
+	return
+}
+
+func (m *ManagerProperties) GetNetworkManagerScopes() (rv *ManagerPropertiesNetworkManagerScopes) {
+	if m != nil {
+		return m.NetworkManagerScopes
+	}
+	return
+}
+
+func (m *ManagerProperties) GetDescription() (rv string) {
+	if m != nil && m.Description != nil {
+		return *m.Description
+	}
+	return
+}
+
+func (m *ManagerProperties) GetProvisioningState() (rv *ProvisioningState) {
+	if m != nil {
+		return m.ProvisioningState
+	}
+	return
+}
+
 // ManagerPropertiesNetworkManagerScopes - Scope of Network Manager.
 type ManagerPropertiesNetworkManagerScopes struct {
 	// List of management groups.
@@ -8052,10 +22696,38 @@ type ManagerPropertiesNetworkManagerScopes struct {
 	CrossTenantScopes []*CrossTenantScopes
 }
 
+func (m *ManagerPropertiesNetworkManagerScopes) GetManagementGroups() (rv []*string) {
+	if m != nil {
+		return m.ManagementGroups
+	}
+	return
+}
+
+func (m *ManagerPropertiesNetworkManagerScopes) GetSubscriptions() (rv []*string) {
+	if m != nil {
+		return m.Subscriptions
+	}
+	return
+}
+
+func (m *ManagerPropertiesNetworkManagerScopes) GetCrossTenantScopes() (rv []*CrossTenantScopes) {
+	if m != nil {
+		return m.CrossTenantScopes
+	}
+	return
+}
+
 // ManagerSecurityGroupItem - Network manager security group item.
 type ManagerSecurityGroupItem struct {
 	// REQUIRED; Network manager group Id.
 	NetworkGroupID *string
+}
+
+func (m *ManagerSecurityGroupItem) GetNetworkGroupID() (rv string) {
+	if m != nil && m.NetworkGroupID != nil {
+		return *m.NetworkGroupID
+	}
+	return
 }
 
 // MatchCondition - Define match conditions.
@@ -8076,6 +22748,41 @@ type MatchCondition struct {
 	Transforms []*WebApplicationFirewallTransform
 }
 
+func (m *MatchCondition) GetMatchValues() (rv []*string) {
+	if m != nil {
+		return m.MatchValues
+	}
+	return
+}
+
+func (m *MatchCondition) GetMatchVariables() (rv []*MatchVariable) {
+	if m != nil {
+		return m.MatchVariables
+	}
+	return
+}
+
+func (m *MatchCondition) GetOperator() (rv *WebApplicationFirewallOperator) {
+	if m != nil {
+		return m.Operator
+	}
+	return
+}
+
+func (m *MatchCondition) GetNegationConditon() (rv bool) {
+	if m != nil && m.NegationConditon != nil {
+		return *m.NegationConditon
+	}
+	return
+}
+
+func (m *MatchCondition) GetTransforms() (rv []*WebApplicationFirewallTransform) {
+	if m != nil {
+		return m.Transforms
+	}
+	return
+}
+
 // MatchVariable - Define match variables.
 type MatchVariable struct {
 	// REQUIRED; Match Variable.
@@ -8085,6 +22792,20 @@ type MatchVariable struct {
 	Selector *string
 }
 
+func (m *MatchVariable) GetVariableName() (rv *WebApplicationFirewallMatchVariable) {
+	if m != nil {
+		return m.VariableName
+	}
+	return
+}
+
+func (m *MatchVariable) GetSelector() (rv string) {
+	if m != nil && m.Selector != nil {
+		return *m.Selector
+	}
+	return
+}
+
 // MatchedRule - Matched rule.
 type MatchedRule struct {
 	// The network traffic is allowed or denied. Possible values are 'Allow' and 'Deny'.
@@ -8092,6 +22813,20 @@ type MatchedRule struct {
 
 	// Name of the matched network security rule.
 	RuleName *string
+}
+
+func (m *MatchedRule) GetAction() (rv string) {
+	if m != nil && m.Action != nil {
+		return *m.Action
+	}
+	return
+}
+
+func (m *MatchedRule) GetRuleName() (rv string) {
+	if m != nil && m.RuleName != nil {
+		return *m.RuleName
+	}
+	return
 }
 
 // MetricSpecification - Description of metrics specification.
@@ -8139,6 +22874,104 @@ type MetricSpecification struct {
 	Unit *string
 }
 
+func (m *MetricSpecification) GetAggregationType() (rv string) {
+	if m != nil && m.AggregationType != nil {
+		return *m.AggregationType
+	}
+	return
+}
+
+func (m *MetricSpecification) GetAvailabilities() (rv []*Availability) {
+	if m != nil {
+		return m.Availabilities
+	}
+	return
+}
+
+func (m *MetricSpecification) GetDimensions() (rv []*Dimension) {
+	if m != nil {
+		return m.Dimensions
+	}
+	return
+}
+
+func (m *MetricSpecification) GetDisplayDescription() (rv string) {
+	if m != nil && m.DisplayDescription != nil {
+		return *m.DisplayDescription
+	}
+	return
+}
+
+func (m *MetricSpecification) GetDisplayName() (rv string) {
+	if m != nil && m.DisplayName != nil {
+		return *m.DisplayName
+	}
+	return
+}
+
+func (m *MetricSpecification) GetEnableRegionalMdmAccount() (rv bool) {
+	if m != nil && m.EnableRegionalMdmAccount != nil {
+		return *m.EnableRegionalMdmAccount
+	}
+	return
+}
+
+func (m *MetricSpecification) GetFillGapWithZero() (rv bool) {
+	if m != nil && m.FillGapWithZero != nil {
+		return *m.FillGapWithZero
+	}
+	return
+}
+
+func (m *MetricSpecification) GetIsInternal() (rv bool) {
+	if m != nil && m.IsInternal != nil {
+		return *m.IsInternal
+	}
+	return
+}
+
+func (m *MetricSpecification) GetMetricFilterPattern() (rv string) {
+	if m != nil && m.MetricFilterPattern != nil {
+		return *m.MetricFilterPattern
+	}
+	return
+}
+
+func (m *MetricSpecification) GetName() (rv string) {
+	if m != nil && m.Name != nil {
+		return *m.Name
+	}
+	return
+}
+
+func (m *MetricSpecification) GetResourceIDDimensionNameOverride() (rv string) {
+	if m != nil && m.ResourceIDDimensionNameOverride != nil {
+		return *m.ResourceIDDimensionNameOverride
+	}
+	return
+}
+
+func (m *MetricSpecification) GetSourceMdmAccount() (rv string) {
+	if m != nil && m.SourceMdmAccount != nil {
+		return *m.SourceMdmAccount
+	}
+	return
+}
+
+func (m *MetricSpecification) GetSourceMdmNamespace() (rv string) {
+	if m != nil && m.SourceMdmNamespace != nil {
+		return *m.SourceMdmNamespace
+	}
+	return
+}
+
+func (m *MetricSpecification) GetUnit() (rv string) {
+	if m != nil && m.Unit != nil {
+		return *m.Unit
+	}
+	return
+}
+
 // NatGateway - Nat Gateway resource.
 type NatGateway struct {
 	// Resource ID.
@@ -8169,6 +23002,69 @@ type NatGateway struct {
 	Type *string
 }
 
+func (n *NatGateway) GetID() (rv string) {
+	if n != nil && n.ID != nil {
+		return *n.ID
+	}
+	return
+}
+
+func (n *NatGateway) GetLocation() (rv string) {
+	if n != nil && n.Location != nil {
+		return *n.Location
+	}
+	return
+}
+
+func (n *NatGateway) GetProperties() (rv *NatGatewayPropertiesFormat) {
+	if n != nil {
+		return n.Properties
+	}
+	return
+}
+
+func (n *NatGateway) GetSKU() (rv *NatGatewaySKU) {
+	if n != nil {
+		return n.SKU
+	}
+	return
+}
+
+func (n *NatGateway) GetTags() (rv map[string]*string) {
+	if n != nil {
+		return n.Tags
+	}
+	return
+}
+
+func (n *NatGateway) GetZones() (rv []*string) {
+	if n != nil {
+		return n.Zones
+	}
+	return
+}
+
+func (n *NatGateway) GetEtag() (rv string) {
+	if n != nil && n.Etag != nil {
+		return *n.Etag
+	}
+	return
+}
+
+func (n *NatGateway) GetName() (rv string) {
+	if n != nil && n.Name != nil {
+		return *n.Name
+	}
+	return
+}
+
+func (n *NatGateway) GetType() (rv string) {
+	if n != nil && n.Type != nil {
+		return *n.Type
+	}
+	return
+}
+
 // NatGatewayListResult - Response for ListNatGateways API service call.
 type NatGatewayListResult struct {
 	// The URL to get the next set of results.
@@ -8176,6 +23072,20 @@ type NatGatewayListResult struct {
 
 	// A list of Nat Gateways that exists in a resource group.
 	Value []*NatGateway
+}
+
+func (n *NatGatewayListResult) GetNextLink() (rv string) {
+	if n != nil && n.NextLink != nil {
+		return *n.NextLink
+	}
+	return
+}
+
+func (n *NatGatewayListResult) GetValue() (rv []*NatGateway) {
+	if n != nil {
+		return n.Value
+	}
+	return
 }
 
 // NatGatewayPropertiesFormat - Nat Gateway properties.
@@ -8199,10 +23109,59 @@ type NatGatewayPropertiesFormat struct {
 	Subnets []*SubResource
 }
 
+func (n *NatGatewayPropertiesFormat) GetIdleTimeoutInMinutes() (rv int32) {
+	if n != nil && n.IdleTimeoutInMinutes != nil {
+		return *n.IdleTimeoutInMinutes
+	}
+	return
+}
+
+func (n *NatGatewayPropertiesFormat) GetPublicIPAddresses() (rv []*SubResource) {
+	if n != nil {
+		return n.PublicIPAddresses
+	}
+	return
+}
+
+func (n *NatGatewayPropertiesFormat) GetPublicIPPrefixes() (rv []*SubResource) {
+	if n != nil {
+		return n.PublicIPPrefixes
+	}
+	return
+}
+
+func (n *NatGatewayPropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if n != nil {
+		return n.ProvisioningState
+	}
+	return
+}
+
+func (n *NatGatewayPropertiesFormat) GetResourceGUID() (rv string) {
+	if n != nil && n.ResourceGUID != nil {
+		return *n.ResourceGUID
+	}
+	return
+}
+
+func (n *NatGatewayPropertiesFormat) GetSubnets() (rv []*SubResource) {
+	if n != nil {
+		return n.Subnets
+	}
+	return
+}
+
 // NatGatewaySKU - SKU of nat gateway.
 type NatGatewaySKU struct {
 	// Name of Nat Gateway SKU.
 	Name *NatGatewaySKUName
+}
+
+func (n *NatGatewaySKU) GetName() (rv *NatGatewaySKUName) {
+	if n != nil {
+		return n.Name
+	}
+	return
 }
 
 // NatRule - Rule of type nat.
@@ -8241,6 +23200,83 @@ type NatRule struct {
 	TranslatedPort *string
 }
 
+func (n *NatRule) GetRuleType() (rv *FirewallPolicyRuleType) {
+	if n != nil {
+		return n.RuleType
+	}
+	return
+}
+
+func (n *NatRule) GetDescription() (rv string) {
+	if n != nil && n.Description != nil {
+		return *n.Description
+	}
+	return
+}
+
+func (n *NatRule) GetDestinationAddresses() (rv []*string) {
+	if n != nil {
+		return n.DestinationAddresses
+	}
+	return
+}
+
+func (n *NatRule) GetDestinationPorts() (rv []*string) {
+	if n != nil {
+		return n.DestinationPorts
+	}
+	return
+}
+
+func (n *NatRule) GetIPProtocols() (rv []*FirewallPolicyRuleNetworkProtocol) {
+	if n != nil {
+		return n.IPProtocols
+	}
+	return
+}
+
+func (n *NatRule) GetName() (rv string) {
+	if n != nil && n.Name != nil {
+		return *n.Name
+	}
+	return
+}
+
+func (n *NatRule) GetSourceAddresses() (rv []*string) {
+	if n != nil {
+		return n.SourceAddresses
+	}
+	return
+}
+
+func (n *NatRule) GetSourceIPGroups() (rv []*string) {
+	if n != nil {
+		return n.SourceIPGroups
+	}
+	return
+}
+
+func (n *NatRule) GetTranslatedAddress() (rv string) {
+	if n != nil && n.TranslatedAddress != nil {
+		return *n.TranslatedAddress
+	}
+	return
+}
+
+func (n *NatRule) GetTranslatedFqdn() (rv string) {
+	if n != nil && n.TranslatedFqdn != nil {
+		return *n.TranslatedFqdn
+	}
+	return
+}
+
+func (n *NatRule) GetTranslatedPort() (rv string) {
+	if n != nil && n.TranslatedPort != nil {
+		return *n.TranslatedPort
+	}
+	return
+}
+
 // GetFirewallPolicyRule implements the FirewallPolicyRuleClassification interface for type NatRule.
 func (n *NatRule) GetFirewallPolicyRule() *FirewallPolicyRule {
 	return &FirewallPolicyRule{
@@ -8262,6 +23298,27 @@ type NatRulePortMapping struct {
 	InboundNatRuleName *string
 }
 
+func (n *NatRulePortMapping) GetBackendPort() (rv int32) {
+	if n != nil && n.BackendPort != nil {
+		return *n.BackendPort
+	}
+	return
+}
+
+func (n *NatRulePortMapping) GetFrontendPort() (rv int32) {
+	if n != nil && n.FrontendPort != nil {
+		return *n.FrontendPort
+	}
+	return
+}
+
+func (n *NatRulePortMapping) GetInboundNatRuleName() (rv string) {
+	if n != nil && n.InboundNatRuleName != nil {
+		return *n.InboundNatRuleName
+	}
+	return
+}
+
 // NextHopParameters - Parameters that define the source and destination endpoint.
 type NextHopParameters struct {
 	// REQUIRED; The destination IP address.
@@ -8278,6 +23335,34 @@ type NextHopParameters struct {
 	TargetNicResourceID *string
 }
 
+func (n *NextHopParameters) GetDestinationIPAddress() (rv string) {
+	if n != nil && n.DestinationIPAddress != nil {
+		return *n.DestinationIPAddress
+	}
+	return
+}
+
+func (n *NextHopParameters) GetSourceIPAddress() (rv string) {
+	if n != nil && n.SourceIPAddress != nil {
+		return *n.SourceIPAddress
+	}
+	return
+}
+
+func (n *NextHopParameters) GetTargetResourceID() (rv string) {
+	if n != nil && n.TargetResourceID != nil {
+		return *n.TargetResourceID
+	}
+	return
+}
+
+func (n *NextHopParameters) GetTargetNicResourceID() (rv string) {
+	if n != nil && n.TargetNicResourceID != nil {
+		return *n.TargetNicResourceID
+	}
+	return
+}
+
 // NextHopResult - The information about next hop from the specified VM.
 type NextHopResult struct {
 	// Next hop IP Address.
@@ -8292,6 +23377,27 @@ type NextHopResult struct {
 	RouteTableID *string
 }
 
+func (n *NextHopResult) GetNextHopIPAddress() (rv string) {
+	if n != nil && n.NextHopIPAddress != nil {
+		return *n.NextHopIPAddress
+	}
+	return
+}
+
+func (n *NextHopResult) GetNextHopType() (rv *NextHopType) {
+	if n != nil {
+		return n.NextHopType
+	}
+	return
+}
+
+func (n *NextHopResult) GetRouteTableID() (rv string) {
+	if n != nil && n.RouteTableID != nil {
+		return *n.RouteTableID
+	}
+	return
+}
+
 // O365BreakOutCategoryPolicies - Office365 breakout categories.
 type O365BreakOutCategoryPolicies struct {
 	// Flag to control allow category.
@@ -8304,16 +23410,51 @@ type O365BreakOutCategoryPolicies struct {
 	Optimize *bool
 }
 
+func (o *O365BreakOutCategoryPolicies) GetAllow() (rv bool) {
+	if o != nil && o.Allow != nil {
+		return *o.Allow
+	}
+	return
+}
+
+func (o *O365BreakOutCategoryPolicies) GetDefault() (rv bool) {
+	if o != nil && o.Default != nil {
+		return *o.Default
+	}
+	return
+}
+
+func (o *O365BreakOutCategoryPolicies) GetOptimize() (rv bool) {
+	if o != nil && o.Optimize != nil {
+		return *o.Optimize
+	}
+	return
+}
+
 // O365PolicyProperties - The Office365 breakout policy.
 type O365PolicyProperties struct {
 	// Office365 breakout categories.
 	BreakOutCategories *O365BreakOutCategoryPolicies
 }
 
+func (o *O365PolicyProperties) GetBreakOutCategories() (rv *O365BreakOutCategoryPolicies) {
+	if o != nil {
+		return o.BreakOutCategories
+	}
+	return
+}
+
 // Office365PolicyProperties - Network Virtual Appliance Sku Properties.
 type Office365PolicyProperties struct {
 	// Office 365 breakout categories.
 	BreakOutCategories *BreakOutCategoryPolicies
+}
+
+func (o *Office365PolicyProperties) GetBreakOutCategories() (rv *BreakOutCategoryPolicies) {
+	if o != nil {
+		return o.BreakOutCategories
+	}
+	return
 }
 
 // Operation - Network REST API operation definition.
@@ -8331,6 +23472,34 @@ type Operation struct {
 	Properties *OperationPropertiesFormat
 }
 
+func (o *Operation) GetDisplay() (rv *OperationDisplay) {
+	if o != nil {
+		return o.Display
+	}
+	return
+}
+
+func (o *Operation) GetName() (rv string) {
+	if o != nil && o.Name != nil {
+		return *o.Name
+	}
+	return
+}
+
+func (o *Operation) GetOrigin() (rv string) {
+	if o != nil && o.Origin != nil {
+		return *o.Origin
+	}
+	return
+}
+
+func (o *Operation) GetProperties() (rv *OperationPropertiesFormat) {
+	if o != nil {
+		return o.Properties
+	}
+	return
+}
+
 // OperationDisplay - Display metadata associated with the operation.
 type OperationDisplay struct {
 	// Description of the operation.
@@ -8346,6 +23515,34 @@ type OperationDisplay struct {
 	Resource *string
 }
 
+func (o *OperationDisplay) GetDescription() (rv string) {
+	if o != nil && o.Description != nil {
+		return *o.Description
+	}
+	return
+}
+
+func (o *OperationDisplay) GetOperation() (rv string) {
+	if o != nil && o.Operation != nil {
+		return *o.Operation
+	}
+	return
+}
+
+func (o *OperationDisplay) GetProvider() (rv string) {
+	if o != nil && o.Provider != nil {
+		return *o.Provider
+	}
+	return
+}
+
+func (o *OperationDisplay) GetResource() (rv string) {
+	if o != nil && o.Resource != nil {
+		return *o.Resource
+	}
+	return
+}
+
 // OperationListResult - Result of the request to list Network operations. It contains a list of operations and a URL link
 // to get the next set of results.
 type OperationListResult struct {
@@ -8356,10 +23553,31 @@ type OperationListResult struct {
 	Value []*Operation
 }
 
+func (o *OperationListResult) GetNextLink() (rv string) {
+	if o != nil && o.NextLink != nil {
+		return *o.NextLink
+	}
+	return
+}
+
+func (o *OperationListResult) GetValue() (rv []*Operation) {
+	if o != nil {
+		return o.Value
+	}
+	return
+}
+
 // OperationPropertiesFormat - Description of operation properties format.
 type OperationPropertiesFormat struct {
 	// Specification of the service.
 	ServiceSpecification *OperationPropertiesFormatServiceSpecification
+}
+
+func (o *OperationPropertiesFormat) GetServiceSpecification() (rv *OperationPropertiesFormatServiceSpecification) {
+	if o != nil {
+		return o.ServiceSpecification
+	}
+	return
 }
 
 // OperationPropertiesFormatServiceSpecification - Specification of the service.
@@ -8371,6 +23589,20 @@ type OperationPropertiesFormatServiceSpecification struct {
 	MetricSpecifications []*MetricSpecification
 }
 
+func (o *OperationPropertiesFormatServiceSpecification) GetLogSpecifications() (rv []*LogSpecification) {
+	if o != nil {
+		return o.LogSpecifications
+	}
+	return
+}
+
+func (o *OperationPropertiesFormatServiceSpecification) GetMetricSpecifications() (rv []*MetricSpecification) {
+	if o != nil {
+		return o.MetricSpecifications
+	}
+	return
+}
+
 // OrderBy - Describes a column to sort
 type OrderBy struct {
 	// Describes the actual column name to sort by
@@ -8378,6 +23610,20 @@ type OrderBy struct {
 
 	// Describes if results should be in ascending/descending order
 	Order *FirewallPolicyIDPSQuerySortOrder
+}
+
+func (o *OrderBy) GetField() (rv string) {
+	if o != nil && o.Field != nil {
+		return *o.Field
+	}
+	return
+}
+
+func (o *OrderBy) GetOrder() (rv *FirewallPolicyIDPSQuerySortOrder) {
+	if o != nil {
+		return o.Order
+	}
+	return
 }
 
 // OutboundRule - Outbound rule of the load balancer.
@@ -8397,6 +23643,41 @@ type OutboundRule struct {
 
 	// READ-ONLY; Type of the resource.
 	Type *string
+}
+
+func (o *OutboundRule) GetID() (rv string) {
+	if o != nil && o.ID != nil {
+		return *o.ID
+	}
+	return
+}
+
+func (o *OutboundRule) GetName() (rv string) {
+	if o != nil && o.Name != nil {
+		return *o.Name
+	}
+	return
+}
+
+func (o *OutboundRule) GetProperties() (rv *OutboundRulePropertiesFormat) {
+	if o != nil {
+		return o.Properties
+	}
+	return
+}
+
+func (o *OutboundRule) GetEtag() (rv string) {
+	if o != nil && o.Etag != nil {
+		return *o.Etag
+	}
+	return
+}
+
+func (o *OutboundRule) GetType() (rv string) {
+	if o != nil && o.Type != nil {
+		return *o.Type
+	}
+	return
 }
 
 // OutboundRulePropertiesFormat - Outbound rule of the load balancer.
@@ -8424,6 +23705,55 @@ type OutboundRulePropertiesFormat struct {
 	ProvisioningState *ProvisioningState
 }
 
+func (o *OutboundRulePropertiesFormat) GetBackendAddressPool() (rv *SubResource) {
+	if o != nil {
+		return o.BackendAddressPool
+	}
+	return
+}
+
+func (o *OutboundRulePropertiesFormat) GetFrontendIPConfigurations() (rv []*SubResource) {
+	if o != nil {
+		return o.FrontendIPConfigurations
+	}
+	return
+}
+
+func (o *OutboundRulePropertiesFormat) GetProtocol() (rv *LoadBalancerOutboundRuleProtocol) {
+	if o != nil {
+		return o.Protocol
+	}
+	return
+}
+
+func (o *OutboundRulePropertiesFormat) GetAllocatedOutboundPorts() (rv int32) {
+	if o != nil && o.AllocatedOutboundPorts != nil {
+		return *o.AllocatedOutboundPorts
+	}
+	return
+}
+
+func (o *OutboundRulePropertiesFormat) GetEnableTCPReset() (rv bool) {
+	if o != nil && o.EnableTCPReset != nil {
+		return *o.EnableTCPReset
+	}
+	return
+}
+
+func (o *OutboundRulePropertiesFormat) GetIdleTimeoutInMinutes() (rv int32) {
+	if o != nil && o.IdleTimeoutInMinutes != nil {
+		return *o.IdleTimeoutInMinutes
+	}
+	return
+}
+
+func (o *OutboundRulePropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if o != nil {
+		return o.ProvisioningState
+	}
+	return
+}
+
 // OwaspCrsExclusionEntry - Allow to exclude some variable satisfy the condition for the WAF check.
 type OwaspCrsExclusionEntry struct {
 	// REQUIRED; The variable to be excluded.
@@ -8441,6 +23771,34 @@ type OwaspCrsExclusionEntry struct {
 	ExclusionManagedRuleSets []*ExclusionManagedRuleSet
 }
 
+func (o *OwaspCrsExclusionEntry) GetMatchVariable() (rv *OwaspCrsExclusionEntryMatchVariable) {
+	if o != nil {
+		return o.MatchVariable
+	}
+	return
+}
+
+func (o *OwaspCrsExclusionEntry) GetSelector() (rv string) {
+	if o != nil && o.Selector != nil {
+		return *o.Selector
+	}
+	return
+}
+
+func (o *OwaspCrsExclusionEntry) GetSelectorMatchOperator() (rv *OwaspCrsExclusionEntrySelectorMatchOperator) {
+	if o != nil {
+		return o.SelectorMatchOperator
+	}
+	return
+}
+
+func (o *OwaspCrsExclusionEntry) GetExclusionManagedRuleSets() (rv []*ExclusionManagedRuleSet) {
+	if o != nil {
+		return o.ExclusionManagedRuleSets
+	}
+	return
+}
+
 // P2SConnectionConfiguration Resource.
 type P2SConnectionConfiguration struct {
 	// Resource ID.
@@ -8454,6 +23812,34 @@ type P2SConnectionConfiguration struct {
 
 	// READ-ONLY; A unique read-only string that changes whenever the resource is updated.
 	Etag *string
+}
+
+func (p *P2SConnectionConfiguration) GetID() (rv string) {
+	if p != nil && p.ID != nil {
+		return *p.ID
+	}
+	return
+}
+
+func (p *P2SConnectionConfiguration) GetName() (rv string) {
+	if p != nil && p.Name != nil {
+		return *p.Name
+	}
+	return
+}
+
+func (p *P2SConnectionConfiguration) GetProperties() (rv *P2SConnectionConfigurationProperties) {
+	if p != nil {
+		return p.Properties
+	}
+	return
+}
+
+func (p *P2SConnectionConfiguration) GetEtag() (rv string) {
+	if p != nil && p.Etag != nil {
+		return *p.Etag
+	}
+	return
 }
 
 // P2SConnectionConfigurationProperties - Parameters for P2SConnectionConfiguration.
@@ -8477,10 +23863,59 @@ type P2SConnectionConfigurationProperties struct {
 	ProvisioningState *ProvisioningState
 }
 
+func (p *P2SConnectionConfigurationProperties) GetEnableInternetSecurity() (rv bool) {
+	if p != nil && p.EnableInternetSecurity != nil {
+		return *p.EnableInternetSecurity
+	}
+	return
+}
+
+func (p *P2SConnectionConfigurationProperties) GetRoutingConfiguration() (rv *RoutingConfiguration) {
+	if p != nil {
+		return p.RoutingConfiguration
+	}
+	return
+}
+
+func (p *P2SConnectionConfigurationProperties) GetVPNClientAddressPool() (rv *AddressSpace) {
+	if p != nil {
+		return p.VPNClientAddressPool
+	}
+	return
+}
+
+func (p *P2SConnectionConfigurationProperties) GetConfigurationPolicyGroupAssociations() (rv []*SubResource) {
+	if p != nil {
+		return p.ConfigurationPolicyGroupAssociations
+	}
+	return
+}
+
+func (p *P2SConnectionConfigurationProperties) GetPreviousConfigurationPolicyGroupAssociations() (rv []*VPNServerConfigurationPolicyGroup) {
+	if p != nil {
+		return p.PreviousConfigurationPolicyGroupAssociations
+	}
+	return
+}
+
+func (p *P2SConnectionConfigurationProperties) GetProvisioningState() (rv *ProvisioningState) {
+	if p != nil {
+		return p.ProvisioningState
+	}
+	return
+}
+
 // P2SVPNConnectionHealth - P2S Vpn connection detailed health written to sas url.
 type P2SVPNConnectionHealth struct {
 	// Returned sas url of the blob to which the p2s vpn connection detailed health will be written.
 	SasURL *string
+}
+
+func (p *P2SVPNConnectionHealth) GetSasURL() (rv string) {
+	if p != nil && p.SasURL != nil {
+		return *p.SasURL
+	}
+	return
 }
 
 // P2SVPNConnectionHealthRequest - List of P2S Vpn connection health request.
@@ -8492,10 +23927,31 @@ type P2SVPNConnectionHealthRequest struct {
 	VPNUserNamesFilter []*string
 }
 
+func (p *P2SVPNConnectionHealthRequest) GetOutputBlobSasURL() (rv string) {
+	if p != nil && p.OutputBlobSasURL != nil {
+		return *p.OutputBlobSasURL
+	}
+	return
+}
+
+func (p *P2SVPNConnectionHealthRequest) GetVPNUserNamesFilter() (rv []*string) {
+	if p != nil {
+		return p.VPNUserNamesFilter
+	}
+	return
+}
+
 // P2SVPNConnectionRequest - List of p2s vpn connections to be disconnected.
 type P2SVPNConnectionRequest struct {
 	// List of p2s vpn connection Ids.
 	VPNConnectionIDs []*string
+}
+
+func (p *P2SVPNConnectionRequest) GetVPNConnectionIDs() (rv []*string) {
+	if p != nil {
+		return p.VPNConnectionIDs
+	}
+	return
 }
 
 // P2SVPNGateway - P2SVpnGateway Resource.
@@ -8520,6 +23976,55 @@ type P2SVPNGateway struct {
 
 	// READ-ONLY; Resource type.
 	Type *string
+}
+
+func (p *P2SVPNGateway) GetID() (rv string) {
+	if p != nil && p.ID != nil {
+		return *p.ID
+	}
+	return
+}
+
+func (p *P2SVPNGateway) GetLocation() (rv string) {
+	if p != nil && p.Location != nil {
+		return *p.Location
+	}
+	return
+}
+
+func (p *P2SVPNGateway) GetProperties() (rv *P2SVPNGatewayProperties) {
+	if p != nil {
+		return p.Properties
+	}
+	return
+}
+
+func (p *P2SVPNGateway) GetTags() (rv map[string]*string) {
+	if p != nil {
+		return p.Tags
+	}
+	return
+}
+
+func (p *P2SVPNGateway) GetEtag() (rv string) {
+	if p != nil && p.Etag != nil {
+		return *p.Etag
+	}
+	return
+}
+
+func (p *P2SVPNGateway) GetName() (rv string) {
+	if p != nil && p.Name != nil {
+		return *p.Name
+	}
+	return
+}
+
+func (p *P2SVPNGateway) GetType() (rv string) {
+	if p != nil && p.Type != nil {
+		return *p.Type
+	}
+	return
 }
 
 // P2SVPNGatewayProperties - Parameters for P2SVpnGateway.
@@ -8549,16 +24054,86 @@ type P2SVPNGatewayProperties struct {
 	VPNClientConnectionHealth *VPNClientConnectionHealth
 }
 
+func (p *P2SVPNGatewayProperties) GetCustomDNSServers() (rv []*string) {
+	if p != nil {
+		return p.CustomDNSServers
+	}
+	return
+}
+
+func (p *P2SVPNGatewayProperties) GetIsRoutingPreferenceInternet() (rv bool) {
+	if p != nil && p.IsRoutingPreferenceInternet != nil {
+		return *p.IsRoutingPreferenceInternet
+	}
+	return
+}
+
+func (p *P2SVPNGatewayProperties) GetP2SConnectionConfigurations() (rv []*P2SConnectionConfiguration) {
+	if p != nil {
+		return p.P2SConnectionConfigurations
+	}
+	return
+}
+
+func (p *P2SVPNGatewayProperties) GetVPNGatewayScaleUnit() (rv int32) {
+	if p != nil && p.VPNGatewayScaleUnit != nil {
+		return *p.VPNGatewayScaleUnit
+	}
+	return
+}
+
+func (p *P2SVPNGatewayProperties) GetVPNServerConfiguration() (rv *SubResource) {
+	if p != nil {
+		return p.VPNServerConfiguration
+	}
+	return
+}
+
+func (p *P2SVPNGatewayProperties) GetVirtualHub() (rv *SubResource) {
+	if p != nil {
+		return p.VirtualHub
+	}
+	return
+}
+
+func (p *P2SVPNGatewayProperties) GetProvisioningState() (rv *ProvisioningState) {
+	if p != nil {
+		return p.ProvisioningState
+	}
+	return
+}
+
+func (p *P2SVPNGatewayProperties) GetVPNClientConnectionHealth() (rv *VPNClientConnectionHealth) {
+	if p != nil {
+		return p.VPNClientConnectionHealth
+	}
+	return
+}
+
 // P2SVPNProfileParameters - Vpn Client Parameters for package generation.
 type P2SVPNProfileParameters struct {
 	// VPN client authentication method.
 	AuthenticationMethod *AuthenticationMethod
 }
 
+func (p *P2SVPNProfileParameters) GetAuthenticationMethod() (rv *AuthenticationMethod) {
+	if p != nil {
+		return p.AuthenticationMethod
+	}
+	return
+}
+
 // PacketCapture - Parameters that define the create packet capture operation.
 type PacketCapture struct {
 	// REQUIRED; Properties of the packet capture.
 	Properties *PacketCaptureParameters
+}
+
+func (p *PacketCapture) GetProperties() (rv *PacketCaptureParameters) {
+	if p != nil {
+		return p.Properties
+	}
+	return
 }
 
 // PacketCaptureFilter - Filter that is applied to packet capture request. Multiple filters can be applied.
@@ -8587,10 +24162,52 @@ type PacketCaptureFilter struct {
 	RemotePort *string
 }
 
+func (p *PacketCaptureFilter) GetLocalIPAddress() (rv string) {
+	if p != nil && p.LocalIPAddress != nil {
+		return *p.LocalIPAddress
+	}
+	return
+}
+
+func (p *PacketCaptureFilter) GetLocalPort() (rv string) {
+	if p != nil && p.LocalPort != nil {
+		return *p.LocalPort
+	}
+	return
+}
+
+func (p *PacketCaptureFilter) GetProtocol() (rv *PcProtocol) {
+	if p != nil {
+		return p.Protocol
+	}
+	return
+}
+
+func (p *PacketCaptureFilter) GetRemoteIPAddress() (rv string) {
+	if p != nil && p.RemoteIPAddress != nil {
+		return *p.RemoteIPAddress
+	}
+	return
+}
+
+func (p *PacketCaptureFilter) GetRemotePort() (rv string) {
+	if p != nil && p.RemotePort != nil {
+		return *p.RemotePort
+	}
+	return
+}
+
 // PacketCaptureListResult - List of packet capture sessions.
 type PacketCaptureListResult struct {
 	// Information about packet capture sessions.
 	Value []*PacketCaptureResult
+}
+
+func (p *PacketCaptureListResult) GetValue() (rv []*PacketCaptureResult) {
+	if p != nil {
+		return p.Value
+	}
+	return
 }
 
 // PacketCaptureMachineScope - A list of AzureVMSS instances which can be included or excluded to run packet capture. If both
@@ -8601,6 +24218,20 @@ type PacketCaptureMachineScope struct {
 
 	// List of AzureVMSS instances to run packet capture on.
 	Include []*string
+}
+
+func (p *PacketCaptureMachineScope) GetExclude() (rv []*string) {
+	if p != nil {
+		return p.Exclude
+	}
+	return
+}
+
+func (p *PacketCaptureMachineScope) GetInclude() (rv []*string) {
+	if p != nil {
+		return p.Include
+	}
+	return
 }
 
 // PacketCaptureParameters - Parameters that define the create packet capture operation.
@@ -8631,6 +24262,62 @@ type PacketCaptureParameters struct {
 	TotalBytesPerSession *int64
 }
 
+func (p *PacketCaptureParameters) GetStorageLocation() (rv *PacketCaptureStorageLocation) {
+	if p != nil {
+		return p.StorageLocation
+	}
+	return
+}
+
+func (p *PacketCaptureParameters) GetTarget() (rv string) {
+	if p != nil && p.Target != nil {
+		return *p.Target
+	}
+	return
+}
+
+func (p *PacketCaptureParameters) GetBytesToCapturePerPacket() (rv int64) {
+	if p != nil && p.BytesToCapturePerPacket != nil {
+		return *p.BytesToCapturePerPacket
+	}
+	return
+}
+
+func (p *PacketCaptureParameters) GetFilters() (rv []*PacketCaptureFilter) {
+	if p != nil {
+		return p.Filters
+	}
+	return
+}
+
+func (p *PacketCaptureParameters) GetScope() (rv *PacketCaptureMachineScope) {
+	if p != nil {
+		return p.Scope
+	}
+	return
+}
+
+func (p *PacketCaptureParameters) GetTargetType() (rv *PacketCaptureTargetType) {
+	if p != nil {
+		return p.TargetType
+	}
+	return
+}
+
+func (p *PacketCaptureParameters) GetTimeLimitInSeconds() (rv int32) {
+	if p != nil && p.TimeLimitInSeconds != nil {
+		return *p.TimeLimitInSeconds
+	}
+	return
+}
+
+func (p *PacketCaptureParameters) GetTotalBytesPerSession() (rv int64) {
+	if p != nil && p.TotalBytesPerSession != nil {
+		return *p.TotalBytesPerSession
+	}
+	return
+}
+
 // PacketCaptureQueryStatusResult - Status of packet capture session.
 type PacketCaptureQueryStatusResult struct {
 	// The start time of the packet capture session.
@@ -8652,6 +24339,48 @@ type PacketCaptureQueryStatusResult struct {
 	StopReason *string
 }
 
+func (p *PacketCaptureQueryStatusResult) GetCaptureStartTime() (rv *time.Time) {
+	if p != nil {
+		return p.CaptureStartTime
+	}
+	return
+}
+
+func (p *PacketCaptureQueryStatusResult) GetID() (rv string) {
+	if p != nil && p.ID != nil {
+		return *p.ID
+	}
+	return
+}
+
+func (p *PacketCaptureQueryStatusResult) GetName() (rv string) {
+	if p != nil && p.Name != nil {
+		return *p.Name
+	}
+	return
+}
+
+func (p *PacketCaptureQueryStatusResult) GetPacketCaptureError() (rv []*PcError) {
+	if p != nil {
+		return p.PacketCaptureError
+	}
+	return
+}
+
+func (p *PacketCaptureQueryStatusResult) GetPacketCaptureStatus() (rv *PcStatus) {
+	if p != nil {
+		return p.PacketCaptureStatus
+	}
+	return
+}
+
+func (p *PacketCaptureQueryStatusResult) GetStopReason() (rv string) {
+	if p != nil && p.StopReason != nil {
+		return *p.StopReason
+	}
+	return
+}
+
 // PacketCaptureResult - Information about packet capture session.
 type PacketCaptureResult struct {
 	// Properties of the packet capture result.
@@ -8665,6 +24394,34 @@ type PacketCaptureResult struct {
 
 	// READ-ONLY; Name of the packet capture session.
 	Name *string
+}
+
+func (p *PacketCaptureResult) GetProperties() (rv *PacketCaptureResultProperties) {
+	if p != nil {
+		return p.Properties
+	}
+	return
+}
+
+func (p *PacketCaptureResult) GetEtag() (rv string) {
+	if p != nil && p.Etag != nil {
+		return *p.Etag
+	}
+	return
+}
+
+func (p *PacketCaptureResult) GetID() (rv string) {
+	if p != nil && p.ID != nil {
+		return *p.ID
+	}
+	return
+}
+
+func (p *PacketCaptureResult) GetName() (rv string) {
+	if p != nil && p.Name != nil {
+		return *p.Name
+	}
+	return
 }
 
 // PacketCaptureResultProperties - The properties of a packet capture session.
@@ -8698,6 +24455,69 @@ type PacketCaptureResultProperties struct {
 	ProvisioningState *ProvisioningState
 }
 
+func (p *PacketCaptureResultProperties) GetStorageLocation() (rv *PacketCaptureStorageLocation) {
+	if p != nil {
+		return p.StorageLocation
+	}
+	return
+}
+
+func (p *PacketCaptureResultProperties) GetTarget() (rv string) {
+	if p != nil && p.Target != nil {
+		return *p.Target
+	}
+	return
+}
+
+func (p *PacketCaptureResultProperties) GetBytesToCapturePerPacket() (rv int64) {
+	if p != nil && p.BytesToCapturePerPacket != nil {
+		return *p.BytesToCapturePerPacket
+	}
+	return
+}
+
+func (p *PacketCaptureResultProperties) GetFilters() (rv []*PacketCaptureFilter) {
+	if p != nil {
+		return p.Filters
+	}
+	return
+}
+
+func (p *PacketCaptureResultProperties) GetScope() (rv *PacketCaptureMachineScope) {
+	if p != nil {
+		return p.Scope
+	}
+	return
+}
+
+func (p *PacketCaptureResultProperties) GetTargetType() (rv *PacketCaptureTargetType) {
+	if p != nil {
+		return p.TargetType
+	}
+	return
+}
+
+func (p *PacketCaptureResultProperties) GetTimeLimitInSeconds() (rv int32) {
+	if p != nil && p.TimeLimitInSeconds != nil {
+		return *p.TimeLimitInSeconds
+	}
+	return
+}
+
+func (p *PacketCaptureResultProperties) GetTotalBytesPerSession() (rv int64) {
+	if p != nil && p.TotalBytesPerSession != nil {
+		return *p.TotalBytesPerSession
+	}
+	return
+}
+
+func (p *PacketCaptureResultProperties) GetProvisioningState() (rv *ProvisioningState) {
+	if p != nil {
+		return p.ProvisioningState
+	}
+	return
+}
+
 // PacketCaptureStorageLocation - The storage location for a packet capture session.
 type PacketCaptureStorageLocation struct {
 	// A valid local path on the targeting VM. Must include the name of the capture file (*.cap). For linux virtual machine it
@@ -8713,6 +24533,27 @@ type PacketCaptureStorageLocation struct {
 	StoragePath *string
 }
 
+func (p *PacketCaptureStorageLocation) GetFilePath() (rv string) {
+	if p != nil && p.FilePath != nil {
+		return *p.FilePath
+	}
+	return
+}
+
+func (p *PacketCaptureStorageLocation) GetStorageID() (rv string) {
+	if p != nil && p.StorageID != nil {
+		return *p.StorageID
+	}
+	return
+}
+
+func (p *PacketCaptureStorageLocation) GetStoragePath() (rv string) {
+	if p != nil && p.StoragePath != nil {
+		return *p.StoragePath
+	}
+	return
+}
+
 // Parameters for an Action.
 type Parameter struct {
 	// List of AS paths.
@@ -8723,6 +24564,27 @@ type Parameter struct {
 
 	// List of route prefixes.
 	RoutePrefix []*string
+}
+
+func (p *Parameter) GetAsPath() (rv []*string) {
+	if p != nil {
+		return p.AsPath
+	}
+	return
+}
+
+func (p *Parameter) GetCommunity() (rv []*string) {
+	if p != nil {
+		return p.Community
+	}
+	return
+}
+
+func (p *Parameter) GetRoutePrefix() (rv []*string) {
+	if p != nil {
+		return p.RoutePrefix
+	}
+	return
 }
 
 // PartnerManagedResourceProperties - Properties of the partner managed resource.
@@ -8737,10 +24599,38 @@ type PartnerManagedResourceProperties struct {
 	StandardLoadBalancerID *string
 }
 
+func (p *PartnerManagedResourceProperties) GetID() (rv string) {
+	if p != nil && p.ID != nil {
+		return *p.ID
+	}
+	return
+}
+
+func (p *PartnerManagedResourceProperties) GetInternalLoadBalancerID() (rv string) {
+	if p != nil && p.InternalLoadBalancerID != nil {
+		return *p.InternalLoadBalancerID
+	}
+	return
+}
+
+func (p *PartnerManagedResourceProperties) GetStandardLoadBalancerID() (rv string) {
+	if p != nil && p.StandardLoadBalancerID != nil {
+		return *p.StandardLoadBalancerID
+	}
+	return
+}
+
 // PatchObject - Object for patch operations.
 type PatchObject struct {
 	// Resource tags.
 	Tags map[string]*string
+}
+
+func (p *PatchObject) GetTags() (rv map[string]*string) {
+	if p != nil {
+		return p.Tags
+	}
+	return
 }
 
 // PeerExpressRouteCircuitConnection - Peer Express Route Circuit Connection in an ExpressRouteCircuitPeering resource.
@@ -8761,6 +24651,41 @@ type PeerExpressRouteCircuitConnection struct {
 	Type *string
 }
 
+func (p *PeerExpressRouteCircuitConnection) GetID() (rv string) {
+	if p != nil && p.ID != nil {
+		return *p.ID
+	}
+	return
+}
+
+func (p *PeerExpressRouteCircuitConnection) GetName() (rv string) {
+	if p != nil && p.Name != nil {
+		return *p.Name
+	}
+	return
+}
+
+func (p *PeerExpressRouteCircuitConnection) GetProperties() (rv *PeerExpressRouteCircuitConnectionPropertiesFormat) {
+	if p != nil {
+		return p.Properties
+	}
+	return
+}
+
+func (p *PeerExpressRouteCircuitConnection) GetEtag() (rv string) {
+	if p != nil && p.Etag != nil {
+		return *p.Etag
+	}
+	return
+}
+
+func (p *PeerExpressRouteCircuitConnection) GetType() (rv string) {
+	if p != nil && p.Type != nil {
+		return *p.Type
+	}
+	return
+}
+
 // PeerExpressRouteCircuitConnectionListResult - Response for ListPeeredConnections API service call retrieves all global
 // reach peer circuit connections that belongs to a Private Peering for an ExpressRouteCircuit.
 type PeerExpressRouteCircuitConnectionListResult struct {
@@ -8769,6 +24694,20 @@ type PeerExpressRouteCircuitConnectionListResult struct {
 
 	// The global reach peer circuit connection associated with Private Peering in an ExpressRoute Circuit.
 	Value []*PeerExpressRouteCircuitConnection
+}
+
+func (p *PeerExpressRouteCircuitConnectionListResult) GetNextLink() (rv string) {
+	if p != nil && p.NextLink != nil {
+		return *p.NextLink
+	}
+	return
+}
+
+func (p *PeerExpressRouteCircuitConnectionListResult) GetValue() (rv []*PeerExpressRouteCircuitConnection) {
+	if p != nil {
+		return p.Value
+	}
+	return
 }
 
 // PeerExpressRouteCircuitConnectionPropertiesFormat - Properties of the peer express route circuit connection.
@@ -8795,6 +24734,55 @@ type PeerExpressRouteCircuitConnectionPropertiesFormat struct {
 	ProvisioningState *ProvisioningState
 }
 
+func (p *PeerExpressRouteCircuitConnectionPropertiesFormat) GetAddressPrefix() (rv string) {
+	if p != nil && p.AddressPrefix != nil {
+		return *p.AddressPrefix
+	}
+	return
+}
+
+func (p *PeerExpressRouteCircuitConnectionPropertiesFormat) GetAuthResourceGUID() (rv string) {
+	if p != nil && p.AuthResourceGUID != nil {
+		return *p.AuthResourceGUID
+	}
+	return
+}
+
+func (p *PeerExpressRouteCircuitConnectionPropertiesFormat) GetConnectionName() (rv string) {
+	if p != nil && p.ConnectionName != nil {
+		return *p.ConnectionName
+	}
+	return
+}
+
+func (p *PeerExpressRouteCircuitConnectionPropertiesFormat) GetExpressRouteCircuitPeering() (rv *SubResource) {
+	if p != nil {
+		return p.ExpressRouteCircuitPeering
+	}
+	return
+}
+
+func (p *PeerExpressRouteCircuitConnectionPropertiesFormat) GetPeerExpressRouteCircuitPeering() (rv *SubResource) {
+	if p != nil {
+		return p.PeerExpressRouteCircuitPeering
+	}
+	return
+}
+
+func (p *PeerExpressRouteCircuitConnectionPropertiesFormat) GetCircuitConnectionStatus() (rv *CircuitConnectionStatus) {
+	if p != nil {
+		return p.CircuitConnectionStatus
+	}
+	return
+}
+
+func (p *PeerExpressRouteCircuitConnectionPropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if p != nil {
+		return p.ProvisioningState
+	}
+	return
+}
+
 // PeerRoute - Peer routing details.
 type PeerRoute struct {
 	// READ-ONLY; The route's AS path sequence.
@@ -8819,10 +24807,66 @@ type PeerRoute struct {
 	Weight *int32
 }
 
+func (p *PeerRoute) GetAsPath() (rv string) {
+	if p != nil && p.AsPath != nil {
+		return *p.AsPath
+	}
+	return
+}
+
+func (p *PeerRoute) GetLocalAddress() (rv string) {
+	if p != nil && p.LocalAddress != nil {
+		return *p.LocalAddress
+	}
+	return
+}
+
+func (p *PeerRoute) GetNetwork() (rv string) {
+	if p != nil && p.Network != nil {
+		return *p.Network
+	}
+	return
+}
+
+func (p *PeerRoute) GetNextHop() (rv string) {
+	if p != nil && p.NextHop != nil {
+		return *p.NextHop
+	}
+	return
+}
+
+func (p *PeerRoute) GetOrigin() (rv string) {
+	if p != nil && p.Origin != nil {
+		return *p.Origin
+	}
+	return
+}
+
+func (p *PeerRoute) GetSourcePeer() (rv string) {
+	if p != nil && p.SourcePeer != nil {
+		return *p.SourcePeer
+	}
+	return
+}
+
+func (p *PeerRoute) GetWeight() (rv int32) {
+	if p != nil && p.Weight != nil {
+		return *p.Weight
+	}
+	return
+}
+
 // PeerRouteList - List of virtual router peer routes.
 type PeerRouteList struct {
 	// List of peer routes.
 	Value []*PeerRoute
+}
+
+func (p *PeerRouteList) GetValue() (rv []*PeerRoute) {
+	if p != nil {
+		return p.Value
+	}
+	return
 }
 
 // PolicySettings - Defines contents of a web application firewall global configuration.
@@ -8849,6 +24893,55 @@ type PolicySettings struct {
 	State *WebApplicationFirewallEnabledState
 }
 
+func (p *PolicySettings) GetCustomBlockResponseBody() (rv string) {
+	if p != nil && p.CustomBlockResponseBody != nil {
+		return *p.CustomBlockResponseBody
+	}
+	return
+}
+
+func (p *PolicySettings) GetCustomBlockResponseStatusCode() (rv int32) {
+	if p != nil && p.CustomBlockResponseStatusCode != nil {
+		return *p.CustomBlockResponseStatusCode
+	}
+	return
+}
+
+func (p *PolicySettings) GetFileUploadLimitInMb() (rv int32) {
+	if p != nil && p.FileUploadLimitInMb != nil {
+		return *p.FileUploadLimitInMb
+	}
+	return
+}
+
+func (p *PolicySettings) GetMaxRequestBodySizeInKb() (rv int32) {
+	if p != nil && p.MaxRequestBodySizeInKb != nil {
+		return *p.MaxRequestBodySizeInKb
+	}
+	return
+}
+
+func (p *PolicySettings) GetMode() (rv *WebApplicationFirewallMode) {
+	if p != nil {
+		return p.Mode
+	}
+	return
+}
+
+func (p *PolicySettings) GetRequestBodyCheck() (rv bool) {
+	if p != nil && p.RequestBodyCheck != nil {
+		return *p.RequestBodyCheck
+	}
+	return
+}
+
+func (p *PolicySettings) GetState() (rv *WebApplicationFirewallEnabledState) {
+	if p != nil {
+		return p.State
+	}
+	return
+}
+
 // PrepareNetworkPoliciesRequest - Details of PrepareNetworkPolicies for Subnet.
 type PrepareNetworkPoliciesRequest struct {
 	// A list of NetworkIntentPolicyConfiguration.
@@ -8858,6 +24951,20 @@ type PrepareNetworkPoliciesRequest struct {
 	ServiceName *string
 }
 
+func (p *PrepareNetworkPoliciesRequest) GetNetworkIntentPolicyConfigurations() (rv []*IntentPolicyConfiguration) {
+	if p != nil {
+		return p.NetworkIntentPolicyConfigurations
+	}
+	return
+}
+
+func (p *PrepareNetworkPoliciesRequest) GetServiceName() (rv string) {
+	if p != nil && p.ServiceName != nil {
+		return *p.ServiceName
+	}
+	return
+}
+
 // PrivateDNSZoneConfig - PrivateDnsZoneConfig resource.
 type PrivateDNSZoneConfig struct {
 	// Name of the resource that is unique within a resource group. This name can be used to access the resource.
@@ -8865,6 +24972,20 @@ type PrivateDNSZoneConfig struct {
 
 	// Properties of the private dns zone configuration.
 	Properties *PrivateDNSZonePropertiesFormat
+}
+
+func (p *PrivateDNSZoneConfig) GetName() (rv string) {
+	if p != nil && p.Name != nil {
+		return *p.Name
+	}
+	return
+}
+
+func (p *PrivateDNSZoneConfig) GetProperties() (rv *PrivateDNSZonePropertiesFormat) {
+	if p != nil {
+		return p.Properties
+	}
+	return
 }
 
 // PrivateDNSZoneGroup - Private dns zone group resource.
@@ -8882,6 +25003,34 @@ type PrivateDNSZoneGroup struct {
 	Etag *string
 }
 
+func (p *PrivateDNSZoneGroup) GetID() (rv string) {
+	if p != nil && p.ID != nil {
+		return *p.ID
+	}
+	return
+}
+
+func (p *PrivateDNSZoneGroup) GetName() (rv string) {
+	if p != nil && p.Name != nil {
+		return *p.Name
+	}
+	return
+}
+
+func (p *PrivateDNSZoneGroup) GetProperties() (rv *PrivateDNSZoneGroupPropertiesFormat) {
+	if p != nil {
+		return p.Properties
+	}
+	return
+}
+
+func (p *PrivateDNSZoneGroup) GetEtag() (rv string) {
+	if p != nil && p.Etag != nil {
+		return *p.Etag
+	}
+	return
+}
+
 // PrivateDNSZoneGroupListResult - Response for the ListPrivateDnsZoneGroups API service call.
 type PrivateDNSZoneGroupListResult struct {
 	// A list of private dns zone group resources in a private endpoint.
@@ -8889,6 +25038,20 @@ type PrivateDNSZoneGroupListResult struct {
 
 	// READ-ONLY; The URL to get the next set of results.
 	NextLink *string
+}
+
+func (p *PrivateDNSZoneGroupListResult) GetValue() (rv []*PrivateDNSZoneGroup) {
+	if p != nil {
+		return p.Value
+	}
+	return
+}
+
+func (p *PrivateDNSZoneGroupListResult) GetNextLink() (rv string) {
+	if p != nil && p.NextLink != nil {
+		return *p.NextLink
+	}
+	return
 }
 
 // PrivateDNSZoneGroupPropertiesFormat - Properties of the private dns zone group.
@@ -8900,6 +25063,20 @@ type PrivateDNSZoneGroupPropertiesFormat struct {
 	ProvisioningState *ProvisioningState
 }
 
+func (p *PrivateDNSZoneGroupPropertiesFormat) GetPrivateDNSZoneConfigs() (rv []*PrivateDNSZoneConfig) {
+	if p != nil {
+		return p.PrivateDNSZoneConfigs
+	}
+	return
+}
+
+func (p *PrivateDNSZoneGroupPropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if p != nil {
+		return p.ProvisioningState
+	}
+	return
+}
+
 // PrivateDNSZonePropertiesFormat - Properties of the private dns zone configuration resource.
 type PrivateDNSZonePropertiesFormat struct {
 	// The resource id of the private dns zone.
@@ -8907,6 +25084,20 @@ type PrivateDNSZonePropertiesFormat struct {
 
 	// READ-ONLY; A collection of information regarding a recordSet, holding information to identify private resources.
 	RecordSets []*RecordSet
+}
+
+func (p *PrivateDNSZonePropertiesFormat) GetPrivateDNSZoneID() (rv string) {
+	if p != nil && p.PrivateDNSZoneID != nil {
+		return *p.PrivateDNSZoneID
+	}
+	return
+}
+
+func (p *PrivateDNSZonePropertiesFormat) GetRecordSets() (rv []*RecordSet) {
+	if p != nil {
+		return p.RecordSets
+	}
+	return
 }
 
 // PrivateEndpoint - Private endpoint resource.
@@ -8936,6 +25127,62 @@ type PrivateEndpoint struct {
 	Type *string
 }
 
+func (p *PrivateEndpoint) GetExtendedLocation() (rv *ExtendedLocation) {
+	if p != nil {
+		return p.ExtendedLocation
+	}
+	return
+}
+
+func (p *PrivateEndpoint) GetID() (rv string) {
+	if p != nil && p.ID != nil {
+		return *p.ID
+	}
+	return
+}
+
+func (p *PrivateEndpoint) GetLocation() (rv string) {
+	if p != nil && p.Location != nil {
+		return *p.Location
+	}
+	return
+}
+
+func (p *PrivateEndpoint) GetProperties() (rv *PrivateEndpointProperties) {
+	if p != nil {
+		return p.Properties
+	}
+	return
+}
+
+func (p *PrivateEndpoint) GetTags() (rv map[string]*string) {
+	if p != nil {
+		return p.Tags
+	}
+	return
+}
+
+func (p *PrivateEndpoint) GetEtag() (rv string) {
+	if p != nil && p.Etag != nil {
+		return *p.Etag
+	}
+	return
+}
+
+func (p *PrivateEndpoint) GetName() (rv string) {
+	if p != nil && p.Name != nil {
+		return *p.Name
+	}
+	return
+}
+
+func (p *PrivateEndpoint) GetType() (rv string) {
+	if p != nil && p.Type != nil {
+		return *p.Type
+	}
+	return
+}
+
 // PrivateEndpointConnection resource.
 type PrivateEndpointConnection struct {
 	// Resource ID.
@@ -8954,6 +25201,41 @@ type PrivateEndpointConnection struct {
 	Type *string
 }
 
+func (p *PrivateEndpointConnection) GetID() (rv string) {
+	if p != nil && p.ID != nil {
+		return *p.ID
+	}
+	return
+}
+
+func (p *PrivateEndpointConnection) GetName() (rv string) {
+	if p != nil && p.Name != nil {
+		return *p.Name
+	}
+	return
+}
+
+func (p *PrivateEndpointConnection) GetProperties() (rv *PrivateEndpointConnectionProperties) {
+	if p != nil {
+		return p.Properties
+	}
+	return
+}
+
+func (p *PrivateEndpointConnection) GetEtag() (rv string) {
+	if p != nil && p.Etag != nil {
+		return *p.Etag
+	}
+	return
+}
+
+func (p *PrivateEndpointConnection) GetType() (rv string) {
+	if p != nil && p.Type != nil {
+		return *p.Type
+	}
+	return
+}
+
 // PrivateEndpointConnectionListResult - Response for the ListPrivateEndpointConnection API service call.
 type PrivateEndpointConnectionListResult struct {
 	// A list of PrivateEndpointConnection resources for a specific private link service.
@@ -8961,6 +25243,20 @@ type PrivateEndpointConnectionListResult struct {
 
 	// READ-ONLY; The URL to get the next set of results.
 	NextLink *string
+}
+
+func (p *PrivateEndpointConnectionListResult) GetValue() (rv []*PrivateEndpointConnection) {
+	if p != nil {
+		return p.Value
+	}
+	return
+}
+
+func (p *PrivateEndpointConnectionListResult) GetNextLink() (rv string) {
+	if p != nil && p.NextLink != nil {
+		return *p.NextLink
+	}
+	return
 }
 
 // PrivateEndpointConnectionProperties - Properties of the PrivateEndpointConnectProperties.
@@ -8978,6 +25274,34 @@ type PrivateEndpointConnectionProperties struct {
 	ProvisioningState *ProvisioningState
 }
 
+func (p *PrivateEndpointConnectionProperties) GetPrivateLinkServiceConnectionState() (rv *PrivateLinkServiceConnectionState) {
+	if p != nil {
+		return p.PrivateLinkServiceConnectionState
+	}
+	return
+}
+
+func (p *PrivateEndpointConnectionProperties) GetLinkIdentifier() (rv string) {
+	if p != nil && p.LinkIdentifier != nil {
+		return *p.LinkIdentifier
+	}
+	return
+}
+
+func (p *PrivateEndpointConnectionProperties) GetPrivateEndpoint() (rv *PrivateEndpoint) {
+	if p != nil {
+		return p.PrivateEndpoint
+	}
+	return
+}
+
+func (p *PrivateEndpointConnectionProperties) GetProvisioningState() (rv *ProvisioningState) {
+	if p != nil {
+		return p.ProvisioningState
+	}
+	return
+}
+
 // PrivateEndpointIPConfiguration - An IP Configuration of the private endpoint.
 type PrivateEndpointIPConfiguration struct {
 	// The name of the resource that is unique within a resource group.
@@ -8993,6 +25317,34 @@ type PrivateEndpointIPConfiguration struct {
 	Type *string
 }
 
+func (p *PrivateEndpointIPConfiguration) GetName() (rv string) {
+	if p != nil && p.Name != nil {
+		return *p.Name
+	}
+	return
+}
+
+func (p *PrivateEndpointIPConfiguration) GetProperties() (rv *PrivateEndpointIPConfigurationProperties) {
+	if p != nil {
+		return p.Properties
+	}
+	return
+}
+
+func (p *PrivateEndpointIPConfiguration) GetEtag() (rv string) {
+	if p != nil && p.Etag != nil {
+		return *p.Etag
+	}
+	return
+}
+
+func (p *PrivateEndpointIPConfiguration) GetType() (rv string) {
+	if p != nil && p.Type != nil {
+		return *p.Type
+	}
+	return
+}
+
 // PrivateEndpointIPConfigurationProperties - Properties of an IP Configuration of the private endpoint.
 type PrivateEndpointIPConfigurationProperties struct {
 	// The ID of a group obtained from the remote resource that this private endpoint should connect to.
@@ -9005,6 +25357,27 @@ type PrivateEndpointIPConfigurationProperties struct {
 	PrivateIPAddress *string
 }
 
+func (p *PrivateEndpointIPConfigurationProperties) GetGroupID() (rv string) {
+	if p != nil && p.GroupID != nil {
+		return *p.GroupID
+	}
+	return
+}
+
+func (p *PrivateEndpointIPConfigurationProperties) GetMemberName() (rv string) {
+	if p != nil && p.MemberName != nil {
+		return *p.MemberName
+	}
+	return
+}
+
+func (p *PrivateEndpointIPConfigurationProperties) GetPrivateIPAddress() (rv string) {
+	if p != nil && p.PrivateIPAddress != nil {
+		return *p.PrivateIPAddress
+	}
+	return
+}
+
 // PrivateEndpointListResult - Response for the ListPrivateEndpoints API service call.
 type PrivateEndpointListResult struct {
 	// A list of private endpoint resources in a resource group.
@@ -9012,6 +25385,20 @@ type PrivateEndpointListResult struct {
 
 	// READ-ONLY; The URL to get the next set of results.
 	NextLink *string
+}
+
+func (p *PrivateEndpointListResult) GetValue() (rv []*PrivateEndpoint) {
+	if p != nil {
+		return p.Value
+	}
+	return
+}
+
+func (p *PrivateEndpointListResult) GetNextLink() (rv string) {
+	if p != nil && p.NextLink != nil {
+		return *p.NextLink
+	}
+	return
 }
 
 // PrivateEndpointProperties - Properties of the private endpoint.
@@ -9045,6 +25432,69 @@ type PrivateEndpointProperties struct {
 	ProvisioningState *ProvisioningState
 }
 
+func (p *PrivateEndpointProperties) GetApplicationSecurityGroups() (rv []*ApplicationSecurityGroup) {
+	if p != nil {
+		return p.ApplicationSecurityGroups
+	}
+	return
+}
+
+func (p *PrivateEndpointProperties) GetCustomDNSConfigs() (rv []*CustomDNSConfigPropertiesFormat) {
+	if p != nil {
+		return p.CustomDNSConfigs
+	}
+	return
+}
+
+func (p *PrivateEndpointProperties) GetCustomNetworkInterfaceName() (rv string) {
+	if p != nil && p.CustomNetworkInterfaceName != nil {
+		return *p.CustomNetworkInterfaceName
+	}
+	return
+}
+
+func (p *PrivateEndpointProperties) GetIPConfigurations() (rv []*PrivateEndpointIPConfiguration) {
+	if p != nil {
+		return p.IPConfigurations
+	}
+	return
+}
+
+func (p *PrivateEndpointProperties) GetManualPrivateLinkServiceConnections() (rv []*PrivateLinkServiceConnection) {
+	if p != nil {
+		return p.ManualPrivateLinkServiceConnections
+	}
+	return
+}
+
+func (p *PrivateEndpointProperties) GetPrivateLinkServiceConnections() (rv []*PrivateLinkServiceConnection) {
+	if p != nil {
+		return p.PrivateLinkServiceConnections
+	}
+	return
+}
+
+func (p *PrivateEndpointProperties) GetSubnet() (rv *Subnet) {
+	if p != nil {
+		return p.Subnet
+	}
+	return
+}
+
+func (p *PrivateEndpointProperties) GetNetworkInterfaces() (rv []*Interface) {
+	if p != nil {
+		return p.NetworkInterfaces
+	}
+	return
+}
+
+func (p *PrivateEndpointProperties) GetProvisioningState() (rv *ProvisioningState) {
+	if p != nil {
+		return p.ProvisioningState
+	}
+	return
+}
+
 // PrivateLinkService - Private link service resource.
 type PrivateLinkService struct {
 	// The extended location of the load balancer.
@@ -9072,6 +25522,62 @@ type PrivateLinkService struct {
 	Type *string
 }
 
+func (p *PrivateLinkService) GetExtendedLocation() (rv *ExtendedLocation) {
+	if p != nil {
+		return p.ExtendedLocation
+	}
+	return
+}
+
+func (p *PrivateLinkService) GetID() (rv string) {
+	if p != nil && p.ID != nil {
+		return *p.ID
+	}
+	return
+}
+
+func (p *PrivateLinkService) GetLocation() (rv string) {
+	if p != nil && p.Location != nil {
+		return *p.Location
+	}
+	return
+}
+
+func (p *PrivateLinkService) GetProperties() (rv *PrivateLinkServiceProperties) {
+	if p != nil {
+		return p.Properties
+	}
+	return
+}
+
+func (p *PrivateLinkService) GetTags() (rv map[string]*string) {
+	if p != nil {
+		return p.Tags
+	}
+	return
+}
+
+func (p *PrivateLinkService) GetEtag() (rv string) {
+	if p != nil && p.Etag != nil {
+		return *p.Etag
+	}
+	return
+}
+
+func (p *PrivateLinkService) GetName() (rv string) {
+	if p != nil && p.Name != nil {
+		return *p.Name
+	}
+	return
+}
+
+func (p *PrivateLinkService) GetType() (rv string) {
+	if p != nil && p.Type != nil {
+		return *p.Type
+	}
+	return
+}
+
 // PrivateLinkServiceConnection resource.
 type PrivateLinkServiceConnection struct {
 	// Resource ID.
@@ -9088,6 +25594,41 @@ type PrivateLinkServiceConnection struct {
 
 	// READ-ONLY; The resource type.
 	Type *string
+}
+
+func (p *PrivateLinkServiceConnection) GetID() (rv string) {
+	if p != nil && p.ID != nil {
+		return *p.ID
+	}
+	return
+}
+
+func (p *PrivateLinkServiceConnection) GetName() (rv string) {
+	if p != nil && p.Name != nil {
+		return *p.Name
+	}
+	return
+}
+
+func (p *PrivateLinkServiceConnection) GetProperties() (rv *PrivateLinkServiceConnectionProperties) {
+	if p != nil {
+		return p.Properties
+	}
+	return
+}
+
+func (p *PrivateLinkServiceConnection) GetEtag() (rv string) {
+	if p != nil && p.Etag != nil {
+		return *p.Etag
+	}
+	return
+}
+
+func (p *PrivateLinkServiceConnection) GetType() (rv string) {
+	if p != nil && p.Type != nil {
+		return *p.Type
+	}
+	return
 }
 
 // PrivateLinkServiceConnectionProperties - Properties of the PrivateLinkServiceConnection.
@@ -9108,6 +25649,41 @@ type PrivateLinkServiceConnectionProperties struct {
 	ProvisioningState *ProvisioningState
 }
 
+func (p *PrivateLinkServiceConnectionProperties) GetGroupIDs() (rv []*string) {
+	if p != nil {
+		return p.GroupIDs
+	}
+	return
+}
+
+func (p *PrivateLinkServiceConnectionProperties) GetPrivateLinkServiceConnectionState() (rv *PrivateLinkServiceConnectionState) {
+	if p != nil {
+		return p.PrivateLinkServiceConnectionState
+	}
+	return
+}
+
+func (p *PrivateLinkServiceConnectionProperties) GetPrivateLinkServiceID() (rv string) {
+	if p != nil && p.PrivateLinkServiceID != nil {
+		return *p.PrivateLinkServiceID
+	}
+	return
+}
+
+func (p *PrivateLinkServiceConnectionProperties) GetRequestMessage() (rv string) {
+	if p != nil && p.RequestMessage != nil {
+		return *p.RequestMessage
+	}
+	return
+}
+
+func (p *PrivateLinkServiceConnectionProperties) GetProvisioningState() (rv *ProvisioningState) {
+	if p != nil {
+		return p.ProvisioningState
+	}
+	return
+}
+
 // PrivateLinkServiceConnectionState - A collection of information about the state of the connection between service consumer
 // and provider.
 type PrivateLinkServiceConnectionState struct {
@@ -9119,6 +25695,27 @@ type PrivateLinkServiceConnectionState struct {
 
 	// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
 	Status *string
+}
+
+func (p *PrivateLinkServiceConnectionState) GetActionsRequired() (rv string) {
+	if p != nil && p.ActionsRequired != nil {
+		return *p.ActionsRequired
+	}
+	return
+}
+
+func (p *PrivateLinkServiceConnectionState) GetDescription() (rv string) {
+	if p != nil && p.Description != nil {
+		return *p.Description
+	}
+	return
+}
+
+func (p *PrivateLinkServiceConnectionState) GetStatus() (rv string) {
+	if p != nil && p.Status != nil {
+		return *p.Status
+	}
+	return
 }
 
 // PrivateLinkServiceIPConfiguration - The private link service ip configuration.
@@ -9137,6 +25734,41 @@ type PrivateLinkServiceIPConfiguration struct {
 
 	// READ-ONLY; The resource type.
 	Type *string
+}
+
+func (p *PrivateLinkServiceIPConfiguration) GetID() (rv string) {
+	if p != nil && p.ID != nil {
+		return *p.ID
+	}
+	return
+}
+
+func (p *PrivateLinkServiceIPConfiguration) GetName() (rv string) {
+	if p != nil && p.Name != nil {
+		return *p.Name
+	}
+	return
+}
+
+func (p *PrivateLinkServiceIPConfiguration) GetProperties() (rv *PrivateLinkServiceIPConfigurationProperties) {
+	if p != nil {
+		return p.Properties
+	}
+	return
+}
+
+func (p *PrivateLinkServiceIPConfiguration) GetEtag() (rv string) {
+	if p != nil && p.Etag != nil {
+		return *p.Etag
+	}
+	return
+}
+
+func (p *PrivateLinkServiceIPConfiguration) GetType() (rv string) {
+	if p != nil && p.Type != nil {
+		return *p.Type
+	}
+	return
 }
 
 // PrivateLinkServiceIPConfigurationProperties - Properties of private link service IP configuration.
@@ -9160,6 +25792,48 @@ type PrivateLinkServiceIPConfigurationProperties struct {
 	ProvisioningState *ProvisioningState
 }
 
+func (p *PrivateLinkServiceIPConfigurationProperties) GetPrimary() (rv bool) {
+	if p != nil && p.Primary != nil {
+		return *p.Primary
+	}
+	return
+}
+
+func (p *PrivateLinkServiceIPConfigurationProperties) GetPrivateIPAddress() (rv string) {
+	if p != nil && p.PrivateIPAddress != nil {
+		return *p.PrivateIPAddress
+	}
+	return
+}
+
+func (p *PrivateLinkServiceIPConfigurationProperties) GetPrivateIPAddressVersion() (rv *IPVersion) {
+	if p != nil {
+		return p.PrivateIPAddressVersion
+	}
+	return
+}
+
+func (p *PrivateLinkServiceIPConfigurationProperties) GetPrivateIPAllocationMethod() (rv *IPAllocationMethod) {
+	if p != nil {
+		return p.PrivateIPAllocationMethod
+	}
+	return
+}
+
+func (p *PrivateLinkServiceIPConfigurationProperties) GetSubnet() (rv *Subnet) {
+	if p != nil {
+		return p.Subnet
+	}
+	return
+}
+
+func (p *PrivateLinkServiceIPConfigurationProperties) GetProvisioningState() (rv *ProvisioningState) {
+	if p != nil {
+		return p.ProvisioningState
+	}
+	return
+}
+
 // PrivateLinkServiceListResult - Response for the ListPrivateLinkService API service call.
 type PrivateLinkServiceListResult struct {
 	// A list of PrivateLinkService resources in a resource group.
@@ -9167,6 +25841,20 @@ type PrivateLinkServiceListResult struct {
 
 	// READ-ONLY; The URL to get the next set of results.
 	NextLink *string
+}
+
+func (p *PrivateLinkServiceListResult) GetValue() (rv []*PrivateLinkService) {
+	if p != nil {
+		return p.Value
+	}
+	return
+}
+
+func (p *PrivateLinkServiceListResult) GetNextLink() (rv string) {
+	if p != nil && p.NextLink != nil {
+		return *p.NextLink
+	}
+	return
 }
 
 // PrivateLinkServiceProperties - Properties of the private link service.
@@ -9202,10 +25890,87 @@ type PrivateLinkServiceProperties struct {
 	ProvisioningState *ProvisioningState
 }
 
+func (p *PrivateLinkServiceProperties) GetAutoApproval() (rv *PrivateLinkServicePropertiesAutoApproval) {
+	if p != nil {
+		return p.AutoApproval
+	}
+	return
+}
+
+func (p *PrivateLinkServiceProperties) GetEnableProxyProtocol() (rv bool) {
+	if p != nil && p.EnableProxyProtocol != nil {
+		return *p.EnableProxyProtocol
+	}
+	return
+}
+
+func (p *PrivateLinkServiceProperties) GetFqdns() (rv []*string) {
+	if p != nil {
+		return p.Fqdns
+	}
+	return
+}
+
+func (p *PrivateLinkServiceProperties) GetIPConfigurations() (rv []*PrivateLinkServiceIPConfiguration) {
+	if p != nil {
+		return p.IPConfigurations
+	}
+	return
+}
+
+func (p *PrivateLinkServiceProperties) GetLoadBalancerFrontendIPConfigurations() (rv []*FrontendIPConfiguration) {
+	if p != nil {
+		return p.LoadBalancerFrontendIPConfigurations
+	}
+	return
+}
+
+func (p *PrivateLinkServiceProperties) GetVisibility() (rv *PrivateLinkServicePropertiesVisibility) {
+	if p != nil {
+		return p.Visibility
+	}
+	return
+}
+
+func (p *PrivateLinkServiceProperties) GetAlias() (rv string) {
+	if p != nil && p.Alias != nil {
+		return *p.Alias
+	}
+	return
+}
+
+func (p *PrivateLinkServiceProperties) GetNetworkInterfaces() (rv []*Interface) {
+	if p != nil {
+		return p.NetworkInterfaces
+	}
+	return
+}
+
+func (p *PrivateLinkServiceProperties) GetPrivateEndpointConnections() (rv []*PrivateEndpointConnection) {
+	if p != nil {
+		return p.PrivateEndpointConnections
+	}
+	return
+}
+
+func (p *PrivateLinkServiceProperties) GetProvisioningState() (rv *ProvisioningState) {
+	if p != nil {
+		return p.ProvisioningState
+	}
+	return
+}
+
 // PrivateLinkServicePropertiesAutoApproval - The auto-approval list of the private link service.
 type PrivateLinkServicePropertiesAutoApproval struct {
 	// The list of subscriptions.
 	Subscriptions []*string
+}
+
+func (p *PrivateLinkServicePropertiesAutoApproval) GetSubscriptions() (rv []*string) {
+	if p != nil {
+		return p.Subscriptions
+	}
+	return
 }
 
 // PrivateLinkServicePropertiesVisibility - The visibility list of the private link service.
@@ -9214,10 +25979,24 @@ type PrivateLinkServicePropertiesVisibility struct {
 	Subscriptions []*string
 }
 
+func (p *PrivateLinkServicePropertiesVisibility) GetSubscriptions() (rv []*string) {
+	if p != nil {
+		return p.Subscriptions
+	}
+	return
+}
+
 // PrivateLinkServiceVisibility - Response for the CheckPrivateLinkServiceVisibility API service call.
 type PrivateLinkServiceVisibility struct {
 	// Private Link Service Visibility (True/False).
 	Visible *bool
+}
+
+func (p *PrivateLinkServiceVisibility) GetVisible() (rv bool) {
+	if p != nil && p.Visible != nil {
+		return *p.Visible
+	}
+	return
 }
 
 // Probe - A load balancer probe.
@@ -9237,6 +26016,41 @@ type Probe struct {
 
 	// READ-ONLY; Type of the resource.
 	Type *string
+}
+
+func (p *Probe) GetID() (rv string) {
+	if p != nil && p.ID != nil {
+		return *p.ID
+	}
+	return
+}
+
+func (p *Probe) GetName() (rv string) {
+	if p != nil && p.Name != nil {
+		return *p.Name
+	}
+	return
+}
+
+func (p *Probe) GetProperties() (rv *ProbePropertiesFormat) {
+	if p != nil {
+		return p.Properties
+	}
+	return
+}
+
+func (p *Probe) GetEtag() (rv string) {
+	if p != nil && p.Etag != nil {
+		return *p.Etag
+	}
+	return
+}
+
+func (p *Probe) GetType() (rv string) {
+	if p != nil && p.Type != nil {
+		return *p.Type
+	}
+	return
 }
 
 // ProbePropertiesFormat - Load balancer probe resource.
@@ -9276,6 +26090,62 @@ type ProbePropertiesFormat struct {
 	ProvisioningState *ProvisioningState
 }
 
+func (p *ProbePropertiesFormat) GetPort() (rv int32) {
+	if p != nil && p.Port != nil {
+		return *p.Port
+	}
+	return
+}
+
+func (p *ProbePropertiesFormat) GetProtocol() (rv *ProbeProtocol) {
+	if p != nil {
+		return p.Protocol
+	}
+	return
+}
+
+func (p *ProbePropertiesFormat) GetIntervalInSeconds() (rv int32) {
+	if p != nil && p.IntervalInSeconds != nil {
+		return *p.IntervalInSeconds
+	}
+	return
+}
+
+func (p *ProbePropertiesFormat) GetNumberOfProbes() (rv int32) {
+	if p != nil && p.NumberOfProbes != nil {
+		return *p.NumberOfProbes
+	}
+	return
+}
+
+func (p *ProbePropertiesFormat) GetProbeThreshold() (rv int32) {
+	if p != nil && p.ProbeThreshold != nil {
+		return *p.ProbeThreshold
+	}
+	return
+}
+
+func (p *ProbePropertiesFormat) GetRequestPath() (rv string) {
+	if p != nil && p.RequestPath != nil {
+		return *p.RequestPath
+	}
+	return
+}
+
+func (p *ProbePropertiesFormat) GetLoadBalancingRules() (rv []*SubResource) {
+	if p != nil {
+		return p.LoadBalancingRules
+	}
+	return
+}
+
+func (p *ProbePropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if p != nil {
+		return p.ProvisioningState
+	}
+	return
+}
+
 // Profile - Network profile resource.
 type Profile struct {
 	// Resource ID.
@@ -9300,6 +26170,55 @@ type Profile struct {
 	Type *string
 }
 
+func (p *Profile) GetID() (rv string) {
+	if p != nil && p.ID != nil {
+		return *p.ID
+	}
+	return
+}
+
+func (p *Profile) GetLocation() (rv string) {
+	if p != nil && p.Location != nil {
+		return *p.Location
+	}
+	return
+}
+
+func (p *Profile) GetProperties() (rv *ProfilePropertiesFormat) {
+	if p != nil {
+		return p.Properties
+	}
+	return
+}
+
+func (p *Profile) GetTags() (rv map[string]*string) {
+	if p != nil {
+		return p.Tags
+	}
+	return
+}
+
+func (p *Profile) GetEtag() (rv string) {
+	if p != nil && p.Etag != nil {
+		return *p.Etag
+	}
+	return
+}
+
+func (p *Profile) GetName() (rv string) {
+	if p != nil && p.Name != nil {
+		return *p.Name
+	}
+	return
+}
+
+func (p *Profile) GetType() (rv string) {
+	if p != nil && p.Type != nil {
+		return *p.Type
+	}
+	return
+}
+
 // ProfileListResult - Response for ListNetworkProfiles API service call.
 type ProfileListResult struct {
 	// The URL to get the next set of results.
@@ -9307,6 +26226,20 @@ type ProfileListResult struct {
 
 	// A list of network profiles that exist in a resource group.
 	Value []*Profile
+}
+
+func (p *ProfileListResult) GetNextLink() (rv string) {
+	if p != nil && p.NextLink != nil {
+		return *p.NextLink
+	}
+	return
+}
+
+func (p *ProfileListResult) GetValue() (rv []*Profile) {
+	if p != nil {
+		return p.Value
+	}
+	return
 }
 
 // ProfilePropertiesFormat - Network profile properties.
@@ -9324,6 +26257,34 @@ type ProfilePropertiesFormat struct {
 	ResourceGUID *string
 }
 
+func (p *ProfilePropertiesFormat) GetContainerNetworkInterfaceConfigurations() (rv []*ContainerNetworkInterfaceConfiguration) {
+	if p != nil {
+		return p.ContainerNetworkInterfaceConfigurations
+	}
+	return
+}
+
+func (p *ProfilePropertiesFormat) GetContainerNetworkInterfaces() (rv []*ContainerNetworkInterface) {
+	if p != nil {
+		return p.ContainerNetworkInterfaces
+	}
+	return
+}
+
+func (p *ProfilePropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if p != nil {
+		return p.ProvisioningState
+	}
+	return
+}
+
+func (p *ProfilePropertiesFormat) GetResourceGUID() (rv string) {
+	if p != nil && p.ResourceGUID != nil {
+		return *p.ResourceGUID
+	}
+	return
+}
+
 // PropagatedRouteTable - The list of RouteTables to advertise the routes to.
 type PropagatedRouteTable struct {
 	// The list of resource ids of all the RouteTables.
@@ -9333,10 +26294,31 @@ type PropagatedRouteTable struct {
 	Labels []*string
 }
 
+func (p *PropagatedRouteTable) GetIDs() (rv []*SubResource) {
+	if p != nil {
+		return p.IDs
+	}
+	return
+}
+
+func (p *PropagatedRouteTable) GetLabels() (rv []*string) {
+	if p != nil {
+		return p.Labels
+	}
+	return
+}
+
 // ProtocolConfiguration - Configuration of the protocol.
 type ProtocolConfiguration struct {
 	// HTTP configuration of the connectivity check.
 	HTTPConfiguration *HTTPConfiguration
+}
+
+func (p *ProtocolConfiguration) GetHTTPConfiguration() (rv *HTTPConfiguration) {
+	if p != nil {
+		return p.HTTPConfiguration
+	}
+	return
 }
 
 // PublicIPAddress - Public IP address resource.
@@ -9372,6 +26354,76 @@ type PublicIPAddress struct {
 	Type *string
 }
 
+func (p *PublicIPAddress) GetExtendedLocation() (rv *ExtendedLocation) {
+	if p != nil {
+		return p.ExtendedLocation
+	}
+	return
+}
+
+func (p *PublicIPAddress) GetID() (rv string) {
+	if p != nil && p.ID != nil {
+		return *p.ID
+	}
+	return
+}
+
+func (p *PublicIPAddress) GetLocation() (rv string) {
+	if p != nil && p.Location != nil {
+		return *p.Location
+	}
+	return
+}
+
+func (p *PublicIPAddress) GetProperties() (rv *PublicIPAddressPropertiesFormat) {
+	if p != nil {
+		return p.Properties
+	}
+	return
+}
+
+func (p *PublicIPAddress) GetSKU() (rv *PublicIPAddressSKU) {
+	if p != nil {
+		return p.SKU
+	}
+	return
+}
+
+func (p *PublicIPAddress) GetTags() (rv map[string]*string) {
+	if p != nil {
+		return p.Tags
+	}
+	return
+}
+
+func (p *PublicIPAddress) GetZones() (rv []*string) {
+	if p != nil {
+		return p.Zones
+	}
+	return
+}
+
+func (p *PublicIPAddress) GetEtag() (rv string) {
+	if p != nil && p.Etag != nil {
+		return *p.Etag
+	}
+	return
+}
+
+func (p *PublicIPAddress) GetName() (rv string) {
+	if p != nil && p.Name != nil {
+		return *p.Name
+	}
+	return
+}
+
+func (p *PublicIPAddress) GetType() (rv string) {
+	if p != nil && p.Type != nil {
+		return *p.Type
+	}
+	return
+}
+
 // PublicIPAddressDNSSettings - Contains FQDN of the DNS record associated with the public IP address.
 type PublicIPAddressDNSSettings struct {
 	// The domain name label. The concatenation of the domain name label and the regionalized DNS zone make up the fully qualified
@@ -9389,6 +26441,27 @@ type PublicIPAddressDNSSettings struct {
 	ReverseFqdn *string
 }
 
+func (p *PublicIPAddressDNSSettings) GetDomainNameLabel() (rv string) {
+	if p != nil && p.DomainNameLabel != nil {
+		return *p.DomainNameLabel
+	}
+	return
+}
+
+func (p *PublicIPAddressDNSSettings) GetFqdn() (rv string) {
+	if p != nil && p.Fqdn != nil {
+		return *p.Fqdn
+	}
+	return
+}
+
+func (p *PublicIPAddressDNSSettings) GetReverseFqdn() (rv string) {
+	if p != nil && p.ReverseFqdn != nil {
+		return *p.ReverseFqdn
+	}
+	return
+}
+
 // PublicIPAddressListResult - Response for ListPublicIpAddresses API service call.
 type PublicIPAddressListResult struct {
 	// The URL to get the next set of results.
@@ -9396,6 +26469,20 @@ type PublicIPAddressListResult struct {
 
 	// A list of public IP addresses that exists in a resource group.
 	Value []*PublicIPAddress
+}
+
+func (p *PublicIPAddressListResult) GetNextLink() (rv string) {
+	if p != nil && p.NextLink != nil {
+		return *p.NextLink
+	}
+	return
+}
+
+func (p *PublicIPAddressListResult) GetValue() (rv []*PublicIPAddress) {
+	if p != nil {
+		return p.Value
+	}
+	return
 }
 
 // PublicIPAddressPropertiesFormat - Public IP address properties.
@@ -9449,6 +26536,118 @@ type PublicIPAddressPropertiesFormat struct {
 	ResourceGUID *string
 }
 
+func (p *PublicIPAddressPropertiesFormat) GetDNSSettings() (rv *PublicIPAddressDNSSettings) {
+	if p != nil {
+		return p.DNSSettings
+	}
+	return
+}
+
+func (p *PublicIPAddressPropertiesFormat) GetDdosSettings() (rv *DdosSettings) {
+	if p != nil {
+		return p.DdosSettings
+	}
+	return
+}
+
+func (p *PublicIPAddressPropertiesFormat) GetDeleteOption() (rv *DeleteOptions) {
+	if p != nil {
+		return p.DeleteOption
+	}
+	return
+}
+
+func (p *PublicIPAddressPropertiesFormat) GetIPAddress() (rv string) {
+	if p != nil && p.IPAddress != nil {
+		return *p.IPAddress
+	}
+	return
+}
+
+func (p *PublicIPAddressPropertiesFormat) GetIPTags() (rv []*IPTag) {
+	if p != nil {
+		return p.IPTags
+	}
+	return
+}
+
+func (p *PublicIPAddressPropertiesFormat) GetIdleTimeoutInMinutes() (rv int32) {
+	if p != nil && p.IdleTimeoutInMinutes != nil {
+		return *p.IdleTimeoutInMinutes
+	}
+	return
+}
+
+func (p *PublicIPAddressPropertiesFormat) GetLinkedPublicIPAddress() (rv *PublicIPAddress) {
+	if p != nil {
+		return p.LinkedPublicIPAddress
+	}
+	return
+}
+
+func (p *PublicIPAddressPropertiesFormat) GetMigrationPhase() (rv *PublicIPAddressMigrationPhase) {
+	if p != nil {
+		return p.MigrationPhase
+	}
+	return
+}
+
+func (p *PublicIPAddressPropertiesFormat) GetNatGateway() (rv *NatGateway) {
+	if p != nil {
+		return p.NatGateway
+	}
+	return
+}
+
+func (p *PublicIPAddressPropertiesFormat) GetPublicIPAddressVersion() (rv *IPVersion) {
+	if p != nil {
+		return p.PublicIPAddressVersion
+	}
+	return
+}
+
+func (p *PublicIPAddressPropertiesFormat) GetPublicIPAllocationMethod() (rv *IPAllocationMethod) {
+	if p != nil {
+		return p.PublicIPAllocationMethod
+	}
+	return
+}
+
+func (p *PublicIPAddressPropertiesFormat) GetPublicIPPrefix() (rv *SubResource) {
+	if p != nil {
+		return p.PublicIPPrefix
+	}
+	return
+}
+
+func (p *PublicIPAddressPropertiesFormat) GetServicePublicIPAddress() (rv *PublicIPAddress) {
+	if p != nil {
+		return p.ServicePublicIPAddress
+	}
+	return
+}
+
+func (p *PublicIPAddressPropertiesFormat) GetIPConfiguration() (rv *IPConfiguration) {
+	if p != nil {
+		return p.IPConfiguration
+	}
+	return
+}
+
+func (p *PublicIPAddressPropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if p != nil {
+		return p.ProvisioningState
+	}
+	return
+}
+
+func (p *PublicIPAddressPropertiesFormat) GetResourceGUID() (rv string) {
+	if p != nil && p.ResourceGUID != nil {
+		return *p.ResourceGUID
+	}
+	return
+}
+
 // PublicIPAddressSKU - SKU of a public IP address.
 type PublicIPAddressSKU struct {
 	// Name of a public IP address SKU.
@@ -9456,6 +26655,20 @@ type PublicIPAddressSKU struct {
 
 	// Tier of a public IP address SKU.
 	Tier *PublicIPAddressSKUTier
+}
+
+func (p *PublicIPAddressSKU) GetName() (rv *PublicIPAddressSKUName) {
+	if p != nil {
+		return p.Name
+	}
+	return
+}
+
+func (p *PublicIPAddressSKU) GetTier() (rv *PublicIPAddressSKUTier) {
+	if p != nil {
+		return p.Tier
+	}
+	return
 }
 
 // PublicIPDdosProtectionStatusResult - Response for GetPublicIpAddressDdosProtectionStatusOperation API service call.
@@ -9471,6 +26684,34 @@ type PublicIPDdosProtectionStatusResult struct {
 
 	// Public IP ARM resource ID
 	PublicIPAddressID *string
+}
+
+func (p *PublicIPDdosProtectionStatusResult) GetDdosProtectionPlanID() (rv string) {
+	if p != nil && p.DdosProtectionPlanID != nil {
+		return *p.DdosProtectionPlanID
+	}
+	return
+}
+
+func (p *PublicIPDdosProtectionStatusResult) GetIsWorkloadProtected() (rv *IsWorkloadProtected) {
+	if p != nil {
+		return p.IsWorkloadProtected
+	}
+	return
+}
+
+func (p *PublicIPDdosProtectionStatusResult) GetPublicIPAddress() (rv string) {
+	if p != nil && p.PublicIPAddress != nil {
+		return *p.PublicIPAddress
+	}
+	return
+}
+
+func (p *PublicIPDdosProtectionStatusResult) GetPublicIPAddressID() (rv string) {
+	if p != nil && p.PublicIPAddressID != nil {
+		return *p.PublicIPAddressID
+	}
+	return
 }
 
 // PublicIPPrefix - Public IP prefix resource.
@@ -9506,6 +26747,76 @@ type PublicIPPrefix struct {
 	Type *string
 }
 
+func (p *PublicIPPrefix) GetExtendedLocation() (rv *ExtendedLocation) {
+	if p != nil {
+		return p.ExtendedLocation
+	}
+	return
+}
+
+func (p *PublicIPPrefix) GetID() (rv string) {
+	if p != nil && p.ID != nil {
+		return *p.ID
+	}
+	return
+}
+
+func (p *PublicIPPrefix) GetLocation() (rv string) {
+	if p != nil && p.Location != nil {
+		return *p.Location
+	}
+	return
+}
+
+func (p *PublicIPPrefix) GetProperties() (rv *PublicIPPrefixPropertiesFormat) {
+	if p != nil {
+		return p.Properties
+	}
+	return
+}
+
+func (p *PublicIPPrefix) GetSKU() (rv *PublicIPPrefixSKU) {
+	if p != nil {
+		return p.SKU
+	}
+	return
+}
+
+func (p *PublicIPPrefix) GetTags() (rv map[string]*string) {
+	if p != nil {
+		return p.Tags
+	}
+	return
+}
+
+func (p *PublicIPPrefix) GetZones() (rv []*string) {
+	if p != nil {
+		return p.Zones
+	}
+	return
+}
+
+func (p *PublicIPPrefix) GetEtag() (rv string) {
+	if p != nil && p.Etag != nil {
+		return *p.Etag
+	}
+	return
+}
+
+func (p *PublicIPPrefix) GetName() (rv string) {
+	if p != nil && p.Name != nil {
+		return *p.Name
+	}
+	return
+}
+
+func (p *PublicIPPrefix) GetType() (rv string) {
+	if p != nil && p.Type != nil {
+		return *p.Type
+	}
+	return
+}
+
 // PublicIPPrefixListResult - Response for ListPublicIpPrefixes API service call.
 type PublicIPPrefixListResult struct {
 	// The URL to get the next set of results.
@@ -9513,6 +26824,20 @@ type PublicIPPrefixListResult struct {
 
 	// A list of public IP prefixes that exists in a resource group.
 	Value []*PublicIPPrefix
+}
+
+func (p *PublicIPPrefixListResult) GetNextLink() (rv string) {
+	if p != nil && p.NextLink != nil {
+		return *p.NextLink
+	}
+	return
+}
+
+func (p *PublicIPPrefixListResult) GetValue() (rv []*PublicIPPrefix) {
+	if p != nil {
+		return p.Value
+	}
+	return
 }
 
 // PublicIPPrefixPropertiesFormat - Public IP prefix properties.
@@ -9548,6 +26873,76 @@ type PublicIPPrefixPropertiesFormat struct {
 	ResourceGUID *string
 }
 
+func (p *PublicIPPrefixPropertiesFormat) GetCustomIPPrefix() (rv *SubResource) {
+	if p != nil {
+		return p.CustomIPPrefix
+	}
+	return
+}
+
+func (p *PublicIPPrefixPropertiesFormat) GetIPTags() (rv []*IPTag) {
+	if p != nil {
+		return p.IPTags
+	}
+	return
+}
+
+func (p *PublicIPPrefixPropertiesFormat) GetNatGateway() (rv *NatGateway) {
+	if p != nil {
+		return p.NatGateway
+	}
+	return
+}
+
+func (p *PublicIPPrefixPropertiesFormat) GetPrefixLength() (rv int32) {
+	if p != nil && p.PrefixLength != nil {
+		return *p.PrefixLength
+	}
+	return
+}
+
+func (p *PublicIPPrefixPropertiesFormat) GetPublicIPAddressVersion() (rv *IPVersion) {
+	if p != nil {
+		return p.PublicIPAddressVersion
+	}
+	return
+}
+
+func (p *PublicIPPrefixPropertiesFormat) GetIPPrefix() (rv string) {
+	if p != nil && p.IPPrefix != nil {
+		return *p.IPPrefix
+	}
+	return
+}
+
+func (p *PublicIPPrefixPropertiesFormat) GetLoadBalancerFrontendIPConfiguration() (rv *SubResource) {
+	if p != nil {
+		return p.LoadBalancerFrontendIPConfiguration
+	}
+	return
+}
+
+func (p *PublicIPPrefixPropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if p != nil {
+		return p.ProvisioningState
+	}
+	return
+}
+
+func (p *PublicIPPrefixPropertiesFormat) GetPublicIPAddresses() (rv []*ReferencedPublicIPAddress) {
+	if p != nil {
+		return p.PublicIPAddresses
+	}
+	return
+}
+
+func (p *PublicIPPrefixPropertiesFormat) GetResourceGUID() (rv string) {
+	if p != nil && p.ResourceGUID != nil {
+		return *p.ResourceGUID
+	}
+	return
+}
+
 // PublicIPPrefixSKU - SKU of a public IP prefix.
 type PublicIPPrefixSKU struct {
 	// Name of a public IP prefix SKU.
@@ -9555,6 +26950,20 @@ type PublicIPPrefixSKU struct {
 
 	// Tier of a public IP prefix SKU.
 	Tier *PublicIPPrefixSKUTier
+}
+
+func (p *PublicIPPrefixSKU) GetName() (rv *PublicIPPrefixSKUName) {
+	if p != nil {
+		return p.Name
+	}
+	return
+}
+
+func (p *PublicIPPrefixSKU) GetTier() (rv *PublicIPPrefixSKUTier) {
+	if p != nil {
+		return p.Tier
+	}
+	return
 }
 
 // QosDefinition - Quality of Service defines the traffic configuration between endpoints. Mandatory to have one marking.
@@ -9578,6 +26987,48 @@ type QosDefinition struct {
 	SourcePortRanges []*QosPortRange
 }
 
+func (q *QosDefinition) GetDestinationIPRanges() (rv []*QosIPRange) {
+	if q != nil {
+		return q.DestinationIPRanges
+	}
+	return
+}
+
+func (q *QosDefinition) GetDestinationPortRanges() (rv []*QosPortRange) {
+	if q != nil {
+		return q.DestinationPortRanges
+	}
+	return
+}
+
+func (q *QosDefinition) GetMarkings() (rv []*int32) {
+	if q != nil {
+		return q.Markings
+	}
+	return
+}
+
+func (q *QosDefinition) GetProtocol() (rv *ProtocolType) {
+	if q != nil {
+		return q.Protocol
+	}
+	return
+}
+
+func (q *QosDefinition) GetSourceIPRanges() (rv []*QosIPRange) {
+	if q != nil {
+		return q.SourceIPRanges
+	}
+	return
+}
+
+func (q *QosDefinition) GetSourcePortRanges() (rv []*QosPortRange) {
+	if q != nil {
+		return q.SourcePortRanges
+	}
+	return
+}
+
 // QosIPRange - Qos Traffic Profiler IP Range properties.
 type QosIPRange struct {
 	// End IP Address.
@@ -9587,6 +27038,20 @@ type QosIPRange struct {
 	StartIP *string
 }
 
+func (q *QosIPRange) GetEndIP() (rv string) {
+	if q != nil && q.EndIP != nil {
+		return *q.EndIP
+	}
+	return
+}
+
+func (q *QosIPRange) GetStartIP() (rv string) {
+	if q != nil && q.StartIP != nil {
+		return *q.StartIP
+	}
+	return
+}
+
 // QosPortRange - Qos Traffic Profiler Port range properties.
 type QosPortRange struct {
 	// Qos Port Range end.
@@ -9594,6 +27059,20 @@ type QosPortRange struct {
 
 	// Qos Port Range start.
 	Start *int32
+}
+
+func (q *QosPortRange) GetEnd() (rv int32) {
+	if q != nil && q.End != nil {
+		return *q.End
+	}
+	return
+}
+
+func (q *QosPortRange) GetStart() (rv int32) {
+	if q != nil && q.Start != nil {
+		return *q.Start
+	}
+	return
 }
 
 // QueryInboundNatRulePortMappingRequest - The request for a QueryInboundNatRulePortMapping API. Either IpConfiguration or
@@ -9606,11 +27085,32 @@ type QueryInboundNatRulePortMappingRequest struct {
 	IPConfiguration *SubResource
 }
 
+func (q *QueryInboundNatRulePortMappingRequest) GetIPAddress() (rv string) {
+	if q != nil && q.IPAddress != nil {
+		return *q.IPAddress
+	}
+	return
+}
+
+func (q *QueryInboundNatRulePortMappingRequest) GetIPConfiguration() (rv *SubResource) {
+	if q != nil {
+		return q.IPConfiguration
+	}
+	return
+}
+
 // QueryRequestOptions - Query Request Options
 type QueryRequestOptions struct {
 	// When present, the value can be passed to a subsequent query call (together with the same query and scopes used in the current
 	// request) to retrieve the next page of data.
 	SkipToken *string
+}
+
+func (q *QueryRequestOptions) GetSkipToken() (rv string) {
+	if q != nil && q.SkipToken != nil {
+		return *q.SkipToken
+	}
+	return
 }
 
 // QueryResults - Query result
@@ -9622,10 +27122,31 @@ type QueryResults struct {
 	Signatures []*SingleQueryResult
 }
 
+func (q *QueryResults) GetMatchingRecordsCount() (rv int64) {
+	if q != nil && q.MatchingRecordsCount != nil {
+		return *q.MatchingRecordsCount
+	}
+	return
+}
+
+func (q *QueryResults) GetSignatures() (rv []*SingleQueryResult) {
+	if q != nil {
+		return q.Signatures
+	}
+	return
+}
+
 // QueryTroubleshootingParameters - Parameters that define the resource to query the troubleshooting result.
 type QueryTroubleshootingParameters struct {
 	// REQUIRED; The target resource ID to query the troubleshooting result.
 	TargetResourceID *string
+}
+
+func (q *QueryTroubleshootingParameters) GetTargetResourceID() (rv string) {
+	if q != nil && q.TargetResourceID != nil {
+		return *q.TargetResourceID
+	}
+	return
 }
 
 // RadiusServer - Radius Server Settings.
@@ -9638,6 +27159,27 @@ type RadiusServer struct {
 
 	// The secret used for this radius server.
 	RadiusServerSecret *string
+}
+
+func (r *RadiusServer) GetRadiusServerAddress() (rv string) {
+	if r != nil && r.RadiusServerAddress != nil {
+		return *r.RadiusServerAddress
+	}
+	return
+}
+
+func (r *RadiusServer) GetRadiusServerScore() (rv int64) {
+	if r != nil && r.RadiusServerScore != nil {
+		return *r.RadiusServerScore
+	}
+	return
+}
+
+func (r *RadiusServer) GetRadiusServerSecret() (rv string) {
+	if r != nil && r.RadiusServerSecret != nil {
+		return *r.RadiusServerSecret
+	}
+	return
 }
 
 // RecordSet - A collective group of information about the record set information.
@@ -9661,10 +27203,59 @@ type RecordSet struct {
 	ProvisioningState *ProvisioningState
 }
 
+func (r *RecordSet) GetFqdn() (rv string) {
+	if r != nil && r.Fqdn != nil {
+		return *r.Fqdn
+	}
+	return
+}
+
+func (r *RecordSet) GetIPAddresses() (rv []*string) {
+	if r != nil {
+		return r.IPAddresses
+	}
+	return
+}
+
+func (r *RecordSet) GetRecordSetName() (rv string) {
+	if r != nil && r.RecordSetName != nil {
+		return *r.RecordSetName
+	}
+	return
+}
+
+func (r *RecordSet) GetRecordType() (rv string) {
+	if r != nil && r.RecordType != nil {
+		return *r.RecordType
+	}
+	return
+}
+
+func (r *RecordSet) GetTTL() (rv int32) {
+	if r != nil && r.TTL != nil {
+		return *r.TTL
+	}
+	return
+}
+
+func (r *RecordSet) GetProvisioningState() (rv *ProvisioningState) {
+	if r != nil {
+		return r.ProvisioningState
+	}
+	return
+}
+
 // ReferencedPublicIPAddress - Reference to a public IP address.
 type ReferencedPublicIPAddress struct {
 	// The PublicIPAddress Reference.
 	ID *string
+}
+
+func (r *ReferencedPublicIPAddress) GetID() (rv string) {
+	if r != nil && r.ID != nil {
+		return *r.ID
+	}
+	return
 }
 
 // ResourceNavigationLink resource.
@@ -9685,6 +27276,41 @@ type ResourceNavigationLink struct {
 	Type *string
 }
 
+func (r *ResourceNavigationLink) GetID() (rv string) {
+	if r != nil && r.ID != nil {
+		return *r.ID
+	}
+	return
+}
+
+func (r *ResourceNavigationLink) GetName() (rv string) {
+	if r != nil && r.Name != nil {
+		return *r.Name
+	}
+	return
+}
+
+func (r *ResourceNavigationLink) GetProperties() (rv *ResourceNavigationLinkFormat) {
+	if r != nil {
+		return r.Properties
+	}
+	return
+}
+
+func (r *ResourceNavigationLink) GetEtag() (rv string) {
+	if r != nil && r.Etag != nil {
+		return *r.Etag
+	}
+	return
+}
+
+func (r *ResourceNavigationLink) GetType() (rv string) {
+	if r != nil && r.Type != nil {
+		return *r.Type
+	}
+	return
+}
+
 // ResourceNavigationLinkFormat - Properties of ResourceNavigationLink.
 type ResourceNavigationLinkFormat struct {
 	// Link to the external resource.
@@ -9697,6 +27323,27 @@ type ResourceNavigationLinkFormat struct {
 	ProvisioningState *ProvisioningState
 }
 
+func (r *ResourceNavigationLinkFormat) GetLink() (rv string) {
+	if r != nil && r.Link != nil {
+		return *r.Link
+	}
+	return
+}
+
+func (r *ResourceNavigationLinkFormat) GetLinkedResourceType() (rv string) {
+	if r != nil && r.LinkedResourceType != nil {
+		return *r.LinkedResourceType
+	}
+	return
+}
+
+func (r *ResourceNavigationLinkFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if r != nil {
+		return r.ProvisioningState
+	}
+	return
+}
+
 // ResourceNavigationLinksListResult - Response for ResourceNavigationLinks_List operation.
 type ResourceNavigationLinksListResult struct {
 	// The resource navigation links in a subnet.
@@ -9706,6 +27353,20 @@ type ResourceNavigationLinksListResult struct {
 	NextLink *string
 }
 
+func (r *ResourceNavigationLinksListResult) GetValue() (rv []*ResourceNavigationLink) {
+	if r != nil {
+		return r.Value
+	}
+	return
+}
+
+func (r *ResourceNavigationLinksListResult) GetNextLink() (rv string) {
+	if r != nil && r.NextLink != nil {
+		return *r.NextLink
+	}
+	return
+}
+
 // RetentionPolicyParameters - Parameters that define the retention policy for flow log.
 type RetentionPolicyParameters struct {
 	// Number of days to retain flow log records.
@@ -9713,6 +27374,20 @@ type RetentionPolicyParameters struct {
 
 	// Flag to enable/disable retention.
 	Enabled *bool
+}
+
+func (r *RetentionPolicyParameters) GetDays() (rv int32) {
+	if r != nil && r.Days != nil {
+		return *r.Days
+	}
+	return
+}
+
+func (r *RetentionPolicyParameters) GetEnabled() (rv bool) {
+	if r != nil && r.Enabled != nil {
+		return *r.Enabled
+	}
+	return
 }
 
 // Route resource.
@@ -9731,6 +27406,41 @@ type Route struct {
 
 	// READ-ONLY; A unique read-only string that changes whenever the resource is updated.
 	Etag *string
+}
+
+func (r *Route) GetID() (rv string) {
+	if r != nil && r.ID != nil {
+		return *r.ID
+	}
+	return
+}
+
+func (r *Route) GetName() (rv string) {
+	if r != nil && r.Name != nil {
+		return *r.Name
+	}
+	return
+}
+
+func (r *Route) GetProperties() (rv *RoutePropertiesFormat) {
+	if r != nil {
+		return r.Properties
+	}
+	return
+}
+
+func (r *Route) GetType() (rv string) {
+	if r != nil && r.Type != nil {
+		return *r.Type
+	}
+	return
+}
+
+func (r *Route) GetEtag() (rv string) {
+	if r != nil && r.Etag != nil {
+		return *r.Etag
+	}
+	return
 }
 
 // RouteFilter - Route Filter Resource.
@@ -9757,6 +27467,55 @@ type RouteFilter struct {
 	Type *string
 }
 
+func (r *RouteFilter) GetID() (rv string) {
+	if r != nil && r.ID != nil {
+		return *r.ID
+	}
+	return
+}
+
+func (r *RouteFilter) GetLocation() (rv string) {
+	if r != nil && r.Location != nil {
+		return *r.Location
+	}
+	return
+}
+
+func (r *RouteFilter) GetProperties() (rv *RouteFilterPropertiesFormat) {
+	if r != nil {
+		return r.Properties
+	}
+	return
+}
+
+func (r *RouteFilter) GetTags() (rv map[string]*string) {
+	if r != nil {
+		return r.Tags
+	}
+	return
+}
+
+func (r *RouteFilter) GetEtag() (rv string) {
+	if r != nil && r.Etag != nil {
+		return *r.Etag
+	}
+	return
+}
+
+func (r *RouteFilter) GetName() (rv string) {
+	if r != nil && r.Name != nil {
+		return *r.Name
+	}
+	return
+}
+
+func (r *RouteFilter) GetType() (rv string) {
+	if r != nil && r.Type != nil {
+		return *r.Type
+	}
+	return
+}
+
 // RouteFilterListResult - Response for the ListRouteFilters API service call.
 type RouteFilterListResult struct {
 	// The URL to get the next set of results.
@@ -9764,6 +27523,20 @@ type RouteFilterListResult struct {
 
 	// A list of route filters in a resource group.
 	Value []*RouteFilter
+}
+
+func (r *RouteFilterListResult) GetNextLink() (rv string) {
+	if r != nil && r.NextLink != nil {
+		return *r.NextLink
+	}
+	return
+}
+
+func (r *RouteFilterListResult) GetValue() (rv []*RouteFilter) {
+	if r != nil {
+		return r.Value
+	}
+	return
 }
 
 // RouteFilterPropertiesFormat - Route Filter Resource.
@@ -9779,6 +27552,34 @@ type RouteFilterPropertiesFormat struct {
 
 	// READ-ONLY; The provisioning state of the route filter resource.
 	ProvisioningState *ProvisioningState
+}
+
+func (r *RouteFilterPropertiesFormat) GetRules() (rv []*RouteFilterRule) {
+	if r != nil {
+		return r.Rules
+	}
+	return
+}
+
+func (r *RouteFilterPropertiesFormat) GetIPv6Peerings() (rv []*ExpressRouteCircuitPeering) {
+	if r != nil {
+		return r.IPv6Peerings
+	}
+	return
+}
+
+func (r *RouteFilterPropertiesFormat) GetPeerings() (rv []*ExpressRouteCircuitPeering) {
+	if r != nil {
+		return r.Peerings
+	}
+	return
+}
+
+func (r *RouteFilterPropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if r != nil {
+		return r.ProvisioningState
+	}
+	return
 }
 
 // RouteFilterRule - Route Filter Rule Resource.
@@ -9799,6 +27600,41 @@ type RouteFilterRule struct {
 	Etag *string
 }
 
+func (r *RouteFilterRule) GetID() (rv string) {
+	if r != nil && r.ID != nil {
+		return *r.ID
+	}
+	return
+}
+
+func (r *RouteFilterRule) GetLocation() (rv string) {
+	if r != nil && r.Location != nil {
+		return *r.Location
+	}
+	return
+}
+
+func (r *RouteFilterRule) GetName() (rv string) {
+	if r != nil && r.Name != nil {
+		return *r.Name
+	}
+	return
+}
+
+func (r *RouteFilterRule) GetProperties() (rv *RouteFilterRulePropertiesFormat) {
+	if r != nil {
+		return r.Properties
+	}
+	return
+}
+
+func (r *RouteFilterRule) GetEtag() (rv string) {
+	if r != nil && r.Etag != nil {
+		return *r.Etag
+	}
+	return
+}
+
 // RouteFilterRuleListResult - Response for the ListRouteFilterRules API service call.
 type RouteFilterRuleListResult struct {
 	// The URL to get the next set of results.
@@ -9806,6 +27642,20 @@ type RouteFilterRuleListResult struct {
 
 	// A list of RouteFilterRules in a resource group.
 	Value []*RouteFilterRule
+}
+
+func (r *RouteFilterRuleListResult) GetNextLink() (rv string) {
+	if r != nil && r.NextLink != nil {
+		return *r.NextLink
+	}
+	return
+}
+
+func (r *RouteFilterRuleListResult) GetValue() (rv []*RouteFilterRule) {
+	if r != nil {
+		return r.Value
+	}
+	return
 }
 
 // RouteFilterRulePropertiesFormat - Route Filter Rule Resource.
@@ -9823,6 +27673,34 @@ type RouteFilterRulePropertiesFormat struct {
 	ProvisioningState *ProvisioningState
 }
 
+func (r *RouteFilterRulePropertiesFormat) GetAccess() (rv *Access) {
+	if r != nil {
+		return r.Access
+	}
+	return
+}
+
+func (r *RouteFilterRulePropertiesFormat) GetCommunities() (rv []*string) {
+	if r != nil {
+		return r.Communities
+	}
+	return
+}
+
+func (r *RouteFilterRulePropertiesFormat) GetRouteFilterRuleType() (rv *RouteFilterRuleType) {
+	if r != nil {
+		return r.RouteFilterRuleType
+	}
+	return
+}
+
+func (r *RouteFilterRulePropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if r != nil {
+		return r.ProvisioningState
+	}
+	return
+}
+
 // RouteListResult - Response for the ListRoute API service call.
 type RouteListResult struct {
 	// The URL to get the next set of results.
@@ -9830,6 +27708,20 @@ type RouteListResult struct {
 
 	// A list of routes in a resource group.
 	Value []*Route
+}
+
+func (r *RouteListResult) GetNextLink() (rv string) {
+	if r != nil && r.NextLink != nil {
+		return *r.NextLink
+	}
+	return
+}
+
+func (r *RouteListResult) GetValue() (rv []*Route) {
+	if r != nil {
+		return r.Value
+	}
+	return
 }
 
 // RouteMap - The RouteMap child resource of a Virtual hub.
@@ -9850,6 +27742,41 @@ type RouteMap struct {
 	Type *string
 }
 
+func (r *RouteMap) GetID() (rv string) {
+	if r != nil && r.ID != nil {
+		return *r.ID
+	}
+	return
+}
+
+func (r *RouteMap) GetProperties() (rv *RouteMapProperties) {
+	if r != nil {
+		return r.Properties
+	}
+	return
+}
+
+func (r *RouteMap) GetEtag() (rv string) {
+	if r != nil && r.Etag != nil {
+		return *r.Etag
+	}
+	return
+}
+
+func (r *RouteMap) GetName() (rv string) {
+	if r != nil && r.Name != nil {
+		return *r.Name
+	}
+	return
+}
+
+func (r *RouteMap) GetType() (rv string) {
+	if r != nil && r.Type != nil {
+		return *r.Type
+	}
+	return
+}
+
 // RouteMapProperties - Properties of RouteMap resource
 type RouteMapProperties struct {
 	// List of connections which have this RoutMap associated for inbound traffic.
@@ -9865,6 +27792,34 @@ type RouteMapProperties struct {
 	ProvisioningState *ProvisioningState
 }
 
+func (r *RouteMapProperties) GetAssociatedInboundConnections() (rv []*string) {
+	if r != nil {
+		return r.AssociatedInboundConnections
+	}
+	return
+}
+
+func (r *RouteMapProperties) GetAssociatedOutboundConnections() (rv []*string) {
+	if r != nil {
+		return r.AssociatedOutboundConnections
+	}
+	return
+}
+
+func (r *RouteMapProperties) GetRules() (rv []*RouteMapRule) {
+	if r != nil {
+		return r.Rules
+	}
+	return
+}
+
+func (r *RouteMapProperties) GetProvisioningState() (rv *ProvisioningState) {
+	if r != nil {
+		return r.ProvisioningState
+	}
+	return
+}
+
 // RouteMapRule - A RouteMap Rule.
 type RouteMapRule struct {
 	// List of actions which will be applied on a match.
@@ -9878,6 +27833,34 @@ type RouteMapRule struct {
 
 	// Next step after rule is evaluated. Current supported behaviors are 'Continue'(to next rule) and 'Terminate'.
 	NextStepIfMatched *NextStep
+}
+
+func (r *RouteMapRule) GetActions() (rv []*Action) {
+	if r != nil {
+		return r.Actions
+	}
+	return
+}
+
+func (r *RouteMapRule) GetMatchCriteria() (rv []*Criterion) {
+	if r != nil {
+		return r.MatchCriteria
+	}
+	return
+}
+
+func (r *RouteMapRule) GetName() (rv string) {
+	if r != nil && r.Name != nil {
+		return *r.Name
+	}
+	return
+}
+
+func (r *RouteMapRule) GetNextStepIfMatched() (rv *NextStep) {
+	if r != nil {
+		return r.NextStepIfMatched
+	}
+	return
 }
 
 // RoutePropertiesFormat - Route resource.
@@ -9896,6 +27879,41 @@ type RoutePropertiesFormat struct {
 
 	// READ-ONLY; The provisioning state of the route resource.
 	ProvisioningState *ProvisioningState
+}
+
+func (r *RoutePropertiesFormat) GetNextHopType() (rv *RouteNextHopType) {
+	if r != nil {
+		return r.NextHopType
+	}
+	return
+}
+
+func (r *RoutePropertiesFormat) GetAddressPrefix() (rv string) {
+	if r != nil && r.AddressPrefix != nil {
+		return *r.AddressPrefix
+	}
+	return
+}
+
+func (r *RoutePropertiesFormat) GetHasBgpOverride() (rv bool) {
+	if r != nil && r.HasBgpOverride != nil {
+		return *r.HasBgpOverride
+	}
+	return
+}
+
+func (r *RoutePropertiesFormat) GetNextHopIPAddress() (rv string) {
+	if r != nil && r.NextHopIPAddress != nil {
+		return *r.NextHopIPAddress
+	}
+	return
+}
+
+func (r *RoutePropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if r != nil {
+		return r.ProvisioningState
+	}
+	return
 }
 
 // RouteTable - Route table resource.
@@ -9922,6 +27940,55 @@ type RouteTable struct {
 	Type *string
 }
 
+func (r *RouteTable) GetID() (rv string) {
+	if r != nil && r.ID != nil {
+		return *r.ID
+	}
+	return
+}
+
+func (r *RouteTable) GetLocation() (rv string) {
+	if r != nil && r.Location != nil {
+		return *r.Location
+	}
+	return
+}
+
+func (r *RouteTable) GetProperties() (rv *RouteTablePropertiesFormat) {
+	if r != nil {
+		return r.Properties
+	}
+	return
+}
+
+func (r *RouteTable) GetTags() (rv map[string]*string) {
+	if r != nil {
+		return r.Tags
+	}
+	return
+}
+
+func (r *RouteTable) GetEtag() (rv string) {
+	if r != nil && r.Etag != nil {
+		return *r.Etag
+	}
+	return
+}
+
+func (r *RouteTable) GetName() (rv string) {
+	if r != nil && r.Name != nil {
+		return *r.Name
+	}
+	return
+}
+
+func (r *RouteTable) GetType() (rv string) {
+	if r != nil && r.Type != nil {
+		return *r.Type
+	}
+	return
+}
+
 // RouteTableListResult - Response for the ListRouteTable API service call.
 type RouteTableListResult struct {
 	// The URL to get the next set of results.
@@ -9929,6 +27996,20 @@ type RouteTableListResult struct {
 
 	// A list of route tables in a resource group.
 	Value []*RouteTable
+}
+
+func (r *RouteTableListResult) GetNextLink() (rv string) {
+	if r != nil && r.NextLink != nil {
+		return *r.NextLink
+	}
+	return
+}
+
+func (r *RouteTableListResult) GetValue() (rv []*RouteTable) {
+	if r != nil {
+		return r.Value
+	}
+	return
 }
 
 // RouteTablePropertiesFormat - Route Table resource.
@@ -9949,6 +28030,41 @@ type RouteTablePropertiesFormat struct {
 	Subnets []*Subnet
 }
 
+func (r *RouteTablePropertiesFormat) GetDisableBgpRoutePropagation() (rv bool) {
+	if r != nil && r.DisableBgpRoutePropagation != nil {
+		return *r.DisableBgpRoutePropagation
+	}
+	return
+}
+
+func (r *RouteTablePropertiesFormat) GetRoutes() (rv []*Route) {
+	if r != nil {
+		return r.Routes
+	}
+	return
+}
+
+func (r *RouteTablePropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if r != nil {
+		return r.ProvisioningState
+	}
+	return
+}
+
+func (r *RouteTablePropertiesFormat) GetResourceGUID() (rv string) {
+	if r != nil && r.ResourceGUID != nil {
+		return *r.ResourceGUID
+	}
+	return
+}
+
+func (r *RouteTablePropertiesFormat) GetSubnets() (rv []*Subnet) {
+	if r != nil {
+		return r.Subnets
+	}
+	return
+}
+
 // RoutingConfiguration - Routing Configuration indicating the associated and propagated route tables for this connection.
 type RoutingConfiguration struct {
 	// The resource id RouteTable associated with this RoutingConfiguration.
@@ -9965,6 +28081,41 @@ type RoutingConfiguration struct {
 
 	// List of routes that control routing from VirtualHub into a virtual network connection.
 	VnetRoutes *VnetRoute
+}
+
+func (r *RoutingConfiguration) GetAssociatedRouteTable() (rv *SubResource) {
+	if r != nil {
+		return r.AssociatedRouteTable
+	}
+	return
+}
+
+func (r *RoutingConfiguration) GetInboundRouteMap() (rv *SubResource) {
+	if r != nil {
+		return r.InboundRouteMap
+	}
+	return
+}
+
+func (r *RoutingConfiguration) GetOutboundRouteMap() (rv *SubResource) {
+	if r != nil {
+		return r.OutboundRouteMap
+	}
+	return
+}
+
+func (r *RoutingConfiguration) GetPropagatedRouteTables() (rv *PropagatedRouteTable) {
+	if r != nil {
+		return r.PropagatedRouteTables
+	}
+	return
+}
+
+func (r *RoutingConfiguration) GetVnetRoutes() (rv *VnetRoute) {
+	if r != nil {
+		return r.VnetRoutes
+	}
+	return
 }
 
 // RoutingIntent - The routing intent child resource of a Virtual hub.
@@ -9985,6 +28136,41 @@ type RoutingIntent struct {
 	Type *string
 }
 
+func (r *RoutingIntent) GetID() (rv string) {
+	if r != nil && r.ID != nil {
+		return *r.ID
+	}
+	return
+}
+
+func (r *RoutingIntent) GetName() (rv string) {
+	if r != nil && r.Name != nil {
+		return *r.Name
+	}
+	return
+}
+
+func (r *RoutingIntent) GetProperties() (rv *RoutingIntentProperties) {
+	if r != nil {
+		return r.Properties
+	}
+	return
+}
+
+func (r *RoutingIntent) GetEtag() (rv string) {
+	if r != nil && r.Etag != nil {
+		return *r.Etag
+	}
+	return
+}
+
+func (r *RoutingIntent) GetType() (rv string) {
+	if r != nil && r.Type != nil {
+		return *r.Type
+	}
+	return
+}
+
 // RoutingIntentProperties - The properties of a RoutingIntent resource.
 type RoutingIntentProperties struct {
 	// List of routing policies.
@@ -9992,6 +28178,20 @@ type RoutingIntentProperties struct {
 
 	// READ-ONLY; The provisioning state of the RoutingIntent resource.
 	ProvisioningState *ProvisioningState
+}
+
+func (r *RoutingIntentProperties) GetRoutingPolicies() (rv []*RoutingPolicy) {
+	if r != nil {
+		return r.RoutingPolicies
+	}
+	return
+}
+
+func (r *RoutingIntentProperties) GetProvisioningState() (rv *ProvisioningState) {
+	if r != nil {
+		return r.ProvisioningState
+	}
+	return
 }
 
 // RoutingPolicy - The routing policy object used in a RoutingIntent resource.
@@ -10004,6 +28204,27 @@ type RoutingPolicy struct {
 
 	// REQUIRED; The next hop resource id on which this routing policy is applicable to.
 	NextHop *string
+}
+
+func (r *RoutingPolicy) GetDestinations() (rv []*string) {
+	if r != nil {
+		return r.Destinations
+	}
+	return
+}
+
+func (r *RoutingPolicy) GetName() (rv string) {
+	if r != nil && r.Name != nil {
+		return *r.Name
+	}
+	return
+}
+
+func (r *RoutingPolicy) GetNextHop() (rv string) {
+	if r != nil && r.NextHop != nil {
+		return *r.NextHop
+	}
+	return
 }
 
 // Rule of type network.
@@ -10039,6 +28260,76 @@ type Rule struct {
 	SourceIPGroups []*string
 }
 
+func (r *Rule) GetRuleType() (rv *FirewallPolicyRuleType) {
+	if r != nil {
+		return r.RuleType
+	}
+	return
+}
+
+func (r *Rule) GetDescription() (rv string) {
+	if r != nil && r.Description != nil {
+		return *r.Description
+	}
+	return
+}
+
+func (r *Rule) GetDestinationAddresses() (rv []*string) {
+	if r != nil {
+		return r.DestinationAddresses
+	}
+	return
+}
+
+func (r *Rule) GetDestinationFqdns() (rv []*string) {
+	if r != nil {
+		return r.DestinationFqdns
+	}
+	return
+}
+
+func (r *Rule) GetDestinationIPGroups() (rv []*string) {
+	if r != nil {
+		return r.DestinationIPGroups
+	}
+	return
+}
+
+func (r *Rule) GetDestinationPorts() (rv []*string) {
+	if r != nil {
+		return r.DestinationPorts
+	}
+	return
+}
+
+func (r *Rule) GetIPProtocols() (rv []*FirewallPolicyRuleNetworkProtocol) {
+	if r != nil {
+		return r.IPProtocols
+	}
+	return
+}
+
+func (r *Rule) GetName() (rv string) {
+	if r != nil && r.Name != nil {
+		return *r.Name
+	}
+	return
+}
+
+func (r *Rule) GetSourceAddresses() (rv []*string) {
+	if r != nil {
+		return r.SourceAddresses
+	}
+	return
+}
+
+func (r *Rule) GetSourceIPGroups() (rv []*string) {
+	if r != nil {
+		return r.SourceIPGroups
+	}
+	return
+}
+
 // GetFirewallPolicyRule implements the FirewallPolicyRuleClassification interface for type Rule.
 func (r *Rule) GetFirewallPolicyRule() *FirewallPolicyRule {
 	return &FirewallPolicyRule{
@@ -10052,6 +28343,13 @@ func (r *Rule) GetFirewallPolicyRule() *FirewallPolicyRule {
 type SKU struct {
 	// The name of this Bastion Host.
 	Name *BastionHostSKUName
+}
+
+func (s *SKU) GetName() (rv *BastionHostSKUName) {
+	if s != nil {
+		return s.Name
+	}
+	return
 }
 
 // ScopeConnection - The Scope Connections resource
@@ -10075,6 +28373,48 @@ type ScopeConnection struct {
 	Type *string
 }
 
+func (s *ScopeConnection) GetProperties() (rv *ScopeConnectionProperties) {
+	if s != nil {
+		return s.Properties
+	}
+	return
+}
+
+func (s *ScopeConnection) GetEtag() (rv string) {
+	if s != nil && s.Etag != nil {
+		return *s.Etag
+	}
+	return
+}
+
+func (s *ScopeConnection) GetID() (rv string) {
+	if s != nil && s.ID != nil {
+		return *s.ID
+	}
+	return
+}
+
+func (s *ScopeConnection) GetName() (rv string) {
+	if s != nil && s.Name != nil {
+		return *s.Name
+	}
+	return
+}
+
+func (s *ScopeConnection) GetSystemData() (rv *SystemData) {
+	if s != nil {
+		return s.SystemData
+	}
+	return
+}
+
+func (s *ScopeConnection) GetType() (rv string) {
+	if s != nil && s.Type != nil {
+		return *s.Type
+	}
+	return
+}
+
 // ScopeConnectionListResult - List of scope connections.
 type ScopeConnectionListResult struct {
 	// Gets the URL to get the next page of results.
@@ -10082,6 +28422,20 @@ type ScopeConnectionListResult struct {
 
 	// List of scope connections.
 	Value []*ScopeConnection
+}
+
+func (s *ScopeConnectionListResult) GetNextLink() (rv string) {
+	if s != nil && s.NextLink != nil {
+		return *s.NextLink
+	}
+	return
+}
+
+func (s *ScopeConnectionListResult) GetValue() (rv []*ScopeConnection) {
+	if s != nil {
+		return s.Value
+	}
+	return
 }
 
 // ScopeConnectionProperties - Scope connection.
@@ -10097,6 +28451,34 @@ type ScopeConnectionProperties struct {
 
 	// READ-ONLY; Connection State
 	ConnectionState *ScopeConnectionState
+}
+
+func (s *ScopeConnectionProperties) GetDescription() (rv string) {
+	if s != nil && s.Description != nil {
+		return *s.Description
+	}
+	return
+}
+
+func (s *ScopeConnectionProperties) GetResourceID() (rv string) {
+	if s != nil && s.ResourceID != nil {
+		return *s.ResourceID
+	}
+	return
+}
+
+func (s *ScopeConnectionProperties) GetTenantID() (rv string) {
+	if s != nil && s.TenantID != nil {
+		return *s.TenantID
+	}
+	return
+}
+
+func (s *ScopeConnectionProperties) GetConnectionState() (rv *ScopeConnectionState) {
+	if s != nil {
+		return s.ConnectionState
+	}
+	return
 }
 
 // SecurityAdminConfiguration - Defines the security admin configuration
@@ -10120,6 +28502,48 @@ type SecurityAdminConfiguration struct {
 	Type *string
 }
 
+func (s *SecurityAdminConfiguration) GetProperties() (rv *SecurityAdminConfigurationPropertiesFormat) {
+	if s != nil {
+		return s.Properties
+	}
+	return
+}
+
+func (s *SecurityAdminConfiguration) GetEtag() (rv string) {
+	if s != nil && s.Etag != nil {
+		return *s.Etag
+	}
+	return
+}
+
+func (s *SecurityAdminConfiguration) GetID() (rv string) {
+	if s != nil && s.ID != nil {
+		return *s.ID
+	}
+	return
+}
+
+func (s *SecurityAdminConfiguration) GetName() (rv string) {
+	if s != nil && s.Name != nil {
+		return *s.Name
+	}
+	return
+}
+
+func (s *SecurityAdminConfiguration) GetSystemData() (rv *SystemData) {
+	if s != nil {
+		return s.SystemData
+	}
+	return
+}
+
+func (s *SecurityAdminConfiguration) GetType() (rv string) {
+	if s != nil && s.Type != nil {
+		return *s.Type
+	}
+	return
+}
+
 // SecurityAdminConfigurationListResult - A list of network manager security admin configurations
 type SecurityAdminConfigurationListResult struct {
 	// Gets the URL to get the next page of results.
@@ -10127,6 +28551,20 @@ type SecurityAdminConfigurationListResult struct {
 
 	// Gets a page of security admin configurations
 	Value []*SecurityAdminConfiguration
+}
+
+func (s *SecurityAdminConfigurationListResult) GetNextLink() (rv string) {
+	if s != nil && s.NextLink != nil {
+		return *s.NextLink
+	}
+	return
+}
+
+func (s *SecurityAdminConfigurationListResult) GetValue() (rv []*SecurityAdminConfiguration) {
+	if s != nil {
+		return s.Value
+	}
+	return
 }
 
 // SecurityAdminConfigurationPropertiesFormat - Defines the security admin configuration properties.
@@ -10139,6 +28577,27 @@ type SecurityAdminConfigurationPropertiesFormat struct {
 
 	// READ-ONLY; The provisioning state of the resource.
 	ProvisioningState *ProvisioningState
+}
+
+func (s *SecurityAdminConfigurationPropertiesFormat) GetApplyOnNetworkIntentPolicyBasedServices() (rv []*NetworkIntentPolicyBasedService) {
+	if s != nil {
+		return s.ApplyOnNetworkIntentPolicyBasedServices
+	}
+	return
+}
+
+func (s *SecurityAdminConfigurationPropertiesFormat) GetDescription() (rv string) {
+	if s != nil && s.Description != nil {
+		return *s.Description
+	}
+	return
+}
+
+func (s *SecurityAdminConfigurationPropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if s != nil {
+		return s.ProvisioningState
+	}
+	return
 }
 
 // SecurityGroup - NetworkSecurityGroup resource.
@@ -10165,6 +28624,55 @@ type SecurityGroup struct {
 	Type *string
 }
 
+func (s *SecurityGroup) GetID() (rv string) {
+	if s != nil && s.ID != nil {
+		return *s.ID
+	}
+	return
+}
+
+func (s *SecurityGroup) GetLocation() (rv string) {
+	if s != nil && s.Location != nil {
+		return *s.Location
+	}
+	return
+}
+
+func (s *SecurityGroup) GetProperties() (rv *SecurityGroupPropertiesFormat) {
+	if s != nil {
+		return s.Properties
+	}
+	return
+}
+
+func (s *SecurityGroup) GetTags() (rv map[string]*string) {
+	if s != nil {
+		return s.Tags
+	}
+	return
+}
+
+func (s *SecurityGroup) GetEtag() (rv string) {
+	if s != nil && s.Etag != nil {
+		return *s.Etag
+	}
+	return
+}
+
+func (s *SecurityGroup) GetName() (rv string) {
+	if s != nil && s.Name != nil {
+		return *s.Name
+	}
+	return
+}
+
+func (s *SecurityGroup) GetType() (rv string) {
+	if s != nil && s.Type != nil {
+		return *s.Type
+	}
+	return
+}
+
 // SecurityGroupListResult - Response for ListNetworkSecurityGroups API service call.
 type SecurityGroupListResult struct {
 	// The URL to get the next set of results.
@@ -10174,6 +28682,20 @@ type SecurityGroupListResult struct {
 	Value []*SecurityGroup
 }
 
+func (s *SecurityGroupListResult) GetNextLink() (rv string) {
+	if s != nil && s.NextLink != nil {
+		return *s.NextLink
+	}
+	return
+}
+
+func (s *SecurityGroupListResult) GetValue() (rv []*SecurityGroup) {
+	if s != nil {
+		return s.Value
+	}
+	return
+}
+
 // SecurityGroupNetworkInterface - Network interface and all its associated security rules.
 type SecurityGroupNetworkInterface struct {
 	// ID of the network interface.
@@ -10181,6 +28703,20 @@ type SecurityGroupNetworkInterface struct {
 
 	// All security rules associated with the network interface.
 	SecurityRuleAssociations *SecurityRuleAssociations
+}
+
+func (s *SecurityGroupNetworkInterface) GetID() (rv string) {
+	if s != nil && s.ID != nil {
+		return *s.ID
+	}
+	return
+}
+
+func (s *SecurityGroupNetworkInterface) GetSecurityRuleAssociations() (rv *SecurityRuleAssociations) {
+	if s != nil {
+		return s.SecurityRuleAssociations
+	}
+	return
 }
 
 // SecurityGroupPropertiesFormat - Network Security Group resource.
@@ -10211,6 +28747,62 @@ type SecurityGroupPropertiesFormat struct {
 	Subnets []*Subnet
 }
 
+func (s *SecurityGroupPropertiesFormat) GetFlushConnection() (rv bool) {
+	if s != nil && s.FlushConnection != nil {
+		return *s.FlushConnection
+	}
+	return
+}
+
+func (s *SecurityGroupPropertiesFormat) GetSecurityRules() (rv []*SecurityRule) {
+	if s != nil {
+		return s.SecurityRules
+	}
+	return
+}
+
+func (s *SecurityGroupPropertiesFormat) GetDefaultSecurityRules() (rv []*SecurityRule) {
+	if s != nil {
+		return s.DefaultSecurityRules
+	}
+	return
+}
+
+func (s *SecurityGroupPropertiesFormat) GetFlowLogs() (rv []*FlowLog) {
+	if s != nil {
+		return s.FlowLogs
+	}
+	return
+}
+
+func (s *SecurityGroupPropertiesFormat) GetNetworkInterfaces() (rv []*Interface) {
+	if s != nil {
+		return s.NetworkInterfaces
+	}
+	return
+}
+
+func (s *SecurityGroupPropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if s != nil {
+		return s.ProvisioningState
+	}
+	return
+}
+
+func (s *SecurityGroupPropertiesFormat) GetResourceGUID() (rv string) {
+	if s != nil && s.ResourceGUID != nil {
+		return *s.ResourceGUID
+	}
+	return
+}
+
+func (s *SecurityGroupPropertiesFormat) GetSubnets() (rv []*Subnet) {
+	if s != nil {
+		return s.Subnets
+	}
+	return
+}
+
 // SecurityGroupResult - Network configuration diagnostic result corresponded provided traffic query.
 type SecurityGroupResult struct {
 	// The network traffic is allowed or denied.
@@ -10220,16 +28812,44 @@ type SecurityGroupResult struct {
 	EvaluatedNetworkSecurityGroups []*EvaluatedNetworkSecurityGroup
 }
 
+func (s *SecurityGroupResult) GetSecurityRuleAccessResult() (rv *SecurityRuleAccess) {
+	if s != nil {
+		return s.SecurityRuleAccessResult
+	}
+	return
+}
+
+func (s *SecurityGroupResult) GetEvaluatedNetworkSecurityGroups() (rv []*EvaluatedNetworkSecurityGroup) {
+	if s != nil {
+		return s.EvaluatedNetworkSecurityGroups
+	}
+	return
+}
+
 // SecurityGroupViewParameters - Parameters that define the VM to check security groups for.
 type SecurityGroupViewParameters struct {
 	// REQUIRED; ID of the target VM.
 	TargetResourceID *string
 }
 
+func (s *SecurityGroupViewParameters) GetTargetResourceID() (rv string) {
+	if s != nil && s.TargetResourceID != nil {
+		return *s.TargetResourceID
+	}
+	return
+}
+
 // SecurityGroupViewResult - The information about security rules applied to the specified VM.
 type SecurityGroupViewResult struct {
 	// List of network interfaces on the specified VM.
 	NetworkInterfaces []*SecurityGroupNetworkInterface
+}
+
+func (s *SecurityGroupViewResult) GetNetworkInterfaces() (rv []*SecurityGroupNetworkInterface) {
+	if s != nil {
+		return s.NetworkInterfaces
+	}
+	return
 }
 
 // SecurityPartnerProvider - Security Partner Provider resource.
@@ -10256,6 +28876,55 @@ type SecurityPartnerProvider struct {
 	Type *string
 }
 
+func (s *SecurityPartnerProvider) GetID() (rv string) {
+	if s != nil && s.ID != nil {
+		return *s.ID
+	}
+	return
+}
+
+func (s *SecurityPartnerProvider) GetLocation() (rv string) {
+	if s != nil && s.Location != nil {
+		return *s.Location
+	}
+	return
+}
+
+func (s *SecurityPartnerProvider) GetProperties() (rv *SecurityPartnerProviderPropertiesFormat) {
+	if s != nil {
+		return s.Properties
+	}
+	return
+}
+
+func (s *SecurityPartnerProvider) GetTags() (rv map[string]*string) {
+	if s != nil {
+		return s.Tags
+	}
+	return
+}
+
+func (s *SecurityPartnerProvider) GetEtag() (rv string) {
+	if s != nil && s.Etag != nil {
+		return *s.Etag
+	}
+	return
+}
+
+func (s *SecurityPartnerProvider) GetName() (rv string) {
+	if s != nil && s.Name != nil {
+		return *s.Name
+	}
+	return
+}
+
+func (s *SecurityPartnerProvider) GetType() (rv string) {
+	if s != nil && s.Type != nil {
+		return *s.Type
+	}
+	return
+}
+
 // SecurityPartnerProviderListResult - Response for ListSecurityPartnerProviders API service call.
 type SecurityPartnerProviderListResult struct {
 	// URL to get the next set of results.
@@ -10263,6 +28932,20 @@ type SecurityPartnerProviderListResult struct {
 
 	// List of Security Partner Providers in a resource group.
 	Value []*SecurityPartnerProvider
+}
+
+func (s *SecurityPartnerProviderListResult) GetNextLink() (rv string) {
+	if s != nil && s.NextLink != nil {
+		return *s.NextLink
+	}
+	return
+}
+
+func (s *SecurityPartnerProviderListResult) GetValue() (rv []*SecurityPartnerProvider) {
+	if s != nil {
+		return s.Value
+	}
+	return
 }
 
 // SecurityPartnerProviderPropertiesFormat - Properties of the Security Partner Provider.
@@ -10278,6 +28961,34 @@ type SecurityPartnerProviderPropertiesFormat struct {
 
 	// READ-ONLY; The provisioning state of the Security Partner Provider resource.
 	ProvisioningState *ProvisioningState
+}
+
+func (s *SecurityPartnerProviderPropertiesFormat) GetSecurityProviderName() (rv *SecurityProviderName) {
+	if s != nil {
+		return s.SecurityProviderName
+	}
+	return
+}
+
+func (s *SecurityPartnerProviderPropertiesFormat) GetVirtualHub() (rv *SubResource) {
+	if s != nil {
+		return s.VirtualHub
+	}
+	return
+}
+
+func (s *SecurityPartnerProviderPropertiesFormat) GetConnectionStatus() (rv *SecurityPartnerProviderConnectionStatus) {
+	if s != nil {
+		return s.ConnectionStatus
+	}
+	return
+}
+
+func (s *SecurityPartnerProviderPropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if s != nil {
+		return s.ProvisioningState
+	}
+	return
 }
 
 // SecurityRule - Network security rule.
@@ -10298,6 +29009,41 @@ type SecurityRule struct {
 	Etag *string
 }
 
+func (s *SecurityRule) GetID() (rv string) {
+	if s != nil && s.ID != nil {
+		return *s.ID
+	}
+	return
+}
+
+func (s *SecurityRule) GetName() (rv string) {
+	if s != nil && s.Name != nil {
+		return *s.Name
+	}
+	return
+}
+
+func (s *SecurityRule) GetProperties() (rv *SecurityRulePropertiesFormat) {
+	if s != nil {
+		return s.Properties
+	}
+	return
+}
+
+func (s *SecurityRule) GetType() (rv string) {
+	if s != nil && s.Type != nil {
+		return *s.Type
+	}
+	return
+}
+
+func (s *SecurityRule) GetEtag() (rv string) {
+	if s != nil && s.Etag != nil {
+		return *s.Etag
+	}
+	return
+}
+
 // SecurityRuleAssociations - All security rules associated with the network interface.
 type SecurityRuleAssociations struct {
 	// Collection of default security rules of the network security group.
@@ -10313,6 +29059,34 @@ type SecurityRuleAssociations struct {
 	SubnetAssociation *SubnetAssociation
 }
 
+func (s *SecurityRuleAssociations) GetDefaultSecurityRules() (rv []*SecurityRule) {
+	if s != nil {
+		return s.DefaultSecurityRules
+	}
+	return
+}
+
+func (s *SecurityRuleAssociations) GetEffectiveSecurityRules() (rv []*EffectiveNetworkSecurityRule) {
+	if s != nil {
+		return s.EffectiveSecurityRules
+	}
+	return
+}
+
+func (s *SecurityRuleAssociations) GetNetworkInterfaceAssociation() (rv *InterfaceAssociation) {
+	if s != nil {
+		return s.NetworkInterfaceAssociation
+	}
+	return
+}
+
+func (s *SecurityRuleAssociations) GetSubnetAssociation() (rv *SubnetAssociation) {
+	if s != nil {
+		return s.SubnetAssociation
+	}
+	return
+}
+
 // SecurityRuleListResult - Response for ListSecurityRule API service call. Retrieves all security rules that belongs to a
 // network security group.
 type SecurityRuleListResult struct {
@@ -10321,6 +29095,20 @@ type SecurityRuleListResult struct {
 
 	// The security rules in a network security group.
 	Value []*SecurityRule
+}
+
+func (s *SecurityRuleListResult) GetNextLink() (rv string) {
+	if s != nil && s.NextLink != nil {
+		return *s.NextLink
+	}
+	return
+}
+
+func (s *SecurityRuleListResult) GetValue() (rv []*SecurityRule) {
+	if s != nil {
+		return s.Value
+	}
+	return
 }
 
 // SecurityRulePropertiesFormat - Security rule resource.
@@ -10379,6 +29167,118 @@ type SecurityRulePropertiesFormat struct {
 	ProvisioningState *ProvisioningState
 }
 
+func (s *SecurityRulePropertiesFormat) GetAccess() (rv *SecurityRuleAccess) {
+	if s != nil {
+		return s.Access
+	}
+	return
+}
+
+func (s *SecurityRulePropertiesFormat) GetDirection() (rv *SecurityRuleDirection) {
+	if s != nil {
+		return s.Direction
+	}
+	return
+}
+
+func (s *SecurityRulePropertiesFormat) GetPriority() (rv int32) {
+	if s != nil && s.Priority != nil {
+		return *s.Priority
+	}
+	return
+}
+
+func (s *SecurityRulePropertiesFormat) GetProtocol() (rv *SecurityRuleProtocol) {
+	if s != nil {
+		return s.Protocol
+	}
+	return
+}
+
+func (s *SecurityRulePropertiesFormat) GetDescription() (rv string) {
+	if s != nil && s.Description != nil {
+		return *s.Description
+	}
+	return
+}
+
+func (s *SecurityRulePropertiesFormat) GetDestinationAddressPrefix() (rv string) {
+	if s != nil && s.DestinationAddressPrefix != nil {
+		return *s.DestinationAddressPrefix
+	}
+	return
+}
+
+func (s *SecurityRulePropertiesFormat) GetDestinationAddressPrefixes() (rv []*string) {
+	if s != nil {
+		return s.DestinationAddressPrefixes
+	}
+	return
+}
+
+func (s *SecurityRulePropertiesFormat) GetDestinationApplicationSecurityGroups() (rv []*ApplicationSecurityGroup) {
+	if s != nil {
+		return s.DestinationApplicationSecurityGroups
+	}
+	return
+}
+
+func (s *SecurityRulePropertiesFormat) GetDestinationPortRange() (rv string) {
+	if s != nil && s.DestinationPortRange != nil {
+		return *s.DestinationPortRange
+	}
+	return
+}
+
+func (s *SecurityRulePropertiesFormat) GetDestinationPortRanges() (rv []*string) {
+	if s != nil {
+		return s.DestinationPortRanges
+	}
+	return
+}
+
+func (s *SecurityRulePropertiesFormat) GetSourceAddressPrefix() (rv string) {
+	if s != nil && s.SourceAddressPrefix != nil {
+		return *s.SourceAddressPrefix
+	}
+	return
+}
+
+func (s *SecurityRulePropertiesFormat) GetSourceAddressPrefixes() (rv []*string) {
+	if s != nil {
+		return s.SourceAddressPrefixes
+	}
+	return
+}
+
+func (s *SecurityRulePropertiesFormat) GetSourceApplicationSecurityGroups() (rv []*ApplicationSecurityGroup) {
+	if s != nil {
+		return s.SourceApplicationSecurityGroups
+	}
+	return
+}
+
+func (s *SecurityRulePropertiesFormat) GetSourcePortRange() (rv string) {
+	if s != nil && s.SourcePortRange != nil {
+		return *s.SourcePortRange
+	}
+	return
+}
+
+func (s *SecurityRulePropertiesFormat) GetSourcePortRanges() (rv []*string) {
+	if s != nil {
+		return s.SourcePortRanges
+	}
+	return
+}
+
+func (s *SecurityRulePropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if s != nil {
+		return s.ProvisioningState
+	}
+	return
+}
+
 // SecurityRulesEvaluationResult - Network security rules evaluation result.
 type SecurityRulesEvaluationResult struct {
 	// Value indicating whether destination is matched.
@@ -10400,6 +29300,48 @@ type SecurityRulesEvaluationResult struct {
 	SourcePortMatched *bool
 }
 
+func (s *SecurityRulesEvaluationResult) GetDestinationMatched() (rv bool) {
+	if s != nil && s.DestinationMatched != nil {
+		return *s.DestinationMatched
+	}
+	return
+}
+
+func (s *SecurityRulesEvaluationResult) GetDestinationPortMatched() (rv bool) {
+	if s != nil && s.DestinationPortMatched != nil {
+		return *s.DestinationPortMatched
+	}
+	return
+}
+
+func (s *SecurityRulesEvaluationResult) GetName() (rv string) {
+	if s != nil && s.Name != nil {
+		return *s.Name
+	}
+	return
+}
+
+func (s *SecurityRulesEvaluationResult) GetProtocolMatched() (rv bool) {
+	if s != nil && s.ProtocolMatched != nil {
+		return *s.ProtocolMatched
+	}
+	return
+}
+
+func (s *SecurityRulesEvaluationResult) GetSourceMatched() (rv bool) {
+	if s != nil && s.SourceMatched != nil {
+		return *s.SourceMatched
+	}
+	return
+}
+
+func (s *SecurityRulesEvaluationResult) GetSourcePortMatched() (rv bool) {
+	if s != nil && s.SourcePortMatched != nil {
+		return *s.SourcePortMatched
+	}
+	return
+}
+
 // ServiceAssociationLink resource.
 type ServiceAssociationLink struct {
 	// Resource ID.
@@ -10416,6 +29358,41 @@ type ServiceAssociationLink struct {
 
 	// READ-ONLY; Resource type.
 	Type *string
+}
+
+func (s *ServiceAssociationLink) GetID() (rv string) {
+	if s != nil && s.ID != nil {
+		return *s.ID
+	}
+	return
+}
+
+func (s *ServiceAssociationLink) GetName() (rv string) {
+	if s != nil && s.Name != nil {
+		return *s.Name
+	}
+	return
+}
+
+func (s *ServiceAssociationLink) GetProperties() (rv *ServiceAssociationLinkPropertiesFormat) {
+	if s != nil {
+		return s.Properties
+	}
+	return
+}
+
+func (s *ServiceAssociationLink) GetEtag() (rv string) {
+	if s != nil && s.Etag != nil {
+		return *s.Etag
+	}
+	return
+}
+
+func (s *ServiceAssociationLink) GetType() (rv string) {
+	if s != nil && s.Type != nil {
+		return *s.Type
+	}
+	return
 }
 
 // ServiceAssociationLinkPropertiesFormat - Properties of ServiceAssociationLink.
@@ -10436,6 +29413,41 @@ type ServiceAssociationLinkPropertiesFormat struct {
 	ProvisioningState *ProvisioningState
 }
 
+func (s *ServiceAssociationLinkPropertiesFormat) GetAllowDelete() (rv bool) {
+	if s != nil && s.AllowDelete != nil {
+		return *s.AllowDelete
+	}
+	return
+}
+
+func (s *ServiceAssociationLinkPropertiesFormat) GetLink() (rv string) {
+	if s != nil && s.Link != nil {
+		return *s.Link
+	}
+	return
+}
+
+func (s *ServiceAssociationLinkPropertiesFormat) GetLinkedResourceType() (rv string) {
+	if s != nil && s.LinkedResourceType != nil {
+		return *s.LinkedResourceType
+	}
+	return
+}
+
+func (s *ServiceAssociationLinkPropertiesFormat) GetLocations() (rv []*string) {
+	if s != nil {
+		return s.Locations
+	}
+	return
+}
+
+func (s *ServiceAssociationLinkPropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if s != nil {
+		return s.ProvisioningState
+	}
+	return
+}
+
 // ServiceAssociationLinksListResult - Response for ServiceAssociationLinks_List operation.
 type ServiceAssociationLinksListResult struct {
 	// The service association links in a subnet.
@@ -10443,6 +29455,20 @@ type ServiceAssociationLinksListResult struct {
 
 	// READ-ONLY; The URL to get the next set of results.
 	NextLink *string
+}
+
+func (s *ServiceAssociationLinksListResult) GetValue() (rv []*ServiceAssociationLink) {
+	if s != nil {
+		return s.Value
+	}
+	return
+}
+
+func (s *ServiceAssociationLinksListResult) GetNextLink() (rv string) {
+	if s != nil && s.NextLink != nil {
+		return *s.NextLink
+	}
+	return
 }
 
 // ServiceDelegationPropertiesFormat - Properties of a service delegation.
@@ -10455,6 +29481,27 @@ type ServiceDelegationPropertiesFormat struct {
 
 	// READ-ONLY; The provisioning state of the service delegation resource.
 	ProvisioningState *ProvisioningState
+}
+
+func (s *ServiceDelegationPropertiesFormat) GetServiceName() (rv string) {
+	if s != nil && s.ServiceName != nil {
+		return *s.ServiceName
+	}
+	return
+}
+
+func (s *ServiceDelegationPropertiesFormat) GetActions() (rv []*string) {
+	if s != nil {
+		return s.Actions
+	}
+	return
+}
+
+func (s *ServiceDelegationPropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if s != nil {
+		return s.ProvisioningState
+	}
+	return
 }
 
 // ServiceEndpointPolicy - Service End point policy resource.
@@ -10484,6 +29531,62 @@ type ServiceEndpointPolicy struct {
 	Type *string
 }
 
+func (s *ServiceEndpointPolicy) GetID() (rv string) {
+	if s != nil && s.ID != nil {
+		return *s.ID
+	}
+	return
+}
+
+func (s *ServiceEndpointPolicy) GetLocation() (rv string) {
+	if s != nil && s.Location != nil {
+		return *s.Location
+	}
+	return
+}
+
+func (s *ServiceEndpointPolicy) GetProperties() (rv *ServiceEndpointPolicyPropertiesFormat) {
+	if s != nil {
+		return s.Properties
+	}
+	return
+}
+
+func (s *ServiceEndpointPolicy) GetTags() (rv map[string]*string) {
+	if s != nil {
+		return s.Tags
+	}
+	return
+}
+
+func (s *ServiceEndpointPolicy) GetEtag() (rv string) {
+	if s != nil && s.Etag != nil {
+		return *s.Etag
+	}
+	return
+}
+
+func (s *ServiceEndpointPolicy) GetKind() (rv string) {
+	if s != nil && s.Kind != nil {
+		return *s.Kind
+	}
+	return
+}
+
+func (s *ServiceEndpointPolicy) GetName() (rv string) {
+	if s != nil && s.Name != nil {
+		return *s.Name
+	}
+	return
+}
+
+func (s *ServiceEndpointPolicy) GetType() (rv string) {
+	if s != nil && s.Type != nil {
+		return *s.Type
+	}
+	return
+}
+
 // ServiceEndpointPolicyDefinition - Service Endpoint policy definitions.
 type ServiceEndpointPolicyDefinition struct {
 	// Resource ID.
@@ -10502,6 +29605,41 @@ type ServiceEndpointPolicyDefinition struct {
 	Etag *string
 }
 
+func (s *ServiceEndpointPolicyDefinition) GetID() (rv string) {
+	if s != nil && s.ID != nil {
+		return *s.ID
+	}
+	return
+}
+
+func (s *ServiceEndpointPolicyDefinition) GetName() (rv string) {
+	if s != nil && s.Name != nil {
+		return *s.Name
+	}
+	return
+}
+
+func (s *ServiceEndpointPolicyDefinition) GetProperties() (rv *ServiceEndpointPolicyDefinitionPropertiesFormat) {
+	if s != nil {
+		return s.Properties
+	}
+	return
+}
+
+func (s *ServiceEndpointPolicyDefinition) GetType() (rv string) {
+	if s != nil && s.Type != nil {
+		return *s.Type
+	}
+	return
+}
+
+func (s *ServiceEndpointPolicyDefinition) GetEtag() (rv string) {
+	if s != nil && s.Etag != nil {
+		return *s.Etag
+	}
+	return
+}
+
 // ServiceEndpointPolicyDefinitionListResult - Response for ListServiceEndpointPolicyDefinition API service call. Retrieves
 // all service endpoint policy definition that belongs to a service endpoint policy.
 type ServiceEndpointPolicyDefinitionListResult struct {
@@ -10510,6 +29648,20 @@ type ServiceEndpointPolicyDefinitionListResult struct {
 
 	// The service endpoint policy definition in a service endpoint policy.
 	Value []*ServiceEndpointPolicyDefinition
+}
+
+func (s *ServiceEndpointPolicyDefinitionListResult) GetNextLink() (rv string) {
+	if s != nil && s.NextLink != nil {
+		return *s.NextLink
+	}
+	return
+}
+
+func (s *ServiceEndpointPolicyDefinitionListResult) GetValue() (rv []*ServiceEndpointPolicyDefinition) {
+	if s != nil {
+		return s.Value
+	}
+	return
 }
 
 // ServiceEndpointPolicyDefinitionPropertiesFormat - Service Endpoint policy definition resource.
@@ -10527,6 +29679,34 @@ type ServiceEndpointPolicyDefinitionPropertiesFormat struct {
 	ProvisioningState *ProvisioningState
 }
 
+func (s *ServiceEndpointPolicyDefinitionPropertiesFormat) GetDescription() (rv string) {
+	if s != nil && s.Description != nil {
+		return *s.Description
+	}
+	return
+}
+
+func (s *ServiceEndpointPolicyDefinitionPropertiesFormat) GetService() (rv string) {
+	if s != nil && s.Service != nil {
+		return *s.Service
+	}
+	return
+}
+
+func (s *ServiceEndpointPolicyDefinitionPropertiesFormat) GetServiceResources() (rv []*string) {
+	if s != nil {
+		return s.ServiceResources
+	}
+	return
+}
+
+func (s *ServiceEndpointPolicyDefinitionPropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if s != nil {
+		return s.ProvisioningState
+	}
+	return
+}
+
 // ServiceEndpointPolicyListResult - Response for ListServiceEndpointPolicies API service call.
 type ServiceEndpointPolicyListResult struct {
 	// A list of ServiceEndpointPolicy resources.
@@ -10534,6 +29714,20 @@ type ServiceEndpointPolicyListResult struct {
 
 	// READ-ONLY; The URL to get the next set of results.
 	NextLink *string
+}
+
+func (s *ServiceEndpointPolicyListResult) GetValue() (rv []*ServiceEndpointPolicy) {
+	if s != nil {
+		return s.Value
+	}
+	return
+}
+
+func (s *ServiceEndpointPolicyListResult) GetNextLink() (rv string) {
+	if s != nil && s.NextLink != nil {
+		return *s.NextLink
+	}
+	return
 }
 
 // ServiceEndpointPolicyPropertiesFormat - Service Endpoint Policy resource.
@@ -10557,6 +29751,48 @@ type ServiceEndpointPolicyPropertiesFormat struct {
 	Subnets []*Subnet
 }
 
+func (s *ServiceEndpointPolicyPropertiesFormat) GetContextualServiceEndpointPolicies() (rv []*string) {
+	if s != nil {
+		return s.ContextualServiceEndpointPolicies
+	}
+	return
+}
+
+func (s *ServiceEndpointPolicyPropertiesFormat) GetServiceAlias() (rv string) {
+	if s != nil && s.ServiceAlias != nil {
+		return *s.ServiceAlias
+	}
+	return
+}
+
+func (s *ServiceEndpointPolicyPropertiesFormat) GetServiceEndpointPolicyDefinitions() (rv []*ServiceEndpointPolicyDefinition) {
+	if s != nil {
+		return s.ServiceEndpointPolicyDefinitions
+	}
+	return
+}
+
+func (s *ServiceEndpointPolicyPropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if s != nil {
+		return s.ProvisioningState
+	}
+	return
+}
+
+func (s *ServiceEndpointPolicyPropertiesFormat) GetResourceGUID() (rv string) {
+	if s != nil && s.ResourceGUID != nil {
+		return *s.ResourceGUID
+	}
+	return
+}
+
+func (s *ServiceEndpointPolicyPropertiesFormat) GetSubnets() (rv []*Subnet) {
+	if s != nil {
+		return s.Subnets
+	}
+	return
+}
+
 // ServiceEndpointPropertiesFormat - The service endpoint properties.
 type ServiceEndpointPropertiesFormat struct {
 	// A list of locations.
@@ -10567,6 +29803,27 @@ type ServiceEndpointPropertiesFormat struct {
 
 	// READ-ONLY; The provisioning state of the service endpoint resource.
 	ProvisioningState *ProvisioningState
+}
+
+func (s *ServiceEndpointPropertiesFormat) GetLocations() (rv []*string) {
+	if s != nil {
+		return s.Locations
+	}
+	return
+}
+
+func (s *ServiceEndpointPropertiesFormat) GetService() (rv string) {
+	if s != nil && s.Service != nil {
+		return *s.Service
+	}
+	return
+}
+
+func (s *ServiceEndpointPropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if s != nil {
+		return s.ProvisioningState
+	}
+	return
 }
 
 // ServiceTagInformation - The service tag information.
@@ -10584,6 +29841,34 @@ type ServiceTagInformation struct {
 	ServiceTagChangeNumber *string
 }
 
+func (s *ServiceTagInformation) GetID() (rv string) {
+	if s != nil && s.ID != nil {
+		return *s.ID
+	}
+	return
+}
+
+func (s *ServiceTagInformation) GetName() (rv string) {
+	if s != nil && s.Name != nil {
+		return *s.Name
+	}
+	return
+}
+
+func (s *ServiceTagInformation) GetProperties() (rv *ServiceTagInformationPropertiesFormat) {
+	if s != nil {
+		return s.Properties
+	}
+	return
+}
+
+func (s *ServiceTagInformation) GetServiceTagChangeNumber() (rv string) {
+	if s != nil && s.ServiceTagChangeNumber != nil {
+		return *s.ServiceTagChangeNumber
+	}
+	return
+}
+
 // ServiceTagInformationListResult - Response for Get ServiceTagInformation API service call. Retrieves the list of service
 // tag information resources.
 type ServiceTagInformationListResult struct {
@@ -10592,6 +29877,20 @@ type ServiceTagInformationListResult struct {
 
 	// READ-ONLY; The URL to get the next set of results.
 	NextLink *string
+}
+
+func (s *ServiceTagInformationListResult) GetValue() (rv []*ServiceTagInformation) {
+	if s != nil {
+		return s.Value
+	}
+	return
+}
+
+func (s *ServiceTagInformationListResult) GetNextLink() (rv string) {
+	if s != nil && s.NextLink != nil {
+		return *s.NextLink
+	}
+	return
 }
 
 // ServiceTagInformationPropertiesFormat - Properties of the service tag information.
@@ -10610,6 +29909,41 @@ type ServiceTagInformationPropertiesFormat struct {
 
 	// READ-ONLY; The name of system service.
 	SystemService *string
+}
+
+func (s *ServiceTagInformationPropertiesFormat) GetAddressPrefixes() (rv []*string) {
+	if s != nil {
+		return s.AddressPrefixes
+	}
+	return
+}
+
+func (s *ServiceTagInformationPropertiesFormat) GetChangeNumber() (rv string) {
+	if s != nil && s.ChangeNumber != nil {
+		return *s.ChangeNumber
+	}
+	return
+}
+
+func (s *ServiceTagInformationPropertiesFormat) GetRegion() (rv string) {
+	if s != nil && s.Region != nil {
+		return *s.Region
+	}
+	return
+}
+
+func (s *ServiceTagInformationPropertiesFormat) GetState() (rv string) {
+	if s != nil && s.State != nil {
+		return *s.State
+	}
+	return
+}
+
+func (s *ServiceTagInformationPropertiesFormat) GetSystemService() (rv string) {
+	if s != nil && s.SystemService != nil {
+		return *s.SystemService
+	}
+	return
 }
 
 // ServiceTagsListResult - Response for the ListServiceTags API service call.
@@ -10636,10 +29970,66 @@ type ServiceTagsListResult struct {
 	Values []*ServiceTagInformation
 }
 
+func (s *ServiceTagsListResult) GetChangeNumber() (rv string) {
+	if s != nil && s.ChangeNumber != nil {
+		return *s.ChangeNumber
+	}
+	return
+}
+
+func (s *ServiceTagsListResult) GetCloud() (rv string) {
+	if s != nil && s.Cloud != nil {
+		return *s.Cloud
+	}
+	return
+}
+
+func (s *ServiceTagsListResult) GetID() (rv string) {
+	if s != nil && s.ID != nil {
+		return *s.ID
+	}
+	return
+}
+
+func (s *ServiceTagsListResult) GetName() (rv string) {
+	if s != nil && s.Name != nil {
+		return *s.Name
+	}
+	return
+}
+
+func (s *ServiceTagsListResult) GetNextLink() (rv string) {
+	if s != nil && s.NextLink != nil {
+		return *s.NextLink
+	}
+	return
+}
+
+func (s *ServiceTagsListResult) GetType() (rv string) {
+	if s != nil && s.Type != nil {
+		return *s.Type
+	}
+	return
+}
+
+func (s *ServiceTagsListResult) GetValues() (rv []*ServiceTagInformation) {
+	if s != nil {
+		return s.Values
+	}
+	return
+}
+
 // SessionIDs - List of session IDs.
 type SessionIDs struct {
 	// List of session IDs.
 	SessionIDs []*string
+}
+
+func (s *SessionIDs) GetSessionIDs() (rv []*string) {
+	if s != nil {
+		return s.SessionIDs
+	}
+	return
 }
 
 // SignatureOverridesFilterValuesQuery - Describes the filter values possibles for a given column
@@ -10648,10 +30038,24 @@ type SignatureOverridesFilterValuesQuery struct {
 	FilterName *string
 }
 
+func (s *SignatureOverridesFilterValuesQuery) GetFilterName() (rv string) {
+	if s != nil && s.FilterName != nil {
+		return *s.FilterName
+	}
+	return
+}
+
 // SignatureOverridesFilterValuesResponse - Describes the list of all possible values for a specific filter value
 type SignatureOverridesFilterValuesResponse struct {
 	// Describes the possible values
 	FilterValues []*string
+}
+
+func (s *SignatureOverridesFilterValuesResponse) GetFilterValues() (rv []*string) {
+	if s != nil {
+		return s.FilterValues
+	}
+	return
 }
 
 // SignaturesOverrides - Contains all specific policy signatures overrides for the IDPS
@@ -10669,16 +30073,58 @@ type SignaturesOverrides struct {
 	Type *string
 }
 
+func (s *SignaturesOverrides) GetID() (rv string) {
+	if s != nil && s.ID != nil {
+		return *s.ID
+	}
+	return
+}
+
+func (s *SignaturesOverrides) GetName() (rv string) {
+	if s != nil && s.Name != nil {
+		return *s.Name
+	}
+	return
+}
+
+func (s *SignaturesOverrides) GetProperties() (rv *SignaturesOverridesProperties) {
+	if s != nil {
+		return s.Properties
+	}
+	return
+}
+
+func (s *SignaturesOverrides) GetType() (rv string) {
+	if s != nil && s.Type != nil {
+		return *s.Type
+	}
+	return
+}
+
 // SignaturesOverridesList - Describes an object containing an array with a single item
 type SignaturesOverridesList struct {
 	// Describes a list consisting exactly one item describing the policy's signature override status
 	Value []*SignaturesOverrides
 }
 
+func (s *SignaturesOverridesList) GetValue() (rv []*SignaturesOverrides) {
+	if s != nil {
+		return s.Value
+	}
+	return
+}
+
 // SignaturesOverridesProperties - Will contain the properties of the resource (the actual signature overrides)
 type SignaturesOverridesProperties struct {
 	// Dictionary of
 	Signatures map[string]*string
+}
+
+func (s *SignaturesOverridesProperties) GetSignatures() (rv map[string]*string) {
+	if s != nil {
+		return s.Signatures
+	}
+	return
 }
 
 type SingleQueryResult struct {
@@ -10716,6 +30162,83 @@ type SingleQueryResult struct {
 	SourcePorts []*string
 }
 
+func (s *SingleQueryResult) GetDescription() (rv string) {
+	if s != nil && s.Description != nil {
+		return *s.Description
+	}
+	return
+}
+
+func (s *SingleQueryResult) GetDestinationPorts() (rv []*string) {
+	if s != nil {
+		return s.DestinationPorts
+	}
+	return
+}
+
+func (s *SingleQueryResult) GetDirection() (rv *FirewallPolicyIDPSSignatureDirection) {
+	if s != nil {
+		return s.Direction
+	}
+	return
+}
+
+func (s *SingleQueryResult) GetGroup() (rv string) {
+	if s != nil && s.Group != nil {
+		return *s.Group
+	}
+	return
+}
+
+func (s *SingleQueryResult) GetInheritedFromParentPolicy() (rv bool) {
+	if s != nil && s.InheritedFromParentPolicy != nil {
+		return *s.InheritedFromParentPolicy
+	}
+	return
+}
+
+func (s *SingleQueryResult) GetLastUpdated() (rv string) {
+	if s != nil && s.LastUpdated != nil {
+		return *s.LastUpdated
+	}
+	return
+}
+
+func (s *SingleQueryResult) GetMode() (rv *FirewallPolicyIDPSSignatureMode) {
+	if s != nil {
+		return s.Mode
+	}
+	return
+}
+
+func (s *SingleQueryResult) GetProtocol() (rv string) {
+	if s != nil && s.Protocol != nil {
+		return *s.Protocol
+	}
+	return
+}
+
+func (s *SingleQueryResult) GetSeverity() (rv *FirewallPolicyIDPSSignatureSeverity) {
+	if s != nil {
+		return s.Severity
+	}
+	return
+}
+
+func (s *SingleQueryResult) GetSignatureID() (rv int32) {
+	if s != nil && s.SignatureID != nil {
+		return *s.SignatureID
+	}
+	return
+}
+
+func (s *SingleQueryResult) GetSourcePorts() (rv []*string) {
+	if s != nil {
+		return s.SourcePorts
+	}
+	return
+}
+
 // StaticMember Item.
 type StaticMember struct {
 	// The Static Member properties
@@ -10737,6 +30260,48 @@ type StaticMember struct {
 	Type *string
 }
 
+func (s *StaticMember) GetProperties() (rv *StaticMemberProperties) {
+	if s != nil {
+		return s.Properties
+	}
+	return
+}
+
+func (s *StaticMember) GetEtag() (rv string) {
+	if s != nil && s.Etag != nil {
+		return *s.Etag
+	}
+	return
+}
+
+func (s *StaticMember) GetID() (rv string) {
+	if s != nil && s.ID != nil {
+		return *s.ID
+	}
+	return
+}
+
+func (s *StaticMember) GetName() (rv string) {
+	if s != nil && s.Name != nil {
+		return *s.Name
+	}
+	return
+}
+
+func (s *StaticMember) GetSystemData() (rv *SystemData) {
+	if s != nil {
+		return s.SystemData
+	}
+	return
+}
+
+func (s *StaticMember) GetType() (rv string) {
+	if s != nil && s.Type != nil {
+		return *s.Type
+	}
+	return
+}
+
 // StaticMemberListResult - Result of the request to list StaticMember. It contains a list of groups and a URL link to get
 // the next set of results.
 type StaticMemberListResult struct {
@@ -10745,6 +30310,20 @@ type StaticMemberListResult struct {
 
 	// Gets a page of StaticMember
 	Value []*StaticMember
+}
+
+func (s *StaticMemberListResult) GetNextLink() (rv string) {
+	if s != nil && s.NextLink != nil {
+		return *s.NextLink
+	}
+	return
+}
+
+func (s *StaticMemberListResult) GetValue() (rv []*StaticMember) {
+	if s != nil {
+		return s.Value
+	}
+	return
 }
 
 // StaticMemberProperties - Properties of static member.
@@ -10759,6 +30338,27 @@ type StaticMemberProperties struct {
 	Region *string
 }
 
+func (s *StaticMemberProperties) GetResourceID() (rv string) {
+	if s != nil && s.ResourceID != nil {
+		return *s.ResourceID
+	}
+	return
+}
+
+func (s *StaticMemberProperties) GetProvisioningState() (rv *ProvisioningState) {
+	if s != nil {
+		return s.ProvisioningState
+	}
+	return
+}
+
+func (s *StaticMemberProperties) GetRegion() (rv string) {
+	if s != nil && s.Region != nil {
+		return *s.Region
+	}
+	return
+}
+
 // StaticRoute - List of all Static Routes.
 type StaticRoute struct {
 	// List of all address prefixes.
@@ -10771,6 +30371,27 @@ type StaticRoute struct {
 	NextHopIPAddress *string
 }
 
+func (s *StaticRoute) GetAddressPrefixes() (rv []*string) {
+	if s != nil {
+		return s.AddressPrefixes
+	}
+	return
+}
+
+func (s *StaticRoute) GetName() (rv string) {
+	if s != nil && s.Name != nil {
+		return *s.Name
+	}
+	return
+}
+
+func (s *StaticRoute) GetNextHopIPAddress() (rv string) {
+	if s != nil && s.NextHopIPAddress != nil {
+		return *s.NextHopIPAddress
+	}
+	return
+}
+
 // StaticRoutesConfig - Configuration for static routes on this HubVnetConnectionConfiguration for static routes on this HubVnetConnection.
 type StaticRoutesConfig struct {
 	// Parameter determining whether NVA in spoke vnet is bypassed for traffic with destination in spoke.
@@ -10781,10 +30402,31 @@ type StaticRoutesConfig struct {
 	PropagateStaticRoutes *bool
 }
 
+func (s *StaticRoutesConfig) GetVnetLocalRouteOverrideCriteria() (rv *VnetLocalRouteOverrideCriteria) {
+	if s != nil {
+		return s.VnetLocalRouteOverrideCriteria
+	}
+	return
+}
+
+func (s *StaticRoutesConfig) GetPropagateStaticRoutes() (rv bool) {
+	if s != nil && s.PropagateStaticRoutes != nil {
+		return *s.PropagateStaticRoutes
+	}
+	return
+}
+
 // SubResource - Reference to another subresource.
 type SubResource struct {
 	// Resource ID.
 	ID *string
+}
+
+func (s *SubResource) GetID() (rv string) {
+	if s != nil && s.ID != nil {
+		return *s.ID
+	}
+	return
 }
 
 // Subnet in a virtual network resource.
@@ -10805,6 +30447,41 @@ type Subnet struct {
 	Etag *string
 }
 
+func (s *Subnet) GetID() (rv string) {
+	if s != nil && s.ID != nil {
+		return *s.ID
+	}
+	return
+}
+
+func (s *Subnet) GetName() (rv string) {
+	if s != nil && s.Name != nil {
+		return *s.Name
+	}
+	return
+}
+
+func (s *Subnet) GetProperties() (rv *SubnetPropertiesFormat) {
+	if s != nil {
+		return s.Properties
+	}
+	return
+}
+
+func (s *Subnet) GetType() (rv string) {
+	if s != nil && s.Type != nil {
+		return *s.Type
+	}
+	return
+}
+
+func (s *Subnet) GetEtag() (rv string) {
+	if s != nil && s.Etag != nil {
+		return *s.Etag
+	}
+	return
+}
+
 // SubnetAssociation - Subnet and it's custom security rules.
 type SubnetAssociation struct {
 	// Collection of custom security rules.
@@ -10814,6 +30491,20 @@ type SubnetAssociation struct {
 	ID *string
 }
 
+func (s *SubnetAssociation) GetSecurityRules() (rv []*SecurityRule) {
+	if s != nil {
+		return s.SecurityRules
+	}
+	return
+}
+
+func (s *SubnetAssociation) GetID() (rv string) {
+	if s != nil && s.ID != nil {
+		return *s.ID
+	}
+	return
+}
+
 // SubnetListResult - Response for ListSubnets API service callRetrieves all subnet that belongs to a virtual network.
 type SubnetListResult struct {
 	// The URL to get the next set of results.
@@ -10821,6 +30512,20 @@ type SubnetListResult struct {
 
 	// The subnets in a virtual network.
 	Value []*Subnet
+}
+
+func (s *SubnetListResult) GetNextLink() (rv string) {
+	if s != nil && s.NextLink != nil {
+		return *s.NextLink
+	}
+	return
+}
+
+func (s *SubnetListResult) GetValue() (rv []*Subnet) {
+	if s != nil {
+		return s.Value
+	}
+	return
 }
 
 // SubnetPropertiesFormat - Properties of the subnet.
@@ -10884,6 +30589,139 @@ type SubnetPropertiesFormat struct {
 	ServiceAssociationLinks []*ServiceAssociationLink
 }
 
+func (s *SubnetPropertiesFormat) GetAddressPrefix() (rv string) {
+	if s != nil && s.AddressPrefix != nil {
+		return *s.AddressPrefix
+	}
+	return
+}
+
+func (s *SubnetPropertiesFormat) GetAddressPrefixes() (rv []*string) {
+	if s != nil {
+		return s.AddressPrefixes
+	}
+	return
+}
+
+func (s *SubnetPropertiesFormat) GetApplicationGatewayIPConfigurations() (rv []*ApplicationGatewayIPConfiguration) {
+	if s != nil {
+		return s.ApplicationGatewayIPConfigurations
+	}
+	return
+}
+
+func (s *SubnetPropertiesFormat) GetDelegations() (rv []*Delegation) {
+	if s != nil {
+		return s.Delegations
+	}
+	return
+}
+
+func (s *SubnetPropertiesFormat) GetIPAllocations() (rv []*SubResource) {
+	if s != nil {
+		return s.IPAllocations
+	}
+	return
+}
+
+func (s *SubnetPropertiesFormat) GetNatGateway() (rv *SubResource) {
+	if s != nil {
+		return s.NatGateway
+	}
+	return
+}
+
+func (s *SubnetPropertiesFormat) GetNetworkSecurityGroup() (rv *SecurityGroup) {
+	if s != nil {
+		return s.NetworkSecurityGroup
+	}
+	return
+}
+
+func (s *SubnetPropertiesFormat) GetPrivateEndpointNetworkPolicies() (rv *VirtualNetworkPrivateEndpointNetworkPolicies) {
+	if s != nil {
+		return s.PrivateEndpointNetworkPolicies
+	}
+	return
+}
+
+func (s *SubnetPropertiesFormat) GetPrivateLinkServiceNetworkPolicies() (rv *VirtualNetworkPrivateLinkServiceNetworkPolicies) {
+	if s != nil {
+		return s.PrivateLinkServiceNetworkPolicies
+	}
+	return
+}
+
+func (s *SubnetPropertiesFormat) GetRouteTable() (rv *RouteTable) {
+	if s != nil {
+		return s.RouteTable
+	}
+	return
+}
+
+func (s *SubnetPropertiesFormat) GetServiceEndpointPolicies() (rv []*ServiceEndpointPolicy) {
+	if s != nil {
+		return s.ServiceEndpointPolicies
+	}
+	return
+}
+
+func (s *SubnetPropertiesFormat) GetServiceEndpoints() (rv []*ServiceEndpointPropertiesFormat) {
+	if s != nil {
+		return s.ServiceEndpoints
+	}
+	return
+}
+
+func (s *SubnetPropertiesFormat) GetIPConfigurationProfiles() (rv []*IPConfigurationProfile) {
+	if s != nil {
+		return s.IPConfigurationProfiles
+	}
+	return
+}
+
+func (s *SubnetPropertiesFormat) GetIPConfigurations() (rv []*IPConfiguration) {
+	if s != nil {
+		return s.IPConfigurations
+	}
+	return
+}
+
+func (s *SubnetPropertiesFormat) GetPrivateEndpoints() (rv []*PrivateEndpoint) {
+	if s != nil {
+		return s.PrivateEndpoints
+	}
+	return
+}
+
+func (s *SubnetPropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if s != nil {
+		return s.ProvisioningState
+	}
+	return
+}
+
+func (s *SubnetPropertiesFormat) GetPurpose() (rv string) {
+	if s != nil && s.Purpose != nil {
+		return *s.Purpose
+	}
+	return
+}
+
+func (s *SubnetPropertiesFormat) GetResourceNavigationLinks() (rv []*ResourceNavigationLink) {
+	if s != nil {
+		return s.ResourceNavigationLinks
+	}
+	return
+}
+
+func (s *SubnetPropertiesFormat) GetServiceAssociationLinks() (rv []*ServiceAssociationLink) {
+	if s != nil {
+		return s.ServiceAssociationLinks
+	}
+	return
+}
+
 // SwapResource to represent slot type on the specified cloud service.
 type SwapResource struct {
 	// Swap resource properties
@@ -10899,15 +30737,57 @@ type SwapResource struct {
 	Type *string
 }
 
+func (s *SwapResource) GetProperties() (rv *SwapResourceProperties) {
+	if s != nil {
+		return s.Properties
+	}
+	return
+}
+
+func (s *SwapResource) GetID() (rv string) {
+	if s != nil && s.ID != nil {
+		return *s.ID
+	}
+	return
+}
+
+func (s *SwapResource) GetName() (rv string) {
+	if s != nil && s.Name != nil {
+		return *s.Name
+	}
+	return
+}
+
+func (s *SwapResource) GetType() (rv string) {
+	if s != nil && s.Type != nil {
+		return *s.Type
+	}
+	return
+}
+
 // SwapResourceListResult - SwapResource List with single entry to represent slot type on the specified cloud service.
 type SwapResourceListResult struct {
 	Value []*SwapResource
+}
+
+func (s *SwapResourceListResult) GetValue() (rv []*SwapResource) {
+	if s != nil {
+		return s.Value
+	}
+	return
 }
 
 // SwapResourceProperties - Swap resource properties
 type SwapResourceProperties struct {
 	// Specifies slot info on a cloud service
 	SlotType *SlotType
+}
+
+func (s *SwapResourceProperties) GetSlotType() (rv *SlotType) {
+	if s != nil {
+		return s.SlotType
+	}
+	return
 }
 
 // SystemData - Metadata pertaining to creation and last modification of the resource.
@@ -10931,10 +30811,59 @@ type SystemData struct {
 	LastModifiedByType *CreatedByType
 }
 
+func (s *SystemData) GetCreatedAt() (rv *time.Time) {
+	if s != nil {
+		return s.CreatedAt
+	}
+	return
+}
+
+func (s *SystemData) GetCreatedBy() (rv string) {
+	if s != nil && s.CreatedBy != nil {
+		return *s.CreatedBy
+	}
+	return
+}
+
+func (s *SystemData) GetCreatedByType() (rv *CreatedByType) {
+	if s != nil {
+		return s.CreatedByType
+	}
+	return
+}
+
+func (s *SystemData) GetLastModifiedAt() (rv *time.Time) {
+	if s != nil {
+		return s.LastModifiedAt
+	}
+	return
+}
+
+func (s *SystemData) GetLastModifiedBy() (rv string) {
+	if s != nil && s.LastModifiedBy != nil {
+		return *s.LastModifiedBy
+	}
+	return
+}
+
+func (s *SystemData) GetLastModifiedByType() (rv *CreatedByType) {
+	if s != nil {
+		return s.LastModifiedByType
+	}
+	return
+}
+
 // TagsObject - Tags object for patch operations.
 type TagsObject struct {
 	// Resource tags.
 	Tags map[string]*string
+}
+
+func (t *TagsObject) GetTags() (rv map[string]*string) {
+	if t != nil {
+		return t.Tags
+	}
+	return
 }
 
 // Topology of the specified resource group.
@@ -10952,6 +30881,34 @@ type Topology struct {
 	LastModified *time.Time
 }
 
+func (t *Topology) GetResources() (rv []*TopologyResource) {
+	if t != nil {
+		return t.Resources
+	}
+	return
+}
+
+func (t *Topology) GetCreatedDateTime() (rv *time.Time) {
+	if t != nil {
+		return t.CreatedDateTime
+	}
+	return
+}
+
+func (t *Topology) GetID() (rv string) {
+	if t != nil && t.ID != nil {
+		return *t.ID
+	}
+	return
+}
+
+func (t *Topology) GetLastModified() (rv *time.Time) {
+	if t != nil {
+		return t.LastModified
+	}
+	return
+}
+
 // TopologyAssociation - Resources that have an association with the parent resource.
 type TopologyAssociation struct {
 	// The association type of the child resource to the parent resource.
@@ -10964,6 +30921,27 @@ type TopologyAssociation struct {
 	ResourceID *string
 }
 
+func (t *TopologyAssociation) GetAssociationType() (rv *AssociationType) {
+	if t != nil {
+		return t.AssociationType
+	}
+	return
+}
+
+func (t *TopologyAssociation) GetName() (rv string) {
+	if t != nil && t.Name != nil {
+		return *t.Name
+	}
+	return
+}
+
+func (t *TopologyAssociation) GetResourceID() (rv string) {
+	if t != nil && t.ResourceID != nil {
+		return *t.ResourceID
+	}
+	return
+}
+
 // TopologyParameters - Parameters that define the representation of topology.
 type TopologyParameters struct {
 	// The name of the target resource group to perform topology on.
@@ -10974,6 +30952,27 @@ type TopologyParameters struct {
 
 	// The reference to the Virtual Network resource.
 	TargetVirtualNetwork *SubResource
+}
+
+func (t *TopologyParameters) GetTargetResourceGroupName() (rv string) {
+	if t != nil && t.TargetResourceGroupName != nil {
+		return *t.TargetResourceGroupName
+	}
+	return
+}
+
+func (t *TopologyParameters) GetTargetSubnet() (rv *SubResource) {
+	if t != nil {
+		return t.TargetSubnet
+	}
+	return
+}
+
+func (t *TopologyParameters) GetTargetVirtualNetwork() (rv *SubResource) {
+	if t != nil {
+		return t.TargetVirtualNetwork
+	}
+	return
 }
 
 // TopologyResource - The network resource topology information for the given resource group.
@@ -10989,6 +30988,34 @@ type TopologyResource struct {
 
 	// Name of the resource.
 	Name *string
+}
+
+func (t *TopologyResource) GetAssociations() (rv []*TopologyAssociation) {
+	if t != nil {
+		return t.Associations
+	}
+	return
+}
+
+func (t *TopologyResource) GetID() (rv string) {
+	if t != nil && t.ID != nil {
+		return *t.ID
+	}
+	return
+}
+
+func (t *TopologyResource) GetLocation() (rv string) {
+	if t != nil && t.Location != nil {
+		return *t.Location
+	}
+	return
+}
+
+func (t *TopologyResource) GetName() (rv string) {
+	if t != nil && t.Name != nil {
+		return *t.Name
+	}
+	return
 }
 
 // TrafficAnalyticsConfigurationProperties - Parameters that define the configuration of traffic analytics.
@@ -11009,10 +31036,52 @@ type TrafficAnalyticsConfigurationProperties struct {
 	WorkspaceResourceID *string
 }
 
+func (t *TrafficAnalyticsConfigurationProperties) GetEnabled() (rv bool) {
+	if t != nil && t.Enabled != nil {
+		return *t.Enabled
+	}
+	return
+}
+
+func (t *TrafficAnalyticsConfigurationProperties) GetTrafficAnalyticsInterval() (rv int32) {
+	if t != nil && t.TrafficAnalyticsInterval != nil {
+		return *t.TrafficAnalyticsInterval
+	}
+	return
+}
+
+func (t *TrafficAnalyticsConfigurationProperties) GetWorkspaceID() (rv string) {
+	if t != nil && t.WorkspaceID != nil {
+		return *t.WorkspaceID
+	}
+	return
+}
+
+func (t *TrafficAnalyticsConfigurationProperties) GetWorkspaceRegion() (rv string) {
+	if t != nil && t.WorkspaceRegion != nil {
+		return *t.WorkspaceRegion
+	}
+	return
+}
+
+func (t *TrafficAnalyticsConfigurationProperties) GetWorkspaceResourceID() (rv string) {
+	if t != nil && t.WorkspaceResourceID != nil {
+		return *t.WorkspaceResourceID
+	}
+	return
+}
+
 // TrafficAnalyticsProperties - Parameters that define the configuration of traffic analytics.
 type TrafficAnalyticsProperties struct {
 	// Parameters that define the configuration of traffic analytics.
 	NetworkWatcherFlowAnalyticsConfiguration *TrafficAnalyticsConfigurationProperties
+}
+
+func (t *TrafficAnalyticsProperties) GetNetworkWatcherFlowAnalyticsConfiguration() (rv *TrafficAnalyticsConfigurationProperties) {
+	if t != nil {
+		return t.NetworkWatcherFlowAnalyticsConfiguration
+	}
+	return
 }
 
 // TrafficSelectorPolicy - An traffic selector policy for a virtual network gateway connection.
@@ -11022,6 +31091,20 @@ type TrafficSelectorPolicy struct {
 
 	// REQUIRED; A collection of remote address spaces in CIDR format.
 	RemoteAddressRanges []*string
+}
+
+func (t *TrafficSelectorPolicy) GetLocalAddressRanges() (rv []*string) {
+	if t != nil {
+		return t.LocalAddressRanges
+	}
+	return
+}
+
+func (t *TrafficSelectorPolicy) GetRemoteAddressRanges() (rv []*string) {
+	if t != nil {
+		return t.RemoteAddressRanges
+	}
+	return
 }
 
 // TroubleshootingDetails - Information gained from troubleshooting of specified resource.
@@ -11042,6 +31125,41 @@ type TroubleshootingDetails struct {
 	Summary *string
 }
 
+func (t *TroubleshootingDetails) GetDetail() (rv string) {
+	if t != nil && t.Detail != nil {
+		return *t.Detail
+	}
+	return
+}
+
+func (t *TroubleshootingDetails) GetID() (rv string) {
+	if t != nil && t.ID != nil {
+		return *t.ID
+	}
+	return
+}
+
+func (t *TroubleshootingDetails) GetReasonType() (rv string) {
+	if t != nil && t.ReasonType != nil {
+		return *t.ReasonType
+	}
+	return
+}
+
+func (t *TroubleshootingDetails) GetRecommendedActions() (rv []*TroubleshootingRecommendedActions) {
+	if t != nil {
+		return t.RecommendedActions
+	}
+	return
+}
+
+func (t *TroubleshootingDetails) GetSummary() (rv string) {
+	if t != nil && t.Summary != nil {
+		return *t.Summary
+	}
+	return
+}
+
 // TroubleshootingParameters - Parameters that define the resource to troubleshoot.
 type TroubleshootingParameters struct {
 	// REQUIRED; Properties of the troubleshooting resource.
@@ -11051,6 +31169,20 @@ type TroubleshootingParameters struct {
 	TargetResourceID *string
 }
 
+func (t *TroubleshootingParameters) GetProperties() (rv *TroubleshootingProperties) {
+	if t != nil {
+		return t.Properties
+	}
+	return
+}
+
+func (t *TroubleshootingParameters) GetTargetResourceID() (rv string) {
+	if t != nil && t.TargetResourceID != nil {
+		return *t.TargetResourceID
+	}
+	return
+}
+
 // TroubleshootingProperties - Storage location provided for troubleshoot.
 type TroubleshootingProperties struct {
 	// REQUIRED; The ID for the storage account to save the troubleshoot result.
@@ -11058,6 +31190,20 @@ type TroubleshootingProperties struct {
 
 	// REQUIRED; The path to the blob to save the troubleshoot result in.
 	StoragePath *string
+}
+
+func (t *TroubleshootingProperties) GetStorageID() (rv string) {
+	if t != nil && t.StorageID != nil {
+		return *t.StorageID
+	}
+	return
+}
+
+func (t *TroubleshootingProperties) GetStoragePath() (rv string) {
+	if t != nil && t.StoragePath != nil {
+		return *t.StoragePath
+	}
+	return
 }
 
 // TroubleshootingRecommendedActions - Recommended actions based on discovered issues.
@@ -11075,6 +31221,34 @@ type TroubleshootingRecommendedActions struct {
 	ActionURIText *string
 }
 
+func (t *TroubleshootingRecommendedActions) GetActionID() (rv string) {
+	if t != nil && t.ActionID != nil {
+		return *t.ActionID
+	}
+	return
+}
+
+func (t *TroubleshootingRecommendedActions) GetActionText() (rv string) {
+	if t != nil && t.ActionText != nil {
+		return *t.ActionText
+	}
+	return
+}
+
+func (t *TroubleshootingRecommendedActions) GetActionURI() (rv string) {
+	if t != nil && t.ActionURI != nil {
+		return *t.ActionURI
+	}
+	return
+}
+
+func (t *TroubleshootingRecommendedActions) GetActionURIText() (rv string) {
+	if t != nil && t.ActionURIText != nil {
+		return *t.ActionURIText
+	}
+	return
+}
+
 // TroubleshootingResult - Troubleshooting information gained from specified resource.
 type TroubleshootingResult struct {
 	// The result code of the troubleshooting.
@@ -11088,6 +31262,34 @@ type TroubleshootingResult struct {
 
 	// The start time of the troubleshooting.
 	StartTime *time.Time
+}
+
+func (t *TroubleshootingResult) GetCode() (rv string) {
+	if t != nil && t.Code != nil {
+		return *t.Code
+	}
+	return
+}
+
+func (t *TroubleshootingResult) GetEndTime() (rv *time.Time) {
+	if t != nil {
+		return t.EndTime
+	}
+	return
+}
+
+func (t *TroubleshootingResult) GetResults() (rv []*TroubleshootingDetails) {
+	if t != nil {
+		return t.Results
+	}
+	return
+}
+
+func (t *TroubleshootingResult) GetStartTime() (rv *time.Time) {
+	if t != nil {
+		return t.StartTime
+	}
+	return
 }
 
 // TunnelConnectionHealth - VirtualNetworkGatewayConnection properties.
@@ -11108,10 +31310,52 @@ type TunnelConnectionHealth struct {
 	Tunnel *string
 }
 
+func (t *TunnelConnectionHealth) GetConnectionStatus() (rv *VirtualNetworkGatewayConnectionStatus) {
+	if t != nil {
+		return t.ConnectionStatus
+	}
+	return
+}
+
+func (t *TunnelConnectionHealth) GetEgressBytesTransferred() (rv int64) {
+	if t != nil && t.EgressBytesTransferred != nil {
+		return *t.EgressBytesTransferred
+	}
+	return
+}
+
+func (t *TunnelConnectionHealth) GetIngressBytesTransferred() (rv int64) {
+	if t != nil && t.IngressBytesTransferred != nil {
+		return *t.IngressBytesTransferred
+	}
+	return
+}
+
+func (t *TunnelConnectionHealth) GetLastConnectionEstablishedUTCTime() (rv string) {
+	if t != nil && t.LastConnectionEstablishedUTCTime != nil {
+		return *t.LastConnectionEstablishedUTCTime
+	}
+	return
+}
+
+func (t *TunnelConnectionHealth) GetTunnel() (rv string) {
+	if t != nil && t.Tunnel != nil {
+		return *t.Tunnel
+	}
+	return
+}
+
 // UnprepareNetworkPoliciesRequest - Details of UnprepareNetworkPolicies for Subnet.
 type UnprepareNetworkPoliciesRequest struct {
 	// The name of the service for which subnet is being unprepared for.
 	ServiceName *string
+}
+
+func (u *UnprepareNetworkPoliciesRequest) GetServiceName() (rv string) {
+	if u != nil && u.ServiceName != nil {
+		return *u.ServiceName
+	}
+	return
 }
 
 // Usage - The network resource usage.
@@ -11132,6 +31376,41 @@ type Usage struct {
 	ID *string
 }
 
+func (u *Usage) GetCurrentValue() (rv int64) {
+	if u != nil && u.CurrentValue != nil {
+		return *u.CurrentValue
+	}
+	return
+}
+
+func (u *Usage) GetLimit() (rv int64) {
+	if u != nil && u.Limit != nil {
+		return *u.Limit
+	}
+	return
+}
+
+func (u *Usage) GetName() (rv *UsageName) {
+	if u != nil {
+		return u.Name
+	}
+	return
+}
+
+func (u *Usage) GetUnit() (rv *UsageUnit) {
+	if u != nil {
+		return u.Unit
+	}
+	return
+}
+
+func (u *Usage) GetID() (rv string) {
+	if u != nil && u.ID != nil {
+		return *u.ID
+	}
+	return
+}
+
 // UsageName - The usage names.
 type UsageName struct {
 	// A localized string describing the resource name.
@@ -11141,6 +31420,20 @@ type UsageName struct {
 	Value *string
 }
 
+func (u *UsageName) GetLocalizedValue() (rv string) {
+	if u != nil && u.LocalizedValue != nil {
+		return *u.LocalizedValue
+	}
+	return
+}
+
+func (u *UsageName) GetValue() (rv string) {
+	if u != nil && u.Value != nil {
+		return *u.Value
+	}
+	return
+}
+
 // UsagesListResult - The list usages operation response.
 type UsagesListResult struct {
 	// URL to get the next set of results.
@@ -11148,6 +31441,20 @@ type UsagesListResult struct {
 
 	// The list network resource usages.
 	Value []*Usage
+}
+
+func (u *UsagesListResult) GetNextLink() (rv string) {
+	if u != nil && u.NextLink != nil {
+		return *u.NextLink
+	}
+	return
+}
+
+func (u *UsagesListResult) GetValue() (rv []*Usage) {
+	if u != nil {
+		return u.Value
+	}
+	return
 }
 
 // VM - Describes a Virtual Machine.
@@ -11166,6 +31473,41 @@ type VM struct {
 
 	// READ-ONLY; Resource type.
 	Type *string
+}
+
+func (v *VM) GetID() (rv string) {
+	if v != nil && v.ID != nil {
+		return *v.ID
+	}
+	return
+}
+
+func (v *VM) GetLocation() (rv string) {
+	if v != nil && v.Location != nil {
+		return *v.Location
+	}
+	return
+}
+
+func (v *VM) GetTags() (rv map[string]*string) {
+	if v != nil {
+		return v.Tags
+	}
+	return
+}
+
+func (v *VM) GetName() (rv string) {
+	if v != nil && v.Name != nil {
+		return *v.Name
+	}
+	return
+}
+
+func (v *VM) GetType() (rv string) {
+	if v != nil && v.Type != nil {
+		return *v.Type
+	}
+	return
 }
 
 // VPNClientConfiguration - VpnClientConfiguration for P2S client.
@@ -11210,6 +31552,97 @@ type VPNClientConfiguration struct {
 	VngClientConnectionConfigurations []*VngClientConnectionConfiguration
 }
 
+func (v *VPNClientConfiguration) GetAADAudience() (rv string) {
+	if v != nil && v.AADAudience != nil {
+		return *v.AADAudience
+	}
+	return
+}
+
+func (v *VPNClientConfiguration) GetAADIssuer() (rv string) {
+	if v != nil && v.AADIssuer != nil {
+		return *v.AADIssuer
+	}
+	return
+}
+
+func (v *VPNClientConfiguration) GetAADTenant() (rv string) {
+	if v != nil && v.AADTenant != nil {
+		return *v.AADTenant
+	}
+	return
+}
+
+func (v *VPNClientConfiguration) GetRadiusServerAddress() (rv string) {
+	if v != nil && v.RadiusServerAddress != nil {
+		return *v.RadiusServerAddress
+	}
+	return
+}
+
+func (v *VPNClientConfiguration) GetRadiusServerSecret() (rv string) {
+	if v != nil && v.RadiusServerSecret != nil {
+		return *v.RadiusServerSecret
+	}
+	return
+}
+
+func (v *VPNClientConfiguration) GetRadiusServers() (rv []*RadiusServer) {
+	if v != nil {
+		return v.RadiusServers
+	}
+	return
+}
+
+func (v *VPNClientConfiguration) GetVPNAuthenticationTypes() (rv []*VPNAuthenticationType) {
+	if v != nil {
+		return v.VPNAuthenticationTypes
+	}
+	return
+}
+
+func (v *VPNClientConfiguration) GetVPNClientAddressPool() (rv *AddressSpace) {
+	if v != nil {
+		return v.VPNClientAddressPool
+	}
+	return
+}
+
+func (v *VPNClientConfiguration) GetVPNClientIPSecPolicies() (rv []*IPSecPolicy) {
+	if v != nil {
+		return v.VPNClientIPSecPolicies
+	}
+	return
+}
+
+func (v *VPNClientConfiguration) GetVPNClientProtocols() (rv []*VPNClientProtocol) {
+	if v != nil {
+		return v.VPNClientProtocols
+	}
+	return
+}
+
+func (v *VPNClientConfiguration) GetVPNClientRevokedCertificates() (rv []*VPNClientRevokedCertificate) {
+	if v != nil {
+		return v.VPNClientRevokedCertificates
+	}
+	return
+}
+
+func (v *VPNClientConfiguration) GetVPNClientRootCertificates() (rv []*VPNClientRootCertificate) {
+	if v != nil {
+		return v.VPNClientRootCertificates
+	}
+	return
+}
+
+func (v *VPNClientConfiguration) GetVngClientConnectionConfigurations() (rv []*VngClientConnectionConfiguration) {
+	if v != nil {
+		return v.VngClientConnectionConfigurations
+	}
+	return
+}
+
 // VPNClientConnectionHealth - VpnClientConnectionHealth properties.
 type VPNClientConnectionHealth struct {
 	// List of allocated ip addresses to the connected p2s vpn clients.
@@ -11223,6 +31656,34 @@ type VPNClientConnectionHealth struct {
 
 	// READ-ONLY; Total of the Ingress Bytes Transferred in this P2S Vpn connection.
 	TotalIngressBytesTransferred *int64
+}
+
+func (v *VPNClientConnectionHealth) GetAllocatedIPAddresses() (rv []*string) {
+	if v != nil {
+		return v.AllocatedIPAddresses
+	}
+	return
+}
+
+func (v *VPNClientConnectionHealth) GetVPNClientConnectionsCount() (rv int32) {
+	if v != nil && v.VPNClientConnectionsCount != nil {
+		return *v.VPNClientConnectionsCount
+	}
+	return
+}
+
+func (v *VPNClientConnectionHealth) GetTotalEgressBytesTransferred() (rv int64) {
+	if v != nil && v.TotalEgressBytesTransferred != nil {
+		return *v.TotalEgressBytesTransferred
+	}
+	return
+}
+
+func (v *VPNClientConnectionHealth) GetTotalIngressBytesTransferred() (rv int64) {
+	if v != nil && v.TotalIngressBytesTransferred != nil {
+		return *v.TotalIngressBytesTransferred
+	}
+	return
 }
 
 // VPNClientConnectionHealthDetail - VPN client connection health detail.
@@ -11264,10 +31725,101 @@ type VPNClientConnectionHealthDetail struct {
 	VPNUserName *string
 }
 
+func (v *VPNClientConnectionHealthDetail) GetEgressBytesTransferred() (rv int64) {
+	if v != nil && v.EgressBytesTransferred != nil {
+		return *v.EgressBytesTransferred
+	}
+	return
+}
+
+func (v *VPNClientConnectionHealthDetail) GetEgressPacketsTransferred() (rv int64) {
+	if v != nil && v.EgressPacketsTransferred != nil {
+		return *v.EgressPacketsTransferred
+	}
+	return
+}
+
+func (v *VPNClientConnectionHealthDetail) GetIngressBytesTransferred() (rv int64) {
+	if v != nil && v.IngressBytesTransferred != nil {
+		return *v.IngressBytesTransferred
+	}
+	return
+}
+
+func (v *VPNClientConnectionHealthDetail) GetIngressPacketsTransferred() (rv int64) {
+	if v != nil && v.IngressPacketsTransferred != nil {
+		return *v.IngressPacketsTransferred
+	}
+	return
+}
+
+func (v *VPNClientConnectionHealthDetail) GetMaxBandwidth() (rv int64) {
+	if v != nil && v.MaxBandwidth != nil {
+		return *v.MaxBandwidth
+	}
+	return
+}
+
+func (v *VPNClientConnectionHealthDetail) GetMaxPacketsPerSecond() (rv int64) {
+	if v != nil && v.MaxPacketsPerSecond != nil {
+		return *v.MaxPacketsPerSecond
+	}
+	return
+}
+
+func (v *VPNClientConnectionHealthDetail) GetPrivateIPAddress() (rv string) {
+	if v != nil && v.PrivateIPAddress != nil {
+		return *v.PrivateIPAddress
+	}
+	return
+}
+
+func (v *VPNClientConnectionHealthDetail) GetPublicIPAddress() (rv string) {
+	if v != nil && v.PublicIPAddress != nil {
+		return *v.PublicIPAddress
+	}
+	return
+}
+
+func (v *VPNClientConnectionHealthDetail) GetVPNConnectionDuration() (rv int64) {
+	if v != nil && v.VPNConnectionDuration != nil {
+		return *v.VPNConnectionDuration
+	}
+	return
+}
+
+func (v *VPNClientConnectionHealthDetail) GetVPNConnectionID() (rv string) {
+	if v != nil && v.VPNConnectionID != nil {
+		return *v.VPNConnectionID
+	}
+	return
+}
+
+func (v *VPNClientConnectionHealthDetail) GetVPNConnectionTime() (rv string) {
+	if v != nil && v.VPNConnectionTime != nil {
+		return *v.VPNConnectionTime
+	}
+	return
+}
+
+func (v *VPNClientConnectionHealthDetail) GetVPNUserName() (rv string) {
+	if v != nil && v.VPNUserName != nil {
+		return *v.VPNUserName
+	}
+	return
+}
+
 // VPNClientConnectionHealthDetailListResult - List of virtual network gateway vpn client connection health.
 type VPNClientConnectionHealthDetailListResult struct {
 	// List of vpn client connection health.
 	Value []*VPNClientConnectionHealthDetail
+}
+
+func (v *VPNClientConnectionHealthDetailListResult) GetValue() (rv []*VPNClientConnectionHealthDetail) {
+	if v != nil {
+		return v.Value
+	}
+	return
 }
 
 // VPNClientIPsecParameters - An IPSec parameters for a virtual network gateway P2S connection.
@@ -11297,6 +31849,62 @@ type VPNClientIPsecParameters struct {
 	SaLifeTimeSeconds *int32
 }
 
+func (v *VPNClientIPsecParameters) GetDhGroup() (rv *DhGroup) {
+	if v != nil {
+		return v.DhGroup
+	}
+	return
+}
+
+func (v *VPNClientIPsecParameters) GetIPSecEncryption() (rv *IPSecEncryption) {
+	if v != nil {
+		return v.IPSecEncryption
+	}
+	return
+}
+
+func (v *VPNClientIPsecParameters) GetIPSecIntegrity() (rv *IPSecIntegrity) {
+	if v != nil {
+		return v.IPSecIntegrity
+	}
+	return
+}
+
+func (v *VPNClientIPsecParameters) GetIkeEncryption() (rv *IkeEncryption) {
+	if v != nil {
+		return v.IkeEncryption
+	}
+	return
+}
+
+func (v *VPNClientIPsecParameters) GetIkeIntegrity() (rv *IkeIntegrity) {
+	if v != nil {
+		return v.IkeIntegrity
+	}
+	return
+}
+
+func (v *VPNClientIPsecParameters) GetPfsGroup() (rv *PfsGroup) {
+	if v != nil {
+		return v.PfsGroup
+	}
+	return
+}
+
+func (v *VPNClientIPsecParameters) GetSaDataSizeKilobytes() (rv int32) {
+	if v != nil && v.SaDataSizeKilobytes != nil {
+		return *v.SaDataSizeKilobytes
+	}
+	return
+}
+
+func (v *VPNClientIPsecParameters) GetSaLifeTimeSeconds() (rv int32) {
+	if v != nil && v.SaLifeTimeSeconds != nil {
+		return *v.SaLifeTimeSeconds
+	}
+	return
+}
+
 // VPNClientParameters - Vpn Client Parameters for package generation.
 type VPNClientParameters struct {
 	// VPN client authentication method.
@@ -11315,6 +31923,34 @@ type VPNClientParameters struct {
 	RadiusServerAuthCertificate *string
 }
 
+func (v *VPNClientParameters) GetAuthenticationMethod() (rv *AuthenticationMethod) {
+	if v != nil {
+		return v.AuthenticationMethod
+	}
+	return
+}
+
+func (v *VPNClientParameters) GetClientRootCertificates() (rv []*string) {
+	if v != nil {
+		return v.ClientRootCertificates
+	}
+	return
+}
+
+func (v *VPNClientParameters) GetProcessorArchitecture() (rv *ProcessorArchitecture) {
+	if v != nil {
+		return v.ProcessorArchitecture
+	}
+	return
+}
+
+func (v *VPNClientParameters) GetRadiusServerAuthCertificate() (rv string) {
+	if v != nil && v.RadiusServerAuthCertificate != nil {
+		return *v.RadiusServerAuthCertificate
+	}
+	return
+}
+
 // VPNClientRevokedCertificate - VPN client revoked certificate of virtual network gateway.
 type VPNClientRevokedCertificate struct {
 	// Resource ID.
@@ -11330,6 +31966,34 @@ type VPNClientRevokedCertificate struct {
 	Etag *string
 }
 
+func (v *VPNClientRevokedCertificate) GetID() (rv string) {
+	if v != nil && v.ID != nil {
+		return *v.ID
+	}
+	return
+}
+
+func (v *VPNClientRevokedCertificate) GetName() (rv string) {
+	if v != nil && v.Name != nil {
+		return *v.Name
+	}
+	return
+}
+
+func (v *VPNClientRevokedCertificate) GetProperties() (rv *VPNClientRevokedCertificatePropertiesFormat) {
+	if v != nil {
+		return v.Properties
+	}
+	return
+}
+
+func (v *VPNClientRevokedCertificate) GetEtag() (rv string) {
+	if v != nil && v.Etag != nil {
+		return *v.Etag
+	}
+	return
+}
+
 // VPNClientRevokedCertificatePropertiesFormat - Properties of the revoked VPN client certificate of virtual network gateway.
 type VPNClientRevokedCertificatePropertiesFormat struct {
 	// The revoked VPN client certificate thumbprint.
@@ -11337,6 +32001,20 @@ type VPNClientRevokedCertificatePropertiesFormat struct {
 
 	// READ-ONLY; The provisioning state of the VPN client revoked certificate resource.
 	ProvisioningState *ProvisioningState
+}
+
+func (v *VPNClientRevokedCertificatePropertiesFormat) GetThumbprint() (rv string) {
+	if v != nil && v.Thumbprint != nil {
+		return *v.Thumbprint
+	}
+	return
+}
+
+func (v *VPNClientRevokedCertificatePropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if v != nil {
+		return v.ProvisioningState
+	}
+	return
 }
 
 // VPNClientRootCertificate - VPN client root certificate of virtual network gateway.
@@ -11354,6 +32032,34 @@ type VPNClientRootCertificate struct {
 	Etag *string
 }
 
+func (v *VPNClientRootCertificate) GetProperties() (rv *VPNClientRootCertificatePropertiesFormat) {
+	if v != nil {
+		return v.Properties
+	}
+	return
+}
+
+func (v *VPNClientRootCertificate) GetID() (rv string) {
+	if v != nil && v.ID != nil {
+		return *v.ID
+	}
+	return
+}
+
+func (v *VPNClientRootCertificate) GetName() (rv string) {
+	if v != nil && v.Name != nil {
+		return *v.Name
+	}
+	return
+}
+
+func (v *VPNClientRootCertificate) GetEtag() (rv string) {
+	if v != nil && v.Etag != nil {
+		return *v.Etag
+	}
+	return
+}
+
 // VPNClientRootCertificatePropertiesFormat - Properties of SSL certificates of application gateway.
 type VPNClientRootCertificatePropertiesFormat struct {
 	// REQUIRED; The certificate public data.
@@ -11361,6 +32067,20 @@ type VPNClientRootCertificatePropertiesFormat struct {
 
 	// READ-ONLY; The provisioning state of the VPN client root certificate resource.
 	ProvisioningState *ProvisioningState
+}
+
+func (v *VPNClientRootCertificatePropertiesFormat) GetPublicCertData() (rv string) {
+	if v != nil && v.PublicCertData != nil {
+		return *v.PublicCertData
+	}
+	return
+}
+
+func (v *VPNClientRootCertificatePropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if v != nil {
+		return v.ProvisioningState
+	}
+	return
 }
 
 // VPNConnection - VpnConnection Resource.
@@ -11378,6 +32098,34 @@ type VPNConnection struct {
 	Etag *string
 }
 
+func (v *VPNConnection) GetID() (rv string) {
+	if v != nil && v.ID != nil {
+		return *v.ID
+	}
+	return
+}
+
+func (v *VPNConnection) GetName() (rv string) {
+	if v != nil && v.Name != nil {
+		return *v.Name
+	}
+	return
+}
+
+func (v *VPNConnection) GetProperties() (rv *VPNConnectionProperties) {
+	if v != nil {
+		return v.Properties
+	}
+	return
+}
+
+func (v *VPNConnection) GetEtag() (rv string) {
+	if v != nil && v.Etag != nil {
+		return *v.Etag
+	}
+	return
+}
+
 // VPNConnectionPacketCaptureStartParameters - Vpn Connection packet capture parameters supplied to start packet capture on
 // gateway connection.
 type VPNConnectionPacketCaptureStartParameters struct {
@@ -11388,6 +32136,20 @@ type VPNConnectionPacketCaptureStartParameters struct {
 	LinkConnectionNames []*string
 }
 
+func (v *VPNConnectionPacketCaptureStartParameters) GetFilterData() (rv string) {
+	if v != nil && v.FilterData != nil {
+		return *v.FilterData
+	}
+	return
+}
+
+func (v *VPNConnectionPacketCaptureStartParameters) GetLinkConnectionNames() (rv []*string) {
+	if v != nil {
+		return v.LinkConnectionNames
+	}
+	return
+}
+
 // VPNConnectionPacketCaptureStopParameters - Vpn Connection packet capture parameters supplied to stop packet capture on
 // gateway connection.
 type VPNConnectionPacketCaptureStopParameters struct {
@@ -11396,6 +32158,20 @@ type VPNConnectionPacketCaptureStopParameters struct {
 
 	// SAS url for packet capture on vpn connection.
 	SasURL *string
+}
+
+func (v *VPNConnectionPacketCaptureStopParameters) GetLinkConnectionNames() (rv []*string) {
+	if v != nil {
+		return v.LinkConnectionNames
+	}
+	return
+}
+
+func (v *VPNConnectionPacketCaptureStopParameters) GetSasURL() (rv string) {
+	if v != nil && v.SasURL != nil {
+		return *v.SasURL
+	}
+	return
 }
 
 // VPNConnectionProperties - Parameters for VpnConnection.
@@ -11458,6 +32234,139 @@ type VPNConnectionProperties struct {
 	ProvisioningState *ProvisioningState
 }
 
+func (v *VPNConnectionProperties) GetConnectionBandwidth() (rv int32) {
+	if v != nil && v.ConnectionBandwidth != nil {
+		return *v.ConnectionBandwidth
+	}
+	return
+}
+
+func (v *VPNConnectionProperties) GetDpdTimeoutSeconds() (rv int32) {
+	if v != nil && v.DpdTimeoutSeconds != nil {
+		return *v.DpdTimeoutSeconds
+	}
+	return
+}
+
+func (v *VPNConnectionProperties) GetEnableBgp() (rv bool) {
+	if v != nil && v.EnableBgp != nil {
+		return *v.EnableBgp
+	}
+	return
+}
+
+func (v *VPNConnectionProperties) GetEnableInternetSecurity() (rv bool) {
+	if v != nil && v.EnableInternetSecurity != nil {
+		return *v.EnableInternetSecurity
+	}
+	return
+}
+
+func (v *VPNConnectionProperties) GetEnableRateLimiting() (rv bool) {
+	if v != nil && v.EnableRateLimiting != nil {
+		return *v.EnableRateLimiting
+	}
+	return
+}
+
+func (v *VPNConnectionProperties) GetIPSecPolicies() (rv []*IPSecPolicy) {
+	if v != nil {
+		return v.IPSecPolicies
+	}
+	return
+}
+
+func (v *VPNConnectionProperties) GetRemoteVPNSite() (rv *SubResource) {
+	if v != nil {
+		return v.RemoteVPNSite
+	}
+	return
+}
+
+func (v *VPNConnectionProperties) GetRoutingConfiguration() (rv *RoutingConfiguration) {
+	if v != nil {
+		return v.RoutingConfiguration
+	}
+	return
+}
+
+func (v *VPNConnectionProperties) GetRoutingWeight() (rv int32) {
+	if v != nil && v.RoutingWeight != nil {
+		return *v.RoutingWeight
+	}
+	return
+}
+
+func (v *VPNConnectionProperties) GetSharedKey() (rv string) {
+	if v != nil && v.SharedKey != nil {
+		return *v.SharedKey
+	}
+	return
+}
+
+func (v *VPNConnectionProperties) GetTrafficSelectorPolicies() (rv []*TrafficSelectorPolicy) {
+	if v != nil {
+		return v.TrafficSelectorPolicies
+	}
+	return
+}
+
+func (v *VPNConnectionProperties) GetUseLocalAzureIPAddress() (rv bool) {
+	if v != nil && v.UseLocalAzureIPAddress != nil {
+		return *v.UseLocalAzureIPAddress
+	}
+	return
+}
+
+func (v *VPNConnectionProperties) GetUsePolicyBasedTrafficSelectors() (rv bool) {
+	if v != nil && v.UsePolicyBasedTrafficSelectors != nil {
+		return *v.UsePolicyBasedTrafficSelectors
+	}
+	return
+}
+
+func (v *VPNConnectionProperties) GetVPNConnectionProtocolType() (rv *VirtualNetworkGatewayConnectionProtocol) {
+	if v != nil {
+		return v.VPNConnectionProtocolType
+	}
+	return
+}
+
+func (v *VPNConnectionProperties) GetVPNLinkConnections() (rv []*VPNSiteLinkConnection) {
+	if v != nil {
+		return v.VPNLinkConnections
+	}
+	return
+}
+
+func (v *VPNConnectionProperties) GetConnectionStatus() (rv *VPNConnectionStatus) {
+	if v != nil {
+		return v.ConnectionStatus
+	}
+	return
+}
+
+func (v *VPNConnectionProperties) GetEgressBytesTransferred() (rv int64) {
+	if v != nil && v.EgressBytesTransferred != nil {
+		return *v.EgressBytesTransferred
+	}
+	return
+}
+
+func (v *VPNConnectionProperties) GetIngressBytesTransferred() (rv int64) {
+	if v != nil && v.IngressBytesTransferred != nil {
+		return *v.IngressBytesTransferred
+	}
+	return
+}
+
+func (v *VPNConnectionProperties) GetProvisioningState() (rv *ProvisioningState) {
+	if v != nil {
+		return v.ProvisioningState
+	}
+	return
+}
+
 // VPNDeviceScriptParameters - Vpn device configuration script generation parameters.
 type VPNDeviceScriptParameters struct {
 	// The device family for the vpn device.
@@ -11468,6 +32377,27 @@ type VPNDeviceScriptParameters struct {
 
 	// The vendor for the vpn device.
 	Vendor *string
+}
+
+func (v *VPNDeviceScriptParameters) GetDeviceFamily() (rv string) {
+	if v != nil && v.DeviceFamily != nil {
+		return *v.DeviceFamily
+	}
+	return
+}
+
+func (v *VPNDeviceScriptParameters) GetFirmwareVersion() (rv string) {
+	if v != nil && v.FirmwareVersion != nil {
+		return *v.FirmwareVersion
+	}
+	return
+}
+
+func (v *VPNDeviceScriptParameters) GetVendor() (rv string) {
+	if v != nil && v.Vendor != nil {
+		return *v.Vendor
+	}
+	return
 }
 
 // VPNGateway - VpnGateway Resource.
@@ -11494,6 +32424,55 @@ type VPNGateway struct {
 	Type *string
 }
 
+func (v *VPNGateway) GetID() (rv string) {
+	if v != nil && v.ID != nil {
+		return *v.ID
+	}
+	return
+}
+
+func (v *VPNGateway) GetLocation() (rv string) {
+	if v != nil && v.Location != nil {
+		return *v.Location
+	}
+	return
+}
+
+func (v *VPNGateway) GetProperties() (rv *VPNGatewayProperties) {
+	if v != nil {
+		return v.Properties
+	}
+	return
+}
+
+func (v *VPNGateway) GetTags() (rv map[string]*string) {
+	if v != nil {
+		return v.Tags
+	}
+	return
+}
+
+func (v *VPNGateway) GetEtag() (rv string) {
+	if v != nil && v.Etag != nil {
+		return *v.Etag
+	}
+	return
+}
+
+func (v *VPNGateway) GetName() (rv string) {
+	if v != nil && v.Name != nil {
+		return *v.Name
+	}
+	return
+}
+
+func (v *VPNGateway) GetType() (rv string) {
+	if v != nil && v.Type != nil {
+		return *v.Type
+	}
+	return
+}
+
 // VPNGatewayIPConfiguration - IP Configuration of a VPN Gateway Resource.
 type VPNGatewayIPConfiguration struct {
 	// The identifier of the IP configuration for a VPN Gateway.
@@ -11504,6 +32483,27 @@ type VPNGatewayIPConfiguration struct {
 
 	// The public IP address of this IP configuration.
 	PublicIPAddress *string
+}
+
+func (v *VPNGatewayIPConfiguration) GetID() (rv string) {
+	if v != nil && v.ID != nil {
+		return *v.ID
+	}
+	return
+}
+
+func (v *VPNGatewayIPConfiguration) GetPrivateIPAddress() (rv string) {
+	if v != nil && v.PrivateIPAddress != nil {
+		return *v.PrivateIPAddress
+	}
+	return
+}
+
+func (v *VPNGatewayIPConfiguration) GetPublicIPAddress() (rv string) {
+	if v != nil && v.PublicIPAddress != nil {
+		return *v.PublicIPAddress
+	}
+	return
 }
 
 // VPNGatewayNatRule - VpnGatewayNatRule Resource.
@@ -11522,6 +32522,41 @@ type VPNGatewayNatRule struct {
 
 	// READ-ONLY; Resource type.
 	Type *string
+}
+
+func (v *VPNGatewayNatRule) GetID() (rv string) {
+	if v != nil && v.ID != nil {
+		return *v.ID
+	}
+	return
+}
+
+func (v *VPNGatewayNatRule) GetName() (rv string) {
+	if v != nil && v.Name != nil {
+		return *v.Name
+	}
+	return
+}
+
+func (v *VPNGatewayNatRule) GetProperties() (rv *VPNGatewayNatRuleProperties) {
+	if v != nil {
+		return v.Properties
+	}
+	return
+}
+
+func (v *VPNGatewayNatRule) GetEtag() (rv string) {
+	if v != nil && v.Etag != nil {
+		return *v.Etag
+	}
+	return
+}
+
+func (v *VPNGatewayNatRule) GetType() (rv string) {
+	if v != nil && v.Type != nil {
+		return *v.Type
+	}
+	return
 }
 
 // VPNGatewayNatRuleProperties - Parameters for VpnGatewayNatRule.
@@ -11551,16 +32586,86 @@ type VPNGatewayNatRuleProperties struct {
 	ProvisioningState *ProvisioningState
 }
 
+func (v *VPNGatewayNatRuleProperties) GetExternalMappings() (rv []*VPNNatRuleMapping) {
+	if v != nil {
+		return v.ExternalMappings
+	}
+	return
+}
+
+func (v *VPNGatewayNatRuleProperties) GetIPConfigurationID() (rv string) {
+	if v != nil && v.IPConfigurationID != nil {
+		return *v.IPConfigurationID
+	}
+	return
+}
+
+func (v *VPNGatewayNatRuleProperties) GetInternalMappings() (rv []*VPNNatRuleMapping) {
+	if v != nil {
+		return v.InternalMappings
+	}
+	return
+}
+
+func (v *VPNGatewayNatRuleProperties) GetMode() (rv *VPNNatRuleMode) {
+	if v != nil {
+		return v.Mode
+	}
+	return
+}
+
+func (v *VPNGatewayNatRuleProperties) GetType() (rv *VPNNatRuleType) {
+	if v != nil {
+		return v.Type
+	}
+	return
+}
+
+func (v *VPNGatewayNatRuleProperties) GetEgressVPNSiteLinkConnections() (rv []*SubResource) {
+	if v != nil {
+		return v.EgressVPNSiteLinkConnections
+	}
+	return
+}
+
+func (v *VPNGatewayNatRuleProperties) GetIngressVPNSiteLinkConnections() (rv []*SubResource) {
+	if v != nil {
+		return v.IngressVPNSiteLinkConnections
+	}
+	return
+}
+
+func (v *VPNGatewayNatRuleProperties) GetProvisioningState() (rv *ProvisioningState) {
+	if v != nil {
+		return v.ProvisioningState
+	}
+	return
+}
+
 // VPNGatewayPacketCaptureStartParameters - Start packet capture parameters.
 type VPNGatewayPacketCaptureStartParameters struct {
 	// Start Packet capture parameters on vpn gateway.
 	FilterData *string
 }
 
+func (v *VPNGatewayPacketCaptureStartParameters) GetFilterData() (rv string) {
+	if v != nil && v.FilterData != nil {
+		return *v.FilterData
+	}
+	return
+}
+
 // VPNGatewayPacketCaptureStopParameters - Stop packet capture parameters.
 type VPNGatewayPacketCaptureStopParameters struct {
 	// SAS url for packet capture on vpn gateway.
 	SasURL *string
+}
+
+func (v *VPNGatewayPacketCaptureStopParameters) GetSasURL() (rv string) {
+	if v != nil && v.SasURL != nil {
+		return *v.SasURL
+	}
+	return
 }
 
 // VPNGatewayProperties - Parameters for VpnGateway.
@@ -11593,6 +32698,69 @@ type VPNGatewayProperties struct {
 	ProvisioningState *ProvisioningState
 }
 
+func (v *VPNGatewayProperties) GetBgpSettings() (rv *BgpSettings) {
+	if v != nil {
+		return v.BgpSettings
+	}
+	return
+}
+
+func (v *VPNGatewayProperties) GetConnections() (rv []*VPNConnection) {
+	if v != nil {
+		return v.Connections
+	}
+	return
+}
+
+func (v *VPNGatewayProperties) GetEnableBgpRouteTranslationForNat() (rv bool) {
+	if v != nil && v.EnableBgpRouteTranslationForNat != nil {
+		return *v.EnableBgpRouteTranslationForNat
+	}
+	return
+}
+
+func (v *VPNGatewayProperties) GetIsRoutingPreferenceInternet() (rv bool) {
+	if v != nil && v.IsRoutingPreferenceInternet != nil {
+		return *v.IsRoutingPreferenceInternet
+	}
+	return
+}
+
+func (v *VPNGatewayProperties) GetNatRules() (rv []*VPNGatewayNatRule) {
+	if v != nil {
+		return v.NatRules
+	}
+	return
+}
+
+func (v *VPNGatewayProperties) GetVPNGatewayScaleUnit() (rv int32) {
+	if v != nil && v.VPNGatewayScaleUnit != nil {
+		return *v.VPNGatewayScaleUnit
+	}
+	return
+}
+
+func (v *VPNGatewayProperties) GetVirtualHub() (rv *SubResource) {
+	if v != nil {
+		return v.VirtualHub
+	}
+	return
+}
+
+func (v *VPNGatewayProperties) GetIPConfigurations() (rv []*VPNGatewayIPConfiguration) {
+	if v != nil {
+		return v.IPConfigurations
+	}
+	return
+}
+
+func (v *VPNGatewayProperties) GetProvisioningState() (rv *ProvisioningState) {
+	if v != nil {
+		return v.ProvisioningState
+	}
+	return
+}
+
 // VPNLinkBgpSettings - BGP settings details for a link.
 type VPNLinkBgpSettings struct {
 	// The BGP speaker's ASN.
@@ -11600,6 +32768,20 @@ type VPNLinkBgpSettings struct {
 
 	// The BGP peering address and BGP identifier of this BGP speaker.
 	BgpPeeringAddress *string
+}
+
+func (v *VPNLinkBgpSettings) GetAsn() (rv int64) {
+	if v != nil && v.Asn != nil {
+		return *v.Asn
+	}
+	return
+}
+
+func (v *VPNLinkBgpSettings) GetBgpPeeringAddress() (rv string) {
+	if v != nil && v.BgpPeeringAddress != nil {
+		return *v.BgpPeeringAddress
+	}
+	return
 }
 
 // VPNLinkProviderProperties - List of properties of a link provider.
@@ -11611,6 +32793,20 @@ type VPNLinkProviderProperties struct {
 	LinkSpeedInMbps *int32
 }
 
+func (v *VPNLinkProviderProperties) GetLinkProviderName() (rv string) {
+	if v != nil && v.LinkProviderName != nil {
+		return *v.LinkProviderName
+	}
+	return
+}
+
+func (v *VPNLinkProviderProperties) GetLinkSpeedInMbps() (rv int32) {
+	if v != nil && v.LinkSpeedInMbps != nil {
+		return *v.LinkSpeedInMbps
+	}
+	return
+}
+
 // VPNNatRuleMapping - Vpn NatRule mapping.
 type VPNNatRuleMapping struct {
 	// Address space for Vpn NatRule mapping.
@@ -11620,10 +32816,31 @@ type VPNNatRuleMapping struct {
 	PortRange *string
 }
 
+func (v *VPNNatRuleMapping) GetAddressSpace() (rv string) {
+	if v != nil && v.AddressSpace != nil {
+		return *v.AddressSpace
+	}
+	return
+}
+
+func (v *VPNNatRuleMapping) GetPortRange() (rv string) {
+	if v != nil && v.PortRange != nil {
+		return *v.PortRange
+	}
+	return
+}
+
 // VPNPacketCaptureStartParameters - Start packet capture parameters on virtual network gateway.
 type VPNPacketCaptureStartParameters struct {
 	// Start Packet capture parameters.
 	FilterData *string
+}
+
+func (v *VPNPacketCaptureStartParameters) GetFilterData() (rv string) {
+	if v != nil && v.FilterData != nil {
+		return *v.FilterData
+	}
+	return
 }
 
 // VPNPacketCaptureStopParameters - Stop packet capture parameters.
@@ -11632,10 +32849,24 @@ type VPNPacketCaptureStopParameters struct {
 	SasURL *string
 }
 
+func (v *VPNPacketCaptureStopParameters) GetSasURL() (rv string) {
+	if v != nil && v.SasURL != nil {
+		return *v.SasURL
+	}
+	return
+}
+
 // VPNProfileResponse - Vpn Profile Response for package generation.
 type VPNProfileResponse struct {
 	// URL to the VPN profile.
 	ProfileURL *string
+}
+
+func (v *VPNProfileResponse) GetProfileURL() (rv string) {
+	if v != nil && v.ProfileURL != nil {
+		return *v.ProfileURL
+	}
+	return
 }
 
 // VPNServerConfigRadiusClientRootCertificate - Properties of the Radius client root certificate of VpnServerConfiguration.
@@ -11647,6 +32878,20 @@ type VPNServerConfigRadiusClientRootCertificate struct {
 	Thumbprint *string
 }
 
+func (v *VPNServerConfigRadiusClientRootCertificate) GetName() (rv string) {
+	if v != nil && v.Name != nil {
+		return *v.Name
+	}
+	return
+}
+
+func (v *VPNServerConfigRadiusClientRootCertificate) GetThumbprint() (rv string) {
+	if v != nil && v.Thumbprint != nil {
+		return *v.Thumbprint
+	}
+	return
+}
+
 // VPNServerConfigRadiusServerRootCertificate - Properties of Radius Server root certificate of VpnServerConfiguration.
 type VPNServerConfigRadiusServerRootCertificate struct {
 	// The certificate name.
@@ -11654,6 +32899,20 @@ type VPNServerConfigRadiusServerRootCertificate struct {
 
 	// The certificate public data.
 	PublicCertData *string
+}
+
+func (v *VPNServerConfigRadiusServerRootCertificate) GetName() (rv string) {
+	if v != nil && v.Name != nil {
+		return *v.Name
+	}
+	return
+}
+
+func (v *VPNServerConfigRadiusServerRootCertificate) GetPublicCertData() (rv string) {
+	if v != nil && v.PublicCertData != nil {
+		return *v.PublicCertData
+	}
+	return
 }
 
 // VPNServerConfigVPNClientRevokedCertificate - Properties of the revoked VPN client certificate of VpnServerConfiguration.
@@ -11665,6 +32924,20 @@ type VPNServerConfigVPNClientRevokedCertificate struct {
 	Thumbprint *string
 }
 
+func (v *VPNServerConfigVPNClientRevokedCertificate) GetName() (rv string) {
+	if v != nil && v.Name != nil {
+		return *v.Name
+	}
+	return
+}
+
+func (v *VPNServerConfigVPNClientRevokedCertificate) GetThumbprint() (rv string) {
+	if v != nil && v.Thumbprint != nil {
+		return *v.Thumbprint
+	}
+	return
+}
+
 // VPNServerConfigVPNClientRootCertificate - Properties of VPN client root certificate of VpnServerConfiguration.
 type VPNServerConfigVPNClientRootCertificate struct {
 	// The certificate name.
@@ -11672,6 +32945,20 @@ type VPNServerConfigVPNClientRootCertificate struct {
 
 	// The certificate public data.
 	PublicCertData *string
+}
+
+func (v *VPNServerConfigVPNClientRootCertificate) GetName() (rv string) {
+	if v != nil && v.Name != nil {
+		return *v.Name
+	}
+	return
+}
+
+func (v *VPNServerConfigVPNClientRootCertificate) GetPublicCertData() (rv string) {
+	if v != nil && v.PublicCertData != nil {
+		return *v.PublicCertData
+	}
+	return
 }
 
 // VPNServerConfiguration - VpnServerConfiguration Resource.
@@ -11698,6 +32985,55 @@ type VPNServerConfiguration struct {
 	Type *string
 }
 
+func (v *VPNServerConfiguration) GetID() (rv string) {
+	if v != nil && v.ID != nil {
+		return *v.ID
+	}
+	return
+}
+
+func (v *VPNServerConfiguration) GetLocation() (rv string) {
+	if v != nil && v.Location != nil {
+		return *v.Location
+	}
+	return
+}
+
+func (v *VPNServerConfiguration) GetProperties() (rv *VPNServerConfigurationProperties) {
+	if v != nil {
+		return v.Properties
+	}
+	return
+}
+
+func (v *VPNServerConfiguration) GetTags() (rv map[string]*string) {
+	if v != nil {
+		return v.Tags
+	}
+	return
+}
+
+func (v *VPNServerConfiguration) GetEtag() (rv string) {
+	if v != nil && v.Etag != nil {
+		return *v.Etag
+	}
+	return
+}
+
+func (v *VPNServerConfiguration) GetName() (rv string) {
+	if v != nil && v.Name != nil {
+		return *v.Name
+	}
+	return
+}
+
+func (v *VPNServerConfiguration) GetType() (rv string) {
+	if v != nil && v.Type != nil {
+		return *v.Type
+	}
+	return
+}
+
 // VPNServerConfigurationPolicyGroup - VpnServerConfigurationPolicyGroup Resource.
 type VPNServerConfigurationPolicyGroup struct {
 	// Resource ID.
@@ -11716,6 +33052,41 @@ type VPNServerConfigurationPolicyGroup struct {
 	Type *string
 }
 
+func (v *VPNServerConfigurationPolicyGroup) GetID() (rv string) {
+	if v != nil && v.ID != nil {
+		return *v.ID
+	}
+	return
+}
+
+func (v *VPNServerConfigurationPolicyGroup) GetName() (rv string) {
+	if v != nil && v.Name != nil {
+		return *v.Name
+	}
+	return
+}
+
+func (v *VPNServerConfigurationPolicyGroup) GetProperties() (rv *VPNServerConfigurationPolicyGroupProperties) {
+	if v != nil {
+		return v.Properties
+	}
+	return
+}
+
+func (v *VPNServerConfigurationPolicyGroup) GetEtag() (rv string) {
+	if v != nil && v.Etag != nil {
+		return *v.Etag
+	}
+	return
+}
+
+func (v *VPNServerConfigurationPolicyGroup) GetType() (rv string) {
+	if v != nil && v.Type != nil {
+		return *v.Type
+	}
+	return
+}
+
 // VPNServerConfigurationPolicyGroupMember - VpnServerConfiguration PolicyGroup member
 type VPNServerConfigurationPolicyGroupMember struct {
 	// The Vpn Policy member attribute type.
@@ -11726,6 +33097,27 @@ type VPNServerConfigurationPolicyGroupMember struct {
 
 	// Name of the VpnServerConfigurationPolicyGroupMember.
 	Name *string
+}
+
+func (v *VPNServerConfigurationPolicyGroupMember) GetAttributeType() (rv *VPNPolicyMemberAttributeType) {
+	if v != nil {
+		return v.AttributeType
+	}
+	return
+}
+
+func (v *VPNServerConfigurationPolicyGroupMember) GetAttributeValue() (rv string) {
+	if v != nil && v.AttributeValue != nil {
+		return *v.AttributeValue
+	}
+	return
+}
+
+func (v *VPNServerConfigurationPolicyGroupMember) GetName() (rv string) {
+	if v != nil && v.Name != nil {
+		return *v.Name
+	}
+	return
 }
 
 // VPNServerConfigurationPolicyGroupProperties - Parameters for VpnServerConfigurationPolicyGroup.
@@ -11744,6 +33136,41 @@ type VPNServerConfigurationPolicyGroupProperties struct {
 
 	// READ-ONLY; The provisioning state of the VpnServerConfigurationPolicyGroup resource.
 	ProvisioningState *ProvisioningState
+}
+
+func (v *VPNServerConfigurationPolicyGroupProperties) GetIsDefault() (rv bool) {
+	if v != nil && v.IsDefault != nil {
+		return *v.IsDefault
+	}
+	return
+}
+
+func (v *VPNServerConfigurationPolicyGroupProperties) GetPolicyMembers() (rv []*VPNServerConfigurationPolicyGroupMember) {
+	if v != nil {
+		return v.PolicyMembers
+	}
+	return
+}
+
+func (v *VPNServerConfigurationPolicyGroupProperties) GetPriority() (rv int32) {
+	if v != nil && v.Priority != nil {
+		return *v.Priority
+	}
+	return
+}
+
+func (v *VPNServerConfigurationPolicyGroupProperties) GetP2SConnectionConfigurations() (rv []*SubResource) {
+	if v != nil {
+		return v.P2SConnectionConfigurations
+	}
+	return
+}
+
+func (v *VPNServerConfigurationPolicyGroupProperties) GetProvisioningState() (rv *ProvisioningState) {
+	if v != nil {
+		return v.ProvisioningState
+	}
+	return
 }
 
 // VPNServerConfigurationProperties - Parameters for VpnServerConfiguration.
@@ -11798,10 +33225,129 @@ type VPNServerConfigurationProperties struct {
 	ProvisioningState *string
 }
 
+func (v *VPNServerConfigurationProperties) GetAADAuthenticationParameters() (rv *AADAuthenticationParameters) {
+	if v != nil {
+		return v.AADAuthenticationParameters
+	}
+	return
+}
+
+func (v *VPNServerConfigurationProperties) GetConfigurationPolicyGroups() (rv []*VPNServerConfigurationPolicyGroup) {
+	if v != nil {
+		return v.ConfigurationPolicyGroups
+	}
+	return
+}
+
+func (v *VPNServerConfigurationProperties) GetName() (rv string) {
+	if v != nil && v.Name != nil {
+		return *v.Name
+	}
+	return
+}
+
+func (v *VPNServerConfigurationProperties) GetRadiusClientRootCertificates() (rv []*VPNServerConfigRadiusClientRootCertificate) {
+	if v != nil {
+		return v.RadiusClientRootCertificates
+	}
+	return
+}
+
+func (v *VPNServerConfigurationProperties) GetRadiusServerAddress() (rv string) {
+	if v != nil && v.RadiusServerAddress != nil {
+		return *v.RadiusServerAddress
+	}
+	return
+}
+
+func (v *VPNServerConfigurationProperties) GetRadiusServerRootCertificates() (rv []*VPNServerConfigRadiusServerRootCertificate) {
+	if v != nil {
+		return v.RadiusServerRootCertificates
+	}
+	return
+}
+
+func (v *VPNServerConfigurationProperties) GetRadiusServerSecret() (rv string) {
+	if v != nil && v.RadiusServerSecret != nil {
+		return *v.RadiusServerSecret
+	}
+	return
+}
+
+func (v *VPNServerConfigurationProperties) GetRadiusServers() (rv []*RadiusServer) {
+	if v != nil {
+		return v.RadiusServers
+	}
+	return
+}
+
+func (v *VPNServerConfigurationProperties) GetVPNAuthenticationTypes() (rv []*VPNAuthenticationType) {
+	if v != nil {
+		return v.VPNAuthenticationTypes
+	}
+	return
+}
+
+func (v *VPNServerConfigurationProperties) GetVPNClientIPSecPolicies() (rv []*IPSecPolicy) {
+	if v != nil {
+		return v.VPNClientIPSecPolicies
+	}
+	return
+}
+
+func (v *VPNServerConfigurationProperties) GetVPNClientRevokedCertificates() (rv []*VPNServerConfigVPNClientRevokedCertificate) {
+	if v != nil {
+		return v.VPNClientRevokedCertificates
+	}
+	return
+}
+
+func (v *VPNServerConfigurationProperties) GetVPNClientRootCertificates() (rv []*VPNServerConfigVPNClientRootCertificate) {
+	if v != nil {
+		return v.VPNClientRootCertificates
+	}
+	return
+}
+
+func (v *VPNServerConfigurationProperties) GetVPNProtocols() (rv []*VPNGatewayTunnelingProtocol) {
+	if v != nil {
+		return v.VPNProtocols
+	}
+	return
+}
+
+func (v *VPNServerConfigurationProperties) GetEtag() (rv string) {
+	if v != nil && v.Etag != nil {
+		return *v.Etag
+	}
+	return
+}
+
+func (v *VPNServerConfigurationProperties) GetP2SVPNGateways() (rv []*P2SVPNGateway) {
+	if v != nil {
+		return v.P2SVPNGateways
+	}
+	return
+}
+
+func (v *VPNServerConfigurationProperties) GetProvisioningState() (rv string) {
+	if v != nil && v.ProvisioningState != nil {
+		return *v.ProvisioningState
+	}
+	return
+}
+
 // VPNServerConfigurationsResponse - VpnServerConfigurations list associated with VirtualWan Response.
 type VPNServerConfigurationsResponse struct {
 	// List of VpnServerConfigurations associated with VirtualWan.
 	VPNServerConfigurationResourceIDs []*string
+}
+
+func (v *VPNServerConfigurationsResponse) GetVPNServerConfigurationResourceIDs() (rv []*string) {
+	if v != nil {
+		return v.VPNServerConfigurationResourceIDs
+	}
+	return
 }
 
 // VPNSite - VpnSite Resource.
@@ -11828,6 +33374,55 @@ type VPNSite struct {
 	Type *string
 }
 
+func (v *VPNSite) GetID() (rv string) {
+	if v != nil && v.ID != nil {
+		return *v.ID
+	}
+	return
+}
+
+func (v *VPNSite) GetLocation() (rv string) {
+	if v != nil && v.Location != nil {
+		return *v.Location
+	}
+	return
+}
+
+func (v *VPNSite) GetProperties() (rv *VPNSiteProperties) {
+	if v != nil {
+		return v.Properties
+	}
+	return
+}
+
+func (v *VPNSite) GetTags() (rv map[string]*string) {
+	if v != nil {
+		return v.Tags
+	}
+	return
+}
+
+func (v *VPNSite) GetEtag() (rv string) {
+	if v != nil && v.Etag != nil {
+		return *v.Etag
+	}
+	return
+}
+
+func (v *VPNSite) GetName() (rv string) {
+	if v != nil && v.Name != nil {
+		return *v.Name
+	}
+	return
+}
+
+func (v *VPNSite) GetType() (rv string) {
+	if v != nil && v.Type != nil {
+		return *v.Type
+	}
+	return
+}
+
 // VPNSiteLink - VpnSiteLink Resource.
 type VPNSiteLink struct {
 	// Resource ID.
@@ -11846,6 +33441,41 @@ type VPNSiteLink struct {
 	Type *string
 }
 
+func (v *VPNSiteLink) GetID() (rv string) {
+	if v != nil && v.ID != nil {
+		return *v.ID
+	}
+	return
+}
+
+func (v *VPNSiteLink) GetName() (rv string) {
+	if v != nil && v.Name != nil {
+		return *v.Name
+	}
+	return
+}
+
+func (v *VPNSiteLink) GetProperties() (rv *VPNSiteLinkProperties) {
+	if v != nil {
+		return v.Properties
+	}
+	return
+}
+
+func (v *VPNSiteLink) GetEtag() (rv string) {
+	if v != nil && v.Etag != nil {
+		return *v.Etag
+	}
+	return
+}
+
+func (v *VPNSiteLink) GetType() (rv string) {
+	if v != nil && v.Type != nil {
+		return *v.Type
+	}
+	return
+}
+
 // VPNSiteLinkConnection - VpnSiteLinkConnection Resource.
 type VPNSiteLinkConnection struct {
 	// Resource ID.
@@ -11862,6 +33492,41 @@ type VPNSiteLinkConnection struct {
 
 	// READ-ONLY; Resource type.
 	Type *string
+}
+
+func (v *VPNSiteLinkConnection) GetID() (rv string) {
+	if v != nil && v.ID != nil {
+		return *v.ID
+	}
+	return
+}
+
+func (v *VPNSiteLinkConnection) GetName() (rv string) {
+	if v != nil && v.Name != nil {
+		return *v.Name
+	}
+	return
+}
+
+func (v *VPNSiteLinkConnection) GetProperties() (rv *VPNSiteLinkConnectionProperties) {
+	if v != nil {
+		return v.Properties
+	}
+	return
+}
+
+func (v *VPNSiteLinkConnection) GetEtag() (rv string) {
+	if v != nil && v.Etag != nil {
+		return *v.Etag
+	}
+	return
+}
+
+func (v *VPNSiteLinkConnection) GetType() (rv string) {
+	if v != nil && v.Type != nil {
+		return *v.Type
+	}
+	return
 }
 
 // VPNSiteLinkConnectionProperties - Parameters for VpnConnection.
@@ -11921,6 +33586,132 @@ type VPNSiteLinkConnectionProperties struct {
 	ProvisioningState *ProvisioningState
 }
 
+func (v *VPNSiteLinkConnectionProperties) GetConnectionBandwidth() (rv int32) {
+	if v != nil && v.ConnectionBandwidth != nil {
+		return *v.ConnectionBandwidth
+	}
+	return
+}
+
+func (v *VPNSiteLinkConnectionProperties) GetEgressNatRules() (rv []*SubResource) {
+	if v != nil {
+		return v.EgressNatRules
+	}
+	return
+}
+
+func (v *VPNSiteLinkConnectionProperties) GetEnableBgp() (rv bool) {
+	if v != nil && v.EnableBgp != nil {
+		return *v.EnableBgp
+	}
+	return
+}
+
+func (v *VPNSiteLinkConnectionProperties) GetEnableRateLimiting() (rv bool) {
+	if v != nil && v.EnableRateLimiting != nil {
+		return *v.EnableRateLimiting
+	}
+	return
+}
+
+func (v *VPNSiteLinkConnectionProperties) GetIPSecPolicies() (rv []*IPSecPolicy) {
+	if v != nil {
+		return v.IPSecPolicies
+	}
+	return
+}
+
+func (v *VPNSiteLinkConnectionProperties) GetIngressNatRules() (rv []*SubResource) {
+	if v != nil {
+		return v.IngressNatRules
+	}
+	return
+}
+
+func (v *VPNSiteLinkConnectionProperties) GetRoutingWeight() (rv int32) {
+	if v != nil && v.RoutingWeight != nil {
+		return *v.RoutingWeight
+	}
+	return
+}
+
+func (v *VPNSiteLinkConnectionProperties) GetSharedKey() (rv string) {
+	if v != nil && v.SharedKey != nil {
+		return *v.SharedKey
+	}
+	return
+}
+
+func (v *VPNSiteLinkConnectionProperties) GetUseLocalAzureIPAddress() (rv bool) {
+	if v != nil && v.UseLocalAzureIPAddress != nil {
+		return *v.UseLocalAzureIPAddress
+	}
+	return
+}
+
+func (v *VPNSiteLinkConnectionProperties) GetUsePolicyBasedTrafficSelectors() (rv bool) {
+	if v != nil && v.UsePolicyBasedTrafficSelectors != nil {
+		return *v.UsePolicyBasedTrafficSelectors
+	}
+	return
+}
+
+func (v *VPNSiteLinkConnectionProperties) GetVPNConnectionProtocolType() (rv *VirtualNetworkGatewayConnectionProtocol) {
+	if v != nil {
+		return v.VPNConnectionProtocolType
+	}
+	return
+}
+
+func (v *VPNSiteLinkConnectionProperties) GetVPNGatewayCustomBgpAddresses() (rv []*GatewayCustomBgpIPAddressIPConfiguration) {
+	if v != nil {
+		return v.VPNGatewayCustomBgpAddresses
+	}
+	return
+}
+
+func (v *VPNSiteLinkConnectionProperties) GetVPNLinkConnectionMode() (rv *VPNLinkConnectionMode) {
+	if v != nil {
+		return v.VPNLinkConnectionMode
+	}
+	return
+}
+
+func (v *VPNSiteLinkConnectionProperties) GetVPNSiteLink() (rv *SubResource) {
+	if v != nil {
+		return v.VPNSiteLink
+	}
+	return
+}
+
+func (v *VPNSiteLinkConnectionProperties) GetConnectionStatus() (rv *VPNConnectionStatus) {
+	if v != nil {
+		return v.ConnectionStatus
+	}
+	return
+}
+
+func (v *VPNSiteLinkConnectionProperties) GetEgressBytesTransferred() (rv int64) {
+	if v != nil && v.EgressBytesTransferred != nil {
+		return *v.EgressBytesTransferred
+	}
+	return
+}
+
+func (v *VPNSiteLinkConnectionProperties) GetIngressBytesTransferred() (rv int64) {
+	if v != nil && v.IngressBytesTransferred != nil {
+		return *v.IngressBytesTransferred
+	}
+	return
+}
+
+func (v *VPNSiteLinkConnectionProperties) GetProvisioningState() (rv *ProvisioningState) {
+	if v != nil {
+		return v.ProvisioningState
+	}
+	return
+}
+
 // VPNSiteLinkProperties - Parameters for VpnSite.
 type VPNSiteLinkProperties struct {
 	// The set of bgp properties.
@@ -11937,6 +33728,41 @@ type VPNSiteLinkProperties struct {
 
 	// READ-ONLY; The provisioning state of the VPN site link resource.
 	ProvisioningState *ProvisioningState
+}
+
+func (v *VPNSiteLinkProperties) GetBgpProperties() (rv *VPNLinkBgpSettings) {
+	if v != nil {
+		return v.BgpProperties
+	}
+	return
+}
+
+func (v *VPNSiteLinkProperties) GetFqdn() (rv string) {
+	if v != nil && v.Fqdn != nil {
+		return *v.Fqdn
+	}
+	return
+}
+
+func (v *VPNSiteLinkProperties) GetIPAddress() (rv string) {
+	if v != nil && v.IPAddress != nil {
+		return *v.IPAddress
+	}
+	return
+}
+
+func (v *VPNSiteLinkProperties) GetLinkProperties() (rv *VPNLinkProviderProperties) {
+	if v != nil {
+		return v.LinkProperties
+	}
+	return
+}
+
+func (v *VPNSiteLinkProperties) GetProvisioningState() (rv *ProvisioningState) {
+	if v != nil {
+		return v.ProvisioningState
+	}
+	return
 }
 
 // VPNSiteProperties - Parameters for VpnSite.
@@ -11972,6 +33798,76 @@ type VPNSiteProperties struct {
 	ProvisioningState *ProvisioningState
 }
 
+func (v *VPNSiteProperties) GetAddressSpace() (rv *AddressSpace) {
+	if v != nil {
+		return v.AddressSpace
+	}
+	return
+}
+
+func (v *VPNSiteProperties) GetBgpProperties() (rv *BgpSettings) {
+	if v != nil {
+		return v.BgpProperties
+	}
+	return
+}
+
+func (v *VPNSiteProperties) GetDeviceProperties() (rv *DeviceProperties) {
+	if v != nil {
+		return v.DeviceProperties
+	}
+	return
+}
+
+func (v *VPNSiteProperties) GetIPAddress() (rv string) {
+	if v != nil && v.IPAddress != nil {
+		return *v.IPAddress
+	}
+	return
+}
+
+func (v *VPNSiteProperties) GetIsSecuritySite() (rv bool) {
+	if v != nil && v.IsSecuritySite != nil {
+		return *v.IsSecuritySite
+	}
+	return
+}
+
+func (v *VPNSiteProperties) GetO365Policy() (rv *O365PolicyProperties) {
+	if v != nil {
+		return v.O365Policy
+	}
+	return
+}
+
+func (v *VPNSiteProperties) GetSiteKey() (rv string) {
+	if v != nil && v.SiteKey != nil {
+		return *v.SiteKey
+	}
+	return
+}
+
+func (v *VPNSiteProperties) GetVPNSiteLinks() (rv []*VPNSiteLink) {
+	if v != nil {
+		return v.VPNSiteLinks
+	}
+	return
+}
+
+func (v *VPNSiteProperties) GetVirtualWan() (rv *SubResource) {
+	if v != nil {
+		return v.VirtualWan
+	}
+	return
+}
+
+func (v *VPNSiteProperties) GetProvisioningState() (rv *ProvisioningState) {
+	if v != nil {
+		return v.ProvisioningState
+	}
+	return
+}
+
 // VerificationIPFlowParameters - Parameters that define the IP flow to be verified.
 type VerificationIPFlowParameters struct {
 	// REQUIRED; The direction of the packet represented as a 5-tuple.
@@ -12002,6 +33898,62 @@ type VerificationIPFlowParameters struct {
 	TargetNicResourceID *string
 }
 
+func (v *VerificationIPFlowParameters) GetDirection() (rv *Direction) {
+	if v != nil {
+		return v.Direction
+	}
+	return
+}
+
+func (v *VerificationIPFlowParameters) GetLocalIPAddress() (rv string) {
+	if v != nil && v.LocalIPAddress != nil {
+		return *v.LocalIPAddress
+	}
+	return
+}
+
+func (v *VerificationIPFlowParameters) GetLocalPort() (rv string) {
+	if v != nil && v.LocalPort != nil {
+		return *v.LocalPort
+	}
+	return
+}
+
+func (v *VerificationIPFlowParameters) GetProtocol() (rv *IPFlowProtocol) {
+	if v != nil {
+		return v.Protocol
+	}
+	return
+}
+
+func (v *VerificationIPFlowParameters) GetRemoteIPAddress() (rv string) {
+	if v != nil && v.RemoteIPAddress != nil {
+		return *v.RemoteIPAddress
+	}
+	return
+}
+
+func (v *VerificationIPFlowParameters) GetRemotePort() (rv string) {
+	if v != nil && v.RemotePort != nil {
+		return *v.RemotePort
+	}
+	return
+}
+
+func (v *VerificationIPFlowParameters) GetTargetResourceID() (rv string) {
+	if v != nil && v.TargetResourceID != nil {
+		return *v.TargetResourceID
+	}
+	return
+}
+
+func (v *VerificationIPFlowParameters) GetTargetNicResourceID() (rv string) {
+	if v != nil && v.TargetNicResourceID != nil {
+		return *v.TargetNicResourceID
+	}
+	return
+}
+
 // VerificationIPFlowResult - Results of IP flow verification on the target resource.
 type VerificationIPFlowResult struct {
 	// Indicates whether the traffic is allowed or denied.
@@ -12009,6 +33961,20 @@ type VerificationIPFlowResult struct {
 
 	// Name of the rule. If input is not matched against any security rule, it is not displayed.
 	RuleName *string
+}
+
+func (v *VerificationIPFlowResult) GetAccess() (rv *Access) {
+	if v != nil {
+		return v.Access
+	}
+	return
+}
+
+func (v *VerificationIPFlowResult) GetRuleName() (rv string) {
+	if v != nil && v.RuleName != nil {
+		return *v.RuleName
+	}
+	return
 }
 
 // VirtualAppliance - NetworkVirtualAppliance Resource.
@@ -12038,6 +34004,62 @@ type VirtualAppliance struct {
 	Type *string
 }
 
+func (v *VirtualAppliance) GetID() (rv string) {
+	if v != nil && v.ID != nil {
+		return *v.ID
+	}
+	return
+}
+
+func (v *VirtualAppliance) GetIdentity() (rv *ManagedServiceIdentity) {
+	if v != nil {
+		return v.Identity
+	}
+	return
+}
+
+func (v *VirtualAppliance) GetLocation() (rv string) {
+	if v != nil && v.Location != nil {
+		return *v.Location
+	}
+	return
+}
+
+func (v *VirtualAppliance) GetProperties() (rv *VirtualAppliancePropertiesFormat) {
+	if v != nil {
+		return v.Properties
+	}
+	return
+}
+
+func (v *VirtualAppliance) GetTags() (rv map[string]*string) {
+	if v != nil {
+		return v.Tags
+	}
+	return
+}
+
+func (v *VirtualAppliance) GetEtag() (rv string) {
+	if v != nil && v.Etag != nil {
+		return *v.Etag
+	}
+	return
+}
+
+func (v *VirtualAppliance) GetName() (rv string) {
+	if v != nil && v.Name != nil {
+		return *v.Name
+	}
+	return
+}
+
+func (v *VirtualAppliance) GetType() (rv string) {
+	if v != nil && v.Type != nil {
+		return *v.Type
+	}
+	return
+}
+
 // VirtualApplianceListResult - Response for ListNetworkVirtualAppliances API service call.
 type VirtualApplianceListResult struct {
 	// URL to get the next set of results.
@@ -12045,6 +34067,20 @@ type VirtualApplianceListResult struct {
 
 	// List of Network Virtual Appliances.
 	Value []*VirtualAppliance
+}
+
+func (v *VirtualApplianceListResult) GetNextLink() (rv string) {
+	if v != nil && v.NextLink != nil {
+		return *v.NextLink
+	}
+	return
+}
+
+func (v *VirtualApplianceListResult) GetValue() (rv []*VirtualAppliance) {
+	if v != nil {
+		return v.Value
+	}
+	return
 }
 
 // VirtualApplianceNicProperties - Network Virtual Appliance NIC properties.
@@ -12057,6 +34093,27 @@ type VirtualApplianceNicProperties struct {
 
 	// READ-ONLY; Public IP address.
 	PublicIPAddress *string
+}
+
+func (v *VirtualApplianceNicProperties) GetName() (rv string) {
+	if v != nil && v.Name != nil {
+		return *v.Name
+	}
+	return
+}
+
+func (v *VirtualApplianceNicProperties) GetPrivateIPAddress() (rv string) {
+	if v != nil && v.PrivateIPAddress != nil {
+		return *v.PrivateIPAddress
+	}
+	return
+}
+
+func (v *VirtualApplianceNicProperties) GetPublicIPAddress() (rv string) {
+	if v != nil && v.PublicIPAddress != nil {
+		return *v.PublicIPAddress
+	}
+	return
 }
 
 // VirtualAppliancePropertiesFormat - Network Virtual Appliance definition.
@@ -12107,6 +34164,111 @@ type VirtualAppliancePropertiesFormat struct {
 	VirtualApplianceSites []*SubResource
 }
 
+func (v *VirtualAppliancePropertiesFormat) GetBootStrapConfigurationBlobs() (rv []*string) {
+	if v != nil {
+		return v.BootStrapConfigurationBlobs
+	}
+	return
+}
+
+func (v *VirtualAppliancePropertiesFormat) GetCloudInitConfiguration() (rv string) {
+	if v != nil && v.CloudInitConfiguration != nil {
+		return *v.CloudInitConfiguration
+	}
+	return
+}
+
+func (v *VirtualAppliancePropertiesFormat) GetCloudInitConfigurationBlobs() (rv []*string) {
+	if v != nil {
+		return v.CloudInitConfigurationBlobs
+	}
+	return
+}
+
+func (v *VirtualAppliancePropertiesFormat) GetDelegation() (rv *DelegationProperties) {
+	if v != nil {
+		return v.Delegation
+	}
+	return
+}
+
+func (v *VirtualAppliancePropertiesFormat) GetNvaSKU() (rv *VirtualApplianceSKUProperties) {
+	if v != nil {
+		return v.NvaSKU
+	}
+	return
+}
+
+func (v *VirtualAppliancePropertiesFormat) GetPartnerManagedResource() (rv *PartnerManagedResourceProperties) {
+	if v != nil {
+		return v.PartnerManagedResource
+	}
+	return
+}
+
+func (v *VirtualAppliancePropertiesFormat) GetSSHPublicKey() (rv string) {
+	if v != nil && v.SSHPublicKey != nil {
+		return *v.SSHPublicKey
+	}
+	return
+}
+
+func (v *VirtualAppliancePropertiesFormat) GetVirtualApplianceAsn() (rv int64) {
+	if v != nil && v.VirtualApplianceAsn != nil {
+		return *v.VirtualApplianceAsn
+	}
+	return
+}
+
+func (v *VirtualAppliancePropertiesFormat) GetVirtualHub() (rv *SubResource) {
+	if v != nil {
+		return v.VirtualHub
+	}
+	return
+}
+
+func (v *VirtualAppliancePropertiesFormat) GetAddressPrefix() (rv string) {
+	if v != nil && v.AddressPrefix != nil {
+		return *v.AddressPrefix
+	}
+	return
+}
+
+func (v *VirtualAppliancePropertiesFormat) GetDeploymentType() (rv string) {
+	if v != nil && v.DeploymentType != nil {
+		return *v.DeploymentType
+	}
+	return
+}
+
+func (v *VirtualAppliancePropertiesFormat) GetInboundSecurityRules() (rv []*SubResource) {
+	if v != nil {
+		return v.InboundSecurityRules
+	}
+	return
+}
+
+func (v *VirtualAppliancePropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if v != nil {
+		return v.ProvisioningState
+	}
+	return
+}
+
+func (v *VirtualAppliancePropertiesFormat) GetVirtualApplianceNics() (rv []*VirtualApplianceNicProperties) {
+	if v != nil {
+		return v.VirtualApplianceNics
+	}
+	return
+}
+
+func (v *VirtualAppliancePropertiesFormat) GetVirtualApplianceSites() (rv []*SubResource) {
+	if v != nil {
+		return v.VirtualApplianceSites
+	}
+	return
+}
+
 // VirtualApplianceSKU - Definition of the NetworkVirtualApplianceSkus resource.
 type VirtualApplianceSKU struct {
 	// Resource ID.
@@ -12131,6 +34293,55 @@ type VirtualApplianceSKU struct {
 	Type *string
 }
 
+func (v *VirtualApplianceSKU) GetID() (rv string) {
+	if v != nil && v.ID != nil {
+		return *v.ID
+	}
+	return
+}
+
+func (v *VirtualApplianceSKU) GetLocation() (rv string) {
+	if v != nil && v.Location != nil {
+		return *v.Location
+	}
+	return
+}
+
+func (v *VirtualApplianceSKU) GetProperties() (rv *VirtualApplianceSKUPropertiesFormat) {
+	if v != nil {
+		return v.Properties
+	}
+	return
+}
+
+func (v *VirtualApplianceSKU) GetTags() (rv map[string]*string) {
+	if v != nil {
+		return v.Tags
+	}
+	return
+}
+
+func (v *VirtualApplianceSKU) GetEtag() (rv string) {
+	if v != nil && v.Etag != nil {
+		return *v.Etag
+	}
+	return
+}
+
+func (v *VirtualApplianceSKU) GetName() (rv string) {
+	if v != nil && v.Name != nil {
+		return *v.Name
+	}
+	return
+}
+
+func (v *VirtualApplianceSKU) GetType() (rv string) {
+	if v != nil && v.Type != nil {
+		return *v.Type
+	}
+	return
+}
+
 // VirtualApplianceSKUInstances - List of available Sku and instances.
 type VirtualApplianceSKUInstances struct {
 	// READ-ONLY; Instance Count.
@@ -12140,6 +34351,20 @@ type VirtualApplianceSKUInstances struct {
 	ScaleUnit *string
 }
 
+func (v *VirtualApplianceSKUInstances) GetInstanceCount() (rv int32) {
+	if v != nil && v.InstanceCount != nil {
+		return *v.InstanceCount
+	}
+	return
+}
+
+func (v *VirtualApplianceSKUInstances) GetScaleUnit() (rv string) {
+	if v != nil && v.ScaleUnit != nil {
+		return *v.ScaleUnit
+	}
+	return
+}
+
 // VirtualApplianceSKUListResult - Response for ListNetworkVirtualApplianceSkus API service call.
 type VirtualApplianceSKUListResult struct {
 	// URL to get the next set of results.
@@ -12147,6 +34372,20 @@ type VirtualApplianceSKUListResult struct {
 
 	// List of Network Virtual Appliance Skus that are available.
 	Value []*VirtualApplianceSKU
+}
+
+func (v *VirtualApplianceSKUListResult) GetNextLink() (rv string) {
+	if v != nil && v.NextLink != nil {
+		return *v.NextLink
+	}
+	return
+}
+
+func (v *VirtualApplianceSKUListResult) GetValue() (rv []*VirtualApplianceSKU) {
+	if v != nil {
+		return v.Value
+	}
+	return
 }
 
 // VirtualApplianceSKUProperties - Network Virtual Appliance Sku Properties.
@@ -12161,6 +34400,27 @@ type VirtualApplianceSKUProperties struct {
 	Vendor *string
 }
 
+func (v *VirtualApplianceSKUProperties) GetBundledScaleUnit() (rv string) {
+	if v != nil && v.BundledScaleUnit != nil {
+		return *v.BundledScaleUnit
+	}
+	return
+}
+
+func (v *VirtualApplianceSKUProperties) GetMarketPlaceVersion() (rv string) {
+	if v != nil && v.MarketPlaceVersion != nil {
+		return *v.MarketPlaceVersion
+	}
+	return
+}
+
+func (v *VirtualApplianceSKUProperties) GetVendor() (rv string) {
+	if v != nil && v.Vendor != nil {
+		return *v.Vendor
+	}
+	return
+}
+
 // VirtualApplianceSKUPropertiesFormat - Properties specific to NetworkVirtualApplianceSkus.
 type VirtualApplianceSKUPropertiesFormat struct {
 	// The list of scale units available.
@@ -12171,6 +34431,27 @@ type VirtualApplianceSKUPropertiesFormat struct {
 
 	// READ-ONLY; Network Virtual Appliance Sku vendor.
 	Vendor *string
+}
+
+func (v *VirtualApplianceSKUPropertiesFormat) GetAvailableScaleUnits() (rv []*VirtualApplianceSKUInstances) {
+	if v != nil {
+		return v.AvailableScaleUnits
+	}
+	return
+}
+
+func (v *VirtualApplianceSKUPropertiesFormat) GetAvailableVersions() (rv []*string) {
+	if v != nil {
+		return v.AvailableVersions
+	}
+	return
+}
+
+func (v *VirtualApplianceSKUPropertiesFormat) GetVendor() (rv string) {
+	if v != nil && v.Vendor != nil {
+		return *v.Vendor
+	}
+	return
 }
 
 // VirtualApplianceSite - Virtual Appliance Site resource.
@@ -12191,6 +34472,41 @@ type VirtualApplianceSite struct {
 	Type *string
 }
 
+func (v *VirtualApplianceSite) GetID() (rv string) {
+	if v != nil && v.ID != nil {
+		return *v.ID
+	}
+	return
+}
+
+func (v *VirtualApplianceSite) GetName() (rv string) {
+	if v != nil && v.Name != nil {
+		return *v.Name
+	}
+	return
+}
+
+func (v *VirtualApplianceSite) GetProperties() (rv *VirtualApplianceSiteProperties) {
+	if v != nil {
+		return v.Properties
+	}
+	return
+}
+
+func (v *VirtualApplianceSite) GetEtag() (rv string) {
+	if v != nil && v.Etag != nil {
+		return *v.Etag
+	}
+	return
+}
+
+func (v *VirtualApplianceSite) GetType() (rv string) {
+	if v != nil && v.Type != nil {
+		return *v.Type
+	}
+	return
+}
+
 // VirtualApplianceSiteListResult - Response for ListNetworkVirtualApplianceSites API service call.
 type VirtualApplianceSiteListResult struct {
 	// URL to get the next set of results.
@@ -12198,6 +34514,20 @@ type VirtualApplianceSiteListResult struct {
 
 	// List of Network Virtual Appliance sites.
 	Value []*VirtualApplianceSite
+}
+
+func (v *VirtualApplianceSiteListResult) GetNextLink() (rv string) {
+	if v != nil && v.NextLink != nil {
+		return *v.NextLink
+	}
+	return
+}
+
+func (v *VirtualApplianceSiteListResult) GetValue() (rv []*VirtualApplianceSite) {
+	if v != nil {
+		return v.Value
+	}
+	return
 }
 
 // VirtualApplianceSiteProperties - Properties of the rule group.
@@ -12210,6 +34540,27 @@ type VirtualApplianceSiteProperties struct {
 
 	// READ-ONLY; The provisioning state of the resource.
 	ProvisioningState *ProvisioningState
+}
+
+func (v *VirtualApplianceSiteProperties) GetAddressPrefix() (rv string) {
+	if v != nil && v.AddressPrefix != nil {
+		return *v.AddressPrefix
+	}
+	return
+}
+
+func (v *VirtualApplianceSiteProperties) GetO365Policy() (rv *Office365PolicyProperties) {
+	if v != nil {
+		return v.O365Policy
+	}
+	return
+}
+
+func (v *VirtualApplianceSiteProperties) GetProvisioningState() (rv *ProvisioningState) {
+	if v != nil {
+		return v.ProvisioningState
+	}
+	return
 }
 
 // VirtualHub Resource.
@@ -12239,11 +34590,74 @@ type VirtualHub struct {
 	Type *string
 }
 
+func (v *VirtualHub) GetID() (rv string) {
+	if v != nil && v.ID != nil {
+		return *v.ID
+	}
+	return
+}
+
+func (v *VirtualHub) GetLocation() (rv string) {
+	if v != nil && v.Location != nil {
+		return *v.Location
+	}
+	return
+}
+
+func (v *VirtualHub) GetProperties() (rv *VirtualHubProperties) {
+	if v != nil {
+		return v.Properties
+	}
+	return
+}
+
+func (v *VirtualHub) GetTags() (rv map[string]*string) {
+	if v != nil {
+		return v.Tags
+	}
+	return
+}
+
+func (v *VirtualHub) GetEtag() (rv string) {
+	if v != nil && v.Etag != nil {
+		return *v.Etag
+	}
+	return
+}
+
+func (v *VirtualHub) GetKind() (rv string) {
+	if v != nil && v.Kind != nil {
+		return *v.Kind
+	}
+	return
+}
+
+func (v *VirtualHub) GetName() (rv string) {
+	if v != nil && v.Name != nil {
+		return *v.Name
+	}
+	return
+}
+
+func (v *VirtualHub) GetType() (rv string) {
+	if v != nil && v.Type != nil {
+		return *v.Type
+	}
+	return
+}
+
 // VirtualHubID - Virtual Hub identifier.
 type VirtualHubID struct {
 	// The resource URI for the Virtual Hub where the ExpressRoute gateway is or will be deployed. The Virtual Hub resource and
 	// the ExpressRoute gateway resource reside in the same subscription.
 	ID *string
+}
+
+func (v *VirtualHubID) GetID() (rv string) {
+	if v != nil && v.ID != nil {
+		return *v.ID
+	}
+	return
 }
 
 // VirtualHubProperties - Parameters for VirtualHub.
@@ -12315,6 +34729,160 @@ type VirtualHubProperties struct {
 	RoutingState *RoutingState
 }
 
+func (v *VirtualHubProperties) GetAddressPrefix() (rv string) {
+	if v != nil && v.AddressPrefix != nil {
+		return *v.AddressPrefix
+	}
+	return
+}
+
+func (v *VirtualHubProperties) GetAllowBranchToBranchTraffic() (rv bool) {
+	if v != nil && v.AllowBranchToBranchTraffic != nil {
+		return *v.AllowBranchToBranchTraffic
+	}
+	return
+}
+
+func (v *VirtualHubProperties) GetAzureFirewall() (rv *SubResource) {
+	if v != nil {
+		return v.AzureFirewall
+	}
+	return
+}
+
+func (v *VirtualHubProperties) GetExpressRouteGateway() (rv *SubResource) {
+	if v != nil {
+		return v.ExpressRouteGateway
+	}
+	return
+}
+
+func (v *VirtualHubProperties) GetHubRoutingPreference() (rv *HubRoutingPreference) {
+	if v != nil {
+		return v.HubRoutingPreference
+	}
+	return
+}
+
+func (v *VirtualHubProperties) GetP2SVPNGateway() (rv *SubResource) {
+	if v != nil {
+		return v.P2SVPNGateway
+	}
+	return
+}
+
+func (v *VirtualHubProperties) GetPreferredRoutingGateway() (rv *PreferredRoutingGateway) {
+	if v != nil {
+		return v.PreferredRoutingGateway
+	}
+	return
+}
+
+func (v *VirtualHubProperties) GetRouteTable() (rv *VirtualHubRouteTable) {
+	if v != nil {
+		return v.RouteTable
+	}
+	return
+}
+
+func (v *VirtualHubProperties) GetSKU() (rv string) {
+	if v != nil && v.SKU != nil {
+		return *v.SKU
+	}
+	return
+}
+
+func (v *VirtualHubProperties) GetSecurityPartnerProvider() (rv *SubResource) {
+	if v != nil {
+		return v.SecurityPartnerProvider
+	}
+	return
+}
+
+func (v *VirtualHubProperties) GetSecurityProviderName() (rv string) {
+	if v != nil && v.SecurityProviderName != nil {
+		return *v.SecurityProviderName
+	}
+	return
+}
+
+func (v *VirtualHubProperties) GetVPNGateway() (rv *SubResource) {
+	if v != nil {
+		return v.VPNGateway
+	}
+	return
+}
+
+func (v *VirtualHubProperties) GetVirtualHubRouteTableV2S() (rv []*VirtualHubRouteTableV2) {
+	if v != nil {
+		return v.VirtualHubRouteTableV2S
+	}
+	return
+}
+
+func (v *VirtualHubProperties) GetVirtualRouterAsn() (rv int64) {
+	if v != nil && v.VirtualRouterAsn != nil {
+		return *v.VirtualRouterAsn
+	}
+	return
+}
+
+func (v *VirtualHubProperties) GetVirtualRouterAutoScaleConfiguration() (rv *VirtualRouterAutoScaleConfiguration) {
+	if v != nil {
+		return v.VirtualRouterAutoScaleConfiguration
+	}
+	return
+}
+
+func (v *VirtualHubProperties) GetVirtualRouterIPs() (rv []*string) {
+	if v != nil {
+		return v.VirtualRouterIPs
+	}
+	return
+}
+
+func (v *VirtualHubProperties) GetVirtualWan() (rv *SubResource) {
+	if v != nil {
+		return v.VirtualWan
+	}
+	return
+}
+
+func (v *VirtualHubProperties) GetBgpConnections() (rv []*SubResource) {
+	if v != nil {
+		return v.BgpConnections
+	}
+	return
+}
+
+func (v *VirtualHubProperties) GetIPConfigurations() (rv []*SubResource) {
+	if v != nil {
+		return v.IPConfigurations
+	}
+	return
+}
+
+func (v *VirtualHubProperties) GetProvisioningState() (rv *ProvisioningState) {
+	if v != nil {
+		return v.ProvisioningState
+	}
+	return
+}
+
+func (v *VirtualHubProperties) GetRouteMaps() (rv []*SubResource) {
+	if v != nil {
+		return v.RouteMaps
+	}
+	return
+}
+
+func (v *VirtualHubProperties) GetRoutingState() (rv *RoutingState) {
+	if v != nil {
+		return v.RoutingState
+	}
+	return
+}
+
 // VirtualHubRoute - VirtualHub route.
 type VirtualHubRoute struct {
 	// List of all addressPrefixes.
@@ -12324,10 +34892,31 @@ type VirtualHubRoute struct {
 	NextHopIPAddress *string
 }
 
+func (v *VirtualHubRoute) GetAddressPrefixes() (rv []*string) {
+	if v != nil {
+		return v.AddressPrefixes
+	}
+	return
+}
+
+func (v *VirtualHubRoute) GetNextHopIPAddress() (rv string) {
+	if v != nil && v.NextHopIPAddress != nil {
+		return *v.NextHopIPAddress
+	}
+	return
+}
+
 // VirtualHubRouteTable - VirtualHub route table.
 type VirtualHubRouteTable struct {
 	// List of all routes.
 	Routes []*VirtualHubRoute
+}
+
+func (v *VirtualHubRouteTable) GetRoutes() (rv []*VirtualHubRoute) {
+	if v != nil {
+		return v.Routes
+	}
+	return
 }
 
 // VirtualHubRouteTableV2 Resource.
@@ -12345,6 +34934,34 @@ type VirtualHubRouteTableV2 struct {
 	Etag *string
 }
 
+func (v *VirtualHubRouteTableV2) GetID() (rv string) {
+	if v != nil && v.ID != nil {
+		return *v.ID
+	}
+	return
+}
+
+func (v *VirtualHubRouteTableV2) GetName() (rv string) {
+	if v != nil && v.Name != nil {
+		return *v.Name
+	}
+	return
+}
+
+func (v *VirtualHubRouteTableV2) GetProperties() (rv *VirtualHubRouteTableV2Properties) {
+	if v != nil {
+		return v.Properties
+	}
+	return
+}
+
+func (v *VirtualHubRouteTableV2) GetEtag() (rv string) {
+	if v != nil && v.Etag != nil {
+		return *v.Etag
+	}
+	return
+}
+
 // VirtualHubRouteTableV2Properties - Parameters for VirtualHubRouteTableV2.
 type VirtualHubRouteTableV2Properties struct {
 	// List of all connections attached to this route table v2.
@@ -12355,6 +34972,27 @@ type VirtualHubRouteTableV2Properties struct {
 
 	// READ-ONLY; The provisioning state of the virtual hub route table v2 resource.
 	ProvisioningState *ProvisioningState
+}
+
+func (v *VirtualHubRouteTableV2Properties) GetAttachedConnections() (rv []*string) {
+	if v != nil {
+		return v.AttachedConnections
+	}
+	return
+}
+
+func (v *VirtualHubRouteTableV2Properties) GetRoutes() (rv []*VirtualHubRouteV2) {
+	if v != nil {
+		return v.Routes
+	}
+	return
+}
+
+func (v *VirtualHubRouteTableV2Properties) GetProvisioningState() (rv *ProvisioningState) {
+	if v != nil {
+		return v.ProvisioningState
+	}
+	return
 }
 
 // VirtualHubRouteV2 - VirtualHubRouteTableV2 route.
@@ -12370,6 +35008,34 @@ type VirtualHubRouteV2 struct {
 
 	// NextHops ip address.
 	NextHops []*string
+}
+
+func (v *VirtualHubRouteV2) GetDestinationType() (rv string) {
+	if v != nil && v.DestinationType != nil {
+		return *v.DestinationType
+	}
+	return
+}
+
+func (v *VirtualHubRouteV2) GetDestinations() (rv []*string) {
+	if v != nil {
+		return v.Destinations
+	}
+	return
+}
+
+func (v *VirtualHubRouteV2) GetNextHopType() (rv string) {
+	if v != nil && v.NextHopType != nil {
+		return *v.NextHopType
+	}
+	return
+}
+
+func (v *VirtualHubRouteV2) GetNextHops() (rv []*string) {
+	if v != nil {
+		return v.NextHops
+	}
+	return
 }
 
 // VirtualNetwork - Virtual Network resource.
@@ -12399,6 +35065,62 @@ type VirtualNetwork struct {
 	Type *string
 }
 
+func (v *VirtualNetwork) GetExtendedLocation() (rv *ExtendedLocation) {
+	if v != nil {
+		return v.ExtendedLocation
+	}
+	return
+}
+
+func (v *VirtualNetwork) GetID() (rv string) {
+	if v != nil && v.ID != nil {
+		return *v.ID
+	}
+	return
+}
+
+func (v *VirtualNetwork) GetLocation() (rv string) {
+	if v != nil && v.Location != nil {
+		return *v.Location
+	}
+	return
+}
+
+func (v *VirtualNetwork) GetProperties() (rv *VirtualNetworkPropertiesFormat) {
+	if v != nil {
+		return v.Properties
+	}
+	return
+}
+
+func (v *VirtualNetwork) GetTags() (rv map[string]*string) {
+	if v != nil {
+		return v.Tags
+	}
+	return
+}
+
+func (v *VirtualNetwork) GetEtag() (rv string) {
+	if v != nil && v.Etag != nil {
+		return *v.Etag
+	}
+	return
+}
+
+func (v *VirtualNetwork) GetName() (rv string) {
+	if v != nil && v.Name != nil {
+		return *v.Name
+	}
+	return
+}
+
+func (v *VirtualNetwork) GetType() (rv string) {
+	if v != nil && v.Type != nil {
+		return *v.Type
+	}
+	return
+}
+
 // VirtualNetworkBgpCommunities - Bgp Communities sent over ExpressRoute with each route corresponding to a prefix in this
 // VNET.
 type VirtualNetworkBgpCommunities struct {
@@ -12409,10 +35131,31 @@ type VirtualNetworkBgpCommunities struct {
 	RegionalCommunity *string
 }
 
+func (v *VirtualNetworkBgpCommunities) GetVirtualNetworkCommunity() (rv string) {
+	if v != nil && v.VirtualNetworkCommunity != nil {
+		return *v.VirtualNetworkCommunity
+	}
+	return
+}
+
+func (v *VirtualNetworkBgpCommunities) GetRegionalCommunity() (rv string) {
+	if v != nil && v.RegionalCommunity != nil {
+		return *v.RegionalCommunity
+	}
+	return
+}
+
 // VirtualNetworkConnectionGatewayReference - A reference to VirtualNetworkGateway or LocalNetworkGateway resource.
 type VirtualNetworkConnectionGatewayReference struct {
 	// REQUIRED; The ID of VirtualNetworkGateway or LocalNetworkGateway resource.
 	ID *string
+}
+
+func (v *VirtualNetworkConnectionGatewayReference) GetID() (rv string) {
+	if v != nil && v.ID != nil {
+		return *v.ID
+	}
+	return
 }
 
 // VirtualNetworkDdosProtectionStatusResult - Response for GetVirtualNetworkDdosProtectionStatusOperation.
@@ -12424,6 +35167,20 @@ type VirtualNetworkDdosProtectionStatusResult struct {
 	Value []*PublicIPDdosProtectionStatusResult
 }
 
+func (v *VirtualNetworkDdosProtectionStatusResult) GetNextLink() (rv string) {
+	if v != nil && v.NextLink != nil {
+		return *v.NextLink
+	}
+	return
+}
+
+func (v *VirtualNetworkDdosProtectionStatusResult) GetValue() (rv []*PublicIPDdosProtectionStatusResult) {
+	if v != nil {
+		return v.Value
+	}
+	return
+}
+
 // VirtualNetworkEncryption - Indicates if encryption is enabled on virtual network and if VM without encryption is allowed
 // in encrypted VNet.
 type VirtualNetworkEncryption struct {
@@ -12432,6 +35189,20 @@ type VirtualNetworkEncryption struct {
 
 	// If the encrypted VNet allows VM that does not support encryption
 	Enforcement *VirtualNetworkEncryptionEnforcement
+}
+
+func (v *VirtualNetworkEncryption) GetEnabled() (rv bool) {
+	if v != nil && v.Enabled != nil {
+		return *v.Enabled
+	}
+	return
+}
+
+func (v *VirtualNetworkEncryption) GetEnforcement() (rv *VirtualNetworkEncryptionEnforcement) {
+	if v != nil {
+		return v.Enforcement
+	}
+	return
 }
 
 // VirtualNetworkGateway - A common class for general resource information.
@@ -12461,6 +35232,62 @@ type VirtualNetworkGateway struct {
 	Type *string
 }
 
+func (v *VirtualNetworkGateway) GetProperties() (rv *VirtualNetworkGatewayPropertiesFormat) {
+	if v != nil {
+		return v.Properties
+	}
+	return
+}
+
+func (v *VirtualNetworkGateway) GetExtendedLocation() (rv *ExtendedLocation) {
+	if v != nil {
+		return v.ExtendedLocation
+	}
+	return
+}
+
+func (v *VirtualNetworkGateway) GetID() (rv string) {
+	if v != nil && v.ID != nil {
+		return *v.ID
+	}
+	return
+}
+
+func (v *VirtualNetworkGateway) GetLocation() (rv string) {
+	if v != nil && v.Location != nil {
+		return *v.Location
+	}
+	return
+}
+
+func (v *VirtualNetworkGateway) GetTags() (rv map[string]*string) {
+	if v != nil {
+		return v.Tags
+	}
+	return
+}
+
+func (v *VirtualNetworkGateway) GetEtag() (rv string) {
+	if v != nil && v.Etag != nil {
+		return *v.Etag
+	}
+	return
+}
+
+func (v *VirtualNetworkGateway) GetName() (rv string) {
+	if v != nil && v.Name != nil {
+		return *v.Name
+	}
+	return
+}
+
+func (v *VirtualNetworkGateway) GetType() (rv string) {
+	if v != nil && v.Type != nil {
+		return *v.Type
+	}
+	return
+}
+
 // VirtualNetworkGatewayConnection - A common class for general resource information.
 type VirtualNetworkGatewayConnection struct {
 	// REQUIRED; Properties of the virtual network gateway connection.
@@ -12485,6 +35312,55 @@ type VirtualNetworkGatewayConnection struct {
 	Type *string
 }
 
+func (v *VirtualNetworkGatewayConnection) GetProperties() (rv *VirtualNetworkGatewayConnectionPropertiesFormat) {
+	if v != nil {
+		return v.Properties
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayConnection) GetID() (rv string) {
+	if v != nil && v.ID != nil {
+		return *v.ID
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayConnection) GetLocation() (rv string) {
+	if v != nil && v.Location != nil {
+		return *v.Location
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayConnection) GetTags() (rv map[string]*string) {
+	if v != nil {
+		return v.Tags
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayConnection) GetEtag() (rv string) {
+	if v != nil && v.Etag != nil {
+		return *v.Etag
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayConnection) GetName() (rv string) {
+	if v != nil && v.Name != nil {
+		return *v.Name
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayConnection) GetType() (rv string) {
+	if v != nil && v.Type != nil {
+		return *v.Type
+	}
+	return
+}
+
 // VirtualNetworkGatewayConnectionListEntity - A common class for general resource information.
 type VirtualNetworkGatewayConnectionListEntity struct {
 	// REQUIRED; Properties of the virtual network gateway connection.
@@ -12507,6 +35383,55 @@ type VirtualNetworkGatewayConnectionListEntity struct {
 
 	// READ-ONLY; Resource type.
 	Type *string
+}
+
+func (v *VirtualNetworkGatewayConnectionListEntity) GetProperties() (rv *VirtualNetworkGatewayConnectionListEntityPropertiesFormat) {
+	if v != nil {
+		return v.Properties
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayConnectionListEntity) GetID() (rv string) {
+	if v != nil && v.ID != nil {
+		return *v.ID
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayConnectionListEntity) GetLocation() (rv string) {
+	if v != nil && v.Location != nil {
+		return *v.Location
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayConnectionListEntity) GetTags() (rv map[string]*string) {
+	if v != nil {
+		return v.Tags
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayConnectionListEntity) GetEtag() (rv string) {
+	if v != nil && v.Etag != nil {
+		return *v.Etag
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayConnectionListEntity) GetName() (rv string) {
+	if v != nil && v.Name != nil {
+		return *v.Name
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayConnectionListEntity) GetType() (rv string) {
+	if v != nil && v.Type != nil {
+		return *v.Type
+	}
+	return
 }
 
 // VirtualNetworkGatewayConnectionListEntityPropertiesFormat - VirtualNetworkGatewayConnection properties.
@@ -12582,6 +35507,167 @@ type VirtualNetworkGatewayConnectionListEntityPropertiesFormat struct {
 	TunnelConnectionStatus []*TunnelConnectionHealth
 }
 
+func (v *VirtualNetworkGatewayConnectionListEntityPropertiesFormat) GetConnectionType() (rv *VirtualNetworkGatewayConnectionType) {
+	if v != nil {
+		return v.ConnectionType
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayConnectionListEntityPropertiesFormat) GetVirtualNetworkGateway1() (rv *VirtualNetworkConnectionGatewayReference) {
+	if v != nil {
+		return v.VirtualNetworkGateway1
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayConnectionListEntityPropertiesFormat) GetAuthorizationKey() (rv string) {
+	if v != nil && v.AuthorizationKey != nil {
+		return *v.AuthorizationKey
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayConnectionListEntityPropertiesFormat) GetConnectionMode() (rv *VirtualNetworkGatewayConnectionMode) {
+	if v != nil {
+		return v.ConnectionMode
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayConnectionListEntityPropertiesFormat) GetConnectionProtocol() (rv *VirtualNetworkGatewayConnectionProtocol) {
+	if v != nil {
+		return v.ConnectionProtocol
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayConnectionListEntityPropertiesFormat) GetEnableBgp() (rv bool) {
+	if v != nil && v.EnableBgp != nil {
+		return *v.EnableBgp
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayConnectionListEntityPropertiesFormat) GetEnablePrivateLinkFastPath() (rv bool) {
+	if v != nil && v.EnablePrivateLinkFastPath != nil {
+		return *v.EnablePrivateLinkFastPath
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayConnectionListEntityPropertiesFormat) GetExpressRouteGatewayBypass() (rv bool) {
+	if v != nil && v.ExpressRouteGatewayBypass != nil {
+		return *v.ExpressRouteGatewayBypass
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayConnectionListEntityPropertiesFormat) GetGatewayCustomBgpIPAddresses() (rv []*GatewayCustomBgpIPAddressIPConfiguration) {
+	if v != nil {
+		return v.GatewayCustomBgpIPAddresses
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayConnectionListEntityPropertiesFormat) GetIPSecPolicies() (rv []*IPSecPolicy) {
+	if v != nil {
+		return v.IPSecPolicies
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayConnectionListEntityPropertiesFormat) GetLocalNetworkGateway2() (rv *VirtualNetworkConnectionGatewayReference) {
+	if v != nil {
+		return v.LocalNetworkGateway2
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayConnectionListEntityPropertiesFormat) GetPeer() (rv *SubResource) {
+	if v != nil {
+		return v.Peer
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayConnectionListEntityPropertiesFormat) GetRoutingWeight() (rv int32) {
+	if v != nil && v.RoutingWeight != nil {
+		return *v.RoutingWeight
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayConnectionListEntityPropertiesFormat) GetSharedKey() (rv string) {
+	if v != nil && v.SharedKey != nil {
+		return *v.SharedKey
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayConnectionListEntityPropertiesFormat) GetTrafficSelectorPolicies() (rv []*TrafficSelectorPolicy) {
+	if v != nil {
+		return v.TrafficSelectorPolicies
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayConnectionListEntityPropertiesFormat) GetUsePolicyBasedTrafficSelectors() (rv bool) {
+	if v != nil && v.UsePolicyBasedTrafficSelectors != nil {
+		return *v.UsePolicyBasedTrafficSelectors
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayConnectionListEntityPropertiesFormat) GetVirtualNetworkGateway2() (rv *VirtualNetworkConnectionGatewayReference) {
+	if v != nil {
+		return v.VirtualNetworkGateway2
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayConnectionListEntityPropertiesFormat) GetConnectionStatus() (rv *VirtualNetworkGatewayConnectionStatus) {
+	if v != nil {
+		return v.ConnectionStatus
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayConnectionListEntityPropertiesFormat) GetEgressBytesTransferred() (rv int64) {
+	if v != nil && v.EgressBytesTransferred != nil {
+		return *v.EgressBytesTransferred
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayConnectionListEntityPropertiesFormat) GetIngressBytesTransferred() (rv int64) {
+	if v != nil && v.IngressBytesTransferred != nil {
+		return *v.IngressBytesTransferred
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayConnectionListEntityPropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if v != nil {
+		return v.ProvisioningState
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayConnectionListEntityPropertiesFormat) GetResourceGUID() (rv string) {
+	if v != nil && v.ResourceGUID != nil {
+		return *v.ResourceGUID
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayConnectionListEntityPropertiesFormat) GetTunnelConnectionStatus() (rv []*TunnelConnectionHealth) {
+	if v != nil {
+		return v.TunnelConnectionStatus
+	}
+	return
+}
+
 // VirtualNetworkGatewayConnectionListResult - Response for the ListVirtualNetworkGatewayConnections API service call.
 type VirtualNetworkGatewayConnectionListResult struct {
 	// A list of VirtualNetworkGatewayConnection resources that exists in a resource group.
@@ -12589,6 +35675,20 @@ type VirtualNetworkGatewayConnectionListResult struct {
 
 	// READ-ONLY; The URL to get the next set of results.
 	NextLink *string
+}
+
+func (v *VirtualNetworkGatewayConnectionListResult) GetValue() (rv []*VirtualNetworkGatewayConnection) {
+	if v != nil {
+		return v.Value
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayConnectionListResult) GetNextLink() (rv string) {
+	if v != nil && v.NextLink != nil {
+		return *v.NextLink
+	}
+	return
 }
 
 // VirtualNetworkGatewayConnectionPropertiesFormat - VirtualNetworkGatewayConnection properties.
@@ -12676,6 +35776,195 @@ type VirtualNetworkGatewayConnectionPropertiesFormat struct {
 	TunnelConnectionStatus []*TunnelConnectionHealth
 }
 
+func (v *VirtualNetworkGatewayConnectionPropertiesFormat) GetConnectionType() (rv *VirtualNetworkGatewayConnectionType) {
+	if v != nil {
+		return v.ConnectionType
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayConnectionPropertiesFormat) GetVirtualNetworkGateway1() (rv *VirtualNetworkGateway) {
+	if v != nil {
+		return v.VirtualNetworkGateway1
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayConnectionPropertiesFormat) GetAuthorizationKey() (rv string) {
+	if v != nil && v.AuthorizationKey != nil {
+		return *v.AuthorizationKey
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayConnectionPropertiesFormat) GetConnectionMode() (rv *VirtualNetworkGatewayConnectionMode) {
+	if v != nil {
+		return v.ConnectionMode
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayConnectionPropertiesFormat) GetConnectionProtocol() (rv *VirtualNetworkGatewayConnectionProtocol) {
+	if v != nil {
+		return v.ConnectionProtocol
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayConnectionPropertiesFormat) GetDpdTimeoutSeconds() (rv int32) {
+	if v != nil && v.DpdTimeoutSeconds != nil {
+		return *v.DpdTimeoutSeconds
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayConnectionPropertiesFormat) GetEgressNatRules() (rv []*SubResource) {
+	if v != nil {
+		return v.EgressNatRules
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayConnectionPropertiesFormat) GetEnableBgp() (rv bool) {
+	if v != nil && v.EnableBgp != nil {
+		return *v.EnableBgp
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayConnectionPropertiesFormat) GetEnablePrivateLinkFastPath() (rv bool) {
+	if v != nil && v.EnablePrivateLinkFastPath != nil {
+		return *v.EnablePrivateLinkFastPath
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayConnectionPropertiesFormat) GetExpressRouteGatewayBypass() (rv bool) {
+	if v != nil && v.ExpressRouteGatewayBypass != nil {
+		return *v.ExpressRouteGatewayBypass
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayConnectionPropertiesFormat) GetGatewayCustomBgpIPAddresses() (rv []*GatewayCustomBgpIPAddressIPConfiguration) {
+	if v != nil {
+		return v.GatewayCustomBgpIPAddresses
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayConnectionPropertiesFormat) GetIPSecPolicies() (rv []*IPSecPolicy) {
+	if v != nil {
+		return v.IPSecPolicies
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayConnectionPropertiesFormat) GetIngressNatRules() (rv []*SubResource) {
+	if v != nil {
+		return v.IngressNatRules
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayConnectionPropertiesFormat) GetLocalNetworkGateway2() (rv *LocalNetworkGateway) {
+	if v != nil {
+		return v.LocalNetworkGateway2
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayConnectionPropertiesFormat) GetPeer() (rv *SubResource) {
+	if v != nil {
+		return v.Peer
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayConnectionPropertiesFormat) GetRoutingWeight() (rv int32) {
+	if v != nil && v.RoutingWeight != nil {
+		return *v.RoutingWeight
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayConnectionPropertiesFormat) GetSharedKey() (rv string) {
+	if v != nil && v.SharedKey != nil {
+		return *v.SharedKey
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayConnectionPropertiesFormat) GetTrafficSelectorPolicies() (rv []*TrafficSelectorPolicy) {
+	if v != nil {
+		return v.TrafficSelectorPolicies
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayConnectionPropertiesFormat) GetUseLocalAzureIPAddress() (rv bool) {
+	if v != nil && v.UseLocalAzureIPAddress != nil {
+		return *v.UseLocalAzureIPAddress
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayConnectionPropertiesFormat) GetUsePolicyBasedTrafficSelectors() (rv bool) {
+	if v != nil && v.UsePolicyBasedTrafficSelectors != nil {
+		return *v.UsePolicyBasedTrafficSelectors
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayConnectionPropertiesFormat) GetVirtualNetworkGateway2() (rv *VirtualNetworkGateway) {
+	if v != nil {
+		return v.VirtualNetworkGateway2
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayConnectionPropertiesFormat) GetConnectionStatus() (rv *VirtualNetworkGatewayConnectionStatus) {
+	if v != nil {
+		return v.ConnectionStatus
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayConnectionPropertiesFormat) GetEgressBytesTransferred() (rv int64) {
+	if v != nil && v.EgressBytesTransferred != nil {
+		return *v.EgressBytesTransferred
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayConnectionPropertiesFormat) GetIngressBytesTransferred() (rv int64) {
+	if v != nil && v.IngressBytesTransferred != nil {
+		return *v.IngressBytesTransferred
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayConnectionPropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if v != nil {
+		return v.ProvisioningState
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayConnectionPropertiesFormat) GetResourceGUID() (rv string) {
+	if v != nil && v.ResourceGUID != nil {
+		return *v.ResourceGUID
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayConnectionPropertiesFormat) GetTunnelConnectionStatus() (rv []*TunnelConnectionHealth) {
+	if v != nil {
+		return v.TunnelConnectionStatus
+	}
+	return
+}
+
 // VirtualNetworkGatewayIPConfiguration - IP configuration for virtual network gateway.
 type VirtualNetworkGatewayIPConfiguration struct {
 	// Resource ID.
@@ -12689,6 +35978,34 @@ type VirtualNetworkGatewayIPConfiguration struct {
 
 	// READ-ONLY; A unique read-only string that changes whenever the resource is updated.
 	Etag *string
+}
+
+func (v *VirtualNetworkGatewayIPConfiguration) GetID() (rv string) {
+	if v != nil && v.ID != nil {
+		return *v.ID
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayIPConfiguration) GetName() (rv string) {
+	if v != nil && v.Name != nil {
+		return *v.Name
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayIPConfiguration) GetProperties() (rv *VirtualNetworkGatewayIPConfigurationPropertiesFormat) {
+	if v != nil {
+		return v.Properties
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayIPConfiguration) GetEtag() (rv string) {
+	if v != nil && v.Etag != nil {
+		return *v.Etag
+	}
+	return
 }
 
 // VirtualNetworkGatewayIPConfigurationPropertiesFormat - Properties of VirtualNetworkGatewayIPConfiguration.
@@ -12709,6 +36026,41 @@ type VirtualNetworkGatewayIPConfigurationPropertiesFormat struct {
 	ProvisioningState *ProvisioningState
 }
 
+func (v *VirtualNetworkGatewayIPConfigurationPropertiesFormat) GetPrivateIPAllocationMethod() (rv *IPAllocationMethod) {
+	if v != nil {
+		return v.PrivateIPAllocationMethod
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayIPConfigurationPropertiesFormat) GetPublicIPAddress() (rv *SubResource) {
+	if v != nil {
+		return v.PublicIPAddress
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayIPConfigurationPropertiesFormat) GetSubnet() (rv *SubResource) {
+	if v != nil {
+		return v.Subnet
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayIPConfigurationPropertiesFormat) GetPrivateIPAddress() (rv string) {
+	if v != nil && v.PrivateIPAddress != nil {
+		return *v.PrivateIPAddress
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayIPConfigurationPropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if v != nil {
+		return v.ProvisioningState
+	}
+	return
+}
+
 // VirtualNetworkGatewayListConnectionsResult - Response for the VirtualNetworkGatewayListConnections API service call.
 type VirtualNetworkGatewayListConnectionsResult struct {
 	// A list of VirtualNetworkGatewayConnection resources that exists in a resource group.
@@ -12718,6 +36070,20 @@ type VirtualNetworkGatewayListConnectionsResult struct {
 	NextLink *string
 }
 
+func (v *VirtualNetworkGatewayListConnectionsResult) GetValue() (rv []*VirtualNetworkGatewayConnectionListEntity) {
+	if v != nil {
+		return v.Value
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayListConnectionsResult) GetNextLink() (rv string) {
+	if v != nil && v.NextLink != nil {
+		return *v.NextLink
+	}
+	return
+}
+
 // VirtualNetworkGatewayListResult - Response for the ListVirtualNetworkGateways API service call.
 type VirtualNetworkGatewayListResult struct {
 	// A list of VirtualNetworkGateway resources that exists in a resource group.
@@ -12725,6 +36091,20 @@ type VirtualNetworkGatewayListResult struct {
 
 	// READ-ONLY; The URL to get the next set of results.
 	NextLink *string
+}
+
+func (v *VirtualNetworkGatewayListResult) GetValue() (rv []*VirtualNetworkGateway) {
+	if v != nil {
+		return v.Value
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayListResult) GetNextLink() (rv string) {
+	if v != nil && v.NextLink != nil {
+		return *v.NextLink
+	}
+	return
 }
 
 // VirtualNetworkGatewayNatRule Resource.
@@ -12743,6 +36123,41 @@ type VirtualNetworkGatewayNatRule struct {
 
 	// READ-ONLY; Resource type.
 	Type *string
+}
+
+func (v *VirtualNetworkGatewayNatRule) GetID() (rv string) {
+	if v != nil && v.ID != nil {
+		return *v.ID
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayNatRule) GetName() (rv string) {
+	if v != nil && v.Name != nil {
+		return *v.Name
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayNatRule) GetProperties() (rv *VirtualNetworkGatewayNatRuleProperties) {
+	if v != nil {
+		return v.Properties
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayNatRule) GetEtag() (rv string) {
+	if v != nil && v.Etag != nil {
+		return *v.Etag
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayNatRule) GetType() (rv string) {
+	if v != nil && v.Type != nil {
+		return *v.Type
+	}
+	return
 }
 
 // VirtualNetworkGatewayNatRuleProperties - Parameters for VirtualNetworkGatewayNatRule.
@@ -12766,6 +36181,48 @@ type VirtualNetworkGatewayNatRuleProperties struct {
 	ProvisioningState *ProvisioningState
 }
 
+func (v *VirtualNetworkGatewayNatRuleProperties) GetExternalMappings() (rv []*VPNNatRuleMapping) {
+	if v != nil {
+		return v.ExternalMappings
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayNatRuleProperties) GetIPConfigurationID() (rv string) {
+	if v != nil && v.IPConfigurationID != nil {
+		return *v.IPConfigurationID
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayNatRuleProperties) GetInternalMappings() (rv []*VPNNatRuleMapping) {
+	if v != nil {
+		return v.InternalMappings
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayNatRuleProperties) GetMode() (rv *VPNNatRuleMode) {
+	if v != nil {
+		return v.Mode
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayNatRuleProperties) GetType() (rv *VPNNatRuleType) {
+	if v != nil {
+		return v.Type
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayNatRuleProperties) GetProvisioningState() (rv *ProvisioningState) {
+	if v != nil {
+		return v.ProvisioningState
+	}
+	return
+}
+
 // VirtualNetworkGatewayPolicyGroup - Parameters for VirtualNetworkGatewayPolicyGroup.
 type VirtualNetworkGatewayPolicyGroup struct {
 	// Resource ID.
@@ -12781,6 +36238,34 @@ type VirtualNetworkGatewayPolicyGroup struct {
 	Etag *string
 }
 
+func (v *VirtualNetworkGatewayPolicyGroup) GetID() (rv string) {
+	if v != nil && v.ID != nil {
+		return *v.ID
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayPolicyGroup) GetName() (rv string) {
+	if v != nil && v.Name != nil {
+		return *v.Name
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayPolicyGroup) GetProperties() (rv *VirtualNetworkGatewayPolicyGroupProperties) {
+	if v != nil {
+		return v.Properties
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayPolicyGroup) GetEtag() (rv string) {
+	if v != nil && v.Etag != nil {
+		return *v.Etag
+	}
+	return
+}
+
 // VirtualNetworkGatewayPolicyGroupMember - Vpn Client Connection configuration PolicyGroup member
 type VirtualNetworkGatewayPolicyGroupMember struct {
 	// The Vpn Policy member attribute type.
@@ -12791,6 +36276,27 @@ type VirtualNetworkGatewayPolicyGroupMember struct {
 
 	// Name of the VirtualNetworkGatewayPolicyGroupMember.
 	Name *string
+}
+
+func (v *VirtualNetworkGatewayPolicyGroupMember) GetAttributeType() (rv *VPNPolicyMemberAttributeType) {
+	if v != nil {
+		return v.AttributeType
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayPolicyGroupMember) GetAttributeValue() (rv string) {
+	if v != nil && v.AttributeValue != nil {
+		return *v.AttributeValue
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayPolicyGroupMember) GetName() (rv string) {
+	if v != nil && v.Name != nil {
+		return *v.Name
+	}
+	return
 }
 
 // VirtualNetworkGatewayPolicyGroupProperties - Properties of VirtualNetworkGatewayPolicyGroup.
@@ -12809,6 +36315,41 @@ type VirtualNetworkGatewayPolicyGroupProperties struct {
 
 	// READ-ONLY; List of references to vngClientConnectionConfigurations.
 	VngClientConnectionConfigurations []*SubResource
+}
+
+func (v *VirtualNetworkGatewayPolicyGroupProperties) GetIsDefault() (rv bool) {
+	if v != nil && v.IsDefault != nil {
+		return *v.IsDefault
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayPolicyGroupProperties) GetPolicyMembers() (rv []*VirtualNetworkGatewayPolicyGroupMember) {
+	if v != nil {
+		return v.PolicyMembers
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayPolicyGroupProperties) GetPriority() (rv int32) {
+	if v != nil && v.Priority != nil {
+		return *v.Priority
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayPolicyGroupProperties) GetProvisioningState() (rv *ProvisioningState) {
+	if v != nil {
+		return v.ProvisioningState
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayPolicyGroupProperties) GetVngClientConnectionConfigurations() (rv []*SubResource) {
+	if v != nil {
+		return v.VngClientConnectionConfigurations
+	}
+	return
 }
 
 // VirtualNetworkGatewayPropertiesFormat - VirtualNetworkGateway properties.
@@ -12887,6 +36428,167 @@ type VirtualNetworkGatewayPropertiesFormat struct {
 	ResourceGUID *string
 }
 
+func (v *VirtualNetworkGatewayPropertiesFormat) GetActive() (rv bool) {
+	if v != nil && v.Active != nil {
+		return *v.Active
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayPropertiesFormat) GetAllowRemoteVnetTraffic() (rv bool) {
+	if v != nil && v.AllowRemoteVnetTraffic != nil {
+		return *v.AllowRemoteVnetTraffic
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayPropertiesFormat) GetAllowVirtualWanTraffic() (rv bool) {
+	if v != nil && v.AllowVirtualWanTraffic != nil {
+		return *v.AllowVirtualWanTraffic
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayPropertiesFormat) GetBgpSettings() (rv *BgpSettings) {
+	if v != nil {
+		return v.BgpSettings
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayPropertiesFormat) GetCustomRoutes() (rv *AddressSpace) {
+	if v != nil {
+		return v.CustomRoutes
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayPropertiesFormat) GetDisableIPSecReplayProtection() (rv bool) {
+	if v != nil && v.DisableIPSecReplayProtection != nil {
+		return *v.DisableIPSecReplayProtection
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayPropertiesFormat) GetEnableBgp() (rv bool) {
+	if v != nil && v.EnableBgp != nil {
+		return *v.EnableBgp
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayPropertiesFormat) GetEnableBgpRouteTranslationForNat() (rv bool) {
+	if v != nil && v.EnableBgpRouteTranslationForNat != nil {
+		return *v.EnableBgpRouteTranslationForNat
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayPropertiesFormat) GetEnableDNSForwarding() (rv bool) {
+	if v != nil && v.EnableDNSForwarding != nil {
+		return *v.EnableDNSForwarding
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayPropertiesFormat) GetEnablePrivateIPAddress() (rv bool) {
+	if v != nil && v.EnablePrivateIPAddress != nil {
+		return *v.EnablePrivateIPAddress
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayPropertiesFormat) GetGatewayDefaultSite() (rv *SubResource) {
+	if v != nil {
+		return v.GatewayDefaultSite
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayPropertiesFormat) GetGatewayType() (rv *VirtualNetworkGatewayType) {
+	if v != nil {
+		return v.GatewayType
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayPropertiesFormat) GetIPConfigurations() (rv []*VirtualNetworkGatewayIPConfiguration) {
+	if v != nil {
+		return v.IPConfigurations
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayPropertiesFormat) GetNatRules() (rv []*VirtualNetworkGatewayNatRule) {
+	if v != nil {
+		return v.NatRules
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayPropertiesFormat) GetSKU() (rv *VirtualNetworkGatewaySKU) {
+	if v != nil {
+		return v.SKU
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayPropertiesFormat) GetVNetExtendedLocationResourceID() (rv string) {
+	if v != nil && v.VNetExtendedLocationResourceID != nil {
+		return *v.VNetExtendedLocationResourceID
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayPropertiesFormat) GetVPNClientConfiguration() (rv *VPNClientConfiguration) {
+	if v != nil {
+		return v.VPNClientConfiguration
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayPropertiesFormat) GetVPNGatewayGeneration() (rv *VPNGatewayGeneration) {
+	if v != nil {
+		return v.VPNGatewayGeneration
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayPropertiesFormat) GetVPNType() (rv *VPNType) {
+	if v != nil {
+		return v.VPNType
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayPropertiesFormat) GetVirtualNetworkGatewayPolicyGroups() (rv []*VirtualNetworkGatewayPolicyGroup) {
+	if v != nil {
+		return v.VirtualNetworkGatewayPolicyGroups
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayPropertiesFormat) GetInboundDNSForwardingEndpoint() (rv string) {
+	if v != nil && v.InboundDNSForwardingEndpoint != nil {
+		return *v.InboundDNSForwardingEndpoint
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayPropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if v != nil {
+		return v.ProvisioningState
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewayPropertiesFormat) GetResourceGUID() (rv string) {
+	if v != nil && v.ResourceGUID != nil {
+		return *v.ResourceGUID
+	}
+	return
+}
+
 // VirtualNetworkGatewaySKU - VirtualNetworkGatewaySku details.
 type VirtualNetworkGatewaySKU struct {
 	// Gateway SKU name.
@@ -12899,6 +36601,27 @@ type VirtualNetworkGatewaySKU struct {
 	Capacity *int32
 }
 
+func (v *VirtualNetworkGatewaySKU) GetName() (rv *VirtualNetworkGatewaySKUName) {
+	if v != nil {
+		return v.Name
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewaySKU) GetTier() (rv *VirtualNetworkGatewaySKUTier) {
+	if v != nil {
+		return v.Tier
+	}
+	return
+}
+
+func (v *VirtualNetworkGatewaySKU) GetCapacity() (rv int32) {
+	if v != nil && v.Capacity != nil {
+		return *v.Capacity
+	}
+	return
+}
+
 // VirtualNetworkListResult - Response for the ListVirtualNetworks API service call.
 type VirtualNetworkListResult struct {
 	// The URL to get the next set of results.
@@ -12908,6 +36631,20 @@ type VirtualNetworkListResult struct {
 	Value []*VirtualNetwork
 }
 
+func (v *VirtualNetworkListResult) GetNextLink() (rv string) {
+	if v != nil && v.NextLink != nil {
+		return *v.NextLink
+	}
+	return
+}
+
+func (v *VirtualNetworkListResult) GetValue() (rv []*VirtualNetwork) {
+	if v != nil {
+		return v.Value
+	}
+	return
+}
+
 // VirtualNetworkListUsageResult - Response for the virtual networks GetUsage API service call.
 type VirtualNetworkListUsageResult struct {
 	// The URL to get the next set of results.
@@ -12915,6 +36652,20 @@ type VirtualNetworkListUsageResult struct {
 
 	// READ-ONLY; VirtualNetwork usage stats.
 	Value []*VirtualNetworkUsage
+}
+
+func (v *VirtualNetworkListUsageResult) GetNextLink() (rv string) {
+	if v != nil && v.NextLink != nil {
+		return *v.NextLink
+	}
+	return
+}
+
+func (v *VirtualNetworkListUsageResult) GetValue() (rv []*VirtualNetworkUsage) {
+	if v != nil {
+		return v.Value
+	}
+	return
 }
 
 // VirtualNetworkPeering - Peerings in a virtual network resource.
@@ -12935,6 +36686,41 @@ type VirtualNetworkPeering struct {
 	Etag *string
 }
 
+func (v *VirtualNetworkPeering) GetID() (rv string) {
+	if v != nil && v.ID != nil {
+		return *v.ID
+	}
+	return
+}
+
+func (v *VirtualNetworkPeering) GetName() (rv string) {
+	if v != nil && v.Name != nil {
+		return *v.Name
+	}
+	return
+}
+
+func (v *VirtualNetworkPeering) GetProperties() (rv *VirtualNetworkPeeringPropertiesFormat) {
+	if v != nil {
+		return v.Properties
+	}
+	return
+}
+
+func (v *VirtualNetworkPeering) GetType() (rv string) {
+	if v != nil && v.Type != nil {
+		return *v.Type
+	}
+	return
+}
+
+func (v *VirtualNetworkPeering) GetEtag() (rv string) {
+	if v != nil && v.Etag != nil {
+		return *v.Etag
+	}
+	return
+}
+
 // VirtualNetworkPeeringListResult - Response for ListSubnets API service call. Retrieves all subnets that belong to a virtual
 // network.
 type VirtualNetworkPeeringListResult struct {
@@ -12943,6 +36729,20 @@ type VirtualNetworkPeeringListResult struct {
 
 	// The peerings in a virtual network.
 	Value []*VirtualNetworkPeering
+}
+
+func (v *VirtualNetworkPeeringListResult) GetNextLink() (rv string) {
+	if v != nil && v.NextLink != nil {
+		return *v.NextLink
+	}
+	return
+}
+
+func (v *VirtualNetworkPeeringListResult) GetValue() (rv []*VirtualNetworkPeering) {
+	if v != nil {
+		return v.Value
+	}
+	return
 }
 
 // VirtualNetworkPeeringPropertiesFormat - Properties of the virtual network peering.
@@ -12995,6 +36795,104 @@ type VirtualNetworkPeeringPropertiesFormat struct {
 	ResourceGUID *string
 }
 
+func (v *VirtualNetworkPeeringPropertiesFormat) GetAllowForwardedTraffic() (rv bool) {
+	if v != nil && v.AllowForwardedTraffic != nil {
+		return *v.AllowForwardedTraffic
+	}
+	return
+}
+
+func (v *VirtualNetworkPeeringPropertiesFormat) GetAllowGatewayTransit() (rv bool) {
+	if v != nil && v.AllowGatewayTransit != nil {
+		return *v.AllowGatewayTransit
+	}
+	return
+}
+
+func (v *VirtualNetworkPeeringPropertiesFormat) GetAllowVirtualNetworkAccess() (rv bool) {
+	if v != nil && v.AllowVirtualNetworkAccess != nil {
+		return *v.AllowVirtualNetworkAccess
+	}
+	return
+}
+
+func (v *VirtualNetworkPeeringPropertiesFormat) GetDoNotVerifyRemoteGateways() (rv bool) {
+	if v != nil && v.DoNotVerifyRemoteGateways != nil {
+		return *v.DoNotVerifyRemoteGateways
+	}
+	return
+}
+
+func (v *VirtualNetworkPeeringPropertiesFormat) GetPeeringState() (rv *VirtualNetworkPeeringState) {
+	if v != nil {
+		return v.PeeringState
+	}
+	return
+}
+
+func (v *VirtualNetworkPeeringPropertiesFormat) GetPeeringSyncLevel() (rv *VirtualNetworkPeeringLevel) {
+	if v != nil {
+		return v.PeeringSyncLevel
+	}
+	return
+}
+
+func (v *VirtualNetworkPeeringPropertiesFormat) GetRemoteAddressSpace() (rv *AddressSpace) {
+	if v != nil {
+		return v.RemoteAddressSpace
+	}
+	return
+}
+
+func (v *VirtualNetworkPeeringPropertiesFormat) GetRemoteBgpCommunities() (rv *VirtualNetworkBgpCommunities) {
+	if v != nil {
+		return v.RemoteBgpCommunities
+	}
+	return
+}
+
+func (v *VirtualNetworkPeeringPropertiesFormat) GetRemoteVirtualNetwork() (rv *SubResource) {
+	if v != nil {
+		return v.RemoteVirtualNetwork
+	}
+	return
+}
+
+func (v *VirtualNetworkPeeringPropertiesFormat) GetRemoteVirtualNetworkAddressSpace() (rv *AddressSpace) {
+	if v != nil {
+		return v.RemoteVirtualNetworkAddressSpace
+	}
+	return
+}
+
+func (v *VirtualNetworkPeeringPropertiesFormat) GetUseRemoteGateways() (rv bool) {
+	if v != nil && v.UseRemoteGateways != nil {
+		return *v.UseRemoteGateways
+	}
+	return
+}
+
+func (v *VirtualNetworkPeeringPropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if v != nil {
+		return v.ProvisioningState
+	}
+	return
+}
+
+func (v *VirtualNetworkPeeringPropertiesFormat) GetRemoteVirtualNetworkEncryption() (rv *VirtualNetworkEncryption) {
+	if v != nil {
+		return v.RemoteVirtualNetworkEncryption
+	}
+	return
+}
+
+func (v *VirtualNetworkPeeringPropertiesFormat) GetResourceGUID() (rv string) {
+	if v != nil && v.ResourceGUID != nil {
+		return *v.ResourceGUID
+	}
+	return
+}
+
 // VirtualNetworkPropertiesFormat - Properties of the virtual network.
 type VirtualNetworkPropertiesFormat struct {
 	// The AddressSpace that contains an array of IP address ranges that can be used by subnets.
@@ -13041,6 +36939,104 @@ type VirtualNetworkPropertiesFormat struct {
 	ResourceGUID *string
 }
 
+func (v *VirtualNetworkPropertiesFormat) GetAddressSpace() (rv *AddressSpace) {
+	if v != nil {
+		return v.AddressSpace
+	}
+	return
+}
+
+func (v *VirtualNetworkPropertiesFormat) GetBgpCommunities() (rv *VirtualNetworkBgpCommunities) {
+	if v != nil {
+		return v.BgpCommunities
+	}
+	return
+}
+
+func (v *VirtualNetworkPropertiesFormat) GetDdosProtectionPlan() (rv *SubResource) {
+	if v != nil {
+		return v.DdosProtectionPlan
+	}
+	return
+}
+
+func (v *VirtualNetworkPropertiesFormat) GetDhcpOptions() (rv *DhcpOptions) {
+	if v != nil {
+		return v.DhcpOptions
+	}
+	return
+}
+
+func (v *VirtualNetworkPropertiesFormat) GetEnableDdosProtection() (rv bool) {
+	if v != nil && v.EnableDdosProtection != nil {
+		return *v.EnableDdosProtection
+	}
+	return
+}
+
+func (v *VirtualNetworkPropertiesFormat) GetEnableVMProtection() (rv bool) {
+	if v != nil && v.EnableVMProtection != nil {
+		return *v.EnableVMProtection
+	}
+	return
+}
+
+func (v *VirtualNetworkPropertiesFormat) GetEncryption() (rv *VirtualNetworkEncryption) {
+	if v != nil {
+		return v.Encryption
+	}
+	return
+}
+
+func (v *VirtualNetworkPropertiesFormat) GetFlowTimeoutInMinutes() (rv int32) {
+	if v != nil && v.FlowTimeoutInMinutes != nil {
+		return *v.FlowTimeoutInMinutes
+	}
+	return
+}
+
+func (v *VirtualNetworkPropertiesFormat) GetIPAllocations() (rv []*SubResource) {
+	if v != nil {
+		return v.IPAllocations
+	}
+	return
+}
+
+func (v *VirtualNetworkPropertiesFormat) GetSubnets() (rv []*Subnet) {
+	if v != nil {
+		return v.Subnets
+	}
+	return
+}
+
+func (v *VirtualNetworkPropertiesFormat) GetVirtualNetworkPeerings() (rv []*VirtualNetworkPeering) {
+	if v != nil {
+		return v.VirtualNetworkPeerings
+	}
+	return
+}
+
+func (v *VirtualNetworkPropertiesFormat) GetFlowLogs() (rv []*FlowLog) {
+	if v != nil {
+		return v.FlowLogs
+	}
+	return
+}
+
+func (v *VirtualNetworkPropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if v != nil {
+		return v.ProvisioningState
+	}
+	return
+}
+
+func (v *VirtualNetworkPropertiesFormat) GetResourceGUID() (rv string) {
+	if v != nil && v.ResourceGUID != nil {
+		return *v.ResourceGUID
+	}
+	return
+}
+
 // VirtualNetworkTap - Virtual Network Tap resource.
 type VirtualNetworkTap struct {
 	// Resource ID.
@@ -13065,6 +37061,55 @@ type VirtualNetworkTap struct {
 	Type *string
 }
 
+func (v *VirtualNetworkTap) GetID() (rv string) {
+	if v != nil && v.ID != nil {
+		return *v.ID
+	}
+	return
+}
+
+func (v *VirtualNetworkTap) GetLocation() (rv string) {
+	if v != nil && v.Location != nil {
+		return *v.Location
+	}
+	return
+}
+
+func (v *VirtualNetworkTap) GetProperties() (rv *VirtualNetworkTapPropertiesFormat) {
+	if v != nil {
+		return v.Properties
+	}
+	return
+}
+
+func (v *VirtualNetworkTap) GetTags() (rv map[string]*string) {
+	if v != nil {
+		return v.Tags
+	}
+	return
+}
+
+func (v *VirtualNetworkTap) GetEtag() (rv string) {
+	if v != nil && v.Etag != nil {
+		return *v.Etag
+	}
+	return
+}
+
+func (v *VirtualNetworkTap) GetName() (rv string) {
+	if v != nil && v.Name != nil {
+		return *v.Name
+	}
+	return
+}
+
+func (v *VirtualNetworkTap) GetType() (rv string) {
+	if v != nil && v.Type != nil {
+		return *v.Type
+	}
+	return
+}
+
 // VirtualNetworkTapListResult - Response for ListVirtualNetworkTap API service call.
 type VirtualNetworkTapListResult struct {
 	// The URL to get the next set of results.
@@ -13072,6 +37117,20 @@ type VirtualNetworkTapListResult struct {
 
 	// A list of VirtualNetworkTaps in a resource group.
 	Value []*VirtualNetworkTap
+}
+
+func (v *VirtualNetworkTapListResult) GetNextLink() (rv string) {
+	if v != nil && v.NextLink != nil {
+		return *v.NextLink
+	}
+	return
+}
+
+func (v *VirtualNetworkTapListResult) GetValue() (rv []*VirtualNetworkTap) {
+	if v != nil {
+		return v.Value
+	}
+	return
 }
 
 // VirtualNetworkTapPropertiesFormat - Virtual Network Tap properties.
@@ -13095,6 +37154,48 @@ type VirtualNetworkTapPropertiesFormat struct {
 	ResourceGUID *string
 }
 
+func (v *VirtualNetworkTapPropertiesFormat) GetDestinationLoadBalancerFrontEndIPConfiguration() (rv *FrontendIPConfiguration) {
+	if v != nil {
+		return v.DestinationLoadBalancerFrontEndIPConfiguration
+	}
+	return
+}
+
+func (v *VirtualNetworkTapPropertiesFormat) GetDestinationNetworkInterfaceIPConfiguration() (rv *InterfaceIPConfiguration) {
+	if v != nil {
+		return v.DestinationNetworkInterfaceIPConfiguration
+	}
+	return
+}
+
+func (v *VirtualNetworkTapPropertiesFormat) GetDestinationPort() (rv int32) {
+	if v != nil && v.DestinationPort != nil {
+		return *v.DestinationPort
+	}
+	return
+}
+
+func (v *VirtualNetworkTapPropertiesFormat) GetNetworkInterfaceTapConfigurations() (rv []*InterfaceTapConfiguration) {
+	if v != nil {
+		return v.NetworkInterfaceTapConfigurations
+	}
+	return
+}
+
+func (v *VirtualNetworkTapPropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if v != nil {
+		return v.ProvisioningState
+	}
+	return
+}
+
+func (v *VirtualNetworkTapPropertiesFormat) GetResourceGUID() (rv string) {
+	if v != nil && v.ResourceGUID != nil {
+		return *v.ResourceGUID
+	}
+	return
+}
+
 // VirtualNetworkUsage - Usage details for subnet.
 type VirtualNetworkUsage struct {
 	// READ-ONLY; Indicates number of IPs used from the Subnet.
@@ -13113,6 +37214,41 @@ type VirtualNetworkUsage struct {
 	Unit *string
 }
 
+func (v *VirtualNetworkUsage) GetCurrentValue() (rv float64) {
+	if v != nil && v.CurrentValue != nil {
+		return *v.CurrentValue
+	}
+	return
+}
+
+func (v *VirtualNetworkUsage) GetID() (rv string) {
+	if v != nil && v.ID != nil {
+		return *v.ID
+	}
+	return
+}
+
+func (v *VirtualNetworkUsage) GetLimit() (rv float64) {
+	if v != nil && v.Limit != nil {
+		return *v.Limit
+	}
+	return
+}
+
+func (v *VirtualNetworkUsage) GetName() (rv *VirtualNetworkUsageName) {
+	if v != nil {
+		return v.Name
+	}
+	return
+}
+
+func (v *VirtualNetworkUsage) GetUnit() (rv string) {
+	if v != nil && v.Unit != nil {
+		return *v.Unit
+	}
+	return
+}
+
 // VirtualNetworkUsageName - Usage strings container.
 type VirtualNetworkUsageName struct {
 	// READ-ONLY; Localized subnet size and usage string.
@@ -13120,6 +37256,20 @@ type VirtualNetworkUsageName struct {
 
 	// READ-ONLY; Subnet size and usage string.
 	Value *string
+}
+
+func (v *VirtualNetworkUsageName) GetLocalizedValue() (rv string) {
+	if v != nil && v.LocalizedValue != nil {
+		return *v.LocalizedValue
+	}
+	return
+}
+
+func (v *VirtualNetworkUsageName) GetValue() (rv string) {
+	if v != nil && v.Value != nil {
+		return *v.Value
+	}
+	return
 }
 
 // VirtualRouter Resource.
@@ -13146,10 +37296,66 @@ type VirtualRouter struct {
 	Type *string
 }
 
+func (v *VirtualRouter) GetID() (rv string) {
+	if v != nil && v.ID != nil {
+		return *v.ID
+	}
+	return
+}
+
+func (v *VirtualRouter) GetLocation() (rv string) {
+	if v != nil && v.Location != nil {
+		return *v.Location
+	}
+	return
+}
+
+func (v *VirtualRouter) GetProperties() (rv *VirtualRouterPropertiesFormat) {
+	if v != nil {
+		return v.Properties
+	}
+	return
+}
+
+func (v *VirtualRouter) GetTags() (rv map[string]*string) {
+	if v != nil {
+		return v.Tags
+	}
+	return
+}
+
+func (v *VirtualRouter) GetEtag() (rv string) {
+	if v != nil && v.Etag != nil {
+		return *v.Etag
+	}
+	return
+}
+
+func (v *VirtualRouter) GetName() (rv string) {
+	if v != nil && v.Name != nil {
+		return *v.Name
+	}
+	return
+}
+
+func (v *VirtualRouter) GetType() (rv string) {
+	if v != nil && v.Type != nil {
+		return *v.Type
+	}
+	return
+}
+
 // VirtualRouterAutoScaleConfiguration - The VirtualHub Router autoscale configuration.
 type VirtualRouterAutoScaleConfiguration struct {
 	// The minimum number of scale units for VirtualHub Router.
 	MinCapacity *int32
+}
+
+func (v *VirtualRouterAutoScaleConfiguration) GetMinCapacity() (rv int32) {
+	if v != nil && v.MinCapacity != nil {
+		return *v.MinCapacity
+	}
+	return
 }
 
 // VirtualRouterListResult - Response for ListVirtualRouters API service call.
@@ -13159,6 +37365,20 @@ type VirtualRouterListResult struct {
 
 	// List of Virtual Routers.
 	Value []*VirtualRouter
+}
+
+func (v *VirtualRouterListResult) GetNextLink() (rv string) {
+	if v != nil && v.NextLink != nil {
+		return *v.NextLink
+	}
+	return
+}
+
+func (v *VirtualRouterListResult) GetValue() (rv []*VirtualRouter) {
+	if v != nil {
+		return v.Value
+	}
+	return
 }
 
 // VirtualRouterPeering - Virtual Router Peering resource.
@@ -13179,6 +37399,41 @@ type VirtualRouterPeering struct {
 	Type *string
 }
 
+func (v *VirtualRouterPeering) GetID() (rv string) {
+	if v != nil && v.ID != nil {
+		return *v.ID
+	}
+	return
+}
+
+func (v *VirtualRouterPeering) GetName() (rv string) {
+	if v != nil && v.Name != nil {
+		return *v.Name
+	}
+	return
+}
+
+func (v *VirtualRouterPeering) GetProperties() (rv *VirtualRouterPeeringProperties) {
+	if v != nil {
+		return v.Properties
+	}
+	return
+}
+
+func (v *VirtualRouterPeering) GetEtag() (rv string) {
+	if v != nil && v.Etag != nil {
+		return *v.Etag
+	}
+	return
+}
+
+func (v *VirtualRouterPeering) GetType() (rv string) {
+	if v != nil && v.Type != nil {
+		return *v.Type
+	}
+	return
+}
+
 // VirtualRouterPeeringListResult - Response for ListVirtualRouterPeerings API service call.
 type VirtualRouterPeeringListResult struct {
 	// URL to get the next set of results.
@@ -13186,6 +37441,20 @@ type VirtualRouterPeeringListResult struct {
 
 	// List of VirtualRouterPeerings in a VirtualRouter.
 	Value []*VirtualRouterPeering
+}
+
+func (v *VirtualRouterPeeringListResult) GetNextLink() (rv string) {
+	if v != nil && v.NextLink != nil {
+		return *v.NextLink
+	}
+	return
+}
+
+func (v *VirtualRouterPeeringListResult) GetValue() (rv []*VirtualRouterPeering) {
+	if v != nil {
+		return v.Value
+	}
+	return
 }
 
 // VirtualRouterPeeringProperties - Properties of the rule group.
@@ -13198,6 +37467,27 @@ type VirtualRouterPeeringProperties struct {
 
 	// READ-ONLY; The provisioning state of the resource.
 	ProvisioningState *ProvisioningState
+}
+
+func (v *VirtualRouterPeeringProperties) GetPeerAsn() (rv int64) {
+	if v != nil && v.PeerAsn != nil {
+		return *v.PeerAsn
+	}
+	return
+}
+
+func (v *VirtualRouterPeeringProperties) GetPeerIP() (rv string) {
+	if v != nil && v.PeerIP != nil {
+		return *v.PeerIP
+	}
+	return
+}
+
+func (v *VirtualRouterPeeringProperties) GetProvisioningState() (rv *ProvisioningState) {
+	if v != nil {
+		return v.ProvisioningState
+	}
+	return
 }
 
 // VirtualRouterPropertiesFormat - Virtual Router definition.
@@ -13219,6 +37509,48 @@ type VirtualRouterPropertiesFormat struct {
 
 	// READ-ONLY; The provisioning state of the resource.
 	ProvisioningState *ProvisioningState
+}
+
+func (v *VirtualRouterPropertiesFormat) GetHostedGateway() (rv *SubResource) {
+	if v != nil {
+		return v.HostedGateway
+	}
+	return
+}
+
+func (v *VirtualRouterPropertiesFormat) GetHostedSubnet() (rv *SubResource) {
+	if v != nil {
+		return v.HostedSubnet
+	}
+	return
+}
+
+func (v *VirtualRouterPropertiesFormat) GetVirtualRouterAsn() (rv int64) {
+	if v != nil && v.VirtualRouterAsn != nil {
+		return *v.VirtualRouterAsn
+	}
+	return
+}
+
+func (v *VirtualRouterPropertiesFormat) GetVirtualRouterIPs() (rv []*string) {
+	if v != nil {
+		return v.VirtualRouterIPs
+	}
+	return
+}
+
+func (v *VirtualRouterPropertiesFormat) GetPeerings() (rv []*SubResource) {
+	if v != nil {
+		return v.Peerings
+	}
+	return
+}
+
+func (v *VirtualRouterPropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if v != nil {
+		return v.ProvisioningState
+	}
+	return
 }
 
 // VirtualWAN Resource.
@@ -13243,6 +37575,55 @@ type VirtualWAN struct {
 
 	// READ-ONLY; Resource type.
 	Type *string
+}
+
+func (v *VirtualWAN) GetID() (rv string) {
+	if v != nil && v.ID != nil {
+		return *v.ID
+	}
+	return
+}
+
+func (v *VirtualWAN) GetLocation() (rv string) {
+	if v != nil && v.Location != nil {
+		return *v.Location
+	}
+	return
+}
+
+func (v *VirtualWAN) GetProperties() (rv *VirtualWanProperties) {
+	if v != nil {
+		return v.Properties
+	}
+	return
+}
+
+func (v *VirtualWAN) GetTags() (rv map[string]*string) {
+	if v != nil {
+		return v.Tags
+	}
+	return
+}
+
+func (v *VirtualWAN) GetEtag() (rv string) {
+	if v != nil && v.Etag != nil {
+		return *v.Etag
+	}
+	return
+}
+
+func (v *VirtualWAN) GetName() (rv string) {
+	if v != nil && v.Name != nil {
+		return *v.Name
+	}
+	return
+}
+
+func (v *VirtualWAN) GetType() (rv string) {
+	if v != nil && v.Type != nil {
+		return *v.Type
+	}
+	return
 }
 
 // VirtualWanProperties - Parameters for VirtualWAN.
@@ -13272,6 +37653,62 @@ type VirtualWanProperties struct {
 	VirtualHubs []*SubResource
 }
 
+func (v *VirtualWanProperties) GetAllowBranchToBranchTraffic() (rv bool) {
+	if v != nil && v.AllowBranchToBranchTraffic != nil {
+		return *v.AllowBranchToBranchTraffic
+	}
+	return
+}
+
+func (v *VirtualWanProperties) GetAllowVnetToVnetTraffic() (rv bool) {
+	if v != nil && v.AllowVnetToVnetTraffic != nil {
+		return *v.AllowVnetToVnetTraffic
+	}
+	return
+}
+
+func (v *VirtualWanProperties) GetDisableVPNEncryption() (rv bool) {
+	if v != nil && v.DisableVPNEncryption != nil {
+		return *v.DisableVPNEncryption
+	}
+	return
+}
+
+func (v *VirtualWanProperties) GetType() (rv string) {
+	if v != nil && v.Type != nil {
+		return *v.Type
+	}
+	return
+}
+
+func (v *VirtualWanProperties) GetOffice365LocalBreakoutCategory() (rv *OfficeTrafficCategory) {
+	if v != nil {
+		return v.Office365LocalBreakoutCategory
+	}
+	return
+}
+
+func (v *VirtualWanProperties) GetProvisioningState() (rv *ProvisioningState) {
+	if v != nil {
+		return v.ProvisioningState
+	}
+	return
+}
+
+func (v *VirtualWanProperties) GetVPNSites() (rv []*SubResource) {
+	if v != nil {
+		return v.VPNSites
+	}
+	return
+}
+
+func (v *VirtualWanProperties) GetVirtualHubs() (rv []*SubResource) {
+	if v != nil {
+		return v.VirtualHubs
+	}
+	return
+}
+
 // VirtualWanSecurityProvider - Collection of SecurityProviders.
 type VirtualWanSecurityProvider struct {
 	// Name of the security provider.
@@ -13284,10 +37721,38 @@ type VirtualWanSecurityProvider struct {
 	Type *VirtualWanSecurityProviderType
 }
 
+func (v *VirtualWanSecurityProvider) GetName() (rv string) {
+	if v != nil && v.Name != nil {
+		return *v.Name
+	}
+	return
+}
+
+func (v *VirtualWanSecurityProvider) GetURL() (rv string) {
+	if v != nil && v.URL != nil {
+		return *v.URL
+	}
+	return
+}
+
+func (v *VirtualWanSecurityProvider) GetType() (rv *VirtualWanSecurityProviderType) {
+	if v != nil {
+		return v.Type
+	}
+	return
+}
+
 // VirtualWanSecurityProviders - Collection of SecurityProviders.
 type VirtualWanSecurityProviders struct {
 	// List of VirtualWAN security providers.
 	SupportedProviders []*VirtualWanSecurityProvider
+}
+
+func (v *VirtualWanSecurityProviders) GetSupportedProviders() (rv []*VirtualWanSecurityProvider) {
+	if v != nil {
+		return v.SupportedProviders
+	}
+	return
 }
 
 // VirtualWanVPNProfileParameters - Virtual Wan Vpn profile parameters Vpn profile generation.
@@ -13297,6 +37762,20 @@ type VirtualWanVPNProfileParameters struct {
 
 	// VpnServerConfiguration partial resource uri with which VirtualWan is associated to.
 	VPNServerConfigurationResourceID *string
+}
+
+func (v *VirtualWanVPNProfileParameters) GetAuthenticationMethod() (rv *AuthenticationMethod) {
+	if v != nil {
+		return v.AuthenticationMethod
+	}
+	return
+}
+
+func (v *VirtualWanVPNProfileParameters) GetVPNServerConfigurationResourceID() (rv string) {
+	if v != nil && v.VPNServerConfigurationResourceID != nil {
+		return *v.VPNServerConfigurationResourceID
+	}
+	return
 }
 
 // VnetRoute - List of routes that control routing from VirtualHub into a virtual network connection.
@@ -13309,6 +37788,27 @@ type VnetRoute struct {
 
 	// READ-ONLY; The list of references to HubBgpConnection objects.
 	BgpConnections []*SubResource
+}
+
+func (v *VnetRoute) GetStaticRoutes() (rv []*StaticRoute) {
+	if v != nil {
+		return v.StaticRoutes
+	}
+	return
+}
+
+func (v *VnetRoute) GetStaticRoutesConfig() (rv *StaticRoutesConfig) {
+	if v != nil {
+		return v.StaticRoutesConfig
+	}
+	return
+}
+
+func (v *VnetRoute) GetBgpConnections() (rv []*SubResource) {
+	if v != nil {
+		return v.BgpConnections
+	}
+	return
 }
 
 // VngClientConnectionConfiguration - A vpn client connection configuration for client connection configuration.
@@ -13326,6 +37826,34 @@ type VngClientConnectionConfiguration struct {
 	Etag *string
 }
 
+func (v *VngClientConnectionConfiguration) GetID() (rv string) {
+	if v != nil && v.ID != nil {
+		return *v.ID
+	}
+	return
+}
+
+func (v *VngClientConnectionConfiguration) GetName() (rv string) {
+	if v != nil && v.Name != nil {
+		return *v.Name
+	}
+	return
+}
+
+func (v *VngClientConnectionConfiguration) GetProperties() (rv *VngClientConnectionConfigurationProperties) {
+	if v != nil {
+		return v.Properties
+	}
+	return
+}
+
+func (v *VngClientConnectionConfiguration) GetEtag() (rv string) {
+	if v != nil && v.Etag != nil {
+		return *v.Etag
+	}
+	return
+}
+
 // VngClientConnectionConfigurationProperties - Properties of VngClientConnectionConfiguration.
 type VngClientConnectionConfigurationProperties struct {
 	// REQUIRED; The reference to the address space resource which represents Address space for P2S VpnClient.
@@ -13336,6 +37864,27 @@ type VngClientConnectionConfigurationProperties struct {
 
 	// READ-ONLY; The provisioning state of the VngClientConnectionConfiguration resource.
 	ProvisioningState *ProvisioningState
+}
+
+func (v *VngClientConnectionConfigurationProperties) GetVPNClientAddressPool() (rv *AddressSpace) {
+	if v != nil {
+		return v.VPNClientAddressPool
+	}
+	return
+}
+
+func (v *VngClientConnectionConfigurationProperties) GetVirtualNetworkGatewayPolicyGroups() (rv []*SubResource) {
+	if v != nil {
+		return v.VirtualNetworkGatewayPolicyGroups
+	}
+	return
+}
+
+func (v *VngClientConnectionConfigurationProperties) GetProvisioningState() (rv *ProvisioningState) {
+	if v != nil {
+		return v.ProvisioningState
+	}
+	return
 }
 
 // Watcher - Network watcher in a resource group.
@@ -13362,16 +37911,79 @@ type Watcher struct {
 	Type *string
 }
 
+func (w *Watcher) GetID() (rv string) {
+	if w != nil && w.ID != nil {
+		return *w.ID
+	}
+	return
+}
+
+func (w *Watcher) GetLocation() (rv string) {
+	if w != nil && w.Location != nil {
+		return *w.Location
+	}
+	return
+}
+
+func (w *Watcher) GetProperties() (rv *WatcherPropertiesFormat) {
+	if w != nil {
+		return w.Properties
+	}
+	return
+}
+
+func (w *Watcher) GetTags() (rv map[string]*string) {
+	if w != nil {
+		return w.Tags
+	}
+	return
+}
+
+func (w *Watcher) GetEtag() (rv string) {
+	if w != nil && w.Etag != nil {
+		return *w.Etag
+	}
+	return
+}
+
+func (w *Watcher) GetName() (rv string) {
+	if w != nil && w.Name != nil {
+		return *w.Name
+	}
+	return
+}
+
+func (w *Watcher) GetType() (rv string) {
+	if w != nil && w.Type != nil {
+		return *w.Type
+	}
+	return
+}
+
 // WatcherListResult - Response for ListNetworkWatchers API service call.
 type WatcherListResult struct {
 	// List of network watcher resources.
 	Value []*Watcher
 }
 
+func (w *WatcherListResult) GetValue() (rv []*Watcher) {
+	if w != nil {
+		return w.Value
+	}
+	return
+}
+
 // WatcherPropertiesFormat - The network watcher properties.
 type WatcherPropertiesFormat struct {
 	// READ-ONLY; The provisioning state of the network watcher resource.
 	ProvisioningState *ProvisioningState
+}
+
+func (w *WatcherPropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if w != nil {
+		return w.ProvisioningState
+	}
+	return
 }
 
 // WebApplicationFirewallCustomRule - Defines contents of a web application rule.
@@ -13398,6 +38010,55 @@ type WebApplicationFirewallCustomRule struct {
 	Etag *string
 }
 
+func (w *WebApplicationFirewallCustomRule) GetAction() (rv *WebApplicationFirewallAction) {
+	if w != nil {
+		return w.Action
+	}
+	return
+}
+
+func (w *WebApplicationFirewallCustomRule) GetMatchConditions() (rv []*MatchCondition) {
+	if w != nil {
+		return w.MatchConditions
+	}
+	return
+}
+
+func (w *WebApplicationFirewallCustomRule) GetPriority() (rv int32) {
+	if w != nil && w.Priority != nil {
+		return *w.Priority
+	}
+	return
+}
+
+func (w *WebApplicationFirewallCustomRule) GetRuleType() (rv *WebApplicationFirewallRuleType) {
+	if w != nil {
+		return w.RuleType
+	}
+	return
+}
+
+func (w *WebApplicationFirewallCustomRule) GetName() (rv string) {
+	if w != nil && w.Name != nil {
+		return *w.Name
+	}
+	return
+}
+
+func (w *WebApplicationFirewallCustomRule) GetState() (rv *WebApplicationFirewallState) {
+	if w != nil {
+		return w.State
+	}
+	return
+}
+
+func (w *WebApplicationFirewallCustomRule) GetEtag() (rv string) {
+	if w != nil && w.Etag != nil {
+		return *w.Etag
+	}
+	return
+}
+
 // WebApplicationFirewallPolicy - Defines web application firewall policy.
 type WebApplicationFirewallPolicy struct {
 	// Resource ID.
@@ -13422,6 +38083,55 @@ type WebApplicationFirewallPolicy struct {
 	Type *string
 }
 
+func (w *WebApplicationFirewallPolicy) GetID() (rv string) {
+	if w != nil && w.ID != nil {
+		return *w.ID
+	}
+	return
+}
+
+func (w *WebApplicationFirewallPolicy) GetLocation() (rv string) {
+	if w != nil && w.Location != nil {
+		return *w.Location
+	}
+	return
+}
+
+func (w *WebApplicationFirewallPolicy) GetProperties() (rv *WebApplicationFirewallPolicyPropertiesFormat) {
+	if w != nil {
+		return w.Properties
+	}
+	return
+}
+
+func (w *WebApplicationFirewallPolicy) GetTags() (rv map[string]*string) {
+	if w != nil {
+		return w.Tags
+	}
+	return
+}
+
+func (w *WebApplicationFirewallPolicy) GetEtag() (rv string) {
+	if w != nil && w.Etag != nil {
+		return *w.Etag
+	}
+	return
+}
+
+func (w *WebApplicationFirewallPolicy) GetName() (rv string) {
+	if w != nil && w.Name != nil {
+		return *w.Name
+	}
+	return
+}
+
+func (w *WebApplicationFirewallPolicy) GetType() (rv string) {
+	if w != nil && w.Type != nil {
+		return *w.Type
+	}
+	return
+}
+
 // WebApplicationFirewallPolicyListResult - Result of the request to list WebApplicationFirewallPolicies. It contains a list
 // of WebApplicationFirewallPolicy objects and a URL link to get the next set of results.
 type WebApplicationFirewallPolicyListResult struct {
@@ -13430,6 +38140,20 @@ type WebApplicationFirewallPolicyListResult struct {
 
 	// READ-ONLY; List of WebApplicationFirewallPolicies within a resource group.
 	Value []*WebApplicationFirewallPolicy
+}
+
+func (w *WebApplicationFirewallPolicyListResult) GetNextLink() (rv string) {
+	if w != nil && w.NextLink != nil {
+		return *w.NextLink
+	}
+	return
+}
+
+func (w *WebApplicationFirewallPolicyListResult) GetValue() (rv []*WebApplicationFirewallPolicy) {
+	if w != nil {
+		return w.Value
+	}
+	return
 }
 
 // WebApplicationFirewallPolicyPropertiesFormat - Defines web application firewall policy properties.
@@ -13457,4 +38181,60 @@ type WebApplicationFirewallPolicyPropertiesFormat struct {
 
 	// READ-ONLY; Resource status of the policy.
 	ResourceState *WebApplicationFirewallPolicyResourceState
+}
+
+func (w *WebApplicationFirewallPolicyPropertiesFormat) GetManagedRules() (rv *ManagedRulesDefinition) {
+	if w != nil {
+		return w.ManagedRules
+	}
+	return
+}
+
+func (w *WebApplicationFirewallPolicyPropertiesFormat) GetCustomRules() (rv []*WebApplicationFirewallCustomRule) {
+	if w != nil {
+		return w.CustomRules
+	}
+	return
+}
+
+func (w *WebApplicationFirewallPolicyPropertiesFormat) GetPolicySettings() (rv *PolicySettings) {
+	if w != nil {
+		return w.PolicySettings
+	}
+	return
+}
+
+func (w *WebApplicationFirewallPolicyPropertiesFormat) GetApplicationGateways() (rv []*ApplicationGateway) {
+	if w != nil {
+		return w.ApplicationGateways
+	}
+	return
+}
+
+func (w *WebApplicationFirewallPolicyPropertiesFormat) GetHTTPListeners() (rv []*SubResource) {
+	if w != nil {
+		return w.HTTPListeners
+	}
+	return
+}
+
+func (w *WebApplicationFirewallPolicyPropertiesFormat) GetPathBasedRules() (rv []*SubResource) {
+	if w != nil {
+		return w.PathBasedRules
+	}
+	return
+}
+
+func (w *WebApplicationFirewallPolicyPropertiesFormat) GetProvisioningState() (rv *ProvisioningState) {
+	if w != nil {
+		return w.ProvisioningState
+	}
+	return
+}
+
+func (w *WebApplicationFirewallPolicyPropertiesFormat) GetResourceState() (rv *WebApplicationFirewallPolicyResourceState) {
+	if w != nil {
+		return w.ResourceState
+	}
+	return
 }

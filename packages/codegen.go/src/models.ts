@@ -534,7 +534,7 @@ function recursivePopulateDiscriminator(item: go.PossibleType, receiver: string,
       text += `${indent}for i${nesting} := range ${rawSrc} {\n`;
       rawSrc = `${rawSrc}[i${nesting}]`; // source becomes each element in the source slice
       dest = `${dest}[i${nesting}]`; // update destination to each element in the destination slice
-      text += recursivePopulateDiscriminator(item.elementType, receiver, rawSrc, dest, indent+'\t', nesting+1);
+      text += recursivePopulateDiscriminator(item.elementType, receiver, rawSrc, dest, indent + '\t', nesting + 1);
       text += `${indent}}\n`;
       return text;
     }
@@ -552,7 +552,7 @@ function recursivePopulateDiscriminator(item: go.PossibleType, receiver: string,
       text += `${indent}for k${nesting}, v${nesting} := range ${rawSrc} {\n`;
       rawSrc = `v${nesting}`; // source becomes the current value in the source map
       dest = `${dest}[k${nesting}]`; // update destination to the destination map's value for the current key
-      text += recursivePopulateDiscriminator(item.valueType, receiver, rawSrc, dest, indent+'\t', nesting+1);
+      text += recursivePopulateDiscriminator(item.valueType, receiver, rawSrc, dest, indent + '\t', nesting + 1);
       text += `${indent}}\n`;
       return text;
     }
@@ -751,6 +751,37 @@ class ModelDef {
     }
 
     text += '}\n\n';
+
+    const receiver = this.receiverName();
+    for (const field of values(this.Fields)) {
+      let typeName = go.getTypeDeclaration(field.type);
+
+      if (go.isPrimitiveType(field.type)) {
+        text += `func (${receiver} *${this.Name}) Get${field.fieldName}() (rv ${typeName}) {\n`
+        if (field.byValue) {
+          text += `\tif ${receiver} != nil {\n`;
+        } else {
+          text += `\tif ${receiver} != nil && ${receiver}.${field.fieldName} != nil {\n`;
+        }
+        text += `\t\treturn ${getStar(field.byValue)}${receiver}.${field.fieldName}\n`;
+        text += `\t}\n`;
+        text += `\treturn\n`;
+        text += `}\n\n`;
+
+      } else {
+        if (field.byValue) {
+          text += `func (${receiver} *${this.Name}) Get${field.fieldName}() (rv ${typeName}) {\n`
+        } else {
+          text += `func (${receiver} *${this.Name}) Get${field.fieldName}() (rv *${typeName}) {\n`
+        }
+        text += `\tif ${receiver} != nil {\n`;
+        text += `\t\treturn ${receiver}.${field.fieldName}\n`;
+        text += `\t}\n`;
+        text += `\treturn\n`;
+        text += `}\n\n`;
+      }
+    }
+
     return text;
   }
 

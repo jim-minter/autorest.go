@@ -13,3 +13,10 @@ type SourcePath struct {
 	// File source path.
 	Source *string
 }
+
+func (s *SourcePath) GetSource() (rv string) {
+	if s != nil && s.Source != nil {
+		return *s.Source
+	}
+	return
+}

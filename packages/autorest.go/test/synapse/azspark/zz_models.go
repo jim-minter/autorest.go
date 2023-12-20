@@ -64,6 +64,132 @@ type BatchJob struct {
 	WorkspaceName *string
 }
 
+func (b *BatchJob) GetID() (rv int32) {
+	if b != nil && b.ID != nil {
+		return *b.ID
+	}
+	return
+}
+
+func (b *BatchJob) GetAppID() (rv string) {
+	if b != nil && b.AppID != nil {
+		return *b.AppID
+	}
+	return
+}
+
+func (b *BatchJob) GetAppInfo() (rv map[string]*string) {
+	if b != nil {
+		return b.AppInfo
+	}
+	return
+}
+
+func (b *BatchJob) GetArtifactID() (rv string) {
+	if b != nil && b.ArtifactID != nil {
+		return *b.ArtifactID
+	}
+	return
+}
+
+func (b *BatchJob) GetErrors() (rv []*ServiceError) {
+	if b != nil {
+		return b.Errors
+	}
+	return
+}
+
+func (b *BatchJob) GetJobType() (rv *SparkJobType) {
+	if b != nil {
+		return b.JobType
+	}
+	return
+}
+
+func (b *BatchJob) GetLivyInfo() (rv *BatchJobState) {
+	if b != nil {
+		return b.LivyInfo
+	}
+	return
+}
+
+func (b *BatchJob) GetLogLines() (rv []*string) {
+	if b != nil {
+		return b.LogLines
+	}
+	return
+}
+
+func (b *BatchJob) GetName() (rv string) {
+	if b != nil && b.Name != nil {
+		return *b.Name
+	}
+	return
+}
+
+func (b *BatchJob) GetPlugin() (rv *ServicePlugin) {
+	if b != nil {
+		return b.Plugin
+	}
+	return
+}
+
+func (b *BatchJob) GetResult() (rv *SparkBatchJobResultType) {
+	if b != nil {
+		return b.Result
+	}
+	return
+}
+
+func (b *BatchJob) GetScheduler() (rv *Scheduler) {
+	if b != nil {
+		return b.Scheduler
+	}
+	return
+}
+
+func (b *BatchJob) GetSparkPoolName() (rv string) {
+	if b != nil && b.SparkPoolName != nil {
+		return *b.SparkPoolName
+	}
+	return
+}
+
+func (b *BatchJob) GetState() (rv *LivyStates) {
+	if b != nil {
+		return b.State
+	}
+	return
+}
+
+func (b *BatchJob) GetSubmitterID() (rv string) {
+	if b != nil && b.SubmitterID != nil {
+		return *b.SubmitterID
+	}
+	return
+}
+
+func (b *BatchJob) GetSubmitterName() (rv string) {
+	if b != nil && b.SubmitterName != nil {
+		return *b.SubmitterName
+	}
+	return
+}
+
+func (b *BatchJob) GetTags() (rv map[string]*string) {
+	if b != nil {
+		return b.Tags
+	}
+	return
+}
+
+func (b *BatchJob) GetWorkspaceName() (rv string) {
+	if b != nil && b.WorkspaceName != nil {
+		return *b.WorkspaceName
+	}
+	return
+}
+
 // BatchJobCollection - Response for batch list operation.
 type BatchJobCollection struct {
 	// REQUIRED; The start index of fetched sessions.
@@ -74,6 +200,27 @@ type BatchJobCollection struct {
 
 	// Batch list
 	Sessions []*BatchJob
+}
+
+func (b *BatchJobCollection) GetFrom() (rv int32) {
+	if b != nil && b.From != nil {
+		return *b.From
+	}
+	return
+}
+
+func (b *BatchJobCollection) GetTotal() (rv int32) {
+	if b != nil && b.Total != nil {
+		return *b.Total
+	}
+	return
+}
+
+func (b *BatchJobCollection) GetSessions() (rv []*BatchJob) {
+	if b != nil {
+		return b.Sessions
+	}
+	return
 }
 
 type BatchJobOptions struct {
@@ -100,6 +247,118 @@ type BatchJobOptions struct {
 
 	// Dictionary of
 	Tags map[string]*string
+}
+
+func (b *BatchJobOptions) GetFile() (rv string) {
+	if b != nil && b.File != nil {
+		return *b.File
+	}
+	return
+}
+
+func (b *BatchJobOptions) GetName() (rv string) {
+	if b != nil && b.Name != nil {
+		return *b.Name
+	}
+	return
+}
+
+func (b *BatchJobOptions) GetArchives() (rv []*string) {
+	if b != nil {
+		return b.Archives
+	}
+	return
+}
+
+func (b *BatchJobOptions) GetArguments() (rv []*string) {
+	if b != nil {
+		return b.Arguments
+	}
+	return
+}
+
+func (b *BatchJobOptions) GetArtifactID() (rv string) {
+	if b != nil && b.ArtifactID != nil {
+		return *b.ArtifactID
+	}
+	return
+}
+
+func (b *BatchJobOptions) GetClassName() (rv string) {
+	if b != nil && b.ClassName != nil {
+		return *b.ClassName
+	}
+	return
+}
+
+func (b *BatchJobOptions) GetConfiguration() (rv map[string]*string) {
+	if b != nil {
+		return b.Configuration
+	}
+	return
+}
+
+func (b *BatchJobOptions) GetDriverCores() (rv int32) {
+	if b != nil && b.DriverCores != nil {
+		return *b.DriverCores
+	}
+	return
+}
+
+func (b *BatchJobOptions) GetDriverMemory() (rv string) {
+	if b != nil && b.DriverMemory != nil {
+		return *b.DriverMemory
+	}
+	return
+}
+
+func (b *BatchJobOptions) GetExecutorCores() (rv int32) {
+	if b != nil && b.ExecutorCores != nil {
+		return *b.ExecutorCores
+	}
+	return
+}
+
+func (b *BatchJobOptions) GetExecutorCount() (rv int32) {
+	if b != nil && b.ExecutorCount != nil {
+		return *b.ExecutorCount
+	}
+	return
+}
+
+func (b *BatchJobOptions) GetExecutorMemory() (rv string) {
+	if b != nil && b.ExecutorMemory != nil {
+		return *b.ExecutorMemory
+	}
+	return
+}
+
+func (b *BatchJobOptions) GetFiles() (rv []*string) {
+	if b != nil {
+		return b.Files
+	}
+	return
+}
+
+func (b *BatchJobOptions) GetJars() (rv []*string) {
+	if b != nil {
+		return b.Jars
+	}
+	return
+}
+
+func (b *BatchJobOptions) GetPythonFiles() (rv []*string) {
+	if b != nil {
+		return b.PythonFiles
+	}
+	return
+}
+
+func (b *BatchJobOptions) GetTags() (rv map[string]*string) {
+	if b != nil {
+		return b.Tags
+	}
+	return
 }
 
 type BatchJobState struct {
@@ -129,6 +388,69 @@ type BatchJobState struct {
 	TerminatedAt *time.Time
 }
 
+func (b *BatchJobState) GetCurrentState() (rv string) {
+	if b != nil && b.CurrentState != nil {
+		return *b.CurrentState
+	}
+	return
+}
+
+func (b *BatchJobState) GetDeadAt() (rv *time.Time) {
+	if b != nil {
+		return b.DeadAt
+	}
+	return
+}
+
+func (b *BatchJobState) GetJobCreationRequest() (rv *Request) {
+	if b != nil {
+		return b.JobCreationRequest
+	}
+	return
+}
+
+func (b *BatchJobState) GetNotStartedAt() (rv *time.Time) {
+	if b != nil {
+		return b.NotStartedAt
+	}
+	return
+}
+
+func (b *BatchJobState) GetRecoveringAt() (rv *time.Time) {
+	if b != nil {
+		return b.RecoveringAt
+	}
+	return
+}
+
+func (b *BatchJobState) GetRunningAt() (rv *time.Time) {
+	if b != nil {
+		return b.RunningAt
+	}
+	return
+}
+
+func (b *BatchJobState) GetStartingAt() (rv *time.Time) {
+	if b != nil {
+		return b.StartingAt
+	}
+	return
+}
+
+func (b *BatchJobState) GetSuccessAt() (rv *time.Time) {
+	if b != nil {
+		return b.SuccessAt
+	}
+	return
+}
+
+func (b *BatchJobState) GetTerminatedAt() (rv *time.Time) {
+	if b != nil {
+		return b.TerminatedAt
+	}
+	return
+}
+
 type Request struct {
 	Archives  []*string
 	Arguments []*string
@@ -148,6 +470,104 @@ type Request struct {
 	PythonFiles    []*string
 }
 
+func (r *Request) GetArchives() (rv []*string) {
+	if r != nil {
+		return r.Archives
+	}
+	return
+}
+
+func (r *Request) GetArguments() (rv []*string) {
+	if r != nil {
+		return r.Arguments
+	}
+	return
+}
+
+func (r *Request) GetClassName() (rv string) {
+	if r != nil && r.ClassName != nil {
+		return *r.ClassName
+	}
+	return
+}
+
+func (r *Request) GetConfiguration() (rv map[string]*string) {
+	if r != nil {
+		return r.Configuration
+	}
+	return
+}
+
+func (r *Request) GetDriverCores() (rv int32) {
+	if r != nil && r.DriverCores != nil {
+		return *r.DriverCores
+	}
+	return
+}
+
+func (r *Request) GetDriverMemory() (rv string) {
+	if r != nil && r.DriverMemory != nil {
+		return *r.DriverMemory
+	}
+	return
+}
+
+func (r *Request) GetExecutorCores() (rv int32) {
+	if r != nil && r.ExecutorCores != nil {
+		return *r.ExecutorCores
+	}
+	return
+}
+
+func (r *Request) GetExecutorCount() (rv int32) {
+	if r != nil && r.ExecutorCount != nil {
+		return *r.ExecutorCount
+	}
+	return
+}
+
+func (r *Request) GetExecutorMemory() (rv string) {
+	if r != nil && r.ExecutorMemory != nil {
+		return *r.ExecutorMemory
+	}
+	return
+}
+
+func (r *Request) GetFile() (rv string) {
+	if r != nil && r.File != nil {
+		return *r.File
+	}
+	return
+}
+
+func (r *Request) GetFiles() (rv []*string) {
+	if r != nil {
+		return r.Files
+	}
+	return
+}
+
+func (r *Request) GetJars() (rv []*string) {
+	if r != nil {
+		return r.Jars
+	}
+	return
+}
+
+func (r *Request) GetName() (rv string) {
+	if r != nil && r.Name != nil {
+		return *r.Name
+	}
+	return
+}
+
+func (r *Request) GetPythonFiles() (rv []*string) {
+	if r != nil {
+		return r.PythonFiles
+	}
+	return
+}
+
 type Scheduler struct {
 	CancellationRequestedAt *time.Time
 	CurrentState            *SchedulerCurrentState
@@ -156,10 +576,66 @@ type Scheduler struct {
 	SubmittedAt             *time.Time
 }
 
+func (s *Scheduler) GetCancellationRequestedAt() (rv *time.Time) {
+	if s != nil {
+		return s.CancellationRequestedAt
+	}
+	return
+}
+
+func (s *Scheduler) GetCurrentState() (rv *SchedulerCurrentState) {
+	if s != nil {
+		return s.CurrentState
+	}
+	return
+}
+
+func (s *Scheduler) GetEndedAt() (rv *time.Time) {
+	if s != nil {
+		return s.EndedAt
+	}
+	return
+}
+
+func (s *Scheduler) GetScheduledAt() (rv *time.Time) {
+	if s != nil {
+		return s.ScheduledAt
+	}
+	return
+}
+
+func (s *Scheduler) GetSubmittedAt() (rv *time.Time) {
+	if s != nil {
+		return s.SubmittedAt
+	}
+	return
+}
+
 type ServiceError struct {
 	ErrorCode *string
 	Message   *string
 	Source    *SparkErrorSource
+}
+
+func (s *ServiceError) GetErrorCode() (rv string) {
+	if s != nil && s.ErrorCode != nil {
+		return *s.ErrorCode
+	}
+	return
+}
+
+func (s *ServiceError) GetMessage() (rv string) {
+	if s != nil && s.Message != nil {
+		return *s.Message
+	}
+	return
+}
+
+func (s *ServiceError) GetSource() (rv *SparkErrorSource) {
+	if s != nil {
+		return s.Source
+	}
+	return
 }
 
 type ServicePlugin struct {
@@ -169,6 +645,48 @@ type ServicePlugin struct {
 	PreparationStartedAt         *time.Time
 	ResourceAcquisitionStartedAt *time.Time
 	SubmissionStartedAt          *time.Time
+}
+
+func (s *ServicePlugin) GetCleanupStartedAt() (rv *time.Time) {
+	if s != nil {
+		return s.CleanupStartedAt
+	}
+	return
+}
+
+func (s *ServicePlugin) GetCurrentState() (rv *PluginCurrentState) {
+	if s != nil {
+		return s.CurrentState
+	}
+	return
+}
+
+func (s *ServicePlugin) GetMonitoringStartedAt() (rv *time.Time) {
+	if s != nil {
+		return s.MonitoringStartedAt
+	}
+	return
+}
+
+func (s *ServicePlugin) GetPreparationStartedAt() (rv *time.Time) {
+	if s != nil {
+		return s.PreparationStartedAt
+	}
+	return
+}
+
+func (s *ServicePlugin) GetResourceAcquisitionStartedAt() (rv *time.Time) {
+	if s != nil {
+		return s.ResourceAcquisitionStartedAt
+	}
+	return
+}
+
+func (s *ServicePlugin) GetSubmissionStartedAt() (rv *time.Time) {
+	if s != nil {
+		return s.SubmissionStartedAt
+	}
+	return
 }
 
 type Session struct {
@@ -201,6 +719,132 @@ type Session struct {
 	WorkspaceName *string
 }
 
+func (s *Session) GetID() (rv int32) {
+	if s != nil && s.ID != nil {
+		return *s.ID
+	}
+	return
+}
+
+func (s *Session) GetAppID() (rv string) {
+	if s != nil && s.AppID != nil {
+		return *s.AppID
+	}
+	return
+}
+
+func (s *Session) GetAppInfo() (rv map[string]*string) {
+	if s != nil {
+		return s.AppInfo
+	}
+	return
+}
+
+func (s *Session) GetArtifactID() (rv string) {
+	if s != nil && s.ArtifactID != nil {
+		return *s.ArtifactID
+	}
+	return
+}
+
+func (s *Session) GetErrors() (rv []*ServiceError) {
+	if s != nil {
+		return s.Errors
+	}
+	return
+}
+
+func (s *Session) GetJobType() (rv *SparkJobType) {
+	if s != nil {
+		return s.JobType
+	}
+	return
+}
+
+func (s *Session) GetLivyInfo() (rv *SessionState) {
+	if s != nil {
+		return s.LivyInfo
+	}
+	return
+}
+
+func (s *Session) GetLogLines() (rv []*string) {
+	if s != nil {
+		return s.LogLines
+	}
+	return
+}
+
+func (s *Session) GetName() (rv string) {
+	if s != nil && s.Name != nil {
+		return *s.Name
+	}
+	return
+}
+
+func (s *Session) GetPlugin() (rv *ServicePlugin) {
+	if s != nil {
+		return s.Plugin
+	}
+	return
+}
+
+func (s *Session) GetResult() (rv *SparkSessionResultType) {
+	if s != nil {
+		return s.Result
+	}
+	return
+}
+
+func (s *Session) GetScheduler() (rv *Scheduler) {
+	if s != nil {
+		return s.Scheduler
+	}
+	return
+}
+
+func (s *Session) GetSparkPoolName() (rv string) {
+	if s != nil && s.SparkPoolName != nil {
+		return *s.SparkPoolName
+	}
+	return
+}
+
+func (s *Session) GetState() (rv *LivyStates) {
+	if s != nil {
+		return s.State
+	}
+	return
+}
+
+func (s *Session) GetSubmitterID() (rv string) {
+	if s != nil && s.SubmitterID != nil {
+		return *s.SubmitterID
+	}
+	return
+}
+
+func (s *Session) GetSubmitterName() (rv string) {
+	if s != nil && s.SubmitterName != nil {
+		return *s.SubmitterName
+	}
+	return
+}
+
+func (s *Session) GetTags() (rv map[string]*string) {
+	if s != nil {
+		return s.Tags
+	}
+	return
+}
+
+func (s *Session) GetWorkspaceName() (rv string) {
+	if s != nil && s.WorkspaceName != nil {
+		return *s.WorkspaceName
+	}
+	return
+}
+
 type SessionCollection struct {
 	// REQUIRED
 	From *int32
@@ -208,6 +852,27 @@ type SessionCollection struct {
 	// REQUIRED
 	Total    *int32
 	Sessions []*Session
+}
+
+func (s *SessionCollection) GetFrom() (rv int32) {
+	if s != nil && s.From != nil {
+		return *s.From
+	}
+	return
+}
+
+func (s *SessionCollection) GetTotal() (rv int32) {
+	if s != nil && s.Total != nil {
+		return *s.Total
+	}
+	return
+}
+
+func (s *SessionCollection) GetSessions() (rv []*Session) {
+	if s != nil {
+		return s.Sessions
+	}
+	return
 }
 
 type SessionOptions struct {
@@ -234,6 +899,118 @@ type SessionOptions struct {
 	Tags map[string]*string
 }
 
+func (s *SessionOptions) GetName() (rv string) {
+	if s != nil && s.Name != nil {
+		return *s.Name
+	}
+	return
+}
+
+func (s *SessionOptions) GetArchives() (rv []*string) {
+	if s != nil {
+		return s.Archives
+	}
+	return
+}
+
+func (s *SessionOptions) GetArguments() (rv []*string) {
+	if s != nil {
+		return s.Arguments
+	}
+	return
+}
+
+func (s *SessionOptions) GetArtifactID() (rv string) {
+	if s != nil && s.ArtifactID != nil {
+		return *s.ArtifactID
+	}
+	return
+}
+
+func (s *SessionOptions) GetClassName() (rv string) {
+	if s != nil && s.ClassName != nil {
+		return *s.ClassName
+	}
+	return
+}
+
+func (s *SessionOptions) GetConfiguration() (rv map[string]*string) {
+	if s != nil {
+		return s.Configuration
+	}
+	return
+}
+
+func (s *SessionOptions) GetDriverCores() (rv int32) {
+	if s != nil && s.DriverCores != nil {
+		return *s.DriverCores
+	}
+	return
+}
+
+func (s *SessionOptions) GetDriverMemory() (rv string) {
+	if s != nil && s.DriverMemory != nil {
+		return *s.DriverMemory
+	}
+	return
+}
+
+func (s *SessionOptions) GetExecutorCores() (rv int32) {
+	if s != nil && s.ExecutorCores != nil {
+		return *s.ExecutorCores
+	}
+	return
+}
+
+func (s *SessionOptions) GetExecutorCount() (rv int32) {
+	if s != nil && s.ExecutorCount != nil {
+		return *s.ExecutorCount
+	}
+	return
+}
+
+func (s *SessionOptions) GetExecutorMemory() (rv string) {
+	if s != nil && s.ExecutorMemory != nil {
+		return *s.ExecutorMemory
+	}
+	return
+}
+
+func (s *SessionOptions) GetFile() (rv string) {
+	if s != nil && s.File != nil {
+		return *s.File
+	}
+	return
+}
+
+func (s *SessionOptions) GetFiles() (rv []*string) {
+	if s != nil {
+		return s.Files
+	}
+	return
+}
+
+func (s *SessionOptions) GetJars() (rv []*string) {
+	if s != nil {
+		return s.Jars
+	}
+	return
+}
+
+func (s *SessionOptions) GetPythonFiles() (rv []*string) {
+	if s != nil {
+		return s.PythonFiles
+	}
+	return
+}
+
+func (s *SessionOptions) GetTags() (rv map[string]*string) {
+	if s != nil {
+		return s.Tags
+	}
+	return
+}
+
 type SessionState struct {
 	BusyAt             *time.Time
 	CurrentState       *string
@@ -248,6 +1025,83 @@ type SessionState struct {
 	TerminatedAt       *time.Time
 }
 
+func (s *SessionState) GetBusyAt() (rv *time.Time) {
+	if s != nil {
+		return s.BusyAt
+	}
+	return
+}
+
+func (s *SessionState) GetCurrentState() (rv string) {
+	if s != nil && s.CurrentState != nil {
+		return *s.CurrentState
+	}
+	return
+}
+
+func (s *SessionState) GetDeadAt() (rv *time.Time) {
+	if s != nil {
+		return s.DeadAt
+	}
+	return
+}
+
+func (s *SessionState) GetErrorAt() (rv *time.Time) {
+	if s != nil {
+		return s.ErrorAt
+	}
+	return
+}
+
+func (s *SessionState) GetIdleAt() (rv *time.Time) {
+	if s != nil {
+		return s.IdleAt
+	}
+	return
+}
+
+func (s *SessionState) GetJobCreationRequest() (rv *Request) {
+	if s != nil {
+		return s.JobCreationRequest
+	}
+	return
+}
+
+func (s *SessionState) GetNotStartedAt() (rv *time.Time) {
+	if s != nil {
+		return s.NotStartedAt
+	}
+	return
+}
+
+func (s *SessionState) GetRecoveringAt() (rv *time.Time) {
+	if s != nil {
+		return s.RecoveringAt
+	}
+	return
+}
+
+func (s *SessionState) GetShuttingDownAt() (rv *time.Time) {
+	if s != nil {
+		return s.ShuttingDownAt
+	}
+	return
+}
+
+func (s *SessionState) GetStartingAt() (rv *time.Time) {
+	if s != nil {
+		return s.StartingAt
+	}
+	return
+}
+
+func (s *SessionState) GetTerminatedAt() (rv *time.Time) {
+	if s != nil {
+		return s.TerminatedAt
+	}
+	return
+}
+
 type Statement struct {
 	// REQUIRED
 	ID     *int32
@@ -256,9 +1110,44 @@ type Statement struct {
 	State  *LivyStatementStates
 }
 
+func (s *Statement) GetID() (rv int32) {
+	if s != nil && s.ID != nil {
+		return *s.ID
+	}
+	return
+}
+
+func (s *Statement) GetCode() (rv string) {
+	if s != nil && s.Code != nil {
+		return *s.Code
+	}
+	return
+}
+
+func (s *Statement) GetOutput() (rv *StatementOutput) {
+	if s != nil {
+		return s.Output
+	}
+	return
+}
+
+func (s *Statement) GetState() (rv *LivyStatementStates) {
+	if s != nil {
+		return s.State
+	}
+	return
+}
+
 type StatementCancellationResult struct {
 	// The msg property from the Livy API. The value is always "canceled".
 	Message *string
+}
+
+func (s *StatementCancellationResult) GetMessage() (rv string) {
+	if s != nil && s.Message != nil {
+		return *s.Message
+	}
+	return
 }
 
 type StatementCollection struct {
@@ -267,9 +1156,37 @@ type StatementCollection struct {
 	Statements []*Statement
 }
 
+func (s *StatementCollection) GetTotal() (rv int32) {
+	if s != nil && s.Total != nil {
+		return *s.Total
+	}
+	return
+}
+
+func (s *StatementCollection) GetStatements() (rv []*Statement) {
+	if s != nil {
+		return s.Statements
+	}
+	return
+}
+
 type StatementOptions struct {
 	Code *string
 	Kind *SparkStatementLanguageType
+}
+
+func (s *StatementOptions) GetCode() (rv string) {
+	if s != nil && s.Code != nil {
+		return *s.Code
+	}
+	return
+}
+
+func (s *StatementOptions) GetKind() (rv *SparkStatementLanguageType) {
+	if s != nil {
+		return s.Kind
+	}
+	return
 }
 
 type StatementOutput struct {
@@ -282,4 +1199,46 @@ type StatementOutput struct {
 	ErrorValue *string
 	Status     *string
 	Traceback  []*string
+}
+
+func (s *StatementOutput) GetExecutionCount() (rv int32) {
+	if s != nil && s.ExecutionCount != nil {
+		return *s.ExecutionCount
+	}
+	return
+}
+
+func (s *StatementOutput) GetData() (rv any) {
+	if s != nil {
+		return s.Data
+	}
+	return
+}
+
+func (s *StatementOutput) GetErrorName() (rv string) {
+	if s != nil && s.ErrorName != nil {
+		return *s.ErrorName
+	}
+	return
+}
+
+func (s *StatementOutput) GetErrorValue() (rv string) {
+	if s != nil && s.ErrorValue != nil {
+		return *s.ErrorValue
+	}
+	return
+}
+
+func (s *StatementOutput) GetStatus() (rv string) {
+	if s != nil && s.Status != nil {
+		return *s.Status
+	}
+	return
+}
+
+func (s *StatementOutput) GetTraceback() (rv []*string) {
+	if s != nil {
+		return s.Traceback
+	}
+	return
 }

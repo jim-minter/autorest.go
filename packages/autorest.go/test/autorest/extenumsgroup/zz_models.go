@@ -18,3 +18,24 @@ type Pet struct {
 	// name
 	Name *string
 }
+
+func (p *Pet) GetIntEnum() (rv *IntEnum) {
+	if p != nil {
+		return p.IntEnum
+	}
+	return
+}
+
+func (p *Pet) GetDaysOfWeek() (rv *DaysOfWeekExtensibleEnum) {
+	if p != nil {
+		return p.DaysOfWeek
+	}
+	return
+}
+
+func (p *Pet) GetName() (rv string) {
+	if p != nil && p.Name != nil {
+		return *p.Name
+	}
+	return
+}

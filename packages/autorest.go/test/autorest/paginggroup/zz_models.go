@@ -13,8 +13,29 @@ type ODataProductResult struct {
 	Values        []*Product
 }
 
+func (o *ODataProductResult) GetODataNextLink() (rv string) {
+	if o != nil && o.ODataNextLink != nil {
+		return *o.ODataNextLink
+	}
+	return
+}
+
+func (o *ODataProductResult) GetValues() (rv []*Product) {
+	if o != nil {
+		return o.Values
+	}
+	return
+}
+
 type Product struct {
 	Properties *ProductProperties
+}
+
+func (p *Product) GetProperties() (rv *ProductProperties) {
+	if p != nil {
+		return p.Properties
+	}
+	return
 }
 
 type ProductProperties struct {
@@ -22,9 +43,37 @@ type ProductProperties struct {
 	Name *string
 }
 
+func (p *ProductProperties) GetID() (rv int32) {
+	if p != nil && p.ID != nil {
+		return *p.ID
+	}
+	return
+}
+
+func (p *ProductProperties) GetName() (rv string) {
+	if p != nil && p.Name != nil {
+		return *p.Name
+	}
+	return
+}
+
 type ProductResult struct {
 	NextLink *string
 	Values   []*Product
+}
+
+func (p *ProductResult) GetNextLink() (rv string) {
+	if p != nil && p.NextLink != nil {
+		return *p.NextLink
+	}
+	return
+}
+
+func (p *ProductResult) GetValues() (rv []*Product) {
+	if p != nil {
+		return p.Values
+	}
+	return
 }
 
 type ProductResultValue struct {
@@ -32,7 +81,35 @@ type ProductResultValue struct {
 	Value    []*Product
 }
 
+func (p *ProductResultValue) GetNextLink() (rv string) {
+	if p != nil && p.NextLink != nil {
+		return *p.NextLink
+	}
+	return
+}
+
+func (p *ProductResultValue) GetValue() (rv []*Product) {
+	if p != nil {
+		return p.Value
+	}
+	return
+}
+
 type ProductResultValueWithXMSClientName struct {
 	Indexes  []*Product
 	NextLink *string
+}
+
+func (p *ProductResultValueWithXMSClientName) GetIndexes() (rv []*Product) {
+	if p != nil {
+		return p.Indexes
+	}
+	return
+}
+
+func (p *ProductResultValueWithXMSClientName) GetNextLink() (rv string) {
+	if p != nil && p.NextLink != nil {
+		return *p.NextLink
+	}
+	return
 }

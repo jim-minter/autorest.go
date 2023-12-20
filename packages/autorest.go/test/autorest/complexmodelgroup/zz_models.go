@@ -13,9 +13,23 @@ type CatalogArray struct {
 	ProductArray []*Product
 }
 
+func (c *CatalogArray) GetProductArray() (rv []*Product) {
+	if c != nil {
+		return c.ProductArray
+	}
+	return
+}
+
 type CatalogArrayOfDictionary struct {
 	// Array of dictionary of products
 	ProductArrayOfDictionary []map[string]*Product
+}
+
+func (c *CatalogArrayOfDictionary) GetProductArrayOfDictionary() (rv []map[string]*Product) {
+	if c != nil {
+		return c.ProductArrayOfDictionary
+	}
+	return
 }
 
 type CatalogDictionary struct {
@@ -23,9 +37,23 @@ type CatalogDictionary struct {
 	ProductDictionary map[string]*Product
 }
 
+func (c *CatalogDictionary) GetProductDictionary() (rv map[string]*Product) {
+	if c != nil {
+		return c.ProductDictionary
+	}
+	return
+}
+
 type CatalogDictionaryOfArray struct {
 	// Dictionary of Array of product
 	ProductDictionaryOfArray map[string][]*Product
+}
+
+func (c *CatalogDictionaryOfArray) GetProductDictionaryOfArray() (rv map[string][]*Product) {
+	if c != nil {
+		return c.ProductDictionaryOfArray
+	}
+	return
 }
 
 // Product - The product documentation.
@@ -45,4 +73,39 @@ type Product struct {
 	// Unique identifier representing a specific product for a given latitude & longitude. For example, uberX in San Francisco
 	// will have a different product_id than uberX in Los Angeles.
 	ProductID *string
+}
+
+func (p *Product) GetCapacity() (rv string) {
+	if p != nil && p.Capacity != nil {
+		return *p.Capacity
+	}
+	return
+}
+
+func (p *Product) GetDescription() (rv string) {
+	if p != nil && p.Description != nil {
+		return *p.Description
+	}
+	return
+}
+
+func (p *Product) GetDisplayName() (rv string) {
+	if p != nil && p.DisplayName != nil {
+		return *p.DisplayName
+	}
+	return
+}
+
+func (p *Product) GetImage() (rv string) {
+	if p != nil && p.Image != nil {
+		return *p.Image
+	}
+	return
+}
+
+func (p *Product) GetProductID() (rv string) {
+	if p != nil && p.ProductID != nil {
+		return *p.ProductID
+	}
+	return
 }

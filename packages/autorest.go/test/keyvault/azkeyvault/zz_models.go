@@ -16,6 +16,13 @@ type Action struct {
 	ActionType *ActionType
 }
 
+func (a *Action) GetActionType() (rv *ActionType) {
+	if a != nil {
+		return a.ActionType
+	}
+	return
+}
+
 // AdministratorDetails - Details of the organization administrator of the certificate issuer.
 type AdministratorDetails struct {
 	// Email address.
@@ -29,6 +36,34 @@ type AdministratorDetails struct {
 
 	// Phone number.
 	Phone *string
+}
+
+func (a *AdministratorDetails) GetEmailAddress() (rv string) {
+	if a != nil && a.EmailAddress != nil {
+		return *a.EmailAddress
+	}
+	return
+}
+
+func (a *AdministratorDetails) GetFirstName() (rv string) {
+	if a != nil && a.FirstName != nil {
+		return *a.FirstName
+	}
+	return
+}
+
+func (a *AdministratorDetails) GetLastName() (rv string) {
+	if a != nil && a.LastName != nil {
+		return *a.LastName
+	}
+	return
+}
+
+func (a *AdministratorDetails) GetPhone() (rv string) {
+	if a != nil && a.Phone != nil {
+		return *a.Phone
+	}
+	return
 }
 
 // Attributes - The object attributes managed by the KeyVault service.
@@ -49,10 +84,52 @@ type Attributes struct {
 	Updated *time.Time
 }
 
+func (a *Attributes) GetEnabled() (rv bool) {
+	if a != nil && a.Enabled != nil {
+		return *a.Enabled
+	}
+	return
+}
+
+func (a *Attributes) GetExpires() (rv *time.Time) {
+	if a != nil {
+		return a.Expires
+	}
+	return
+}
+
+func (a *Attributes) GetNotBefore() (rv *time.Time) {
+	if a != nil {
+		return a.NotBefore
+	}
+	return
+}
+
+func (a *Attributes) GetCreated() (rv *time.Time) {
+	if a != nil {
+		return a.Created
+	}
+	return
+}
+
+func (a *Attributes) GetUpdated() (rv *time.Time) {
+	if a != nil {
+		return a.Updated
+	}
+	return
+}
+
 // BackupCertificateResult - The backup certificate result, containing the backup blob.
 type BackupCertificateResult struct {
 	// READ-ONLY; The backup blob containing the backed up certificate.
 	Value []byte
+}
+
+func (b *BackupCertificateResult) GetValue() (rv []byte) {
+	if b != nil {
+		return b.Value
+	}
+	return
 }
 
 // BackupKeyResult - The backup key result, containing the backup blob.
@@ -61,16 +138,37 @@ type BackupKeyResult struct {
 	Value []byte
 }
 
+func (b *BackupKeyResult) GetValue() (rv []byte) {
+	if b != nil {
+		return b.Value
+	}
+	return
+}
+
 // BackupSecretResult - The backup secret result, containing the backup blob.
 type BackupSecretResult struct {
 	// READ-ONLY; The backup blob containing the backed up secret.
 	Value []byte
 }
 
+func (b *BackupSecretResult) GetValue() (rv []byte) {
+	if b != nil {
+		return b.Value
+	}
+	return
+}
+
 // BackupStorageResult - The backup storage result, containing the backup blob.
 type BackupStorageResult struct {
 	// READ-ONLY; The backup blob containing the backed up storage account.
 	Value []byte
+}
+
+func (b *BackupStorageResult) GetValue() (rv []byte) {
+	if b != nil {
+		return b.Value
+	}
+	return
 }
 
 // CertificateAttributes - The certificate management attributes.
@@ -97,6 +195,55 @@ type CertificateAttributes struct {
 
 	// READ-ONLY; Last updated time in UTC.
 	Updated *time.Time
+}
+
+func (c *CertificateAttributes) GetEnabled() (rv bool) {
+	if c != nil && c.Enabled != nil {
+		return *c.Enabled
+	}
+	return
+}
+
+func (c *CertificateAttributes) GetExpires() (rv *time.Time) {
+	if c != nil {
+		return c.Expires
+	}
+	return
+}
+
+func (c *CertificateAttributes) GetNotBefore() (rv *time.Time) {
+	if c != nil {
+		return c.NotBefore
+	}
+	return
+}
+
+func (c *CertificateAttributes) GetCreated() (rv *time.Time) {
+	if c != nil {
+		return c.Created
+	}
+	return
+}
+
+func (c *CertificateAttributes) GetRecoverableDays() (rv int32) {
+	if c != nil && c.RecoverableDays != nil {
+		return *c.RecoverableDays
+	}
+	return
+}
+
+func (c *CertificateAttributes) GetRecoveryLevel() (rv *DeletionRecoveryLevel) {
+	if c != nil {
+		return c.RecoveryLevel
+	}
+	return
+}
+
+func (c *CertificateAttributes) GetUpdated() (rv *time.Time) {
+	if c != nil {
+		return c.Updated
+	}
+	return
 }
 
 // CertificateBundle - A certificate bundle consists of a certificate (X509) plus its attributes.
@@ -129,6 +276,69 @@ type CertificateBundle struct {
 	X509Thumbprint []byte
 }
 
+func (c *CertificateBundle) GetAttributes() (rv *CertificateAttributes) {
+	if c != nil {
+		return c.Attributes
+	}
+	return
+}
+
+func (c *CertificateBundle) GetCer() (rv []byte) {
+	if c != nil {
+		return c.Cer
+	}
+	return
+}
+
+func (c *CertificateBundle) GetContentType() (rv string) {
+	if c != nil && c.ContentType != nil {
+		return *c.ContentType
+	}
+	return
+}
+
+func (c *CertificateBundle) GetTags() (rv map[string]*string) {
+	if c != nil {
+		return c.Tags
+	}
+	return
+}
+
+func (c *CertificateBundle) GetID() (rv string) {
+	if c != nil && c.ID != nil {
+		return *c.ID
+	}
+	return
+}
+
+func (c *CertificateBundle) GetKid() (rv string) {
+	if c != nil && c.Kid != nil {
+		return *c.Kid
+	}
+	return
+}
+
+func (c *CertificateBundle) GetPolicy() (rv *CertificatePolicy) {
+	if c != nil {
+		return c.Policy
+	}
+	return
+}
+
+func (c *CertificateBundle) GetSid() (rv string) {
+	if c != nil && c.Sid != nil {
+		return *c.Sid
+	}
+	return
+}
+
+func (c *CertificateBundle) GetX509Thumbprint() (rv []byte) {
+	if c != nil {
+		return c.X509Thumbprint
+	}
+	return
+}
+
 // CertificateCreateParameters - The certificate create parameters.
 type CertificateCreateParameters struct {
 	// The attributes of the certificate (optional).
@@ -139,6 +349,27 @@ type CertificateCreateParameters struct {
 
 	// Application specific metadata in the form of key-value pairs.
 	Tags map[string]*string
+}
+
+func (c *CertificateCreateParameters) GetCertificateAttributes() (rv *CertificateAttributes) {
+	if c != nil {
+		return c.CertificateAttributes
+	}
+	return
+}
+
+func (c *CertificateCreateParameters) GetCertificatePolicy() (rv *CertificatePolicy) {
+	if c != nil {
+		return c.CertificatePolicy
+	}
+	return
+}
+
+func (c *CertificateCreateParameters) GetTags() (rv map[string]*string) {
+	if c != nil {
+		return c.Tags
+	}
+	return
 }
 
 // CertificateImportParameters - The certificate import parameters.
@@ -160,12 +391,61 @@ type CertificateImportParameters struct {
 	Tags map[string]*string
 }
 
+func (c *CertificateImportParameters) GetBase64EncodedCertificate() (rv string) {
+	if c != nil && c.Base64EncodedCertificate != nil {
+		return *c.Base64EncodedCertificate
+	}
+	return
+}
+
+func (c *CertificateImportParameters) GetCertificateAttributes() (rv *CertificateAttributes) {
+	if c != nil {
+		return c.CertificateAttributes
+	}
+	return
+}
+
+func (c *CertificateImportParameters) GetCertificatePolicy() (rv *CertificatePolicy) {
+	if c != nil {
+		return c.CertificatePolicy
+	}
+	return
+}
+
+func (c *CertificateImportParameters) GetPassword() (rv string) {
+	if c != nil && c.Password != nil {
+		return *c.Password
+	}
+	return
+}
+
+func (c *CertificateImportParameters) GetTags() (rv map[string]*string) {
+	if c != nil {
+		return c.Tags
+	}
+	return
+}
+
 type CertificateInfoObject struct {
 	// REQUIRED; Certificates needed from customer
 	Certificates []*SecurityDomainJSONWebKey
 
 	// Customer to specify the number of certificates (minimum 2 and maximum 10) to restore Security Domain
 	Required *int32
+}
+
+func (c *CertificateInfoObject) GetCertificates() (rv []*SecurityDomainJSONWebKey) {
+	if c != nil {
+		return c.Certificates
+	}
+	return
+}
+
+func (c *CertificateInfoObject) GetRequired() (rv int32) {
+	if c != nil && c.Required != nil {
+		return *c.Required
+	}
+	return
 }
 
 // CertificateIssuerItem - The certificate issuer item containing certificate issuer metadata.
@@ -177,6 +457,20 @@ type CertificateIssuerItem struct {
 	Provider *string
 }
 
+func (c *CertificateIssuerItem) GetID() (rv string) {
+	if c != nil && c.ID != nil {
+		return *c.ID
+	}
+	return
+}
+
+func (c *CertificateIssuerItem) GetProvider() (rv string) {
+	if c != nil && c.Provider != nil {
+		return *c.Provider
+	}
+	return
+}
+
 // CertificateIssuerListResult - The certificate issuer list result.
 type CertificateIssuerListResult struct {
 	// READ-ONLY; The URL to get the next set of certificate issuers.
@@ -185,6 +479,20 @@ type CertificateIssuerListResult struct {
 	// READ-ONLY; A response message containing a list of certificate issuers in the key vault along with a link to the next page
 	// of certificate issuers.
 	Value []*CertificateIssuerItem
+}
+
+func (c *CertificateIssuerListResult) GetNextLink() (rv string) {
+	if c != nil && c.NextLink != nil {
+		return *c.NextLink
+	}
+	return
+}
+
+func (c *CertificateIssuerListResult) GetValue() (rv []*CertificateIssuerItem) {
+	if c != nil {
+		return c.Value
+	}
+	return
 }
 
 // CertificateIssuerSetParameters - The certificate issuer set parameters.
@@ -202,6 +510,34 @@ type CertificateIssuerSetParameters struct {
 	OrganizationDetails *OrganizationDetails
 }
 
+func (c *CertificateIssuerSetParameters) GetProvider() (rv string) {
+	if c != nil && c.Provider != nil {
+		return *c.Provider
+	}
+	return
+}
+
+func (c *CertificateIssuerSetParameters) GetAttributes() (rv *IssuerAttributes) {
+	if c != nil {
+		return c.Attributes
+	}
+	return
+}
+
+func (c *CertificateIssuerSetParameters) GetCredentials() (rv *IssuerCredentials) {
+	if c != nil {
+		return c.Credentials
+	}
+	return
+}
+
+func (c *CertificateIssuerSetParameters) GetOrganizationDetails() (rv *OrganizationDetails) {
+	if c != nil {
+		return c.OrganizationDetails
+	}
+	return
+}
+
 // CertificateIssuerUpdateParameters - The certificate issuer update parameters.
 type CertificateIssuerUpdateParameters struct {
 	// Attributes of the issuer object.
@@ -215,6 +551,34 @@ type CertificateIssuerUpdateParameters struct {
 
 	// The issuer provider.
 	Provider *string
+}
+
+func (c *CertificateIssuerUpdateParameters) GetAttributes() (rv *IssuerAttributes) {
+	if c != nil {
+		return c.Attributes
+	}
+	return
+}
+
+func (c *CertificateIssuerUpdateParameters) GetCredentials() (rv *IssuerCredentials) {
+	if c != nil {
+		return c.Credentials
+	}
+	return
+}
+
+func (c *CertificateIssuerUpdateParameters) GetOrganizationDetails() (rv *OrganizationDetails) {
+	if c != nil {
+		return c.OrganizationDetails
+	}
+	return
+}
+
+func (c *CertificateIssuerUpdateParameters) GetProvider() (rv string) {
+	if c != nil && c.Provider != nil {
+		return *c.Provider
+	}
+	return
 }
 
 // CertificateItem - The certificate item containing certificate metadata.
@@ -232,6 +596,34 @@ type CertificateItem struct {
 	X509Thumbprint []byte
 }
 
+func (c *CertificateItem) GetAttributes() (rv *CertificateAttributes) {
+	if c != nil {
+		return c.Attributes
+	}
+	return
+}
+
+func (c *CertificateItem) GetID() (rv string) {
+	if c != nil && c.ID != nil {
+		return *c.ID
+	}
+	return
+}
+
+func (c *CertificateItem) GetTags() (rv map[string]*string) {
+	if c != nil {
+		return c.Tags
+	}
+	return
+}
+
+func (c *CertificateItem) GetX509Thumbprint() (rv []byte) {
+	if c != nil {
+		return c.X509Thumbprint
+	}
+	return
+}
+
 // CertificateListResult - The certificate list result.
 type CertificateListResult struct {
 	// READ-ONLY; The URL to get the next set of certificates.
@@ -240,6 +632,20 @@ type CertificateListResult struct {
 	// READ-ONLY; A response message containing a list of certificates in the key vault along with a link to the next page of
 	// certificates.
 	Value []*CertificateItem
+}
+
+func (c *CertificateListResult) GetNextLink() (rv string) {
+	if c != nil && c.NextLink != nil {
+		return *c.NextLink
+	}
+	return
+}
+
+func (c *CertificateListResult) GetValue() (rv []*CertificateItem) {
+	if c != nil {
+		return c.Value
+	}
+	return
 }
 
 // CertificateMergeParameters - The certificate merge parameters
@@ -252,6 +658,27 @@ type CertificateMergeParameters struct {
 
 	// Application specific metadata in the form of key-value pairs.
 	Tags map[string]*string
+}
+
+func (c *CertificateMergeParameters) GetX509Certificates() (rv [][]byte) {
+	if c != nil {
+		return c.X509Certificates
+	}
+	return
+}
+
+func (c *CertificateMergeParameters) GetCertificateAttributes() (rv *CertificateAttributes) {
+	if c != nil {
+		return c.CertificateAttributes
+	}
+	return
+}
+
+func (c *CertificateMergeParameters) GetTags() (rv map[string]*string) {
+	if c != nil {
+		return c.Tags
+	}
+	return
 }
 
 // CertificateOperation - A certificate operation is returned in case of asynchronous requests.
@@ -284,10 +711,80 @@ type CertificateOperation struct {
 	ID *string
 }
 
+func (c *CertificateOperation) GetCancellationRequested() (rv bool) {
+	if c != nil && c.CancellationRequested != nil {
+		return *c.CancellationRequested
+	}
+	return
+}
+
+func (c *CertificateOperation) GetCsr() (rv []byte) {
+	if c != nil {
+		return c.Csr
+	}
+	return
+}
+
+func (c *CertificateOperation) GetError() (rv *ErrorInfo) {
+	if c != nil {
+		return c.Error
+	}
+	return
+}
+
+func (c *CertificateOperation) GetIssuerParameters() (rv *IssuerParameters) {
+	if c != nil {
+		return c.IssuerParameters
+	}
+	return
+}
+
+func (c *CertificateOperation) GetRequestID() (rv string) {
+	if c != nil && c.RequestID != nil {
+		return *c.RequestID
+	}
+	return
+}
+
+func (c *CertificateOperation) GetStatus() (rv string) {
+	if c != nil && c.Status != nil {
+		return *c.Status
+	}
+	return
+}
+
+func (c *CertificateOperation) GetStatusDetails() (rv string) {
+	if c != nil && c.StatusDetails != nil {
+		return *c.StatusDetails
+	}
+	return
+}
+
+func (c *CertificateOperation) GetTarget() (rv string) {
+	if c != nil && c.Target != nil {
+		return *c.Target
+	}
+	return
+}
+
+func (c *CertificateOperation) GetID() (rv string) {
+	if c != nil && c.ID != nil {
+		return *c.ID
+	}
+	return
+}
+
 // CertificateOperationUpdateParameter - The certificate operation update parameters.
 type CertificateOperationUpdateParameter struct {
 	// REQUIRED; Indicates if cancellation was requested on the certificate operation.
 	CancellationRequested *bool
+}
+
+func (c *CertificateOperationUpdateParameter) GetCancellationRequested() (rv bool) {
+	if c != nil && c.CancellationRequested != nil {
+		return *c.CancellationRequested
+	}
+	return
 }
 
 // CertificatePolicy - Management policy for a certificate.
@@ -314,10 +811,66 @@ type CertificatePolicy struct {
 	ID *string
 }
 
+func (c *CertificatePolicy) GetAttributes() (rv *CertificateAttributes) {
+	if c != nil {
+		return c.Attributes
+	}
+	return
+}
+
+func (c *CertificatePolicy) GetIssuerParameters() (rv *IssuerParameters) {
+	if c != nil {
+		return c.IssuerParameters
+	}
+	return
+}
+
+func (c *CertificatePolicy) GetKeyProperties() (rv *KeyProperties) {
+	if c != nil {
+		return c.KeyProperties
+	}
+	return
+}
+
+func (c *CertificatePolicy) GetLifetimeActions() (rv []*LifetimeAction) {
+	if c != nil {
+		return c.LifetimeActions
+	}
+	return
+}
+
+func (c *CertificatePolicy) GetSecretProperties() (rv *SecretProperties) {
+	if c != nil {
+		return c.SecretProperties
+	}
+	return
+}
+
+func (c *CertificatePolicy) GetX509CertificateProperties() (rv *X509CertificateProperties) {
+	if c != nil {
+		return c.X509CertificateProperties
+	}
+	return
+}
+
+func (c *CertificatePolicy) GetID() (rv string) {
+	if c != nil && c.ID != nil {
+		return *c.ID
+	}
+	return
+}
+
 // CertificateRestoreParameters - The certificate restore parameters.
 type CertificateRestoreParameters struct {
 	// REQUIRED; The backup blob associated with a certificate bundle.
 	CertificateBundleBackup []byte
+}
+
+func (c *CertificateRestoreParameters) GetCertificateBundleBackup() (rv []byte) {
+	if c != nil {
+		return c.CertificateBundleBackup
+	}
+	return
 }
 
 // CertificateUpdateParameters - The certificate update parameters.
@@ -332,6 +885,27 @@ type CertificateUpdateParameters struct {
 	Tags map[string]*string
 }
 
+func (c *CertificateUpdateParameters) GetCertificateAttributes() (rv *CertificateAttributes) {
+	if c != nil {
+		return c.CertificateAttributes
+	}
+	return
+}
+
+func (c *CertificateUpdateParameters) GetCertificatePolicy() (rv *CertificatePolicy) {
+	if c != nil {
+		return c.CertificatePolicy
+	}
+	return
+}
+
+func (c *CertificateUpdateParameters) GetTags() (rv map[string]*string) {
+	if c != nil {
+		return c.Tags
+	}
+	return
+}
+
 // Contact - The contact information for the vault certificates.
 type Contact struct {
 	// Email address.
@@ -344,6 +918,27 @@ type Contact struct {
 	Phone *string
 }
 
+func (c *Contact) GetEmailAddress() (rv string) {
+	if c != nil && c.EmailAddress != nil {
+		return *c.EmailAddress
+	}
+	return
+}
+
+func (c *Contact) GetName() (rv string) {
+	if c != nil && c.Name != nil {
+		return *c.Name
+	}
+	return
+}
+
+func (c *Contact) GetPhone() (rv string) {
+	if c != nil && c.Phone != nil {
+		return *c.Phone
+	}
+	return
+}
+
 // Contacts - The contacts for the vault certificates.
 type Contacts struct {
 	// The contact list for the vault certificates.
@@ -351,6 +946,20 @@ type Contacts struct {
 
 	// READ-ONLY; Identifier for the contacts collection.
 	ID *string
+}
+
+func (c *Contacts) GetContactList() (rv []*Contact) {
+	if c != nil {
+		return c.ContactList
+	}
+	return
+}
+
+func (c *Contacts) GetID() (rv string) {
+	if c != nil && c.ID != nil {
+		return *c.ID
+	}
+	return
 }
 
 // DeletedCertificateBundle - A Deleted Certificate consisting of its previous id, attributes and its tags, as well as information
@@ -393,6 +1002,90 @@ type DeletedCertificateBundle struct {
 	X509Thumbprint []byte
 }
 
+func (d *DeletedCertificateBundle) GetAttributes() (rv *CertificateAttributes) {
+	if d != nil {
+		return d.Attributes
+	}
+	return
+}
+
+func (d *DeletedCertificateBundle) GetCer() (rv []byte) {
+	if d != nil {
+		return d.Cer
+	}
+	return
+}
+
+func (d *DeletedCertificateBundle) GetContentType() (rv string) {
+	if d != nil && d.ContentType != nil {
+		return *d.ContentType
+	}
+	return
+}
+
+func (d *DeletedCertificateBundle) GetRecoveryID() (rv string) {
+	if d != nil && d.RecoveryID != nil {
+		return *d.RecoveryID
+	}
+	return
+}
+
+func (d *DeletedCertificateBundle) GetTags() (rv map[string]*string) {
+	if d != nil {
+		return d.Tags
+	}
+	return
+}
+
+func (d *DeletedCertificateBundle) GetDeletedDate() (rv *time.Time) {
+	if d != nil {
+		return d.DeletedDate
+	}
+	return
+}
+
+func (d *DeletedCertificateBundle) GetID() (rv string) {
+	if d != nil && d.ID != nil {
+		return *d.ID
+	}
+	return
+}
+
+func (d *DeletedCertificateBundle) GetKid() (rv string) {
+	if d != nil && d.Kid != nil {
+		return *d.Kid
+	}
+	return
+}
+
+func (d *DeletedCertificateBundle) GetPolicy() (rv *CertificatePolicy) {
+	if d != nil {
+		return d.Policy
+	}
+	return
+}
+
+func (d *DeletedCertificateBundle) GetScheduledPurgeDate() (rv *time.Time) {
+	if d != nil {
+		return d.ScheduledPurgeDate
+	}
+	return
+}
+
+func (d *DeletedCertificateBundle) GetSid() (rv string) {
+	if d != nil && d.Sid != nil {
+		return *d.Sid
+	}
+	return
+}
+
+func (d *DeletedCertificateBundle) GetX509Thumbprint() (rv []byte) {
+	if d != nil {
+		return d.X509Thumbprint
+	}
+	return
+}
+
 // DeletedCertificateItem - The deleted certificate item containing metadata about the deleted certificate.
 type DeletedCertificateItem struct {
 	// The certificate management attributes.
@@ -417,6 +1110,55 @@ type DeletedCertificateItem struct {
 	ScheduledPurgeDate *time.Time
 }
 
+func (d *DeletedCertificateItem) GetAttributes() (rv *CertificateAttributes) {
+	if d != nil {
+		return d.Attributes
+	}
+	return
+}
+
+func (d *DeletedCertificateItem) GetID() (rv string) {
+	if d != nil && d.ID != nil {
+		return *d.ID
+	}
+	return
+}
+
+func (d *DeletedCertificateItem) GetRecoveryID() (rv string) {
+	if d != nil && d.RecoveryID != nil {
+		return *d.RecoveryID
+	}
+	return
+}
+
+func (d *DeletedCertificateItem) GetTags() (rv map[string]*string) {
+	if d != nil {
+		return d.Tags
+	}
+	return
+}
+
+func (d *DeletedCertificateItem) GetX509Thumbprint() (rv []byte) {
+	if d != nil {
+		return d.X509Thumbprint
+	}
+	return
+}
+
+func (d *DeletedCertificateItem) GetDeletedDate() (rv *time.Time) {
+	if d != nil {
+		return d.DeletedDate
+	}
+	return
+}
+
+func (d *DeletedCertificateItem) GetScheduledPurgeDate() (rv *time.Time) {
+	if d != nil {
+		return d.ScheduledPurgeDate
+	}
+	return
+}
+
 // DeletedCertificateListResult - A list of certificates that have been deleted in this vault.
 type DeletedCertificateListResult struct {
 	// READ-ONLY; The URL to get the next set of deleted certificates.
@@ -425,6 +1167,20 @@ type DeletedCertificateListResult struct {
 	// READ-ONLY; A response message containing a list of deleted certificates in the vault along with a link to the next page
 	// of deleted certificates
 	Value []*DeletedCertificateItem
+}
+
+func (d *DeletedCertificateListResult) GetNextLink() (rv string) {
+	if d != nil && d.NextLink != nil {
+		return *d.NextLink
+	}
+	return
+}
+
+func (d *DeletedCertificateListResult) GetValue() (rv []*DeletedCertificateItem) {
+	if d != nil {
+		return d.Value
+	}
+	return
 }
 
 // DeletedKeyBundle - A DeletedKeyBundle consisting of a WebKey plus its Attributes and deletion info
@@ -452,6 +1208,55 @@ type DeletedKeyBundle struct {
 	ScheduledPurgeDate *time.Time
 }
 
+func (d *DeletedKeyBundle) GetAttributes() (rv *KeyAttributes) {
+	if d != nil {
+		return d.Attributes
+	}
+	return
+}
+
+func (d *DeletedKeyBundle) GetKey() (rv *JSONWebKey) {
+	if d != nil {
+		return d.Key
+	}
+	return
+}
+
+func (d *DeletedKeyBundle) GetRecoveryID() (rv string) {
+	if d != nil && d.RecoveryID != nil {
+		return *d.RecoveryID
+	}
+	return
+}
+
+func (d *DeletedKeyBundle) GetTags() (rv map[string]*string) {
+	if d != nil {
+		return d.Tags
+	}
+	return
+}
+
+func (d *DeletedKeyBundle) GetDeletedDate() (rv *time.Time) {
+	if d != nil {
+		return d.DeletedDate
+	}
+	return
+}
+
+func (d *DeletedKeyBundle) GetManaged() (rv bool) {
+	if d != nil && d.Managed != nil {
+		return *d.Managed
+	}
+	return
+}
+
+func (d *DeletedKeyBundle) GetScheduledPurgeDate() (rv *time.Time) {
+	if d != nil {
+		return d.ScheduledPurgeDate
+	}
+	return
+}
+
 // DeletedKeyItem - The deleted key item containing the deleted key metadata and information about deletion.
 type DeletedKeyItem struct {
 	// The key management attributes.
@@ -477,6 +1282,55 @@ type DeletedKeyItem struct {
 	ScheduledPurgeDate *time.Time
 }
 
+func (d *DeletedKeyItem) GetAttributes() (rv *KeyAttributes) {
+	if d != nil {
+		return d.Attributes
+	}
+	return
+}
+
+func (d *DeletedKeyItem) GetKid() (rv string) {
+	if d != nil && d.Kid != nil {
+		return *d.Kid
+	}
+	return
+}
+
+func (d *DeletedKeyItem) GetRecoveryID() (rv string) {
+	if d != nil && d.RecoveryID != nil {
+		return *d.RecoveryID
+	}
+	return
+}
+
+func (d *DeletedKeyItem) GetTags() (rv map[string]*string) {
+	if d != nil {
+		return d.Tags
+	}
+	return
+}
+
+func (d *DeletedKeyItem) GetDeletedDate() (rv *time.Time) {
+	if d != nil {
+		return d.DeletedDate
+	}
+	return
+}
+
+func (d *DeletedKeyItem) GetManaged() (rv bool) {
+	if d != nil && d.Managed != nil {
+		return *d.Managed
+	}
+	return
+}
+
+func (d *DeletedKeyItem) GetScheduledPurgeDate() (rv *time.Time) {
+	if d != nil {
+		return d.ScheduledPurgeDate
+	}
+	return
+}
+
 // DeletedKeyListResult - A list of keys that have been deleted in this vault.
 type DeletedKeyListResult struct {
 	// READ-ONLY; The URL to get the next set of deleted keys.
@@ -485,6 +1339,20 @@ type DeletedKeyListResult struct {
 	// READ-ONLY; A response message containing a list of deleted keys in the vault along with a link to the next page of deleted
 	// keys
 	Value []*DeletedKeyItem
+}
+
+func (d *DeletedKeyListResult) GetNextLink() (rv string) {
+	if d != nil && d.NextLink != nil {
+		return *d.NextLink
+	}
+	return
+}
+
+func (d *DeletedKeyListResult) GetValue() (rv []*DeletedKeyItem) {
+	if d != nil {
+		return d.Value
+	}
+	return
 }
 
 // DeletedSasDefinitionBundle - A deleted SAS definition bundle consisting of its previous id, attributes and its tags, as
@@ -522,6 +1390,76 @@ type DeletedSasDefinitionBundle struct {
 	ValidityPeriod *string
 }
 
+func (d *DeletedSasDefinitionBundle) GetRecoveryID() (rv string) {
+	if d != nil && d.RecoveryID != nil {
+		return *d.RecoveryID
+	}
+	return
+}
+
+func (d *DeletedSasDefinitionBundle) GetAttributes() (rv *SasDefinitionAttributes) {
+	if d != nil {
+		return d.Attributes
+	}
+	return
+}
+
+func (d *DeletedSasDefinitionBundle) GetDeletedDate() (rv *time.Time) {
+	if d != nil {
+		return d.DeletedDate
+	}
+	return
+}
+
+func (d *DeletedSasDefinitionBundle) GetID() (rv string) {
+	if d != nil && d.ID != nil {
+		return *d.ID
+	}
+	return
+}
+
+func (d *DeletedSasDefinitionBundle) GetSasType() (rv *SasTokenType) {
+	if d != nil {
+		return d.SasType
+	}
+	return
+}
+
+func (d *DeletedSasDefinitionBundle) GetScheduledPurgeDate() (rv *time.Time) {
+	if d != nil {
+		return d.ScheduledPurgeDate
+	}
+	return
+}
+
+func (d *DeletedSasDefinitionBundle) GetSecretID() (rv string) {
+	if d != nil && d.SecretID != nil {
+		return *d.SecretID
+	}
+	return
+}
+
+func (d *DeletedSasDefinitionBundle) GetTags() (rv map[string]*string) {
+	if d != nil {
+		return d.Tags
+	}
+	return
+}
+
+func (d *DeletedSasDefinitionBundle) GetTemplateURI() (rv string) {
+	if d != nil && d.TemplateURI != nil {
+		return *d.TemplateURI
+	}
+	return
+}
+
+func (d *DeletedSasDefinitionBundle) GetValidityPeriod() (rv string) {
+	if d != nil && d.ValidityPeriod != nil {
+		return *d.ValidityPeriod
+	}
+	return
+}
+
 // DeletedSasDefinitionItem - The deleted SAS definition item containing metadata about the deleted SAS definition.
 type DeletedSasDefinitionItem struct {
 	// The url of the recovery object, used to identify and recover the deleted SAS definition.
@@ -546,6 +1484,55 @@ type DeletedSasDefinitionItem struct {
 	Tags map[string]*string
 }
 
+func (d *DeletedSasDefinitionItem) GetRecoveryID() (rv string) {
+	if d != nil && d.RecoveryID != nil {
+		return *d.RecoveryID
+	}
+	return
+}
+
+func (d *DeletedSasDefinitionItem) GetAttributes() (rv *SasDefinitionAttributes) {
+	if d != nil {
+		return d.Attributes
+	}
+	return
+}
+
+func (d *DeletedSasDefinitionItem) GetDeletedDate() (rv *time.Time) {
+	if d != nil {
+		return d.DeletedDate
+	}
+	return
+}
+
+func (d *DeletedSasDefinitionItem) GetID() (rv string) {
+	if d != nil && d.ID != nil {
+		return *d.ID
+	}
+	return
+}
+
+func (d *DeletedSasDefinitionItem) GetScheduledPurgeDate() (rv *time.Time) {
+	if d != nil {
+		return d.ScheduledPurgeDate
+	}
+	return
+}
+
+func (d *DeletedSasDefinitionItem) GetSecretID() (rv string) {
+	if d != nil && d.SecretID != nil {
+		return *d.SecretID
+	}
+	return
+}
+
+func (d *DeletedSasDefinitionItem) GetTags() (rv map[string]*string) {
+	if d != nil {
+		return d.Tags
+	}
+	return
+}
+
 // DeletedSasDefinitionListResult - The deleted SAS definition list result
 type DeletedSasDefinitionListResult struct {
 	// READ-ONLY; The URL to get the next set of deleted SAS definitions.
@@ -554,6 +1541,20 @@ type DeletedSasDefinitionListResult struct {
 	// READ-ONLY; A response message containing a list of the deleted SAS definitions in the vault along with a link to the next
 	// page of deleted sas definitions
 	Value []*DeletedSasDefinitionItem
+}
+
+func (d *DeletedSasDefinitionListResult) GetNextLink() (rv string) {
+	if d != nil && d.NextLink != nil {
+		return *d.NextLink
+	}
+	return
+}
+
+func (d *DeletedSasDefinitionListResult) GetValue() (rv []*DeletedSasDefinitionItem) {
+	if d != nil {
+		return d.Value
+	}
+	return
 }
 
 // DeletedSecretBundle - A Deleted Secret consisting of its previous id, attributes and its tags, as well as information on
@@ -592,6 +1593,76 @@ type DeletedSecretBundle struct {
 	ScheduledPurgeDate *time.Time
 }
 
+func (d *DeletedSecretBundle) GetAttributes() (rv *SecretAttributes) {
+	if d != nil {
+		return d.Attributes
+	}
+	return
+}
+
+func (d *DeletedSecretBundle) GetContentType() (rv string) {
+	if d != nil && d.ContentType != nil {
+		return *d.ContentType
+	}
+	return
+}
+
+func (d *DeletedSecretBundle) GetID() (rv string) {
+	if d != nil && d.ID != nil {
+		return *d.ID
+	}
+	return
+}
+
+func (d *DeletedSecretBundle) GetRecoveryID() (rv string) {
+	if d != nil && d.RecoveryID != nil {
+		return *d.RecoveryID
+	}
+	return
+}
+
+func (d *DeletedSecretBundle) GetTags() (rv map[string]*string) {
+	if d != nil {
+		return d.Tags
+	}
+	return
+}
+
+func (d *DeletedSecretBundle) GetValue() (rv string) {
+	if d != nil && d.Value != nil {
+		return *d.Value
+	}
+	return
+}
+
+func (d *DeletedSecretBundle) GetDeletedDate() (rv *time.Time) {
+	if d != nil {
+		return d.DeletedDate
+	}
+	return
+}
+
+func (d *DeletedSecretBundle) GetKid() (rv string) {
+	if d != nil && d.Kid != nil {
+		return *d.Kid
+	}
+	return
+}
+
+func (d *DeletedSecretBundle) GetManaged() (rv bool) {
+	if d != nil && d.Managed != nil {
+		return *d.Managed
+	}
+	return
+}
+
+func (d *DeletedSecretBundle) GetScheduledPurgeDate() (rv *time.Time) {
+	if d != nil {
+		return d.ScheduledPurgeDate
+	}
+	return
+}
+
 // DeletedSecretItem - The deleted secret item containing metadata about the deleted secret.
 type DeletedSecretItem struct {
 	// The secret management attributes.
@@ -620,6 +1691,62 @@ type DeletedSecretItem struct {
 	ScheduledPurgeDate *time.Time
 }
 
+func (d *DeletedSecretItem) GetAttributes() (rv *SecretAttributes) {
+	if d != nil {
+		return d.Attributes
+	}
+	return
+}
+
+func (d *DeletedSecretItem) GetContentType() (rv string) {
+	if d != nil && d.ContentType != nil {
+		return *d.ContentType
+	}
+	return
+}
+
+func (d *DeletedSecretItem) GetID() (rv string) {
+	if d != nil && d.ID != nil {
+		return *d.ID
+	}
+	return
+}
+
+func (d *DeletedSecretItem) GetRecoveryID() (rv string) {
+	if d != nil && d.RecoveryID != nil {
+		return *d.RecoveryID
+	}
+	return
+}
+
+func (d *DeletedSecretItem) GetTags() (rv map[string]*string) {
+	if d != nil {
+		return d.Tags
+	}
+	return
+}
+
+func (d *DeletedSecretItem) GetDeletedDate() (rv *time.Time) {
+	if d != nil {
+		return d.DeletedDate
+	}
+	return
+}
+
+func (d *DeletedSecretItem) GetManaged() (rv bool) {
+	if d != nil && d.Managed != nil {
+		return *d.Managed
+	}
+	return
+}
+
+func (d *DeletedSecretItem) GetScheduledPurgeDate() (rv *time.Time) {
+	if d != nil {
+		return d.ScheduledPurgeDate
+	}
+	return
+}
+
 // DeletedSecretListResult - The deleted secret list result
 type DeletedSecretListResult struct {
 	// READ-ONLY; The URL to get the next set of deleted secrets.
@@ -628,6 +1755,20 @@ type DeletedSecretListResult struct {
 	// READ-ONLY; A response message containing a list of the deleted secrets in the vault along with a link to the next page
 	// of deleted secrets
 	Value []*DeletedSecretItem
+}
+
+func (d *DeletedSecretListResult) GetNextLink() (rv string) {
+	if d != nil && d.NextLink != nil {
+		return *d.NextLink
+	}
+	return
+}
+
+func (d *DeletedSecretListResult) GetValue() (rv []*DeletedSecretItem) {
+	if d != nil {
+		return d.Value
+	}
+	return
 }
 
 // DeletedStorageAccountItem - The deleted storage account item containing metadata about the deleted storage account.
@@ -652,6 +1793,55 @@ type DeletedStorageAccountItem struct {
 
 	// READ-ONLY; Application specific metadata in the form of key-value pairs.
 	Tags map[string]*string
+}
+
+func (d *DeletedStorageAccountItem) GetRecoveryID() (rv string) {
+	if d != nil && d.RecoveryID != nil {
+		return *d.RecoveryID
+	}
+	return
+}
+
+func (d *DeletedStorageAccountItem) GetAttributes() (rv *StorageAccountAttributes) {
+	if d != nil {
+		return d.Attributes
+	}
+	return
+}
+
+func (d *DeletedStorageAccountItem) GetDeletedDate() (rv *time.Time) {
+	if d != nil {
+		return d.DeletedDate
+	}
+	return
+}
+
+func (d *DeletedStorageAccountItem) GetID() (rv string) {
+	if d != nil && d.ID != nil {
+		return *d.ID
+	}
+	return
+}
+
+func (d *DeletedStorageAccountItem) GetResourceID() (rv string) {
+	if d != nil && d.ResourceID != nil {
+		return *d.ResourceID
+	}
+	return
+}
+
+func (d *DeletedStorageAccountItem) GetScheduledPurgeDate() (rv *time.Time) {
+	if d != nil {
+		return d.ScheduledPurgeDate
+	}
+	return
+}
+
+func (d *DeletedStorageAccountItem) GetTags() (rv map[string]*string) {
+	if d != nil {
+		return d.Tags
+	}
+	return
 }
 
 // DeletedStorageBundle - A deleted storage account bundle consisting of its previous id, attributes and its tags, as well
@@ -688,6 +1878,76 @@ type DeletedStorageBundle struct {
 	Tags map[string]*string
 }
 
+func (d *DeletedStorageBundle) GetRecoveryID() (rv string) {
+	if d != nil && d.RecoveryID != nil {
+		return *d.RecoveryID
+	}
+	return
+}
+
+func (d *DeletedStorageBundle) GetActiveKeyName() (rv string) {
+	if d != nil && d.ActiveKeyName != nil {
+		return *d.ActiveKeyName
+	}
+	return
+}
+
+func (d *DeletedStorageBundle) GetAttributes() (rv *StorageAccountAttributes) {
+	if d != nil {
+		return d.Attributes
+	}
+	return
+}
+
+func (d *DeletedStorageBundle) GetAutoRegenerateKey() (rv bool) {
+	if d != nil && d.AutoRegenerateKey != nil {
+		return *d.AutoRegenerateKey
+	}
+	return
+}
+
+func (d *DeletedStorageBundle) GetDeletedDate() (rv *time.Time) {
+	if d != nil {
+		return d.DeletedDate
+	}
+	return
+}
+
+func (d *DeletedStorageBundle) GetID() (rv string) {
+	if d != nil && d.ID != nil {
+		return *d.ID
+	}
+	return
+}
+
+func (d *DeletedStorageBundle) GetRegenerationPeriod() (rv string) {
+	if d != nil && d.RegenerationPeriod != nil {
+		return *d.RegenerationPeriod
+	}
+	return
+}
+
+func (d *DeletedStorageBundle) GetResourceID() (rv string) {
+	if d != nil && d.ResourceID != nil {
+		return *d.ResourceID
+	}
+	return
+}
+
+func (d *DeletedStorageBundle) GetScheduledPurgeDate() (rv *time.Time) {
+	if d != nil {
+		return d.ScheduledPurgeDate
+	}
+	return
+}
+
+func (d *DeletedStorageBundle) GetTags() (rv map[string]*string) {
+	if d != nil {
+		return d.Tags
+	}
+	return
+}
+
 // DeletedStorageListResult - The deleted storage account list result
 type DeletedStorageListResult struct {
 	// READ-ONLY; The URL to get the next set of deleted storage accounts.
@@ -698,10 +1958,31 @@ type DeletedStorageListResult struct {
 	Value []*DeletedStorageAccountItem
 }
 
+func (d *DeletedStorageListResult) GetNextLink() (rv string) {
+	if d != nil && d.NextLink != nil {
+		return *d.NextLink
+	}
+	return
+}
+
+func (d *DeletedStorageListResult) GetValue() (rv []*DeletedStorageAccountItem) {
+	if d != nil {
+		return d.Value
+	}
+	return
+}
+
 // Error - The key vault error exception.
 type Error struct {
 	// READ-ONLY; The key vault server error.
 	Error *ErrorInfo
+}
+
+func (e *Error) GetError() (rv *ErrorInfo) {
+	if e != nil {
+		return e.Error
+	}
+	return
 }
 
 // ErrorInfo - The key vault server error.
@@ -714,6 +1995,27 @@ type ErrorInfo struct {
 
 	// READ-ONLY; The error message.
 	Message *string
+}
+
+func (e *ErrorInfo) GetCode() (rv string) {
+	if e != nil && e.Code != nil {
+		return *e.Code
+	}
+	return
+}
+
+func (e *ErrorInfo) GetInnerError() (rv *ErrorInfo) {
+	if e != nil {
+		return e.InnerError
+	}
+	return
+}
+
+func (e *ErrorInfo) GetMessage() (rv string) {
+	if e != nil && e.Message != nil {
+		return *e.Message
+	}
+	return
 }
 
 // FullBackupOperation - Full backup operation
@@ -740,6 +2042,55 @@ type FullBackupOperation struct {
 	StatusDetails *string
 }
 
+func (f *FullBackupOperation) GetAzureStorageBlobContainerURI() (rv string) {
+	if f != nil && f.AzureStorageBlobContainerURI != nil {
+		return *f.AzureStorageBlobContainerURI
+	}
+	return
+}
+
+func (f *FullBackupOperation) GetEndTime() (rv *time.Time) {
+	if f != nil {
+		return f.EndTime
+	}
+	return
+}
+
+func (f *FullBackupOperation) GetError() (rv *ErrorInfo) {
+	if f != nil {
+		return f.Error
+	}
+	return
+}
+
+func (f *FullBackupOperation) GetJobID() (rv string) {
+	if f != nil && f.JobID != nil {
+		return *f.JobID
+	}
+	return
+}
+
+func (f *FullBackupOperation) GetStartTime() (rv *time.Time) {
+	if f != nil {
+		return f.StartTime
+	}
+	return
+}
+
+func (f *FullBackupOperation) GetStatus() (rv string) {
+	if f != nil && f.Status != nil {
+		return *f.Status
+	}
+	return
+}
+
+func (f *FullBackupOperation) GetStatusDetails() (rv string) {
+	if f != nil && f.StatusDetails != nil {
+		return *f.StatusDetails
+	}
+	return
+}
+
 // IssuerAttributes - The attributes of an issuer managed by the Key Vault service.
 type IssuerAttributes struct {
 	// Determines whether the issuer is enabled.
@@ -750,6 +2101,27 @@ type IssuerAttributes struct {
 
 	// READ-ONLY; Last updated time in UTC.
 	Updated *time.Time
+}
+
+func (i *IssuerAttributes) GetEnabled() (rv bool) {
+	if i != nil && i.Enabled != nil {
+		return *i.Enabled
+	}
+	return
+}
+
+func (i *IssuerAttributes) GetCreated() (rv *time.Time) {
+	if i != nil {
+		return i.Created
+	}
+	return
+}
+
+func (i *IssuerAttributes) GetUpdated() (rv *time.Time) {
+	if i != nil {
+		return i.Updated
+	}
+	return
 }
 
 // IssuerBundle - The issuer for Key Vault certificate.
@@ -770,6 +2142,41 @@ type IssuerBundle struct {
 	ID *string
 }
 
+func (i *IssuerBundle) GetAttributes() (rv *IssuerAttributes) {
+	if i != nil {
+		return i.Attributes
+	}
+	return
+}
+
+func (i *IssuerBundle) GetCredentials() (rv *IssuerCredentials) {
+	if i != nil {
+		return i.Credentials
+	}
+	return
+}
+
+func (i *IssuerBundle) GetOrganizationDetails() (rv *OrganizationDetails) {
+	if i != nil {
+		return i.OrganizationDetails
+	}
+	return
+}
+
+func (i *IssuerBundle) GetProvider() (rv string) {
+	if i != nil && i.Provider != nil {
+		return *i.Provider
+	}
+	return
+}
+
+func (i *IssuerBundle) GetID() (rv string) {
+	if i != nil && i.ID != nil {
+		return *i.ID
+	}
+	return
+}
+
 // IssuerCredentials - The credentials to be used for the certificate issuer.
 type IssuerCredentials struct {
 	// The user name/account name/account id.
@@ -777,6 +2184,20 @@ type IssuerCredentials struct {
 
 	// The password/secret/account key.
 	Password *string
+}
+
+func (i *IssuerCredentials) GetAccountID() (rv string) {
+	if i != nil && i.AccountID != nil {
+		return *i.AccountID
+	}
+	return
+}
+
+func (i *IssuerCredentials) GetPassword() (rv string) {
+	if i != nil && i.Password != nil {
+		return *i.Password
+	}
+	return
 }
 
 // IssuerParameters - Parameters for the issuer of the X509 component of a certificate.
@@ -789,6 +2210,27 @@ type IssuerParameters struct {
 
 	// Name of the referenced issuer object or reserved names; for example, 'Self' or 'Unknown'.
 	Name *string
+}
+
+func (i *IssuerParameters) GetCertificateTransparency() (rv bool) {
+	if i != nil && i.CertificateTransparency != nil {
+		return *i.CertificateTransparency
+	}
+	return
+}
+
+func (i *IssuerParameters) GetCertificateType() (rv string) {
+	if i != nil && i.CertificateType != nil {
+		return *i.CertificateType
+	}
+	return
+}
+
+func (i *IssuerParameters) GetName() (rv string) {
+	if i != nil && i.Name != nil {
+		return *i.Name
+	}
+	return
 }
 
 // JSONWebKey - As of http://tools.ietf.org/html/draft-ietf-jose-json-web-key-18
@@ -840,6 +2282,118 @@ type JSONWebKey struct {
 	Y []byte
 }
 
+func (j *JSONWebKey) GetCrv() (rv *JSONWebKeyCurveName) {
+	if j != nil {
+		return j.Crv
+	}
+	return
+}
+
+func (j *JSONWebKey) GetD() (rv []byte) {
+	if j != nil {
+		return j.D
+	}
+	return
+}
+
+func (j *JSONWebKey) GetDP() (rv []byte) {
+	if j != nil {
+		return j.DP
+	}
+	return
+}
+
+func (j *JSONWebKey) GetDQ() (rv []byte) {
+	if j != nil {
+		return j.DQ
+	}
+	return
+}
+
+func (j *JSONWebKey) GetE() (rv []byte) {
+	if j != nil {
+		return j.E
+	}
+	return
+}
+
+func (j *JSONWebKey) GetK() (rv []byte) {
+	if j != nil {
+		return j.K
+	}
+	return
+}
+
+func (j *JSONWebKey) GetKeyOps() (rv []*string) {
+	if j != nil {
+		return j.KeyOps
+	}
+	return
+}
+
+func (j *JSONWebKey) GetKid() (rv string) {
+	if j != nil && j.Kid != nil {
+		return *j.Kid
+	}
+	return
+}
+
+func (j *JSONWebKey) GetKty() (rv *JSONWebKeyType) {
+	if j != nil {
+		return j.Kty
+	}
+	return
+}
+
+func (j *JSONWebKey) GetN() (rv []byte) {
+	if j != nil {
+		return j.N
+	}
+	return
+}
+
+func (j *JSONWebKey) GetP() (rv []byte) {
+	if j != nil {
+		return j.P
+	}
+	return
+}
+
+func (j *JSONWebKey) GetQ() (rv []byte) {
+	if j != nil {
+		return j.Q
+	}
+	return
+}
+
+func (j *JSONWebKey) GetQI() (rv []byte) {
+	if j != nil {
+		return j.QI
+	}
+	return
+}
+
+func (j *JSONWebKey) GetT() (rv []byte) {
+	if j != nil {
+		return j.T
+	}
+	return
+}
+
+func (j *JSONWebKey) GetX() (rv []byte) {
+	if j != nil {
+		return j.X
+	}
+	return
+}
+
+func (j *JSONWebKey) GetY() (rv []byte) {
+	if j != nil {
+		return j.Y
+	}
+	return
+}
+
 // KeyAttributes - The attributes of a key managed by the key vault service.
 type KeyAttributes struct {
 	// Determines whether the object is enabled.
@@ -866,6 +2420,55 @@ type KeyAttributes struct {
 	Updated *time.Time
 }
 
+func (k *KeyAttributes) GetEnabled() (rv bool) {
+	if k != nil && k.Enabled != nil {
+		return *k.Enabled
+	}
+	return
+}
+
+func (k *KeyAttributes) GetExpires() (rv *time.Time) {
+	if k != nil {
+		return k.Expires
+	}
+	return
+}
+
+func (k *KeyAttributes) GetNotBefore() (rv *time.Time) {
+	if k != nil {
+		return k.NotBefore
+	}
+	return
+}
+
+func (k *KeyAttributes) GetCreated() (rv *time.Time) {
+	if k != nil {
+		return k.Created
+	}
+	return
+}
+
+func (k *KeyAttributes) GetRecoverableDays() (rv int32) {
+	if k != nil && k.RecoverableDays != nil {
+		return *k.RecoverableDays
+	}
+	return
+}
+
+func (k *KeyAttributes) GetRecoveryLevel() (rv *DeletionRecoveryLevel) {
+	if k != nil {
+		return k.RecoveryLevel
+	}
+	return
+}
+
+func (k *KeyAttributes) GetUpdated() (rv *time.Time) {
+	if k != nil {
+		return k.Updated
+	}
+	return
+}
+
 // KeyBundle - A KeyBundle consisting of a WebKey plus its attributes.
 type KeyBundle struct {
 	// The key management attributes.
@@ -880,6 +2483,34 @@ type KeyBundle struct {
 	// READ-ONLY; True if the key's lifetime is managed by key vault. If this is a key backing a certificate, then managed will
 	// be true.
 	Managed *bool
+}
+
+func (k *KeyBundle) GetAttributes() (rv *KeyAttributes) {
+	if k != nil {
+		return k.Attributes
+	}
+	return
+}
+
+func (k *KeyBundle) GetKey() (rv *JSONWebKey) {
+	if k != nil {
+		return k.Key
+	}
+	return
+}
+
+func (k *KeyBundle) GetTags() (rv map[string]*string) {
+	if k != nil {
+		return k.Tags
+	}
+	return
+}
+
+func (k *KeyBundle) GetManaged() (rv bool) {
+	if k != nil && k.Managed != nil {
+		return *k.Managed
+	}
+	return
 }
 
 // KeyCreateParameters - The key create parameters.
@@ -904,6 +2535,55 @@ type KeyCreateParameters struct {
 	Tags map[string]*string
 }
 
+func (k *KeyCreateParameters) GetKty() (rv *JSONWebKeyType) {
+	if k != nil {
+		return k.Kty
+	}
+	return
+}
+
+func (k *KeyCreateParameters) GetCurve() (rv *JSONWebKeyCurveName) {
+	if k != nil {
+		return k.Curve
+	}
+	return
+}
+
+func (k *KeyCreateParameters) GetKeyAttributes() (rv *KeyAttributes) {
+	if k != nil {
+		return k.KeyAttributes
+	}
+	return
+}
+
+func (k *KeyCreateParameters) GetKeyOps() (rv []*JSONWebKeyOperation) {
+	if k != nil {
+		return k.KeyOps
+	}
+	return
+}
+
+func (k *KeyCreateParameters) GetKeySize() (rv int32) {
+	if k != nil && k.KeySize != nil {
+		return *k.KeySize
+	}
+	return
+}
+
+func (k *KeyCreateParameters) GetPublicExponent() (rv int32) {
+	if k != nil && k.PublicExponent != nil {
+		return *k.PublicExponent
+	}
+	return
+}
+
+func (k *KeyCreateParameters) GetTags() (rv map[string]*string) {
+	if k != nil {
+		return k.Tags
+	}
+	return
+}
+
 // KeyImportParameters - The key import parameters.
 type KeyImportParameters struct {
 	// REQUIRED; The Json web key
@@ -917,6 +2597,34 @@ type KeyImportParameters struct {
 
 	// Application specific metadata in the form of key-value pairs.
 	Tags map[string]*string
+}
+
+func (k *KeyImportParameters) GetKey() (rv *JSONWebKey) {
+	if k != nil {
+		return k.Key
+	}
+	return
+}
+
+func (k *KeyImportParameters) GetHsm() (rv bool) {
+	if k != nil && k.Hsm != nil {
+		return *k.Hsm
+	}
+	return
+}
+
+func (k *KeyImportParameters) GetKeyAttributes() (rv *KeyAttributes) {
+	if k != nil {
+		return k.KeyAttributes
+	}
+	return
+}
+
+func (k *KeyImportParameters) GetTags() (rv map[string]*string) {
+	if k != nil {
+		return k.Tags
+	}
+	return
 }
 
 // KeyItem - The key item containing key metadata.
@@ -935,6 +2643,34 @@ type KeyItem struct {
 	Managed *bool
 }
 
+func (k *KeyItem) GetAttributes() (rv *KeyAttributes) {
+	if k != nil {
+		return k.Attributes
+	}
+	return
+}
+
+func (k *KeyItem) GetKid() (rv string) {
+	if k != nil && k.Kid != nil {
+		return *k.Kid
+	}
+	return
+}
+
+func (k *KeyItem) GetTags() (rv map[string]*string) {
+	if k != nil {
+		return k.Tags
+	}
+	return
+}
+
+func (k *KeyItem) GetManaged() (rv bool) {
+	if k != nil && k.Managed != nil {
+		return *k.Managed
+	}
+	return
+}
+
 // KeyListResult - The key list result.
 type KeyListResult struct {
 	// READ-ONLY; The URL to get the next set of keys.
@@ -942,6 +2678,20 @@ type KeyListResult struct {
 
 	// READ-ONLY; A response message containing a list of keys in the key vault along with a link to the next page of keys.
 	Value []*KeyItem
+}
+
+func (k *KeyListResult) GetNextLink() (rv string) {
+	if k != nil && k.NextLink != nil {
+		return *k.NextLink
+	}
+	return
+}
+
+func (k *KeyListResult) GetValue() (rv []*KeyItem) {
+	if k != nil {
+		return k.Value
+	}
+	return
 }
 
 // KeyOperationResult - The key operation result.
@@ -962,6 +2712,41 @@ type KeyOperationResult struct {
 	Result []byte
 }
 
+func (k *KeyOperationResult) GetAdditionalAuthenticatedData() (rv []byte) {
+	if k != nil {
+		return k.AdditionalAuthenticatedData
+	}
+	return
+}
+
+func (k *KeyOperationResult) GetAuthenticationTag() (rv []byte) {
+	if k != nil {
+		return k.AuthenticationTag
+	}
+	return
+}
+
+func (k *KeyOperationResult) GetIv() (rv []byte) {
+	if k != nil {
+		return k.Iv
+	}
+	return
+}
+
+func (k *KeyOperationResult) GetKid() (rv string) {
+	if k != nil && k.Kid != nil {
+		return *k.Kid
+	}
+	return
+}
+
+func (k *KeyOperationResult) GetResult() (rv []byte) {
+	if k != nil {
+		return k.Result
+	}
+	return
+}
+
 // KeyOperationsParameters - The key operations parameters.
 type KeyOperationsParameters struct {
 	// REQUIRED; algorithm identifier
@@ -978,6 +2763,41 @@ type KeyOperationsParameters struct {
 
 	// The tag to authenticate when performing decryption with an authenticated algorithm.
 	Tag []byte
+}
+
+func (k *KeyOperationsParameters) GetAlgorithm() (rv *JSONWebKeyEncryptionAlgorithm) {
+	if k != nil {
+		return k.Algorithm
+	}
+	return
+}
+
+func (k *KeyOperationsParameters) GetValue() (rv []byte) {
+	if k != nil {
+		return k.Value
+	}
+	return
+}
+
+func (k *KeyOperationsParameters) GetAAD() (rv []byte) {
+	if k != nil {
+		return k.AAD
+	}
+	return
+}
+
+func (k *KeyOperationsParameters) GetIv() (rv []byte) {
+	if k != nil {
+		return k.Iv
+	}
+	return
+}
+
+func (k *KeyOperationsParameters) GetTag() (rv []byte) {
+	if k != nil {
+		return k.Tag
+	}
+	return
 }
 
 // KeyProperties - Properties of the key pair backing a certificate.
@@ -998,10 +2818,52 @@ type KeyProperties struct {
 	ReuseKey *bool
 }
 
+func (k *KeyProperties) GetCurve() (rv *JSONWebKeyCurveName) {
+	if k != nil {
+		return k.Curve
+	}
+	return
+}
+
+func (k *KeyProperties) GetExportable() (rv bool) {
+	if k != nil && k.Exportable != nil {
+		return *k.Exportable
+	}
+	return
+}
+
+func (k *KeyProperties) GetKeySize() (rv int32) {
+	if k != nil && k.KeySize != nil {
+		return *k.KeySize
+	}
+	return
+}
+
+func (k *KeyProperties) GetKeyType() (rv *JSONWebKeyType) {
+	if k != nil {
+		return k.KeyType
+	}
+	return
+}
+
+func (k *KeyProperties) GetReuseKey() (rv bool) {
+	if k != nil && k.ReuseKey != nil {
+		return *k.ReuseKey
+	}
+	return
+}
+
 // KeyRestoreParameters - The key restore parameters.
 type KeyRestoreParameters struct {
 	// REQUIRED; The backup blob associated with a key bundle.
 	KeyBundleBackup []byte
+}
+
+func (k *KeyRestoreParameters) GetKeyBundleBackup() (rv []byte) {
+	if k != nil {
+		return k.KeyBundleBackup
+	}
+	return
 }
 
 // KeySignParameters - The key operations parameters.
@@ -1011,6 +2873,20 @@ type KeySignParameters struct {
 
 	// REQUIRED
 	Value []byte
+}
+
+func (k *KeySignParameters) GetAlgorithm() (rv *JSONWebKeySignatureAlgorithm) {
+	if k != nil {
+		return k.Algorithm
+	}
+	return
+}
+
+func (k *KeySignParameters) GetValue() (rv []byte) {
+	if k != nil {
+		return k.Value
+	}
+	return
 }
 
 // KeyUpdateParameters - The key update parameters.
@@ -1025,6 +2901,27 @@ type KeyUpdateParameters struct {
 	Tags map[string]*string
 }
 
+func (k *KeyUpdateParameters) GetKeyAttributes() (rv *KeyAttributes) {
+	if k != nil {
+		return k.KeyAttributes
+	}
+	return
+}
+
+func (k *KeyUpdateParameters) GetKeyOps() (rv []*JSONWebKeyOperation) {
+	if k != nil {
+		return k.KeyOps
+	}
+	return
+}
+
+func (k *KeyUpdateParameters) GetTags() (rv map[string]*string) {
+	if k != nil {
+		return k.Tags
+	}
+	return
+}
+
 // KeyVerifyParameters - The key verify parameters.
 type KeyVerifyParameters struct {
 	// REQUIRED; The signing/verification algorithm. For more information on possible algorithm types, see JsonWebKeySignatureAlgorithm.
@@ -1037,10 +2934,38 @@ type KeyVerifyParameters struct {
 	Signature []byte
 }
 
+func (k *KeyVerifyParameters) GetAlgorithm() (rv *JSONWebKeySignatureAlgorithm) {
+	if k != nil {
+		return k.Algorithm
+	}
+	return
+}
+
+func (k *KeyVerifyParameters) GetDigest() (rv []byte) {
+	if k != nil {
+		return k.Digest
+	}
+	return
+}
+
+func (k *KeyVerifyParameters) GetSignature() (rv []byte) {
+	if k != nil {
+		return k.Signature
+	}
+	return
+}
+
 // KeyVerifyResult - The key verify result.
 type KeyVerifyResult struct {
 	// READ-ONLY; True if the signature is verified, otherwise false.
 	Value *bool
+}
+
+func (k *KeyVerifyResult) GetValue() (rv bool) {
+	if k != nil && k.Value != nil {
+		return *k.Value
+	}
+	return
 }
 
 // LifetimeAction - Action and its trigger that will be performed by Key Vault over the lifetime of a certificate.
@@ -1052,6 +2977,20 @@ type LifetimeAction struct {
 	Trigger *Trigger
 }
 
+func (l *LifetimeAction) GetAction() (rv *Action) {
+	if l != nil {
+		return l.Action
+	}
+	return
+}
+
+func (l *LifetimeAction) GetTrigger() (rv *Trigger) {
+	if l != nil {
+		return l.Trigger
+	}
+	return
+}
+
 // OrganizationDetails - Details of the organization of the certificate issuer.
 type OrganizationDetails struct {
 	// Details of the organization administrator.
@@ -1061,10 +3000,31 @@ type OrganizationDetails struct {
 	ID *string
 }
 
+func (o *OrganizationDetails) GetAdminDetails() (rv []*AdministratorDetails) {
+	if o != nil {
+		return o.AdminDetails
+	}
+	return
+}
+
+func (o *OrganizationDetails) GetID() (rv string) {
+	if o != nil && o.ID != nil {
+		return *o.ID
+	}
+	return
+}
+
 // PendingCertificateSigningRequestResult - The pending certificate signing request result.
 type PendingCertificateSigningRequestResult struct {
 	// READ-ONLY; The pending certificate signing request as Base64 encoded string.
 	Value *string
+}
+
+func (p *PendingCertificateSigningRequestResult) GetValue() (rv string) {
+	if p != nil && p.Value != nil {
+		return *p.Value
+	}
+	return
 }
 
 // Permission - Role definition permissions.
@@ -1080,6 +3040,34 @@ type Permission struct {
 
 	// Data action permissions that are excluded but not denied. They may be granted by other role definitions assigned to a principal.
 	NotDataActions []*DataAction
+}
+
+func (p *Permission) GetActions() (rv []*string) {
+	if p != nil {
+		return p.Actions
+	}
+	return
+}
+
+func (p *Permission) GetDataActions() (rv []*DataAction) {
+	if p != nil {
+		return p.DataActions
+	}
+	return
+}
+
+func (p *Permission) GetNotActions() (rv []*string) {
+	if p != nil {
+		return p.NotActions
+	}
+	return
+}
+
+func (p *Permission) GetNotDataActions() (rv []*DataAction) {
+	if p != nil {
+		return p.NotDataActions
+	}
+	return
 }
 
 // RestoreOperation - Restore operation
@@ -1103,12 +3091,68 @@ type RestoreOperation struct {
 	StatusDetails *string
 }
 
+func (r *RestoreOperation) GetEndTime() (rv *time.Time) {
+	if r != nil {
+		return r.EndTime
+	}
+	return
+}
+
+func (r *RestoreOperation) GetError() (rv *ErrorInfo) {
+	if r != nil {
+		return r.Error
+	}
+	return
+}
+
+func (r *RestoreOperation) GetJobID() (rv string) {
+	if r != nil && r.JobID != nil {
+		return *r.JobID
+	}
+	return
+}
+
+func (r *RestoreOperation) GetStartTime() (rv *time.Time) {
+	if r != nil {
+		return r.StartTime
+	}
+	return
+}
+
+func (r *RestoreOperation) GetStatus() (rv string) {
+	if r != nil && r.Status != nil {
+		return *r.Status
+	}
+	return
+}
+
+func (r *RestoreOperation) GetStatusDetails() (rv string) {
+	if r != nil && r.StatusDetails != nil {
+		return *r.StatusDetails
+	}
+	return
+}
+
 type RestoreOperationParameters struct {
 	// REQUIRED; The Folder name of the blob where the previous successful full backup was stored
 	FolderToRestore *string
 
 	// REQUIRED; SAS token parameter object containing Azure storage resourceUri and token
 	SasTokenParameters *SASTokenParameter
+}
+
+func (r *RestoreOperationParameters) GetFolderToRestore() (rv string) {
+	if r != nil && r.FolderToRestore != nil {
+		return *r.FolderToRestore
+	}
+	return
+}
+
+func (r *RestoreOperationParameters) GetSasTokenParameters() (rv *SASTokenParameter) {
+	if r != nil {
+		return r.SasTokenParameters
+	}
+	return
 }
 
 // RoleAssignment - Role Assignments
@@ -1126,16 +3170,58 @@ type RoleAssignment struct {
 	Type *string
 }
 
+func (r *RoleAssignment) GetProperties() (rv *RoleAssignmentPropertiesWithScope) {
+	if r != nil {
+		return r.Properties
+	}
+	return
+}
+
+func (r *RoleAssignment) GetID() (rv string) {
+	if r != nil && r.ID != nil {
+		return *r.ID
+	}
+	return
+}
+
+func (r *RoleAssignment) GetName() (rv string) {
+	if r != nil && r.Name != nil {
+		return *r.Name
+	}
+	return
+}
+
+func (r *RoleAssignment) GetType() (rv string) {
+	if r != nil && r.Type != nil {
+		return *r.Type
+	}
+	return
+}
+
 // RoleAssignmentCreateParameters - Role assignment create parameters.
 type RoleAssignmentCreateParameters struct {
 	// REQUIRED; Role assignment properties.
 	Properties *RoleAssignmentProperties
 }
 
+func (r *RoleAssignmentCreateParameters) GetProperties() (rv *RoleAssignmentProperties) {
+	if r != nil {
+		return r.Properties
+	}
+	return
+}
+
 // RoleAssignmentFilter - Role Assignments filter
 type RoleAssignmentFilter struct {
 	// Returns role assignment of the specific principal.
 	PrincipalID *string
+}
+
+func (r *RoleAssignmentFilter) GetPrincipalID() (rv string) {
+	if r != nil && r.PrincipalID != nil {
+		return *r.PrincipalID
+	}
+	return
 }
 
 // RoleAssignmentListResult - Role assignment list operation result.
@@ -1145,6 +3231,20 @@ type RoleAssignmentListResult struct {
 
 	// Role assignment list.
 	Value []*RoleAssignment
+}
+
+func (r *RoleAssignmentListResult) GetNextLink() (rv string) {
+	if r != nil && r.NextLink != nil {
+		return *r.NextLink
+	}
+	return
+}
+
+func (r *RoleAssignmentListResult) GetValue() (rv []*RoleAssignment) {
+	if r != nil {
+		return r.Value
+	}
+	return
 }
 
 // RoleAssignmentProperties - Role assignment properties.
@@ -1157,6 +3257,20 @@ type RoleAssignmentProperties struct {
 	RoleDefinitionID *string
 }
 
+func (r *RoleAssignmentProperties) GetPrincipalID() (rv string) {
+	if r != nil && r.PrincipalID != nil {
+		return *r.PrincipalID
+	}
+	return
+}
+
+func (r *RoleAssignmentProperties) GetRoleDefinitionID() (rv string) {
+	if r != nil && r.RoleDefinitionID != nil {
+		return *r.RoleDefinitionID
+	}
+	return
+}
+
 // RoleAssignmentPropertiesWithScope - Role assignment properties with scope.
 type RoleAssignmentPropertiesWithScope struct {
 	// The principal ID.
@@ -1167,6 +3281,27 @@ type RoleAssignmentPropertiesWithScope struct {
 
 	// The role scope.
 	Scope *RoleScope
+}
+
+func (r *RoleAssignmentPropertiesWithScope) GetPrincipalID() (rv string) {
+	if r != nil && r.PrincipalID != nil {
+		return *r.PrincipalID
+	}
+	return
+}
+
+func (r *RoleAssignmentPropertiesWithScope) GetRoleDefinitionID() (rv string) {
+	if r != nil && r.RoleDefinitionID != nil {
+		return *r.RoleDefinitionID
+	}
+	return
+}
+
+func (r *RoleAssignmentPropertiesWithScope) GetScope() (rv *RoleScope) {
+	if r != nil {
+		return r.Scope
+	}
+	return
 }
 
 // RoleDefinition - Role definition.
@@ -1184,16 +3319,58 @@ type RoleDefinition struct {
 	Type *RoleDefinitionType
 }
 
+func (r *RoleDefinition) GetProperties() (rv *RoleDefinitionProperties) {
+	if r != nil {
+		return r.Properties
+	}
+	return
+}
+
+func (r *RoleDefinition) GetID() (rv string) {
+	if r != nil && r.ID != nil {
+		return *r.ID
+	}
+	return
+}
+
+func (r *RoleDefinition) GetName() (rv string) {
+	if r != nil && r.Name != nil {
+		return *r.Name
+	}
+	return
+}
+
+func (r *RoleDefinition) GetType() (rv *RoleDefinitionType) {
+	if r != nil {
+		return r.Type
+	}
+	return
+}
+
 // RoleDefinitionCreateParameters - Role definition create parameters.
 type RoleDefinitionCreateParameters struct {
 	// REQUIRED; Role definition properties.
 	Properties *RoleDefinitionProperties
 }
 
+func (r *RoleDefinitionCreateParameters) GetProperties() (rv *RoleDefinitionProperties) {
+	if r != nil {
+		return r.Properties
+	}
+	return
+}
+
 // RoleDefinitionFilter - Role Definitions filter
 type RoleDefinitionFilter struct {
 	// Returns role definition with the specific name.
 	RoleName *string
+}
+
+func (r *RoleDefinitionFilter) GetRoleName() (rv string) {
+	if r != nil && r.RoleName != nil {
+		return *r.RoleName
+	}
+	return
 }
 
 // RoleDefinitionListResult - Role definition list operation result.
@@ -1203,6 +3380,20 @@ type RoleDefinitionListResult struct {
 
 	// Role definition list.
 	Value []*RoleDefinition
+}
+
+func (r *RoleDefinitionListResult) GetNextLink() (rv string) {
+	if r != nil && r.NextLink != nil {
+		return *r.NextLink
+	}
+	return
+}
+
+func (r *RoleDefinitionListResult) GetValue() (rv []*RoleDefinition) {
+	if r != nil {
+		return r.Value
+	}
+	return
 }
 
 // RoleDefinitionProperties - Role definition properties.
@@ -1223,12 +3414,61 @@ type RoleDefinitionProperties struct {
 	RoleType *RoleType
 }
 
+func (r *RoleDefinitionProperties) GetAssignableScopes() (rv []*RoleScope) {
+	if r != nil {
+		return r.AssignableScopes
+	}
+	return
+}
+
+func (r *RoleDefinitionProperties) GetDescription() (rv string) {
+	if r != nil && r.Description != nil {
+		return *r.Description
+	}
+	return
+}
+
+func (r *RoleDefinitionProperties) GetPermissions() (rv []*Permission) {
+	if r != nil {
+		return r.Permissions
+	}
+	return
+}
+
+func (r *RoleDefinitionProperties) GetRoleName() (rv string) {
+	if r != nil && r.RoleName != nil {
+		return *r.RoleName
+	}
+	return
+}
+
+func (r *RoleDefinitionProperties) GetRoleType() (rv *RoleType) {
+	if r != nil {
+		return r.RoleType
+	}
+	return
+}
+
 type SASTokenParameter struct {
 	// REQUIRED; Azure Blob storage container Uri
 	StorageResourceURI *string
 
 	// REQUIRED; The SAS token pointing to an Azure Blob storage container
 	Token *string
+}
+
+func (s *SASTokenParameter) GetStorageResourceURI() (rv string) {
+	if s != nil && s.StorageResourceURI != nil {
+		return *s.StorageResourceURI
+	}
+	return
+}
+
+func (s *SASTokenParameter) GetToken() (rv string) {
+	if s != nil && s.Token != nil {
+		return *s.Token
+	}
+	return
 }
 
 // SasDefinitionAttributes - The SAS definition management attributes.
@@ -1249,6 +3489,41 @@ type SasDefinitionAttributes struct {
 
 	// READ-ONLY; Last updated time in UTC.
 	Updated *time.Time
+}
+
+func (s *SasDefinitionAttributes) GetEnabled() (rv bool) {
+	if s != nil && s.Enabled != nil {
+		return *s.Enabled
+	}
+	return
+}
+
+func (s *SasDefinitionAttributes) GetCreated() (rv *time.Time) {
+	if s != nil {
+		return s.Created
+	}
+	return
+}
+
+func (s *SasDefinitionAttributes) GetRecoverableDays() (rv int32) {
+	if s != nil && s.RecoverableDays != nil {
+		return *s.RecoverableDays
+	}
+	return
+}
+
+func (s *SasDefinitionAttributes) GetRecoveryLevel() (rv *DeletionRecoveryLevel) {
+	if s != nil {
+		return s.RecoveryLevel
+	}
+	return
+}
+
+func (s *SasDefinitionAttributes) GetUpdated() (rv *time.Time) {
+	if s != nil {
+		return s.Updated
+	}
+	return
 }
 
 // SasDefinitionBundle - A SAS definition bundle consists of key vault SAS definition details plus its attributes.
@@ -1276,6 +3551,55 @@ type SasDefinitionBundle struct {
 	ValidityPeriod *string
 }
 
+func (s *SasDefinitionBundle) GetAttributes() (rv *SasDefinitionAttributes) {
+	if s != nil {
+		return s.Attributes
+	}
+	return
+}
+
+func (s *SasDefinitionBundle) GetID() (rv string) {
+	if s != nil && s.ID != nil {
+		return *s.ID
+	}
+	return
+}
+
+func (s *SasDefinitionBundle) GetSasType() (rv *SasTokenType) {
+	if s != nil {
+		return s.SasType
+	}
+	return
+}
+
+func (s *SasDefinitionBundle) GetSecretID() (rv string) {
+	if s != nil && s.SecretID != nil {
+		return *s.SecretID
+	}
+	return
+}
+
+func (s *SasDefinitionBundle) GetTags() (rv map[string]*string) {
+	if s != nil {
+		return s.Tags
+	}
+	return
+}
+
+func (s *SasDefinitionBundle) GetTemplateURI() (rv string) {
+	if s != nil && s.TemplateURI != nil {
+		return *s.TemplateURI
+	}
+	return
+}
+
+func (s *SasDefinitionBundle) GetValidityPeriod() (rv string) {
+	if s != nil && s.ValidityPeriod != nil {
+		return *s.ValidityPeriod
+	}
+	return
+}
+
 // SasDefinitionCreateParameters - The SAS definition create parameters.
 type SasDefinitionCreateParameters struct {
 	// REQUIRED; The type of SAS token the SAS definition will create.
@@ -1295,6 +3619,41 @@ type SasDefinitionCreateParameters struct {
 	Tags map[string]*string
 }
 
+func (s *SasDefinitionCreateParameters) GetSasType() (rv *SasTokenType) {
+	if s != nil {
+		return s.SasType
+	}
+	return
+}
+
+func (s *SasDefinitionCreateParameters) GetTemplateURI() (rv string) {
+	if s != nil && s.TemplateURI != nil {
+		return *s.TemplateURI
+	}
+	return
+}
+
+func (s *SasDefinitionCreateParameters) GetValidityPeriod() (rv string) {
+	if s != nil && s.ValidityPeriod != nil {
+		return *s.ValidityPeriod
+	}
+	return
+}
+
+func (s *SasDefinitionCreateParameters) GetSasDefinitionAttributes() (rv *SasDefinitionAttributes) {
+	if s != nil {
+		return s.SasDefinitionAttributes
+	}
+	return
+}
+
+func (s *SasDefinitionCreateParameters) GetTags() (rv map[string]*string) {
+	if s != nil {
+		return s.Tags
+	}
+	return
+}
+
 // SasDefinitionItem - The SAS definition item containing storage SAS definition metadata.
 type SasDefinitionItem struct {
 	// READ-ONLY; The SAS definition management attributes.
@@ -1310,6 +3669,34 @@ type SasDefinitionItem struct {
 	Tags map[string]*string
 }
 
+func (s *SasDefinitionItem) GetAttributes() (rv *SasDefinitionAttributes) {
+	if s != nil {
+		return s.Attributes
+	}
+	return
+}
+
+func (s *SasDefinitionItem) GetID() (rv string) {
+	if s != nil && s.ID != nil {
+		return *s.ID
+	}
+	return
+}
+
+func (s *SasDefinitionItem) GetSecretID() (rv string) {
+	if s != nil && s.SecretID != nil {
+		return *s.SecretID
+	}
+	return
+}
+
+func (s *SasDefinitionItem) GetTags() (rv map[string]*string) {
+	if s != nil {
+		return s.Tags
+	}
+	return
+}
+
 // SasDefinitionListResult - The storage account SAS definition list result.
 type SasDefinitionListResult struct {
 	// READ-ONLY; The URL to get the next set of SAS definitions.
@@ -1317,6 +3704,20 @@ type SasDefinitionListResult struct {
 
 	// READ-ONLY; A response message containing a list of SAS definitions along with a link to the next page of SAS definitions.
 	Value []*SasDefinitionItem
+}
+
+func (s *SasDefinitionListResult) GetNextLink() (rv string) {
+	if s != nil && s.NextLink != nil {
+		return *s.NextLink
+	}
+	return
+}
+
+func (s *SasDefinitionListResult) GetValue() (rv []*SasDefinitionItem) {
+	if s != nil {
+		return s.Value
+	}
+	return
 }
 
 // SasDefinitionUpdateParameters - The SAS definition update parameters.
@@ -1336,6 +3737,41 @@ type SasDefinitionUpdateParameters struct {
 
 	// The validity period of SAS tokens created according to the SAS definition.
 	ValidityPeriod *string
+}
+
+func (s *SasDefinitionUpdateParameters) GetSasDefinitionAttributes() (rv *SasDefinitionAttributes) {
+	if s != nil {
+		return s.SasDefinitionAttributes
+	}
+	return
+}
+
+func (s *SasDefinitionUpdateParameters) GetSasType() (rv *SasTokenType) {
+	if s != nil {
+		return s.SasType
+	}
+	return
+}
+
+func (s *SasDefinitionUpdateParameters) GetTags() (rv map[string]*string) {
+	if s != nil {
+		return s.Tags
+	}
+	return
+}
+
+func (s *SasDefinitionUpdateParameters) GetTemplateURI() (rv string) {
+	if s != nil && s.TemplateURI != nil {
+		return *s.TemplateURI
+	}
+	return
+}
+
+func (s *SasDefinitionUpdateParameters) GetValidityPeriod() (rv string) {
+	if s != nil && s.ValidityPeriod != nil {
+		return *s.ValidityPeriod
+	}
+	return
 }
 
 // SecretAttributes - The secret management attributes.
@@ -1364,6 +3800,55 @@ type SecretAttributes struct {
 	Updated *time.Time
 }
 
+func (s *SecretAttributes) GetEnabled() (rv bool) {
+	if s != nil && s.Enabled != nil {
+		return *s.Enabled
+	}
+	return
+}
+
+func (s *SecretAttributes) GetExpires() (rv *time.Time) {
+	if s != nil {
+		return s.Expires
+	}
+	return
+}
+
+func (s *SecretAttributes) GetNotBefore() (rv *time.Time) {
+	if s != nil {
+		return s.NotBefore
+	}
+	return
+}
+
+func (s *SecretAttributes) GetCreated() (rv *time.Time) {
+	if s != nil {
+		return s.Created
+	}
+	return
+}
+
+func (s *SecretAttributes) GetRecoverableDays() (rv int32) {
+	if s != nil && s.RecoverableDays != nil {
+		return *s.RecoverableDays
+	}
+	return
+}
+
+func (s *SecretAttributes) GetRecoveryLevel() (rv *DeletionRecoveryLevel) {
+	if s != nil {
+		return s.RecoveryLevel
+	}
+	return
+}
+
+func (s *SecretAttributes) GetUpdated() (rv *time.Time) {
+	if s != nil {
+		return s.Updated
+	}
+	return
+}
+
 // SecretBundle - A secret consisting of a value, id and its attributes.
 type SecretBundle struct {
 	// The secret management attributes.
@@ -1390,6 +3875,55 @@ type SecretBundle struct {
 	Managed *bool
 }
 
+func (s *SecretBundle) GetAttributes() (rv *SecretAttributes) {
+	if s != nil {
+		return s.Attributes
+	}
+	return
+}
+
+func (s *SecretBundle) GetContentType() (rv string) {
+	if s != nil && s.ContentType != nil {
+		return *s.ContentType
+	}
+	return
+}
+
+func (s *SecretBundle) GetID() (rv string) {
+	if s != nil && s.ID != nil {
+		return *s.ID
+	}
+	return
+}
+
+func (s *SecretBundle) GetTags() (rv map[string]*string) {
+	if s != nil {
+		return s.Tags
+	}
+	return
+}
+
+func (s *SecretBundle) GetValue() (rv string) {
+	if s != nil && s.Value != nil {
+		return *s.Value
+	}
+	return
+}
+
+func (s *SecretBundle) GetKid() (rv string) {
+	if s != nil && s.Kid != nil {
+		return *s.Kid
+	}
+	return
+}
+
+func (s *SecretBundle) GetManaged() (rv bool) {
+	if s != nil && s.Managed != nil {
+		return *s.Managed
+	}
+	return
+}
+
 // SecretItem - The secret item containing secret metadata.
 type SecretItem struct {
 	// The secret management attributes.
@@ -1409,6 +3943,41 @@ type SecretItem struct {
 	Managed *bool
 }
 
+func (s *SecretItem) GetAttributes() (rv *SecretAttributes) {
+	if s != nil {
+		return s.Attributes
+	}
+	return
+}
+
+func (s *SecretItem) GetContentType() (rv string) {
+	if s != nil && s.ContentType != nil {
+		return *s.ContentType
+	}
+	return
+}
+
+func (s *SecretItem) GetID() (rv string) {
+	if s != nil && s.ID != nil {
+		return *s.ID
+	}
+	return
+}
+
+func (s *SecretItem) GetTags() (rv map[string]*string) {
+	if s != nil {
+		return s.Tags
+	}
+	return
+}
+
+func (s *SecretItem) GetManaged() (rv bool) {
+	if s != nil && s.Managed != nil {
+		return *s.Managed
+	}
+	return
+}
+
 // SecretListResult - The secret list result.
 type SecretListResult struct {
 	// READ-ONLY; The URL to get the next set of secrets.
@@ -1418,16 +3987,44 @@ type SecretListResult struct {
 	Value []*SecretItem
 }
 
+func (s *SecretListResult) GetNextLink() (rv string) {
+	if s != nil && s.NextLink != nil {
+		return *s.NextLink
+	}
+	return
+}
+
+func (s *SecretListResult) GetValue() (rv []*SecretItem) {
+	if s != nil {
+		return s.Value
+	}
+	return
+}
+
 // SecretProperties - Properties of the key backing a certificate.
 type SecretProperties struct {
 	// The media type (MIME type).
 	ContentType *string
 }
 
+func (s *SecretProperties) GetContentType() (rv string) {
+	if s != nil && s.ContentType != nil {
+		return *s.ContentType
+	}
+	return
+}
+
 // SecretRestoreParameters - The secret restore parameters.
 type SecretRestoreParameters struct {
 	// REQUIRED; The backup blob associated with a secret bundle.
 	SecretBundleBackup []byte
+}
+
+func (s *SecretRestoreParameters) GetSecretBundleBackup() (rv []byte) {
+	if s != nil {
+		return s.SecretBundleBackup
+	}
+	return
 }
 
 // SecretSetParameters - The secret set parameters.
@@ -1445,6 +4042,34 @@ type SecretSetParameters struct {
 	Tags map[string]*string
 }
 
+func (s *SecretSetParameters) GetValue() (rv string) {
+	if s != nil && s.Value != nil {
+		return *s.Value
+	}
+	return
+}
+
+func (s *SecretSetParameters) GetContentType() (rv string) {
+	if s != nil && s.ContentType != nil {
+		return *s.ContentType
+	}
+	return
+}
+
+func (s *SecretSetParameters) GetSecretAttributes() (rv *SecretAttributes) {
+	if s != nil {
+		return s.SecretAttributes
+	}
+	return
+}
+
+func (s *SecretSetParameters) GetTags() (rv map[string]*string) {
+	if s != nil {
+		return s.Tags
+	}
+	return
+}
+
 // SecretUpdateParameters - The secret update parameters.
 type SecretUpdateParameters struct {
 	// Type of the secret value such as a password.
@@ -1455,6 +4080,27 @@ type SecretUpdateParameters struct {
 
 	// Application specific metadata in the form of key-value pairs.
 	Tags map[string]*string
+}
+
+func (s *SecretUpdateParameters) GetContentType() (rv string) {
+	if s != nil && s.ContentType != nil {
+		return *s.ContentType
+	}
+	return
+}
+
+func (s *SecretUpdateParameters) GetSecretAttributes() (rv *SecretAttributes) {
+	if s != nil {
+		return s.SecretAttributes
+	}
+	return
+}
+
+func (s *SecretUpdateParameters) GetTags() (rv map[string]*string) {
+	if s != nil {
+		return s.Tags
+	}
+	return
 }
 
 type SecurityDomainJSONWebKey struct {
@@ -1490,16 +4136,107 @@ type SecurityDomainJSONWebKey struct {
 	X5T *string
 }
 
+func (s *SecurityDomainJSONWebKey) GetAlg() (rv string) {
+	if s != nil && s.Alg != nil {
+		return *s.Alg
+	}
+	return
+}
+
+func (s *SecurityDomainJSONWebKey) GetE() (rv string) {
+	if s != nil && s.E != nil {
+		return *s.E
+	}
+	return
+}
+
+func (s *SecurityDomainJSONWebKey) GetKeyOps() (rv []*string) {
+	if s != nil {
+		return s.KeyOps
+	}
+	return
+}
+
+func (s *SecurityDomainJSONWebKey) GetKid() (rv string) {
+	if s != nil && s.Kid != nil {
+		return *s.Kid
+	}
+	return
+}
+
+func (s *SecurityDomainJSONWebKey) GetKty() (rv string) {
+	if s != nil && s.Kty != nil {
+		return *s.Kty
+	}
+	return
+}
+
+func (s *SecurityDomainJSONWebKey) GetN() (rv string) {
+	if s != nil && s.N != nil {
+		return *s.N
+	}
+	return
+}
+
+func (s *SecurityDomainJSONWebKey) GetX5C() (rv []*string) {
+	if s != nil {
+		return s.X5C
+	}
+	return
+}
+
+func (s *SecurityDomainJSONWebKey) GetX5TS256() (rv string) {
+	if s != nil && s.X5TS256 != nil {
+		return *s.X5TS256
+	}
+	return
+}
+
+func (s *SecurityDomainJSONWebKey) GetUse() (rv string) {
+	if s != nil && s.Use != nil {
+		return *s.Use
+	}
+	return
+}
+
+func (s *SecurityDomainJSONWebKey) GetX5T() (rv string) {
+	if s != nil && s.X5T != nil {
+		return *s.X5T
+	}
+	return
+}
+
 // SecurityDomainObject - The Security Domain.
 type SecurityDomainObject struct {
 	// REQUIRED; The Security Domain.
 	Value *string
 }
 
+func (s *SecurityDomainObject) GetValue() (rv string) {
+	if s != nil && s.Value != nil {
+		return *s.Value
+	}
+	return
+}
+
 type SecurityDomainOperationStatus struct {
 	// operation status
 	Status        *OperationStatus
 	StatusDetails *string
+}
+
+func (s *SecurityDomainOperationStatus) GetStatus() (rv *OperationStatus) {
+	if s != nil {
+		return s.Status
+	}
+	return
+}
+
+func (s *SecurityDomainOperationStatus) GetStatusDetails() (rv string) {
+	if s != nil && s.StatusDetails != nil {
+		return *s.StatusDetails
+	}
+	return
 }
 
 // SelectiveKeyRestoreOperation - Selective Key Restore operation
@@ -1523,12 +4260,68 @@ type SelectiveKeyRestoreOperation struct {
 	StatusDetails *string
 }
 
+func (s *SelectiveKeyRestoreOperation) GetEndTime() (rv *time.Time) {
+	if s != nil {
+		return s.EndTime
+	}
+	return
+}
+
+func (s *SelectiveKeyRestoreOperation) GetError() (rv *ErrorInfo) {
+	if s != nil {
+		return s.Error
+	}
+	return
+}
+
+func (s *SelectiveKeyRestoreOperation) GetJobID() (rv string) {
+	if s != nil && s.JobID != nil {
+		return *s.JobID
+	}
+	return
+}
+
+func (s *SelectiveKeyRestoreOperation) GetStartTime() (rv *time.Time) {
+	if s != nil {
+		return s.StartTime
+	}
+	return
+}
+
+func (s *SelectiveKeyRestoreOperation) GetStatus() (rv string) {
+	if s != nil && s.Status != nil {
+		return *s.Status
+	}
+	return
+}
+
+func (s *SelectiveKeyRestoreOperation) GetStatusDetails() (rv string) {
+	if s != nil && s.StatusDetails != nil {
+		return *s.StatusDetails
+	}
+	return
+}
+
 type SelectiveKeyRestoreOperationParameters struct {
 	// REQUIRED; The Folder name of the blob where the previous successful full backup was stored
 	Folder *string
 
 	// REQUIRED; SAS token parameter object containing Azure storage resourceUri and token
 	SasTokenParameters *SASTokenParameter
+}
+
+func (s *SelectiveKeyRestoreOperationParameters) GetFolder() (rv string) {
+	if s != nil && s.Folder != nil {
+		return *s.Folder
+	}
+	return
+}
+
+func (s *SelectiveKeyRestoreOperationParameters) GetSasTokenParameters() (rv *SASTokenParameter) {
+	if s != nil {
+		return s.SasTokenParameters
+	}
+	return
 }
 
 // StorageAccountAttributes - The storage account management attributes.
@@ -1549,6 +4342,41 @@ type StorageAccountAttributes struct {
 
 	// READ-ONLY; Last updated time in UTC.
 	Updated *time.Time
+}
+
+func (s *StorageAccountAttributes) GetEnabled() (rv bool) {
+	if s != nil && s.Enabled != nil {
+		return *s.Enabled
+	}
+	return
+}
+
+func (s *StorageAccountAttributes) GetCreated() (rv *time.Time) {
+	if s != nil {
+		return s.Created
+	}
+	return
+}
+
+func (s *StorageAccountAttributes) GetRecoverableDays() (rv int32) {
+	if s != nil && s.RecoverableDays != nil {
+		return *s.RecoverableDays
+	}
+	return
+}
+
+func (s *StorageAccountAttributes) GetRecoveryLevel() (rv *DeletionRecoveryLevel) {
+	if s != nil {
+		return s.RecoveryLevel
+	}
+	return
+}
+
+func (s *StorageAccountAttributes) GetUpdated() (rv *time.Time) {
+	if s != nil {
+		return s.Updated
+	}
+	return
 }
 
 // StorageAccountCreateParameters - The storage account create parameters.
@@ -1572,6 +4400,48 @@ type StorageAccountCreateParameters struct {
 	Tags map[string]*string
 }
 
+func (s *StorageAccountCreateParameters) GetActiveKeyName() (rv string) {
+	if s != nil && s.ActiveKeyName != nil {
+		return *s.ActiveKeyName
+	}
+	return
+}
+
+func (s *StorageAccountCreateParameters) GetAutoRegenerateKey() (rv bool) {
+	if s != nil && s.AutoRegenerateKey != nil {
+		return *s.AutoRegenerateKey
+	}
+	return
+}
+
+func (s *StorageAccountCreateParameters) GetResourceID() (rv string) {
+	if s != nil && s.ResourceID != nil {
+		return *s.ResourceID
+	}
+	return
+}
+
+func (s *StorageAccountCreateParameters) GetRegenerationPeriod() (rv string) {
+	if s != nil && s.RegenerationPeriod != nil {
+		return *s.RegenerationPeriod
+	}
+	return
+}
+
+func (s *StorageAccountCreateParameters) GetStorageAccountAttributes() (rv *StorageAccountAttributes) {
+	if s != nil {
+		return s.StorageAccountAttributes
+	}
+	return
+}
+
+func (s *StorageAccountCreateParameters) GetTags() (rv map[string]*string) {
+	if s != nil {
+		return s.Tags
+	}
+	return
+}
+
 // StorageAccountItem - The storage account item containing storage account metadata.
 type StorageAccountItem struct {
 	// READ-ONLY; The storage account management attributes.
@@ -1587,10 +4457,45 @@ type StorageAccountItem struct {
 	Tags map[string]*string
 }
 
+func (s *StorageAccountItem) GetAttributes() (rv *StorageAccountAttributes) {
+	if s != nil {
+		return s.Attributes
+	}
+	return
+}
+
+func (s *StorageAccountItem) GetID() (rv string) {
+	if s != nil && s.ID != nil {
+		return *s.ID
+	}
+	return
+}
+
+func (s *StorageAccountItem) GetResourceID() (rv string) {
+	if s != nil && s.ResourceID != nil {
+		return *s.ResourceID
+	}
+	return
+}
+
+func (s *StorageAccountItem) GetTags() (rv map[string]*string) {
+	if s != nil {
+		return s.Tags
+	}
+	return
+}
+
 // StorageAccountRegenerteKeyParameters - The storage account key regenerate parameters.
 type StorageAccountRegenerteKeyParameters struct {
 	// REQUIRED; The storage account key name.
 	KeyName *string
+}
+
+func (s *StorageAccountRegenerteKeyParameters) GetKeyName() (rv string) {
+	if s != nil && s.KeyName != nil {
+		return *s.KeyName
+	}
+	return
 }
 
 // StorageAccountUpdateParameters - The storage account update parameters.
@@ -1609,6 +4514,41 @@ type StorageAccountUpdateParameters struct {
 
 	// Application specific metadata in the form of key-value pairs.
 	Tags map[string]*string
+}
+
+func (s *StorageAccountUpdateParameters) GetActiveKeyName() (rv string) {
+	if s != nil && s.ActiveKeyName != nil {
+		return *s.ActiveKeyName
+	}
+	return
+}
+
+func (s *StorageAccountUpdateParameters) GetAutoRegenerateKey() (rv bool) {
+	if s != nil && s.AutoRegenerateKey != nil {
+		return *s.AutoRegenerateKey
+	}
+	return
+}
+
+func (s *StorageAccountUpdateParameters) GetRegenerationPeriod() (rv string) {
+	if s != nil && s.RegenerationPeriod != nil {
+		return *s.RegenerationPeriod
+	}
+	return
+}
+
+func (s *StorageAccountUpdateParameters) GetStorageAccountAttributes() (rv *StorageAccountAttributes) {
+	if s != nil {
+		return s.StorageAccountAttributes
+	}
+	return
+}
+
+func (s *StorageAccountUpdateParameters) GetTags() (rv map[string]*string) {
+	if s != nil {
+		return s.Tags
+	}
+	return
 }
 
 // StorageBundle - A Storage account bundle consists of key vault storage account details plus its attributes.
@@ -1635,6 +4575,55 @@ type StorageBundle struct {
 	Tags map[string]*string
 }
 
+func (s *StorageBundle) GetActiveKeyName() (rv string) {
+	if s != nil && s.ActiveKeyName != nil {
+		return *s.ActiveKeyName
+	}
+	return
+}
+
+func (s *StorageBundle) GetAttributes() (rv *StorageAccountAttributes) {
+	if s != nil {
+		return s.Attributes
+	}
+	return
+}
+
+func (s *StorageBundle) GetAutoRegenerateKey() (rv bool) {
+	if s != nil && s.AutoRegenerateKey != nil {
+		return *s.AutoRegenerateKey
+	}
+	return
+}
+
+func (s *StorageBundle) GetID() (rv string) {
+	if s != nil && s.ID != nil {
+		return *s.ID
+	}
+	return
+}
+
+func (s *StorageBundle) GetRegenerationPeriod() (rv string) {
+	if s != nil && s.RegenerationPeriod != nil {
+		return *s.RegenerationPeriod
+	}
+	return
+}
+
+func (s *StorageBundle) GetResourceID() (rv string) {
+	if s != nil && s.ResourceID != nil {
+		return *s.ResourceID
+	}
+	return
+}
+
+func (s *StorageBundle) GetTags() (rv map[string]*string) {
+	if s != nil {
+		return s.Tags
+	}
+	return
+}
+
 // StorageListResult - The storage accounts list result.
 type StorageListResult struct {
 	// READ-ONLY; The URL to get the next set of storage accounts.
@@ -1645,10 +4634,31 @@ type StorageListResult struct {
 	Value []*StorageAccountItem
 }
 
+func (s *StorageListResult) GetNextLink() (rv string) {
+	if s != nil && s.NextLink != nil {
+		return *s.NextLink
+	}
+	return
+}
+
+func (s *StorageListResult) GetValue() (rv []*StorageAccountItem) {
+	if s != nil {
+		return s.Value
+	}
+	return
+}
+
 // StorageRestoreParameters - The secret restore parameters.
 type StorageRestoreParameters struct {
 	// REQUIRED; The backup blob associated with a storage account.
 	StorageBundleBackup []byte
+}
+
+func (s *StorageRestoreParameters) GetStorageBundleBackup() (rv []byte) {
+	if s != nil {
+		return s.StorageBundleBackup
+	}
+	return
 }
 
 // SubjectAlternativeNames - The subject alternate names of a X509 object.
@@ -1663,12 +4673,47 @@ type SubjectAlternativeNames struct {
 	Upns []*string
 }
 
+func (s *SubjectAlternativeNames) GetDNSNames() (rv []*string) {
+	if s != nil {
+		return s.DNSNames
+	}
+	return
+}
+
+func (s *SubjectAlternativeNames) GetEmails() (rv []*string) {
+	if s != nil {
+		return s.Emails
+	}
+	return
+}
+
+func (s *SubjectAlternativeNames) GetUpns() (rv []*string) {
+	if s != nil {
+		return s.Upns
+	}
+	return
+}
+
 type TransferKey struct {
 	// REQUIRED; Specifies the transfer key in JWK format
 	TransferKey *SecurityDomainJSONWebKey
 
 	// Specifies the format of the transfer key
 	KeyFormat *string
+}
+
+func (t *TransferKey) GetTransferKey() (rv *SecurityDomainJSONWebKey) {
+	if t != nil {
+		return t.TransferKey
+	}
+	return
+}
+
+func (t *TransferKey) GetKeyFormat() (rv string) {
+	if t != nil && t.KeyFormat != nil {
+		return *t.KeyFormat
+	}
+	return
 }
 
 // Trigger - A condition to be satisfied for an action to be executed.
@@ -1679,6 +4724,20 @@ type Trigger struct {
 
 	// Percentage of lifetime at which to trigger. Value should be between 1 and 99.
 	LifetimePercentage *int32
+}
+
+func (t *Trigger) GetDaysBeforeExpiry() (rv int32) {
+	if t != nil && t.DaysBeforeExpiry != nil {
+		return *t.DaysBeforeExpiry
+	}
+	return
+}
+
+func (t *Trigger) GetLifetimePercentage() (rv int32) {
+	if t != nil && t.LifetimePercentage != nil {
+		return *t.LifetimePercentage
+	}
+	return
 }
 
 // X509CertificateProperties - Properties of the X509 component of a certificate.
@@ -1697,4 +4756,39 @@ type X509CertificateProperties struct {
 
 	// The duration that the certificate is valid in months.
 	ValidityInMonths *int32
+}
+
+func (x *X509CertificateProperties) GetEkus() (rv []*string) {
+	if x != nil {
+		return x.Ekus
+	}
+	return
+}
+
+func (x *X509CertificateProperties) GetKeyUsage() (rv []*KeyUsageType) {
+	if x != nil {
+		return x.KeyUsage
+	}
+	return
+}
+
+func (x *X509CertificateProperties) GetSubject() (rv string) {
+	if x != nil && x.Subject != nil {
+		return *x.Subject
+	}
+	return
+}
+
+func (x *X509CertificateProperties) GetSubjectAlternativeNames() (rv *SubjectAlternativeNames) {
+	if x != nil {
+		return x.SubjectAlternativeNames
+	}
+	return
+}
+
+func (x *X509CertificateProperties) GetValidityInMonths() (rv int32) {
+	if x != nil && x.ValidityInMonths != nil {
+		return *x.ValidityInMonths
+	}
+	return
 }

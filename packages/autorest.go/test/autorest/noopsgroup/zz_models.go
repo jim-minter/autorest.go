@@ -12,3 +12,17 @@ type Error struct {
 	Message *string
 	Status  *int32
 }
+
+func (e *Error) GetMessage() (rv string) {
+	if e != nil && e.Message != nil {
+		return *e.Message
+	}
+	return
+}
+
+func (e *Error) GetStatus() (rv int32) {
+	if e != nil && e.Status != nil {
+		return *e.Status
+	}
+	return
+}

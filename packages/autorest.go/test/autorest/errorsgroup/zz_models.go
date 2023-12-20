@@ -15,7 +15,28 @@ type Pet struct {
 	Name *string
 }
 
+func (p *Pet) GetAniType() (rv string) {
+	if p != nil && p.AniType != nil {
+		return *p.AniType
+	}
+	return
+}
+
+func (p *Pet) GetName() (rv string) {
+	if p != nil && p.Name != nil {
+		return *p.Name
+	}
+	return
+}
+
 type PetAction struct {
 	// action feedback
 	ActionResponse *string
+}
+
+func (p *PetAction) GetActionResponse() (rv string) {
+	if p != nil && p.ActionResponse != nil {
+		return *p.ActionResponse
+	}
+	return
 }

@@ -22,10 +22,45 @@ type AccessPolicy struct {
 	Start *time.Time `xml:"Start"`
 }
 
+func (a *AccessPolicy) GetExpiry() (rv *time.Time) {
+	if a != nil {
+		return a.Expiry
+	}
+	return
+}
+
+func (a *AccessPolicy) GetPermission() (rv string) {
+	if a != nil && a.Permission != nil {
+		return *a.Permission
+	}
+	return
+}
+
+func (a *AccessPolicy) GetStart() (rv *time.Time) {
+	if a != nil {
+		return a.Start
+	}
+	return
+}
+
 // AppleBarrel - A barrel of apples.
 type AppleBarrel struct {
 	BadApples  []*string `xml:"BadApples>Apple"`
 	GoodApples []*string `xml:"GoodApples>Apple"`
+}
+
+func (a *AppleBarrel) GetBadApples() (rv []*string) {
+	if a != nil {
+		return a.BadApples
+	}
+	return
+}
+
+func (a *AppleBarrel) GetGoodApples() (rv []*string) {
+	if a != nil {
+		return a.GoodApples
+	}
+	return
 }
 
 // Banana - A banana.
@@ -34,6 +69,27 @@ type Banana struct {
 	Expiration *time.Time `xml:"expiration"`
 	Flavor     *string    `xml:"flavor"`
 	Name       *string    `xml:"name"`
+}
+
+func (b *Banana) GetExpiration() (rv *time.Time) {
+	if b != nil {
+		return b.Expiration
+	}
+	return
+}
+
+func (b *Banana) GetFlavor() (rv string) {
+	if b != nil && b.Flavor != nil {
+		return *b.Flavor
+	}
+	return
+}
+
+func (b *Banana) GetName() (rv string) {
+	if b != nil && b.Name != nil {
+		return *b.Name
+	}
+	return
 }
 
 // Blob - An Azure Storage blob
@@ -54,9 +110,51 @@ type Blob struct {
 	Metadata map[string]*string `xml:"Metadata"`
 }
 
+func (b *Blob) GetDeleted() (rv bool) {
+	if b != nil && b.Deleted != nil {
+		return *b.Deleted
+	}
+	return
+}
+
+func (b *Blob) GetName() (rv string) {
+	if b != nil && b.Name != nil {
+		return *b.Name
+	}
+	return
+}
+
+func (b *Blob) GetProperties() (rv *BlobProperties) {
+	if b != nil {
+		return b.Properties
+	}
+	return
+}
+
+func (b *Blob) GetSnapshot() (rv string) {
+	if b != nil && b.Snapshot != nil {
+		return *b.Snapshot
+	}
+	return
+}
+
+func (b *Blob) GetMetadata() (rv map[string]*string) {
+	if b != nil {
+		return b.Metadata
+	}
+	return
+}
+
 type BlobPrefix struct {
 	// REQUIRED
 	Name *string `xml:"Name"`
+}
+
+func (b *BlobPrefix) GetName() (rv string) {
+	if b != nil && b.Name != nil {
+		return *b.Name
+	}
+	return
 }
 
 // BlobProperties - Properties of a blob
@@ -96,9 +194,219 @@ type BlobProperties struct {
 	ServerEncrypted        *bool              `xml:"ServerEncrypted"`
 }
 
+func (b *BlobProperties) GetEtag() (rv string) {
+	if b != nil && b.Etag != nil {
+		return *b.Etag
+	}
+	return
+}
+
+func (b *BlobProperties) GetLastModified() (rv *time.Time) {
+	if b != nil {
+		return b.LastModified
+	}
+	return
+}
+
+func (b *BlobProperties) GetAccessTier() (rv *AccessTier) {
+	if b != nil {
+		return b.AccessTier
+	}
+	return
+}
+
+func (b *BlobProperties) GetAccessTierInferred() (rv bool) {
+	if b != nil && b.AccessTierInferred != nil {
+		return *b.AccessTierInferred
+	}
+	return
+}
+
+func (b *BlobProperties) GetArchiveStatus() (rv *ArchiveStatus) {
+	if b != nil {
+		return b.ArchiveStatus
+	}
+	return
+}
+
+func (b *BlobProperties) GetBlobSequenceNumber() (rv int32) {
+	if b != nil && b.BlobSequenceNumber != nil {
+		return *b.BlobSequenceNumber
+	}
+	return
+}
+
+func (b *BlobProperties) GetBlobType() (rv *BlobType) {
+	if b != nil {
+		return b.BlobType
+	}
+	return
+}
+
+func (b *BlobProperties) GetCacheControl() (rv string) {
+	if b != nil && b.CacheControl != nil {
+		return *b.CacheControl
+	}
+	return
+}
+
+func (b *BlobProperties) GetContentDisposition() (rv string) {
+	if b != nil && b.ContentDisposition != nil {
+		return *b.ContentDisposition
+	}
+	return
+}
+
+func (b *BlobProperties) GetContentEncoding() (rv string) {
+	if b != nil && b.ContentEncoding != nil {
+		return *b.ContentEncoding
+	}
+	return
+}
+
+func (b *BlobProperties) GetContentLanguage() (rv string) {
+	if b != nil && b.ContentLanguage != nil {
+		return *b.ContentLanguage
+	}
+	return
+}
+
+func (b *BlobProperties) GetContentLength() (rv int64) {
+	if b != nil && b.ContentLength != nil {
+		return *b.ContentLength
+	}
+	return
+}
+
+func (b *BlobProperties) GetContentMD5() (rv string) {
+	if b != nil && b.ContentMD5 != nil {
+		return *b.ContentMD5
+	}
+	return
+}
+
+func (b *BlobProperties) GetContentType() (rv string) {
+	if b != nil && b.ContentType != nil {
+		return *b.ContentType
+	}
+	return
+}
+
+func (b *BlobProperties) GetCopyCompletionTime() (rv *time.Time) {
+	if b != nil {
+		return b.CopyCompletionTime
+	}
+	return
+}
+
+func (b *BlobProperties) GetCopyID() (rv string) {
+	if b != nil && b.CopyID != nil {
+		return *b.CopyID
+	}
+	return
+}
+
+func (b *BlobProperties) GetCopyProgress() (rv string) {
+	if b != nil && b.CopyProgress != nil {
+		return *b.CopyProgress
+	}
+	return
+}
+
+func (b *BlobProperties) GetCopySource() (rv string) {
+	if b != nil && b.CopySource != nil {
+		return *b.CopySource
+	}
+	return
+}
+
+func (b *BlobProperties) GetCopyStatus() (rv *CopyStatusType) {
+	if b != nil {
+		return b.CopyStatus
+	}
+	return
+}
+
+func (b *BlobProperties) GetCopyStatusDescription() (rv string) {
+	if b != nil && b.CopyStatusDescription != nil {
+		return *b.CopyStatusDescription
+	}
+	return
+}
+
+func (b *BlobProperties) GetDeletedTime() (rv *time.Time) {
+	if b != nil {
+		return b.DeletedTime
+	}
+	return
+}
+
+func (b *BlobProperties) GetDestinationSnapshot() (rv string) {
+	if b != nil && b.DestinationSnapshot != nil {
+		return *b.DestinationSnapshot
+	}
+	return
+}
+
+func (b *BlobProperties) GetIncrementalCopy() (rv bool) {
+	if b != nil && b.IncrementalCopy != nil {
+		return *b.IncrementalCopy
+	}
+	return
+}
+
+func (b *BlobProperties) GetLeaseDuration() (rv *LeaseDurationType) {
+	if b != nil {
+		return b.LeaseDuration
+	}
+	return
+}
+
+func (b *BlobProperties) GetLeaseState() (rv *LeaseStateType) {
+	if b != nil {
+		return b.LeaseState
+	}
+	return
+}
+
+func (b *BlobProperties) GetLeaseStatus() (rv *LeaseStatusType) {
+	if b != nil {
+		return b.LeaseStatus
+	}
+	return
+}
+
+func (b *BlobProperties) GetRemainingRetentionDays() (rv int32) {
+	if b != nil && b.RemainingRetentionDays != nil {
+		return *b.RemainingRetentionDays
+	}
+	return
+}
+
+func (b *BlobProperties) GetServerEncrypted() (rv bool) {
+	if b != nil && b.ServerEncrypted != nil {
+		return *b.ServerEncrypted
+	}
+	return
+}
+
 type Blobs struct {
 	Blob       []*Blob       `xml:"Blob"`
 	BlobPrefix []*BlobPrefix `xml:"BlobPrefix"`
+}
+
+func (b *Blobs) GetBlob() (rv []*Blob) {
+	if b != nil {
+		return b.Blob
+	}
+	return
+}
+
+func (b *Blobs) GetBlobPrefix() (rv []*BlobPrefix) {
+	if b != nil {
+		return b.BlobPrefix
+	}
+	return
 }
 
 // ComplexTypeNoMeta - I am a complex type with no XML node
@@ -107,10 +415,24 @@ type ComplexTypeNoMeta struct {
 	ID *string `xml:"ID"`
 }
 
+func (c *ComplexTypeNoMeta) GetID() (rv string) {
+	if c != nil && c.ID != nil {
+		return *c.ID
+	}
+	return
+}
+
 // ComplexTypeWithMeta - I am a complex type with XML node
 type ComplexTypeWithMeta struct {
 	// The id of the res
 	ID *string `xml:"ID"`
+}
+
+func (c *ComplexTypeWithMeta) GetID() (rv string) {
+	if c != nil && c.ID != nil {
+		return *c.ID
+	}
+	return
 }
 
 // Container - An Azure Storage container
@@ -125,6 +447,27 @@ type Container struct {
 	Metadata map[string]*string `xml:"Metadata"`
 }
 
+func (c *Container) GetName() (rv string) {
+	if c != nil && c.Name != nil {
+		return *c.Name
+	}
+	return
+}
+
+func (c *Container) GetProperties() (rv *ContainerProperties) {
+	if c != nil {
+		return c.Properties
+	}
+	return
+}
+
+func (c *Container) GetMetadata() (rv map[string]*string) {
+	if c != nil {
+		return c.Metadata
+	}
+	return
+}
+
 // ContainerProperties - Properties of a container
 type ContainerProperties struct {
 	// REQUIRED
@@ -136,6 +479,48 @@ type ContainerProperties struct {
 	LeaseState    *LeaseStateType    `xml:"LeaseState"`
 	LeaseStatus   *LeaseStatusType   `xml:"LeaseStatus"`
 	PublicAccess  *PublicAccessType  `xml:"PublicAccess"`
+}
+
+func (c *ContainerProperties) GetEtag() (rv string) {
+	if c != nil && c.Etag != nil {
+		return *c.Etag
+	}
+	return
+}
+
+func (c *ContainerProperties) GetLastModified() (rv *time.Time) {
+	if c != nil {
+		return c.LastModified
+	}
+	return
+}
+
+func (c *ContainerProperties) GetLeaseDuration() (rv *LeaseDurationType) {
+	if c != nil {
+		return c.LeaseDuration
+	}
+	return
+}
+
+func (c *ContainerProperties) GetLeaseState() (rv *LeaseStateType) {
+	if c != nil {
+		return c.LeaseState
+	}
+	return
+}
+
+func (c *ContainerProperties) GetLeaseStatus() (rv *LeaseStatusType) {
+	if c != nil {
+		return c.LeaseStatus
+	}
+	return
+}
+
+func (c *ContainerProperties) GetPublicAccess() (rv *PublicAccessType) {
+	if c != nil {
+		return c.PublicAccess
+	}
+	return
 }
 
 // CorsRule - CORS is an HTTP feature that enables a web application running under one domain to access resources in another
@@ -163,12 +548,61 @@ type CorsRule struct {
 	MaxAgeInSeconds *int32 `xml:"MaxAgeInSeconds"`
 }
 
+func (c *CorsRule) GetAllowedHeaders() (rv string) {
+	if c != nil && c.AllowedHeaders != nil {
+		return *c.AllowedHeaders
+	}
+	return
+}
+
+func (c *CorsRule) GetAllowedMethods() (rv string) {
+	if c != nil && c.AllowedMethods != nil {
+		return *c.AllowedMethods
+	}
+	return
+}
+
+func (c *CorsRule) GetAllowedOrigins() (rv string) {
+	if c != nil && c.AllowedOrigins != nil {
+		return *c.AllowedOrigins
+	}
+	return
+}
+
+func (c *CorsRule) GetExposedHeaders() (rv string) {
+	if c != nil && c.ExposedHeaders != nil {
+		return *c.ExposedHeaders
+	}
+	return
+}
+
+func (c *CorsRule) GetMaxAgeInSeconds() (rv int32) {
+	if c != nil && c.MaxAgeInSeconds != nil {
+		return *c.MaxAgeInSeconds
+	}
+	return
+}
+
 type JSONInput struct {
 	ID *int32
 }
 
+func (j *JSONInput) GetID() (rv int32) {
+	if j != nil && j.ID != nil {
+		return *j.ID
+	}
+	return
+}
+
 type JSONOutput struct {
 	ID *int32
+}
+
+func (j *JSONOutput) GetID() (rv int32) {
+	if j != nil && j.ID != nil {
+		return *j.ID
+	}
+	return
 }
 
 // ListBlobsResponse - An enumeration of blobs
@@ -196,6 +630,62 @@ type ListBlobsResponse struct {
 	ServiceEndpoint *string `xml:"ServiceEndpoint,attr"`
 }
 
+func (l *ListBlobsResponse) GetBlobs() (rv *Blobs) {
+	if l != nil {
+		return l.Blobs
+	}
+	return
+}
+
+func (l *ListBlobsResponse) GetContainerName() (rv string) {
+	if l != nil && l.ContainerName != nil {
+		return *l.ContainerName
+	}
+	return
+}
+
+func (l *ListBlobsResponse) GetDelimiter() (rv string) {
+	if l != nil && l.Delimiter != nil {
+		return *l.Delimiter
+	}
+	return
+}
+
+func (l *ListBlobsResponse) GetMarker() (rv string) {
+	if l != nil && l.Marker != nil {
+		return *l.Marker
+	}
+	return
+}
+
+func (l *ListBlobsResponse) GetMaxResults() (rv int32) {
+	if l != nil && l.MaxResults != nil {
+		return *l.MaxResults
+	}
+	return
+}
+
+func (l *ListBlobsResponse) GetNextMarker() (rv string) {
+	if l != nil && l.NextMarker != nil {
+		return *l.NextMarker
+	}
+	return
+}
+
+func (l *ListBlobsResponse) GetPrefix() (rv string) {
+	if l != nil && l.Prefix != nil {
+		return *l.Prefix
+	}
+	return
+}
+
+func (l *ListBlobsResponse) GetServiceEndpoint() (rv string) {
+	if l != nil && l.ServiceEndpoint != nil {
+		return *l.ServiceEndpoint
+	}
+	return
+}
+
 // ListContainersResponse - An enumeration of containers
 type ListContainersResponse struct {
 	// REQUIRED
@@ -211,6 +701,48 @@ type ListContainersResponse struct {
 	ServiceEndpoint *string      `xml:"ServiceEndpoint,attr"`
 	Containers      []*Container `xml:"Containers>Container"`
 	Marker          *string      `xml:"Marker"`
+}
+
+func (l *ListContainersResponse) GetMaxResults() (rv int32) {
+	if l != nil && l.MaxResults != nil {
+		return *l.MaxResults
+	}
+	return
+}
+
+func (l *ListContainersResponse) GetNextMarker() (rv string) {
+	if l != nil && l.NextMarker != nil {
+		return *l.NextMarker
+	}
+	return
+}
+
+func (l *ListContainersResponse) GetPrefix() (rv string) {
+	if l != nil && l.Prefix != nil {
+		return *l.Prefix
+	}
+	return
+}
+
+func (l *ListContainersResponse) GetServiceEndpoint() (rv string) {
+	if l != nil && l.ServiceEndpoint != nil {
+		return *l.ServiceEndpoint
+	}
+	return
+}
+
+func (l *ListContainersResponse) GetContainers() (rv []*Container) {
+	if l != nil {
+		return l.Containers
+	}
+	return
+}
+
+func (l *ListContainersResponse) GetMarker() (rv string) {
+	if l != nil && l.Marker != nil {
+		return *l.Marker
+	}
+	return
 }
 
 // Logging - Azure Analytics Logging settings.
@@ -231,6 +763,41 @@ type Logging struct {
 	Write *bool `xml:"Write"`
 }
 
+func (l *Logging) GetDelete() (rv bool) {
+	if l != nil && l.Delete != nil {
+		return *l.Delete
+	}
+	return
+}
+
+func (l *Logging) GetRead() (rv bool) {
+	if l != nil && l.Read != nil {
+		return *l.Read
+	}
+	return
+}
+
+func (l *Logging) GetRetentionPolicy() (rv *RetentionPolicy) {
+	if l != nil {
+		return l.RetentionPolicy
+	}
+	return
+}
+
+func (l *Logging) GetVersion() (rv string) {
+	if l != nil && l.Version != nil {
+		return *l.Version
+	}
+	return
+}
+
+func (l *Logging) GetWrite() (rv bool) {
+	if l != nil && l.Write != nil {
+		return *l.Write
+	}
+	return
+}
+
 type Metrics struct {
 	// REQUIRED; Indicates whether metrics are enabled for the Blob service.
 	Enabled *bool `xml:"Enabled"`
@@ -245,12 +812,54 @@ type Metrics struct {
 	Version *string `xml:"Version"`
 }
 
+func (m *Metrics) GetEnabled() (rv bool) {
+	if m != nil && m.Enabled != nil {
+		return *m.Enabled
+	}
+	return
+}
+
+func (m *Metrics) GetIncludeAPIs() (rv bool) {
+	if m != nil && m.IncludeAPIs != nil {
+		return *m.IncludeAPIs
+	}
+	return
+}
+
+func (m *Metrics) GetRetentionPolicy() (rv *RetentionPolicy) {
+	if m != nil {
+		return m.RetentionPolicy
+	}
+	return
+}
+
+func (m *Metrics) GetVersion() (rv string) {
+	if m != nil && m.Version != nil {
+		return *m.Version
+	}
+	return
+}
+
 type ModelWithByteProperty struct {
 	Bytes []byte `xml:"Bytes"`
 }
 
+func (m *ModelWithByteProperty) GetBytes() (rv []byte) {
+	if m != nil {
+		return m.Bytes
+	}
+	return
+}
+
 type ModelWithURLProperty struct {
 	URL *string `xml:"Url"`
+}
+
+func (m *ModelWithURLProperty) GetURL() (rv string) {
+	if m != nil && m.URL != nil {
+		return *m.URL
+	}
+	return
 }
 
 // ObjectWithXMsTextProperty - Contans property
@@ -260,6 +869,20 @@ type ObjectWithXMsTextProperty struct {
 
 	// Returned value should be 'english'
 	Language *string `xml:"language,attr"`
+}
+
+func (o *ObjectWithXMsTextProperty) GetContent() (rv string) {
+	if o != nil && o.Content != nil {
+		return *o.Content
+	}
+	return
+}
+
+func (o *ObjectWithXMsTextProperty) GetLanguage() (rv string) {
+	if o != nil && o.Language != nil {
+		return *o.Language
+	}
+	return
 }
 
 // RetentionPolicy - the retention policy
@@ -272,6 +895,20 @@ type RetentionPolicy struct {
 	Days *int32 `xml:"Days"`
 }
 
+func (r *RetentionPolicy) GetEnabled() (rv bool) {
+	if r != nil && r.Enabled != nil {
+		return *r.Enabled
+	}
+	return
+}
+
+func (r *RetentionPolicy) GetDays() (rv int32) {
+	if r != nil && r.Days != nil {
+		return *r.Days
+	}
+	return
+}
+
 // RootWithRefAndMeta - I am root, and I ref a model WITH meta
 type RootWithRefAndMeta struct {
 	// XML will use XMLComplexTypeWithMeta
@@ -279,6 +916,20 @@ type RootWithRefAndMeta struct {
 
 	// Something else (just to avoid flattening)
 	Something *string `xml:"Something"`
+}
+
+func (r *RootWithRefAndMeta) GetRefToModel() (rv *ComplexTypeWithMeta) {
+	if r != nil {
+		return r.RefToModel
+	}
+	return
+}
+
+func (r *RootWithRefAndMeta) GetSomething() (rv string) {
+	if r != nil && r.Something != nil {
+		return *r.Something
+	}
+	return
 }
 
 // RootWithRefAndNoMeta - I am root, and I ref a model with no meta
@@ -290,6 +941,20 @@ type RootWithRefAndNoMeta struct {
 	Something *string `xml:"Something"`
 }
 
+func (r *RootWithRefAndNoMeta) GetRefToModel() (rv *ComplexTypeNoMeta) {
+	if r != nil {
+		return r.RefToModel
+	}
+	return
+}
+
+func (r *RootWithRefAndNoMeta) GetSomething() (rv string) {
+	if r != nil && r.Something != nil {
+		return *r.Something
+	}
+	return
+}
+
 // SignedIdentifier - signed identifier
 type SignedIdentifier struct {
 	// REQUIRED; The access policy
@@ -299,11 +964,46 @@ type SignedIdentifier struct {
 	ID *string `xml:"Id"`
 }
 
+func (s *SignedIdentifier) GetAccessPolicy() (rv *AccessPolicy) {
+	if s != nil {
+		return s.AccessPolicy
+	}
+	return
+}
+
+func (s *SignedIdentifier) GetID() (rv string) {
+	if s != nil && s.ID != nil {
+		return *s.ID
+	}
+	return
+}
+
 // Slide - A slide in a slideshow
 type Slide struct {
 	Items []*string `xml:"item"`
 	Title *string   `xml:"title"`
 	Type  *string   `xml:"type,attr"`
+}
+
+func (s *Slide) GetItems() (rv []*string) {
+	if s != nil {
+		return s.Items
+	}
+	return
+}
+
+func (s *Slide) GetTitle() (rv string) {
+	if s != nil && s.Title != nil {
+		return *s.Title
+	}
+	return
+}
+
+func (s *Slide) GetType() (rv string) {
+	if s != nil && s.Type != nil {
+		return *s.Type
+	}
+	return
 }
 
 // Slideshow - Data about a slideshow
@@ -312,6 +1012,34 @@ type Slideshow struct {
 	Date   *string  `xml:"date,attr"`
 	Slides []*Slide `xml:"slide"`
 	Title  *string  `xml:"title,attr"`
+}
+
+func (s *Slideshow) GetAuthor() (rv string) {
+	if s != nil && s.Author != nil {
+		return *s.Author
+	}
+	return
+}
+
+func (s *Slideshow) GetDate() (rv string) {
+	if s != nil && s.Date != nil {
+		return *s.Date
+	}
+	return
+}
+
+func (s *Slideshow) GetSlides() (rv []*Slide) {
+	if s != nil {
+		return s.Slides
+	}
+	return
+}
+
+func (s *Slideshow) GetTitle() (rv string) {
+	if s != nil && s.Title != nil {
+		return *s.Title
+	}
+	return
 }
 
 // StorageServiceProperties - Storage Service Properties.
@@ -334,4 +1062,46 @@ type StorageServiceProperties struct {
 
 	// a summary of request statistics grouped by API in minute aggregates for blobs
 	MinuteMetrics *Metrics `xml:"MinuteMetrics"`
+}
+
+func (s *StorageServiceProperties) GetCors() (rv []*CorsRule) {
+	if s != nil {
+		return s.Cors
+	}
+	return
+}
+
+func (s *StorageServiceProperties) GetDefaultServiceVersion() (rv string) {
+	if s != nil && s.DefaultServiceVersion != nil {
+		return *s.DefaultServiceVersion
+	}
+	return
+}
+
+func (s *StorageServiceProperties) GetDeleteRetentionPolicy() (rv *RetentionPolicy) {
+	if s != nil {
+		return s.DeleteRetentionPolicy
+	}
+	return
+}
+
+func (s *StorageServiceProperties) GetHourMetrics() (rv *Metrics) {
+	if s != nil {
+		return s.HourMetrics
+	}
+	return
+}
+
+func (s *StorageServiceProperties) GetLogging() (rv *Logging) {
+	if s != nil {
+		return s.Logging
+	}
+	return
+}
+
+func (s *StorageServiceProperties) GetMinuteMetrics() (rv *Metrics) {
+	if s != nil {
+		return s.MinuteMetrics
+	}
+	return
 }

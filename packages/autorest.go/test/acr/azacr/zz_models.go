@@ -15,6 +15,13 @@ type AccessToken struct {
 	AccessToken *string
 }
 
+func (a *AccessToken) GetAccessToken() (rv string) {
+	if a != nil && a.AccessToken != nil {
+		return *a.AccessToken
+	}
+	return
+}
+
 // Annotations - Additional information provided through arbitrary metadata.
 type Annotations struct {
 	// OPTIONAL; Contains additional key/value pairs not defined in the schema.
@@ -58,6 +65,97 @@ type Annotations struct {
 	Version *string
 }
 
+func (a *Annotations) GetAdditionalProperties() (rv map[string]any) {
+	if a != nil {
+		return a.AdditionalProperties
+	}
+	return
+}
+
+func (a *Annotations) GetAuthors() (rv string) {
+	if a != nil && a.Authors != nil {
+		return *a.Authors
+	}
+	return
+}
+
+func (a *Annotations) GetCreated() (rv *time.Time) {
+	if a != nil {
+		return a.Created
+	}
+	return
+}
+
+func (a *Annotations) GetDescription() (rv string) {
+	if a != nil && a.Description != nil {
+		return *a.Description
+	}
+	return
+}
+
+func (a *Annotations) GetDocumentation() (rv string) {
+	if a != nil && a.Documentation != nil {
+		return *a.Documentation
+	}
+	return
+}
+
+func (a *Annotations) GetLicenses() (rv string) {
+	if a != nil && a.Licenses != nil {
+		return *a.Licenses
+	}
+	return
+}
+
+func (a *Annotations) GetName() (rv string) {
+	if a != nil && a.Name != nil {
+		return *a.Name
+	}
+	return
+}
+
+func (a *Annotations) GetRevision() (rv string) {
+	if a != nil && a.Revision != nil {
+		return *a.Revision
+	}
+	return
+}
+
+func (a *Annotations) GetSource() (rv string) {
+	if a != nil && a.Source != nil {
+		return *a.Source
+	}
+	return
+}
+
+func (a *Annotations) GetTitle() (rv string) {
+	if a != nil && a.Title != nil {
+		return *a.Title
+	}
+	return
+}
+
+func (a *Annotations) GetURL() (rv string) {
+	if a != nil && a.URL != nil {
+		return *a.URL
+	}
+	return
+}
+
+func (a *Annotations) GetVendor() (rv string) {
+	if a != nil && a.Vendor != nil {
+		return *a.Vendor
+	}
+	return
+}
+
+func (a *Annotations) GetVersion() (rv string) {
+	if a != nil && a.Version != nil {
+		return *a.Version
+	}
+	return
+}
+
 // ArtifactManifestPlatform - The artifact's platform, consisting of operating system and architecture.
 type ArtifactManifestPlatform struct {
 	// READ-ONLY; Manifest digest
@@ -68,6 +166,27 @@ type ArtifactManifestPlatform struct {
 
 	// READ-ONLY; Operating system
 	OperatingSystem *ArtifactOperatingSystem
+}
+
+func (a *ArtifactManifestPlatform) GetDigest() (rv string) {
+	if a != nil && a.Digest != nil {
+		return *a.Digest
+	}
+	return
+}
+
+func (a *ArtifactManifestPlatform) GetArchitecture() (rv *ArtifactArchitecture) {
+	if a != nil {
+		return a.Architecture
+	}
+	return
+}
+
+func (a *ArtifactManifestPlatform) GetOperatingSystem() (rv *ArtifactOperatingSystem) {
+	if a != nil {
+		return a.OperatingSystem
+	}
+	return
 }
 
 // ArtifactManifestProperties - Manifest attributes details
@@ -82,6 +201,27 @@ type ArtifactManifestProperties struct {
 	RepositoryName *string
 }
 
+func (a *ArtifactManifestProperties) GetManifest() (rv *ManifestAttributesBase) {
+	if a != nil {
+		return a.Manifest
+	}
+	return
+}
+
+func (a *ArtifactManifestProperties) GetRegistryLoginServer() (rv string) {
+	if a != nil && a.RegistryLoginServer != nil {
+		return *a.RegistryLoginServer
+	}
+	return
+}
+
+func (a *ArtifactManifestProperties) GetRepositoryName() (rv string) {
+	if a != nil && a.RepositoryName != nil {
+		return *a.RepositoryName
+	}
+	return
+}
+
 // ArtifactTagProperties - Tag attributes
 type ArtifactTagProperties struct {
 	// READ-ONLY; Registry login server name. This is likely to be similar to {registry-name}.azurecr.io.
@@ -92,6 +232,27 @@ type ArtifactTagProperties struct {
 
 	// READ-ONLY; List of tag attribute details
 	Tag *TagAttributesBase
+}
+
+func (a *ArtifactTagProperties) GetRegistryLoginServer() (rv string) {
+	if a != nil && a.RegistryLoginServer != nil {
+		return *a.RegistryLoginServer
+	}
+	return
+}
+
+func (a *ArtifactTagProperties) GetRepositoryName() (rv string) {
+	if a != nil && a.RepositoryName != nil {
+		return *a.RepositoryName
+	}
+	return
+}
+
+func (a *ArtifactTagProperties) GetTag() (rv *TagAttributesBase) {
+	if a != nil {
+		return a.Tag
+	}
+	return
 }
 
 // ContainerRepositoryProperties - Properties of this repository.
@@ -118,6 +279,55 @@ type ContainerRepositoryProperties struct {
 	TagCount *int32
 }
 
+func (c *ContainerRepositoryProperties) GetChangeableAttributes() (rv *RepositoryWriteableProperties) {
+	if c != nil {
+		return c.ChangeableAttributes
+	}
+	return
+}
+
+func (c *ContainerRepositoryProperties) GetCreatedOn() (rv *time.Time) {
+	if c != nil {
+		return c.CreatedOn
+	}
+	return
+}
+
+func (c *ContainerRepositoryProperties) GetLastUpdatedOn() (rv *time.Time) {
+	if c != nil {
+		return c.LastUpdatedOn
+	}
+	return
+}
+
+func (c *ContainerRepositoryProperties) GetManifestCount() (rv int32) {
+	if c != nil && c.ManifestCount != nil {
+		return *c.ManifestCount
+	}
+	return
+}
+
+func (c *ContainerRepositoryProperties) GetName() (rv string) {
+	if c != nil && c.Name != nil {
+		return *c.Name
+	}
+	return
+}
+
+func (c *ContainerRepositoryProperties) GetRegistryLoginServer() (rv string) {
+	if c != nil && c.RegistryLoginServer != nil {
+		return *c.RegistryLoginServer
+	}
+	return
+}
+
+func (c *ContainerRepositoryProperties) GetTagCount() (rv int32) {
+	if c != nil && c.TagCount != nil {
+		return *c.TagCount
+	}
+	return
+}
+
 // DeleteRepositoryResult - Deleted repository
 type DeleteRepositoryResult struct {
 	// READ-ONLY; SHA of the deleted image
@@ -125,6 +335,20 @@ type DeleteRepositoryResult struct {
 
 	// READ-ONLY; Tag of the deleted image
 	DeletedTags []*string
+}
+
+func (d *DeleteRepositoryResult) GetDeletedManifests() (rv []*string) {
+	if d != nil {
+		return d.DeletedManifests
+	}
+	return
+}
+
+func (d *DeleteRepositoryResult) GetDeletedTags() (rv []*string) {
+	if d != nil {
+		return d.DeletedTags
+	}
+	return
 }
 
 // Descriptor - Docker V2 image layer descriptor including config and layers
@@ -145,6 +369,41 @@ type Descriptor struct {
 	Urls []*string
 }
 
+func (d *Descriptor) GetAnnotations() (rv *Annotations) {
+	if d != nil {
+		return d.Annotations
+	}
+	return
+}
+
+func (d *Descriptor) GetDigest() (rv string) {
+	if d != nil && d.Digest != nil {
+		return *d.Digest
+	}
+	return
+}
+
+func (d *Descriptor) GetMediaType() (rv string) {
+	if d != nil && d.MediaType != nil {
+		return *d.MediaType
+	}
+	return
+}
+
+func (d *Descriptor) GetSize() (rv int64) {
+	if d != nil && d.Size != nil {
+		return *d.Size
+	}
+	return
+}
+
+func (d *Descriptor) GetUrls() (rv []*string) {
+	if d != nil {
+		return d.Urls
+	}
+	return
+}
+
 // ErrorInfo - Error information
 type ErrorInfo struct {
 	// Error code
@@ -157,10 +416,38 @@ type ErrorInfo struct {
 	Message *string
 }
 
+func (e *ErrorInfo) GetCode() (rv string) {
+	if e != nil && e.Code != nil {
+		return *e.Code
+	}
+	return
+}
+
+func (e *ErrorInfo) GetDetail() (rv []byte) {
+	if e != nil {
+		return e.Detail
+	}
+	return
+}
+
+func (e *ErrorInfo) GetMessage() (rv string) {
+	if e != nil && e.Message != nil {
+		return *e.Message
+	}
+	return
+}
+
 // Errors - Acr error response describing why the operation failed
 type Errors struct {
 	// Array of detailed error
 	Errors []*ErrorInfo
+}
+
+func (e *Errors) GetErrors() (rv []*ErrorInfo) {
+	if e != nil {
+		return e.Errors
+	}
+	return
 }
 
 // FsLayer - Image layer information
@@ -169,10 +456,24 @@ type FsLayer struct {
 	BlobSum *string
 }
 
+func (f *FsLayer) GetBlobSum() (rv string) {
+	if f != nil && f.BlobSum != nil {
+		return *f.BlobSum
+	}
+	return
+}
+
 // History - A list of unstructured historical data for v1 compatibility
 type History struct {
 	// The raw v1 compatibility information
 	V1Compatibility *string
+}
+
+func (h *History) GetV1Compatibility() (rv string) {
+	if h != nil && h.V1Compatibility != nil {
+		return *h.V1Compatibility
+	}
+	return
 }
 
 // ImageSignature - Signature of a signed manifest
@@ -187,6 +488,27 @@ type ImageSignature struct {
 	Signature *string
 }
 
+func (i *ImageSignature) GetHeader() (rv *JWK) {
+	if i != nil {
+		return i.Header
+	}
+	return
+}
+
+func (i *ImageSignature) GetProtected() (rv string) {
+	if i != nil && i.Protected != nil {
+		return *i.Protected
+	}
+	return
+}
+
+func (i *ImageSignature) GetSignature() (rv string) {
+	if i != nil && i.Signature != nil {
+		return *i.Signature
+	}
+	return
+}
+
 // JWK - A JSON web signature
 type JWK struct {
 	// The algorithm used to sign or encrypt the JWT
@@ -194,6 +516,20 @@ type JWK struct {
 
 	// JSON web key parameter
 	Jwk *JWKHeader
+}
+
+func (j *JWK) GetAlg() (rv string) {
+	if j != nil && j.Alg != nil {
+		return *j.Alg
+	}
+	return
+}
+
+func (j *JWK) GetJwk() (rv *JWKHeader) {
+	if j != nil {
+		return j.Jwk
+	}
+	return
 }
 
 // JWKHeader - JSON web key parameter
@@ -214,10 +550,52 @@ type JWKHeader struct {
 	Y *string
 }
 
+func (j *JWKHeader) GetCrv() (rv string) {
+	if j != nil && j.Crv != nil {
+		return *j.Crv
+	}
+	return
+}
+
+func (j *JWKHeader) GetKid() (rv string) {
+	if j != nil && j.Kid != nil {
+		return *j.Kid
+	}
+	return
+}
+
+func (j *JWKHeader) GetKty() (rv string) {
+	if j != nil && j.Kty != nil {
+		return *j.Kty
+	}
+	return
+}
+
+func (j *JWKHeader) GetX() (rv string) {
+	if j != nil && j.X != nil {
+		return *j.X
+	}
+	return
+}
+
+func (j *JWKHeader) GetY() (rv string) {
+	if j != nil && j.Y != nil {
+		return *j.Y
+	}
+	return
+}
+
 // Manifest - Returns the requested manifest file
 type Manifest struct {
 	// Schema version
 	SchemaVersion *int32
+}
+
+func (m *Manifest) GetSchemaVersion() (rv int32) {
+	if m != nil && m.SchemaVersion != nil {
+		return *m.SchemaVersion
+	}
+	return
 }
 
 // ManifestAttributesBase - Manifest details
@@ -254,10 +632,87 @@ type ManifestAttributesBase struct {
 	Tags []*string
 }
 
+func (m *ManifestAttributesBase) GetCreatedOn() (rv *time.Time) {
+	if m != nil {
+		return m.CreatedOn
+	}
+	return
+}
+
+func (m *ManifestAttributesBase) GetDigest() (rv string) {
+	if m != nil && m.Digest != nil {
+		return *m.Digest
+	}
+	return
+}
+
+func (m *ManifestAttributesBase) GetLastUpdatedOn() (rv *time.Time) {
+	if m != nil {
+		return m.LastUpdatedOn
+	}
+	return
+}
+
+func (m *ManifestAttributesBase) GetChangeableAttributes() (rv *ManifestWriteableProperties) {
+	if m != nil {
+		return m.ChangeableAttributes
+	}
+	return
+}
+
+func (m *ManifestAttributesBase) GetConfigMediaType() (rv string) {
+	if m != nil && m.ConfigMediaType != nil {
+		return *m.ConfigMediaType
+	}
+	return
+}
+
+func (m *ManifestAttributesBase) GetArchitecture() (rv *ArtifactArchitecture) {
+	if m != nil {
+		return m.Architecture
+	}
+	return
+}
+
+func (m *ManifestAttributesBase) GetOperatingSystem() (rv *ArtifactOperatingSystem) {
+	if m != nil {
+		return m.OperatingSystem
+	}
+	return
+}
+
+func (m *ManifestAttributesBase) GetRelatedArtifacts() (rv []*ArtifactManifestPlatform) {
+	if m != nil {
+		return m.RelatedArtifacts
+	}
+	return
+}
+
+func (m *ManifestAttributesBase) GetSize() (rv int64) {
+	if m != nil && m.Size != nil {
+		return *m.Size
+	}
+	return
+}
+
+func (m *ManifestAttributesBase) GetTags() (rv []*string) {
+	if m != nil {
+		return m.Tags
+	}
+	return
+}
+
 // ManifestAttributesManifest - List of manifest attributes
 type ManifestAttributesManifest struct {
 	// List of manifest attributes details
 	References []*ArtifactManifestPlatform
+}
+
+func (m *ManifestAttributesManifest) GetReferences() (rv []*ArtifactManifestPlatform) {
+	if m != nil {
+		return m.References
+	}
+	return
 }
 
 // ManifestList - Returns the requested Docker multi-arch-manifest file
@@ -270,6 +725,27 @@ type ManifestList struct {
 
 	// Schema version
 	SchemaVersion *int32
+}
+
+func (m *ManifestList) GetManifests() (rv []*ManifestListAttributes) {
+	if m != nil {
+		return m.Manifests
+	}
+	return
+}
+
+func (m *ManifestList) GetMediaType() (rv string) {
+	if m != nil && m.MediaType != nil {
+		return *m.MediaType
+	}
+	return
+}
+
+func (m *ManifestList) GetSchemaVersion() (rv int32) {
+	if m != nil && m.SchemaVersion != nil {
+		return *m.SchemaVersion
+	}
+	return
 }
 
 type ManifestListAttributes struct {
@@ -287,6 +763,34 @@ type ManifestListAttributes struct {
 
 	// The size in bytes of the object
 	Size *int64
+}
+
+func (m *ManifestListAttributes) GetDigest() (rv string) {
+	if m != nil && m.Digest != nil {
+		return *m.Digest
+	}
+	return
+}
+
+func (m *ManifestListAttributes) GetMediaType() (rv string) {
+	if m != nil && m.MediaType != nil {
+		return *m.MediaType
+	}
+	return
+}
+
+func (m *ManifestListAttributes) GetPlatform() (rv *Platform) {
+	if m != nil {
+		return m.Platform
+	}
+	return
+}
+
+func (m *ManifestListAttributes) GetSize() (rv int64) {
+	if m != nil && m.Size != nil {
+		return *m.Size
+	}
+	return
 }
 
 // ManifestWrapper - Returns the requested manifest file
@@ -328,6 +832,90 @@ type ManifestWrapper struct {
 	Tag *string
 }
 
+func (m *ManifestWrapper) GetAnnotations() (rv *Annotations) {
+	if m != nil {
+		return m.Annotations
+	}
+	return
+}
+
+func (m *ManifestWrapper) GetArchitecture() (rv string) {
+	if m != nil && m.Architecture != nil {
+		return *m.Architecture
+	}
+	return
+}
+
+func (m *ManifestWrapper) GetConfig() (rv *Descriptor) {
+	if m != nil {
+		return m.Config
+	}
+	return
+}
+
+func (m *ManifestWrapper) GetFsLayers() (rv []*FsLayer) {
+	if m != nil {
+		return m.FsLayers
+	}
+	return
+}
+
+func (m *ManifestWrapper) GetHistory() (rv []*History) {
+	if m != nil {
+		return m.History
+	}
+	return
+}
+
+func (m *ManifestWrapper) GetLayers() (rv []*Descriptor) {
+	if m != nil {
+		return m.Layers
+	}
+	return
+}
+
+func (m *ManifestWrapper) GetManifests() (rv []*ManifestListAttributes) {
+	if m != nil {
+		return m.Manifests
+	}
+	return
+}
+
+func (m *ManifestWrapper) GetMediaType() (rv string) {
+	if m != nil && m.MediaType != nil {
+		return *m.MediaType
+	}
+	return
+}
+
+func (m *ManifestWrapper) GetName() (rv string) {
+	if m != nil && m.Name != nil {
+		return *m.Name
+	}
+	return
+}
+
+func (m *ManifestWrapper) GetSchemaVersion() (rv int32) {
+	if m != nil && m.SchemaVersion != nil {
+		return *m.SchemaVersion
+	}
+	return
+}
+
+func (m *ManifestWrapper) GetSignatures() (rv []*ImageSignature) {
+	if m != nil {
+		return m.Signatures
+	}
+	return
+}
+
+func (m *ManifestWrapper) GetTag() (rv string) {
+	if m != nil && m.Tag != nil {
+		return *m.Tag
+	}
+	return
+}
+
 // ManifestWriteableProperties - Changeable attributes
 type ManifestWriteableProperties struct {
 	// Delete enabled
@@ -341,6 +929,34 @@ type ManifestWriteableProperties struct {
 
 	// Write enabled
 	CanWrite *bool
+}
+
+func (m *ManifestWriteableProperties) GetCanDelete() (rv bool) {
+	if m != nil && m.CanDelete != nil {
+		return *m.CanDelete
+	}
+	return
+}
+
+func (m *ManifestWriteableProperties) GetCanList() (rv bool) {
+	if m != nil && m.CanList != nil {
+		return *m.CanList
+	}
+	return
+}
+
+func (m *ManifestWriteableProperties) GetCanRead() (rv bool) {
+	if m != nil && m.CanRead != nil {
+		return *m.CanRead
+	}
+	return
+}
+
+func (m *ManifestWriteableProperties) GetCanWrite() (rv bool) {
+	if m != nil && m.CanWrite != nil {
+		return *m.CanWrite
+	}
+	return
 }
 
 // Manifests - Manifest attributes
@@ -357,6 +973,34 @@ type Manifests struct {
 	Repository *string
 }
 
+func (m *Manifests) GetLink() (rv string) {
+	if m != nil && m.Link != nil {
+		return *m.Link
+	}
+	return
+}
+
+func (m *Manifests) GetManifests() (rv []*ManifestAttributesBase) {
+	if m != nil {
+		return m.Manifests
+	}
+	return
+}
+
+func (m *Manifests) GetRegistryLoginServer() (rv string) {
+	if m != nil && m.RegistryLoginServer != nil {
+		return *m.RegistryLoginServer
+	}
+	return
+}
+
+func (m *Manifests) GetRepository() (rv string) {
+	if m != nil && m.Repository != nil {
+		return *m.Repository
+	}
+	return
+}
+
 // OCIIndex - Returns the requested OCI index file
 type OCIIndex struct {
 	// Additional information provided through arbitrary metadata.
@@ -367,6 +1011,27 @@ type OCIIndex struct {
 
 	// Schema version
 	SchemaVersion *int32
+}
+
+func (o *OCIIndex) GetAnnotations() (rv *Annotations) {
+	if o != nil {
+		return o.Annotations
+	}
+	return
+}
+
+func (o *OCIIndex) GetManifests() (rv []*ManifestListAttributes) {
+	if o != nil {
+		return o.Manifests
+	}
+	return
+}
+
+func (o *OCIIndex) GetSchemaVersion() (rv int32) {
+	if o != nil && o.SchemaVersion != nil {
+		return *o.SchemaVersion
+	}
+	return
 }
 
 // OCIManifest - Returns the requested OCI Manifest file
@@ -382,6 +1047,34 @@ type OCIManifest struct {
 
 	// Schema version
 	SchemaVersion *int32
+}
+
+func (o *OCIManifest) GetAnnotations() (rv *Annotations) {
+	if o != nil {
+		return o.Annotations
+	}
+	return
+}
+
+func (o *OCIManifest) GetConfig() (rv *Descriptor) {
+	if o != nil {
+		return o.Config
+	}
+	return
+}
+
+func (o *OCIManifest) GetLayers() (rv []*Descriptor) {
+	if o != nil {
+		return o.Layers
+	}
+	return
+}
+
+func (o *OCIManifest) GetSchemaVersion() (rv int32) {
+	if o != nil && o.SchemaVersion != nil {
+		return *o.SchemaVersion
+	}
+	return
 }
 
 type Paths108HwamOauth2ExchangePostRequestbodyContentApplicationXWwwFormUrlencodedSchema struct {
@@ -401,6 +1094,41 @@ type Paths108HwamOauth2ExchangePostRequestbodyContentApplicationXWwwFormUrlencod
 	Tenant *string
 }
 
+func (p *Paths108HwamOauth2ExchangePostRequestbodyContentApplicationXWwwFormUrlencodedSchema) GetGrantType() (rv *PostContentSchemaGrantType) {
+	if p != nil {
+		return p.GrantType
+	}
+	return
+}
+
+func (p *Paths108HwamOauth2ExchangePostRequestbodyContentApplicationXWwwFormUrlencodedSchema) GetService() (rv string) {
+	if p != nil && p.Service != nil {
+		return *p.Service
+	}
+	return
+}
+
+func (p *Paths108HwamOauth2ExchangePostRequestbodyContentApplicationXWwwFormUrlencodedSchema) GetAADAccessToken() (rv string) {
+	if p != nil && p.AADAccessToken != nil {
+		return *p.AADAccessToken
+	}
+	return
+}
+
+func (p *Paths108HwamOauth2ExchangePostRequestbodyContentApplicationXWwwFormUrlencodedSchema) GetRefreshToken() (rv string) {
+	if p != nil && p.RefreshToken != nil {
+		return *p.RefreshToken
+	}
+	return
+}
+
+func (p *Paths108HwamOauth2ExchangePostRequestbodyContentApplicationXWwwFormUrlencodedSchema) GetTenant() (rv string) {
+	if p != nil && p.Tenant != nil {
+		return *p.Tenant
+	}
+	return
+}
+
 type PathsV3R3RxOauth2TokenPostRequestbodyContentApplicationXWwwFormUrlencodedSchema struct {
 	// REQUIRED; Must be a valid ACR refresh token
 	AcrRefreshToken *string
@@ -414,6 +1142,34 @@ type PathsV3R3RxOauth2TokenPostRequestbodyContentApplicationXWwwFormUrlencodedSc
 
 	// REQUIRED; Indicates the name of your Azure container registry.
 	Service *string
+}
+
+func (p *PathsV3R3RxOauth2TokenPostRequestbodyContentApplicationXWwwFormUrlencodedSchema) GetAcrRefreshToken() (rv string) {
+	if p != nil && p.AcrRefreshToken != nil {
+		return *p.AcrRefreshToken
+	}
+	return
+}
+
+func (p *PathsV3R3RxOauth2TokenPostRequestbodyContentApplicationXWwwFormUrlencodedSchema) GetGrantType() (rv *TokenGrantType) {
+	if p != nil {
+		return p.GrantType
+	}
+	return
+}
+
+func (p *PathsV3R3RxOauth2TokenPostRequestbodyContentApplicationXWwwFormUrlencodedSchema) GetScope() (rv string) {
+	if p != nil && p.Scope != nil {
+		return *p.Scope
+	}
+	return
+}
+
+func (p *PathsV3R3RxOauth2TokenPostRequestbodyContentApplicationXWwwFormUrlencodedSchema) GetService() (rv string) {
+	if p != nil && p.Service != nil {
+		return *p.Service
+	}
+	return
 }
 
 // Platform - The platform object describes the platform which the image in the manifest runs on. A full list of valid operating
@@ -441,9 +1197,58 @@ type Platform struct {
 	Variant *string
 }
 
+func (p *Platform) GetArchitecture() (rv string) {
+	if p != nil && p.Architecture != nil {
+		return *p.Architecture
+	}
+	return
+}
+
+func (p *Platform) GetFeatures() (rv []*string) {
+	if p != nil {
+		return p.Features
+	}
+	return
+}
+
+func (p *Platform) GetOS() (rv string) {
+	if p != nil && p.OS != nil {
+		return *p.OS
+	}
+	return
+}
+
+func (p *Platform) GetOSFeatures() (rv []*string) {
+	if p != nil {
+		return p.OSFeatures
+	}
+	return
+}
+
+func (p *Platform) GetOSVersion() (rv string) {
+	if p != nil && p.OSVersion != nil {
+		return *p.OSVersion
+	}
+	return
+}
+
+func (p *Platform) GetVariant() (rv string) {
+	if p != nil && p.Variant != nil {
+		return *p.Variant
+	}
+	return
+}
+
 type RefreshToken struct {
 	// The refresh token to be used for generating access tokens
 	RefreshToken *string
+}
+
+func (r *RefreshToken) GetRefreshToken() (rv string) {
+	if r != nil && r.RefreshToken != nil {
+		return *r.RefreshToken
+	}
+	return
 }
 
 // Repositories - List of repositories
@@ -454,6 +1259,20 @@ type Repositories struct {
 	Repositories []*string
 }
 
+func (r *Repositories) GetLink() (rv string) {
+	if r != nil && r.Link != nil {
+		return *r.Link
+	}
+	return
+}
+
+func (r *Repositories) GetRepositories() (rv []*string) {
+	if r != nil {
+		return r.Repositories
+	}
+	return
+}
+
 // RepositoryTags - Result of the request to list tags of the image
 type RepositoryTags struct {
 	// Name of the image
@@ -461,6 +1280,20 @@ type RepositoryTags struct {
 
 	// List of tags
 	Tags []*string
+}
+
+func (r *RepositoryTags) GetName() (rv string) {
+	if r != nil && r.Name != nil {
+		return *r.Name
+	}
+	return
+}
+
+func (r *RepositoryTags) GetTags() (rv []*string) {
+	if r != nil {
+		return r.Tags
+	}
+	return
 }
 
 // RepositoryWriteableProperties - Changeable attributes for Repository
@@ -476,6 +1309,34 @@ type RepositoryWriteableProperties struct {
 
 	// Write enabled
 	CanWrite *bool
+}
+
+func (r *RepositoryWriteableProperties) GetCanDelete() (rv bool) {
+	if r != nil && r.CanDelete != nil {
+		return *r.CanDelete
+	}
+	return
+}
+
+func (r *RepositoryWriteableProperties) GetCanList() (rv bool) {
+	if r != nil && r.CanList != nil {
+		return *r.CanList
+	}
+	return
+}
+
+func (r *RepositoryWriteableProperties) GetCanRead() (rv bool) {
+	if r != nil && r.CanRead != nil {
+		return *r.CanRead
+	}
+	return
+}
+
+func (r *RepositoryWriteableProperties) GetCanWrite() (rv bool) {
+	if r != nil && r.CanWrite != nil {
+		return *r.CanWrite
+	}
+	return
 }
 
 // TagAttributesBase - Tag attribute details
@@ -499,10 +1360,59 @@ type TagAttributesBase struct {
 	Name *string
 }
 
+func (t *TagAttributesBase) GetChangeableAttributes() (rv *TagWriteableProperties) {
+	if t != nil {
+		return t.ChangeableAttributes
+	}
+	return
+}
+
+func (t *TagAttributesBase) GetSigned() (rv bool) {
+	if t != nil && t.Signed != nil {
+		return *t.Signed
+	}
+	return
+}
+
+func (t *TagAttributesBase) GetCreatedOn() (rv *time.Time) {
+	if t != nil {
+		return t.CreatedOn
+	}
+	return
+}
+
+func (t *TagAttributesBase) GetDigest() (rv string) {
+	if t != nil && t.Digest != nil {
+		return *t.Digest
+	}
+	return
+}
+
+func (t *TagAttributesBase) GetLastUpdatedOn() (rv *time.Time) {
+	if t != nil {
+		return t.LastUpdatedOn
+	}
+	return
+}
+
+func (t *TagAttributesBase) GetName() (rv string) {
+	if t != nil && t.Name != nil {
+		return *t.Name
+	}
+	return
+}
+
 // TagAttributesTag - Tag
 type TagAttributesTag struct {
 	// SignatureRecord value
 	SignatureRecord *string
+}
+
+func (t *TagAttributesTag) GetSignatureRecord() (rv string) {
+	if t != nil && t.SignatureRecord != nil {
+		return *t.SignatureRecord
+	}
+	return
 }
 
 // TagList - List of tag details
@@ -518,6 +1428,34 @@ type TagList struct {
 	Link              *string
 }
 
+func (t *TagList) GetRegistryLoginServer() (rv string) {
+	if t != nil && t.RegistryLoginServer != nil {
+		return *t.RegistryLoginServer
+	}
+	return
+}
+
+func (t *TagList) GetRepository() (rv string) {
+	if t != nil && t.Repository != nil {
+		return *t.Repository
+	}
+	return
+}
+
+func (t *TagList) GetTagAttributeBases() (rv []*TagAttributesBase) {
+	if t != nil {
+		return t.TagAttributeBases
+	}
+	return
+}
+
+func (t *TagList) GetLink() (rv string) {
+	if t != nil && t.Link != nil {
+		return *t.Link
+	}
+	return
+}
+
 // TagWriteableProperties - Changeable attributes
 type TagWriteableProperties struct {
 	// Delete enabled
@@ -531,6 +1469,34 @@ type TagWriteableProperties struct {
 
 	// Write enabled
 	CanWrite *bool
+}
+
+func (t *TagWriteableProperties) GetCanDelete() (rv bool) {
+	if t != nil && t.CanDelete != nil {
+		return *t.CanDelete
+	}
+	return
+}
+
+func (t *TagWriteableProperties) GetCanList() (rv bool) {
+	if t != nil && t.CanList != nil {
+		return *t.CanList
+	}
+	return
+}
+
+func (t *TagWriteableProperties) GetCanRead() (rv bool) {
+	if t != nil && t.CanRead != nil {
+		return *t.CanRead
+	}
+	return
+}
+
+func (t *TagWriteableProperties) GetCanWrite() (rv bool) {
+	if t != nil && t.CanWrite != nil {
+		return *t.CanWrite
+	}
+	return
 }
 
 // V1Manifest - Returns the requested V1 manifest file
@@ -557,6 +1523,55 @@ type V1Manifest struct {
 	Tag *string
 }
 
+func (v *V1Manifest) GetArchitecture() (rv string) {
+	if v != nil && v.Architecture != nil {
+		return *v.Architecture
+	}
+	return
+}
+
+func (v *V1Manifest) GetFsLayers() (rv []*FsLayer) {
+	if v != nil {
+		return v.FsLayers
+	}
+	return
+}
+
+func (v *V1Manifest) GetHistory() (rv []*History) {
+	if v != nil {
+		return v.History
+	}
+	return
+}
+
+func (v *V1Manifest) GetName() (rv string) {
+	if v != nil && v.Name != nil {
+		return *v.Name
+	}
+	return
+}
+
+func (v *V1Manifest) GetSchemaVersion() (rv int32) {
+	if v != nil && v.SchemaVersion != nil {
+		return *v.SchemaVersion
+	}
+	return
+}
+
+func (v *V1Manifest) GetSignatures() (rv []*ImageSignature) {
+	if v != nil {
+		return v.Signatures
+	}
+	return
+}
+
+func (v *V1Manifest) GetTag() (rv string) {
+	if v != nil && v.Tag != nil {
+		return *v.Tag
+	}
+	return
+}
+
 // V2Manifest - Returns the requested Docker V2 Manifest file
 type V2Manifest struct {
 	// V2 image config descriptor
@@ -570,4 +1585,32 @@ type V2Manifest struct {
 
 	// Schema version
 	SchemaVersion *int32
+}
+
+func (v *V2Manifest) GetConfig() (rv *Descriptor) {
+	if v != nil {
+		return v.Config
+	}
+	return
+}
+
+func (v *V2Manifest) GetLayers() (rv []*Descriptor) {
+	if v != nil {
+		return v.Layers
+	}
+	return
+}
+
+func (v *V2Manifest) GetMediaType() (rv string) {
+	if v != nil && v.MediaType != nil {
+		return *v.MediaType
+	}
+	return
+}
+
+func (v *V2Manifest) GetSchemaVersion() (rv int32) {
+	if v != nil && v.SchemaVersion != nil {
+		return *v.SchemaVersion
+	}
+	return
 }

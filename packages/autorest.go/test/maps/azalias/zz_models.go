@@ -25,6 +25,34 @@ type AliasesCreateResponse struct {
 	LastUpdatedTimestamp *string
 }
 
+func (a *AliasesCreateResponse) GetAliasID() (rv string) {
+	if a != nil && a.AliasID != nil {
+		return *a.AliasID
+	}
+	return
+}
+
+func (a *AliasesCreateResponse) GetCreatedTimestamp() (rv string) {
+	if a != nil && a.CreatedTimestamp != nil {
+		return *a.CreatedTimestamp
+	}
+	return
+}
+
+func (a *AliasesCreateResponse) GetCreatorDataItemID() (rv string) {
+	if a != nil && a.CreatorDataItemID != nil {
+		return *a.CreatorDataItemID
+	}
+	return
+}
+
+func (a *AliasesCreateResponse) GetLastUpdatedTimestamp() (rv string) {
+	if a != nil && a.LastUpdatedTimestamp != nil {
+		return *a.LastUpdatedTimestamp
+	}
+	return
+}
+
 // ErrorResponse - An error happened.
 type ErrorResponse struct {
 	// READ-ONLY; The error code.
@@ -32,6 +60,20 @@ type ErrorResponse struct {
 
 	// READ-ONLY; The error message.
 	Message *string
+}
+
+func (e *ErrorResponse) GetCode() (rv string) {
+	if e != nil && e.Code != nil {
+		return *e.Code
+	}
+	return
+}
+
+func (e *ErrorResponse) GetMessage() (rv string) {
+	if e != nil && e.Message != nil {
+		return *e.Message
+	}
+	return
 }
 
 // GeoJSONFeature - A valid GeoJSON Feature object type. Please refer to RFC 7946 [https://tools.ietf.org/html/rfc7946#section-3.2]
@@ -54,6 +96,41 @@ type GeoJSONFeature struct {
 
 	// test enum with a default
 	Setting *DataSetting
+}
+
+func (g *GeoJSONFeature) GetType() (rv *GeoJSONObjectType) {
+	if g != nil {
+		return g.Type
+	}
+	return
+}
+
+func (g *GeoJSONFeature) GetFeatureType() (rv string) {
+	if g != nil && g.FeatureType != nil {
+		return *g.FeatureType
+	}
+	return
+}
+
+func (g *GeoJSONFeature) GetID() (rv string) {
+	if g != nil && g.ID != nil {
+		return *g.ID
+	}
+	return
+}
+
+func (g *GeoJSONFeature) GetProperties() (rv any) {
+	if g != nil {
+		return g.Properties
+	}
+	return
+}
+
+func (g *GeoJSONFeature) GetSetting() (rv *DataSetting) {
+	if g != nil {
+		return g.Setting
+	}
+	return
 }
 
 // GetGeoJSONObject implements the GeoJSONObjectClassification interface for type GeoJSONFeature.
@@ -79,6 +156,34 @@ type GeoJSONFeatureData struct {
 	Setting *DataSetting
 }
 
+func (g *GeoJSONFeatureData) GetFeatureType() (rv string) {
+	if g != nil && g.FeatureType != nil {
+		return *g.FeatureType
+	}
+	return
+}
+
+func (g *GeoJSONFeatureData) GetID() (rv string) {
+	if g != nil && g.ID != nil {
+		return *g.ID
+	}
+	return
+}
+
+func (g *GeoJSONFeatureData) GetProperties() (rv any) {
+	if g != nil {
+		return g.Properties
+	}
+	return
+}
+
+func (g *GeoJSONFeatureData) GetSetting() (rv *DataSetting) {
+	if g != nil {
+		return g.Setting
+	}
+	return
+}
+
 // GeoJSONObject - A valid GeoJSON object. Please refer to RFC 7946 [https://tools.ietf.org/html/rfc7946#section-3] for details.
 type GeoJSONObject struct {
 	// REQUIRED; Specifies the GeoJSON type. Must be one of the nine valid GeoJSON object types - Point, MultiPoint, LineString,
@@ -88,6 +193,20 @@ type GeoJSONObject struct {
 
 	// Identifier for the feature.
 	ID *string
+}
+
+func (g *GeoJSONObject) GetType() (rv *GeoJSONObjectType) {
+	if g != nil {
+		return g.Type
+	}
+	return
+}
+
+func (g *GeoJSONObject) GetID() (rv string) {
+	if g != nil && g.ID != nil {
+		return *g.ID
+	}
+	return
 }
 
 // GetGeoJSONObject implements the GeoJSONObjectClassification interface for type GeoJSONObject.
@@ -100,6 +219,20 @@ type GeoJSONObjectNamedCollection struct {
 
 	// Dictionary of
 	Objects map[string]GeoJSONObjectClassification
+}
+
+func (g *GeoJSONObjectNamedCollection) GetCollectionName() (rv string) {
+	if g != nil && g.CollectionName != nil {
+		return *g.CollectionName
+	}
+	return
+}
+
+func (g *GeoJSONObjectNamedCollection) GetObjects() (rv map[string]GeoJSONObjectClassification) {
+	if g != nil {
+		return g.Objects
+	}
+	return
 }
 
 type GeoJSONRecursiveDisciminators struct {
@@ -119,6 +252,41 @@ type GeoJSONRecursiveDisciminators struct {
 	Objects map[string]map[string]GeoJSONObjectClassification
 }
 
+func (g *GeoJSONRecursiveDisciminators) GetCombinedOne() (rv []map[string]map[string]GeoJSONObjectClassification) {
+	if g != nil {
+		return g.CombinedOne
+	}
+	return
+}
+
+func (g *GeoJSONRecursiveDisciminators) GetCombinedThree() (rv map[string][]map[string]GeoJSONObjectClassification) {
+	if g != nil {
+		return g.CombinedThree
+	}
+	return
+}
+
+func (g *GeoJSONRecursiveDisciminators) GetCombinedTwo() (rv map[string]map[string][]GeoJSONObjectClassification) {
+	if g != nil {
+		return g.CombinedTwo
+	}
+	return
+}
+
+func (g *GeoJSONRecursiveDisciminators) GetItems() (rv [][]GeoJSONObjectClassification) {
+	if g != nil {
+		return g.Items
+	}
+	return
+}
+
+func (g *GeoJSONRecursiveDisciminators) GetObjects() (rv map[string]map[string]GeoJSONObjectClassification) {
+	if g != nil {
+		return g.Objects
+	}
+	return
+}
+
 // ListResponse - The response model for the List API. Returns a list of all the previously created aliases.
 type ListResponse struct {
 	// READ-ONLY; A list of all the previously created aliases.
@@ -128,9 +296,37 @@ type ListResponse struct {
 	NextLink *string
 }
 
+func (l *ListResponse) GetAliases() (rv []ListItem) {
+	if l != nil {
+		return l.Aliases
+	}
+	return
+}
+
+func (l *ListResponse) GetNextLink() (rv string) {
+	if l != nil && l.NextLink != nil {
+		return *l.NextLink
+	}
+	return
+}
+
 type PagesOfThings struct {
 	NextLink *string
 	Values   []TypeWithRawJSON
+}
+
+func (p *PagesOfThings) GetNextLink() (rv string) {
+	if p != nil && p.NextLink != nil {
+		return *p.NextLink
+	}
+	return
+}
+
+func (p *PagesOfThings) GetValues() (rv []TypeWithRawJSON) {
+	if p != nil {
+		return p.Values
+	}
+	return
 }
 
 type ParameterMetadataValue struct {
@@ -138,10 +334,24 @@ type ParameterMetadataValue struct {
 	Value any
 }
 
+func (p *ParameterMetadataValue) GetValue() (rv any) {
+	if p != nil {
+		return p.Value
+	}
+	return
+}
+
 // ParameterValuesValue - The value of a parameter.
 type ParameterValuesValue struct {
 	// The value of the parameter.
 	Value any
+}
+
+func (p *ParameterValuesValue) GetValue() (rv any) {
+	if p != nil {
+		return p.Value
+	}
+	return
 }
 
 type PolicyAssignmentProperties struct {
@@ -153,6 +363,27 @@ type PolicyAssignmentProperties struct {
 
 	// The parameter values for the assigned policy rule. The keys are the parameter names.
 	Parameters map[string]*ParameterValuesValue
+}
+
+func (p *PolicyAssignmentProperties) GetDisplayName() (rv string) {
+	if p != nil && p.DisplayName != nil {
+		return *p.DisplayName
+	}
+	return
+}
+
+func (p *PolicyAssignmentProperties) GetMetadata() (rv map[string]*ParameterMetadataValue) {
+	if p != nil {
+		return p.Metadata
+	}
+	return
+}
+
+func (p *PolicyAssignmentProperties) GetParameters() (rv map[string]*ParameterValuesValue) {
+	if p != nil {
+		return p.Parameters
+	}
+	return
 }
 
 // ScheduleCreateOrUpdateProperties - The parameters supplied to the create or update schedule operation.
@@ -170,6 +401,34 @@ type ScheduleCreateOrUpdateProperties struct {
 	StartTime *time.Time
 }
 
+func (s *ScheduleCreateOrUpdateProperties) GetAliases() (rv []string) {
+	if s != nil {
+		return s.Aliases
+	}
+	return
+}
+
+func (s *ScheduleCreateOrUpdateProperties) GetDescription() (rv string) {
+	if s != nil && s.Description != nil {
+		return *s.Description
+	}
+	return
+}
+
+func (s *ScheduleCreateOrUpdateProperties) GetInterval() (rv any) {
+	if s != nil {
+		return s.Interval
+	}
+	return
+}
+
+func (s *ScheduleCreateOrUpdateProperties) GetStartTime() (rv *time.Time) {
+	if s != nil {
+		return s.StartTime
+	}
+	return
+}
+
 type TypeWithRawJSON struct {
 	// any JSON object
 	AnyObject any
@@ -178,7 +437,35 @@ type TypeWithRawJSON struct {
 	Anything any
 }
 
+func (t *TypeWithRawJSON) GetAnyObject() (rv any) {
+	if t != nil {
+		return t.AnyObject
+	}
+	return
+}
+
+func (t *TypeWithRawJSON) GetAnything() (rv any) {
+	if t != nil {
+		return t.Anything
+	}
+	return
+}
+
 type TypeWithSliceOfTimes struct {
 	Interval *time.Time
 	Times    []time.Time
+}
+
+func (t *TypeWithSliceOfTimes) GetInterval() (rv *time.Time) {
+	if t != nil {
+		return t.Interval
+	}
+	return
+}
+
+func (t *TypeWithSliceOfTimes) GetTimes() (rv []time.Time) {
+	if t != nil {
+		return t.Times
+	}
+	return
 }

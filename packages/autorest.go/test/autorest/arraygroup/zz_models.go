@@ -12,3 +12,17 @@ type Product struct {
 	Integer *int32
 	String  *string
 }
+
+func (p *Product) GetInteger() (rv int32) {
+	if p != nil && p.Integer != nil {
+		return *p.Integer
+	}
+	return
+}
+
+func (p *Product) GetString() (rv string) {
+	if p != nil && p.String != nil {
+		return *p.String
+	}
+	return
+}

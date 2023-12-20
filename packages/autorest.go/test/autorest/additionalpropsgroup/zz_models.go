@@ -21,6 +21,41 @@ type CatAPTrue struct {
 	Status *bool
 }
 
+func (c *CatAPTrue) GetID() (rv int32) {
+	if c != nil && c.ID != nil {
+		return *c.ID
+	}
+	return
+}
+
+func (c *CatAPTrue) GetAdditionalProperties() (rv map[string]any) {
+	if c != nil {
+		return c.AdditionalProperties
+	}
+	return
+}
+
+func (c *CatAPTrue) GetFriendly() (rv bool) {
+	if c != nil && c.Friendly != nil {
+		return *c.Friendly
+	}
+	return
+}
+
+func (c *CatAPTrue) GetName() (rv string) {
+	if c != nil && c.Name != nil {
+		return *c.Name
+	}
+	return
+}
+
+func (c *CatAPTrue) GetStatus() (rv bool) {
+	if c != nil && c.Status != nil {
+		return *c.Status
+	}
+	return
+}
+
 type PetAPInProperties struct {
 	// REQUIRED
 	ID *int32
@@ -31,6 +66,34 @@ type PetAPInProperties struct {
 
 	// READ-ONLY
 	Status *bool
+}
+
+func (p *PetAPInProperties) GetID() (rv int32) {
+	if p != nil && p.ID != nil {
+		return *p.ID
+	}
+	return
+}
+
+func (p *PetAPInProperties) GetAdditionalProperties() (rv map[string]*float32) {
+	if p != nil {
+		return p.AdditionalProperties
+	}
+	return
+}
+
+func (p *PetAPInProperties) GetName() (rv string) {
+	if p != nil && p.Name != nil {
+		return *p.Name
+	}
+	return
+}
+
+func (p *PetAPInProperties) GetStatus() (rv bool) {
+	if p != nil && p.Status != nil {
+		return *p.Status
+	}
+	return
 }
 
 type PetAPInPropertiesWithAPString struct {
@@ -51,6 +114,48 @@ type PetAPInPropertiesWithAPString struct {
 	Status *bool
 }
 
+func (p *PetAPInPropertiesWithAPString) GetID() (rv int32) {
+	if p != nil && p.ID != nil {
+		return *p.ID
+	}
+	return
+}
+
+func (p *PetAPInPropertiesWithAPString) GetODataLocation() (rv string) {
+	if p != nil && p.ODataLocation != nil {
+		return *p.ODataLocation
+	}
+	return
+}
+
+func (p *PetAPInPropertiesWithAPString) GetAdditionalProperties() (rv map[string]*string) {
+	if p != nil {
+		return p.AdditionalProperties
+	}
+	return
+}
+
+func (p *PetAPInPropertiesWithAPString) GetAdditionalProperties1() (rv map[string]*float32) {
+	if p != nil {
+		return p.AdditionalProperties1
+	}
+	return
+}
+
+func (p *PetAPInPropertiesWithAPString) GetName() (rv string) {
+	if p != nil && p.Name != nil {
+		return *p.Name
+	}
+	return
+}
+
+func (p *PetAPInPropertiesWithAPString) GetStatus() (rv bool) {
+	if p != nil && p.Status != nil {
+		return *p.Status
+	}
+	return
+}
+
 type PetAPObject struct {
 	// REQUIRED
 	ID *int32
@@ -61,6 +166,34 @@ type PetAPObject struct {
 
 	// READ-ONLY
 	Status *bool
+}
+
+func (p *PetAPObject) GetID() (rv int32) {
+	if p != nil && p.ID != nil {
+		return *p.ID
+	}
+	return
+}
+
+func (p *PetAPObject) GetAdditionalProperties() (rv map[string]any) {
+	if p != nil {
+		return p.AdditionalProperties
+	}
+	return
+}
+
+func (p *PetAPObject) GetName() (rv string) {
+	if p != nil && p.Name != nil {
+		return *p.Name
+	}
+	return
+}
+
+func (p *PetAPObject) GetStatus() (rv bool) {
+	if p != nil && p.Status != nil {
+		return *p.Status
+	}
+	return
 }
 
 type PetAPString struct {
@@ -75,6 +208,34 @@ type PetAPString struct {
 	Status *bool
 }
 
+func (p *PetAPString) GetID() (rv int32) {
+	if p != nil && p.ID != nil {
+		return *p.ID
+	}
+	return
+}
+
+func (p *PetAPString) GetAdditionalProperties() (rv map[string]*string) {
+	if p != nil {
+		return p.AdditionalProperties
+	}
+	return
+}
+
+func (p *PetAPString) GetName() (rv string) {
+	if p != nil && p.Name != nil {
+		return *p.Name
+	}
+	return
+}
+
+func (p *PetAPString) GetStatus() (rv bool) {
+	if p != nil && p.Status != nil {
+		return *p.Status
+	}
+	return
+}
+
 type PetAPTrue struct {
 	// REQUIRED
 	ID *int32
@@ -85,4 +246,32 @@ type PetAPTrue struct {
 
 	// READ-ONLY
 	Status *bool
+}
+
+func (p *PetAPTrue) GetID() (rv int32) {
+	if p != nil && p.ID != nil {
+		return *p.ID
+	}
+	return
+}
+
+func (p *PetAPTrue) GetAdditionalProperties() (rv map[string]any) {
+	if p != nil {
+		return p.AdditionalProperties
+	}
+	return
+}
+
+func (p *PetAPTrue) GetName() (rv string) {
+	if p != nil && p.Name != nil {
+		return *p.Name
+	}
+	return
+}
+
+func (p *PetAPTrue) GetStatus() (rv bool) {
+	if p != nil && p.Status != nil {
+		return *p.Status
+	}
+	return
 }

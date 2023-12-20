@@ -13,14 +13,49 @@ type B struct {
 	TextStatusCode *string
 }
 
+func (b *B) GetStatusCode() (rv string) {
+	if b != nil && b.StatusCode != nil {
+		return *b.StatusCode
+	}
+	return
+}
+
+func (b *B) GetTextStatusCode() (rv string) {
+	if b != nil && b.TextStatusCode != nil {
+		return *b.TextStatusCode
+	}
+	return
+}
+
 type C struct {
 	HTTPCode *string
+}
+
+func (c *C) GetHTTPCode() (rv string) {
+	if c != nil && c.HTTPCode != nil {
+		return *c.HTTPCode
+	}
+	return
 }
 
 type D struct {
 	HTTPStatusCode *string
 }
 
+func (d *D) GetHTTPStatusCode() (rv string) {
+	if d != nil && d.HTTPStatusCode != nil {
+		return *d.HTTPStatusCode
+	}
+	return
+}
+
 type MyException struct {
 	StatusCode *string
+}
+
+func (m *MyException) GetStatusCode() (rv string) {
+	if m != nil && m.StatusCode != nil {
+		return *m.StatusCode
+	}
+	return
 }

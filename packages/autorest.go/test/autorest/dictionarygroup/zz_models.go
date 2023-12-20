@@ -12,3 +12,17 @@ type Widget struct {
 	Integer *int32
 	String  *string
 }
+
+func (w *Widget) GetInteger() (rv int32) {
+	if w != nil && w.Integer != nil {
+		return *w.Integer
+	}
+	return
+}
+
+func (w *Widget) GetString() (rv string) {
+	if w != nil && w.String != nil {
+		return *w.String
+	}
+	return
+}

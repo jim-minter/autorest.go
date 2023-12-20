@@ -16,3 +16,17 @@ type RefColorConstant struct {
 	// Sample string.
 	Field1 *string
 }
+
+func (r *RefColorConstant) GetColorConstant() (rv *string) {
+	if r != nil {
+		return r.ColorConstant
+	}
+	return
+}
+
+func (r *RefColorConstant) GetField1() (rv string) {
+	if r != nil && r.Field1 != nil {
+		return *r.Field1
+	}
+	return
+}

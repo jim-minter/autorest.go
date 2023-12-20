@@ -47,6 +47,83 @@ type AKS struct {
 	ProvisioningState *ProvisioningState
 }
 
+func (a *AKS) GetComputeType() (rv *ComputeType) {
+	if a != nil {
+		return a.ComputeType
+	}
+	return
+}
+
+func (a *AKS) GetDescription() (rv string) {
+	if a != nil && a.Description != nil {
+		return *a.Description
+	}
+	return
+}
+
+func (a *AKS) GetDisableLocalAuth() (rv bool) {
+	if a != nil && a.DisableLocalAuth != nil {
+		return *a.DisableLocalAuth
+	}
+	return
+}
+
+func (a *AKS) GetProperties() (rv *AKSSchemaProperties) {
+	if a != nil {
+		return a.Properties
+	}
+	return
+}
+
+func (a *AKS) GetResourceID() (rv string) {
+	if a != nil && a.ResourceID != nil {
+		return *a.ResourceID
+	}
+	return
+}
+
+func (a *AKS) GetComputeLocation() (rv string) {
+	if a != nil && a.ComputeLocation != nil {
+		return *a.ComputeLocation
+	}
+	return
+}
+
+func (a *AKS) GetCreatedOn() (rv *time.Time) {
+	if a != nil {
+		return a.CreatedOn
+	}
+	return
+}
+
+func (a *AKS) GetIsAttachedCompute() (rv bool) {
+	if a != nil && a.IsAttachedCompute != nil {
+		return *a.IsAttachedCompute
+	}
+	return
+}
+
+func (a *AKS) GetModifiedOn() (rv *time.Time) {
+	if a != nil {
+		return a.ModifiedOn
+	}
+	return
+}
+
+func (a *AKS) GetProvisioningErrors() (rv []*ErrorResponse) {
+	if a != nil {
+		return a.ProvisioningErrors
+	}
+	return
+}
+
+func (a *AKS) GetProvisioningState() (rv *ProvisioningState) {
+	if a != nil {
+		return a.ProvisioningState
+	}
+	return
+}
+
 // GetCompute implements the ComputeClassification interface for type AKS.
 func (a *AKS) GetCompute() *Compute {
 	return &Compute{
@@ -93,6 +170,69 @@ type AKSSchemaProperties struct {
 	SystemServices []*SystemService
 }
 
+func (a *AKSSchemaProperties) GetAgentCount() (rv int32) {
+	if a != nil && a.AgentCount != nil {
+		return *a.AgentCount
+	}
+	return
+}
+
+func (a *AKSSchemaProperties) GetAgentVMSize() (rv string) {
+	if a != nil && a.AgentVMSize != nil {
+		return *a.AgentVMSize
+	}
+	return
+}
+
+func (a *AKSSchemaProperties) GetAksNetworkingConfiguration() (rv *AksNetworkingConfiguration) {
+	if a != nil {
+		return a.AksNetworkingConfiguration
+	}
+	return
+}
+
+func (a *AKSSchemaProperties) GetClusterFqdn() (rv string) {
+	if a != nil && a.ClusterFqdn != nil {
+		return *a.ClusterFqdn
+	}
+	return
+}
+
+func (a *AKSSchemaProperties) GetClusterPurpose() (rv *ClusterPurpose) {
+	if a != nil {
+		return a.ClusterPurpose
+	}
+	return
+}
+
+func (a *AKSSchemaProperties) GetLoadBalancerSubnet() (rv string) {
+	if a != nil && a.LoadBalancerSubnet != nil {
+		return *a.LoadBalancerSubnet
+	}
+	return
+}
+
+func (a *AKSSchemaProperties) GetLoadBalancerType() (rv *LoadBalancerType) {
+	if a != nil {
+		return a.LoadBalancerType
+	}
+	return
+}
+
+func (a *AKSSchemaProperties) GetSSLConfiguration() (rv *SSLConfiguration) {
+	if a != nil {
+		return a.SSLConfiguration
+	}
+	return
+}
+
+func (a *AKSSchemaProperties) GetSystemServices() (rv []*SystemService) {
+	if a != nil {
+		return a.SystemServices
+	}
+	return
+}
+
 // AccountKeyDatastoreCredentials - Account key datastore credentials configuration.
 type AccountKeyDatastoreCredentials struct {
 	// REQUIRED; [Required] Credential type used to authentication with storage.
@@ -100,6 +240,20 @@ type AccountKeyDatastoreCredentials struct {
 
 	// REQUIRED; [Required] Storage account secrets.
 	Secrets *AccountKeyDatastoreSecrets
+}
+
+func (a *AccountKeyDatastoreCredentials) GetCredentialsType() (rv *CredentialsType) {
+	if a != nil {
+		return a.CredentialsType
+	}
+	return
+}
+
+func (a *AccountKeyDatastoreCredentials) GetSecrets() (rv *AccountKeyDatastoreSecrets) {
+	if a != nil {
+		return a.Secrets
+	}
+	return
 }
 
 // GetDatastoreCredentials implements the DatastoreCredentialsClassification interface for type AccountKeyDatastoreCredentials.
@@ -116,6 +270,20 @@ type AccountKeyDatastoreSecrets struct {
 
 	// Storage account key.
 	Key *string
+}
+
+func (a *AccountKeyDatastoreSecrets) GetSecretsType() (rv *SecretsType) {
+	if a != nil {
+		return a.SecretsType
+	}
+	return
+}
+
+func (a *AccountKeyDatastoreSecrets) GetKey() (rv string) {
+	if a != nil && a.Key != nil {
+		return *a.Key
+	}
+	return
 }
 
 // GetDatastoreSecrets implements the DatastoreSecretsClassification interface for type AccountKeyDatastoreSecrets.
@@ -140,6 +308,34 @@ type AksComputeSecrets struct {
 	UserKubeConfig *string
 }
 
+func (a *AksComputeSecrets) GetComputeType() (rv *ComputeType) {
+	if a != nil {
+		return a.ComputeType
+	}
+	return
+}
+
+func (a *AksComputeSecrets) GetAdminKubeConfig() (rv string) {
+	if a != nil && a.AdminKubeConfig != nil {
+		return *a.AdminKubeConfig
+	}
+	return
+}
+
+func (a *AksComputeSecrets) GetImagePullSecretName() (rv string) {
+	if a != nil && a.ImagePullSecretName != nil {
+		return *a.ImagePullSecretName
+	}
+	return
+}
+
+func (a *AksComputeSecrets) GetUserKubeConfig() (rv string) {
+	if a != nil && a.UserKubeConfig != nil {
+		return *a.UserKubeConfig
+	}
+	return
+}
+
 // GetComputeSecrets implements the ComputeSecretsClassification interface for type AksComputeSecrets.
 func (a *AksComputeSecrets) GetComputeSecrets() *ComputeSecrets {
 	return &ComputeSecrets{
@@ -162,6 +358,34 @@ type AksNetworkingConfiguration struct {
 
 	// Virtual network subnet resource ID the compute nodes belong to
 	SubnetID *string
+}
+
+func (a *AksNetworkingConfiguration) GetDNSServiceIP() (rv string) {
+	if a != nil && a.DNSServiceIP != nil {
+		return *a.DNSServiceIP
+	}
+	return
+}
+
+func (a *AksNetworkingConfiguration) GetDockerBridgeCidr() (rv string) {
+	if a != nil && a.DockerBridgeCidr != nil {
+		return *a.DockerBridgeCidr
+	}
+	return
+}
+
+func (a *AksNetworkingConfiguration) GetServiceCidr() (rv string) {
+	if a != nil && a.ServiceCidr != nil {
+		return *a.ServiceCidr
+	}
+	return
+}
+
+func (a *AksNetworkingConfiguration) GetSubnetID() (rv string) {
+	if a != nil && a.SubnetID != nil {
+		return *a.SubnetID
+	}
+	return
 }
 
 // AmlCompute - An Azure Machine Learning compute.
@@ -201,6 +425,83 @@ type AmlCompute struct {
 	ProvisioningState *ProvisioningState
 }
 
+func (a *AmlCompute) GetComputeType() (rv *ComputeType) {
+	if a != nil {
+		return a.ComputeType
+	}
+	return
+}
+
+func (a *AmlCompute) GetDescription() (rv string) {
+	if a != nil && a.Description != nil {
+		return *a.Description
+	}
+	return
+}
+
+func (a *AmlCompute) GetDisableLocalAuth() (rv bool) {
+	if a != nil && a.DisableLocalAuth != nil {
+		return *a.DisableLocalAuth
+	}
+	return
+}
+
+func (a *AmlCompute) GetProperties() (rv *AmlComputeProperties) {
+	if a != nil {
+		return a.Properties
+	}
+	return
+}
+
+func (a *AmlCompute) GetResourceID() (rv string) {
+	if a != nil && a.ResourceID != nil {
+		return *a.ResourceID
+	}
+	return
+}
+
+func (a *AmlCompute) GetComputeLocation() (rv string) {
+	if a != nil && a.ComputeLocation != nil {
+		return *a.ComputeLocation
+	}
+	return
+}
+
+func (a *AmlCompute) GetCreatedOn() (rv *time.Time) {
+	if a != nil {
+		return a.CreatedOn
+	}
+	return
+}
+
+func (a *AmlCompute) GetIsAttachedCompute() (rv bool) {
+	if a != nil && a.IsAttachedCompute != nil {
+		return *a.IsAttachedCompute
+	}
+	return
+}
+
+func (a *AmlCompute) GetModifiedOn() (rv *time.Time) {
+	if a != nil {
+		return a.ModifiedOn
+	}
+	return
+}
+
+func (a *AmlCompute) GetProvisioningErrors() (rv []*ErrorResponse) {
+	if a != nil {
+		return a.ProvisioningErrors
+	}
+	return
+}
+
+func (a *AmlCompute) GetProvisioningState() (rv *ProvisioningState) {
+	if a != nil {
+		return a.ProvisioningState
+	}
+	return
+}
+
 // GetCompute implements the ComputeClassification interface for type AmlCompute.
 func (a *AmlCompute) GetCompute() *Compute {
 	return &Compute{
@@ -238,6 +539,48 @@ type AmlComputeNodeInformation struct {
 	RunID *string
 }
 
+func (a *AmlComputeNodeInformation) GetNodeID() (rv string) {
+	if a != nil && a.NodeID != nil {
+		return *a.NodeID
+	}
+	return
+}
+
+func (a *AmlComputeNodeInformation) GetNodeState() (rv *NodeState) {
+	if a != nil {
+		return a.NodeState
+	}
+	return
+}
+
+func (a *AmlComputeNodeInformation) GetPort() (rv int32) {
+	if a != nil && a.Port != nil {
+		return *a.Port
+	}
+	return
+}
+
+func (a *AmlComputeNodeInformation) GetPrivateIPAddress() (rv string) {
+	if a != nil && a.PrivateIPAddress != nil {
+		return *a.PrivateIPAddress
+	}
+	return
+}
+
+func (a *AmlComputeNodeInformation) GetPublicIPAddress() (rv string) {
+	if a != nil && a.PublicIPAddress != nil {
+		return *a.PublicIPAddress
+	}
+	return
+}
+
+func (a *AmlComputeNodeInformation) GetRunID() (rv string) {
+	if a != nil && a.RunID != nil {
+		return *a.RunID
+	}
+	return
+}
+
 // AmlComputeNodesInformation - Result of AmlCompute Nodes
 type AmlComputeNodesInformation struct {
 	// READ-ONLY; The continuation token.
@@ -245,6 +588,20 @@ type AmlComputeNodesInformation struct {
 
 	// READ-ONLY; The collection of returned AmlCompute nodes details.
 	Nodes []*AmlComputeNodeInformation
+}
+
+func (a *AmlComputeNodesInformation) GetNextLink() (rv string) {
+	if a != nil && a.NextLink != nil {
+		return *a.NextLink
+	}
+	return
+}
+
+func (a *AmlComputeNodesInformation) GetNodes() (rv []*AmlComputeNodeInformation) {
+	if a != nil {
+		return a.Nodes
+	}
+	return
 }
 
 // AmlComputeProperties - AML Compute properties
@@ -313,6 +670,125 @@ type AmlComputeProperties struct {
 	TargetNodeCount *int32
 }
 
+func (a *AmlComputeProperties) GetEnableNodePublicIP() (rv bool) {
+	if a != nil && a.EnableNodePublicIP != nil {
+		return *a.EnableNodePublicIP
+	}
+	return
+}
+
+func (a *AmlComputeProperties) GetIsolatedNetwork() (rv bool) {
+	if a != nil && a.IsolatedNetwork != nil {
+		return *a.IsolatedNetwork
+	}
+	return
+}
+
+func (a *AmlComputeProperties) GetOSType() (rv *OsType) {
+	if a != nil {
+		return a.OSType
+	}
+	return
+}
+
+func (a *AmlComputeProperties) GetPropertyBag() (rv map[string]any) {
+	if a != nil {
+		return a.PropertyBag
+	}
+	return
+}
+
+func (a *AmlComputeProperties) GetRemoteLoginPortPublicAccess() (rv *RemoteLoginPortPublicAccess) {
+	if a != nil {
+		return a.RemoteLoginPortPublicAccess
+	}
+	return
+}
+
+func (a *AmlComputeProperties) GetScaleSettings() (rv *ScaleSettings) {
+	if a != nil {
+		return a.ScaleSettings
+	}
+	return
+}
+
+func (a *AmlComputeProperties) GetSubnet() (rv *ResourceID) {
+	if a != nil {
+		return a.Subnet
+	}
+	return
+}
+
+func (a *AmlComputeProperties) GetUserAccountCredentials() (rv *UserAccountCredentials) {
+	if a != nil {
+		return a.UserAccountCredentials
+	}
+	return
+}
+
+func (a *AmlComputeProperties) GetVMPriority() (rv *VMPriority) {
+	if a != nil {
+		return a.VMPriority
+	}
+	return
+}
+
+func (a *AmlComputeProperties) GetVMSize() (rv string) {
+	if a != nil && a.VMSize != nil {
+		return *a.VMSize
+	}
+	return
+}
+
+func (a *AmlComputeProperties) GetVirtualMachineImage() (rv *VirtualMachineImage) {
+	if a != nil {
+		return a.VirtualMachineImage
+	}
+	return
+}
+
+func (a *AmlComputeProperties) GetAllocationState() (rv *AllocationState) {
+	if a != nil {
+		return a.AllocationState
+	}
+	return
+}
+
+func (a *AmlComputeProperties) GetAllocationStateTransitionTime() (rv *time.Time) {
+	if a != nil {
+		return a.AllocationStateTransitionTime
+	}
+	return
+}
+
+func (a *AmlComputeProperties) GetCurrentNodeCount() (rv int32) {
+	if a != nil && a.CurrentNodeCount != nil {
+		return *a.CurrentNodeCount
+	}
+	return
+}
+
+func (a *AmlComputeProperties) GetErrors() (rv []*ErrorResponse) {
+	if a != nil {
+		return a.Errors
+	}
+	return
+}
+
+func (a *AmlComputeProperties) GetNodeStateCounts() (rv *NodeStateCounts) {
+	if a != nil {
+		return a.NodeStateCounts
+	}
+	return
+}
+
+func (a *AmlComputeProperties) GetTargetNodeCount() (rv int32) {
+	if a != nil && a.TargetNodeCount != nil {
+		return *a.TargetNodeCount
+	}
+	return
+}
+
 // AmlOperation - Azure Machine Learning workspace REST API operation
 type AmlOperation struct {
 	// Display name of operation
@@ -323,6 +799,27 @@ type AmlOperation struct {
 
 	// Operation name: {provider}/{resource}/{operation}
 	Name *string
+}
+
+func (a *AmlOperation) GetDisplay() (rv *AmlOperationDisplay) {
+	if a != nil {
+		return a.Display
+	}
+	return
+}
+
+func (a *AmlOperation) GetIsDataAction() (rv bool) {
+	if a != nil && a.IsDataAction != nil {
+		return *a.IsDataAction
+	}
+	return
+}
+
+func (a *AmlOperation) GetName() (rv string) {
+	if a != nil && a.Name != nil {
+		return *a.Name
+	}
+	return
 }
 
 // AmlOperationDisplay - Display name of operation
@@ -340,16 +837,58 @@ type AmlOperationDisplay struct {
 	Resource *string
 }
 
+func (a *AmlOperationDisplay) GetDescription() (rv string) {
+	if a != nil && a.Description != nil {
+		return *a.Description
+	}
+	return
+}
+
+func (a *AmlOperationDisplay) GetOperation() (rv string) {
+	if a != nil && a.Operation != nil {
+		return *a.Operation
+	}
+	return
+}
+
+func (a *AmlOperationDisplay) GetProvider() (rv string) {
+	if a != nil && a.Provider != nil {
+		return *a.Provider
+	}
+	return
+}
+
+func (a *AmlOperationDisplay) GetResource() (rv string) {
+	if a != nil && a.Resource != nil {
+		return *a.Resource
+	}
+	return
+}
+
 // AmlOperationListResult - An array of operations supported by the resource provider.
 type AmlOperationListResult struct {
 	// List of AML workspace operations supported by the AML workspace resource provider.
 	Value []*AmlOperation
 }
 
+func (a *AmlOperationListResult) GetValue() (rv []*AmlOperation) {
+	if a != nil {
+		return a.Value
+	}
+	return
+}
+
 // AmlToken - AML Token identity configuration.
 type AmlToken struct {
 	// REQUIRED; [Required] Specifies the type of identity framework.
 	IdentityType *IdentityConfigurationType
+}
+
+func (a *AmlToken) GetIdentityType() (rv *IdentityConfigurationType) {
+	if a != nil {
+		return a.IdentityType
+	}
+	return
 }
 
 // GetIdentityConfiguration implements the IdentityConfigurationClassification interface for type AmlToken.
@@ -371,10 +910,38 @@ type AmlUserFeature struct {
 	ID *string
 }
 
+func (a *AmlUserFeature) GetDescription() (rv string) {
+	if a != nil && a.Description != nil {
+		return *a.Description
+	}
+	return
+}
+
+func (a *AmlUserFeature) GetDisplayName() (rv string) {
+	if a != nil && a.DisplayName != nil {
+		return *a.DisplayName
+	}
+	return
+}
+
+func (a *AmlUserFeature) GetID() (rv string) {
+	if a != nil && a.ID != nil {
+		return *a.ID
+	}
+	return
+}
+
 // AssetReferenceBase - Base definition for asset references.
 type AssetReferenceBase struct {
 	// REQUIRED; [Required] Specifies the type of asset reference.
 	ReferenceType *ReferenceType
+}
+
+func (a *AssetReferenceBase) GetReferenceType() (rv *ReferenceType) {
+	if a != nil {
+		return a.ReferenceType
+	}
+	return
 }
 
 // GetAssetReferenceBase implements the AssetReferenceBaseClassification interface for type AssetReferenceBase.
@@ -389,10 +956,31 @@ type AssignedUser struct {
 	TenantID *string
 }
 
+func (a *AssignedUser) GetObjectID() (rv string) {
+	if a != nil && a.ObjectID != nil {
+		return *a.ObjectID
+	}
+	return
+}
+
+func (a *AssignedUser) GetTenantID() (rv string) {
+	if a != nil && a.TenantID != nil {
+		return *a.TenantID
+	}
+	return
+}
+
 // AutoForecastHorizon - Forecast horizon determined automatically by system.
 type AutoForecastHorizon struct {
 	// REQUIRED; [Required] Set forecast horizon value selection mode.
 	Mode *ForecastHorizonMode
+}
+
+func (a *AutoForecastHorizon) GetMode() (rv *ForecastHorizonMode) {
+	if a != nil {
+		return a.Mode
+	}
+	return
 }
 
 // GetForecastHorizon implements the ForecastHorizonClassification interface for type AutoForecastHorizon.
@@ -460,6 +1048,125 @@ type AutoMLJob struct {
 	Status *JobStatus
 }
 
+func (a *AutoMLJob) GetJobType() (rv *JobType) {
+	if a != nil {
+		return a.JobType
+	}
+	return
+}
+
+func (a *AutoMLJob) GetTaskDetails() (rv AutoMLVerticalClassification) {
+	if a != nil {
+		return a.TaskDetails
+	}
+	return
+}
+
+func (a *AutoMLJob) GetComputeID() (rv string) {
+	if a != nil && a.ComputeID != nil {
+		return *a.ComputeID
+	}
+	return
+}
+
+func (a *AutoMLJob) GetDescription() (rv string) {
+	if a != nil && a.Description != nil {
+		return *a.Description
+	}
+	return
+}
+
+func (a *AutoMLJob) GetDisplayName() (rv string) {
+	if a != nil && a.DisplayName != nil {
+		return *a.DisplayName
+	}
+	return
+}
+
+func (a *AutoMLJob) GetEnvironmentID() (rv string) {
+	if a != nil && a.EnvironmentID != nil {
+		return *a.EnvironmentID
+	}
+	return
+}
+
+func (a *AutoMLJob) GetEnvironmentVariables() (rv map[string]*string) {
+	if a != nil {
+		return a.EnvironmentVariables
+	}
+	return
+}
+
+func (a *AutoMLJob) GetExperimentName() (rv string) {
+	if a != nil && a.ExperimentName != nil {
+		return *a.ExperimentName
+	}
+	return
+}
+
+func (a *AutoMLJob) GetIdentity() (rv IdentityConfigurationClassification) {
+	if a != nil {
+		return a.Identity
+	}
+	return
+}
+
+func (a *AutoMLJob) GetIsArchived() (rv bool) {
+	if a != nil && a.IsArchived != nil {
+		return *a.IsArchived
+	}
+	return
+}
+
+func (a *AutoMLJob) GetOutputs() (rv map[string]JobOutputClassification) {
+	if a != nil {
+		return a.Outputs
+	}
+	return
+}
+
+func (a *AutoMLJob) GetProperties() (rv map[string]*string) {
+	if a != nil {
+		return a.Properties
+	}
+	return
+}
+
+func (a *AutoMLJob) GetResources() (rv *ResourceConfiguration) {
+	if a != nil {
+		return a.Resources
+	}
+	return
+}
+
+func (a *AutoMLJob) GetSchedule() (rv ScheduleBaseClassification) {
+	if a != nil {
+		return a.Schedule
+	}
+	return
+}
+
+func (a *AutoMLJob) GetServices() (rv map[string]*JobService) {
+	if a != nil {
+		return a.Services
+	}
+	return
+}
+
+func (a *AutoMLJob) GetTags() (rv map[string]*string) {
+	if a != nil {
+		return a.Tags
+	}
+	return
+}
+
+func (a *AutoMLJob) GetStatus() (rv *JobStatus) {
+	if a != nil {
+		return a.Status
+	}
+	return
+}
+
 // GetJobBaseDetails implements the JobBaseDetailsClassification interface for type AutoMLJob.
 func (a *AutoMLJob) GetJobBaseDetails() *JobBaseDetails {
 	return &JobBaseDetails{
@@ -487,6 +1194,20 @@ type AutoMLVertical struct {
 	LogVerbosity *LogVerbosity
 }
 
+func (a *AutoMLVertical) GetTaskType() (rv *TaskType) {
+	if a != nil {
+		return a.TaskType
+	}
+	return
+}
+
+func (a *AutoMLVertical) GetLogVerbosity() (rv *LogVerbosity) {
+	if a != nil {
+		return a.LogVerbosity
+	}
+	return
+}
+
 // GetAutoMLVertical implements the AutoMLVerticalClassification interface for type AutoMLVertical.
 func (a *AutoMLVertical) GetAutoMLVertical() *AutoMLVertical { return a }
 
@@ -494,6 +1215,13 @@ func (a *AutoMLVertical) GetAutoMLVertical() *AutoMLVertical { return a }
 type AutoNCrossValidations struct {
 	// REQUIRED; [Required] Mode for determining N-Cross validations.
 	Mode *NCrossValidationsMode
+}
+
+func (a *AutoNCrossValidations) GetMode() (rv *NCrossValidationsMode) {
+	if a != nil {
+		return a.Mode
+	}
+	return
 }
 
 // GetNCrossValidations implements the NCrossValidationsClassification interface for type AutoNCrossValidations.
@@ -509,6 +1237,20 @@ type AutoPauseProperties struct {
 	Enabled        *bool
 }
 
+func (a *AutoPauseProperties) GetDelayInMinutes() (rv int32) {
+	if a != nil && a.DelayInMinutes != nil {
+		return *a.DelayInMinutes
+	}
+	return
+}
+
+func (a *AutoPauseProperties) GetEnabled() (rv bool) {
+	if a != nil && a.Enabled != nil {
+		return *a.Enabled
+	}
+	return
+}
+
 // AutoScaleProperties - Auto scale properties
 type AutoScaleProperties struct {
 	Enabled      *bool
@@ -516,9 +1258,37 @@ type AutoScaleProperties struct {
 	MinNodeCount *int32
 }
 
+func (a *AutoScaleProperties) GetEnabled() (rv bool) {
+	if a != nil && a.Enabled != nil {
+		return *a.Enabled
+	}
+	return
+}
+
+func (a *AutoScaleProperties) GetMaxNodeCount() (rv int32) {
+	if a != nil && a.MaxNodeCount != nil {
+		return *a.MaxNodeCount
+	}
+	return
+}
+
+func (a *AutoScaleProperties) GetMinNodeCount() (rv int32) {
+	if a != nil && a.MinNodeCount != nil {
+		return *a.MinNodeCount
+	}
+	return
+}
+
 type AutoSeasonality struct {
 	// REQUIRED; [Required] Seasonality mode.
 	Mode *SeasonalityMode
+}
+
+func (a *AutoSeasonality) GetMode() (rv *SeasonalityMode) {
+	if a != nil {
+		return a.Mode
+	}
+	return
 }
 
 // GetSeasonality implements the SeasonalityClassification interface for type AutoSeasonality.
@@ -533,6 +1303,13 @@ type AutoTargetLags struct {
 	Mode *TargetLagsMode
 }
 
+func (a *AutoTargetLags) GetMode() (rv *TargetLagsMode) {
+	if a != nil {
+		return a.Mode
+	}
+	return
+}
+
 // GetTargetLags implements the TargetLagsClassification interface for type AutoTargetLags.
 func (a *AutoTargetLags) GetTargetLags() *TargetLags {
 	return &TargetLags{
@@ -544,6 +1321,13 @@ func (a *AutoTargetLags) GetTargetLags() *TargetLags {
 type AutoTargetRollingWindowSize struct {
 	// REQUIRED; [Required] TargetRollingWindowSiz detection mode.
 	Mode *TargetRollingWindowSizeMode
+}
+
+func (a *AutoTargetRollingWindowSize) GetMode() (rv *TargetRollingWindowSizeMode) {
+	if a != nil {
+		return a.Mode
+	}
+	return
 }
 
 // GetTargetRollingWindowSize implements the TargetRollingWindowSizeClassification interface for type AutoTargetRollingWindowSize.
@@ -589,6 +1373,83 @@ type AzureBlobDatastore struct {
 	IsDefault *bool
 }
 
+func (a *AzureBlobDatastore) GetCredentials() (rv DatastoreCredentialsClassification) {
+	if a != nil {
+		return a.Credentials
+	}
+	return
+}
+
+func (a *AzureBlobDatastore) GetDatastoreType() (rv *DatastoreType) {
+	if a != nil {
+		return a.DatastoreType
+	}
+	return
+}
+
+func (a *AzureBlobDatastore) GetAccountName() (rv string) {
+	if a != nil && a.AccountName != nil {
+		return *a.AccountName
+	}
+	return
+}
+
+func (a *AzureBlobDatastore) GetContainerName() (rv string) {
+	if a != nil && a.ContainerName != nil {
+		return *a.ContainerName
+	}
+	return
+}
+
+func (a *AzureBlobDatastore) GetDescription() (rv string) {
+	if a != nil && a.Description != nil {
+		return *a.Description
+	}
+	return
+}
+
+func (a *AzureBlobDatastore) GetEndpoint() (rv string) {
+	if a != nil && a.Endpoint != nil {
+		return *a.Endpoint
+	}
+	return
+}
+
+func (a *AzureBlobDatastore) GetProperties() (rv map[string]*string) {
+	if a != nil {
+		return a.Properties
+	}
+	return
+}
+
+func (a *AzureBlobDatastore) GetProtocol() (rv string) {
+	if a != nil && a.Protocol != nil {
+		return *a.Protocol
+	}
+	return
+}
+
+func (a *AzureBlobDatastore) GetServiceDataAccessAuthIdentity() (rv *ServiceDataAccessAuthIdentity) {
+	if a != nil {
+		return a.ServiceDataAccessAuthIdentity
+	}
+	return
+}
+
+func (a *AzureBlobDatastore) GetTags() (rv map[string]*string) {
+	if a != nil {
+		return a.Tags
+	}
+	return
+}
+
+func (a *AzureBlobDatastore) GetIsDefault() (rv bool) {
+	if a != nil && a.IsDefault != nil {
+		return *a.IsDefault
+	}
+	return
+}
+
 // GetDatastoreDetails implements the DatastoreDetailsClassification interface for type AzureBlobDatastore.
 func (a *AzureBlobDatastore) GetDatastoreDetails() *DatastoreDetails {
 	return &DatastoreDetails{
@@ -626,6 +1487,62 @@ type AzureDataLakeGen1Datastore struct {
 
 	// READ-ONLY; Readonly property to indicate if datastore is the workspace default datastore
 	IsDefault *bool
+}
+
+func (a *AzureDataLakeGen1Datastore) GetCredentials() (rv DatastoreCredentialsClassification) {
+	if a != nil {
+		return a.Credentials
+	}
+	return
+}
+
+func (a *AzureDataLakeGen1Datastore) GetDatastoreType() (rv *DatastoreType) {
+	if a != nil {
+		return a.DatastoreType
+	}
+	return
+}
+
+func (a *AzureDataLakeGen1Datastore) GetStoreName() (rv string) {
+	if a != nil && a.StoreName != nil {
+		return *a.StoreName
+	}
+	return
+}
+
+func (a *AzureDataLakeGen1Datastore) GetDescription() (rv string) {
+	if a != nil && a.Description != nil {
+		return *a.Description
+	}
+	return
+}
+
+func (a *AzureDataLakeGen1Datastore) GetProperties() (rv map[string]*string) {
+	if a != nil {
+		return a.Properties
+	}
+	return
+}
+
+func (a *AzureDataLakeGen1Datastore) GetServiceDataAccessAuthIdentity() (rv *ServiceDataAccessAuthIdentity) {
+	if a != nil {
+		return a.ServiceDataAccessAuthIdentity
+	}
+	return
+}
+
+func (a *AzureDataLakeGen1Datastore) GetTags() (rv map[string]*string) {
+	if a != nil {
+		return a.Tags
+	}
+	return
+}
+
+func (a *AzureDataLakeGen1Datastore) GetIsDefault() (rv bool) {
+	if a != nil && a.IsDefault != nil {
+		return *a.IsDefault
+	}
+	return
 }
 
 // GetDatastoreDetails implements the DatastoreDetailsClassification interface for type AzureDataLakeGen1Datastore.
@@ -676,6 +1593,83 @@ type AzureDataLakeGen2Datastore struct {
 	IsDefault *bool
 }
 
+func (a *AzureDataLakeGen2Datastore) GetAccountName() (rv string) {
+	if a != nil && a.AccountName != nil {
+		return *a.AccountName
+	}
+	return
+}
+
+func (a *AzureDataLakeGen2Datastore) GetCredentials() (rv DatastoreCredentialsClassification) {
+	if a != nil {
+		return a.Credentials
+	}
+	return
+}
+
+func (a *AzureDataLakeGen2Datastore) GetDatastoreType() (rv *DatastoreType) {
+	if a != nil {
+		return a.DatastoreType
+	}
+	return
+}
+
+func (a *AzureDataLakeGen2Datastore) GetFilesystem() (rv string) {
+	if a != nil && a.Filesystem != nil {
+		return *a.Filesystem
+	}
+	return
+}
+
+func (a *AzureDataLakeGen2Datastore) GetDescription() (rv string) {
+	if a != nil && a.Description != nil {
+		return *a.Description
+	}
+	return
+}
+
+func (a *AzureDataLakeGen2Datastore) GetEndpoint() (rv string) {
+	if a != nil && a.Endpoint != nil {
+		return *a.Endpoint
+	}
+	return
+}
+
+func (a *AzureDataLakeGen2Datastore) GetProperties() (rv map[string]*string) {
+	if a != nil {
+		return a.Properties
+	}
+	return
+}
+
+func (a *AzureDataLakeGen2Datastore) GetProtocol() (rv string) {
+	if a != nil && a.Protocol != nil {
+		return *a.Protocol
+	}
+	return
+}
+
+func (a *AzureDataLakeGen2Datastore) GetServiceDataAccessAuthIdentity() (rv *ServiceDataAccessAuthIdentity) {
+	if a != nil {
+		return a.ServiceDataAccessAuthIdentity
+	}
+	return
+}
+
+func (a *AzureDataLakeGen2Datastore) GetTags() (rv map[string]*string) {
+	if a != nil {
+		return a.Tags
+	}
+	return
+}
+
+func (a *AzureDataLakeGen2Datastore) GetIsDefault() (rv bool) {
+	if a != nil && a.IsDefault != nil {
+		return *a.IsDefault
+	}
+	return
+}
+
 // GetDatastoreDetails implements the DatastoreDetailsClassification interface for type AzureDataLakeGen2Datastore.
 func (a *AzureDataLakeGen2Datastore) GetDatastoreDetails() *DatastoreDetails {
 	return &DatastoreDetails{
@@ -724,6 +1718,83 @@ type AzureFileDatastore struct {
 	IsDefault *bool
 }
 
+func (a *AzureFileDatastore) GetAccountName() (rv string) {
+	if a != nil && a.AccountName != nil {
+		return *a.AccountName
+	}
+	return
+}
+
+func (a *AzureFileDatastore) GetCredentials() (rv DatastoreCredentialsClassification) {
+	if a != nil {
+		return a.Credentials
+	}
+	return
+}
+
+func (a *AzureFileDatastore) GetDatastoreType() (rv *DatastoreType) {
+	if a != nil {
+		return a.DatastoreType
+	}
+	return
+}
+
+func (a *AzureFileDatastore) GetFileShareName() (rv string) {
+	if a != nil && a.FileShareName != nil {
+		return *a.FileShareName
+	}
+	return
+}
+
+func (a *AzureFileDatastore) GetDescription() (rv string) {
+	if a != nil && a.Description != nil {
+		return *a.Description
+	}
+	return
+}
+
+func (a *AzureFileDatastore) GetEndpoint() (rv string) {
+	if a != nil && a.Endpoint != nil {
+		return *a.Endpoint
+	}
+	return
+}
+
+func (a *AzureFileDatastore) GetProperties() (rv map[string]*string) {
+	if a != nil {
+		return a.Properties
+	}
+	return
+}
+
+func (a *AzureFileDatastore) GetProtocol() (rv string) {
+	if a != nil && a.Protocol != nil {
+		return *a.Protocol
+	}
+	return
+}
+
+func (a *AzureFileDatastore) GetServiceDataAccessAuthIdentity() (rv *ServiceDataAccessAuthIdentity) {
+	if a != nil {
+		return a.ServiceDataAccessAuthIdentity
+	}
+	return
+}
+
+func (a *AzureFileDatastore) GetTags() (rv map[string]*string) {
+	if a != nil {
+		return a.Tags
+	}
+	return
+}
+
+func (a *AzureFileDatastore) GetIsDefault() (rv bool) {
+	if a != nil && a.IsDefault != nil {
+		return *a.IsDefault
+	}
+	return
+}
+
 // GetDatastoreDetails implements the DatastoreDetailsClassification interface for type AzureFileDatastore.
 func (a *AzureFileDatastore) GetDatastoreDetails() *DatastoreDetails {
 	return &DatastoreDetails{
@@ -752,6 +1823,41 @@ type BanditPolicy struct {
 
 	// Ratio of the allowed distance from the best performing run.
 	SlackFactor *float32
+}
+
+func (b *BanditPolicy) GetPolicyType() (rv *EarlyTerminationPolicyType) {
+	if b != nil {
+		return b.PolicyType
+	}
+	return
+}
+
+func (b *BanditPolicy) GetDelayEvaluation() (rv int32) {
+	if b != nil && b.DelayEvaluation != nil {
+		return *b.DelayEvaluation
+	}
+	return
+}
+
+func (b *BanditPolicy) GetEvaluationInterval() (rv int32) {
+	if b != nil && b.EvaluationInterval != nil {
+		return *b.EvaluationInterval
+	}
+	return
+}
+
+func (b *BanditPolicy) GetSlackAmount() (rv float32) {
+	if b != nil && b.SlackAmount != nil {
+		return *b.SlackAmount
+	}
+	return
+}
+
+func (b *BanditPolicy) GetSlackFactor() (rv float32) {
+	if b != nil && b.SlackFactor != nil {
+		return *b.SlackFactor
+	}
+	return
 }
 
 // GetEarlyTerminationPolicy implements the EarlyTerminationPolicyClassification interface for type BanditPolicy.
@@ -793,6 +1899,76 @@ type BatchDeploymentData struct {
 
 	// READ-ONLY; The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type *string
+}
+
+func (b *BatchDeploymentData) GetLocation() (rv string) {
+	if b != nil && b.Location != nil {
+		return *b.Location
+	}
+	return
+}
+
+func (b *BatchDeploymentData) GetProperties() (rv *BatchDeploymentDetails) {
+	if b != nil {
+		return b.Properties
+	}
+	return
+}
+
+func (b *BatchDeploymentData) GetIdentity() (rv *ManagedServiceIdentity) {
+	if b != nil {
+		return b.Identity
+	}
+	return
+}
+
+func (b *BatchDeploymentData) GetKind() (rv string) {
+	if b != nil && b.Kind != nil {
+		return *b.Kind
+	}
+	return
+}
+
+func (b *BatchDeploymentData) GetSKU() (rv *SKU) {
+	if b != nil {
+		return b.SKU
+	}
+	return
+}
+
+func (b *BatchDeploymentData) GetTags() (rv map[string]*string) {
+	if b != nil {
+		return b.Tags
+	}
+	return
+}
+
+func (b *BatchDeploymentData) GetID() (rv string) {
+	if b != nil && b.ID != nil {
+		return *b.ID
+	}
+	return
+}
+
+func (b *BatchDeploymentData) GetName() (rv string) {
+	if b != nil && b.Name != nil {
+		return *b.Name
+	}
+	return
+}
+
+func (b *BatchDeploymentData) GetSystemData() (rv *SystemData) {
+	if b != nil {
+		return b.SystemData
+	}
+	return
+}
+
+func (b *BatchDeploymentData) GetType() (rv string) {
+	if b != nil && b.Type != nil {
+		return *b.Type
+	}
+	return
 }
 
 // BatchDeploymentDetails - Batch inference settings per deployment.
@@ -850,6 +2026,118 @@ type BatchDeploymentDetails struct {
 	ProvisioningState *DeploymentProvisioningState
 }
 
+func (b *BatchDeploymentDetails) GetCodeConfiguration() (rv *CodeConfiguration) {
+	if b != nil {
+		return b.CodeConfiguration
+	}
+	return
+}
+
+func (b *BatchDeploymentDetails) GetCompute() (rv string) {
+	if b != nil && b.Compute != nil {
+		return *b.Compute
+	}
+	return
+}
+
+func (b *BatchDeploymentDetails) GetDescription() (rv string) {
+	if b != nil && b.Description != nil {
+		return *b.Description
+	}
+	return
+}
+
+func (b *BatchDeploymentDetails) GetEnvironmentID() (rv string) {
+	if b != nil && b.EnvironmentID != nil {
+		return *b.EnvironmentID
+	}
+	return
+}
+
+func (b *BatchDeploymentDetails) GetEnvironmentVariables() (rv map[string]*string) {
+	if b != nil {
+		return b.EnvironmentVariables
+	}
+	return
+}
+
+func (b *BatchDeploymentDetails) GetErrorThreshold() (rv int32) {
+	if b != nil && b.ErrorThreshold != nil {
+		return *b.ErrorThreshold
+	}
+	return
+}
+
+func (b *BatchDeploymentDetails) GetLoggingLevel() (rv *BatchLoggingLevel) {
+	if b != nil {
+		return b.LoggingLevel
+	}
+	return
+}
+
+func (b *BatchDeploymentDetails) GetMaxConcurrencyPerInstance() (rv int32) {
+	if b != nil && b.MaxConcurrencyPerInstance != nil {
+		return *b.MaxConcurrencyPerInstance
+	}
+	return
+}
+
+func (b *BatchDeploymentDetails) GetMiniBatchSize() (rv int64) {
+	if b != nil && b.MiniBatchSize != nil {
+		return *b.MiniBatchSize
+	}
+	return
+}
+
+func (b *BatchDeploymentDetails) GetModel() (rv AssetReferenceBaseClassification) {
+	if b != nil {
+		return b.Model
+	}
+	return
+}
+
+func (b *BatchDeploymentDetails) GetOutputAction() (rv *BatchOutputAction) {
+	if b != nil {
+		return b.OutputAction
+	}
+	return
+}
+
+func (b *BatchDeploymentDetails) GetOutputFileName() (rv string) {
+	if b != nil && b.OutputFileName != nil {
+		return *b.OutputFileName
+	}
+	return
+}
+
+func (b *BatchDeploymentDetails) GetProperties() (rv map[string]*string) {
+	if b != nil {
+		return b.Properties
+	}
+	return
+}
+
+func (b *BatchDeploymentDetails) GetResources() (rv *ResourceConfiguration) {
+	if b != nil {
+		return b.Resources
+	}
+	return
+}
+
+func (b *BatchDeploymentDetails) GetRetrySettings() (rv *BatchRetrySettings) {
+	if b != nil {
+		return b.RetrySettings
+	}
+	return
+}
+
+func (b *BatchDeploymentDetails) GetProvisioningState() (rv *DeploymentProvisioningState) {
+	if b != nil {
+		return b.ProvisioningState
+	}
+	return
+}
+
 // BatchDeploymentTrackedResourceArmPaginatedResult - A paginated list of BatchDeployment entities.
 type BatchDeploymentTrackedResourceArmPaginatedResult struct {
 	// The link to the next page of BatchDeployment objects. If null, there are no additional pages.
@@ -857,6 +2145,20 @@ type BatchDeploymentTrackedResourceArmPaginatedResult struct {
 
 	// An array of objects of type BatchDeployment.
 	Value []*BatchDeploymentData
+}
+
+func (b *BatchDeploymentTrackedResourceArmPaginatedResult) GetNextLink() (rv string) {
+	if b != nil && b.NextLink != nil {
+		return *b.NextLink
+	}
+	return
+}
+
+func (b *BatchDeploymentTrackedResourceArmPaginatedResult) GetValue() (rv []*BatchDeploymentData) {
+	if b != nil {
+		return b.Value
+	}
+	return
 }
 
 type BatchEndpointData struct {
@@ -891,11 +2193,88 @@ type BatchEndpointData struct {
 	Type *string
 }
 
+func (b *BatchEndpointData) GetLocation() (rv string) {
+	if b != nil && b.Location != nil {
+		return *b.Location
+	}
+	return
+}
+
+func (b *BatchEndpointData) GetProperties() (rv *BatchEndpointDetails) {
+	if b != nil {
+		return b.Properties
+	}
+	return
+}
+
+func (b *BatchEndpointData) GetIdentity() (rv *ManagedServiceIdentity) {
+	if b != nil {
+		return b.Identity
+	}
+	return
+}
+
+func (b *BatchEndpointData) GetKind() (rv string) {
+	if b != nil && b.Kind != nil {
+		return *b.Kind
+	}
+	return
+}
+
+func (b *BatchEndpointData) GetSKU() (rv *SKU) {
+	if b != nil {
+		return b.SKU
+	}
+	return
+}
+
+func (b *BatchEndpointData) GetTags() (rv map[string]*string) {
+	if b != nil {
+		return b.Tags
+	}
+	return
+}
+
+func (b *BatchEndpointData) GetID() (rv string) {
+	if b != nil && b.ID != nil {
+		return *b.ID
+	}
+	return
+}
+
+func (b *BatchEndpointData) GetName() (rv string) {
+	if b != nil && b.Name != nil {
+		return *b.Name
+	}
+	return
+}
+
+func (b *BatchEndpointData) GetSystemData() (rv *SystemData) {
+	if b != nil {
+		return b.SystemData
+	}
+	return
+}
+
+func (b *BatchEndpointData) GetType() (rv string) {
+	if b != nil && b.Type != nil {
+		return *b.Type
+	}
+	return
+}
+
 // BatchEndpointDefaults - Batch endpoint default values
 type BatchEndpointDefaults struct {
 	// Name of the deployment that will be default for the endpoint. This deployment will end up getting 100% traffic when the
 	// endpoint scoring URL is invoked.
 	DeploymentName *string
+}
+
+func (b *BatchEndpointDefaults) GetDeploymentName() (rv string) {
+	if b != nil && b.DeploymentName != nil {
+		return *b.DeploymentName
+	}
+	return
 }
 
 // BatchEndpointDetails - Batch endpoint configuration.
@@ -927,6 +2306,62 @@ type BatchEndpointDetails struct {
 	SwaggerURI *string
 }
 
+func (b *BatchEndpointDetails) GetAuthMode() (rv *EndpointAuthMode) {
+	if b != nil {
+		return b.AuthMode
+	}
+	return
+}
+
+func (b *BatchEndpointDetails) GetDefaults() (rv *BatchEndpointDefaults) {
+	if b != nil {
+		return b.Defaults
+	}
+	return
+}
+
+func (b *BatchEndpointDetails) GetDescription() (rv string) {
+	if b != nil && b.Description != nil {
+		return *b.Description
+	}
+	return
+}
+
+func (b *BatchEndpointDetails) GetKeys() (rv *EndpointAuthKeys) {
+	if b != nil {
+		return b.Keys
+	}
+	return
+}
+
+func (b *BatchEndpointDetails) GetProperties() (rv map[string]*string) {
+	if b != nil {
+		return b.Properties
+	}
+	return
+}
+
+func (b *BatchEndpointDetails) GetProvisioningState() (rv *EndpointProvisioningState) {
+	if b != nil {
+		return b.ProvisioningState
+	}
+	return
+}
+
+func (b *BatchEndpointDetails) GetScoringURI() (rv string) {
+	if b != nil && b.ScoringURI != nil {
+		return *b.ScoringURI
+	}
+	return
+}
+
+func (b *BatchEndpointDetails) GetSwaggerURI() (rv string) {
+	if b != nil && b.SwaggerURI != nil {
+		return *b.SwaggerURI
+	}
+	return
+}
+
 // BatchEndpointTrackedResourceArmPaginatedResult - A paginated list of BatchEndpoint entities.
 type BatchEndpointTrackedResourceArmPaginatedResult struct {
 	// The link to the next page of BatchEndpoint objects. If null, there are no additional pages.
@@ -934,6 +2369,20 @@ type BatchEndpointTrackedResourceArmPaginatedResult struct {
 
 	// An array of objects of type BatchEndpoint.
 	Value []*BatchEndpointData
+}
+
+func (b *BatchEndpointTrackedResourceArmPaginatedResult) GetNextLink() (rv string) {
+	if b != nil && b.NextLink != nil {
+		return *b.NextLink
+	}
+	return
+}
+
+func (b *BatchEndpointTrackedResourceArmPaginatedResult) GetValue() (rv []*BatchEndpointData) {
+	if b != nil {
+		return b.Value
+	}
+	return
 }
 
 // BatchRetrySettings - Retry settings for a batch inference operation.
@@ -945,10 +2394,31 @@ type BatchRetrySettings struct {
 	Timeout *string
 }
 
+func (b *BatchRetrySettings) GetMaxRetries() (rv int32) {
+	if b != nil && b.MaxRetries != nil {
+		return *b.MaxRetries
+	}
+	return
+}
+
+func (b *BatchRetrySettings) GetTimeout() (rv string) {
+	if b != nil && b.Timeout != nil {
+		return *b.Timeout
+	}
+	return
+}
+
 // BayesianSamplingAlgorithm - Defines a Sampling Algorithm that generates values based on previous values
 type BayesianSamplingAlgorithm struct {
 	// REQUIRED; [Required] The algorithm used for generating hyperparameter values, along with configuration properties
 	SamplingAlgorithmType *SamplingAlgorithmType
+}
+
+func (b *BayesianSamplingAlgorithm) GetSamplingAlgorithmType() (rv *SamplingAlgorithmType) {
+	if b != nil {
+		return b.SamplingAlgorithmType
+	}
+	return
 }
 
 // GetSamplingAlgorithm implements the SamplingAlgorithmClassification interface for type BayesianSamplingAlgorithm.
@@ -966,6 +2436,20 @@ type BuildContext struct {
 
 	// Path to the Dockerfile in the build context.
 	DockerfilePath *string
+}
+
+func (b *BuildContext) GetContextURI() (rv string) {
+	if b != nil && b.ContextURI != nil {
+		return *b.ContextURI
+	}
+	return
+}
+
+func (b *BuildContext) GetDockerfilePath() (rv string) {
+	if b != nil && b.DockerfilePath != nil {
+		return *b.DockerfilePath
+	}
+	return
 }
 
 // CertificateDatastoreCredentials - Certificate datastore credentials configuration.
@@ -992,6 +2476,55 @@ type CertificateDatastoreCredentials struct {
 	ResourceURL *string
 }
 
+func (c *CertificateDatastoreCredentials) GetClientID() (rv string) {
+	if c != nil && c.ClientID != nil {
+		return *c.ClientID
+	}
+	return
+}
+
+func (c *CertificateDatastoreCredentials) GetCredentialsType() (rv *CredentialsType) {
+	if c != nil {
+		return c.CredentialsType
+	}
+	return
+}
+
+func (c *CertificateDatastoreCredentials) GetSecrets() (rv *CertificateDatastoreSecrets) {
+	if c != nil {
+		return c.Secrets
+	}
+	return
+}
+
+func (c *CertificateDatastoreCredentials) GetTenantID() (rv string) {
+	if c != nil && c.TenantID != nil {
+		return *c.TenantID
+	}
+	return
+}
+
+func (c *CertificateDatastoreCredentials) GetThumbprint() (rv string) {
+	if c != nil && c.Thumbprint != nil {
+		return *c.Thumbprint
+	}
+	return
+}
+
+func (c *CertificateDatastoreCredentials) GetAuthorityURL() (rv string) {
+	if c != nil && c.AuthorityURL != nil {
+		return *c.AuthorityURL
+	}
+	return
+}
+
+func (c *CertificateDatastoreCredentials) GetResourceURL() (rv string) {
+	if c != nil && c.ResourceURL != nil {
+		return *c.ResourceURL
+	}
+	return
+}
+
 // GetDatastoreCredentials implements the DatastoreCredentialsClassification interface for type CertificateDatastoreCredentials.
 func (c *CertificateDatastoreCredentials) GetDatastoreCredentials() *DatastoreCredentials {
 	return &DatastoreCredentials{
@@ -1006,6 +2539,20 @@ type CertificateDatastoreSecrets struct {
 
 	// Service principal certificate.
 	Certificate *string
+}
+
+func (c *CertificateDatastoreSecrets) GetSecretsType() (rv *SecretsType) {
+	if c != nil {
+		return c.SecretsType
+	}
+	return
+}
+
+func (c *CertificateDatastoreSecrets) GetCertificate() (rv string) {
+	if c != nil && c.Certificate != nil {
+		return *c.Certificate
+	}
+	return
 }
 
 // GetDatastoreSecrets implements the DatastoreSecretsClassification interface for type CertificateDatastoreSecrets.
@@ -1045,6 +2592,69 @@ type Classification struct {
 	TrainingSettings *TrainingSettings
 }
 
+func (c *Classification) GetTaskType() (rv *TaskType) {
+	if c != nil {
+		return c.TaskType
+	}
+	return
+}
+
+func (c *Classification) GetAllowedModels() (rv []*ClassificationModels) {
+	if c != nil {
+		return c.AllowedModels
+	}
+	return
+}
+
+func (c *Classification) GetBlockedModels() (rv []*ClassificationModels) {
+	if c != nil {
+		return c.BlockedModels
+	}
+	return
+}
+
+func (c *Classification) GetDataSettings() (rv *TableVerticalDataSettings) {
+	if c != nil {
+		return c.DataSettings
+	}
+	return
+}
+
+func (c *Classification) GetFeaturizationSettings() (rv *TableVerticalFeaturizationSettings) {
+	if c != nil {
+		return c.FeaturizationSettings
+	}
+	return
+}
+
+func (c *Classification) GetLimitSettings() (rv *TableVerticalLimitSettings) {
+	if c != nil {
+		return c.LimitSettings
+	}
+	return
+}
+
+func (c *Classification) GetLogVerbosity() (rv *LogVerbosity) {
+	if c != nil {
+		return c.LogVerbosity
+	}
+	return
+}
+
+func (c *Classification) GetPrimaryMetric() (rv *ClassificationPrimaryMetrics) {
+	if c != nil {
+		return c.PrimaryMetric
+	}
+	return
+}
+
+func (c *Classification) GetTrainingSettings() (rv *TrainingSettings) {
+	if c != nil {
+		return c.TrainingSettings
+	}
+	return
+}
+
 // GetAutoMLVertical implements the AutoMLVerticalClassification interface for type Classification.
 func (c *Classification) GetAutoMLVertical() *AutoMLVertical {
 	return &AutoMLVertical{
@@ -1059,10 +2669,24 @@ type ClusterUpdateParameters struct {
 	Properties *ClusterUpdateProperties
 }
 
+func (c *ClusterUpdateParameters) GetProperties() (rv *ClusterUpdateProperties) {
+	if c != nil {
+		return c.Properties
+	}
+	return
+}
+
 // ClusterUpdateProperties - The properties of a amlCompute that need to be updated.
 type ClusterUpdateProperties struct {
 	// Properties of ClusterUpdate
 	Properties *ScaleSettingsInformation
+}
+
+func (c *ClusterUpdateProperties) GetProperties() (rv *ScaleSettingsInformation) {
+	if c != nil {
+		return c.Properties
+	}
+	return
 }
 
 // CodeConfiguration - Configuration for a scoring code asset.
@@ -1072,6 +2696,20 @@ type CodeConfiguration struct {
 
 	// ARM resource ID of the code asset.
 	CodeID *string
+}
+
+func (c *CodeConfiguration) GetScoringScript() (rv string) {
+	if c != nil && c.ScoringScript != nil {
+		return *c.ScoringScript
+	}
+	return
+}
+
+func (c *CodeConfiguration) GetCodeID() (rv string) {
+	if c != nil && c.CodeID != nil {
+		return *c.CodeID
+	}
+	return
 }
 
 // CodeContainerData - Azure Resource Manager resource envelope.
@@ -1090,6 +2728,41 @@ type CodeContainerData struct {
 
 	// READ-ONLY; The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type *string
+}
+
+func (c *CodeContainerData) GetProperties() (rv *CodeContainerDetails) {
+	if c != nil {
+		return c.Properties
+	}
+	return
+}
+
+func (c *CodeContainerData) GetID() (rv string) {
+	if c != nil && c.ID != nil {
+		return *c.ID
+	}
+	return
+}
+
+func (c *CodeContainerData) GetName() (rv string) {
+	if c != nil && c.Name != nil {
+		return *c.Name
+	}
+	return
+}
+
+func (c *CodeContainerData) GetSystemData() (rv *SystemData) {
+	if c != nil {
+		return c.SystemData
+	}
+	return
+}
+
+func (c *CodeContainerData) GetType() (rv string) {
+	if c != nil && c.Type != nil {
+		return *c.Type
+	}
+	return
 }
 
 // CodeContainerDetails - Container for code asset versions.
@@ -1113,6 +2786,48 @@ type CodeContainerDetails struct {
 	NextVersion *string
 }
 
+func (c *CodeContainerDetails) GetDescription() (rv string) {
+	if c != nil && c.Description != nil {
+		return *c.Description
+	}
+	return
+}
+
+func (c *CodeContainerDetails) GetIsArchived() (rv bool) {
+	if c != nil && c.IsArchived != nil {
+		return *c.IsArchived
+	}
+	return
+}
+
+func (c *CodeContainerDetails) GetProperties() (rv map[string]*string) {
+	if c != nil {
+		return c.Properties
+	}
+	return
+}
+
+func (c *CodeContainerDetails) GetTags() (rv map[string]*string) {
+	if c != nil {
+		return c.Tags
+	}
+	return
+}
+
+func (c *CodeContainerDetails) GetLatestVersion() (rv string) {
+	if c != nil && c.LatestVersion != nil {
+		return *c.LatestVersion
+	}
+	return
+}
+
+func (c *CodeContainerDetails) GetNextVersion() (rv string) {
+	if c != nil && c.NextVersion != nil {
+		return *c.NextVersion
+	}
+	return
+}
+
 // CodeContainerResourceArmPaginatedResult - A paginated list of CodeContainer entities.
 type CodeContainerResourceArmPaginatedResult struct {
 	// The link to the next page of CodeContainer objects. If null, there are no additional pages.
@@ -1120,6 +2835,20 @@ type CodeContainerResourceArmPaginatedResult struct {
 
 	// An array of objects of type CodeContainer.
 	Value []*CodeContainerData
+}
+
+func (c *CodeContainerResourceArmPaginatedResult) GetNextLink() (rv string) {
+	if c != nil && c.NextLink != nil {
+		return *c.NextLink
+	}
+	return
+}
+
+func (c *CodeContainerResourceArmPaginatedResult) GetValue() (rv []*CodeContainerData) {
+	if c != nil {
+		return c.Value
+	}
+	return
 }
 
 // CodeVersionData - Azure Resource Manager resource envelope.
@@ -1138,6 +2867,41 @@ type CodeVersionData struct {
 
 	// READ-ONLY; The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type *string
+}
+
+func (c *CodeVersionData) GetProperties() (rv *CodeVersionDetails) {
+	if c != nil {
+		return c.Properties
+	}
+	return
+}
+
+func (c *CodeVersionData) GetID() (rv string) {
+	if c != nil && c.ID != nil {
+		return *c.ID
+	}
+	return
+}
+
+func (c *CodeVersionData) GetName() (rv string) {
+	if c != nil && c.Name != nil {
+		return *c.Name
+	}
+	return
+}
+
+func (c *CodeVersionData) GetSystemData() (rv *SystemData) {
+	if c != nil {
+		return c.SystemData
+	}
+	return
+}
+
+func (c *CodeVersionData) GetType() (rv string) {
+	if c != nil && c.Type != nil {
+		return *c.Type
+	}
+	return
 }
 
 // CodeVersionDetails - Code asset version details.
@@ -1161,6 +2925,48 @@ type CodeVersionDetails struct {
 	Tags map[string]*string
 }
 
+func (c *CodeVersionDetails) GetCodeURI() (rv string) {
+	if c != nil && c.CodeURI != nil {
+		return *c.CodeURI
+	}
+	return
+}
+
+func (c *CodeVersionDetails) GetDescription() (rv string) {
+	if c != nil && c.Description != nil {
+		return *c.Description
+	}
+	return
+}
+
+func (c *CodeVersionDetails) GetIsAnonymous() (rv bool) {
+	if c != nil && c.IsAnonymous != nil {
+		return *c.IsAnonymous
+	}
+	return
+}
+
+func (c *CodeVersionDetails) GetIsArchived() (rv bool) {
+	if c != nil && c.IsArchived != nil {
+		return *c.IsArchived
+	}
+	return
+}
+
+func (c *CodeVersionDetails) GetProperties() (rv map[string]*string) {
+	if c != nil {
+		return c.Properties
+	}
+	return
+}
+
+func (c *CodeVersionDetails) GetTags() (rv map[string]*string) {
+	if c != nil {
+		return c.Tags
+	}
+	return
+}
+
 // CodeVersionResourceArmPaginatedResult - A paginated list of CodeVersion entities.
 type CodeVersionResourceArmPaginatedResult struct {
 	// The link to the next page of CodeVersion objects. If null, there are no additional pages.
@@ -1170,6 +2976,20 @@ type CodeVersionResourceArmPaginatedResult struct {
 	Value []*CodeVersionData
 }
 
+func (c *CodeVersionResourceArmPaginatedResult) GetNextLink() (rv string) {
+	if c != nil && c.NextLink != nil {
+		return *c.NextLink
+	}
+	return
+}
+
+func (c *CodeVersionResourceArmPaginatedResult) GetValue() (rv []*CodeVersionData) {
+	if c != nil {
+		return c.Value
+	}
+	return
+}
+
 // ColumnTransformer - Column transformer parameters.
 type ColumnTransformer struct {
 	// Fields to apply transformer logic on.
@@ -1177,6 +2997,20 @@ type ColumnTransformer struct {
 
 	// Different properties to be passed to transformer. Input expected is dictionary of key,value pairs in JSON format.
 	Parameters any
+}
+
+func (c *ColumnTransformer) GetFields() (rv []*string) {
+	if c != nil {
+		return c.Fields
+	}
+	return
+}
+
+func (c *ColumnTransformer) GetParameters() (rv any) {
+	if c != nil {
+		return c.Parameters
+	}
+	return
 }
 
 // CommandJob - Command job definition.
@@ -1249,6 +3083,160 @@ type CommandJob struct {
 	Status *JobStatus
 }
 
+func (c *CommandJob) GetCommand() (rv string) {
+	if c != nil && c.Command != nil {
+		return *c.Command
+	}
+	return
+}
+
+func (c *CommandJob) GetEnvironmentID() (rv string) {
+	if c != nil && c.EnvironmentID != nil {
+		return *c.EnvironmentID
+	}
+	return
+}
+
+func (c *CommandJob) GetJobType() (rv *JobType) {
+	if c != nil {
+		return c.JobType
+	}
+	return
+}
+
+func (c *CommandJob) GetCodeID() (rv string) {
+	if c != nil && c.CodeID != nil {
+		return *c.CodeID
+	}
+	return
+}
+
+func (c *CommandJob) GetComputeID() (rv string) {
+	if c != nil && c.ComputeID != nil {
+		return *c.ComputeID
+	}
+	return
+}
+
+func (c *CommandJob) GetDescription() (rv string) {
+	if c != nil && c.Description != nil {
+		return *c.Description
+	}
+	return
+}
+
+func (c *CommandJob) GetDisplayName() (rv string) {
+	if c != nil && c.DisplayName != nil {
+		return *c.DisplayName
+	}
+	return
+}
+
+func (c *CommandJob) GetDistribution() (rv DistributionConfigurationClassification) {
+	if c != nil {
+		return c.Distribution
+	}
+	return
+}
+
+func (c *CommandJob) GetEnvironmentVariables() (rv map[string]*string) {
+	if c != nil {
+		return c.EnvironmentVariables
+	}
+	return
+}
+
+func (c *CommandJob) GetExperimentName() (rv string) {
+	if c != nil && c.ExperimentName != nil {
+		return *c.ExperimentName
+	}
+	return
+}
+
+func (c *CommandJob) GetIdentity() (rv IdentityConfigurationClassification) {
+	if c != nil {
+		return c.Identity
+	}
+	return
+}
+
+func (c *CommandJob) GetInputs() (rv map[string]JobInputClassification) {
+	if c != nil {
+		return c.Inputs
+	}
+	return
+}
+
+func (c *CommandJob) GetIsArchived() (rv bool) {
+	if c != nil && c.IsArchived != nil {
+		return *c.IsArchived
+	}
+	return
+}
+
+func (c *CommandJob) GetLimits() (rv *CommandJobLimits) {
+	if c != nil {
+		return c.Limits
+	}
+	return
+}
+
+func (c *CommandJob) GetOutputs() (rv map[string]JobOutputClassification) {
+	if c != nil {
+		return c.Outputs
+	}
+	return
+}
+
+func (c *CommandJob) GetProperties() (rv map[string]*string) {
+	if c != nil {
+		return c.Properties
+	}
+	return
+}
+
+func (c *CommandJob) GetResources() (rv *ResourceConfiguration) {
+	if c != nil {
+		return c.Resources
+	}
+	return
+}
+
+func (c *CommandJob) GetSchedule() (rv ScheduleBaseClassification) {
+	if c != nil {
+		return c.Schedule
+	}
+	return
+}
+
+func (c *CommandJob) GetServices() (rv map[string]*JobService) {
+	if c != nil {
+		return c.Services
+	}
+	return
+}
+
+func (c *CommandJob) GetTags() (rv map[string]*string) {
+	if c != nil {
+		return c.Tags
+	}
+	return
+}
+
+func (c *CommandJob) GetParameters() (rv any) {
+	if c != nil {
+		return c.Parameters
+	}
+	return
+}
+
+func (c *CommandJob) GetStatus() (rv *JobStatus) {
+	if c != nil {
+		return c.Status
+	}
+	return
+}
+
 // GetJobBaseDetails implements the JobBaseDetailsClassification interface for type CommandJob.
 func (c *CommandJob) GetJobBaseDetails() *JobBaseDetails {
 	return &JobBaseDetails{
@@ -1277,6 +3265,20 @@ type CommandJobLimits struct {
 	Timeout *string
 }
 
+func (c *CommandJobLimits) GetJobLimitsType() (rv *JobLimitsType) {
+	if c != nil {
+		return c.JobLimitsType
+	}
+	return
+}
+
+func (c *CommandJobLimits) GetTimeout() (rv string) {
+	if c != nil && c.Timeout != nil {
+		return *c.Timeout
+	}
+	return
+}
+
 // GetJobLimits implements the JobLimitsClassification interface for type CommandJobLimits.
 func (c *CommandJobLimits) GetJobLimits() *JobLimits {
 	return &JobLimits{
@@ -1303,6 +3305,41 @@ type ComponentContainerData struct {
 	Type *string
 }
 
+func (c *ComponentContainerData) GetProperties() (rv *ComponentContainerDetails) {
+	if c != nil {
+		return c.Properties
+	}
+	return
+}
+
+func (c *ComponentContainerData) GetID() (rv string) {
+	if c != nil && c.ID != nil {
+		return *c.ID
+	}
+	return
+}
+
+func (c *ComponentContainerData) GetName() (rv string) {
+	if c != nil && c.Name != nil {
+		return *c.Name
+	}
+	return
+}
+
+func (c *ComponentContainerData) GetSystemData() (rv *SystemData) {
+	if c != nil {
+		return c.SystemData
+	}
+	return
+}
+
+func (c *ComponentContainerData) GetType() (rv string) {
+	if c != nil && c.Type != nil {
+		return *c.Type
+	}
+	return
+}
+
 // ComponentContainerDetails - Component container definition.
 type ComponentContainerDetails struct {
 	// The asset description text.
@@ -1324,6 +3361,48 @@ type ComponentContainerDetails struct {
 	NextVersion *string
 }
 
+func (c *ComponentContainerDetails) GetDescription() (rv string) {
+	if c != nil && c.Description != nil {
+		return *c.Description
+	}
+	return
+}
+
+func (c *ComponentContainerDetails) GetIsArchived() (rv bool) {
+	if c != nil && c.IsArchived != nil {
+		return *c.IsArchived
+	}
+	return
+}
+
+func (c *ComponentContainerDetails) GetProperties() (rv map[string]*string) {
+	if c != nil {
+		return c.Properties
+	}
+	return
+}
+
+func (c *ComponentContainerDetails) GetTags() (rv map[string]*string) {
+	if c != nil {
+		return c.Tags
+	}
+	return
+}
+
+func (c *ComponentContainerDetails) GetLatestVersion() (rv string) {
+	if c != nil && c.LatestVersion != nil {
+		return *c.LatestVersion
+	}
+	return
+}
+
+func (c *ComponentContainerDetails) GetNextVersion() (rv string) {
+	if c != nil && c.NextVersion != nil {
+		return *c.NextVersion
+	}
+	return
+}
+
 // ComponentContainerResourceArmPaginatedResult - A paginated list of ComponentContainer entities.
 type ComponentContainerResourceArmPaginatedResult struct {
 	// The link to the next page of ComponentContainer objects. If null, there are no additional pages.
@@ -1331,6 +3410,20 @@ type ComponentContainerResourceArmPaginatedResult struct {
 
 	// An array of objects of type ComponentContainer.
 	Value []*ComponentContainerData
+}
+
+func (c *ComponentContainerResourceArmPaginatedResult) GetNextLink() (rv string) {
+	if c != nil && c.NextLink != nil {
+		return *c.NextLink
+	}
+	return
+}
+
+func (c *ComponentContainerResourceArmPaginatedResult) GetValue() (rv []*ComponentContainerData) {
+	if c != nil {
+		return c.Value
+	}
+	return
 }
 
 // ComponentVersionData - Azure Resource Manager resource envelope.
@@ -1349,6 +3442,41 @@ type ComponentVersionData struct {
 
 	// READ-ONLY; The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type *string
+}
+
+func (c *ComponentVersionData) GetProperties() (rv *ComponentVersionDetails) {
+	if c != nil {
+		return c.Properties
+	}
+	return
+}
+
+func (c *ComponentVersionData) GetID() (rv string) {
+	if c != nil && c.ID != nil {
+		return *c.ID
+	}
+	return
+}
+
+func (c *ComponentVersionData) GetName() (rv string) {
+	if c != nil && c.Name != nil {
+		return *c.Name
+	}
+	return
+}
+
+func (c *ComponentVersionData) GetSystemData() (rv *SystemData) {
+	if c != nil {
+		return c.SystemData
+	}
+	return
+}
+
+func (c *ComponentVersionData) GetType() (rv string) {
+	if c != nil && c.Type != nil {
+		return *c.Type
+	}
+	return
 }
 
 // ComponentVersionDetails - Definition of a component version: defines resources that span component types.
@@ -1372,6 +3500,48 @@ type ComponentVersionDetails struct {
 	Tags map[string]*string
 }
 
+func (c *ComponentVersionDetails) GetComponentSpec() (rv any) {
+	if c != nil {
+		return c.ComponentSpec
+	}
+	return
+}
+
+func (c *ComponentVersionDetails) GetDescription() (rv string) {
+	if c != nil && c.Description != nil {
+		return *c.Description
+	}
+	return
+}
+
+func (c *ComponentVersionDetails) GetIsAnonymous() (rv bool) {
+	if c != nil && c.IsAnonymous != nil {
+		return *c.IsAnonymous
+	}
+	return
+}
+
+func (c *ComponentVersionDetails) GetIsArchived() (rv bool) {
+	if c != nil && c.IsArchived != nil {
+		return *c.IsArchived
+	}
+	return
+}
+
+func (c *ComponentVersionDetails) GetProperties() (rv map[string]*string) {
+	if c != nil {
+		return c.Properties
+	}
+	return
+}
+
+func (c *ComponentVersionDetails) GetTags() (rv map[string]*string) {
+	if c != nil {
+		return c.Tags
+	}
+	return
+}
+
 // ComponentVersionResourceArmPaginatedResult - A paginated list of ComponentVersion entities.
 type ComponentVersionResourceArmPaginatedResult struct {
 	// The link to the next page of ComponentVersion objects. If null, there are no additional pages.
@@ -1379,6 +3549,20 @@ type ComponentVersionResourceArmPaginatedResult struct {
 
 	// An array of objects of type ComponentVersion.
 	Value []*ComponentVersionData
+}
+
+func (c *ComponentVersionResourceArmPaginatedResult) GetNextLink() (rv string) {
+	if c != nil && c.NextLink != nil {
+		return *c.NextLink
+	}
+	return
+}
+
+func (c *ComponentVersionResourceArmPaginatedResult) GetValue() (rv []*ComponentVersionData) {
+	if c != nil {
+		return c.Value
+	}
+	return
 }
 
 // Compute - Machine Learning compute object.
@@ -1413,6 +3597,76 @@ type Compute struct {
 
 	// READ-ONLY; The provision state of the cluster. Valid values are Unknown, Updating, Provisioning, Succeeded, and Failed.
 	ProvisioningState *ProvisioningState
+}
+
+func (c *Compute) GetComputeType() (rv *ComputeType) {
+	if c != nil {
+		return c.ComputeType
+	}
+	return
+}
+
+func (c *Compute) GetDescription() (rv string) {
+	if c != nil && c.Description != nil {
+		return *c.Description
+	}
+	return
+}
+
+func (c *Compute) GetDisableLocalAuth() (rv bool) {
+	if c != nil && c.DisableLocalAuth != nil {
+		return *c.DisableLocalAuth
+	}
+	return
+}
+
+func (c *Compute) GetResourceID() (rv string) {
+	if c != nil && c.ResourceID != nil {
+		return *c.ResourceID
+	}
+	return
+}
+
+func (c *Compute) GetComputeLocation() (rv string) {
+	if c != nil && c.ComputeLocation != nil {
+		return *c.ComputeLocation
+	}
+	return
+}
+
+func (c *Compute) GetCreatedOn() (rv *time.Time) {
+	if c != nil {
+		return c.CreatedOn
+	}
+	return
+}
+
+func (c *Compute) GetIsAttachedCompute() (rv bool) {
+	if c != nil && c.IsAttachedCompute != nil {
+		return *c.IsAttachedCompute
+	}
+	return
+}
+
+func (c *Compute) GetModifiedOn() (rv *time.Time) {
+	if c != nil {
+		return c.ModifiedOn
+	}
+	return
+}
+
+func (c *Compute) GetProvisioningErrors() (rv []*ErrorResponse) {
+	if c != nil {
+		return c.ProvisioningErrors
+	}
+	return
+}
+
+func (c *Compute) GetProvisioningState() (rv *ProvisioningState) {
+	if c != nil {
+		return c.ProvisioningState
+	}
+	return
 }
 
 // GetCompute implements the ComputeClassification interface for type Compute.
@@ -1455,6 +3709,83 @@ type ComputeInstance struct {
 	ProvisioningState *ProvisioningState
 }
 
+func (c *ComputeInstance) GetComputeType() (rv *ComputeType) {
+	if c != nil {
+		return c.ComputeType
+	}
+	return
+}
+
+func (c *ComputeInstance) GetDescription() (rv string) {
+	if c != nil && c.Description != nil {
+		return *c.Description
+	}
+	return
+}
+
+func (c *ComputeInstance) GetDisableLocalAuth() (rv bool) {
+	if c != nil && c.DisableLocalAuth != nil {
+		return *c.DisableLocalAuth
+	}
+	return
+}
+
+func (c *ComputeInstance) GetProperties() (rv *ComputeInstanceProperties) {
+	if c != nil {
+		return c.Properties
+	}
+	return
+}
+
+func (c *ComputeInstance) GetResourceID() (rv string) {
+	if c != nil && c.ResourceID != nil {
+		return *c.ResourceID
+	}
+	return
+}
+
+func (c *ComputeInstance) GetComputeLocation() (rv string) {
+	if c != nil && c.ComputeLocation != nil {
+		return *c.ComputeLocation
+	}
+	return
+}
+
+func (c *ComputeInstance) GetCreatedOn() (rv *time.Time) {
+	if c != nil {
+		return c.CreatedOn
+	}
+	return
+}
+
+func (c *ComputeInstance) GetIsAttachedCompute() (rv bool) {
+	if c != nil && c.IsAttachedCompute != nil {
+		return *c.IsAttachedCompute
+	}
+	return
+}
+
+func (c *ComputeInstance) GetModifiedOn() (rv *time.Time) {
+	if c != nil {
+		return c.ModifiedOn
+	}
+	return
+}
+
+func (c *ComputeInstance) GetProvisioningErrors() (rv []*ErrorResponse) {
+	if c != nil {
+		return c.ProvisioningErrors
+	}
+	return
+}
+
+func (c *ComputeInstance) GetProvisioningState() (rv *ProvisioningState) {
+	if c != nil {
+		return c.ProvisioningState
+	}
+	return
+}
+
 // GetCompute implements the ComputeClassification interface for type ComputeInstance.
 func (c *ComputeInstance) GetCompute() *Compute {
 	return &Compute{
@@ -1480,6 +3811,20 @@ type ComputeInstanceApplication struct {
 	EndpointURI *string
 }
 
+func (c *ComputeInstanceApplication) GetDisplayName() (rv string) {
+	if c != nil && c.DisplayName != nil {
+		return *c.DisplayName
+	}
+	return
+}
+
+func (c *ComputeInstanceApplication) GetEndpointURI() (rv string) {
+	if c != nil && c.EndpointURI != nil {
+		return *c.EndpointURI
+	}
+	return
+}
+
 // ComputeInstanceConnectivityEndpoints - Defines all connectivity endpoints and properties for an ComputeInstance.
 type ComputeInstanceConnectivityEndpoints struct {
 	// READ-ONLY; Private IP Address of this ComputeInstance (local to the VNET in which the compute instance is deployed).
@@ -1487,6 +3832,20 @@ type ComputeInstanceConnectivityEndpoints struct {
 
 	// READ-ONLY; Public IP Address of this ComputeInstance.
 	PublicIPAddress *string
+}
+
+func (c *ComputeInstanceConnectivityEndpoints) GetPrivateIPAddress() (rv string) {
+	if c != nil && c.PrivateIPAddress != nil {
+		return *c.PrivateIPAddress
+	}
+	return
+}
+
+func (c *ComputeInstanceConnectivityEndpoints) GetPublicIPAddress() (rv string) {
+	if c != nil && c.PublicIPAddress != nil {
+		return *c.PublicIPAddress
+	}
+	return
 }
 
 // ComputeInstanceContainer - Defines an Aml Instance container.
@@ -1510,6 +3869,48 @@ type ComputeInstanceContainer struct {
 	Services []any
 }
 
+func (c *ComputeInstanceContainer) GetAutosave() (rv *Autosave) {
+	if c != nil {
+		return c.Autosave
+	}
+	return
+}
+
+func (c *ComputeInstanceContainer) GetEnvironment() (rv *ComputeInstanceEnvironmentInfo) {
+	if c != nil {
+		return c.Environment
+	}
+	return
+}
+
+func (c *ComputeInstanceContainer) GetGpu() (rv string) {
+	if c != nil && c.Gpu != nil {
+		return *c.Gpu
+	}
+	return
+}
+
+func (c *ComputeInstanceContainer) GetName() (rv string) {
+	if c != nil && c.Name != nil {
+		return *c.Name
+	}
+	return
+}
+
+func (c *ComputeInstanceContainer) GetNetwork() (rv *Network) {
+	if c != nil {
+		return c.Network
+	}
+	return
+}
+
+func (c *ComputeInstanceContainer) GetServices() (rv []any) {
+	if c != nil {
+		return c.Services
+	}
+	return
+}
+
 // ComputeInstanceCreatedBy - Describes information on user who created this ComputeInstance.
 type ComputeInstanceCreatedBy struct {
 	// READ-ONLY; Uniquely identifies the user within his/her organization.
@@ -1520,6 +3921,27 @@ type ComputeInstanceCreatedBy struct {
 
 	// READ-ONLY; Uniquely identifies user' Azure Active Directory organization.
 	UserOrgID *string
+}
+
+func (c *ComputeInstanceCreatedBy) GetUserID() (rv string) {
+	if c != nil && c.UserID != nil {
+		return *c.UserID
+	}
+	return
+}
+
+func (c *ComputeInstanceCreatedBy) GetUserName() (rv string) {
+	if c != nil && c.UserName != nil {
+		return *c.UserName
+	}
+	return
+}
+
+func (c *ComputeInstanceCreatedBy) GetUserOrgID() (rv string) {
+	if c != nil && c.UserOrgID != nil {
+		return *c.UserOrgID
+	}
+	return
 }
 
 // ComputeInstanceDataDisk - Defines an Aml Instance DataDisk.
@@ -1535,6 +3957,34 @@ type ComputeInstanceDataDisk struct {
 
 	// type of this storage account.
 	StorageAccountType *StorageAccountType
+}
+
+func (c *ComputeInstanceDataDisk) GetCaching() (rv *Caching) {
+	if c != nil {
+		return c.Caching
+	}
+	return
+}
+
+func (c *ComputeInstanceDataDisk) GetDiskSizeGB() (rv int32) {
+	if c != nil && c.DiskSizeGB != nil {
+		return *c.DiskSizeGB
+	}
+	return
+}
+
+func (c *ComputeInstanceDataDisk) GetLun() (rv int32) {
+	if c != nil && c.Lun != nil {
+		return *c.Lun
+	}
+	return
+}
+
+func (c *ComputeInstanceDataDisk) GetStorageAccountType() (rv *StorageAccountType) {
+	if c != nil {
+		return c.StorageAccountType
+	}
+	return
 }
 
 // ComputeInstanceDataMount - Defines an Aml Instance DataMount.
@@ -1567,6 +4017,69 @@ type ComputeInstanceDataMount struct {
 	SourceType *SourceType
 }
 
+func (c *ComputeInstanceDataMount) GetCreatedBy() (rv string) {
+	if c != nil && c.CreatedBy != nil {
+		return *c.CreatedBy
+	}
+	return
+}
+
+func (c *ComputeInstanceDataMount) GetError() (rv string) {
+	if c != nil && c.Error != nil {
+		return *c.Error
+	}
+	return
+}
+
+func (c *ComputeInstanceDataMount) GetMountAction() (rv *MountAction) {
+	if c != nil {
+		return c.MountAction
+	}
+	return
+}
+
+func (c *ComputeInstanceDataMount) GetMountName() (rv string) {
+	if c != nil && c.MountName != nil {
+		return *c.MountName
+	}
+	return
+}
+
+func (c *ComputeInstanceDataMount) GetMountPath() (rv string) {
+	if c != nil && c.MountPath != nil {
+		return *c.MountPath
+	}
+	return
+}
+
+func (c *ComputeInstanceDataMount) GetMountState() (rv *MountState) {
+	if c != nil {
+		return c.MountState
+	}
+	return
+}
+
+func (c *ComputeInstanceDataMount) GetMountedOn() (rv *time.Time) {
+	if c != nil {
+		return c.MountedOn
+	}
+	return
+}
+
+func (c *ComputeInstanceDataMount) GetSource() (rv string) {
+	if c != nil && c.Source != nil {
+		return *c.Source
+	}
+	return
+}
+
+func (c *ComputeInstanceDataMount) GetSourceType() (rv *SourceType) {
+	if c != nil {
+		return c.SourceType
+	}
+	return
+}
+
 // ComputeInstanceEnvironmentInfo - Environment information
 type ComputeInstanceEnvironmentInfo struct {
 	// name of environment.
@@ -1574,6 +4087,20 @@ type ComputeInstanceEnvironmentInfo struct {
 
 	// version of environment.
 	Version *string
+}
+
+func (c *ComputeInstanceEnvironmentInfo) GetName() (rv string) {
+	if c != nil && c.Name != nil {
+		return *c.Name
+	}
+	return
+}
+
+func (c *ComputeInstanceEnvironmentInfo) GetVersion() (rv string) {
+	if c != nil && c.Version != nil {
+		return *c.Version
+	}
+	return
 }
 
 // ComputeInstanceLastOperation - The last operation on ComputeInstance.
@@ -1589,6 +4116,34 @@ type ComputeInstanceLastOperation struct {
 
 	// Trigger of operation.
 	OperationTrigger *OperationTrigger
+}
+
+func (c *ComputeInstanceLastOperation) GetOperationName() (rv *OperationName) {
+	if c != nil {
+		return c.OperationName
+	}
+	return
+}
+
+func (c *ComputeInstanceLastOperation) GetOperationStatus() (rv *OperationStatus) {
+	if c != nil {
+		return c.OperationStatus
+	}
+	return
+}
+
+func (c *ComputeInstanceLastOperation) GetOperationTime() (rv *time.Time) {
+	if c != nil {
+		return c.OperationTime
+	}
+	return
+}
+
+func (c *ComputeInstanceLastOperation) GetOperationTrigger() (rv *OperationTrigger) {
+	if c != nil {
+		return c.OperationTrigger
+	}
+	return
 }
 
 // ComputeInstanceProperties - Compute Instance properties
@@ -1655,6 +4210,139 @@ type ComputeInstanceProperties struct {
 	Versions *ComputeInstanceVersion
 }
 
+func (c *ComputeInstanceProperties) GetApplicationSharingPolicy() (rv *ApplicationSharingPolicy) {
+	if c != nil {
+		return c.ApplicationSharingPolicy
+	}
+	return
+}
+
+func (c *ComputeInstanceProperties) GetComputeInstanceAuthorizationType() (rv *ComputeInstanceAuthorizationType) {
+	if c != nil {
+		return c.ComputeInstanceAuthorizationType
+	}
+	return
+}
+
+func (c *ComputeInstanceProperties) GetEnableNodePublicIP() (rv bool) {
+	if c != nil && c.EnableNodePublicIP != nil {
+		return *c.EnableNodePublicIP
+	}
+	return
+}
+
+func (c *ComputeInstanceProperties) GetPersonalComputeInstanceSettings() (rv *PersonalComputeInstanceSettings) {
+	if c != nil {
+		return c.PersonalComputeInstanceSettings
+	}
+	return
+}
+
+func (c *ComputeInstanceProperties) GetSSHSettings() (rv *ComputeInstanceSSHSettings) {
+	if c != nil {
+		return c.SSHSettings
+	}
+	return
+}
+
+func (c *ComputeInstanceProperties) GetSetupScripts() (rv *SetupScripts) {
+	if c != nil {
+		return c.SetupScripts
+	}
+	return
+}
+
+func (c *ComputeInstanceProperties) GetSubnet() (rv *ResourceID) {
+	if c != nil {
+		return c.Subnet
+	}
+	return
+}
+
+func (c *ComputeInstanceProperties) GetVMSize() (rv string) {
+	if c != nil && c.VMSize != nil {
+		return *c.VMSize
+	}
+	return
+}
+
+func (c *ComputeInstanceProperties) GetApplications() (rv []*ComputeInstanceApplication) {
+	if c != nil {
+		return c.Applications
+	}
+	return
+}
+
+func (c *ComputeInstanceProperties) GetConnectivityEndpoints() (rv *ComputeInstanceConnectivityEndpoints) {
+	if c != nil {
+		return c.ConnectivityEndpoints
+	}
+	return
+}
+
+func (c *ComputeInstanceProperties) GetContainers() (rv []*ComputeInstanceContainer) {
+	if c != nil {
+		return c.Containers
+	}
+	return
+}
+
+func (c *ComputeInstanceProperties) GetCreatedBy() (rv *ComputeInstanceCreatedBy) {
+	if c != nil {
+		return c.CreatedBy
+	}
+	return
+}
+
+func (c *ComputeInstanceProperties) GetDataDisks() (rv []*ComputeInstanceDataDisk) {
+	if c != nil {
+		return c.DataDisks
+	}
+	return
+}
+
+func (c *ComputeInstanceProperties) GetDataMounts() (rv []*ComputeInstanceDataMount) {
+	if c != nil {
+		return c.DataMounts
+	}
+	return
+}
+
+func (c *ComputeInstanceProperties) GetErrors() (rv []*ErrorResponse) {
+	if c != nil {
+		return c.Errors
+	}
+	return
+}
+
+func (c *ComputeInstanceProperties) GetLastOperation() (rv *ComputeInstanceLastOperation) {
+	if c != nil {
+		return c.LastOperation
+	}
+	return
+}
+
+func (c *ComputeInstanceProperties) GetSchedules() (rv *ComputeSchedules) {
+	if c != nil {
+		return c.Schedules
+	}
+	return
+}
+
+func (c *ComputeInstanceProperties) GetState() (rv *ComputeInstanceState) {
+	if c != nil {
+		return c.State
+	}
+	return
+}
+
+func (c *ComputeInstanceProperties) GetVersions() (rv *ComputeInstanceVersion) {
+	if c != nil {
+		return c.Versions
+	}
+	return
+}
+
 // ComputeInstanceSSHSettings - Specifies policy and settings for SSH access.
 type ComputeInstanceSSHSettings struct {
 	// Specifies the SSH rsa public key file as a string. Use "ssh-keygen -t rsa -b 2048" to generate your SSH key pairs.
@@ -1672,10 +4360,45 @@ type ComputeInstanceSSHSettings struct {
 	SSHPort *int32
 }
 
+func (c *ComputeInstanceSSHSettings) GetAdminPublicKey() (rv string) {
+	if c != nil && c.AdminPublicKey != nil {
+		return *c.AdminPublicKey
+	}
+	return
+}
+
+func (c *ComputeInstanceSSHSettings) GetSSHPublicAccess() (rv *SSHPublicAccess) {
+	if c != nil {
+		return c.SSHPublicAccess
+	}
+	return
+}
+
+func (c *ComputeInstanceSSHSettings) GetAdminUserName() (rv string) {
+	if c != nil && c.AdminUserName != nil {
+		return *c.AdminUserName
+	}
+	return
+}
+
+func (c *ComputeInstanceSSHSettings) GetSSHPort() (rv int32) {
+	if c != nil && c.SSHPort != nil {
+		return *c.SSHPort
+	}
+	return
+}
+
 // ComputeInstanceVersion - Version of computeInstance.
 type ComputeInstanceVersion struct {
 	// Runtime of compute instance.
 	Runtime *string
+}
+
+func (c *ComputeInstanceVersion) GetRuntime() (rv string) {
+	if c != nil && c.Runtime != nil {
+		return *c.Runtime
+	}
+	return
 }
 
 // ComputeResource - Machine Learning compute object wrapped into ARM resource envelope.
@@ -1708,16 +4431,93 @@ type ComputeResource struct {
 	Type *string
 }
 
+func (c *ComputeResource) GetIdentity() (rv *ManagedServiceIdentity) {
+	if c != nil {
+		return c.Identity
+	}
+	return
+}
+
+func (c *ComputeResource) GetLocation() (rv string) {
+	if c != nil && c.Location != nil {
+		return *c.Location
+	}
+	return
+}
+
+func (c *ComputeResource) GetProperties() (rv ComputeClassification) {
+	if c != nil {
+		return c.Properties
+	}
+	return
+}
+
+func (c *ComputeResource) GetSKU() (rv *SKU) {
+	if c != nil {
+		return c.SKU
+	}
+	return
+}
+
+func (c *ComputeResource) GetTags() (rv map[string]*string) {
+	if c != nil {
+		return c.Tags
+	}
+	return
+}
+
+func (c *ComputeResource) GetID() (rv string) {
+	if c != nil && c.ID != nil {
+		return *c.ID
+	}
+	return
+}
+
+func (c *ComputeResource) GetName() (rv string) {
+	if c != nil && c.Name != nil {
+		return *c.Name
+	}
+	return
+}
+
+func (c *ComputeResource) GetSystemData() (rv *SystemData) {
+	if c != nil {
+		return c.SystemData
+	}
+	return
+}
+
+func (c *ComputeResource) GetType() (rv string) {
+	if c != nil && c.Type != nil {
+		return *c.Type
+	}
+	return
+}
+
 // ComputeSchedules - The list of schedules to be applied on the computes
 type ComputeSchedules struct {
 	// The list of compute start stop schedules to be applied.
 	ComputeStartStop []*ComputeStartStopSchedule
 }
 
+func (c *ComputeSchedules) GetComputeStartStop() (rv []*ComputeStartStopSchedule) {
+	if c != nil {
+		return c.ComputeStartStop
+	}
+	return
+}
+
 // ComputeSecrets - Secrets related to a Machine Learning compute. Might differ for every type of compute.
 type ComputeSecrets struct {
 	// REQUIRED; The type of compute
 	ComputeType *ComputeType
+}
+
+func (c *ComputeSecrets) GetComputeType() (rv *ComputeType) {
+	if c != nil {
+		return c.ComputeType
+	}
+	return
 }
 
 // GetComputeSecrets implements the ComputeSecretsClassification interface for type ComputeSecrets.
@@ -1738,6 +4538,34 @@ type ComputeStartStopSchedule struct {
 	ProvisioningStatus *ProvisioningStatus
 }
 
+func (c *ComputeStartStopSchedule) GetAction() (rv *ComputePowerAction) {
+	if c != nil {
+		return c.Action
+	}
+	return
+}
+
+func (c *ComputeStartStopSchedule) GetSchedule() (rv ScheduleBaseClassification) {
+	if c != nil {
+		return c.Schedule
+	}
+	return
+}
+
+func (c *ComputeStartStopSchedule) GetID() (rv string) {
+	if c != nil && c.ID != nil {
+		return *c.ID
+	}
+	return
+}
+
+func (c *ComputeStartStopSchedule) GetProvisioningStatus() (rv *ProvisioningStatus) {
+	if c != nil {
+		return c.ProvisioningStatus
+	}
+	return
+}
+
 // ContainerResourceRequirements - Resource requirements for each container instance within an online deployment.
 type ContainerResourceRequirements struct {
 	// Container resource limit info:
@@ -1745,6 +4573,20 @@ type ContainerResourceRequirements struct {
 
 	// Container resource request info:
 	ContainerResourceRequests *ContainerResourceSettings
+}
+
+func (c *ContainerResourceRequirements) GetContainerResourceLimits() (rv *ContainerResourceSettings) {
+	if c != nil {
+		return c.ContainerResourceLimits
+	}
+	return
+}
+
+func (c *ContainerResourceRequirements) GetContainerResourceRequests() (rv *ContainerResourceSettings) {
+	if c != nil {
+		return c.ContainerResourceRequests
+	}
+	return
 }
 
 type ContainerResourceSettings struct {
@@ -1758,9 +4600,37 @@ type ContainerResourceSettings struct {
 	Memory *string
 }
 
+func (c *ContainerResourceSettings) GetCPU() (rv string) {
+	if c != nil && c.CPU != nil {
+		return *c.CPU
+	}
+	return
+}
+
+func (c *ContainerResourceSettings) GetGpu() (rv string) {
+	if c != nil && c.Gpu != nil {
+		return *c.Gpu
+	}
+	return
+}
+
+func (c *ContainerResourceSettings) GetMemory() (rv string) {
+	if c != nil && c.Memory != nil {
+		return *c.Memory
+	}
+	return
+}
+
 type CosmosDbSettings struct {
 	// The throughput of the collections in cosmosdb database
 	CollectionsThroughput *int32
+}
+
+func (c *CosmosDbSettings) GetCollectionsThroughput() (rv int32) {
+	if c != nil && c.CollectionsThroughput != nil {
+		return *c.CollectionsThroughput
+	}
+	return
 }
 
 // CronSchedule - Cron schedule definition
@@ -1784,6 +4654,48 @@ type CronSchedule struct {
 	TimeZone *string
 }
 
+func (c *CronSchedule) GetExpression() (rv string) {
+	if c != nil && c.Expression != nil {
+		return *c.Expression
+	}
+	return
+}
+
+func (c *CronSchedule) GetScheduleType() (rv *ScheduleType) {
+	if c != nil {
+		return c.ScheduleType
+	}
+	return
+}
+
+func (c *CronSchedule) GetEndTime() (rv *time.Time) {
+	if c != nil {
+		return c.EndTime
+	}
+	return
+}
+
+func (c *CronSchedule) GetScheduleStatus() (rv *ScheduleStatus) {
+	if c != nil {
+		return c.ScheduleStatus
+	}
+	return
+}
+
+func (c *CronSchedule) GetStartTime() (rv *time.Time) {
+	if c != nil {
+		return c.StartTime
+	}
+	return
+}
+
+func (c *CronSchedule) GetTimeZone() (rv string) {
+	if c != nil && c.TimeZone != nil {
+		return *c.TimeZone
+	}
+	return
+}
+
 // GetScheduleBase implements the ScheduleBaseClassification interface for type CronSchedule.
 func (c *CronSchedule) GetScheduleBase() *ScheduleBase {
 	return &ScheduleBase{
@@ -1802,6 +4714,20 @@ type CustomForecastHorizon struct {
 
 	// REQUIRED; [Required] Forecast horizon value.
 	Value *int32
+}
+
+func (c *CustomForecastHorizon) GetMode() (rv *ForecastHorizonMode) {
+	if c != nil {
+		return c.Mode
+	}
+	return
+}
+
+func (c *CustomForecastHorizon) GetValue() (rv int32) {
+	if c != nil && c.Value != nil {
+		return *c.Value
+	}
+	return
 }
 
 // GetForecastHorizon implements the ForecastHorizonClassification interface for type CustomForecastHorizon.
@@ -1823,6 +4749,34 @@ type CustomModelJobInput struct {
 
 	// Input Asset Delivery Mode.
 	Mode *InputDeliveryMode
+}
+
+func (c *CustomModelJobInput) GetJobInputType() (rv *JobInputType) {
+	if c != nil {
+		return c.JobInputType
+	}
+	return
+}
+
+func (c *CustomModelJobInput) GetURI() (rv string) {
+	if c != nil && c.URI != nil {
+		return *c.URI
+	}
+	return
+}
+
+func (c *CustomModelJobInput) GetDescription() (rv string) {
+	if c != nil && c.Description != nil {
+		return *c.Description
+	}
+	return
+}
+
+func (c *CustomModelJobInput) GetMode() (rv *InputDeliveryMode) {
+	if c != nil {
+		return c.Mode
+	}
+	return
 }
 
 // GetJobInput implements the JobInputClassification interface for type CustomModelJobInput.
@@ -1847,6 +4801,34 @@ type CustomModelJobOutput struct {
 	URI *string
 }
 
+func (c *CustomModelJobOutput) GetJobOutputType() (rv *JobOutputType) {
+	if c != nil {
+		return c.JobOutputType
+	}
+	return
+}
+
+func (c *CustomModelJobOutput) GetDescription() (rv string) {
+	if c != nil && c.Description != nil {
+		return *c.Description
+	}
+	return
+}
+
+func (c *CustomModelJobOutput) GetMode() (rv *OutputDeliveryMode) {
+	if c != nil {
+		return c.Mode
+	}
+	return
+}
+
+func (c *CustomModelJobOutput) GetURI() (rv string) {
+	if c != nil && c.URI != nil {
+		return *c.URI
+	}
+	return
+}
+
 // GetJobOutput implements the JobOutputClassification interface for type CustomModelJobOutput.
 func (c *CustomModelJobOutput) GetJobOutput() *JobOutput {
 	return &JobOutput{
@@ -1864,6 +4846,20 @@ type CustomNCrossValidations struct {
 	Value *int32
 }
 
+func (c *CustomNCrossValidations) GetMode() (rv *NCrossValidationsMode) {
+	if c != nil {
+		return c.Mode
+	}
+	return
+}
+
+func (c *CustomNCrossValidations) GetValue() (rv int32) {
+	if c != nil && c.Value != nil {
+		return *c.Value
+	}
+	return
+}
+
 // GetNCrossValidations implements the NCrossValidationsClassification interface for type CustomNCrossValidations.
 func (c *CustomNCrossValidations) GetNCrossValidations() *NCrossValidations {
 	return &NCrossValidations{
@@ -1877,6 +4873,20 @@ type CustomSeasonality struct {
 
 	// REQUIRED; [Required] Seasonality value.
 	Value *int32
+}
+
+func (c *CustomSeasonality) GetMode() (rv *SeasonalityMode) {
+	if c != nil {
+		return c.Mode
+	}
+	return
+}
+
+func (c *CustomSeasonality) GetValue() (rv int32) {
+	if c != nil && c.Value != nil {
+		return *c.Value
+	}
+	return
 }
 
 // GetSeasonality implements the SeasonalityClassification interface for type CustomSeasonality.
@@ -1894,6 +4904,20 @@ type CustomTargetLags struct {
 	Values []*int32
 }
 
+func (c *CustomTargetLags) GetMode() (rv *TargetLagsMode) {
+	if c != nil {
+		return c.Mode
+	}
+	return
+}
+
+func (c *CustomTargetLags) GetValues() (rv []*int32) {
+	if c != nil {
+		return c.Values
+	}
+	return
+}
+
 // GetTargetLags implements the TargetLagsClassification interface for type CustomTargetLags.
 func (c *CustomTargetLags) GetTargetLags() *TargetLags {
 	return &TargetLags{
@@ -1907,6 +4931,20 @@ type CustomTargetRollingWindowSize struct {
 
 	// REQUIRED; [Required] TargetRollingWindowSize value.
 	Value *int32
+}
+
+func (c *CustomTargetRollingWindowSize) GetMode() (rv *TargetRollingWindowSizeMode) {
+	if c != nil {
+		return c.Mode
+	}
+	return
+}
+
+func (c *CustomTargetRollingWindowSize) GetValue() (rv int32) {
+	if c != nil && c.Value != nil {
+		return *c.Value
+	}
+	return
 }
 
 // GetTargetRollingWindowSize implements the TargetRollingWindowSizeClassification interface for type CustomTargetRollingWindowSize.
@@ -1934,6 +4972,41 @@ type DataContainerData struct {
 	Type *string
 }
 
+func (d *DataContainerData) GetProperties() (rv *DataContainerDetails) {
+	if d != nil {
+		return d.Properties
+	}
+	return
+}
+
+func (d *DataContainerData) GetID() (rv string) {
+	if d != nil && d.ID != nil {
+		return *d.ID
+	}
+	return
+}
+
+func (d *DataContainerData) GetName() (rv string) {
+	if d != nil && d.Name != nil {
+		return *d.Name
+	}
+	return
+}
+
+func (d *DataContainerData) GetSystemData() (rv *SystemData) {
+	if d != nil {
+		return d.SystemData
+	}
+	return
+}
+
+func (d *DataContainerData) GetType() (rv string) {
+	if d != nil && d.Type != nil {
+		return *d.Type
+	}
+	return
+}
+
 // DataContainerDetails - Container for data asset versions.
 type DataContainerDetails struct {
 	// REQUIRED; [Required] Specifies the type of data.
@@ -1958,6 +5031,55 @@ type DataContainerDetails struct {
 	NextVersion *string
 }
 
+func (d *DataContainerDetails) GetDataType() (rv *DataType) {
+	if d != nil {
+		return d.DataType
+	}
+	return
+}
+
+func (d *DataContainerDetails) GetDescription() (rv string) {
+	if d != nil && d.Description != nil {
+		return *d.Description
+	}
+	return
+}
+
+func (d *DataContainerDetails) GetIsArchived() (rv bool) {
+	if d != nil && d.IsArchived != nil {
+		return *d.IsArchived
+	}
+	return
+}
+
+func (d *DataContainerDetails) GetProperties() (rv map[string]*string) {
+	if d != nil {
+		return d.Properties
+	}
+	return
+}
+
+func (d *DataContainerDetails) GetTags() (rv map[string]*string) {
+	if d != nil {
+		return d.Tags
+	}
+	return
+}
+
+func (d *DataContainerDetails) GetLatestVersion() (rv string) {
+	if d != nil && d.LatestVersion != nil {
+		return *d.LatestVersion
+	}
+	return
+}
+
+func (d *DataContainerDetails) GetNextVersion() (rv string) {
+	if d != nil && d.NextVersion != nil {
+		return *d.NextVersion
+	}
+	return
+}
+
 // DataContainerResourceArmPaginatedResult - A paginated list of DataContainer entities.
 type DataContainerResourceArmPaginatedResult struct {
 	// The link to the next page of DataContainer objects. If null, there are no additional pages.
@@ -1965,6 +5087,20 @@ type DataContainerResourceArmPaginatedResult struct {
 
 	// An array of objects of type DataContainer.
 	Value []*DataContainerData
+}
+
+func (d *DataContainerResourceArmPaginatedResult) GetNextLink() (rv string) {
+	if d != nil && d.NextLink != nil {
+		return *d.NextLink
+	}
+	return
+}
+
+func (d *DataContainerResourceArmPaginatedResult) GetValue() (rv []*DataContainerData) {
+	if d != nil {
+		return d.Value
+	}
+	return
 }
 
 // DataFactory - A DataFactory compute.
@@ -1999,6 +5135,76 @@ type DataFactory struct {
 
 	// READ-ONLY; The provision state of the cluster. Valid values are Unknown, Updating, Provisioning, Succeeded, and Failed.
 	ProvisioningState *ProvisioningState
+}
+
+func (d *DataFactory) GetComputeType() (rv *ComputeType) {
+	if d != nil {
+		return d.ComputeType
+	}
+	return
+}
+
+func (d *DataFactory) GetDescription() (rv string) {
+	if d != nil && d.Description != nil {
+		return *d.Description
+	}
+	return
+}
+
+func (d *DataFactory) GetDisableLocalAuth() (rv bool) {
+	if d != nil && d.DisableLocalAuth != nil {
+		return *d.DisableLocalAuth
+	}
+	return
+}
+
+func (d *DataFactory) GetResourceID() (rv string) {
+	if d != nil && d.ResourceID != nil {
+		return *d.ResourceID
+	}
+	return
+}
+
+func (d *DataFactory) GetComputeLocation() (rv string) {
+	if d != nil && d.ComputeLocation != nil {
+		return *d.ComputeLocation
+	}
+	return
+}
+
+func (d *DataFactory) GetCreatedOn() (rv *time.Time) {
+	if d != nil {
+		return d.CreatedOn
+	}
+	return
+}
+
+func (d *DataFactory) GetIsAttachedCompute() (rv bool) {
+	if d != nil && d.IsAttachedCompute != nil {
+		return *d.IsAttachedCompute
+	}
+	return
+}
+
+func (d *DataFactory) GetModifiedOn() (rv *time.Time) {
+	if d != nil {
+		return d.ModifiedOn
+	}
+	return
+}
+
+func (d *DataFactory) GetProvisioningErrors() (rv []*ErrorResponse) {
+	if d != nil {
+		return d.ProvisioningErrors
+	}
+	return
+}
+
+func (d *DataFactory) GetProvisioningState() (rv *ProvisioningState) {
+	if d != nil {
+		return d.ProvisioningState
+	}
+	return
 }
 
 // GetCompute implements the ComputeClassification interface for type DataFactory.
@@ -2052,6 +5258,83 @@ type DataLakeAnalytics struct {
 	ProvisioningState *ProvisioningState
 }
 
+func (d *DataLakeAnalytics) GetComputeType() (rv *ComputeType) {
+	if d != nil {
+		return d.ComputeType
+	}
+	return
+}
+
+func (d *DataLakeAnalytics) GetDescription() (rv string) {
+	if d != nil && d.Description != nil {
+		return *d.Description
+	}
+	return
+}
+
+func (d *DataLakeAnalytics) GetDisableLocalAuth() (rv bool) {
+	if d != nil && d.DisableLocalAuth != nil {
+		return *d.DisableLocalAuth
+	}
+	return
+}
+
+func (d *DataLakeAnalytics) GetProperties() (rv *DataLakeAnalyticsSchemaProperties) {
+	if d != nil {
+		return d.Properties
+	}
+	return
+}
+
+func (d *DataLakeAnalytics) GetResourceID() (rv string) {
+	if d != nil && d.ResourceID != nil {
+		return *d.ResourceID
+	}
+	return
+}
+
+func (d *DataLakeAnalytics) GetComputeLocation() (rv string) {
+	if d != nil && d.ComputeLocation != nil {
+		return *d.ComputeLocation
+	}
+	return
+}
+
+func (d *DataLakeAnalytics) GetCreatedOn() (rv *time.Time) {
+	if d != nil {
+		return d.CreatedOn
+	}
+	return
+}
+
+func (d *DataLakeAnalytics) GetIsAttachedCompute() (rv bool) {
+	if d != nil && d.IsAttachedCompute != nil {
+		return *d.IsAttachedCompute
+	}
+	return
+}
+
+func (d *DataLakeAnalytics) GetModifiedOn() (rv *time.Time) {
+	if d != nil {
+		return d.ModifiedOn
+	}
+	return
+}
+
+func (d *DataLakeAnalytics) GetProvisioningErrors() (rv []*ErrorResponse) {
+	if d != nil {
+		return d.ProvisioningErrors
+	}
+	return
+}
+
+func (d *DataLakeAnalytics) GetProvisioningState() (rv *ProvisioningState) {
+	if d != nil {
+		return d.ProvisioningState
+	}
+	return
+}
+
 // GetCompute implements the ComputeClassification interface for type DataLakeAnalytics.
 func (d *DataLakeAnalytics) GetCompute() *Compute {
 	return &Compute{
@@ -2073,6 +5356,13 @@ type DataLakeAnalyticsSchemaProperties struct {
 	DataLakeStoreAccountName *string
 }
 
+func (d *DataLakeAnalyticsSchemaProperties) GetDataLakeStoreAccountName() (rv string) {
+	if d != nil && d.DataLakeStoreAccountName != nil {
+		return *d.DataLakeStoreAccountName
+	}
+	return
+}
+
 // DataPathAssetReference - Reference to an asset via its path in a datastore.
 type DataPathAssetReference struct {
 	// REQUIRED; [Required] Specifies the type of asset reference.
@@ -2083,6 +5373,27 @@ type DataPathAssetReference struct {
 
 	// The path of the file/directory in the datastore.
 	Path *string
+}
+
+func (d *DataPathAssetReference) GetReferenceType() (rv *ReferenceType) {
+	if d != nil {
+		return d.ReferenceType
+	}
+	return
+}
+
+func (d *DataPathAssetReference) GetDatastoreID() (rv string) {
+	if d != nil && d.DatastoreID != nil {
+		return *d.DatastoreID
+	}
+	return
+}
+
+func (d *DataPathAssetReference) GetPath() (rv string) {
+	if d != nil && d.Path != nil {
+		return *d.Path
+	}
+	return
 }
 
 // GetAssetReferenceBase implements the AssetReferenceBaseClassification interface for type DataPathAssetReference.
@@ -2110,6 +5421,41 @@ type DataVersionBaseData struct {
 	Type *string
 }
 
+func (d *DataVersionBaseData) GetProperties() (rv DataVersionBaseDetailsClassification) {
+	if d != nil {
+		return d.Properties
+	}
+	return
+}
+
+func (d *DataVersionBaseData) GetID() (rv string) {
+	if d != nil && d.ID != nil {
+		return *d.ID
+	}
+	return
+}
+
+func (d *DataVersionBaseData) GetName() (rv string) {
+	if d != nil && d.Name != nil {
+		return *d.Name
+	}
+	return
+}
+
+func (d *DataVersionBaseData) GetSystemData() (rv *SystemData) {
+	if d != nil {
+		return d.SystemData
+	}
+	return
+}
+
+func (d *DataVersionBaseData) GetType() (rv string) {
+	if d != nil && d.Type != nil {
+		return *d.Type
+	}
+	return
+}
+
 // DataVersionBaseDetails - Data version base definition
 type DataVersionBaseDetails struct {
 	// REQUIRED; [Required] Specifies the type of data.
@@ -2134,6 +5480,55 @@ type DataVersionBaseDetails struct {
 	Tags map[string]*string
 }
 
+func (d *DataVersionBaseDetails) GetDataType() (rv *DataType) {
+	if d != nil {
+		return d.DataType
+	}
+	return
+}
+
+func (d *DataVersionBaseDetails) GetDataURI() (rv string) {
+	if d != nil && d.DataURI != nil {
+		return *d.DataURI
+	}
+	return
+}
+
+func (d *DataVersionBaseDetails) GetDescription() (rv string) {
+	if d != nil && d.Description != nil {
+		return *d.Description
+	}
+	return
+}
+
+func (d *DataVersionBaseDetails) GetIsAnonymous() (rv bool) {
+	if d != nil && d.IsAnonymous != nil {
+		return *d.IsAnonymous
+	}
+	return
+}
+
+func (d *DataVersionBaseDetails) GetIsArchived() (rv bool) {
+	if d != nil && d.IsArchived != nil {
+		return *d.IsArchived
+	}
+	return
+}
+
+func (d *DataVersionBaseDetails) GetProperties() (rv map[string]*string) {
+	if d != nil {
+		return d.Properties
+	}
+	return
+}
+
+func (d *DataVersionBaseDetails) GetTags() (rv map[string]*string) {
+	if d != nil {
+		return d.Tags
+	}
+	return
+}
+
 // GetDataVersionBaseDetails implements the DataVersionBaseDetailsClassification interface for type DataVersionBaseDetails.
 func (d *DataVersionBaseDetails) GetDataVersionBaseDetails() *DataVersionBaseDetails { return d }
 
@@ -2144,6 +5539,20 @@ type DataVersionBaseResourceArmPaginatedResult struct {
 
 	// An array of objects of type DataVersionBase.
 	Value []*DataVersionBaseData
+}
+
+func (d *DataVersionBaseResourceArmPaginatedResult) GetNextLink() (rv string) {
+	if d != nil && d.NextLink != nil {
+		return *d.NextLink
+	}
+	return
+}
+
+func (d *DataVersionBaseResourceArmPaginatedResult) GetValue() (rv []*DataVersionBaseData) {
+	if d != nil {
+		return d.Value
+	}
+	return
 }
 
 // Databricks - A DataFactory compute.
@@ -2183,6 +5592,83 @@ type Databricks struct {
 	ProvisioningState *ProvisioningState
 }
 
+func (d *Databricks) GetComputeType() (rv *ComputeType) {
+	if d != nil {
+		return d.ComputeType
+	}
+	return
+}
+
+func (d *Databricks) GetDescription() (rv string) {
+	if d != nil && d.Description != nil {
+		return *d.Description
+	}
+	return
+}
+
+func (d *Databricks) GetDisableLocalAuth() (rv bool) {
+	if d != nil && d.DisableLocalAuth != nil {
+		return *d.DisableLocalAuth
+	}
+	return
+}
+
+func (d *Databricks) GetProperties() (rv *DatabricksProperties) {
+	if d != nil {
+		return d.Properties
+	}
+	return
+}
+
+func (d *Databricks) GetResourceID() (rv string) {
+	if d != nil && d.ResourceID != nil {
+		return *d.ResourceID
+	}
+	return
+}
+
+func (d *Databricks) GetComputeLocation() (rv string) {
+	if d != nil && d.ComputeLocation != nil {
+		return *d.ComputeLocation
+	}
+	return
+}
+
+func (d *Databricks) GetCreatedOn() (rv *time.Time) {
+	if d != nil {
+		return d.CreatedOn
+	}
+	return
+}
+
+func (d *Databricks) GetIsAttachedCompute() (rv bool) {
+	if d != nil && d.IsAttachedCompute != nil {
+		return *d.IsAttachedCompute
+	}
+	return
+}
+
+func (d *Databricks) GetModifiedOn() (rv *time.Time) {
+	if d != nil {
+		return d.ModifiedOn
+	}
+	return
+}
+
+func (d *Databricks) GetProvisioningErrors() (rv []*ErrorResponse) {
+	if d != nil {
+		return d.ProvisioningErrors
+	}
+	return
+}
+
+func (d *Databricks) GetProvisioningState() (rv *ProvisioningState) {
+	if d != nil {
+		return d.ProvisioningState
+	}
+	return
+}
+
 // GetCompute implements the ComputeClassification interface for type Databricks.
 func (d *Databricks) GetCompute() *Compute {
 	return &Compute{
@@ -2208,6 +5694,20 @@ type DatabricksComputeSecrets struct {
 	DatabricksAccessToken *string
 }
 
+func (d *DatabricksComputeSecrets) GetComputeType() (rv *ComputeType) {
+	if d != nil {
+		return d.ComputeType
+	}
+	return
+}
+
+func (d *DatabricksComputeSecrets) GetDatabricksAccessToken() (rv string) {
+	if d != nil && d.DatabricksAccessToken != nil {
+		return *d.DatabricksAccessToken
+	}
+	return
+}
+
 // GetComputeSecrets implements the ComputeSecretsClassification interface for type DatabricksComputeSecrets.
 func (d *DatabricksComputeSecrets) GetComputeSecrets() *ComputeSecrets {
 	return &ComputeSecrets{
@@ -2224,10 +5724,31 @@ type DatabricksProperties struct {
 	WorkspaceURL *string
 }
 
+func (d *DatabricksProperties) GetDatabricksAccessToken() (rv string) {
+	if d != nil && d.DatabricksAccessToken != nil {
+		return *d.DatabricksAccessToken
+	}
+	return
+}
+
+func (d *DatabricksProperties) GetWorkspaceURL() (rv string) {
+	if d != nil && d.WorkspaceURL != nil {
+		return *d.WorkspaceURL
+	}
+	return
+}
+
 // DatastoreCredentials - Base definition for datastore credentials.
 type DatastoreCredentials struct {
 	// REQUIRED; [Required] Credential type used to authentication with storage.
 	CredentialsType *CredentialsType
+}
+
+func (d *DatastoreCredentials) GetCredentialsType() (rv *CredentialsType) {
+	if d != nil {
+		return d.CredentialsType
+	}
+	return
 }
 
 // GetDatastoreCredentials implements the DatastoreCredentialsClassification interface for type DatastoreCredentials.
@@ -2251,6 +5772,41 @@ type DatastoreData struct {
 	Type *string
 }
 
+func (d *DatastoreData) GetProperties() (rv DatastoreDetailsClassification) {
+	if d != nil {
+		return d.Properties
+	}
+	return
+}
+
+func (d *DatastoreData) GetID() (rv string) {
+	if d != nil && d.ID != nil {
+		return *d.ID
+	}
+	return
+}
+
+func (d *DatastoreData) GetName() (rv string) {
+	if d != nil && d.Name != nil {
+		return *d.Name
+	}
+	return
+}
+
+func (d *DatastoreData) GetSystemData() (rv *SystemData) {
+	if d != nil {
+		return d.SystemData
+	}
+	return
+}
+
+func (d *DatastoreData) GetType() (rv string) {
+	if d != nil && d.Type != nil {
+		return *d.Type
+	}
+	return
+}
+
 // DatastoreDetails - Base definition for datastore contents configuration.
 type DatastoreDetails struct {
 	// REQUIRED; [Required] Account credentials.
@@ -2272,6 +5828,48 @@ type DatastoreDetails struct {
 	IsDefault *bool
 }
 
+func (d *DatastoreDetails) GetCredentials() (rv DatastoreCredentialsClassification) {
+	if d != nil {
+		return d.Credentials
+	}
+	return
+}
+
+func (d *DatastoreDetails) GetDatastoreType() (rv *DatastoreType) {
+	if d != nil {
+		return d.DatastoreType
+	}
+	return
+}
+
+func (d *DatastoreDetails) GetDescription() (rv string) {
+	if d != nil && d.Description != nil {
+		return *d.Description
+	}
+	return
+}
+
+func (d *DatastoreDetails) GetProperties() (rv map[string]*string) {
+	if d != nil {
+		return d.Properties
+	}
+	return
+}
+
+func (d *DatastoreDetails) GetTags() (rv map[string]*string) {
+	if d != nil {
+		return d.Tags
+	}
+	return
+}
+
+func (d *DatastoreDetails) GetIsDefault() (rv bool) {
+	if d != nil && d.IsDefault != nil {
+		return *d.IsDefault
+	}
+	return
+}
+
 // GetDatastoreDetails implements the DatastoreDetailsClassification interface for type DatastoreDetails.
 func (d *DatastoreDetails) GetDatastoreDetails() *DatastoreDetails { return d }
 
@@ -2284,10 +5882,31 @@ type DatastoreResourceArmPaginatedResult struct {
 	Value []*DatastoreData
 }
 
+func (d *DatastoreResourceArmPaginatedResult) GetNextLink() (rv string) {
+	if d != nil && d.NextLink != nil {
+		return *d.NextLink
+	}
+	return
+}
+
+func (d *DatastoreResourceArmPaginatedResult) GetValue() (rv []*DatastoreData) {
+	if d != nil {
+		return d.Value
+	}
+	return
+}
+
 // DatastoreSecrets - Base definition for datastore secrets.
 type DatastoreSecrets struct {
 	// REQUIRED; [Required] Credential type used to authentication with storage.
 	SecretsType *SecretsType
+}
+
+func (d *DatastoreSecrets) GetSecretsType() (rv *SecretsType) {
+	if d != nil {
+		return d.SecretsType
+	}
+	return
 }
 
 // GetDatastoreSecrets implements the DatastoreSecretsClassification interface for type DatastoreSecrets.
@@ -2296,6 +5915,13 @@ func (d *DatastoreSecrets) GetDatastoreSecrets() *DatastoreSecrets { return d }
 type DefaultScaleSettings struct {
 	// REQUIRED; [Required] Type of deployment scaling algorithm
 	ScaleType *ScaleType
+}
+
+func (d *DefaultScaleSettings) GetScaleType() (rv *ScaleType) {
+	if d != nil {
+		return d.ScaleType
+	}
+	return
 }
 
 // GetOnlineScaleSettings implements the OnlineScaleSettingsClassification interface for type DefaultScaleSettings.
@@ -2310,12 +5936,33 @@ type DeploymentLogs struct {
 	Content *string
 }
 
+func (d *DeploymentLogs) GetContent() (rv string) {
+	if d != nil && d.Content != nil {
+		return *d.Content
+	}
+	return
+}
+
 type DeploymentLogsRequest struct {
 	// The type of container to retrieve logs from.
 	ContainerType *ContainerType
 
 	// The maximum number of lines to tail.
 	Tail *int32
+}
+
+func (d *DeploymentLogsRequest) GetContainerType() (rv *ContainerType) {
+	if d != nil {
+		return d.ContainerType
+	}
+	return
+}
+
+func (d *DeploymentLogsRequest) GetTail() (rv int32) {
+	if d != nil && d.Tail != nil {
+		return *d.Tail
+	}
+	return
 }
 
 type DiagnoseRequestProperties struct {
@@ -2347,8 +5994,78 @@ type DiagnoseRequestProperties struct {
 	Udr map[string]any
 }
 
+func (d *DiagnoseRequestProperties) GetApplicationInsights() (rv map[string]any) {
+	if d != nil {
+		return d.ApplicationInsights
+	}
+	return
+}
+
+func (d *DiagnoseRequestProperties) GetContainerRegistry() (rv map[string]any) {
+	if d != nil {
+		return d.ContainerRegistry
+	}
+	return
+}
+
+func (d *DiagnoseRequestProperties) GetDNSResolution() (rv map[string]any) {
+	if d != nil {
+		return d.DNSResolution
+	}
+	return
+}
+
+func (d *DiagnoseRequestProperties) GetKeyVault() (rv map[string]any) {
+	if d != nil {
+		return d.KeyVault
+	}
+	return
+}
+
+func (d *DiagnoseRequestProperties) GetNsg() (rv map[string]any) {
+	if d != nil {
+		return d.Nsg
+	}
+	return
+}
+
+func (d *DiagnoseRequestProperties) GetOthers() (rv map[string]any) {
+	if d != nil {
+		return d.Others
+	}
+	return
+}
+
+func (d *DiagnoseRequestProperties) GetResourceLock() (rv map[string]any) {
+	if d != nil {
+		return d.ResourceLock
+	}
+	return
+}
+
+func (d *DiagnoseRequestProperties) GetStorageAccount() (rv map[string]any) {
+	if d != nil {
+		return d.StorageAccount
+	}
+	return
+}
+
+func (d *DiagnoseRequestProperties) GetUdr() (rv map[string]any) {
+	if d != nil {
+		return d.Udr
+	}
+	return
+}
+
 type DiagnoseResponseResult struct {
 	Value *DiagnoseResponseResultValue
+}
+
+func (d *DiagnoseResponseResult) GetValue() (rv *DiagnoseResponseResultValue) {
+	if d != nil {
+		return d.Value
+	}
+	return
 }
 
 type DiagnoseResponseResultValue struct {
@@ -2363,6 +6080,69 @@ type DiagnoseResponseResultValue struct {
 	UserDefinedRouteResults    []*DiagnoseResult
 }
 
+func (d *DiagnoseResponseResultValue) GetApplicationInsightsResults() (rv []*DiagnoseResult) {
+	if d != nil {
+		return d.ApplicationInsightsResults
+	}
+	return
+}
+
+func (d *DiagnoseResponseResultValue) GetContainerRegistryResults() (rv []*DiagnoseResult) {
+	if d != nil {
+		return d.ContainerRegistryResults
+	}
+	return
+}
+
+func (d *DiagnoseResponseResultValue) GetDNSResolutionResults() (rv []*DiagnoseResult) {
+	if d != nil {
+		return d.DNSResolutionResults
+	}
+	return
+}
+
+func (d *DiagnoseResponseResultValue) GetKeyVaultResults() (rv []*DiagnoseResult) {
+	if d != nil {
+		return d.KeyVaultResults
+	}
+	return
+}
+
+func (d *DiagnoseResponseResultValue) GetNetworkSecurityRuleResults() (rv []*DiagnoseResult) {
+	if d != nil {
+		return d.NetworkSecurityRuleResults
+	}
+	return
+}
+
+func (d *DiagnoseResponseResultValue) GetOtherResults() (rv []*DiagnoseResult) {
+	if d != nil {
+		return d.OtherResults
+	}
+	return
+}
+
+func (d *DiagnoseResponseResultValue) GetResourceLockResults() (rv []*DiagnoseResult) {
+	if d != nil {
+		return d.ResourceLockResults
+	}
+	return
+}
+
+func (d *DiagnoseResponseResultValue) GetStorageAccountResults() (rv []*DiagnoseResult) {
+	if d != nil {
+		return d.StorageAccountResults
+	}
+	return
+}
+
+func (d *DiagnoseResponseResultValue) GetUserDefinedRouteResults() (rv []*DiagnoseResult) {
+	if d != nil {
+		return d.UserDefinedRouteResults
+	}
+	return
+}
+
 // DiagnoseResult - Result of Diagnose
 type DiagnoseResult struct {
 	// READ-ONLY; Code for workspace setup error
@@ -2375,16 +6155,51 @@ type DiagnoseResult struct {
 	Message *string
 }
 
+func (d *DiagnoseResult) GetCode() (rv string) {
+	if d != nil && d.Code != nil {
+		return *d.Code
+	}
+	return
+}
+
+func (d *DiagnoseResult) GetLevel() (rv *DiagnoseResultLevel) {
+	if d != nil {
+		return d.Level
+	}
+	return
+}
+
+func (d *DiagnoseResult) GetMessage() (rv string) {
+	if d != nil && d.Message != nil {
+		return *d.Message
+	}
+	return
+}
+
 // DiagnoseWorkspaceParameters - Parameters to diagnose a workspace
 type DiagnoseWorkspaceParameters struct {
 	// Value of Parameters
 	Value *DiagnoseRequestProperties
 }
 
+func (d *DiagnoseWorkspaceParameters) GetValue() (rv *DiagnoseRequestProperties) {
+	if d != nil {
+		return d.Value
+	}
+	return
+}
+
 // DistributionConfiguration - Base definition for job distribution configuration.
 type DistributionConfiguration struct {
 	// REQUIRED; [Required] Specifies the type of distribution framework.
 	DistributionType *DistributionType
+}
+
+func (d *DistributionConfiguration) GetDistributionType() (rv *DistributionType) {
+	if d != nil {
+		return d.DistributionType
+	}
+	return
 }
 
 // GetDistributionConfiguration implements the DistributionConfigurationClassification interface for type DistributionConfiguration.
@@ -2404,6 +6219,27 @@ type EarlyTerminationPolicy struct {
 	EvaluationInterval *int32
 }
 
+func (e *EarlyTerminationPolicy) GetPolicyType() (rv *EarlyTerminationPolicyType) {
+	if e != nil {
+		return e.PolicyType
+	}
+	return
+}
+
+func (e *EarlyTerminationPolicy) GetDelayEvaluation() (rv int32) {
+	if e != nil && e.DelayEvaluation != nil {
+		return *e.DelayEvaluation
+	}
+	return
+}
+
+func (e *EarlyTerminationPolicy) GetEvaluationInterval() (rv int32) {
+	if e != nil && e.EvaluationInterval != nil {
+		return *e.EvaluationInterval
+	}
+	return
+}
+
 // GetEarlyTerminationPolicy implements the EarlyTerminationPolicyClassification interface for type EarlyTerminationPolicy.
 func (e *EarlyTerminationPolicy) GetEarlyTerminationPolicy() *EarlyTerminationPolicy { return e }
 
@@ -2418,6 +6254,27 @@ type EncryptionKeyVaultProperties struct {
 	IdentityClientID *string
 }
 
+func (e *EncryptionKeyVaultProperties) GetKeyIdentifier() (rv string) {
+	if e != nil && e.KeyIdentifier != nil {
+		return *e.KeyIdentifier
+	}
+	return
+}
+
+func (e *EncryptionKeyVaultProperties) GetKeyVaultArmID() (rv string) {
+	if e != nil && e.KeyVaultArmID != nil {
+		return *e.KeyVaultArmID
+	}
+	return
+}
+
+func (e *EncryptionKeyVaultProperties) GetIdentityClientID() (rv string) {
+	if e != nil && e.IdentityClientID != nil {
+		return *e.IdentityClientID
+	}
+	return
+}
+
 type EncryptionProperty struct {
 	// REQUIRED; Customer Key vault properties.
 	KeyVaultProperties *EncryptionKeyVaultProperties
@@ -2429,6 +6286,27 @@ type EncryptionProperty struct {
 	Identity *IdentityForCmk
 }
 
+func (e *EncryptionProperty) GetKeyVaultProperties() (rv *EncryptionKeyVaultProperties) {
+	if e != nil {
+		return e.KeyVaultProperties
+	}
+	return
+}
+
+func (e *EncryptionProperty) GetStatus() (rv *EncryptionStatus) {
+	if e != nil {
+		return e.Status
+	}
+	return
+}
+
+func (e *EncryptionProperty) GetIdentity() (rv *IdentityForCmk) {
+	if e != nil {
+		return e.Identity
+	}
+	return
+}
+
 // EndpointAuthKeys - Keys for endpoint authentication.
 type EndpointAuthKeys struct {
 	// The primary key.
@@ -2436,6 +6314,20 @@ type EndpointAuthKeys struct {
 
 	// The secondary key.
 	SecondaryKey *string
+}
+
+func (e *EndpointAuthKeys) GetPrimaryKey() (rv string) {
+	if e != nil && e.PrimaryKey != nil {
+		return *e.PrimaryKey
+	}
+	return
+}
+
+func (e *EndpointAuthKeys) GetSecondaryKey() (rv string) {
+	if e != nil && e.SecondaryKey != nil {
+		return *e.SecondaryKey
+	}
+	return
 }
 
 // EndpointAuthToken - Service Token
@@ -2451,6 +6343,34 @@ type EndpointAuthToken struct {
 
 	// Access token type.
 	TokenType *string
+}
+
+func (e *EndpointAuthToken) GetAccessToken() (rv string) {
+	if e != nil && e.AccessToken != nil {
+		return *e.AccessToken
+	}
+	return
+}
+
+func (e *EndpointAuthToken) GetExpiryTimeUTC() (rv int64) {
+	if e != nil && e.ExpiryTimeUTC != nil {
+		return *e.ExpiryTimeUTC
+	}
+	return
+}
+
+func (e *EndpointAuthToken) GetRefreshAfterTimeUTC() (rv int64) {
+	if e != nil && e.RefreshAfterTimeUTC != nil {
+		return *e.RefreshAfterTimeUTC
+	}
+	return
+}
+
+func (e *EndpointAuthToken) GetTokenType() (rv string) {
+	if e != nil && e.TokenType != nil {
+		return *e.TokenType
+	}
+	return
 }
 
 // EnvironmentContainerData - Azure Resource Manager resource envelope.
@@ -2469,6 +6389,41 @@ type EnvironmentContainerData struct {
 
 	// READ-ONLY; The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type *string
+}
+
+func (e *EnvironmentContainerData) GetProperties() (rv *EnvironmentContainerDetails) {
+	if e != nil {
+		return e.Properties
+	}
+	return
+}
+
+func (e *EnvironmentContainerData) GetID() (rv string) {
+	if e != nil && e.ID != nil {
+		return *e.ID
+	}
+	return
+}
+
+func (e *EnvironmentContainerData) GetName() (rv string) {
+	if e != nil && e.Name != nil {
+		return *e.Name
+	}
+	return
+}
+
+func (e *EnvironmentContainerData) GetSystemData() (rv *SystemData) {
+	if e != nil {
+		return e.SystemData
+	}
+	return
+}
+
+func (e *EnvironmentContainerData) GetType() (rv string) {
+	if e != nil && e.Type != nil {
+		return *e.Type
+	}
+	return
 }
 
 // EnvironmentContainerDetails - Container for environment specification versions.
@@ -2492,6 +6447,48 @@ type EnvironmentContainerDetails struct {
 	NextVersion *string
 }
 
+func (e *EnvironmentContainerDetails) GetDescription() (rv string) {
+	if e != nil && e.Description != nil {
+		return *e.Description
+	}
+	return
+}
+
+func (e *EnvironmentContainerDetails) GetIsArchived() (rv bool) {
+	if e != nil && e.IsArchived != nil {
+		return *e.IsArchived
+	}
+	return
+}
+
+func (e *EnvironmentContainerDetails) GetProperties() (rv map[string]*string) {
+	if e != nil {
+		return e.Properties
+	}
+	return
+}
+
+func (e *EnvironmentContainerDetails) GetTags() (rv map[string]*string) {
+	if e != nil {
+		return e.Tags
+	}
+	return
+}
+
+func (e *EnvironmentContainerDetails) GetLatestVersion() (rv string) {
+	if e != nil && e.LatestVersion != nil {
+		return *e.LatestVersion
+	}
+	return
+}
+
+func (e *EnvironmentContainerDetails) GetNextVersion() (rv string) {
+	if e != nil && e.NextVersion != nil {
+		return *e.NextVersion
+	}
+	return
+}
+
 // EnvironmentContainerResourceArmPaginatedResult - A paginated list of EnvironmentContainer entities.
 type EnvironmentContainerResourceArmPaginatedResult struct {
 	// The link to the next page of EnvironmentContainer objects. If null, there are no additional pages.
@@ -2499,6 +6496,20 @@ type EnvironmentContainerResourceArmPaginatedResult struct {
 
 	// An array of objects of type EnvironmentContainer.
 	Value []*EnvironmentContainerData
+}
+
+func (e *EnvironmentContainerResourceArmPaginatedResult) GetNextLink() (rv string) {
+	if e != nil && e.NextLink != nil {
+		return *e.NextLink
+	}
+	return
+}
+
+func (e *EnvironmentContainerResourceArmPaginatedResult) GetValue() (rv []*EnvironmentContainerData) {
+	if e != nil {
+		return e.Value
+	}
+	return
 }
 
 // EnvironmentVersionData - Azure Resource Manager resource envelope.
@@ -2517,6 +6528,41 @@ type EnvironmentVersionData struct {
 
 	// READ-ONLY; The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type *string
+}
+
+func (e *EnvironmentVersionData) GetProperties() (rv *EnvironmentVersionDetails) {
+	if e != nil {
+		return e.Properties
+	}
+	return
+}
+
+func (e *EnvironmentVersionData) GetID() (rv string) {
+	if e != nil && e.ID != nil {
+		return *e.ID
+	}
+	return
+}
+
+func (e *EnvironmentVersionData) GetName() (rv string) {
+	if e != nil && e.Name != nil {
+		return *e.Name
+	}
+	return
+}
+
+func (e *EnvironmentVersionData) GetSystemData() (rv *SystemData) {
+	if e != nil {
+		return e.SystemData
+	}
+	return
+}
+
+func (e *EnvironmentVersionData) GetType() (rv string) {
+	if e != nil && e.Type != nil {
+		return *e.Type
+	}
+	return
 }
 
 // EnvironmentVersionDetails - Environment version details.
@@ -2555,6 +6601,83 @@ type EnvironmentVersionDetails struct {
 	EnvironmentType *EnvironmentType
 }
 
+func (e *EnvironmentVersionDetails) GetBuild() (rv *BuildContext) {
+	if e != nil {
+		return e.Build
+	}
+	return
+}
+
+func (e *EnvironmentVersionDetails) GetCondaFile() (rv string) {
+	if e != nil && e.CondaFile != nil {
+		return *e.CondaFile
+	}
+	return
+}
+
+func (e *EnvironmentVersionDetails) GetDescription() (rv string) {
+	if e != nil && e.Description != nil {
+		return *e.Description
+	}
+	return
+}
+
+func (e *EnvironmentVersionDetails) GetImage() (rv string) {
+	if e != nil && e.Image != nil {
+		return *e.Image
+	}
+	return
+}
+
+func (e *EnvironmentVersionDetails) GetInferenceConfig() (rv *InferenceContainerProperties) {
+	if e != nil {
+		return e.InferenceConfig
+	}
+	return
+}
+
+func (e *EnvironmentVersionDetails) GetIsAnonymous() (rv bool) {
+	if e != nil && e.IsAnonymous != nil {
+		return *e.IsAnonymous
+	}
+	return
+}
+
+func (e *EnvironmentVersionDetails) GetIsArchived() (rv bool) {
+	if e != nil && e.IsArchived != nil {
+		return *e.IsArchived
+	}
+	return
+}
+
+func (e *EnvironmentVersionDetails) GetOSType() (rv *OperatingSystemType) {
+	if e != nil {
+		return e.OSType
+	}
+	return
+}
+
+func (e *EnvironmentVersionDetails) GetProperties() (rv map[string]*string) {
+	if e != nil {
+		return e.Properties
+	}
+	return
+}
+
+func (e *EnvironmentVersionDetails) GetTags() (rv map[string]*string) {
+	if e != nil {
+		return e.Tags
+	}
+	return
+}
+
+func (e *EnvironmentVersionDetails) GetEnvironmentType() (rv *EnvironmentType) {
+	if e != nil {
+		return e.EnvironmentType
+	}
+	return
+}
+
 // EnvironmentVersionResourceArmPaginatedResult - A paginated list of EnvironmentVersion entities.
 type EnvironmentVersionResourceArmPaginatedResult struct {
 	// The link to the next page of EnvironmentVersion objects. If null, there are no additional pages.
@@ -2564,6 +6687,20 @@ type EnvironmentVersionResourceArmPaginatedResult struct {
 	Value []*EnvironmentVersionData
 }
 
+func (e *EnvironmentVersionResourceArmPaginatedResult) GetNextLink() (rv string) {
+	if e != nil && e.NextLink != nil {
+		return *e.NextLink
+	}
+	return
+}
+
+func (e *EnvironmentVersionResourceArmPaginatedResult) GetValue() (rv []*EnvironmentVersionData) {
+	if e != nil {
+		return e.Value
+	}
+	return
+}
+
 // ErrorAdditionalInfo - The resource management error additional info.
 type ErrorAdditionalInfo struct {
 	// READ-ONLY; The additional info.
@@ -2571,6 +6708,20 @@ type ErrorAdditionalInfo struct {
 
 	// READ-ONLY; The additional info type.
 	Type *string
+}
+
+func (e *ErrorAdditionalInfo) GetInfo() (rv any) {
+	if e != nil {
+		return e.Info
+	}
+	return
+}
+
+func (e *ErrorAdditionalInfo) GetType() (rv string) {
+	if e != nil && e.Type != nil {
+		return *e.Type
+	}
+	return
 }
 
 // ErrorDetail - The error detail.
@@ -2591,11 +6742,53 @@ type ErrorDetail struct {
 	Target *string
 }
 
+func (e *ErrorDetail) GetAdditionalInfo() (rv []*ErrorAdditionalInfo) {
+	if e != nil {
+		return e.AdditionalInfo
+	}
+	return
+}
+
+func (e *ErrorDetail) GetCode() (rv string) {
+	if e != nil && e.Code != nil {
+		return *e.Code
+	}
+	return
+}
+
+func (e *ErrorDetail) GetDetails() (rv []*ErrorDetail) {
+	if e != nil {
+		return e.Details
+	}
+	return
+}
+
+func (e *ErrorDetail) GetMessage() (rv string) {
+	if e != nil && e.Message != nil {
+		return *e.Message
+	}
+	return
+}
+
+func (e *ErrorDetail) GetTarget() (rv string) {
+	if e != nil && e.Target != nil {
+		return *e.Target
+	}
+	return
+}
+
 // ErrorResponse - Common error response for all Azure Resource Manager APIs to return error details for failed operations.
 // (This also follows the OData error response format.).
 type ErrorResponse struct {
 	// The error object.
 	Error *ErrorDetail
+}
+
+func (e *ErrorResponse) GetError() (rv *ErrorDetail) {
+	if e != nil {
+		return e.Error
+	}
+	return
 }
 
 // EstimatedVMPrice - The estimated price info for using a VM of a particular OS type, tier, etc.
@@ -2610,6 +6803,27 @@ type EstimatedVMPrice struct {
 	VMTier *VMTier
 }
 
+func (e *EstimatedVMPrice) GetOSType() (rv *VMPriceOSType) {
+	if e != nil {
+		return e.OSType
+	}
+	return
+}
+
+func (e *EstimatedVMPrice) GetRetailPrice() (rv float64) {
+	if e != nil && e.RetailPrice != nil {
+		return *e.RetailPrice
+	}
+	return
+}
+
+func (e *EstimatedVMPrice) GetVMTier() (rv *VMTier) {
+	if e != nil {
+		return e.VMTier
+	}
+	return
+}
+
 // EstimatedVMPrices - The estimated price info for using a VM.
 type EstimatedVMPrices struct {
 	// REQUIRED; Three lettered code specifying the currency of the VM price. Example: USD
@@ -2622,8 +6836,36 @@ type EstimatedVMPrices struct {
 	Values []*EstimatedVMPrice
 }
 
+func (e *EstimatedVMPrices) GetBillingCurrency() (rv *BillingCurrency) {
+	if e != nil {
+		return e.BillingCurrency
+	}
+	return
+}
+
+func (e *EstimatedVMPrices) GetUnitOfMeasure() (rv *UnitOfMeasure) {
+	if e != nil {
+		return e.UnitOfMeasure
+	}
+	return
+}
+
+func (e *EstimatedVMPrices) GetValues() (rv []*EstimatedVMPrice) {
+	if e != nil {
+		return e.Values
+	}
+	return
+}
+
 type ExternalFQDNResponse struct {
 	Value []*FQDNEndpoints
+}
+
+func (e *ExternalFQDNResponse) GetValue() (rv []*FQDNEndpoints) {
+	if e != nil {
+		return e.Value
+	}
+	return
 }
 
 type FQDNEndpoint struct {
@@ -2631,12 +6873,40 @@ type FQDNEndpoint struct {
 	EndpointDetails []*FQDNEndpointDetail
 }
 
+func (f *FQDNEndpoint) GetDomainName() (rv string) {
+	if f != nil && f.DomainName != nil {
+		return *f.DomainName
+	}
+	return
+}
+
+func (f *FQDNEndpoint) GetEndpointDetails() (rv []*FQDNEndpointDetail) {
+	if f != nil {
+		return f.EndpointDetails
+	}
+	return
+}
+
 type FQDNEndpointDetail struct {
 	Port *int32
 }
 
+func (f *FQDNEndpointDetail) GetPort() (rv int32) {
+	if f != nil && f.Port != nil {
+		return *f.Port
+	}
+	return
+}
+
 type FQDNEndpoints struct {
 	Properties *FQDNEndpointsProperties
+}
+
+func (f *FQDNEndpoints) GetProperties() (rv *FQDNEndpointsProperties) {
+	if f != nil {
+		return f.Properties
+	}
+	return
 }
 
 type FQDNEndpointsProperties struct {
@@ -2644,15 +6914,43 @@ type FQDNEndpointsProperties struct {
 	Endpoints []*FQDNEndpoint
 }
 
+func (f *FQDNEndpointsProperties) GetCategory() (rv string) {
+	if f != nil && f.Category != nil {
+		return *f.Category
+	}
+	return
+}
+
+func (f *FQDNEndpointsProperties) GetEndpoints() (rv []*FQDNEndpoint) {
+	if f != nil {
+		return f.Endpoints
+	}
+	return
+}
+
 type FlavorData struct {
 	// Model flavor-specific data.
 	Data map[string]*string
+}
+
+func (f *FlavorData) GetData() (rv map[string]*string) {
+	if f != nil {
+		return f.Data
+	}
+	return
 }
 
 // ForecastHorizon - The desired maximum forecast horizon in units of time-series frequency.
 type ForecastHorizon struct {
 	// REQUIRED; [Required] Set forecast horizon value selection mode.
 	Mode *ForecastHorizonMode
+}
+
+func (f *ForecastHorizon) GetMode() (rv *ForecastHorizonMode) {
+	if f != nil {
+		return f.Mode
+	}
+	return
 }
 
 // GetForecastHorizon implements the ForecastHorizonClassification interface for type ForecastHorizon.
@@ -2689,6 +6987,76 @@ type Forecasting struct {
 
 	// Inputs for training phase for an AutoML Job.
 	TrainingSettings *TrainingSettings
+}
+
+func (f *Forecasting) GetTaskType() (rv *TaskType) {
+	if f != nil {
+		return f.TaskType
+	}
+	return
+}
+
+func (f *Forecasting) GetAllowedModels() (rv []*ForecastingModels) {
+	if f != nil {
+		return f.AllowedModels
+	}
+	return
+}
+
+func (f *Forecasting) GetBlockedModels() (rv []*ForecastingModels) {
+	if f != nil {
+		return f.BlockedModels
+	}
+	return
+}
+
+func (f *Forecasting) GetDataSettings() (rv *TableVerticalDataSettings) {
+	if f != nil {
+		return f.DataSettings
+	}
+	return
+}
+
+func (f *Forecasting) GetFeaturizationSettings() (rv *TableVerticalFeaturizationSettings) {
+	if f != nil {
+		return f.FeaturizationSettings
+	}
+	return
+}
+
+func (f *Forecasting) GetForecastingSettings() (rv *ForecastingSettings) {
+	if f != nil {
+		return f.ForecastingSettings
+	}
+	return
+}
+
+func (f *Forecasting) GetLimitSettings() (rv *TableVerticalLimitSettings) {
+	if f != nil {
+		return f.LimitSettings
+	}
+	return
+}
+
+func (f *Forecasting) GetLogVerbosity() (rv *LogVerbosity) {
+	if f != nil {
+		return f.LogVerbosity
+	}
+	return
+}
+
+func (f *Forecasting) GetPrimaryMetric() (rv *ForecastingPrimaryMetrics) {
+	if f != nil {
+		return f.PrimaryMetric
+	}
+	return
+}
+
+func (f *Forecasting) GetTrainingSettings() (rv *TrainingSettings) {
+	if f != nil {
+		return f.TrainingSettings
+	}
+	return
 }
 
 // GetAutoMLVertical implements the AutoMLVerticalClassification interface for type Forecasting.
@@ -2750,10 +7118,108 @@ type ForecastingSettings struct {
 	UseStl *UseStl
 }
 
+func (f *ForecastingSettings) GetCountryOrRegionForHolidays() (rv string) {
+	if f != nil && f.CountryOrRegionForHolidays != nil {
+		return *f.CountryOrRegionForHolidays
+	}
+	return
+}
+
+func (f *ForecastingSettings) GetCvStepSize() (rv int32) {
+	if f != nil && f.CvStepSize != nil {
+		return *f.CvStepSize
+	}
+	return
+}
+
+func (f *ForecastingSettings) GetFeatureLags() (rv *FeatureLags) {
+	if f != nil {
+		return f.FeatureLags
+	}
+	return
+}
+
+func (f *ForecastingSettings) GetForecastHorizon() (rv ForecastHorizonClassification) {
+	if f != nil {
+		return f.ForecastHorizon
+	}
+	return
+}
+
+func (f *ForecastingSettings) GetFrequency() (rv string) {
+	if f != nil && f.Frequency != nil {
+		return *f.Frequency
+	}
+	return
+}
+
+func (f *ForecastingSettings) GetSeasonality() (rv SeasonalityClassification) {
+	if f != nil {
+		return f.Seasonality
+	}
+	return
+}
+
+func (f *ForecastingSettings) GetShortSeriesHandlingConfig() (rv *ShortSeriesHandlingConfiguration) {
+	if f != nil {
+		return f.ShortSeriesHandlingConfig
+	}
+	return
+}
+
+func (f *ForecastingSettings) GetTargetAggregateFunction() (rv *TargetAggregationFunction) {
+	if f != nil {
+		return f.TargetAggregateFunction
+	}
+	return
+}
+
+func (f *ForecastingSettings) GetTargetLags() (rv TargetLagsClassification) {
+	if f != nil {
+		return f.TargetLags
+	}
+	return
+}
+
+func (f *ForecastingSettings) GetTargetRollingWindowSize() (rv TargetRollingWindowSizeClassification) {
+	if f != nil {
+		return f.TargetRollingWindowSize
+	}
+	return
+}
+
+func (f *ForecastingSettings) GetTimeColumnName() (rv string) {
+	if f != nil && f.TimeColumnName != nil {
+		return *f.TimeColumnName
+	}
+	return
+}
+
+func (f *ForecastingSettings) GetTimeSeriesIDColumnNames() (rv []*string) {
+	if f != nil {
+		return f.TimeSeriesIDColumnNames
+	}
+	return
+}
+
+func (f *ForecastingSettings) GetUseStl() (rv *UseStl) {
+	if f != nil {
+		return f.UseStl
+	}
+	return
+}
+
 // GridSamplingAlgorithm - Defines a Sampling Algorithm that exhaustively generates every value combination in the space
 type GridSamplingAlgorithm struct {
 	// REQUIRED; [Required] The algorithm used for generating hyperparameter values, along with configuration properties
 	SamplingAlgorithmType *SamplingAlgorithmType
+}
+
+func (g *GridSamplingAlgorithm) GetSamplingAlgorithmType() (rv *SamplingAlgorithmType) {
+	if g != nil {
+		return g.SamplingAlgorithmType
+	}
+	return
 }
 
 // GetSamplingAlgorithm implements the SamplingAlgorithmClassification interface for type GridSamplingAlgorithm.
@@ -2800,6 +7266,83 @@ type HDInsight struct {
 	ProvisioningState *ProvisioningState
 }
 
+func (h *HDInsight) GetComputeType() (rv *ComputeType) {
+	if h != nil {
+		return h.ComputeType
+	}
+	return
+}
+
+func (h *HDInsight) GetDescription() (rv string) {
+	if h != nil && h.Description != nil {
+		return *h.Description
+	}
+	return
+}
+
+func (h *HDInsight) GetDisableLocalAuth() (rv bool) {
+	if h != nil && h.DisableLocalAuth != nil {
+		return *h.DisableLocalAuth
+	}
+	return
+}
+
+func (h *HDInsight) GetProperties() (rv *HDInsightProperties) {
+	if h != nil {
+		return h.Properties
+	}
+	return
+}
+
+func (h *HDInsight) GetResourceID() (rv string) {
+	if h != nil && h.ResourceID != nil {
+		return *h.ResourceID
+	}
+	return
+}
+
+func (h *HDInsight) GetComputeLocation() (rv string) {
+	if h != nil && h.ComputeLocation != nil {
+		return *h.ComputeLocation
+	}
+	return
+}
+
+func (h *HDInsight) GetCreatedOn() (rv *time.Time) {
+	if h != nil {
+		return h.CreatedOn
+	}
+	return
+}
+
+func (h *HDInsight) GetIsAttachedCompute() (rv bool) {
+	if h != nil && h.IsAttachedCompute != nil {
+		return *h.IsAttachedCompute
+	}
+	return
+}
+
+func (h *HDInsight) GetModifiedOn() (rv *time.Time) {
+	if h != nil {
+		return h.ModifiedOn
+	}
+	return
+}
+
+func (h *HDInsight) GetProvisioningErrors() (rv []*ErrorResponse) {
+	if h != nil {
+		return h.ProvisioningErrors
+	}
+	return
+}
+
+func (h *HDInsight) GetProvisioningState() (rv *ProvisioningState) {
+	if h != nil {
+		return h.ProvisioningState
+	}
+	return
+}
+
 // GetCompute implements the ComputeClassification interface for type HDInsight.
 func (h *HDInsight) GetCompute() *Compute {
 	return &Compute{
@@ -2826,6 +7369,27 @@ type HDInsightProperties struct {
 
 	// Port open for ssh connections on the master node of the cluster.
 	SSHPort *int32
+}
+
+func (h *HDInsightProperties) GetAddress() (rv string) {
+	if h != nil && h.Address != nil {
+		return *h.Address
+	}
+	return
+}
+
+func (h *HDInsightProperties) GetAdministratorAccount() (rv *VirtualMachineSSHCredentials) {
+	if h != nil {
+		return h.AdministratorAccount
+	}
+	return
+}
+
+func (h *HDInsightProperties) GetSSHPort() (rv int32) {
+	if h != nil && h.SSHPort != nil {
+		return *h.SSHPort
+	}
+	return
 }
 
 type HdfsDatastore struct {
@@ -2857,6 +7421,69 @@ type HdfsDatastore struct {
 	IsDefault *bool
 }
 
+func (h *HdfsDatastore) GetCredentials() (rv DatastoreCredentialsClassification) {
+	if h != nil {
+		return h.Credentials
+	}
+	return
+}
+
+func (h *HdfsDatastore) GetDatastoreType() (rv *DatastoreType) {
+	if h != nil {
+		return h.DatastoreType
+	}
+	return
+}
+
+func (h *HdfsDatastore) GetNameNodeAddress() (rv string) {
+	if h != nil && h.NameNodeAddress != nil {
+		return *h.NameNodeAddress
+	}
+	return
+}
+
+func (h *HdfsDatastore) GetDescription() (rv string) {
+	if h != nil && h.Description != nil {
+		return *h.Description
+	}
+	return
+}
+
+func (h *HdfsDatastore) GetHdfsServerCertificate() (rv string) {
+	if h != nil && h.HdfsServerCertificate != nil {
+		return *h.HdfsServerCertificate
+	}
+	return
+}
+
+func (h *HdfsDatastore) GetProperties() (rv map[string]*string) {
+	if h != nil {
+		return h.Properties
+	}
+	return
+}
+
+func (h *HdfsDatastore) GetProtocol() (rv string) {
+	if h != nil && h.Protocol != nil {
+		return *h.Protocol
+	}
+	return
+}
+
+func (h *HdfsDatastore) GetTags() (rv map[string]*string) {
+	if h != nil {
+		return h.Tags
+	}
+	return
+}
+
+func (h *HdfsDatastore) GetIsDefault() (rv bool) {
+	if h != nil && h.IsDefault != nil {
+		return *h.IsDefault
+	}
+	return
+}
+
 // GetDatastoreDetails implements the DatastoreDetailsClassification interface for type HdfsDatastore.
 func (h *HdfsDatastore) GetDatastoreDetails() *DatastoreDetails {
 	return &DatastoreDetails{
@@ -2878,6 +7505,20 @@ type IDAssetReference struct {
 	ReferenceType *ReferenceType
 }
 
+func (i *IDAssetReference) GetAssetID() (rv string) {
+	if i != nil && i.AssetID != nil {
+		return *i.AssetID
+	}
+	return
+}
+
+func (i *IDAssetReference) GetReferenceType() (rv *ReferenceType) {
+	if i != nil {
+		return i.ReferenceType
+	}
+	return
+}
+
 // GetAssetReferenceBase implements the AssetReferenceBaseClassification interface for type IDAssetReference.
 func (i *IDAssetReference) GetAssetReferenceBase() *AssetReferenceBase {
 	return &AssetReferenceBase{
@@ -2891,6 +7532,13 @@ type IdentityConfiguration struct {
 	IdentityType *IdentityConfigurationType
 }
 
+func (i *IdentityConfiguration) GetIdentityType() (rv *IdentityConfigurationType) {
+	if i != nil {
+		return i.IdentityType
+	}
+	return
+}
+
 // GetIdentityConfiguration implements the IdentityConfigurationClassification interface for type IdentityConfiguration.
 func (i *IdentityConfiguration) GetIdentityConfiguration() *IdentityConfiguration { return i }
 
@@ -2898,6 +7546,13 @@ func (i *IdentityConfiguration) GetIdentityConfiguration() *IdentityConfiguratio
 type IdentityForCmk struct {
 	// The ArmId of the user assigned identity that will be used to access the customer managed key vault
 	UserAssignedIdentity *string
+}
+
+func (i *IdentityForCmk) GetUserAssignedIdentity() (rv string) {
+	if i != nil && i.UserAssignedIdentity != nil {
+		return *i.UserAssignedIdentity
+	}
+	return
 }
 
 // ImageClassification - Image Classification. Multi-class image classification is used when an image is classified with only
@@ -2928,6 +7583,62 @@ type ImageClassification struct {
 
 	// Model sweeping and hyperparameter sweeping related settings.
 	SweepSettings *ImageSweepSettings
+}
+
+func (i *ImageClassification) GetDataSettings() (rv *ImageVerticalDataSettings) {
+	if i != nil {
+		return i.DataSettings
+	}
+	return
+}
+
+func (i *ImageClassification) GetLimitSettings() (rv *ImageLimitSettings) {
+	if i != nil {
+		return i.LimitSettings
+	}
+	return
+}
+
+func (i *ImageClassification) GetTaskType() (rv *TaskType) {
+	if i != nil {
+		return i.TaskType
+	}
+	return
+}
+
+func (i *ImageClassification) GetLogVerbosity() (rv *LogVerbosity) {
+	if i != nil {
+		return i.LogVerbosity
+	}
+	return
+}
+
+func (i *ImageClassification) GetModelSettings() (rv *ImageModelSettingsClassification) {
+	if i != nil {
+		return i.ModelSettings
+	}
+	return
+}
+
+func (i *ImageClassification) GetPrimaryMetric() (rv *ClassificationPrimaryMetrics) {
+	if i != nil {
+		return i.PrimaryMetric
+	}
+	return
+}
+
+func (i *ImageClassification) GetSearchSpace() (rv []*ImageModelDistributionSettingsClassification) {
+	if i != nil {
+		return i.SearchSpace
+	}
+	return
+}
+
+func (i *ImageClassification) GetSweepSettings() (rv *ImageSweepSettings) {
+	if i != nil {
+		return i.SweepSettings
+	}
+	return
 }
 
 // GetAutoMLVertical implements the AutoMLVerticalClassification interface for type ImageClassification.
@@ -2967,6 +7678,62 @@ type ImageClassificationMultilabel struct {
 	SweepSettings *ImageSweepSettings
 }
 
+func (i *ImageClassificationMultilabel) GetDataSettings() (rv *ImageVerticalDataSettings) {
+	if i != nil {
+		return i.DataSettings
+	}
+	return
+}
+
+func (i *ImageClassificationMultilabel) GetLimitSettings() (rv *ImageLimitSettings) {
+	if i != nil {
+		return i.LimitSettings
+	}
+	return
+}
+
+func (i *ImageClassificationMultilabel) GetTaskType() (rv *TaskType) {
+	if i != nil {
+		return i.TaskType
+	}
+	return
+}
+
+func (i *ImageClassificationMultilabel) GetLogVerbosity() (rv *LogVerbosity) {
+	if i != nil {
+		return i.LogVerbosity
+	}
+	return
+}
+
+func (i *ImageClassificationMultilabel) GetModelSettings() (rv *ImageModelSettingsClassification) {
+	if i != nil {
+		return i.ModelSettings
+	}
+	return
+}
+
+func (i *ImageClassificationMultilabel) GetPrimaryMetric() (rv *ClassificationMultilabelPrimaryMetrics) {
+	if i != nil {
+		return i.PrimaryMetric
+	}
+	return
+}
+
+func (i *ImageClassificationMultilabel) GetSearchSpace() (rv []*ImageModelDistributionSettingsClassification) {
+	if i != nil {
+		return i.SearchSpace
+	}
+	return
+}
+
+func (i *ImageClassificationMultilabel) GetSweepSettings() (rv *ImageSweepSettings) {
+	if i != nil {
+		return i.SweepSettings
+	}
+	return
+}
+
 // GetAutoMLVertical implements the AutoMLVerticalClassification interface for type ImageClassificationMultilabel.
 func (i *ImageClassificationMultilabel) GetAutoMLVertical() *AutoMLVertical {
 	return &AutoMLVertical{
@@ -3004,6 +7771,62 @@ type ImageInstanceSegmentation struct {
 	SweepSettings *ImageSweepSettings
 }
 
+func (i *ImageInstanceSegmentation) GetDataSettings() (rv *ImageVerticalDataSettings) {
+	if i != nil {
+		return i.DataSettings
+	}
+	return
+}
+
+func (i *ImageInstanceSegmentation) GetLimitSettings() (rv *ImageLimitSettings) {
+	if i != nil {
+		return i.LimitSettings
+	}
+	return
+}
+
+func (i *ImageInstanceSegmentation) GetTaskType() (rv *TaskType) {
+	if i != nil {
+		return i.TaskType
+	}
+	return
+}
+
+func (i *ImageInstanceSegmentation) GetLogVerbosity() (rv *LogVerbosity) {
+	if i != nil {
+		return i.LogVerbosity
+	}
+	return
+}
+
+func (i *ImageInstanceSegmentation) GetModelSettings() (rv *ImageModelSettingsObjectDetection) {
+	if i != nil {
+		return i.ModelSettings
+	}
+	return
+}
+
+func (i *ImageInstanceSegmentation) GetPrimaryMetric() (rv *InstanceSegmentationPrimaryMetrics) {
+	if i != nil {
+		return i.PrimaryMetric
+	}
+	return
+}
+
+func (i *ImageInstanceSegmentation) GetSearchSpace() (rv []*ImageModelDistributionSettingsObjectDetection) {
+	if i != nil {
+		return i.SearchSpace
+	}
+	return
+}
+
+func (i *ImageInstanceSegmentation) GetSweepSettings() (rv *ImageSweepSettings) {
+	if i != nil {
+		return i.SweepSettings
+	}
+	return
+}
+
 // GetAutoMLVertical implements the AutoMLVerticalClassification interface for type ImageInstanceSegmentation.
 func (i *ImageInstanceSegmentation) GetAutoMLVertical() *AutoMLVertical {
 	return &AutoMLVertical{
@@ -3022,6 +7845,27 @@ type ImageLimitSettings struct {
 
 	// AutoML job timeout.
 	Timeout *string
+}
+
+func (i *ImageLimitSettings) GetMaxConcurrentTrials() (rv int32) {
+	if i != nil && i.MaxConcurrentTrials != nil {
+		return *i.MaxConcurrentTrials
+	}
+	return
+}
+
+func (i *ImageLimitSettings) GetMaxTrials() (rv int32) {
+	if i != nil && i.MaxTrials != nil {
+		return *i.MaxTrials
+	}
+	return
+}
+
+func (i *ImageLimitSettings) GetTimeout() (rv string) {
+	if i != nil && i.Timeout != nil {
+		return *i.Timeout
+	}
+	return
 }
 
 // ImageModelDistributionSettingsClassification - Distribution expressions to sweep over values of model settings.Some examples
@@ -3137,6 +7981,237 @@ type ImageModelDistributionSettingsClassification struct {
 	// Weighted loss. The accepted values are 0 for no weighted loss. 1 for weighted loss with sqrt.(classweights). 2 for weighted
 	// loss with classweights. Must be 0 or 1 or 2.
 	WeightedLoss *string
+}
+
+func (i *ImageModelDistributionSettingsClassification) GetAmsGradient() (rv string) {
+	if i != nil && i.AmsGradient != nil {
+		return *i.AmsGradient
+	}
+	return
+}
+
+func (i *ImageModelDistributionSettingsClassification) GetAugmentations() (rv string) {
+	if i != nil && i.Augmentations != nil {
+		return *i.Augmentations
+	}
+	return
+}
+
+func (i *ImageModelDistributionSettingsClassification) GetBeta1() (rv string) {
+	if i != nil && i.Beta1 != nil {
+		return *i.Beta1
+	}
+	return
+}
+
+func (i *ImageModelDistributionSettingsClassification) GetBeta2() (rv string) {
+	if i != nil && i.Beta2 != nil {
+		return *i.Beta2
+	}
+	return
+}
+
+func (i *ImageModelDistributionSettingsClassification) GetDistributed() (rv string) {
+	if i != nil && i.Distributed != nil {
+		return *i.Distributed
+	}
+	return
+}
+
+func (i *ImageModelDistributionSettingsClassification) GetEarlyStopping() (rv string) {
+	if i != nil && i.EarlyStopping != nil {
+		return *i.EarlyStopping
+	}
+	return
+}
+
+func (i *ImageModelDistributionSettingsClassification) GetEarlyStoppingDelay() (rv string) {
+	if i != nil && i.EarlyStoppingDelay != nil {
+		return *i.EarlyStoppingDelay
+	}
+	return
+}
+
+func (i *ImageModelDistributionSettingsClassification) GetEarlyStoppingPatience() (rv string) {
+	if i != nil && i.EarlyStoppingPatience != nil {
+		return *i.EarlyStoppingPatience
+	}
+	return
+}
+
+func (i *ImageModelDistributionSettingsClassification) GetEnableOnnxNormalization() (rv string) {
+	if i != nil && i.EnableOnnxNormalization != nil {
+		return *i.EnableOnnxNormalization
+	}
+	return
+}
+
+func (i *ImageModelDistributionSettingsClassification) GetEvaluationFrequency() (rv string) {
+	if i != nil && i.EvaluationFrequency != nil {
+		return *i.EvaluationFrequency
+	}
+	return
+}
+
+func (i *ImageModelDistributionSettingsClassification) GetGradientAccumulationStep() (rv string) {
+	if i != nil && i.GradientAccumulationStep != nil {
+		return *i.GradientAccumulationStep
+	}
+	return
+}
+
+func (i *ImageModelDistributionSettingsClassification) GetLayersToFreeze() (rv string) {
+	if i != nil && i.LayersToFreeze != nil {
+		return *i.LayersToFreeze
+	}
+	return
+}
+
+func (i *ImageModelDistributionSettingsClassification) GetLearningRate() (rv string) {
+	if i != nil && i.LearningRate != nil {
+		return *i.LearningRate
+	}
+	return
+}
+
+func (i *ImageModelDistributionSettingsClassification) GetLearningRateScheduler() (rv string) {
+	if i != nil && i.LearningRateScheduler != nil {
+		return *i.LearningRateScheduler
+	}
+	return
+}
+
+func (i *ImageModelDistributionSettingsClassification) GetModelName() (rv string) {
+	if i != nil && i.ModelName != nil {
+		return *i.ModelName
+	}
+	return
+}
+
+func (i *ImageModelDistributionSettingsClassification) GetMomentum() (rv string) {
+	if i != nil && i.Momentum != nil {
+		return *i.Momentum
+	}
+	return
+}
+
+func (i *ImageModelDistributionSettingsClassification) GetNesterov() (rv string) {
+	if i != nil && i.Nesterov != nil {
+		return *i.Nesterov
+	}
+	return
+}
+
+func (i *ImageModelDistributionSettingsClassification) GetNumberOfEpochs() (rv string) {
+	if i != nil && i.NumberOfEpochs != nil {
+		return *i.NumberOfEpochs
+	}
+	return
+}
+
+func (i *ImageModelDistributionSettingsClassification) GetNumberOfWorkers() (rv string) {
+	if i != nil && i.NumberOfWorkers != nil {
+		return *i.NumberOfWorkers
+	}
+	return
+}
+
+func (i *ImageModelDistributionSettingsClassification) GetOptimizer() (rv string) {
+	if i != nil && i.Optimizer != nil {
+		return *i.Optimizer
+	}
+	return
+}
+
+func (i *ImageModelDistributionSettingsClassification) GetRandomSeed() (rv string) {
+	if i != nil && i.RandomSeed != nil {
+		return *i.RandomSeed
+	}
+	return
+}
+
+func (i *ImageModelDistributionSettingsClassification) GetSplitRatio() (rv string) {
+	if i != nil && i.SplitRatio != nil {
+		return *i.SplitRatio
+	}
+	return
+}
+
+func (i *ImageModelDistributionSettingsClassification) GetStepLRGamma() (rv string) {
+	if i != nil && i.StepLRGamma != nil {
+		return *i.StepLRGamma
+	}
+	return
+}
+
+func (i *ImageModelDistributionSettingsClassification) GetStepLRStepSize() (rv string) {
+	if i != nil && i.StepLRStepSize != nil {
+		return *i.StepLRStepSize
+	}
+	return
+}
+
+func (i *ImageModelDistributionSettingsClassification) GetTrainingBatchSize() (rv string) {
+	if i != nil && i.TrainingBatchSize != nil {
+		return *i.TrainingBatchSize
+	}
+	return
+}
+
+func (i *ImageModelDistributionSettingsClassification) GetTrainingCropSize() (rv string) {
+	if i != nil && i.TrainingCropSize != nil {
+		return *i.TrainingCropSize
+	}
+	return
+}
+
+func (i *ImageModelDistributionSettingsClassification) GetValidationBatchSize() (rv string) {
+	if i != nil && i.ValidationBatchSize != nil {
+		return *i.ValidationBatchSize
+	}
+	return
+}
+
+func (i *ImageModelDistributionSettingsClassification) GetValidationCropSize() (rv string) {
+	if i != nil && i.ValidationCropSize != nil {
+		return *i.ValidationCropSize
+	}
+	return
+}
+
+func (i *ImageModelDistributionSettingsClassification) GetValidationResizeSize() (rv string) {
+	if i != nil && i.ValidationResizeSize != nil {
+		return *i.ValidationResizeSize
+	}
+	return
+}
+
+func (i *ImageModelDistributionSettingsClassification) GetWarmupCosineLRCycles() (rv string) {
+	if i != nil && i.WarmupCosineLRCycles != nil {
+		return *i.WarmupCosineLRCycles
+	}
+	return
+}
+
+func (i *ImageModelDistributionSettingsClassification) GetWarmupCosineLRWarmupEpochs() (rv string) {
+	if i != nil && i.WarmupCosineLRWarmupEpochs != nil {
+		return *i.WarmupCosineLRWarmupEpochs
+	}
+	return
+}
+
+func (i *ImageModelDistributionSettingsClassification) GetWeightDecay() (rv string) {
+	if i != nil && i.WeightDecay != nil {
+		return *i.WeightDecay
+	}
+	return
+}
+
+func (i *ImageModelDistributionSettingsClassification) GetWeightedLoss() (rv string) {
+	if i != nil && i.WeightedLoss != nil {
+		return *i.WeightedLoss
+	}
+	return
 }
 
 // ImageModelDistributionSettingsObjectDetection - Distribution expressions to sweep over values of model settings.Some examples
@@ -3294,6 +8369,300 @@ type ImageModelDistributionSettingsObjectDetection struct {
 	WeightDecay *string
 }
 
+func (i *ImageModelDistributionSettingsObjectDetection) GetAmsGradient() (rv string) {
+	if i != nil && i.AmsGradient != nil {
+		return *i.AmsGradient
+	}
+	return
+}
+
+func (i *ImageModelDistributionSettingsObjectDetection) GetAugmentations() (rv string) {
+	if i != nil && i.Augmentations != nil {
+		return *i.Augmentations
+	}
+	return
+}
+
+func (i *ImageModelDistributionSettingsObjectDetection) GetBeta1() (rv string) {
+	if i != nil && i.Beta1 != nil {
+		return *i.Beta1
+	}
+	return
+}
+
+func (i *ImageModelDistributionSettingsObjectDetection) GetBeta2() (rv string) {
+	if i != nil && i.Beta2 != nil {
+		return *i.Beta2
+	}
+	return
+}
+
+func (i *ImageModelDistributionSettingsObjectDetection) GetBoxDetectionsPerImage() (rv string) {
+	if i != nil && i.BoxDetectionsPerImage != nil {
+		return *i.BoxDetectionsPerImage
+	}
+	return
+}
+
+func (i *ImageModelDistributionSettingsObjectDetection) GetBoxScoreThreshold() (rv string) {
+	if i != nil && i.BoxScoreThreshold != nil {
+		return *i.BoxScoreThreshold
+	}
+	return
+}
+
+func (i *ImageModelDistributionSettingsObjectDetection) GetDistributed() (rv string) {
+	if i != nil && i.Distributed != nil {
+		return *i.Distributed
+	}
+	return
+}
+
+func (i *ImageModelDistributionSettingsObjectDetection) GetEarlyStopping() (rv string) {
+	if i != nil && i.EarlyStopping != nil {
+		return *i.EarlyStopping
+	}
+	return
+}
+
+func (i *ImageModelDistributionSettingsObjectDetection) GetEarlyStoppingDelay() (rv string) {
+	if i != nil && i.EarlyStoppingDelay != nil {
+		return *i.EarlyStoppingDelay
+	}
+	return
+}
+
+func (i *ImageModelDistributionSettingsObjectDetection) GetEarlyStoppingPatience() (rv string) {
+	if i != nil && i.EarlyStoppingPatience != nil {
+		return *i.EarlyStoppingPatience
+	}
+	return
+}
+
+func (i *ImageModelDistributionSettingsObjectDetection) GetEnableOnnxNormalization() (rv string) {
+	if i != nil && i.EnableOnnxNormalization != nil {
+		return *i.EnableOnnxNormalization
+	}
+	return
+}
+
+func (i *ImageModelDistributionSettingsObjectDetection) GetEvaluationFrequency() (rv string) {
+	if i != nil && i.EvaluationFrequency != nil {
+		return *i.EvaluationFrequency
+	}
+	return
+}
+
+func (i *ImageModelDistributionSettingsObjectDetection) GetGradientAccumulationStep() (rv string) {
+	if i != nil && i.GradientAccumulationStep != nil {
+		return *i.GradientAccumulationStep
+	}
+	return
+}
+
+func (i *ImageModelDistributionSettingsObjectDetection) GetImageSize() (rv string) {
+	if i != nil && i.ImageSize != nil {
+		return *i.ImageSize
+	}
+	return
+}
+
+func (i *ImageModelDistributionSettingsObjectDetection) GetLayersToFreeze() (rv string) {
+	if i != nil && i.LayersToFreeze != nil {
+		return *i.LayersToFreeze
+	}
+	return
+}
+
+func (i *ImageModelDistributionSettingsObjectDetection) GetLearningRate() (rv string) {
+	if i != nil && i.LearningRate != nil {
+		return *i.LearningRate
+	}
+	return
+}
+
+func (i *ImageModelDistributionSettingsObjectDetection) GetLearningRateScheduler() (rv string) {
+	if i != nil && i.LearningRateScheduler != nil {
+		return *i.LearningRateScheduler
+	}
+	return
+}
+
+func (i *ImageModelDistributionSettingsObjectDetection) GetMaxSize() (rv string) {
+	if i != nil && i.MaxSize != nil {
+		return *i.MaxSize
+	}
+	return
+}
+
+func (i *ImageModelDistributionSettingsObjectDetection) GetMinSize() (rv string) {
+	if i != nil && i.MinSize != nil {
+		return *i.MinSize
+	}
+	return
+}
+
+func (i *ImageModelDistributionSettingsObjectDetection) GetModelName() (rv string) {
+	if i != nil && i.ModelName != nil {
+		return *i.ModelName
+	}
+	return
+}
+
+func (i *ImageModelDistributionSettingsObjectDetection) GetModelSize() (rv string) {
+	if i != nil && i.ModelSize != nil {
+		return *i.ModelSize
+	}
+	return
+}
+
+func (i *ImageModelDistributionSettingsObjectDetection) GetMomentum() (rv string) {
+	if i != nil && i.Momentum != nil {
+		return *i.Momentum
+	}
+	return
+}
+
+func (i *ImageModelDistributionSettingsObjectDetection) GetMultiScale() (rv string) {
+	if i != nil && i.MultiScale != nil {
+		return *i.MultiScale
+	}
+	return
+}
+
+func (i *ImageModelDistributionSettingsObjectDetection) GetNesterov() (rv string) {
+	if i != nil && i.Nesterov != nil {
+		return *i.Nesterov
+	}
+	return
+}
+
+func (i *ImageModelDistributionSettingsObjectDetection) GetNmsIouThreshold() (rv string) {
+	if i != nil && i.NmsIouThreshold != nil {
+		return *i.NmsIouThreshold
+	}
+	return
+}
+
+func (i *ImageModelDistributionSettingsObjectDetection) GetNumberOfEpochs() (rv string) {
+	if i != nil && i.NumberOfEpochs != nil {
+		return *i.NumberOfEpochs
+	}
+	return
+}
+
+func (i *ImageModelDistributionSettingsObjectDetection) GetNumberOfWorkers() (rv string) {
+	if i != nil && i.NumberOfWorkers != nil {
+		return *i.NumberOfWorkers
+	}
+	return
+}
+
+func (i *ImageModelDistributionSettingsObjectDetection) GetOptimizer() (rv string) {
+	if i != nil && i.Optimizer != nil {
+		return *i.Optimizer
+	}
+	return
+}
+
+func (i *ImageModelDistributionSettingsObjectDetection) GetRandomSeed() (rv string) {
+	if i != nil && i.RandomSeed != nil {
+		return *i.RandomSeed
+	}
+	return
+}
+
+func (i *ImageModelDistributionSettingsObjectDetection) GetSplitRatio() (rv string) {
+	if i != nil && i.SplitRatio != nil {
+		return *i.SplitRatio
+	}
+	return
+}
+
+func (i *ImageModelDistributionSettingsObjectDetection) GetStepLRGamma() (rv string) {
+	if i != nil && i.StepLRGamma != nil {
+		return *i.StepLRGamma
+	}
+	return
+}
+
+func (i *ImageModelDistributionSettingsObjectDetection) GetStepLRStepSize() (rv string) {
+	if i != nil && i.StepLRStepSize != nil {
+		return *i.StepLRStepSize
+	}
+	return
+}
+
+func (i *ImageModelDistributionSettingsObjectDetection) GetTileGridSize() (rv string) {
+	if i != nil && i.TileGridSize != nil {
+		return *i.TileGridSize
+	}
+	return
+}
+
+func (i *ImageModelDistributionSettingsObjectDetection) GetTileOverlapRatio() (rv string) {
+	if i != nil && i.TileOverlapRatio != nil {
+		return *i.TileOverlapRatio
+	}
+	return
+}
+
+func (i *ImageModelDistributionSettingsObjectDetection) GetTilePredictionsNmsThreshold() (rv string) {
+	if i != nil && i.TilePredictionsNmsThreshold != nil {
+		return *i.TilePredictionsNmsThreshold
+	}
+	return
+}
+
+func (i *ImageModelDistributionSettingsObjectDetection) GetTrainingBatchSize() (rv string) {
+	if i != nil && i.TrainingBatchSize != nil {
+		return *i.TrainingBatchSize
+	}
+	return
+}
+
+func (i *ImageModelDistributionSettingsObjectDetection) GetValidationBatchSize() (rv string) {
+	if i != nil && i.ValidationBatchSize != nil {
+		return *i.ValidationBatchSize
+	}
+	return
+}
+
+func (i *ImageModelDistributionSettingsObjectDetection) GetValidationIouThreshold() (rv string) {
+	if i != nil && i.ValidationIouThreshold != nil {
+		return *i.ValidationIouThreshold
+	}
+	return
+}
+
+func (i *ImageModelDistributionSettingsObjectDetection) GetValidationMetricType() (rv string) {
+	if i != nil && i.ValidationMetricType != nil {
+		return *i.ValidationMetricType
+	}
+	return
+}
+
+func (i *ImageModelDistributionSettingsObjectDetection) GetWarmupCosineLRCycles() (rv string) {
+	if i != nil && i.WarmupCosineLRCycles != nil {
+		return *i.WarmupCosineLRCycles
+	}
+	return
+}
+
+func (i *ImageModelDistributionSettingsObjectDetection) GetWarmupCosineLRWarmupEpochs() (rv string) {
+	if i != nil && i.WarmupCosineLRWarmupEpochs != nil {
+		return *i.WarmupCosineLRWarmupEpochs
+	}
+	return
+}
+
+func (i *ImageModelDistributionSettingsObjectDetection) GetWeightDecay() (rv string) {
+	if i != nil && i.WeightDecay != nil {
+		return *i.WeightDecay
+	}
+	return
+}
+
 // ImageModelSettingsClassification - Settings used for training the model. For more information on the available settings
 // please visit the official documentation:
 // https://docs.microsoft.com/en-us/azure/machine-learning/how-to-auto-train-image-models.
@@ -3421,6 +8790,272 @@ type ImageModelSettingsClassification struct {
 	// Weighted loss. The accepted values are 0 for no weighted loss. 1 for weighted loss with sqrt.(classweights). 2 for weighted
 	// loss with classweights. Must be 0 or 1 or 2.
 	WeightedLoss *int32
+}
+
+func (i *ImageModelSettingsClassification) GetAdvancedSettings() (rv string) {
+	if i != nil && i.AdvancedSettings != nil {
+		return *i.AdvancedSettings
+	}
+	return
+}
+
+func (i *ImageModelSettingsClassification) GetAmsGradient() (rv bool) {
+	if i != nil && i.AmsGradient != nil {
+		return *i.AmsGradient
+	}
+	return
+}
+
+func (i *ImageModelSettingsClassification) GetAugmentations() (rv string) {
+	if i != nil && i.Augmentations != nil {
+		return *i.Augmentations
+	}
+	return
+}
+
+func (i *ImageModelSettingsClassification) GetBeta1() (rv float32) {
+	if i != nil && i.Beta1 != nil {
+		return *i.Beta1
+	}
+	return
+}
+
+func (i *ImageModelSettingsClassification) GetBeta2() (rv float32) {
+	if i != nil && i.Beta2 != nil {
+		return *i.Beta2
+	}
+	return
+}
+
+func (i *ImageModelSettingsClassification) GetCheckpointDatasetID() (rv string) {
+	if i != nil && i.CheckpointDatasetID != nil {
+		return *i.CheckpointDatasetID
+	}
+	return
+}
+
+func (i *ImageModelSettingsClassification) GetCheckpointFilename() (rv string) {
+	if i != nil && i.CheckpointFilename != nil {
+		return *i.CheckpointFilename
+	}
+	return
+}
+
+func (i *ImageModelSettingsClassification) GetCheckpointFrequency() (rv int32) {
+	if i != nil && i.CheckpointFrequency != nil {
+		return *i.CheckpointFrequency
+	}
+	return
+}
+
+func (i *ImageModelSettingsClassification) GetCheckpointRunID() (rv string) {
+	if i != nil && i.CheckpointRunID != nil {
+		return *i.CheckpointRunID
+	}
+	return
+}
+
+func (i *ImageModelSettingsClassification) GetDistributed() (rv bool) {
+	if i != nil && i.Distributed != nil {
+		return *i.Distributed
+	}
+	return
+}
+
+func (i *ImageModelSettingsClassification) GetEarlyStopping() (rv bool) {
+	if i != nil && i.EarlyStopping != nil {
+		return *i.EarlyStopping
+	}
+	return
+}
+
+func (i *ImageModelSettingsClassification) GetEarlyStoppingDelay() (rv int32) {
+	if i != nil && i.EarlyStoppingDelay != nil {
+		return *i.EarlyStoppingDelay
+	}
+	return
+}
+
+func (i *ImageModelSettingsClassification) GetEarlyStoppingPatience() (rv int32) {
+	if i != nil && i.EarlyStoppingPatience != nil {
+		return *i.EarlyStoppingPatience
+	}
+	return
+}
+
+func (i *ImageModelSettingsClassification) GetEnableOnnxNormalization() (rv bool) {
+	if i != nil && i.EnableOnnxNormalization != nil {
+		return *i.EnableOnnxNormalization
+	}
+	return
+}
+
+func (i *ImageModelSettingsClassification) GetEvaluationFrequency() (rv int32) {
+	if i != nil && i.EvaluationFrequency != nil {
+		return *i.EvaluationFrequency
+	}
+	return
+}
+
+func (i *ImageModelSettingsClassification) GetGradientAccumulationStep() (rv int32) {
+	if i != nil && i.GradientAccumulationStep != nil {
+		return *i.GradientAccumulationStep
+	}
+	return
+}
+
+func (i *ImageModelSettingsClassification) GetLayersToFreeze() (rv int32) {
+	if i != nil && i.LayersToFreeze != nil {
+		return *i.LayersToFreeze
+	}
+	return
+}
+
+func (i *ImageModelSettingsClassification) GetLearningRate() (rv float32) {
+	if i != nil && i.LearningRate != nil {
+		return *i.LearningRate
+	}
+	return
+}
+
+func (i *ImageModelSettingsClassification) GetLearningRateScheduler() (rv *LearningRateScheduler) {
+	if i != nil {
+		return i.LearningRateScheduler
+	}
+	return
+}
+
+func (i *ImageModelSettingsClassification) GetModelName() (rv string) {
+	if i != nil && i.ModelName != nil {
+		return *i.ModelName
+	}
+	return
+}
+
+func (i *ImageModelSettingsClassification) GetMomentum() (rv float32) {
+	if i != nil && i.Momentum != nil {
+		return *i.Momentum
+	}
+	return
+}
+
+func (i *ImageModelSettingsClassification) GetNesterov() (rv bool) {
+	if i != nil && i.Nesterov != nil {
+		return *i.Nesterov
+	}
+	return
+}
+
+func (i *ImageModelSettingsClassification) GetNumberOfEpochs() (rv int32) {
+	if i != nil && i.NumberOfEpochs != nil {
+		return *i.NumberOfEpochs
+	}
+	return
+}
+
+func (i *ImageModelSettingsClassification) GetNumberOfWorkers() (rv int32) {
+	if i != nil && i.NumberOfWorkers != nil {
+		return *i.NumberOfWorkers
+	}
+	return
+}
+
+func (i *ImageModelSettingsClassification) GetOptimizer() (rv *StochasticOptimizer) {
+	if i != nil {
+		return i.Optimizer
+	}
+	return
+}
+
+func (i *ImageModelSettingsClassification) GetRandomSeed() (rv int32) {
+	if i != nil && i.RandomSeed != nil {
+		return *i.RandomSeed
+	}
+	return
+}
+
+func (i *ImageModelSettingsClassification) GetSplitRatio() (rv float32) {
+	if i != nil && i.SplitRatio != nil {
+		return *i.SplitRatio
+	}
+	return
+}
+
+func (i *ImageModelSettingsClassification) GetStepLRGamma() (rv float32) {
+	if i != nil && i.StepLRGamma != nil {
+		return *i.StepLRGamma
+	}
+	return
+}
+
+func (i *ImageModelSettingsClassification) GetStepLRStepSize() (rv int32) {
+	if i != nil && i.StepLRStepSize != nil {
+		return *i.StepLRStepSize
+	}
+	return
+}
+
+func (i *ImageModelSettingsClassification) GetTrainingBatchSize() (rv int32) {
+	if i != nil && i.TrainingBatchSize != nil {
+		return *i.TrainingBatchSize
+	}
+	return
+}
+
+func (i *ImageModelSettingsClassification) GetTrainingCropSize() (rv int32) {
+	if i != nil && i.TrainingCropSize != nil {
+		return *i.TrainingCropSize
+	}
+	return
+}
+
+func (i *ImageModelSettingsClassification) GetValidationBatchSize() (rv int32) {
+	if i != nil && i.ValidationBatchSize != nil {
+		return *i.ValidationBatchSize
+	}
+	return
+}
+
+func (i *ImageModelSettingsClassification) GetValidationCropSize() (rv int32) {
+	if i != nil && i.ValidationCropSize != nil {
+		return *i.ValidationCropSize
+	}
+	return
+}
+
+func (i *ImageModelSettingsClassification) GetValidationResizeSize() (rv int32) {
+	if i != nil && i.ValidationResizeSize != nil {
+		return *i.ValidationResizeSize
+	}
+	return
+}
+
+func (i *ImageModelSettingsClassification) GetWarmupCosineLRCycles() (rv float32) {
+	if i != nil && i.WarmupCosineLRCycles != nil {
+		return *i.WarmupCosineLRCycles
+	}
+	return
+}
+
+func (i *ImageModelSettingsClassification) GetWarmupCosineLRWarmupEpochs() (rv int32) {
+	if i != nil && i.WarmupCosineLRWarmupEpochs != nil {
+		return *i.WarmupCosineLRWarmupEpochs
+	}
+	return
+}
+
+func (i *ImageModelSettingsClassification) GetWeightDecay() (rv float32) {
+	if i != nil && i.WeightDecay != nil {
+		return *i.WeightDecay
+	}
+	return
+}
+
+func (i *ImageModelSettingsClassification) GetWeightedLoss() (rv int32) {
+	if i != nil && i.WeightedLoss != nil {
+		return *i.WeightedLoss
+	}
+	return
 }
 
 // ImageModelSettingsObjectDetection - Settings used for training the model. For more information on the available settings
@@ -3592,6 +9227,335 @@ type ImageModelSettingsObjectDetection struct {
 	WeightDecay *float32
 }
 
+func (i *ImageModelSettingsObjectDetection) GetAdvancedSettings() (rv string) {
+	if i != nil && i.AdvancedSettings != nil {
+		return *i.AdvancedSettings
+	}
+	return
+}
+
+func (i *ImageModelSettingsObjectDetection) GetAmsGradient() (rv bool) {
+	if i != nil && i.AmsGradient != nil {
+		return *i.AmsGradient
+	}
+	return
+}
+
+func (i *ImageModelSettingsObjectDetection) GetAugmentations() (rv string) {
+	if i != nil && i.Augmentations != nil {
+		return *i.Augmentations
+	}
+	return
+}
+
+func (i *ImageModelSettingsObjectDetection) GetBeta1() (rv float32) {
+	if i != nil && i.Beta1 != nil {
+		return *i.Beta1
+	}
+	return
+}
+
+func (i *ImageModelSettingsObjectDetection) GetBeta2() (rv float32) {
+	if i != nil && i.Beta2 != nil {
+		return *i.Beta2
+	}
+	return
+}
+
+func (i *ImageModelSettingsObjectDetection) GetBoxDetectionsPerImage() (rv int32) {
+	if i != nil && i.BoxDetectionsPerImage != nil {
+		return *i.BoxDetectionsPerImage
+	}
+	return
+}
+
+func (i *ImageModelSettingsObjectDetection) GetBoxScoreThreshold() (rv float32) {
+	if i != nil && i.BoxScoreThreshold != nil {
+		return *i.BoxScoreThreshold
+	}
+	return
+}
+
+func (i *ImageModelSettingsObjectDetection) GetCheckpointDatasetID() (rv string) {
+	if i != nil && i.CheckpointDatasetID != nil {
+		return *i.CheckpointDatasetID
+	}
+	return
+}
+
+func (i *ImageModelSettingsObjectDetection) GetCheckpointFilename() (rv string) {
+	if i != nil && i.CheckpointFilename != nil {
+		return *i.CheckpointFilename
+	}
+	return
+}
+
+func (i *ImageModelSettingsObjectDetection) GetCheckpointFrequency() (rv int32) {
+	if i != nil && i.CheckpointFrequency != nil {
+		return *i.CheckpointFrequency
+	}
+	return
+}
+
+func (i *ImageModelSettingsObjectDetection) GetCheckpointRunID() (rv string) {
+	if i != nil && i.CheckpointRunID != nil {
+		return *i.CheckpointRunID
+	}
+	return
+}
+
+func (i *ImageModelSettingsObjectDetection) GetDistributed() (rv bool) {
+	if i != nil && i.Distributed != nil {
+		return *i.Distributed
+	}
+	return
+}
+
+func (i *ImageModelSettingsObjectDetection) GetEarlyStopping() (rv bool) {
+	if i != nil && i.EarlyStopping != nil {
+		return *i.EarlyStopping
+	}
+	return
+}
+
+func (i *ImageModelSettingsObjectDetection) GetEarlyStoppingDelay() (rv int32) {
+	if i != nil && i.EarlyStoppingDelay != nil {
+		return *i.EarlyStoppingDelay
+	}
+	return
+}
+
+func (i *ImageModelSettingsObjectDetection) GetEarlyStoppingPatience() (rv int32) {
+	if i != nil && i.EarlyStoppingPatience != nil {
+		return *i.EarlyStoppingPatience
+	}
+	return
+}
+
+func (i *ImageModelSettingsObjectDetection) GetEnableOnnxNormalization() (rv bool) {
+	if i != nil && i.EnableOnnxNormalization != nil {
+		return *i.EnableOnnxNormalization
+	}
+	return
+}
+
+func (i *ImageModelSettingsObjectDetection) GetEvaluationFrequency() (rv int32) {
+	if i != nil && i.EvaluationFrequency != nil {
+		return *i.EvaluationFrequency
+	}
+	return
+}
+
+func (i *ImageModelSettingsObjectDetection) GetGradientAccumulationStep() (rv int32) {
+	if i != nil && i.GradientAccumulationStep != nil {
+		return *i.GradientAccumulationStep
+	}
+	return
+}
+
+func (i *ImageModelSettingsObjectDetection) GetImageSize() (rv int32) {
+	if i != nil && i.ImageSize != nil {
+		return *i.ImageSize
+	}
+	return
+}
+
+func (i *ImageModelSettingsObjectDetection) GetLayersToFreeze() (rv int32) {
+	if i != nil && i.LayersToFreeze != nil {
+		return *i.LayersToFreeze
+	}
+	return
+}
+
+func (i *ImageModelSettingsObjectDetection) GetLearningRate() (rv float32) {
+	if i != nil && i.LearningRate != nil {
+		return *i.LearningRate
+	}
+	return
+}
+
+func (i *ImageModelSettingsObjectDetection) GetLearningRateScheduler() (rv *LearningRateScheduler) {
+	if i != nil {
+		return i.LearningRateScheduler
+	}
+	return
+}
+
+func (i *ImageModelSettingsObjectDetection) GetMaxSize() (rv int32) {
+	if i != nil && i.MaxSize != nil {
+		return *i.MaxSize
+	}
+	return
+}
+
+func (i *ImageModelSettingsObjectDetection) GetMinSize() (rv int32) {
+	if i != nil && i.MinSize != nil {
+		return *i.MinSize
+	}
+	return
+}
+
+func (i *ImageModelSettingsObjectDetection) GetModelName() (rv string) {
+	if i != nil && i.ModelName != nil {
+		return *i.ModelName
+	}
+	return
+}
+
+func (i *ImageModelSettingsObjectDetection) GetModelSize() (rv *ModelSize) {
+	if i != nil {
+		return i.ModelSize
+	}
+	return
+}
+
+func (i *ImageModelSettingsObjectDetection) GetMomentum() (rv float32) {
+	if i != nil && i.Momentum != nil {
+		return *i.Momentum
+	}
+	return
+}
+
+func (i *ImageModelSettingsObjectDetection) GetMultiScale() (rv bool) {
+	if i != nil && i.MultiScale != nil {
+		return *i.MultiScale
+	}
+	return
+}
+
+func (i *ImageModelSettingsObjectDetection) GetNesterov() (rv bool) {
+	if i != nil && i.Nesterov != nil {
+		return *i.Nesterov
+	}
+	return
+}
+
+func (i *ImageModelSettingsObjectDetection) GetNmsIouThreshold() (rv float32) {
+	if i != nil && i.NmsIouThreshold != nil {
+		return *i.NmsIouThreshold
+	}
+	return
+}
+
+func (i *ImageModelSettingsObjectDetection) GetNumberOfEpochs() (rv int32) {
+	if i != nil && i.NumberOfEpochs != nil {
+		return *i.NumberOfEpochs
+	}
+	return
+}
+
+func (i *ImageModelSettingsObjectDetection) GetNumberOfWorkers() (rv int32) {
+	if i != nil && i.NumberOfWorkers != nil {
+		return *i.NumberOfWorkers
+	}
+	return
+}
+
+func (i *ImageModelSettingsObjectDetection) GetOptimizer() (rv *StochasticOptimizer) {
+	if i != nil {
+		return i.Optimizer
+	}
+	return
+}
+
+func (i *ImageModelSettingsObjectDetection) GetRandomSeed() (rv int32) {
+	if i != nil && i.RandomSeed != nil {
+		return *i.RandomSeed
+	}
+	return
+}
+
+func (i *ImageModelSettingsObjectDetection) GetSplitRatio() (rv float32) {
+	if i != nil && i.SplitRatio != nil {
+		return *i.SplitRatio
+	}
+	return
+}
+
+func (i *ImageModelSettingsObjectDetection) GetStepLRGamma() (rv float32) {
+	if i != nil && i.StepLRGamma != nil {
+		return *i.StepLRGamma
+	}
+	return
+}
+
+func (i *ImageModelSettingsObjectDetection) GetStepLRStepSize() (rv int32) {
+	if i != nil && i.StepLRStepSize != nil {
+		return *i.StepLRStepSize
+	}
+	return
+}
+
+func (i *ImageModelSettingsObjectDetection) GetTileGridSize() (rv string) {
+	if i != nil && i.TileGridSize != nil {
+		return *i.TileGridSize
+	}
+	return
+}
+
+func (i *ImageModelSettingsObjectDetection) GetTileOverlapRatio() (rv float32) {
+	if i != nil && i.TileOverlapRatio != nil {
+		return *i.TileOverlapRatio
+	}
+	return
+}
+
+func (i *ImageModelSettingsObjectDetection) GetTilePredictionsNmsThreshold() (rv float32) {
+	if i != nil && i.TilePredictionsNmsThreshold != nil {
+		return *i.TilePredictionsNmsThreshold
+	}
+	return
+}
+
+func (i *ImageModelSettingsObjectDetection) GetTrainingBatchSize() (rv int32) {
+	if i != nil && i.TrainingBatchSize != nil {
+		return *i.TrainingBatchSize
+	}
+	return
+}
+
+func (i *ImageModelSettingsObjectDetection) GetValidationBatchSize() (rv int32) {
+	if i != nil && i.ValidationBatchSize != nil {
+		return *i.ValidationBatchSize
+	}
+	return
+}
+
+func (i *ImageModelSettingsObjectDetection) GetValidationIouThreshold() (rv float32) {
+	if i != nil && i.ValidationIouThreshold != nil {
+		return *i.ValidationIouThreshold
+	}
+	return
+}
+
+func (i *ImageModelSettingsObjectDetection) GetValidationMetricType() (rv *ValidationMetricType) {
+	if i != nil {
+		return i.ValidationMetricType
+	}
+	return
+}
+
+func (i *ImageModelSettingsObjectDetection) GetWarmupCosineLRCycles() (rv float32) {
+	if i != nil && i.WarmupCosineLRCycles != nil {
+		return *i.WarmupCosineLRCycles
+	}
+	return
+}
+
+func (i *ImageModelSettingsObjectDetection) GetWarmupCosineLRWarmupEpochs() (rv int32) {
+	if i != nil && i.WarmupCosineLRWarmupEpochs != nil {
+		return *i.WarmupCosineLRWarmupEpochs
+	}
+	return
+}
+
+func (i *ImageModelSettingsObjectDetection) GetWeightDecay() (rv float32) {
+	if i != nil && i.WeightDecay != nil {
+		return *i.WeightDecay
+	}
+	return
+}
+
 // ImageObjectDetection - Image Object Detection. Object detection is used to identify objects in an image and locate each
 // object with a bounding box e.g. locate all dogs and cats in an image and draw a bounding box around
 // each.
@@ -3622,6 +9586,62 @@ type ImageObjectDetection struct {
 	SweepSettings *ImageSweepSettings
 }
 
+func (i *ImageObjectDetection) GetDataSettings() (rv *ImageVerticalDataSettings) {
+	if i != nil {
+		return i.DataSettings
+	}
+	return
+}
+
+func (i *ImageObjectDetection) GetLimitSettings() (rv *ImageLimitSettings) {
+	if i != nil {
+		return i.LimitSettings
+	}
+	return
+}
+
+func (i *ImageObjectDetection) GetTaskType() (rv *TaskType) {
+	if i != nil {
+		return i.TaskType
+	}
+	return
+}
+
+func (i *ImageObjectDetection) GetLogVerbosity() (rv *LogVerbosity) {
+	if i != nil {
+		return i.LogVerbosity
+	}
+	return
+}
+
+func (i *ImageObjectDetection) GetModelSettings() (rv *ImageModelSettingsObjectDetection) {
+	if i != nil {
+		return i.ModelSettings
+	}
+	return
+}
+
+func (i *ImageObjectDetection) GetPrimaryMetric() (rv *ObjectDetectionPrimaryMetrics) {
+	if i != nil {
+		return i.PrimaryMetric
+	}
+	return
+}
+
+func (i *ImageObjectDetection) GetSearchSpace() (rv []*ImageModelDistributionSettingsObjectDetection) {
+	if i != nil {
+		return i.SearchSpace
+	}
+	return
+}
+
+func (i *ImageObjectDetection) GetSweepSettings() (rv *ImageSweepSettings) {
+	if i != nil {
+		return i.SweepSettings
+	}
+	return
+}
+
 // GetAutoMLVertical implements the AutoMLVerticalClassification interface for type ImageObjectDetection.
 func (i *ImageObjectDetection) GetAutoMLVertical() *AutoMLVertical {
 	return &AutoMLVertical{
@@ -3639,6 +9659,20 @@ type ImageSweepLimitSettings struct {
 	MaxTrials *int32
 }
 
+func (i *ImageSweepLimitSettings) GetMaxConcurrentTrials() (rv int32) {
+	if i != nil && i.MaxConcurrentTrials != nil {
+		return *i.MaxConcurrentTrials
+	}
+	return
+}
+
+func (i *ImageSweepLimitSettings) GetMaxTrials() (rv int32) {
+	if i != nil && i.MaxTrials != nil {
+		return *i.MaxTrials
+	}
+	return
+}
+
 // ImageSweepSettings - Model sweeping and hyperparameter sweeping related settings.
 type ImageSweepSettings struct {
 	// REQUIRED; [Required] Limit settings for model sweeping and hyperparameter sweeping.
@@ -3649,6 +9683,27 @@ type ImageSweepSettings struct {
 
 	// Type of early termination policy.
 	EarlyTermination EarlyTerminationPolicyClassification
+}
+
+func (i *ImageSweepSettings) GetLimits() (rv *ImageSweepLimitSettings) {
+	if i != nil {
+		return i.Limits
+	}
+	return
+}
+
+func (i *ImageSweepSettings) GetSamplingAlgorithm() (rv *SamplingAlgorithmType) {
+	if i != nil {
+		return i.SamplingAlgorithm
+	}
+	return
+}
+
+func (i *ImageSweepSettings) GetEarlyTermination() (rv EarlyTerminationPolicyClassification) {
+	if i != nil {
+		return i.EarlyTermination
+	}
+	return
 }
 
 // ImageVerticalDataSettings - Collection of registered Tabular Dataset Ids and other data settings required for training
@@ -3668,6 +9723,34 @@ type ImageVerticalDataSettings struct {
 	ValidationData *ImageVerticalValidationDataSettings
 }
 
+func (i *ImageVerticalDataSettings) GetTargetColumnName() (rv string) {
+	if i != nil && i.TargetColumnName != nil {
+		return *i.TargetColumnName
+	}
+	return
+}
+
+func (i *ImageVerticalDataSettings) GetTrainingData() (rv *TrainingDataSettings) {
+	if i != nil {
+		return i.TrainingData
+	}
+	return
+}
+
+func (i *ImageVerticalDataSettings) GetTestData() (rv *TestDataSettings) {
+	if i != nil {
+		return i.TestData
+	}
+	return
+}
+
+func (i *ImageVerticalDataSettings) GetValidationData() (rv *ImageVerticalValidationDataSettings) {
+	if i != nil {
+		return i.ValidationData
+	}
+	return
+}
+
 type ImageVerticalValidationDataSettings struct {
 	// Validation data MLTable.
 	Data *MLTableJobInput
@@ -3675,6 +9758,20 @@ type ImageVerticalValidationDataSettings struct {
 	// The fraction of training dataset that needs to be set aside for validation purpose. Values between (0.0 , 1.0) Applied
 	// when validation dataset is not provided.
 	ValidationDataSize *float64
+}
+
+func (i *ImageVerticalValidationDataSettings) GetData() (rv *MLTableJobInput) {
+	if i != nil {
+		return i.Data
+	}
+	return
+}
+
+func (i *ImageVerticalValidationDataSettings) GetValidationDataSize() (rv float64) {
+	if i != nil && i.ValidationDataSize != nil {
+		return *i.ValidationDataSize
+	}
+	return
 }
 
 type InferenceContainerProperties struct {
@@ -3688,6 +9785,27 @@ type InferenceContainerProperties struct {
 	ScoringRoute *Route
 }
 
+func (i *InferenceContainerProperties) GetLivenessRoute() (rv *Route) {
+	if i != nil {
+		return i.LivenessRoute
+	}
+	return
+}
+
+func (i *InferenceContainerProperties) GetReadinessRoute() (rv *Route) {
+	if i != nil {
+		return i.ReadinessRoute
+	}
+	return
+}
+
+func (i *InferenceContainerProperties) GetScoringRoute() (rv *Route) {
+	if i != nil {
+		return i.ScoringRoute
+	}
+	return
+}
+
 // InstanceTypeSchema - Instance type schema.
 type InstanceTypeSchema struct {
 	// Node Selector
@@ -3697,6 +9815,20 @@ type InstanceTypeSchema struct {
 	Resources *InstanceTypeSchemaResources
 }
 
+func (i *InstanceTypeSchema) GetNodeSelector() (rv map[string]*string) {
+	if i != nil {
+		return i.NodeSelector
+	}
+	return
+}
+
+func (i *InstanceTypeSchema) GetResources() (rv *InstanceTypeSchemaResources) {
+	if i != nil {
+		return i.Resources
+	}
+	return
+}
+
 // InstanceTypeSchemaResources - Resource requests/limits for this instance type
 type InstanceTypeSchemaResources struct {
 	// Resource limits for this instance type
@@ -3704,6 +9836,20 @@ type InstanceTypeSchemaResources struct {
 
 	// Resource requests for this instance type
 	Requests map[string]*string
+}
+
+func (i *InstanceTypeSchemaResources) GetLimits() (rv map[string]*string) {
+	if i != nil {
+		return i.Limits
+	}
+	return
+}
+
+func (i *InstanceTypeSchemaResources) GetRequests() (rv map[string]*string) {
+	if i != nil {
+		return i.Requests
+	}
+	return
 }
 
 // JobBaseData - Azure Resource Manager resource envelope.
@@ -3722,6 +9868,41 @@ type JobBaseData struct {
 
 	// READ-ONLY; The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type *string
+}
+
+func (j *JobBaseData) GetProperties() (rv JobBaseDetailsClassification) {
+	if j != nil {
+		return j.Properties
+	}
+	return
+}
+
+func (j *JobBaseData) GetID() (rv string) {
+	if j != nil && j.ID != nil {
+		return *j.ID
+	}
+	return
+}
+
+func (j *JobBaseData) GetName() (rv string) {
+	if j != nil && j.Name != nil {
+		return *j.Name
+	}
+	return
+}
+
+func (j *JobBaseData) GetSystemData() (rv *SystemData) {
+	if j != nil {
+		return j.SystemData
+	}
+	return
+}
+
+func (j *JobBaseData) GetType() (rv string) {
+	if j != nil && j.Type != nil {
+		return *j.Type
+	}
+	return
 }
 
 // JobBaseDetails - Base definition for a job.
@@ -3764,6 +9945,90 @@ type JobBaseDetails struct {
 	Status *JobStatus
 }
 
+func (j *JobBaseDetails) GetJobType() (rv *JobType) {
+	if j != nil {
+		return j.JobType
+	}
+	return
+}
+
+func (j *JobBaseDetails) GetComputeID() (rv string) {
+	if j != nil && j.ComputeID != nil {
+		return *j.ComputeID
+	}
+	return
+}
+
+func (j *JobBaseDetails) GetDescription() (rv string) {
+	if j != nil && j.Description != nil {
+		return *j.Description
+	}
+	return
+}
+
+func (j *JobBaseDetails) GetDisplayName() (rv string) {
+	if j != nil && j.DisplayName != nil {
+		return *j.DisplayName
+	}
+	return
+}
+
+func (j *JobBaseDetails) GetExperimentName() (rv string) {
+	if j != nil && j.ExperimentName != nil {
+		return *j.ExperimentName
+	}
+	return
+}
+
+func (j *JobBaseDetails) GetIdentity() (rv IdentityConfigurationClassification) {
+	if j != nil {
+		return j.Identity
+	}
+	return
+}
+
+func (j *JobBaseDetails) GetIsArchived() (rv bool) {
+	if j != nil && j.IsArchived != nil {
+		return *j.IsArchived
+	}
+	return
+}
+
+func (j *JobBaseDetails) GetProperties() (rv map[string]*string) {
+	if j != nil {
+		return j.Properties
+	}
+	return
+}
+
+func (j *JobBaseDetails) GetSchedule() (rv ScheduleBaseClassification) {
+	if j != nil {
+		return j.Schedule
+	}
+	return
+}
+
+func (j *JobBaseDetails) GetServices() (rv map[string]*JobService) {
+	if j != nil {
+		return j.Services
+	}
+	return
+}
+
+func (j *JobBaseDetails) GetTags() (rv map[string]*string) {
+	if j != nil {
+		return j.Tags
+	}
+	return
+}
+
+func (j *JobBaseDetails) GetStatus() (rv *JobStatus) {
+	if j != nil {
+		return j.Status
+	}
+	return
+}
+
 // GetJobBaseDetails implements the JobBaseDetailsClassification interface for type JobBaseDetails.
 func (j *JobBaseDetails) GetJobBaseDetails() *JobBaseDetails { return j }
 
@@ -3776,6 +10041,20 @@ type JobBaseResourceArmPaginatedResult struct {
 	Value []*JobBaseData
 }
 
+func (j *JobBaseResourceArmPaginatedResult) GetNextLink() (rv string) {
+	if j != nil && j.NextLink != nil {
+		return *j.NextLink
+	}
+	return
+}
+
+func (j *JobBaseResourceArmPaginatedResult) GetValue() (rv []*JobBaseData) {
+	if j != nil {
+		return j.Value
+	}
+	return
+}
+
 // JobInput - Command job definition.
 type JobInput struct {
 	// REQUIRED; [Required] Specifies the type of job.
@@ -3783,6 +10062,20 @@ type JobInput struct {
 
 	// Description for the input.
 	Description *string
+}
+
+func (j *JobInput) GetJobInputType() (rv *JobInputType) {
+	if j != nil {
+		return j.JobInputType
+	}
+	return
+}
+
+func (j *JobInput) GetDescription() (rv string) {
+	if j != nil && j.Description != nil {
+		return *j.Description
+	}
+	return
 }
 
 // GetJobInput implements the JobInputClassification interface for type JobInput.
@@ -3797,6 +10090,20 @@ type JobLimits struct {
 	Timeout *string
 }
 
+func (j *JobLimits) GetJobLimitsType() (rv *JobLimitsType) {
+	if j != nil {
+		return j.JobLimitsType
+	}
+	return
+}
+
+func (j *JobLimits) GetTimeout() (rv string) {
+	if j != nil && j.Timeout != nil {
+		return *j.Timeout
+	}
+	return
+}
+
 // GetJobLimits implements the JobLimitsClassification interface for type JobLimits.
 func (j *JobLimits) GetJobLimits() *JobLimits { return j }
 
@@ -3807,6 +10114,20 @@ type JobOutput struct {
 
 	// Description for the output.
 	Description *string
+}
+
+func (j *JobOutput) GetJobOutputType() (rv *JobOutputType) {
+	if j != nil {
+		return j.JobOutputType
+	}
+	return
+}
+
+func (j *JobOutput) GetDescription() (rv string) {
+	if j != nil && j.Description != nil {
+		return *j.Description
+	}
+	return
 }
 
 // GetJobOutput implements the JobOutputClassification interface for type JobOutput.
@@ -3833,6 +10154,48 @@ type JobService struct {
 	Status *string
 }
 
+func (j *JobService) GetEndpoint() (rv string) {
+	if j != nil && j.Endpoint != nil {
+		return *j.Endpoint
+	}
+	return
+}
+
+func (j *JobService) GetJobServiceType() (rv string) {
+	if j != nil && j.JobServiceType != nil {
+		return *j.JobServiceType
+	}
+	return
+}
+
+func (j *JobService) GetPort() (rv int32) {
+	if j != nil && j.Port != nil {
+		return *j.Port
+	}
+	return
+}
+
+func (j *JobService) GetProperties() (rv map[string]*string) {
+	if j != nil {
+		return j.Properties
+	}
+	return
+}
+
+func (j *JobService) GetErrorMessage() (rv string) {
+	if j != nil && j.ErrorMessage != nil {
+		return *j.ErrorMessage
+	}
+	return
+}
+
+func (j *JobService) GetStatus() (rv string) {
+	if j != nil && j.Status != nil {
+		return *j.Status
+	}
+	return
+}
+
 type KerberosKeytabCredentials struct {
 	// REQUIRED; [Required] Credential type used to authentication with storage.
 	CredentialsType *CredentialsType
@@ -3851,6 +10214,41 @@ type KerberosKeytabCredentials struct {
 	Secrets *KerberosKeytabSecrets
 }
 
+func (k *KerberosKeytabCredentials) GetCredentialsType() (rv *CredentialsType) {
+	if k != nil {
+		return k.CredentialsType
+	}
+	return
+}
+
+func (k *KerberosKeytabCredentials) GetKerberosKdcAddress() (rv string) {
+	if k != nil && k.KerberosKdcAddress != nil {
+		return *k.KerberosKdcAddress
+	}
+	return
+}
+
+func (k *KerberosKeytabCredentials) GetKerberosPrincipal() (rv string) {
+	if k != nil && k.KerberosPrincipal != nil {
+		return *k.KerberosPrincipal
+	}
+	return
+}
+
+func (k *KerberosKeytabCredentials) GetKerberosRealm() (rv string) {
+	if k != nil && k.KerberosRealm != nil {
+		return *k.KerberosRealm
+	}
+	return
+}
+
+func (k *KerberosKeytabCredentials) GetSecrets() (rv *KerberosKeytabSecrets) {
+	if k != nil {
+		return k.Secrets
+	}
+	return
+}
+
 // GetDatastoreCredentials implements the DatastoreCredentialsClassification interface for type KerberosKeytabCredentials.
 func (k *KerberosKeytabCredentials) GetDatastoreCredentials() *DatastoreCredentials {
 	return &DatastoreCredentials{
@@ -3864,6 +10262,20 @@ type KerberosKeytabSecrets struct {
 
 	// Kerberos keytab secret.
 	KerberosKeytab *string
+}
+
+func (k *KerberosKeytabSecrets) GetSecretsType() (rv *SecretsType) {
+	if k != nil {
+		return k.SecretsType
+	}
+	return
+}
+
+func (k *KerberosKeytabSecrets) GetKerberosKeytab() (rv string) {
+	if k != nil && k.KerberosKeytab != nil {
+		return *k.KerberosKeytab
+	}
+	return
 }
 
 // GetDatastoreSecrets implements the DatastoreSecretsClassification interface for type KerberosKeytabSecrets.
@@ -3891,6 +10303,41 @@ type KerberosPasswordCredentials struct {
 	Secrets *KerberosPasswordSecrets
 }
 
+func (k *KerberosPasswordCredentials) GetCredentialsType() (rv *CredentialsType) {
+	if k != nil {
+		return k.CredentialsType
+	}
+	return
+}
+
+func (k *KerberosPasswordCredentials) GetKerberosKdcAddress() (rv string) {
+	if k != nil && k.KerberosKdcAddress != nil {
+		return *k.KerberosKdcAddress
+	}
+	return
+}
+
+func (k *KerberosPasswordCredentials) GetKerberosPrincipal() (rv string) {
+	if k != nil && k.KerberosPrincipal != nil {
+		return *k.KerberosPrincipal
+	}
+	return
+}
+
+func (k *KerberosPasswordCredentials) GetKerberosRealm() (rv string) {
+	if k != nil && k.KerberosRealm != nil {
+		return *k.KerberosRealm
+	}
+	return
+}
+
+func (k *KerberosPasswordCredentials) GetSecrets() (rv *KerberosPasswordSecrets) {
+	if k != nil {
+		return k.Secrets
+	}
+	return
+}
+
 // GetDatastoreCredentials implements the DatastoreCredentialsClassification interface for type KerberosPasswordCredentials.
 func (k *KerberosPasswordCredentials) GetDatastoreCredentials() *DatastoreCredentials {
 	return &DatastoreCredentials{
@@ -3904,6 +10351,20 @@ type KerberosPasswordSecrets struct {
 
 	// Kerberos password secret.
 	KerberosPassword *string
+}
+
+func (k *KerberosPasswordSecrets) GetSecretsType() (rv *SecretsType) {
+	if k != nil {
+		return k.SecretsType
+	}
+	return
+}
+
+func (k *KerberosPasswordSecrets) GetKerberosPassword() (rv string) {
+	if k != nil && k.KerberosPassword != nil {
+		return *k.KerberosPassword
+	}
+	return
 }
 
 // GetDatastoreSecrets implements the DatastoreSecretsClassification interface for type KerberosPasswordSecrets.
@@ -3948,6 +10409,83 @@ type Kubernetes struct {
 
 	// READ-ONLY; The provision state of the cluster. Valid values are Unknown, Updating, Provisioning, Succeeded, and Failed.
 	ProvisioningState *ProvisioningState
+}
+
+func (k *Kubernetes) GetComputeType() (rv *ComputeType) {
+	if k != nil {
+		return k.ComputeType
+	}
+	return
+}
+
+func (k *Kubernetes) GetDescription() (rv string) {
+	if k != nil && k.Description != nil {
+		return *k.Description
+	}
+	return
+}
+
+func (k *Kubernetes) GetDisableLocalAuth() (rv bool) {
+	if k != nil && k.DisableLocalAuth != nil {
+		return *k.DisableLocalAuth
+	}
+	return
+}
+
+func (k *Kubernetes) GetProperties() (rv *KubernetesProperties) {
+	if k != nil {
+		return k.Properties
+	}
+	return
+}
+
+func (k *Kubernetes) GetResourceID() (rv string) {
+	if k != nil && k.ResourceID != nil {
+		return *k.ResourceID
+	}
+	return
+}
+
+func (k *Kubernetes) GetComputeLocation() (rv string) {
+	if k != nil && k.ComputeLocation != nil {
+		return *k.ComputeLocation
+	}
+	return
+}
+
+func (k *Kubernetes) GetCreatedOn() (rv *time.Time) {
+	if k != nil {
+		return k.CreatedOn
+	}
+	return
+}
+
+func (k *Kubernetes) GetIsAttachedCompute() (rv bool) {
+	if k != nil && k.IsAttachedCompute != nil {
+		return *k.IsAttachedCompute
+	}
+	return
+}
+
+func (k *Kubernetes) GetModifiedOn() (rv *time.Time) {
+	if k != nil {
+		return k.ModifiedOn
+	}
+	return
+}
+
+func (k *Kubernetes) GetProvisioningErrors() (rv []*ErrorResponse) {
+	if k != nil {
+		return k.ProvisioningErrors
+	}
+	return
+}
+
+func (k *Kubernetes) GetProvisioningState() (rv *ProvisioningState) {
+	if k != nil {
+		return k.ProvisioningState
+	}
+	return
 }
 
 // GetCompute implements the ComputeClassification interface for type Kubernetes.
@@ -4025,6 +10563,132 @@ type KubernetesOnlineDeployment struct {
 	ProvisioningState *DeploymentProvisioningState
 }
 
+func (k *KubernetesOnlineDeployment) GetEndpointComputeType() (rv *EndpointComputeType) {
+	if k != nil {
+		return k.EndpointComputeType
+	}
+	return
+}
+
+func (k *KubernetesOnlineDeployment) GetAppInsightsEnabled() (rv bool) {
+	if k != nil && k.AppInsightsEnabled != nil {
+		return *k.AppInsightsEnabled
+	}
+	return
+}
+
+func (k *KubernetesOnlineDeployment) GetCodeConfiguration() (rv *CodeConfiguration) {
+	if k != nil {
+		return k.CodeConfiguration
+	}
+	return
+}
+
+func (k *KubernetesOnlineDeployment) GetContainerResourceRequirements() (rv *ContainerResourceRequirements) {
+	if k != nil {
+		return k.ContainerResourceRequirements
+	}
+	return
+}
+
+func (k *KubernetesOnlineDeployment) GetDescription() (rv string) {
+	if k != nil && k.Description != nil {
+		return *k.Description
+	}
+	return
+}
+
+func (k *KubernetesOnlineDeployment) GetEgressPublicNetworkAccess() (rv *EgressPublicNetworkAccessType) {
+	if k != nil {
+		return k.EgressPublicNetworkAccess
+	}
+	return
+}
+
+func (k *KubernetesOnlineDeployment) GetEnvironmentID() (rv string) {
+	if k != nil && k.EnvironmentID != nil {
+		return *k.EnvironmentID
+	}
+	return
+}
+
+func (k *KubernetesOnlineDeployment) GetEnvironmentVariables() (rv map[string]*string) {
+	if k != nil {
+		return k.EnvironmentVariables
+	}
+	return
+}
+
+func (k *KubernetesOnlineDeployment) GetInstanceType() (rv string) {
+	if k != nil && k.InstanceType != nil {
+		return *k.InstanceType
+	}
+	return
+}
+
+func (k *KubernetesOnlineDeployment) GetLivenessProbe() (rv *ProbeSettings) {
+	if k != nil {
+		return k.LivenessProbe
+	}
+	return
+}
+
+func (k *KubernetesOnlineDeployment) GetModel() (rv string) {
+	if k != nil && k.Model != nil {
+		return *k.Model
+	}
+	return
+}
+
+func (k *KubernetesOnlineDeployment) GetModelMountPath() (rv string) {
+	if k != nil && k.ModelMountPath != nil {
+		return *k.ModelMountPath
+	}
+	return
+}
+
+func (k *KubernetesOnlineDeployment) GetPrivateNetworkConnection() (rv bool) {
+	if k != nil && k.PrivateNetworkConnection != nil {
+		return *k.PrivateNetworkConnection
+	}
+	return
+}
+
+func (k *KubernetesOnlineDeployment) GetProperties() (rv map[string]*string) {
+	if k != nil {
+		return k.Properties
+	}
+	return
+}
+
+func (k *KubernetesOnlineDeployment) GetReadinessProbe() (rv *ProbeSettings) {
+	if k != nil {
+		return k.ReadinessProbe
+	}
+	return
+}
+
+func (k *KubernetesOnlineDeployment) GetRequestSettings() (rv *OnlineRequestSettings) {
+	if k != nil {
+		return k.RequestSettings
+	}
+	return
+}
+
+func (k *KubernetesOnlineDeployment) GetScaleSettings() (rv OnlineScaleSettingsClassification) {
+	if k != nil {
+		return k.ScaleSettings
+	}
+	return
+}
+
+func (k *KubernetesOnlineDeployment) GetProvisioningState() (rv *DeploymentProvisioningState) {
+	if k != nil {
+		return k.ProvisioningState
+	}
+	return
+}
+
 // GetOnlineDeploymentDetails implements the OnlineDeploymentDetailsClassification interface for type KubernetesOnlineDeployment.
 func (k *KubernetesOnlineDeployment) GetOnlineDeploymentDetails() *OnlineDeploymentDetails {
 	return &OnlineDeploymentDetails{
@@ -4075,6 +10739,62 @@ type KubernetesProperties struct {
 	VcName *string
 }
 
+func (k *KubernetesProperties) GetDefaultInstanceType() (rv string) {
+	if k != nil && k.DefaultInstanceType != nil {
+		return *k.DefaultInstanceType
+	}
+	return
+}
+
+func (k *KubernetesProperties) GetExtensionInstanceReleaseTrain() (rv string) {
+	if k != nil && k.ExtensionInstanceReleaseTrain != nil {
+		return *k.ExtensionInstanceReleaseTrain
+	}
+	return
+}
+
+func (k *KubernetesProperties) GetExtensionPrincipalID() (rv string) {
+	if k != nil && k.ExtensionPrincipalID != nil {
+		return *k.ExtensionPrincipalID
+	}
+	return
+}
+
+func (k *KubernetesProperties) GetInstanceTypes() (rv map[string]*InstanceTypeSchema) {
+	if k != nil {
+		return k.InstanceTypes
+	}
+	return
+}
+
+func (k *KubernetesProperties) GetNamespace() (rv string) {
+	if k != nil && k.Namespace != nil {
+		return *k.Namespace
+	}
+	return
+}
+
+func (k *KubernetesProperties) GetRelayConnectionString() (rv string) {
+	if k != nil && k.RelayConnectionString != nil {
+		return *k.RelayConnectionString
+	}
+	return
+}
+
+func (k *KubernetesProperties) GetServiceBusConnectionString() (rv string) {
+	if k != nil && k.ServiceBusConnectionString != nil {
+		return *k.ServiceBusConnectionString
+	}
+	return
+}
+
+func (k *KubernetesProperties) GetVcName() (rv string) {
+	if k != nil && k.VcName != nil {
+		return *k.VcName
+	}
+	return
+}
+
 // ListAmlUserFeatureResult - The List Aml user feature operation response.
 type ListAmlUserFeatureResult struct {
 	// READ-ONLY; The URI to fetch the next page of AML user features information. Call ListNext() with this to fetch the next
@@ -4085,6 +10805,20 @@ type ListAmlUserFeatureResult struct {
 	Value []*AmlUserFeature
 }
 
+func (l *ListAmlUserFeatureResult) GetNextLink() (rv string) {
+	if l != nil && l.NextLink != nil {
+		return *l.NextLink
+	}
+	return
+}
+
+func (l *ListAmlUserFeatureResult) GetValue() (rv []*AmlUserFeature) {
+	if l != nil {
+		return l.Value
+	}
+	return
+}
+
 type ListNotebookKeysResult struct {
 	// READ-ONLY
 	PrimaryAccessKey *string
@@ -4093,9 +10827,30 @@ type ListNotebookKeysResult struct {
 	SecondaryAccessKey *string
 }
 
+func (l *ListNotebookKeysResult) GetPrimaryAccessKey() (rv string) {
+	if l != nil && l.PrimaryAccessKey != nil {
+		return *l.PrimaryAccessKey
+	}
+	return
+}
+
+func (l *ListNotebookKeysResult) GetSecondaryAccessKey() (rv string) {
+	if l != nil && l.SecondaryAccessKey != nil {
+		return *l.SecondaryAccessKey
+	}
+	return
+}
+
 type ListStorageAccountKeysResult struct {
 	// READ-ONLY
 	UserStorageKey *string
+}
+
+func (l *ListStorageAccountKeysResult) GetUserStorageKey() (rv string) {
+	if l != nil && l.UserStorageKey != nil {
+		return *l.UserStorageKey
+	}
+	return
 }
 
 // ListUsagesResult - The List Usages operation response.
@@ -4106,6 +10861,20 @@ type ListUsagesResult struct {
 
 	// READ-ONLY; The list of AML resource usages.
 	Value []*Usage
+}
+
+func (l *ListUsagesResult) GetNextLink() (rv string) {
+	if l != nil && l.NextLink != nil {
+		return *l.NextLink
+	}
+	return
+}
+
+func (l *ListUsagesResult) GetValue() (rv []*Usage) {
+	if l != nil {
+		return l.Value
+	}
+	return
 }
 
 type ListWorkspaceKeysResult struct {
@@ -4125,6 +10894,41 @@ type ListWorkspaceKeysResult struct {
 	UserStorageResourceID *string
 }
 
+func (l *ListWorkspaceKeysResult) GetAppInsightsInstrumentationKey() (rv string) {
+	if l != nil && l.AppInsightsInstrumentationKey != nil {
+		return *l.AppInsightsInstrumentationKey
+	}
+	return
+}
+
+func (l *ListWorkspaceKeysResult) GetContainerRegistryCredentials() (rv *RegistryListCredentialsResult) {
+	if l != nil {
+		return l.ContainerRegistryCredentials
+	}
+	return
+}
+
+func (l *ListWorkspaceKeysResult) GetNotebookAccessKeys() (rv *ListNotebookKeysResult) {
+	if l != nil {
+		return l.NotebookAccessKeys
+	}
+	return
+}
+
+func (l *ListWorkspaceKeysResult) GetUserStorageKey() (rv string) {
+	if l != nil && l.UserStorageKey != nil {
+		return *l.UserStorageKey
+	}
+	return
+}
+
+func (l *ListWorkspaceKeysResult) GetUserStorageResourceID() (rv string) {
+	if l != nil && l.UserStorageResourceID != nil {
+		return *l.UserStorageResourceID
+	}
+	return
+}
+
 // ListWorkspaceQuotas - The List WorkspaceQuotasByVMFamily operation response.
 type ListWorkspaceQuotas struct {
 	// READ-ONLY; The URI to fetch the next page of workspace quota information by VM Family. Call ListNext() with this to fetch
@@ -4133,6 +10937,20 @@ type ListWorkspaceQuotas struct {
 
 	// READ-ONLY; The list of Workspace Quotas by VM Family
 	Value []*ResourceQuota
+}
+
+func (l *ListWorkspaceQuotas) GetNextLink() (rv string) {
+	if l != nil && l.NextLink != nil {
+		return *l.NextLink
+	}
+	return
+}
+
+func (l *ListWorkspaceQuotas) GetValue() (rv []*ResourceQuota) {
+	if l != nil {
+		return l.Value
+	}
+	return
 }
 
 // LiteralJobInput - Literal input type.
@@ -4145,6 +10963,27 @@ type LiteralJobInput struct {
 
 	// Description for the input.
 	Description *string
+}
+
+func (l *LiteralJobInput) GetJobInputType() (rv *JobInputType) {
+	if l != nil {
+		return l.JobInputType
+	}
+	return
+}
+
+func (l *LiteralJobInput) GetValue() (rv string) {
+	if l != nil && l.Value != nil {
+		return *l.Value
+	}
+	return
+}
+
+func (l *LiteralJobInput) GetDescription() (rv string) {
+	if l != nil && l.Description != nil {
+		return *l.Description
+	}
+	return
 }
 
 // GetJobInput implements the JobInputClassification interface for type LiteralJobInput.
@@ -4169,6 +11008,34 @@ type MLFlowModelJobInput struct {
 	Mode *InputDeliveryMode
 }
 
+func (m *MLFlowModelJobInput) GetJobInputType() (rv *JobInputType) {
+	if m != nil {
+		return m.JobInputType
+	}
+	return
+}
+
+func (m *MLFlowModelJobInput) GetURI() (rv string) {
+	if m != nil && m.URI != nil {
+		return *m.URI
+	}
+	return
+}
+
+func (m *MLFlowModelJobInput) GetDescription() (rv string) {
+	if m != nil && m.Description != nil {
+		return *m.Description
+	}
+	return
+}
+
+func (m *MLFlowModelJobInput) GetMode() (rv *InputDeliveryMode) {
+	if m != nil {
+		return m.Mode
+	}
+	return
+}
+
 // GetJobInput implements the JobInputClassification interface for type MLFlowModelJobInput.
 func (m *MLFlowModelJobInput) GetJobInput() *JobInput {
 	return &JobInput{
@@ -4189,6 +11056,34 @@ type MLFlowModelJobOutput struct {
 
 	// Output Asset URI.
 	URI *string
+}
+
+func (m *MLFlowModelJobOutput) GetJobOutputType() (rv *JobOutputType) {
+	if m != nil {
+		return m.JobOutputType
+	}
+	return
+}
+
+func (m *MLFlowModelJobOutput) GetDescription() (rv string) {
+	if m != nil && m.Description != nil {
+		return *m.Description
+	}
+	return
+}
+
+func (m *MLFlowModelJobOutput) GetMode() (rv *OutputDeliveryMode) {
+	if m != nil {
+		return m.Mode
+	}
+	return
+}
+
+func (m *MLFlowModelJobOutput) GetURI() (rv string) {
+	if m != nil && m.URI != nil {
+		return *m.URI
+	}
+	return
 }
 
 // GetJobOutput implements the JobOutputClassification interface for type MLFlowModelJobOutput.
@@ -4226,6 +11121,62 @@ type MLTableData struct {
 	Tags map[string]*string
 }
 
+func (m *MLTableData) GetDataType() (rv *DataType) {
+	if m != nil {
+		return m.DataType
+	}
+	return
+}
+
+func (m *MLTableData) GetDataURI() (rv string) {
+	if m != nil && m.DataURI != nil {
+		return *m.DataURI
+	}
+	return
+}
+
+func (m *MLTableData) GetDescription() (rv string) {
+	if m != nil && m.Description != nil {
+		return *m.Description
+	}
+	return
+}
+
+func (m *MLTableData) GetIsAnonymous() (rv bool) {
+	if m != nil && m.IsAnonymous != nil {
+		return *m.IsAnonymous
+	}
+	return
+}
+
+func (m *MLTableData) GetIsArchived() (rv bool) {
+	if m != nil && m.IsArchived != nil {
+		return *m.IsArchived
+	}
+	return
+}
+
+func (m *MLTableData) GetProperties() (rv map[string]*string) {
+	if m != nil {
+		return m.Properties
+	}
+	return
+}
+
+func (m *MLTableData) GetReferencedUris() (rv []*string) {
+	if m != nil {
+		return m.ReferencedUris
+	}
+	return
+}
+
+func (m *MLTableData) GetTags() (rv map[string]*string) {
+	if m != nil {
+		return m.Tags
+	}
+	return
+}
+
 // GetDataVersionBaseDetails implements the DataVersionBaseDetailsClassification interface for type MLTableData.
 func (m *MLTableData) GetDataVersionBaseDetails() *DataVersionBaseDetails {
 	return &DataVersionBaseDetails{
@@ -4253,6 +11204,34 @@ type MLTableJobInput struct {
 	Mode *InputDeliveryMode
 }
 
+func (m *MLTableJobInput) GetJobInputType() (rv *JobInputType) {
+	if m != nil {
+		return m.JobInputType
+	}
+	return
+}
+
+func (m *MLTableJobInput) GetURI() (rv string) {
+	if m != nil && m.URI != nil {
+		return *m.URI
+	}
+	return
+}
+
+func (m *MLTableJobInput) GetDescription() (rv string) {
+	if m != nil && m.Description != nil {
+		return *m.Description
+	}
+	return
+}
+
+func (m *MLTableJobInput) GetMode() (rv *InputDeliveryMode) {
+	if m != nil {
+		return m.Mode
+	}
+	return
+}
+
 // GetJobInput implements the JobInputClassification interface for type MLTableJobInput.
 func (m *MLTableJobInput) GetJobInput() *JobInput {
 	return &JobInput{
@@ -4273,6 +11252,34 @@ type MLTableJobOutput struct {
 
 	// Output Asset URI.
 	URI *string
+}
+
+func (m *MLTableJobOutput) GetJobOutputType() (rv *JobOutputType) {
+	if m != nil {
+		return m.JobOutputType
+	}
+	return
+}
+
+func (m *MLTableJobOutput) GetDescription() (rv string) {
+	if m != nil && m.Description != nil {
+		return *m.Description
+	}
+	return
+}
+
+func (m *MLTableJobOutput) GetMode() (rv *OutputDeliveryMode) {
+	if m != nil {
+		return m.Mode
+	}
+	return
+}
+
+func (m *MLTableJobOutput) GetURI() (rv string) {
+	if m != nil && m.URI != nil {
+		return *m.URI
+	}
+	return
 }
 
 // GetJobOutput implements the JobOutputClassification interface for type MLTableJobOutput.
@@ -4296,6 +11303,34 @@ type ManagedIdentity struct {
 
 	// Specifies a user-assigned identity by ARM resource ID. For system-assigned, do not set this field.
 	ResourceID *string
+}
+
+func (m *ManagedIdentity) GetIdentityType() (rv *IdentityConfigurationType) {
+	if m != nil {
+		return m.IdentityType
+	}
+	return
+}
+
+func (m *ManagedIdentity) GetClientID() (rv string) {
+	if m != nil && m.ClientID != nil {
+		return *m.ClientID
+	}
+	return
+}
+
+func (m *ManagedIdentity) GetObjectID() (rv string) {
+	if m != nil && m.ObjectID != nil {
+		return *m.ObjectID
+	}
+	return
+}
+
+func (m *ManagedIdentity) GetResourceID() (rv string) {
+	if m != nil && m.ResourceID != nil {
+		return *m.ResourceID
+	}
+	return
 }
 
 // GetIdentityConfiguration implements the IdentityConfigurationClassification interface for type ManagedIdentity.
@@ -4361,6 +11396,125 @@ type ManagedOnlineDeployment struct {
 	ProvisioningState *DeploymentProvisioningState
 }
 
+func (m *ManagedOnlineDeployment) GetEndpointComputeType() (rv *EndpointComputeType) {
+	if m != nil {
+		return m.EndpointComputeType
+	}
+	return
+}
+
+func (m *ManagedOnlineDeployment) GetAppInsightsEnabled() (rv bool) {
+	if m != nil && m.AppInsightsEnabled != nil {
+		return *m.AppInsightsEnabled
+	}
+	return
+}
+
+func (m *ManagedOnlineDeployment) GetCodeConfiguration() (rv *CodeConfiguration) {
+	if m != nil {
+		return m.CodeConfiguration
+	}
+	return
+}
+
+func (m *ManagedOnlineDeployment) GetDescription() (rv string) {
+	if m != nil && m.Description != nil {
+		return *m.Description
+	}
+	return
+}
+
+func (m *ManagedOnlineDeployment) GetEgressPublicNetworkAccess() (rv *EgressPublicNetworkAccessType) {
+	if m != nil {
+		return m.EgressPublicNetworkAccess
+	}
+	return
+}
+
+func (m *ManagedOnlineDeployment) GetEnvironmentID() (rv string) {
+	if m != nil && m.EnvironmentID != nil {
+		return *m.EnvironmentID
+	}
+	return
+}
+
+func (m *ManagedOnlineDeployment) GetEnvironmentVariables() (rv map[string]*string) {
+	if m != nil {
+		return m.EnvironmentVariables
+	}
+	return
+}
+
+func (m *ManagedOnlineDeployment) GetInstanceType() (rv string) {
+	if m != nil && m.InstanceType != nil {
+		return *m.InstanceType
+	}
+	return
+}
+
+func (m *ManagedOnlineDeployment) GetLivenessProbe() (rv *ProbeSettings) {
+	if m != nil {
+		return m.LivenessProbe
+	}
+	return
+}
+
+func (m *ManagedOnlineDeployment) GetModel() (rv string) {
+	if m != nil && m.Model != nil {
+		return *m.Model
+	}
+	return
+}
+
+func (m *ManagedOnlineDeployment) GetModelMountPath() (rv string) {
+	if m != nil && m.ModelMountPath != nil {
+		return *m.ModelMountPath
+	}
+	return
+}
+
+func (m *ManagedOnlineDeployment) GetPrivateNetworkConnection() (rv bool) {
+	if m != nil && m.PrivateNetworkConnection != nil {
+		return *m.PrivateNetworkConnection
+	}
+	return
+}
+
+func (m *ManagedOnlineDeployment) GetProperties() (rv map[string]*string) {
+	if m != nil {
+		return m.Properties
+	}
+	return
+}
+
+func (m *ManagedOnlineDeployment) GetReadinessProbe() (rv *ProbeSettings) {
+	if m != nil {
+		return m.ReadinessProbe
+	}
+	return
+}
+
+func (m *ManagedOnlineDeployment) GetRequestSettings() (rv *OnlineRequestSettings) {
+	if m != nil {
+		return m.RequestSettings
+	}
+	return
+}
+
+func (m *ManagedOnlineDeployment) GetScaleSettings() (rv OnlineScaleSettingsClassification) {
+	if m != nil {
+		return m.ScaleSettings
+	}
+	return
+}
+
+func (m *ManagedOnlineDeployment) GetProvisioningState() (rv *DeploymentProvisioningState) {
+	if m != nil {
+		return m.ProvisioningState
+	}
+	return
+}
+
 // GetOnlineDeploymentDetails implements the OnlineDeploymentDetailsClassification interface for type ManagedOnlineDeployment.
 func (m *ManagedOnlineDeployment) GetOnlineDeploymentDetails() *OnlineDeploymentDetails {
 	return &OnlineDeploymentDetails{
@@ -4404,6 +11558,34 @@ type ManagedServiceIdentity struct {
 	TenantID *string
 }
 
+func (m *ManagedServiceIdentity) GetType() (rv *ManagedServiceIdentityType) {
+	if m != nil {
+		return m.Type
+	}
+	return
+}
+
+func (m *ManagedServiceIdentity) GetUserAssignedIdentities() (rv map[string]*UserAssignedIdentity) {
+	if m != nil {
+		return m.UserAssignedIdentities
+	}
+	return
+}
+
+func (m *ManagedServiceIdentity) GetPrincipalID() (rv string) {
+	if m != nil && m.PrincipalID != nil {
+		return *m.PrincipalID
+	}
+	return
+}
+
+func (m *ManagedServiceIdentity) GetTenantID() (rv string) {
+	if m != nil && m.TenantID != nil {
+		return *m.TenantID
+	}
+	return
+}
+
 // MedianStoppingPolicy - Defines an early termination policy based on running averages of the primary metric of all runs
 type MedianStoppingPolicy struct {
 	// REQUIRED; [Required] Name of policy configuration
@@ -4414,6 +11596,27 @@ type MedianStoppingPolicy struct {
 
 	// Interval (number of runs) between policy evaluations.
 	EvaluationInterval *int32
+}
+
+func (m *MedianStoppingPolicy) GetPolicyType() (rv *EarlyTerminationPolicyType) {
+	if m != nil {
+		return m.PolicyType
+	}
+	return
+}
+
+func (m *MedianStoppingPolicy) GetDelayEvaluation() (rv int32) {
+	if m != nil && m.DelayEvaluation != nil {
+		return *m.DelayEvaluation
+	}
+	return
+}
+
+func (m *MedianStoppingPolicy) GetEvaluationInterval() (rv int32) {
+	if m != nil && m.EvaluationInterval != nil {
+		return *m.EvaluationInterval
+	}
+	return
 }
 
 // GetEarlyTerminationPolicy implements the EarlyTerminationPolicyClassification interface for type MedianStoppingPolicy.
@@ -4443,6 +11646,41 @@ type ModelContainerData struct {
 	Type *string
 }
 
+func (m *ModelContainerData) GetProperties() (rv *ModelContainerDetails) {
+	if m != nil {
+		return m.Properties
+	}
+	return
+}
+
+func (m *ModelContainerData) GetID() (rv string) {
+	if m != nil && m.ID != nil {
+		return *m.ID
+	}
+	return
+}
+
+func (m *ModelContainerData) GetName() (rv string) {
+	if m != nil && m.Name != nil {
+		return *m.Name
+	}
+	return
+}
+
+func (m *ModelContainerData) GetSystemData() (rv *SystemData) {
+	if m != nil {
+		return m.SystemData
+	}
+	return
+}
+
+func (m *ModelContainerData) GetType() (rv string) {
+	if m != nil && m.Type != nil {
+		return *m.Type
+	}
+	return
+}
+
 type ModelContainerDetails struct {
 	// The asset description text.
 	Description *string
@@ -4463,6 +11701,48 @@ type ModelContainerDetails struct {
 	NextVersion *string
 }
 
+func (m *ModelContainerDetails) GetDescription() (rv string) {
+	if m != nil && m.Description != nil {
+		return *m.Description
+	}
+	return
+}
+
+func (m *ModelContainerDetails) GetIsArchived() (rv bool) {
+	if m != nil && m.IsArchived != nil {
+		return *m.IsArchived
+	}
+	return
+}
+
+func (m *ModelContainerDetails) GetProperties() (rv map[string]*string) {
+	if m != nil {
+		return m.Properties
+	}
+	return
+}
+
+func (m *ModelContainerDetails) GetTags() (rv map[string]*string) {
+	if m != nil {
+		return m.Tags
+	}
+	return
+}
+
+func (m *ModelContainerDetails) GetLatestVersion() (rv string) {
+	if m != nil && m.LatestVersion != nil {
+		return *m.LatestVersion
+	}
+	return
+}
+
+func (m *ModelContainerDetails) GetNextVersion() (rv string) {
+	if m != nil && m.NextVersion != nil {
+		return *m.NextVersion
+	}
+	return
+}
+
 // ModelContainerResourceArmPaginatedResult - A paginated list of ModelContainer entities.
 type ModelContainerResourceArmPaginatedResult struct {
 	// The link to the next page of ModelContainer objects. If null, there are no additional pages.
@@ -4470,6 +11750,20 @@ type ModelContainerResourceArmPaginatedResult struct {
 
 	// An array of objects of type ModelContainer.
 	Value []*ModelContainerData
+}
+
+func (m *ModelContainerResourceArmPaginatedResult) GetNextLink() (rv string) {
+	if m != nil && m.NextLink != nil {
+		return *m.NextLink
+	}
+	return
+}
+
+func (m *ModelContainerResourceArmPaginatedResult) GetValue() (rv []*ModelContainerData) {
+	if m != nil {
+		return m.Value
+	}
+	return
 }
 
 // ModelVersionData - Azure Resource Manager resource envelope.
@@ -4488,6 +11782,41 @@ type ModelVersionData struct {
 
 	// READ-ONLY; The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type *string
+}
+
+func (m *ModelVersionData) GetProperties() (rv *ModelVersionDetails) {
+	if m != nil {
+		return m.Properties
+	}
+	return
+}
+
+func (m *ModelVersionData) GetID() (rv string) {
+	if m != nil && m.ID != nil {
+		return *m.ID
+	}
+	return
+}
+
+func (m *ModelVersionData) GetName() (rv string) {
+	if m != nil && m.Name != nil {
+		return *m.Name
+	}
+	return
+}
+
+func (m *ModelVersionData) GetSystemData() (rv *SystemData) {
+	if m != nil {
+		return m.SystemData
+	}
+	return
+}
+
+func (m *ModelVersionData) GetType() (rv string) {
+	if m != nil && m.Type != nil {
+		return *m.Type
+	}
+	return
 }
 
 // ModelVersionDetails - Model asset version details.
@@ -4520,6 +11849,69 @@ type ModelVersionDetails struct {
 	Tags map[string]*string
 }
 
+func (m *ModelVersionDetails) GetDescription() (rv string) {
+	if m != nil && m.Description != nil {
+		return *m.Description
+	}
+	return
+}
+
+func (m *ModelVersionDetails) GetFlavors() (rv map[string]*FlavorData) {
+	if m != nil {
+		return m.Flavors
+	}
+	return
+}
+
+func (m *ModelVersionDetails) GetIsAnonymous() (rv bool) {
+	if m != nil && m.IsAnonymous != nil {
+		return *m.IsAnonymous
+	}
+	return
+}
+
+func (m *ModelVersionDetails) GetIsArchived() (rv bool) {
+	if m != nil && m.IsArchived != nil {
+		return *m.IsArchived
+	}
+	return
+}
+
+func (m *ModelVersionDetails) GetJobName() (rv string) {
+	if m != nil && m.JobName != nil {
+		return *m.JobName
+	}
+	return
+}
+
+func (m *ModelVersionDetails) GetModelType() (rv *ModelType) {
+	if m != nil {
+		return m.ModelType
+	}
+	return
+}
+
+func (m *ModelVersionDetails) GetModelURI() (rv string) {
+	if m != nil && m.ModelURI != nil {
+		return *m.ModelURI
+	}
+	return
+}
+
+func (m *ModelVersionDetails) GetProperties() (rv map[string]*string) {
+	if m != nil {
+		return m.Properties
+	}
+	return
+}
+
+func (m *ModelVersionDetails) GetTags() (rv map[string]*string) {
+	if m != nil {
+		return m.Tags
+	}
+	return
+}
+
 // ModelVersionResourceArmPaginatedResult - A paginated list of ModelVersion entities.
 type ModelVersionResourceArmPaginatedResult struct {
 	// The link to the next page of ModelVersion objects. If null, there are no additional pages.
@@ -4529,6 +11921,20 @@ type ModelVersionResourceArmPaginatedResult struct {
 	Value []*ModelVersionData
 }
 
+func (m *ModelVersionResourceArmPaginatedResult) GetNextLink() (rv string) {
+	if m != nil && m.NextLink != nil {
+		return *m.NextLink
+	}
+	return
+}
+
+func (m *ModelVersionResourceArmPaginatedResult) GetValue() (rv []*ModelVersionData) {
+	if m != nil {
+		return m.Value
+	}
+	return
+}
+
 // Mpi - MPI distribution configuration.
 type Mpi struct {
 	// REQUIRED; [Required] Specifies the type of distribution framework.
@@ -4536,6 +11942,20 @@ type Mpi struct {
 
 	// Number of processes per MPI node.
 	ProcessCountPerInstance *int32
+}
+
+func (m *Mpi) GetDistributionType() (rv *DistributionType) {
+	if m != nil {
+		return m.DistributionType
+	}
+	return
+}
+
+func (m *Mpi) GetProcessCountPerInstance() (rv int32) {
+	if m != nil && m.ProcessCountPerInstance != nil {
+		return *m.ProcessCountPerInstance
+	}
+	return
 }
 
 // GetDistributionConfiguration implements the DistributionConfigurationClassification interface for type Mpi.
@@ -4549,6 +11969,13 @@ func (m *Mpi) GetDistributionConfiguration() *DistributionConfiguration {
 type NCrossValidations struct {
 	// REQUIRED; [Required] Mode for determining N-Cross validations.
 	Mode *NCrossValidationsMode
+}
+
+func (n *NCrossValidations) GetMode() (rv *NCrossValidationsMode) {
+	if n != nil {
+		return n.Mode
+	}
+	return
 }
 
 // GetNCrossValidations implements the NCrossValidationsClassification interface for type NCrossValidations.
@@ -4570,9 +11997,44 @@ type NlpVerticalDataSettings struct {
 	ValidationData *NlpVerticalValidationDataSettings
 }
 
+func (n *NlpVerticalDataSettings) GetTargetColumnName() (rv string) {
+	if n != nil && n.TargetColumnName != nil {
+		return *n.TargetColumnName
+	}
+	return
+}
+
+func (n *NlpVerticalDataSettings) GetTrainingData() (rv *TrainingDataSettings) {
+	if n != nil {
+		return n.TrainingData
+	}
+	return
+}
+
+func (n *NlpVerticalDataSettings) GetTestData() (rv *TestDataSettings) {
+	if n != nil {
+		return n.TestData
+	}
+	return
+}
+
+func (n *NlpVerticalDataSettings) GetValidationData() (rv *NlpVerticalValidationDataSettings) {
+	if n != nil {
+		return n.ValidationData
+	}
+	return
+}
+
 type NlpVerticalFeaturizationSettings struct {
 	// Dataset language, useful for the text data.
 	DatasetLanguage *string
+}
+
+func (n *NlpVerticalFeaturizationSettings) GetDatasetLanguage() (rv string) {
+	if n != nil && n.DatasetLanguage != nil {
+		return *n.DatasetLanguage
+	}
+	return
 }
 
 // NlpVerticalLimitSettings - Job execution constraints.
@@ -4587,6 +12049,27 @@ type NlpVerticalLimitSettings struct {
 	Timeout *string
 }
 
+func (n *NlpVerticalLimitSettings) GetMaxConcurrentTrials() (rv int32) {
+	if n != nil && n.MaxConcurrentTrials != nil {
+		return *n.MaxConcurrentTrials
+	}
+	return
+}
+
+func (n *NlpVerticalLimitSettings) GetMaxTrials() (rv int32) {
+	if n != nil && n.MaxTrials != nil {
+		return *n.MaxTrials
+	}
+	return
+}
+
+func (n *NlpVerticalLimitSettings) GetTimeout() (rv string) {
+	if n != nil && n.Timeout != nil {
+		return *n.Timeout
+	}
+	return
+}
+
 type NlpVerticalValidationDataSettings struct {
 	// Validation data MLTable.
 	Data *MLTableJobInput
@@ -4594,6 +12077,20 @@ type NlpVerticalValidationDataSettings struct {
 	// The fraction of training dataset that needs to be set aside for validation purpose. Values between (0.0 , 1.0) Applied
 	// when validation dataset is not provided.
 	ValidationDataSize *float64
+}
+
+func (n *NlpVerticalValidationDataSettings) GetData() (rv *MLTableJobInput) {
+	if n != nil {
+		return n.Data
+	}
+	return
+}
+
+func (n *NlpVerticalValidationDataSettings) GetValidationDataSize() (rv float64) {
+	if n != nil && n.ValidationDataSize != nil {
+		return *n.ValidationDataSize
+	}
+	return
 }
 
 // NodeStateCounts - Counts of various compute node states on the amlCompute.
@@ -4617,10 +12114,59 @@ type NodeStateCounts struct {
 	UnusableNodeCount *int32
 }
 
+func (n *NodeStateCounts) GetIdleNodeCount() (rv int32) {
+	if n != nil && n.IdleNodeCount != nil {
+		return *n.IdleNodeCount
+	}
+	return
+}
+
+func (n *NodeStateCounts) GetLeavingNodeCount() (rv int32) {
+	if n != nil && n.LeavingNodeCount != nil {
+		return *n.LeavingNodeCount
+	}
+	return
+}
+
+func (n *NodeStateCounts) GetPreemptedNodeCount() (rv int32) {
+	if n != nil && n.PreemptedNodeCount != nil {
+		return *n.PreemptedNodeCount
+	}
+	return
+}
+
+func (n *NodeStateCounts) GetPreparingNodeCount() (rv int32) {
+	if n != nil && n.PreparingNodeCount != nil {
+		return *n.PreparingNodeCount
+	}
+	return
+}
+
+func (n *NodeStateCounts) GetRunningNodeCount() (rv int32) {
+	if n != nil && n.RunningNodeCount != nil {
+		return *n.RunningNodeCount
+	}
+	return
+}
+
+func (n *NodeStateCounts) GetUnusableNodeCount() (rv int32) {
+	if n != nil && n.UnusableNodeCount != nil {
+		return *n.UnusableNodeCount
+	}
+	return
+}
+
 // NoneDatastoreCredentials - Empty/none datastore credentials.
 type NoneDatastoreCredentials struct {
 	// REQUIRED; [Required] Credential type used to authentication with storage.
 	CredentialsType *CredentialsType
+}
+
+func (n *NoneDatastoreCredentials) GetCredentialsType() (rv *CredentialsType) {
+	if n != nil {
+		return n.CredentialsType
+	}
+	return
 }
 
 // GetDatastoreCredentials implements the DatastoreCredentialsClassification interface for type NoneDatastoreCredentials.
@@ -4656,9 +12202,79 @@ type NotebookAccessTokenResult struct {
 	TokenType *string
 }
 
+func (n *NotebookAccessTokenResult) GetAccessToken() (rv string) {
+	if n != nil && n.AccessToken != nil {
+		return *n.AccessToken
+	}
+	return
+}
+
+func (n *NotebookAccessTokenResult) GetExpiresIn() (rv int32) {
+	if n != nil && n.ExpiresIn != nil {
+		return *n.ExpiresIn
+	}
+	return
+}
+
+func (n *NotebookAccessTokenResult) GetHostName() (rv string) {
+	if n != nil && n.HostName != nil {
+		return *n.HostName
+	}
+	return
+}
+
+func (n *NotebookAccessTokenResult) GetNotebookResourceID() (rv string) {
+	if n != nil && n.NotebookResourceID != nil {
+		return *n.NotebookResourceID
+	}
+	return
+}
+
+func (n *NotebookAccessTokenResult) GetPublicDNS() (rv string) {
+	if n != nil && n.PublicDNS != nil {
+		return *n.PublicDNS
+	}
+	return
+}
+
+func (n *NotebookAccessTokenResult) GetRefreshToken() (rv string) {
+	if n != nil && n.RefreshToken != nil {
+		return *n.RefreshToken
+	}
+	return
+}
+
+func (n *NotebookAccessTokenResult) GetScope() (rv string) {
+	if n != nil && n.Scope != nil {
+		return *n.Scope
+	}
+	return
+}
+
+func (n *NotebookAccessTokenResult) GetTokenType() (rv string) {
+	if n != nil && n.TokenType != nil {
+		return *n.TokenType
+	}
+	return
+}
+
 type NotebookPreparationError struct {
 	ErrorMessage *string
 	StatusCode   *int32
+}
+
+func (n *NotebookPreparationError) GetErrorMessage() (rv string) {
+	if n != nil && n.ErrorMessage != nil {
+		return *n.ErrorMessage
+	}
+	return
+}
+
+func (n *NotebookPreparationError) GetStatusCode() (rv int32) {
+	if n != nil && n.StatusCode != nil {
+		return *n.StatusCode
+	}
+	return
 }
 
 type NotebookResourceInfo struct {
@@ -4671,6 +12287,27 @@ type NotebookResourceInfo struct {
 	ResourceID *string
 }
 
+func (n *NotebookResourceInfo) GetFqdn() (rv string) {
+	if n != nil && n.Fqdn != nil {
+		return *n.Fqdn
+	}
+	return
+}
+
+func (n *NotebookResourceInfo) GetNotebookPreparationError() (rv *NotebookPreparationError) {
+	if n != nil {
+		return n.NotebookPreparationError
+	}
+	return
+}
+
+func (n *NotebookResourceInfo) GetResourceID() (rv string) {
+	if n != nil && n.ResourceID != nil {
+		return *n.ResourceID
+	}
+	return
+}
+
 // Objective - Optimization objective.
 type Objective struct {
 	// REQUIRED; [Required] Defines supported metric goals for hyperparameter tuning
@@ -4678,6 +12315,20 @@ type Objective struct {
 
 	// REQUIRED; [Required] Name of the metric to optimize.
 	PrimaryMetric *string
+}
+
+func (o *Objective) GetGoal() (rv *Goal) {
+	if o != nil {
+		return o.Goal
+	}
+	return
+}
+
+func (o *Objective) GetPrimaryMetric() (rv string) {
+	if o != nil && o.PrimaryMetric != nil {
+		return *o.PrimaryMetric
+	}
+	return
 }
 
 type OnlineDeploymentData struct {
@@ -4710,6 +12361,76 @@ type OnlineDeploymentData struct {
 
 	// READ-ONLY; The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type *string
+}
+
+func (o *OnlineDeploymentData) GetLocation() (rv string) {
+	if o != nil && o.Location != nil {
+		return *o.Location
+	}
+	return
+}
+
+func (o *OnlineDeploymentData) GetProperties() (rv OnlineDeploymentDetailsClassification) {
+	if o != nil {
+		return o.Properties
+	}
+	return
+}
+
+func (o *OnlineDeploymentData) GetIdentity() (rv *ManagedServiceIdentity) {
+	if o != nil {
+		return o.Identity
+	}
+	return
+}
+
+func (o *OnlineDeploymentData) GetKind() (rv string) {
+	if o != nil && o.Kind != nil {
+		return *o.Kind
+	}
+	return
+}
+
+func (o *OnlineDeploymentData) GetSKU() (rv *SKU) {
+	if o != nil {
+		return o.SKU
+	}
+	return
+}
+
+func (o *OnlineDeploymentData) GetTags() (rv map[string]*string) {
+	if o != nil {
+		return o.Tags
+	}
+	return
+}
+
+func (o *OnlineDeploymentData) GetID() (rv string) {
+	if o != nil && o.ID != nil {
+		return *o.ID
+	}
+	return
+}
+
+func (o *OnlineDeploymentData) GetName() (rv string) {
+	if o != nil && o.Name != nil {
+		return *o.Name
+	}
+	return
+}
+
+func (o *OnlineDeploymentData) GetSystemData() (rv *SystemData) {
+	if o != nil {
+		return o.SystemData
+	}
+	return
+}
+
+func (o *OnlineDeploymentData) GetType() (rv string) {
+	if o != nil && o.Type != nil {
+		return *o.Type
+	}
+	return
 }
 
 type OnlineDeploymentDetails struct {
@@ -4767,6 +12488,125 @@ type OnlineDeploymentDetails struct {
 	ProvisioningState *DeploymentProvisioningState
 }
 
+func (o *OnlineDeploymentDetails) GetEndpointComputeType() (rv *EndpointComputeType) {
+	if o != nil {
+		return o.EndpointComputeType
+	}
+	return
+}
+
+func (o *OnlineDeploymentDetails) GetAppInsightsEnabled() (rv bool) {
+	if o != nil && o.AppInsightsEnabled != nil {
+		return *o.AppInsightsEnabled
+	}
+	return
+}
+
+func (o *OnlineDeploymentDetails) GetCodeConfiguration() (rv *CodeConfiguration) {
+	if o != nil {
+		return o.CodeConfiguration
+	}
+	return
+}
+
+func (o *OnlineDeploymentDetails) GetDescription() (rv string) {
+	if o != nil && o.Description != nil {
+		return *o.Description
+	}
+	return
+}
+
+func (o *OnlineDeploymentDetails) GetEgressPublicNetworkAccess() (rv *EgressPublicNetworkAccessType) {
+	if o != nil {
+		return o.EgressPublicNetworkAccess
+	}
+	return
+}
+
+func (o *OnlineDeploymentDetails) GetEnvironmentID() (rv string) {
+	if o != nil && o.EnvironmentID != nil {
+		return *o.EnvironmentID
+	}
+	return
+}
+
+func (o *OnlineDeploymentDetails) GetEnvironmentVariables() (rv map[string]*string) {
+	if o != nil {
+		return o.EnvironmentVariables
+	}
+	return
+}
+
+func (o *OnlineDeploymentDetails) GetInstanceType() (rv string) {
+	if o != nil && o.InstanceType != nil {
+		return *o.InstanceType
+	}
+	return
+}
+
+func (o *OnlineDeploymentDetails) GetLivenessProbe() (rv *ProbeSettings) {
+	if o != nil {
+		return o.LivenessProbe
+	}
+	return
+}
+
+func (o *OnlineDeploymentDetails) GetModel() (rv string) {
+	if o != nil && o.Model != nil {
+		return *o.Model
+	}
+	return
+}
+
+func (o *OnlineDeploymentDetails) GetModelMountPath() (rv string) {
+	if o != nil && o.ModelMountPath != nil {
+		return *o.ModelMountPath
+	}
+	return
+}
+
+func (o *OnlineDeploymentDetails) GetPrivateNetworkConnection() (rv bool) {
+	if o != nil && o.PrivateNetworkConnection != nil {
+		return *o.PrivateNetworkConnection
+	}
+	return
+}
+
+func (o *OnlineDeploymentDetails) GetProperties() (rv map[string]*string) {
+	if o != nil {
+		return o.Properties
+	}
+	return
+}
+
+func (o *OnlineDeploymentDetails) GetReadinessProbe() (rv *ProbeSettings) {
+	if o != nil {
+		return o.ReadinessProbe
+	}
+	return
+}
+
+func (o *OnlineDeploymentDetails) GetRequestSettings() (rv *OnlineRequestSettings) {
+	if o != nil {
+		return o.RequestSettings
+	}
+	return
+}
+
+func (o *OnlineDeploymentDetails) GetScaleSettings() (rv OnlineScaleSettingsClassification) {
+	if o != nil {
+		return o.ScaleSettings
+	}
+	return
+}
+
+func (o *OnlineDeploymentDetails) GetProvisioningState() (rv *DeploymentProvisioningState) {
+	if o != nil {
+		return o.ProvisioningState
+	}
+	return
+}
+
 // GetOnlineDeploymentDetails implements the OnlineDeploymentDetailsClassification interface for type OnlineDeploymentDetails.
 func (o *OnlineDeploymentDetails) GetOnlineDeploymentDetails() *OnlineDeploymentDetails { return o }
 
@@ -4777,6 +12617,20 @@ type OnlineDeploymentTrackedResourceArmPaginatedResult struct {
 
 	// An array of objects of type OnlineDeployment.
 	Value []*OnlineDeploymentData
+}
+
+func (o *OnlineDeploymentTrackedResourceArmPaginatedResult) GetNextLink() (rv string) {
+	if o != nil && o.NextLink != nil {
+		return *o.NextLink
+	}
+	return
+}
+
+func (o *OnlineDeploymentTrackedResourceArmPaginatedResult) GetValue() (rv []*OnlineDeploymentData) {
+	if o != nil {
+		return o.Value
+	}
+	return
 }
 
 type OnlineEndpointData struct {
@@ -4809,6 +12663,76 @@ type OnlineEndpointData struct {
 
 	// READ-ONLY; The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type *string
+}
+
+func (o *OnlineEndpointData) GetLocation() (rv string) {
+	if o != nil && o.Location != nil {
+		return *o.Location
+	}
+	return
+}
+
+func (o *OnlineEndpointData) GetProperties() (rv *OnlineEndpointDetails) {
+	if o != nil {
+		return o.Properties
+	}
+	return
+}
+
+func (o *OnlineEndpointData) GetIdentity() (rv *ManagedServiceIdentity) {
+	if o != nil {
+		return o.Identity
+	}
+	return
+}
+
+func (o *OnlineEndpointData) GetKind() (rv string) {
+	if o != nil && o.Kind != nil {
+		return *o.Kind
+	}
+	return
+}
+
+func (o *OnlineEndpointData) GetSKU() (rv *SKU) {
+	if o != nil {
+		return o.SKU
+	}
+	return
+}
+
+func (o *OnlineEndpointData) GetTags() (rv map[string]*string) {
+	if o != nil {
+		return o.Tags
+	}
+	return
+}
+
+func (o *OnlineEndpointData) GetID() (rv string) {
+	if o != nil && o.ID != nil {
+		return *o.ID
+	}
+	return
+}
+
+func (o *OnlineEndpointData) GetName() (rv string) {
+	if o != nil && o.Name != nil {
+		return *o.Name
+	}
+	return
+}
+
+func (o *OnlineEndpointData) GetSystemData() (rv *SystemData) {
+	if o != nil {
+		return o.SystemData
+	}
+	return
+}
+
+func (o *OnlineEndpointData) GetType() (rv string) {
+	if o != nil && o.Type != nil {
+		return *o.Type
+	}
+	return
 }
 
 // OnlineEndpointDetails - Online endpoint configuration
@@ -4850,6 +12774,83 @@ type OnlineEndpointDetails struct {
 	SwaggerURI *string
 }
 
+func (o *OnlineEndpointDetails) GetAuthMode() (rv *EndpointAuthMode) {
+	if o != nil {
+		return o.AuthMode
+	}
+	return
+}
+
+func (o *OnlineEndpointDetails) GetCompute() (rv string) {
+	if o != nil && o.Compute != nil {
+		return *o.Compute
+	}
+	return
+}
+
+func (o *OnlineEndpointDetails) GetDescription() (rv string) {
+	if o != nil && o.Description != nil {
+		return *o.Description
+	}
+	return
+}
+
+func (o *OnlineEndpointDetails) GetKeys() (rv *EndpointAuthKeys) {
+	if o != nil {
+		return o.Keys
+	}
+	return
+}
+
+func (o *OnlineEndpointDetails) GetMirrorTraffic() (rv map[string]*int32) {
+	if o != nil {
+		return o.MirrorTraffic
+	}
+	return
+}
+
+func (o *OnlineEndpointDetails) GetProperties() (rv map[string]*string) {
+	if o != nil {
+		return o.Properties
+	}
+	return
+}
+
+func (o *OnlineEndpointDetails) GetPublicNetworkAccess() (rv *PublicNetworkAccessType) {
+	if o != nil {
+		return o.PublicNetworkAccess
+	}
+	return
+}
+
+func (o *OnlineEndpointDetails) GetTraffic() (rv map[string]*int32) {
+	if o != nil {
+		return o.Traffic
+	}
+	return
+}
+
+func (o *OnlineEndpointDetails) GetProvisioningState() (rv *EndpointProvisioningState) {
+	if o != nil {
+		return o.ProvisioningState
+	}
+	return
+}
+
+func (o *OnlineEndpointDetails) GetScoringURI() (rv string) {
+	if o != nil && o.ScoringURI != nil {
+		return *o.ScoringURI
+	}
+	return
+}
+
+func (o *OnlineEndpointDetails) GetSwaggerURI() (rv string) {
+	if o != nil && o.SwaggerURI != nil {
+		return *o.SwaggerURI
+	}
+	return
+}
+
 // OnlineEndpointTrackedResourceArmPaginatedResult - A paginated list of OnlineEndpoint entities.
 type OnlineEndpointTrackedResourceArmPaginatedResult struct {
 	// The link to the next page of OnlineEndpoint objects. If null, there are no additional pages.
@@ -4857,6 +12858,20 @@ type OnlineEndpointTrackedResourceArmPaginatedResult struct {
 
 	// An array of objects of type OnlineEndpoint.
 	Value []*OnlineEndpointData
+}
+
+func (o *OnlineEndpointTrackedResourceArmPaginatedResult) GetNextLink() (rv string) {
+	if o != nil && o.NextLink != nil {
+		return *o.NextLink
+	}
+	return
+}
+
+func (o *OnlineEndpointTrackedResourceArmPaginatedResult) GetValue() (rv []*OnlineEndpointData) {
+	if o != nil {
+		return o.Value
+	}
+	return
 }
 
 // OnlineRequestSettings - Online deployment scoring requests configuration.
@@ -4871,10 +12886,38 @@ type OnlineRequestSettings struct {
 	RequestTimeout *string
 }
 
+func (o *OnlineRequestSettings) GetMaxConcurrentRequestsPerInstance() (rv int32) {
+	if o != nil && o.MaxConcurrentRequestsPerInstance != nil {
+		return *o.MaxConcurrentRequestsPerInstance
+	}
+	return
+}
+
+func (o *OnlineRequestSettings) GetMaxQueueWait() (rv string) {
+	if o != nil && o.MaxQueueWait != nil {
+		return *o.MaxQueueWait
+	}
+	return
+}
+
+func (o *OnlineRequestSettings) GetRequestTimeout() (rv string) {
+	if o != nil && o.RequestTimeout != nil {
+		return *o.RequestTimeout
+	}
+	return
+}
+
 // OnlineScaleSettings - Online deployment scaling configuration.
 type OnlineScaleSettings struct {
 	// REQUIRED; [Required] Type of deployment scaling algorithm
 	ScaleType *ScaleType
+}
+
+func (o *OnlineScaleSettings) GetScaleType() (rv *ScaleType) {
+	if o != nil {
+		return o.ScaleType
+	}
+	return
 }
 
 // GetOnlineScaleSettings implements the OnlineScaleSettingsClassification interface for type OnlineScaleSettings.
@@ -4890,6 +12933,27 @@ type OutputPathAssetReference struct {
 
 	// The path of the file/directory in the job output.
 	Path *string
+}
+
+func (o *OutputPathAssetReference) GetReferenceType() (rv *ReferenceType) {
+	if o != nil {
+		return o.ReferenceType
+	}
+	return
+}
+
+func (o *OutputPathAssetReference) GetJobID() (rv string) {
+	if o != nil && o.JobID != nil {
+		return *o.JobID
+	}
+	return
+}
+
+func (o *OutputPathAssetReference) GetPath() (rv string) {
+	if o != nil && o.Path != nil {
+		return *o.Path
+	}
+	return
 }
 
 // GetAssetReferenceBase implements the AssetReferenceBaseClassification interface for type OutputPathAssetReference.
@@ -4908,6 +12972,20 @@ type PaginatedComputeResourcesList struct {
 	Value []*ComputeResource
 }
 
+func (p *PaginatedComputeResourcesList) GetNextLink() (rv string) {
+	if p != nil && p.NextLink != nil {
+		return *p.NextLink
+	}
+	return
+}
+
+func (p *PaginatedComputeResourcesList) GetValue() (rv []*ComputeResource) {
+	if p != nil {
+		return p.Value
+	}
+	return
+}
+
 // PaginatedWorkspaceConnectionsList - Paginated list of Workspace connection objects.
 type PaginatedWorkspaceConnectionsList struct {
 	// A continuation link (absolute URI) to the next page of results in the list.
@@ -4917,10 +12995,31 @@ type PaginatedWorkspaceConnectionsList struct {
 	Value []*WorkspaceConnection
 }
 
+func (p *PaginatedWorkspaceConnectionsList) GetNextLink() (rv string) {
+	if p != nil && p.NextLink != nil {
+		return *p.NextLink
+	}
+	return
+}
+
+func (p *PaginatedWorkspaceConnectionsList) GetValue() (rv []*WorkspaceConnection) {
+	if p != nil {
+		return p.Value
+	}
+	return
+}
+
 // PartialAssetReferenceBase - Base definition for asset references.
 type PartialAssetReferenceBase struct {
 	// REQUIRED; [Required] Specifies the type of asset reference.
 	ReferenceType *ReferenceType
+}
+
+func (p *PartialAssetReferenceBase) GetReferenceType() (rv *ReferenceType) {
+	if p != nil {
+		return p.ReferenceType
+	}
+	return
 }
 
 // GetPartialAssetReferenceBase implements the PartialAssetReferenceBaseClassification interface for type PartialAssetReferenceBase.
@@ -4977,6 +13076,104 @@ type PartialBatchDeployment struct {
 	RetrySettings *PartialBatchRetrySettings
 }
 
+func (p *PartialBatchDeployment) GetCodeConfiguration() (rv *PartialCodeConfiguration) {
+	if p != nil {
+		return p.CodeConfiguration
+	}
+	return
+}
+
+func (p *PartialBatchDeployment) GetCompute() (rv string) {
+	if p != nil && p.Compute != nil {
+		return *p.Compute
+	}
+	return
+}
+
+func (p *PartialBatchDeployment) GetDescription() (rv string) {
+	if p != nil && p.Description != nil {
+		return *p.Description
+	}
+	return
+}
+
+func (p *PartialBatchDeployment) GetEnvironmentID() (rv string) {
+	if p != nil && p.EnvironmentID != nil {
+		return *p.EnvironmentID
+	}
+	return
+}
+
+func (p *PartialBatchDeployment) GetEnvironmentVariables() (rv map[string]*string) {
+	if p != nil {
+		return p.EnvironmentVariables
+	}
+	return
+}
+
+func (p *PartialBatchDeployment) GetErrorThreshold() (rv int32) {
+	if p != nil && p.ErrorThreshold != nil {
+		return *p.ErrorThreshold
+	}
+	return
+}
+
+func (p *PartialBatchDeployment) GetLoggingLevel() (rv *BatchLoggingLevel) {
+	if p != nil {
+		return p.LoggingLevel
+	}
+	return
+}
+
+func (p *PartialBatchDeployment) GetMaxConcurrencyPerInstance() (rv int32) {
+	if p != nil && p.MaxConcurrencyPerInstance != nil {
+		return *p.MaxConcurrencyPerInstance
+	}
+	return
+}
+
+func (p *PartialBatchDeployment) GetMiniBatchSize() (rv int64) {
+	if p != nil && p.MiniBatchSize != nil {
+		return *p.MiniBatchSize
+	}
+	return
+}
+
+func (p *PartialBatchDeployment) GetModel() (rv PartialAssetReferenceBaseClassification) {
+	if p != nil {
+		return p.Model
+	}
+	return
+}
+
+func (p *PartialBatchDeployment) GetOutputAction() (rv *BatchOutputAction) {
+	if p != nil {
+		return p.OutputAction
+	}
+	return
+}
+
+func (p *PartialBatchDeployment) GetOutputFileName() (rv string) {
+	if p != nil && p.OutputFileName != nil {
+		return *p.OutputFileName
+	}
+	return
+}
+
+func (p *PartialBatchDeployment) GetProperties() (rv map[string]*string) {
+	if p != nil {
+		return p.Properties
+	}
+	return
+}
+
+func (p *PartialBatchDeployment) GetRetrySettings() (rv *PartialBatchRetrySettings) {
+	if p != nil {
+		return p.RetrySettings
+	}
+	return
+}
+
 // PartialBatchDeploymentPartialTrackedResource - Strictly used in update requests.
 type PartialBatchDeploymentPartialTrackedResource struct {
 	// Managed service identity (system assigned and/or user assigned identities)
@@ -4998,10 +13195,59 @@ type PartialBatchDeploymentPartialTrackedResource struct {
 	Tags map[string]*string
 }
 
+func (p *PartialBatchDeploymentPartialTrackedResource) GetIdentity() (rv *PartialManagedServiceIdentity) {
+	if p != nil {
+		return p.Identity
+	}
+	return
+}
+
+func (p *PartialBatchDeploymentPartialTrackedResource) GetKind() (rv string) {
+	if p != nil && p.Kind != nil {
+		return *p.Kind
+	}
+	return
+}
+
+func (p *PartialBatchDeploymentPartialTrackedResource) GetLocation() (rv string) {
+	if p != nil && p.Location != nil {
+		return *p.Location
+	}
+	return
+}
+
+func (p *PartialBatchDeploymentPartialTrackedResource) GetProperties() (rv *PartialBatchDeployment) {
+	if p != nil {
+		return p.Properties
+	}
+	return
+}
+
+func (p *PartialBatchDeploymentPartialTrackedResource) GetSKU() (rv *PartialSKU) {
+	if p != nil {
+		return p.SKU
+	}
+	return
+}
+
+func (p *PartialBatchDeploymentPartialTrackedResource) GetTags() (rv map[string]*string) {
+	if p != nil {
+		return p.Tags
+	}
+	return
+}
+
 // PartialBatchEndpoint - Mutable Batch endpoint configuration
 type PartialBatchEndpoint struct {
 	// Default values for Batch Endpoint
 	Defaults *BatchEndpointDefaults
+}
+
+func (p *PartialBatchEndpoint) GetDefaults() (rv *BatchEndpointDefaults) {
+	if p != nil {
+		return p.Defaults
+	}
+	return
 }
 
 // PartialBatchEndpointPartialTrackedResource - Strictly used in update requests.
@@ -5025,6 +13271,48 @@ type PartialBatchEndpointPartialTrackedResource struct {
 	Tags map[string]*string
 }
 
+func (p *PartialBatchEndpointPartialTrackedResource) GetIdentity() (rv *PartialManagedServiceIdentity) {
+	if p != nil {
+		return p.Identity
+	}
+	return
+}
+
+func (p *PartialBatchEndpointPartialTrackedResource) GetKind() (rv string) {
+	if p != nil && p.Kind != nil {
+		return *p.Kind
+	}
+	return
+}
+
+func (p *PartialBatchEndpointPartialTrackedResource) GetLocation() (rv string) {
+	if p != nil && p.Location != nil {
+		return *p.Location
+	}
+	return
+}
+
+func (p *PartialBatchEndpointPartialTrackedResource) GetProperties() (rv *PartialBatchEndpoint) {
+	if p != nil {
+		return p.Properties
+	}
+	return
+}
+
+func (p *PartialBatchEndpointPartialTrackedResource) GetSKU() (rv *PartialSKU) {
+	if p != nil {
+		return p.SKU
+	}
+	return
+}
+
+func (p *PartialBatchEndpointPartialTrackedResource) GetTags() (rv map[string]*string) {
+	if p != nil {
+		return p.Tags
+	}
+	return
+}
+
 // PartialBatchRetrySettings - Retry settings for a batch inference operation.
 type PartialBatchRetrySettings struct {
 	// Maximum retry count for a mini-batch
@@ -5034,6 +13322,20 @@ type PartialBatchRetrySettings struct {
 	Timeout *string
 }
 
+func (p *PartialBatchRetrySettings) GetMaxRetries() (rv int32) {
+	if p != nil && p.MaxRetries != nil {
+		return *p.MaxRetries
+	}
+	return
+}
+
+func (p *PartialBatchRetrySettings) GetTimeout() (rv string) {
+	if p != nil && p.Timeout != nil {
+		return *p.Timeout
+	}
+	return
+}
+
 // PartialCodeConfiguration - Configuration for a scoring code asset.
 type PartialCodeConfiguration struct {
 	// ARM resource ID of the code asset.
@@ -5041,6 +13343,20 @@ type PartialCodeConfiguration struct {
 
 	// The script to execute on startup. eg. "score.py"
 	ScoringScript *string
+}
+
+func (p *PartialCodeConfiguration) GetCodeID() (rv string) {
+	if p != nil && p.CodeID != nil {
+		return *p.CodeID
+	}
+	return
+}
+
+func (p *PartialCodeConfiguration) GetScoringScript() (rv string) {
+	if p != nil && p.ScoringScript != nil {
+		return *p.ScoringScript
+	}
+	return
 }
 
 // PartialDataPathAssetReference - Reference to an asset via its path in a datastore.
@@ -5053,6 +13369,27 @@ type PartialDataPathAssetReference struct {
 
 	// The path of the file/directory in the datastore.
 	Path *string
+}
+
+func (p *PartialDataPathAssetReference) GetReferenceType() (rv *ReferenceType) {
+	if p != nil {
+		return p.ReferenceType
+	}
+	return
+}
+
+func (p *PartialDataPathAssetReference) GetDatastoreID() (rv string) {
+	if p != nil && p.DatastoreID != nil {
+		return *p.DatastoreID
+	}
+	return
+}
+
+func (p *PartialDataPathAssetReference) GetPath() (rv string) {
+	if p != nil && p.Path != nil {
+		return *p.Path
+	}
+	return
 }
 
 // GetPartialAssetReferenceBase implements the PartialAssetReferenceBaseClassification interface for type PartialDataPathAssetReference.
@@ -5071,6 +13408,20 @@ type PartialIDAssetReference struct {
 	AssetID *string
 }
 
+func (p *PartialIDAssetReference) GetReferenceType() (rv *ReferenceType) {
+	if p != nil {
+		return p.ReferenceType
+	}
+	return
+}
+
+func (p *PartialIDAssetReference) GetAssetID() (rv string) {
+	if p != nil && p.AssetID != nil {
+		return *p.AssetID
+	}
+	return
+}
+
 // GetPartialAssetReferenceBase implements the PartialAssetReferenceBaseClassification interface for type PartialIDAssetReference.
 func (p *PartialIDAssetReference) GetPartialAssetReferenceBase() *PartialAssetReferenceBase {
 	return &PartialAssetReferenceBase{
@@ -5084,6 +13435,13 @@ type PartialKubernetesOnlineDeployment struct {
 	EndpointComputeType *EndpointComputeType
 }
 
+func (p *PartialKubernetesOnlineDeployment) GetEndpointComputeType() (rv *EndpointComputeType) {
+	if p != nil {
+		return p.EndpointComputeType
+	}
+	return
+}
+
 // GetPartialOnlineDeployment implements the PartialOnlineDeploymentClassification interface for type PartialKubernetesOnlineDeployment.
 func (p *PartialKubernetesOnlineDeployment) GetPartialOnlineDeployment() *PartialOnlineDeployment {
 	return &PartialOnlineDeployment{
@@ -5095,6 +13453,13 @@ func (p *PartialKubernetesOnlineDeployment) GetPartialOnlineDeployment() *Partia
 type PartialManagedOnlineDeployment struct {
 	// REQUIRED; [Required] The compute type of the endpoint.
 	EndpointComputeType *EndpointComputeType
+}
+
+func (p *PartialManagedOnlineDeployment) GetEndpointComputeType() (rv *EndpointComputeType) {
+	if p != nil {
+		return p.EndpointComputeType
+	}
+	return
 }
 
 // GetPartialOnlineDeployment implements the PartialOnlineDeploymentClassification interface for type PartialManagedOnlineDeployment.
@@ -5117,10 +13482,31 @@ type PartialManagedServiceIdentity struct {
 	UserAssignedIdentities map[string]any
 }
 
+func (p *PartialManagedServiceIdentity) GetType() (rv *ManagedServiceIdentityType) {
+	if p != nil {
+		return p.Type
+	}
+	return
+}
+
+func (p *PartialManagedServiceIdentity) GetUserAssignedIdentities() (rv map[string]any) {
+	if p != nil {
+		return p.UserAssignedIdentities
+	}
+	return
+}
+
 // PartialOnlineDeployment - Mutable online deployment configuration
 type PartialOnlineDeployment struct {
 	// REQUIRED; [Required] The compute type of the endpoint.
 	EndpointComputeType *EndpointComputeType
+}
+
+func (p *PartialOnlineDeployment) GetEndpointComputeType() (rv *EndpointComputeType) {
+	if p != nil {
+		return p.EndpointComputeType
+	}
+	return
 }
 
 // GetPartialOnlineDeployment implements the PartialOnlineDeploymentClassification interface for type PartialOnlineDeployment.
@@ -5147,6 +13533,48 @@ type PartialOnlineDeploymentPartialTrackedResource struct {
 	Tags map[string]*string
 }
 
+func (p *PartialOnlineDeploymentPartialTrackedResource) GetIdentity() (rv *PartialManagedServiceIdentity) {
+	if p != nil {
+		return p.Identity
+	}
+	return
+}
+
+func (p *PartialOnlineDeploymentPartialTrackedResource) GetKind() (rv string) {
+	if p != nil && p.Kind != nil {
+		return *p.Kind
+	}
+	return
+}
+
+func (p *PartialOnlineDeploymentPartialTrackedResource) GetLocation() (rv string) {
+	if p != nil && p.Location != nil {
+		return *p.Location
+	}
+	return
+}
+
+func (p *PartialOnlineDeploymentPartialTrackedResource) GetProperties() (rv PartialOnlineDeploymentClassification) {
+	if p != nil {
+		return p.Properties
+	}
+	return
+}
+
+func (p *PartialOnlineDeploymentPartialTrackedResource) GetSKU() (rv *PartialSKU) {
+	if p != nil {
+		return p.SKU
+	}
+	return
+}
+
+func (p *PartialOnlineDeploymentPartialTrackedResource) GetTags() (rv map[string]*string) {
+	if p != nil {
+		return p.Tags
+	}
+	return
+}
+
 // PartialOnlineEndpoint - Mutable online endpoint configuration
 type PartialOnlineEndpoint struct {
 	// Percentage of traffic to be mirrored to each deployment without using returned scoring. Traffic values need to sum to utmost
@@ -5158,6 +13586,27 @@ type PartialOnlineEndpoint struct {
 
 	// Percentage of traffic from endpoint to divert to each deployment. Traffic values need to sum to 100.
 	Traffic map[string]*int32
+}
+
+func (p *PartialOnlineEndpoint) GetMirrorTraffic() (rv map[string]*int32) {
+	if p != nil {
+		return p.MirrorTraffic
+	}
+	return
+}
+
+func (p *PartialOnlineEndpoint) GetPublicNetworkAccess() (rv *PublicNetworkAccessType) {
+	if p != nil {
+		return p.PublicNetworkAccess
+	}
+	return
+}
+
+func (p *PartialOnlineEndpoint) GetTraffic() (rv map[string]*int32) {
+	if p != nil {
+		return p.Traffic
+	}
+	return
 }
 
 // PartialOnlineEndpointPartialTrackedResource - Strictly used in update requests.
@@ -5181,6 +13630,48 @@ type PartialOnlineEndpointPartialTrackedResource struct {
 	Tags map[string]*string
 }
 
+func (p *PartialOnlineEndpointPartialTrackedResource) GetIdentity() (rv *PartialManagedServiceIdentity) {
+	if p != nil {
+		return p.Identity
+	}
+	return
+}
+
+func (p *PartialOnlineEndpointPartialTrackedResource) GetKind() (rv string) {
+	if p != nil && p.Kind != nil {
+		return *p.Kind
+	}
+	return
+}
+
+func (p *PartialOnlineEndpointPartialTrackedResource) GetLocation() (rv string) {
+	if p != nil && p.Location != nil {
+		return *p.Location
+	}
+	return
+}
+
+func (p *PartialOnlineEndpointPartialTrackedResource) GetProperties() (rv *PartialOnlineEndpoint) {
+	if p != nil {
+		return p.Properties
+	}
+	return
+}
+
+func (p *PartialOnlineEndpointPartialTrackedResource) GetSKU() (rv *PartialSKU) {
+	if p != nil {
+		return p.SKU
+	}
+	return
+}
+
+func (p *PartialOnlineEndpointPartialTrackedResource) GetTags() (rv map[string]*string) {
+	if p != nil {
+		return p.Tags
+	}
+	return
+}
+
 // PartialOutputPathAssetReference - Reference to an asset via its path in a job output.
 type PartialOutputPathAssetReference struct {
 	// REQUIRED; [Required] Specifies the type of asset reference.
@@ -5191,6 +13682,27 @@ type PartialOutputPathAssetReference struct {
 
 	// The path of the file/directory in the job output.
 	Path *string
+}
+
+func (p *PartialOutputPathAssetReference) GetReferenceType() (rv *ReferenceType) {
+	if p != nil {
+		return p.ReferenceType
+	}
+	return
+}
+
+func (p *PartialOutputPathAssetReference) GetJobID() (rv string) {
+	if p != nil && p.JobID != nil {
+		return *p.JobID
+	}
+	return
+}
+
+func (p *PartialOutputPathAssetReference) GetPath() (rv string) {
+	if p != nil && p.Path != nil {
+		return *p.Path
+	}
+	return
 }
 
 // GetPartialAssetReferenceBase implements the PartialAssetReferenceBaseClassification interface for type PartialOutputPathAssetReference.
@@ -5220,6 +13732,41 @@ type PartialSKU struct {
 	Tier *SKUTier
 }
 
+func (p *PartialSKU) GetCapacity() (rv int32) {
+	if p != nil && p.Capacity != nil {
+		return *p.Capacity
+	}
+	return
+}
+
+func (p *PartialSKU) GetFamily() (rv string) {
+	if p != nil && p.Family != nil {
+		return *p.Family
+	}
+	return
+}
+
+func (p *PartialSKU) GetName() (rv string) {
+	if p != nil && p.Name != nil {
+		return *p.Name
+	}
+	return
+}
+
+func (p *PartialSKU) GetSize() (rv string) {
+	if p != nil && p.Size != nil {
+		return *p.Size
+	}
+	return
+}
+
+func (p *PartialSKU) GetTier() (rv *SKUTier) {
+	if p != nil {
+		return p.Tier
+	}
+	return
+}
+
 type Password struct {
 	// READ-ONLY
 	Name *string
@@ -5228,10 +13775,31 @@ type Password struct {
 	Value *string
 }
 
+func (p *Password) GetName() (rv string) {
+	if p != nil && p.Name != nil {
+		return *p.Name
+	}
+	return
+}
+
+func (p *Password) GetValue() (rv string) {
+	if p != nil && p.Value != nil {
+		return *p.Value
+	}
+	return
+}
+
 // PersonalComputeInstanceSettings - Settings for a personal compute instance.
 type PersonalComputeInstanceSettings struct {
 	// A user explicitly assigned to a personal compute instance.
 	AssignedUser *AssignedUser
+}
+
+func (p *PersonalComputeInstanceSettings) GetAssignedUser() (rv *AssignedUser) {
+	if p != nil {
+		return p.AssignedUser
+	}
+	return
 }
 
 // PipelineJob - Pipeline Job definition: defines generic to MFE attributes.
@@ -5286,6 +13854,118 @@ type PipelineJob struct {
 	Status *JobStatus
 }
 
+func (p *PipelineJob) GetJobType() (rv *JobType) {
+	if p != nil {
+		return p.JobType
+	}
+	return
+}
+
+func (p *PipelineJob) GetComputeID() (rv string) {
+	if p != nil && p.ComputeID != nil {
+		return *p.ComputeID
+	}
+	return
+}
+
+func (p *PipelineJob) GetDescription() (rv string) {
+	if p != nil && p.Description != nil {
+		return *p.Description
+	}
+	return
+}
+
+func (p *PipelineJob) GetDisplayName() (rv string) {
+	if p != nil && p.DisplayName != nil {
+		return *p.DisplayName
+	}
+	return
+}
+
+func (p *PipelineJob) GetExperimentName() (rv string) {
+	if p != nil && p.ExperimentName != nil {
+		return *p.ExperimentName
+	}
+	return
+}
+
+func (p *PipelineJob) GetIdentity() (rv IdentityConfigurationClassification) {
+	if p != nil {
+		return p.Identity
+	}
+	return
+}
+
+func (p *PipelineJob) GetInputs() (rv map[string]JobInputClassification) {
+	if p != nil {
+		return p.Inputs
+	}
+	return
+}
+
+func (p *PipelineJob) GetIsArchived() (rv bool) {
+	if p != nil && p.IsArchived != nil {
+		return *p.IsArchived
+	}
+	return
+}
+
+func (p *PipelineJob) GetJobs() (rv map[string]any) {
+	if p != nil {
+		return p.Jobs
+	}
+	return
+}
+
+func (p *PipelineJob) GetOutputs() (rv map[string]JobOutputClassification) {
+	if p != nil {
+		return p.Outputs
+	}
+	return
+}
+
+func (p *PipelineJob) GetProperties() (rv map[string]*string) {
+	if p != nil {
+		return p.Properties
+	}
+	return
+}
+
+func (p *PipelineJob) GetSchedule() (rv ScheduleBaseClassification) {
+	if p != nil {
+		return p.Schedule
+	}
+	return
+}
+
+func (p *PipelineJob) GetServices() (rv map[string]*JobService) {
+	if p != nil {
+		return p.Services
+	}
+	return
+}
+
+func (p *PipelineJob) GetSettings() (rv any) {
+	if p != nil {
+		return p.Settings
+	}
+	return
+}
+
+func (p *PipelineJob) GetTags() (rv map[string]*string) {
+	if p != nil {
+		return p.Tags
+	}
+	return
+}
+
+func (p *PipelineJob) GetStatus() (rv *JobStatus) {
+	if p != nil {
+		return p.Status
+	}
+	return
+}
+
 // GetJobBaseDetails implements the JobBaseDetailsClassification interface for type PipelineJob.
 func (p *PipelineJob) GetJobBaseDetails() *JobBaseDetails {
 	return &JobBaseDetails{
@@ -5311,6 +13991,20 @@ type PrivateEndpoint struct {
 
 	// READ-ONLY; The ARM identifier for Subnet resource that private endpoint links to
 	SubnetArmID *string
+}
+
+func (p *PrivateEndpoint) GetID() (rv string) {
+	if p != nil && p.ID != nil {
+		return *p.ID
+	}
+	return
+}
+
+func (p *PrivateEndpoint) GetSubnetArmID() (rv string) {
+	if p != nil && p.SubnetArmID != nil {
+		return *p.SubnetArmID
+	}
+	return
 }
 
 // PrivateEndpointConnection - The Private Endpoint Connection resource.
@@ -5343,10 +14037,80 @@ type PrivateEndpointConnection struct {
 	Type *string
 }
 
+func (p *PrivateEndpointConnection) GetIdentity() (rv *ManagedServiceIdentity) {
+	if p != nil {
+		return p.Identity
+	}
+	return
+}
+
+func (p *PrivateEndpointConnection) GetLocation() (rv string) {
+	if p != nil && p.Location != nil {
+		return *p.Location
+	}
+	return
+}
+
+func (p *PrivateEndpointConnection) GetProperties() (rv *PrivateEndpointConnectionProperties) {
+	if p != nil {
+		return p.Properties
+	}
+	return
+}
+
+func (p *PrivateEndpointConnection) GetSKU() (rv *SKU) {
+	if p != nil {
+		return p.SKU
+	}
+	return
+}
+
+func (p *PrivateEndpointConnection) GetTags() (rv map[string]*string) {
+	if p != nil {
+		return p.Tags
+	}
+	return
+}
+
+func (p *PrivateEndpointConnection) GetID() (rv string) {
+	if p != nil && p.ID != nil {
+		return *p.ID
+	}
+	return
+}
+
+func (p *PrivateEndpointConnection) GetName() (rv string) {
+	if p != nil && p.Name != nil {
+		return *p.Name
+	}
+	return
+}
+
+func (p *PrivateEndpointConnection) GetSystemData() (rv *SystemData) {
+	if p != nil {
+		return p.SystemData
+	}
+	return
+}
+
+func (p *PrivateEndpointConnection) GetType() (rv string) {
+	if p != nil && p.Type != nil {
+		return *p.Type
+	}
+	return
+}
+
 // PrivateEndpointConnectionListResult - List of private endpoint connection associated with the specified workspace
 type PrivateEndpointConnectionListResult struct {
 	// Array of private endpoint connections
 	Value []*PrivateEndpointConnection
+}
+
+func (p *PrivateEndpointConnectionListResult) GetValue() (rv []*PrivateEndpointConnection) {
+	if p != nil {
+		return p.Value
+	}
+	return
 }
 
 // PrivateEndpointConnectionProperties - Properties of the PrivateEndpointConnectProperties.
@@ -5359,6 +14123,27 @@ type PrivateEndpointConnectionProperties struct {
 
 	// READ-ONLY; The provisioning state of the private endpoint connection resource.
 	ProvisioningState *PrivateEndpointConnectionProvisioningState
+}
+
+func (p *PrivateEndpointConnectionProperties) GetPrivateLinkServiceConnectionState() (rv *PrivateLinkServiceConnectionState) {
+	if p != nil {
+		return p.PrivateLinkServiceConnectionState
+	}
+	return
+}
+
+func (p *PrivateEndpointConnectionProperties) GetPrivateEndpoint() (rv *PrivateEndpoint) {
+	if p != nil {
+		return p.PrivateEndpoint
+	}
+	return
+}
+
+func (p *PrivateEndpointConnectionProperties) GetProvisioningState() (rv *PrivateEndpointConnectionProvisioningState) {
+	if p != nil {
+		return p.ProvisioningState
+	}
+	return
 }
 
 // PrivateLinkResource - A private link resource
@@ -5391,10 +14176,80 @@ type PrivateLinkResource struct {
 	Type *string
 }
 
+func (p *PrivateLinkResource) GetIdentity() (rv *ManagedServiceIdentity) {
+	if p != nil {
+		return p.Identity
+	}
+	return
+}
+
+func (p *PrivateLinkResource) GetLocation() (rv string) {
+	if p != nil && p.Location != nil {
+		return *p.Location
+	}
+	return
+}
+
+func (p *PrivateLinkResource) GetProperties() (rv *PrivateLinkResourceProperties) {
+	if p != nil {
+		return p.Properties
+	}
+	return
+}
+
+func (p *PrivateLinkResource) GetSKU() (rv *SKU) {
+	if p != nil {
+		return p.SKU
+	}
+	return
+}
+
+func (p *PrivateLinkResource) GetTags() (rv map[string]*string) {
+	if p != nil {
+		return p.Tags
+	}
+	return
+}
+
+func (p *PrivateLinkResource) GetID() (rv string) {
+	if p != nil && p.ID != nil {
+		return *p.ID
+	}
+	return
+}
+
+func (p *PrivateLinkResource) GetName() (rv string) {
+	if p != nil && p.Name != nil {
+		return *p.Name
+	}
+	return
+}
+
+func (p *PrivateLinkResource) GetSystemData() (rv *SystemData) {
+	if p != nil {
+		return p.SystemData
+	}
+	return
+}
+
+func (p *PrivateLinkResource) GetType() (rv string) {
+	if p != nil && p.Type != nil {
+		return *p.Type
+	}
+	return
+}
+
 // PrivateLinkResourceListResult - A list of private link resources
 type PrivateLinkResourceListResult struct {
 	// Array of private link resources
 	Value []*PrivateLinkResource
+}
+
+func (p *PrivateLinkResourceListResult) GetValue() (rv []*PrivateLinkResource) {
+	if p != nil {
+		return p.Value
+	}
+	return
 }
 
 // PrivateLinkResourceProperties - Properties of a private link resource.
@@ -5409,6 +14264,27 @@ type PrivateLinkResourceProperties struct {
 	RequiredMembers []*string
 }
 
+func (p *PrivateLinkResourceProperties) GetRequiredZoneNames() (rv []*string) {
+	if p != nil {
+		return p.RequiredZoneNames
+	}
+	return
+}
+
+func (p *PrivateLinkResourceProperties) GetGroupID() (rv string) {
+	if p != nil && p.GroupID != nil {
+		return *p.GroupID
+	}
+	return
+}
+
+func (p *PrivateLinkResourceProperties) GetRequiredMembers() (rv []*string) {
+	if p != nil {
+		return p.RequiredMembers
+	}
+	return
+}
+
 // PrivateLinkServiceConnectionState - A collection of information about the state of the connection between service consumer
 // and provider.
 type PrivateLinkServiceConnectionState struct {
@@ -5420,6 +14296,27 @@ type PrivateLinkServiceConnectionState struct {
 
 	// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
 	Status *PrivateEndpointServiceConnectionStatus
+}
+
+func (p *PrivateLinkServiceConnectionState) GetActionsRequired() (rv string) {
+	if p != nil && p.ActionsRequired != nil {
+		return *p.ActionsRequired
+	}
+	return
+}
+
+func (p *PrivateLinkServiceConnectionState) GetDescription() (rv string) {
+	if p != nil && p.Description != nil {
+		return *p.Description
+	}
+	return
+}
+
+func (p *PrivateLinkServiceConnectionState) GetStatus() (rv *PrivateEndpointServiceConnectionStatus) {
+	if p != nil {
+		return p.Status
+	}
+	return
 }
 
 // ProbeSettings - Deployment container liveness/readiness probe configuration.
@@ -5440,6 +14337,41 @@ type ProbeSettings struct {
 	Timeout *string
 }
 
+func (p *ProbeSettings) GetFailureThreshold() (rv int32) {
+	if p != nil && p.FailureThreshold != nil {
+		return *p.FailureThreshold
+	}
+	return
+}
+
+func (p *ProbeSettings) GetInitialDelay() (rv string) {
+	if p != nil && p.InitialDelay != nil {
+		return *p.InitialDelay
+	}
+	return
+}
+
+func (p *ProbeSettings) GetPeriod() (rv string) {
+	if p != nil && p.Period != nil {
+		return *p.Period
+	}
+	return
+}
+
+func (p *ProbeSettings) GetSuccessThreshold() (rv int32) {
+	if p != nil && p.SuccessThreshold != nil {
+		return *p.SuccessThreshold
+	}
+	return
+}
+
+func (p *ProbeSettings) GetTimeout() (rv string) {
+	if p != nil && p.Timeout != nil {
+		return *p.Timeout
+	}
+	return
+}
+
 // PyTorch distribution configuration.
 type PyTorch struct {
 	// REQUIRED; [Required] Specifies the type of distribution framework.
@@ -5447,6 +14379,20 @@ type PyTorch struct {
 
 	// Number of processes per node.
 	ProcessCountPerInstance *int32
+}
+
+func (p *PyTorch) GetDistributionType() (rv *DistributionType) {
+	if p != nil {
+		return p.DistributionType
+	}
+	return
+}
+
+func (p *PyTorch) GetProcessCountPerInstance() (rv int32) {
+	if p != nil && p.ProcessCountPerInstance != nil {
+		return *p.ProcessCountPerInstance
+	}
+	return
 }
 
 // GetDistributionConfiguration implements the DistributionConfigurationClassification interface for type PyTorch.
@@ -5471,6 +14417,34 @@ type QuotaBaseProperties struct {
 	Unit *QuotaUnit
 }
 
+func (q *QuotaBaseProperties) GetID() (rv string) {
+	if q != nil && q.ID != nil {
+		return *q.ID
+	}
+	return
+}
+
+func (q *QuotaBaseProperties) GetLimit() (rv int64) {
+	if q != nil && q.Limit != nil {
+		return *q.Limit
+	}
+	return
+}
+
+func (q *QuotaBaseProperties) GetType() (rv string) {
+	if q != nil && q.Type != nil {
+		return *q.Type
+	}
+	return
+}
+
+func (q *QuotaBaseProperties) GetUnit() (rv *QuotaUnit) {
+	if q != nil {
+		return q.Unit
+	}
+	return
+}
+
 // QuotaUpdateParameters - Quota update parameters.
 type QuotaUpdateParameters struct {
 	// Region of workspace quota to be updated.
@@ -5478,6 +14452,20 @@ type QuotaUpdateParameters struct {
 
 	// The list for update quota.
 	Value []*QuotaBaseProperties
+}
+
+func (q *QuotaUpdateParameters) GetLocation() (rv string) {
+	if q != nil && q.Location != nil {
+		return *q.Location
+	}
+	return
+}
+
+func (q *QuotaUpdateParameters) GetValue() (rv []*QuotaBaseProperties) {
+	if q != nil {
+		return q.Value
+	}
+	return
 }
 
 // RandomSamplingAlgorithm - Defines a Sampling Algorithm that generates values randomly
@@ -5490,6 +14478,27 @@ type RandomSamplingAlgorithm struct {
 
 	// An optional integer to use as the seed for random number generation
 	Seed *int32
+}
+
+func (r *RandomSamplingAlgorithm) GetSamplingAlgorithmType() (rv *SamplingAlgorithmType) {
+	if r != nil {
+		return r.SamplingAlgorithmType
+	}
+	return
+}
+
+func (r *RandomSamplingAlgorithm) GetRule() (rv *RandomSamplingAlgorithmRule) {
+	if r != nil {
+		return r.Rule
+	}
+	return
+}
+
+func (r *RandomSamplingAlgorithm) GetSeed() (rv int32) {
+	if r != nil && r.Seed != nil {
+		return *r.Seed
+	}
+	return
 }
 
 // GetSamplingAlgorithm implements the SamplingAlgorithmClassification interface for type RandomSamplingAlgorithm.
@@ -5509,6 +14518,27 @@ type RecurrencePattern struct {
 
 	// List of weekdays for recurrence schedule pattern
 	Weekdays []*Weekday
+}
+
+func (r *RecurrencePattern) GetHours() (rv []*int32) {
+	if r != nil {
+		return r.Hours
+	}
+	return
+}
+
+func (r *RecurrencePattern) GetMinutes() (rv []*int32) {
+	if r != nil {
+		return r.Minutes
+	}
+	return
+}
+
+func (r *RecurrencePattern) GetWeekdays() (rv []*Weekday) {
+	if r != nil {
+		return r.Weekdays
+	}
+	return
 }
 
 // RecurrenceSchedule - Recurrence schedule definition
@@ -5538,6 +14568,62 @@ type RecurrenceSchedule struct {
 	TimeZone *string
 }
 
+func (r *RecurrenceSchedule) GetFrequency() (rv *RecurrenceFrequency) {
+	if r != nil {
+		return r.Frequency
+	}
+	return
+}
+
+func (r *RecurrenceSchedule) GetInterval() (rv int32) {
+	if r != nil && r.Interval != nil {
+		return *r.Interval
+	}
+	return
+}
+
+func (r *RecurrenceSchedule) GetScheduleType() (rv *ScheduleType) {
+	if r != nil {
+		return r.ScheduleType
+	}
+	return
+}
+
+func (r *RecurrenceSchedule) GetEndTime() (rv *time.Time) {
+	if r != nil {
+		return r.EndTime
+	}
+	return
+}
+
+func (r *RecurrenceSchedule) GetPattern() (rv *RecurrencePattern) {
+	if r != nil {
+		return r.Pattern
+	}
+	return
+}
+
+func (r *RecurrenceSchedule) GetScheduleStatus() (rv *ScheduleStatus) {
+	if r != nil {
+		return r.ScheduleStatus
+	}
+	return
+}
+
+func (r *RecurrenceSchedule) GetStartTime() (rv *time.Time) {
+	if r != nil {
+		return r.StartTime
+	}
+	return
+}
+
+func (r *RecurrenceSchedule) GetTimeZone() (rv string) {
+	if r != nil && r.TimeZone != nil {
+		return *r.TimeZone
+	}
+	return
+}
+
 // GetScheduleBase implements the ScheduleBaseClassification interface for type RecurrenceSchedule.
 func (r *RecurrenceSchedule) GetScheduleBase() *ScheduleBase {
 	return &ScheduleBase{
@@ -5557,6 +14643,20 @@ type RegenerateEndpointKeysRequest struct {
 	KeyValue *string
 }
 
+func (r *RegenerateEndpointKeysRequest) GetKeyType() (rv *KeyType) {
+	if r != nil {
+		return r.KeyType
+	}
+	return
+}
+
+func (r *RegenerateEndpointKeysRequest) GetKeyValue() (rv string) {
+	if r != nil && r.KeyValue != nil {
+		return *r.KeyValue
+	}
+	return
+}
+
 type RegistryListCredentialsResult struct {
 	Passwords []*Password
 
@@ -5565,6 +14665,27 @@ type RegistryListCredentialsResult struct {
 
 	// READ-ONLY
 	Username *string
+}
+
+func (r *RegistryListCredentialsResult) GetPasswords() (rv []*Password) {
+	if r != nil {
+		return r.Passwords
+	}
+	return
+}
+
+func (r *RegistryListCredentialsResult) GetLocation() (rv string) {
+	if r != nil && r.Location != nil {
+		return *r.Location
+	}
+	return
+}
+
+func (r *RegistryListCredentialsResult) GetUsername() (rv string) {
+	if r != nil && r.Username != nil {
+		return *r.Username
+	}
+	return
 }
 
 // Regression task in AutoML Table vertical.
@@ -5597,6 +14718,69 @@ type Regression struct {
 	TrainingSettings *TrainingSettings
 }
 
+func (r *Regression) GetTaskType() (rv *TaskType) {
+	if r != nil {
+		return r.TaskType
+	}
+	return
+}
+
+func (r *Regression) GetAllowedModels() (rv []*RegressionModels) {
+	if r != nil {
+		return r.AllowedModels
+	}
+	return
+}
+
+func (r *Regression) GetBlockedModels() (rv []*RegressionModels) {
+	if r != nil {
+		return r.BlockedModels
+	}
+	return
+}
+
+func (r *Regression) GetDataSettings() (rv *TableVerticalDataSettings) {
+	if r != nil {
+		return r.DataSettings
+	}
+	return
+}
+
+func (r *Regression) GetFeaturizationSettings() (rv *TableVerticalFeaturizationSettings) {
+	if r != nil {
+		return r.FeaturizationSettings
+	}
+	return
+}
+
+func (r *Regression) GetLimitSettings() (rv *TableVerticalLimitSettings) {
+	if r != nil {
+		return r.LimitSettings
+	}
+	return
+}
+
+func (r *Regression) GetLogVerbosity() (rv *LogVerbosity) {
+	if r != nil {
+		return r.LogVerbosity
+	}
+	return
+}
+
+func (r *Regression) GetPrimaryMetric() (rv *RegressionPrimaryMetrics) {
+	if r != nil {
+		return r.PrimaryMetric
+	}
+	return
+}
+
+func (r *Regression) GetTrainingSettings() (rv *TrainingSettings) {
+	if r != nil {
+		return r.TrainingSettings
+	}
+	return
+}
+
 // GetAutoMLVertical implements the AutoMLVerticalClassification interface for type Regression.
 func (r *Regression) GetAutoMLVertical() *AutoMLVertical {
 	return &AutoMLVertical{
@@ -5616,10 +14800,38 @@ type ResourceConfiguration struct {
 	Properties map[string]any
 }
 
+func (r *ResourceConfiguration) GetInstanceCount() (rv int32) {
+	if r != nil && r.InstanceCount != nil {
+		return *r.InstanceCount
+	}
+	return
+}
+
+func (r *ResourceConfiguration) GetInstanceType() (rv string) {
+	if r != nil && r.InstanceType != nil {
+		return *r.InstanceType
+	}
+	return
+}
+
+func (r *ResourceConfiguration) GetProperties() (rv map[string]any) {
+	if r != nil {
+		return r.Properties
+	}
+	return
+}
+
 // ResourceID - Represents a resource ID. For example, for a subnet, it is the resource URL for the subnet.
 type ResourceID struct {
 	// REQUIRED; The ID of the resource
 	ID *string
+}
+
+func (r *ResourceID) GetID() (rv string) {
+	if r != nil && r.ID != nil {
+		return *r.ID
+	}
+	return
 }
 
 // ResourceName - The Resource Name.
@@ -5629,6 +14841,20 @@ type ResourceName struct {
 
 	// READ-ONLY; The name of the resource.
 	Value *string
+}
+
+func (r *ResourceName) GetLocalizedValue() (rv string) {
+	if r != nil && r.LocalizedValue != nil {
+		return *r.LocalizedValue
+	}
+	return
+}
+
+func (r *ResourceName) GetValue() (rv string) {
+	if r != nil && r.Value != nil {
+		return *r.Value
+	}
+	return
 }
 
 // ResourceQuota - The quota assigned to a resource.
@@ -5652,12 +14878,68 @@ type ResourceQuota struct {
 	Unit *QuotaUnit
 }
 
+func (r *ResourceQuota) GetAmlWorkspaceLocation() (rv string) {
+	if r != nil && r.AmlWorkspaceLocation != nil {
+		return *r.AmlWorkspaceLocation
+	}
+	return
+}
+
+func (r *ResourceQuota) GetID() (rv string) {
+	if r != nil && r.ID != nil {
+		return *r.ID
+	}
+	return
+}
+
+func (r *ResourceQuota) GetLimit() (rv int64) {
+	if r != nil && r.Limit != nil {
+		return *r.Limit
+	}
+	return
+}
+
+func (r *ResourceQuota) GetName() (rv *ResourceName) {
+	if r != nil {
+		return r.Name
+	}
+	return
+}
+
+func (r *ResourceQuota) GetType() (rv string) {
+	if r != nil && r.Type != nil {
+		return *r.Type
+	}
+	return
+}
+
+func (r *ResourceQuota) GetUnit() (rv *QuotaUnit) {
+	if r != nil {
+		return r.Unit
+	}
+	return
+}
+
 type Route struct {
 	// REQUIRED; [Required] The path for the route.
 	Path *string
 
 	// REQUIRED; [Required] The port for the route.
 	Port *int32
+}
+
+func (r *Route) GetPath() (rv string) {
+	if r != nil && r.Path != nil {
+		return *r.Path
+	}
+	return
+}
+
+func (r *Route) GetPort() (rv int32) {
+	if r != nil && r.Port != nil {
+		return *r.Port
+	}
+	return
 }
 
 // SKU - The resource model definition representing SKU
@@ -5680,6 +14962,41 @@ type SKU struct {
 	Tier *SKUTier
 }
 
+func (s *SKU) GetName() (rv string) {
+	if s != nil && s.Name != nil {
+		return *s.Name
+	}
+	return
+}
+
+func (s *SKU) GetCapacity() (rv int32) {
+	if s != nil && s.Capacity != nil {
+		return *s.Capacity
+	}
+	return
+}
+
+func (s *SKU) GetFamily() (rv string) {
+	if s != nil && s.Family != nil {
+		return *s.Family
+	}
+	return
+}
+
+func (s *SKU) GetSize() (rv string) {
+	if s != nil && s.Size != nil {
+		return *s.Size
+	}
+	return
+}
+
+func (s *SKU) GetTier() (rv *SKUTier) {
+	if s != nil {
+		return s.Tier
+	}
+	return
+}
+
 // SKUCapacity - SKU capacity information
 type SKUCapacity struct {
 	// Gets or sets the default capacity.
@@ -5695,6 +15012,34 @@ type SKUCapacity struct {
 	ScaleType *SKUScaleType
 }
 
+func (s *SKUCapacity) GetDefault() (rv int32) {
+	if s != nil && s.Default != nil {
+		return *s.Default
+	}
+	return
+}
+
+func (s *SKUCapacity) GetMaximum() (rv int32) {
+	if s != nil && s.Maximum != nil {
+		return *s.Maximum
+	}
+	return
+}
+
+func (s *SKUCapacity) GetMinimum() (rv int32) {
+	if s != nil && s.Minimum != nil {
+		return *s.Minimum
+	}
+	return
+}
+
+func (s *SKUCapacity) GetScaleType() (rv *SKUScaleType) {
+	if s != nil {
+		return s.ScaleType
+	}
+	return
+}
+
 // SKUResource - Fulfills ARM Contract requirement to list all available SKUS for a resource.
 type SKUResource struct {
 	// Gets or sets the Sku Capacity.
@@ -5707,6 +15052,27 @@ type SKUResource struct {
 	ResourceType *string
 }
 
+func (s *SKUResource) GetCapacity() (rv *SKUCapacity) {
+	if s != nil {
+		return s.Capacity
+	}
+	return
+}
+
+func (s *SKUResource) GetSKU() (rv *SKUSetting) {
+	if s != nil {
+		return s.SKU
+	}
+	return
+}
+
+func (s *SKUResource) GetResourceType() (rv string) {
+	if s != nil && s.ResourceType != nil {
+		return *s.ResourceType
+	}
+	return
+}
+
 // SKUResourceArmPaginatedResult - A paginated list of SkuResource entities.
 type SKUResourceArmPaginatedResult struct {
 	// The link to the next page of SkuResource objects. If null, there are no additional pages.
@@ -5714,6 +15080,20 @@ type SKUResourceArmPaginatedResult struct {
 
 	// An array of objects of type SkuResource.
 	Value []*SKUResource
+}
+
+func (s *SKUResourceArmPaginatedResult) GetNextLink() (rv string) {
+	if s != nil && s.NextLink != nil {
+		return *s.NextLink
+	}
+	return
+}
+
+func (s *SKUResourceArmPaginatedResult) GetValue() (rv []*SKUResource) {
+	if s != nil {
+		return s.Value
+	}
+	return
 }
 
 // SKUSetting - SkuSetting fulfills the need for stripped down SKU info in ARM contract.
@@ -5724,6 +15104,20 @@ type SKUSetting struct {
 	// This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required
 	// on a PUT.
 	Tier *SKUTier
+}
+
+func (s *SKUSetting) GetName() (rv string) {
+	if s != nil && s.Name != nil {
+		return *s.Name
+	}
+	return
+}
+
+func (s *SKUSetting) GetTier() (rv *SKUTier) {
+	if s != nil {
+		return s.Tier
+	}
+	return
 }
 
 // SSLConfiguration - The ssl configuration for scoring
@@ -5747,11 +15141,60 @@ type SSLConfiguration struct {
 	Status *SSLConfigurationStatus
 }
 
+func (s *SSLConfiguration) GetCert() (rv string) {
+	if s != nil && s.Cert != nil {
+		return *s.Cert
+	}
+	return
+}
+
+func (s *SSLConfiguration) GetCname() (rv string) {
+	if s != nil && s.Cname != nil {
+		return *s.Cname
+	}
+	return
+}
+
+func (s *SSLConfiguration) GetKey() (rv string) {
+	if s != nil && s.Key != nil {
+		return *s.Key
+	}
+	return
+}
+
+func (s *SSLConfiguration) GetLeafDomainLabel() (rv string) {
+	if s != nil && s.LeafDomainLabel != nil {
+		return *s.LeafDomainLabel
+	}
+	return
+}
+
+func (s *SSLConfiguration) GetOverwriteExistingDomain() (rv bool) {
+	if s != nil && s.OverwriteExistingDomain != nil {
+		return *s.OverwriteExistingDomain
+	}
+	return
+}
+
+func (s *SSLConfiguration) GetStatus() (rv *SSLConfigurationStatus) {
+	if s != nil {
+		return s.Status
+	}
+	return
+}
+
 // SamplingAlgorithm - The Sampling Algorithm used to generate hyperparameter values, along with properties to configure the
 // algorithm
 type SamplingAlgorithm struct {
 	// REQUIRED; [Required] The algorithm used for generating hyperparameter values, along with configuration properties
 	SamplingAlgorithmType *SamplingAlgorithmType
+}
+
+func (s *SamplingAlgorithm) GetSamplingAlgorithmType() (rv *SamplingAlgorithmType) {
+	if s != nil {
+		return s.SamplingAlgorithmType
+	}
+	return
 }
 
 // GetSamplingAlgorithm implements the SamplingAlgorithmClassification interface for type SamplingAlgorithm.
@@ -5764,6 +15207,20 @@ type SasDatastoreCredentials struct {
 
 	// REQUIRED; [Required] Storage container secrets.
 	Secrets *SasDatastoreSecrets
+}
+
+func (s *SasDatastoreCredentials) GetCredentialsType() (rv *CredentialsType) {
+	if s != nil {
+		return s.CredentialsType
+	}
+	return
+}
+
+func (s *SasDatastoreCredentials) GetSecrets() (rv *SasDatastoreSecrets) {
+	if s != nil {
+		return s.Secrets
+	}
+	return
 }
 
 // GetDatastoreCredentials implements the DatastoreCredentialsClassification interface for type SasDatastoreCredentials.
@@ -5780,6 +15237,20 @@ type SasDatastoreSecrets struct {
 
 	// Storage container SAS token.
 	SasToken *string
+}
+
+func (s *SasDatastoreSecrets) GetSecretsType() (rv *SecretsType) {
+	if s != nil {
+		return s.SecretsType
+	}
+	return
+}
+
+func (s *SasDatastoreSecrets) GetSasToken() (rv string) {
+	if s != nil && s.SasToken != nil {
+		return *s.SasToken
+	}
+	return
 }
 
 // GetDatastoreSecrets implements the DatastoreSecretsClassification interface for type SasDatastoreSecrets.
@@ -5801,10 +15272,38 @@ type ScaleSettings struct {
 	NodeIdleTimeBeforeScaleDown *string
 }
 
+func (s *ScaleSettings) GetMaxNodeCount() (rv int32) {
+	if s != nil && s.MaxNodeCount != nil {
+		return *s.MaxNodeCount
+	}
+	return
+}
+
+func (s *ScaleSettings) GetMinNodeCount() (rv int32) {
+	if s != nil && s.MinNodeCount != nil {
+		return *s.MinNodeCount
+	}
+	return
+}
+
+func (s *ScaleSettings) GetNodeIdleTimeBeforeScaleDown() (rv string) {
+	if s != nil && s.NodeIdleTimeBeforeScaleDown != nil {
+		return *s.NodeIdleTimeBeforeScaleDown
+	}
+	return
+}
+
 // ScaleSettingsInformation - Desired scale settings for the amlCompute.
 type ScaleSettingsInformation struct {
 	// scale settings for AML Compute
 	ScaleSettings *ScaleSettings
+}
+
+func (s *ScaleSettingsInformation) GetScaleSettings() (rv *ScaleSettings) {
+	if s != nil {
+		return s.ScaleSettings
+	}
+	return
 }
 
 // ScheduleBase - Base definition of a schedule
@@ -5825,6 +15324,41 @@ type ScheduleBase struct {
 	TimeZone *string
 }
 
+func (s *ScheduleBase) GetScheduleType() (rv *ScheduleType) {
+	if s != nil {
+		return s.ScheduleType
+	}
+	return
+}
+
+func (s *ScheduleBase) GetEndTime() (rv *time.Time) {
+	if s != nil {
+		return s.EndTime
+	}
+	return
+}
+
+func (s *ScheduleBase) GetScheduleStatus() (rv *ScheduleStatus) {
+	if s != nil {
+		return s.ScheduleStatus
+	}
+	return
+}
+
+func (s *ScheduleBase) GetStartTime() (rv *time.Time) {
+	if s != nil {
+		return s.StartTime
+	}
+	return
+}
+
+func (s *ScheduleBase) GetTimeZone() (rv string) {
+	if s != nil && s.TimeZone != nil {
+		return *s.TimeZone
+	}
+	return
+}
+
 // GetScheduleBase implements the ScheduleBaseClassification interface for type ScheduleBase.
 func (s *ScheduleBase) GetScheduleBase() *ScheduleBase { return s }
 
@@ -5843,6 +15377,34 @@ type ScriptReference struct {
 	Timeout *string
 }
 
+func (s *ScriptReference) GetScriptArguments() (rv string) {
+	if s != nil && s.ScriptArguments != nil {
+		return *s.ScriptArguments
+	}
+	return
+}
+
+func (s *ScriptReference) GetScriptData() (rv string) {
+	if s != nil && s.ScriptData != nil {
+		return *s.ScriptData
+	}
+	return
+}
+
+func (s *ScriptReference) GetScriptSource() (rv string) {
+	if s != nil && s.ScriptSource != nil {
+		return *s.ScriptSource
+	}
+	return
+}
+
+func (s *ScriptReference) GetTimeout() (rv string) {
+	if s != nil && s.Timeout != nil {
+		return *s.Timeout
+	}
+	return
+}
+
 // ScriptsToExecute - Customized setup scripts
 type ScriptsToExecute struct {
 	// Script that's run only once during provision of the compute.
@@ -5852,10 +15414,31 @@ type ScriptsToExecute struct {
 	StartupScript *ScriptReference
 }
 
+func (s *ScriptsToExecute) GetCreationScript() (rv *ScriptReference) {
+	if s != nil {
+		return s.CreationScript
+	}
+	return
+}
+
+func (s *ScriptsToExecute) GetStartupScript() (rv *ScriptReference) {
+	if s != nil {
+		return s.StartupScript
+	}
+	return
+}
+
 // Seasonality - Forecasting seasonality.
 type Seasonality struct {
 	// REQUIRED; [Required] Seasonality mode.
 	Mode *SeasonalityMode
+}
+
+func (s *Seasonality) GetMode() (rv *SeasonalityMode) {
+	if s != nil {
+		return s.Mode
+	}
+	return
 }
 
 // GetSeasonality implements the SeasonalityClassification interface for type Seasonality.
@@ -5864,6 +15447,13 @@ func (s *Seasonality) GetSeasonality() *Seasonality { return s }
 type ServiceManagedResourcesSettings struct {
 	// The settings for the service managed cosmosdb account.
 	CosmosDb *CosmosDbSettings
+}
+
+func (s *ServiceManagedResourcesSettings) GetCosmosDb() (rv *CosmosDbSettings) {
+	if s != nil {
+		return s.CosmosDb
+	}
+	return
 }
 
 // ServicePrincipalDatastoreCredentials - Service Principal datastore credentials configuration.
@@ -5887,6 +15477,48 @@ type ServicePrincipalDatastoreCredentials struct {
 	ResourceURL *string
 }
 
+func (s *ServicePrincipalDatastoreCredentials) GetClientID() (rv string) {
+	if s != nil && s.ClientID != nil {
+		return *s.ClientID
+	}
+	return
+}
+
+func (s *ServicePrincipalDatastoreCredentials) GetCredentialsType() (rv *CredentialsType) {
+	if s != nil {
+		return s.CredentialsType
+	}
+	return
+}
+
+func (s *ServicePrincipalDatastoreCredentials) GetSecrets() (rv *ServicePrincipalDatastoreSecrets) {
+	if s != nil {
+		return s.Secrets
+	}
+	return
+}
+
+func (s *ServicePrincipalDatastoreCredentials) GetTenantID() (rv string) {
+	if s != nil && s.TenantID != nil {
+		return *s.TenantID
+	}
+	return
+}
+
+func (s *ServicePrincipalDatastoreCredentials) GetAuthorityURL() (rv string) {
+	if s != nil && s.AuthorityURL != nil {
+		return *s.AuthorityURL
+	}
+	return
+}
+
+func (s *ServicePrincipalDatastoreCredentials) GetResourceURL() (rv string) {
+	if s != nil && s.ResourceURL != nil {
+		return *s.ResourceURL
+	}
+	return
+}
+
 // GetDatastoreCredentials implements the DatastoreCredentialsClassification interface for type ServicePrincipalDatastoreCredentials.
 func (s *ServicePrincipalDatastoreCredentials) GetDatastoreCredentials() *DatastoreCredentials {
 	return &DatastoreCredentials{
@@ -5903,6 +15535,20 @@ type ServicePrincipalDatastoreSecrets struct {
 	ClientSecret *string
 }
 
+func (s *ServicePrincipalDatastoreSecrets) GetSecretsType() (rv *SecretsType) {
+	if s != nil {
+		return s.SecretsType
+	}
+	return
+}
+
+func (s *ServicePrincipalDatastoreSecrets) GetClientSecret() (rv string) {
+	if s != nil && s.ClientSecret != nil {
+		return *s.ClientSecret
+	}
+	return
+}
+
 // GetDatastoreSecrets implements the DatastoreSecretsClassification interface for type ServicePrincipalDatastoreSecrets.
 func (s *ServicePrincipalDatastoreSecrets) GetDatastoreSecrets() *DatastoreSecrets {
 	return &DatastoreSecrets{
@@ -5916,12 +15562,33 @@ type SetupScripts struct {
 	Scripts *ScriptsToExecute
 }
 
+func (s *SetupScripts) GetScripts() (rv *ScriptsToExecute) {
+	if s != nil {
+		return s.Scripts
+	}
+	return
+}
+
 type SharedPrivateLinkResource struct {
 	// Unique name of the private link.
 	Name *string
 
 	// Resource properties.
 	Properties *SharedPrivateLinkResourceProperty
+}
+
+func (s *SharedPrivateLinkResource) GetName() (rv string) {
+	if s != nil && s.Name != nil {
+		return *s.Name
+	}
+	return
+}
+
+func (s *SharedPrivateLinkResource) GetProperties() (rv *SharedPrivateLinkResourceProperty) {
+	if s != nil {
+		return s.Properties
+	}
+	return
 }
 
 // SharedPrivateLinkResourceProperty - Properties of a shared private link resource.
@@ -5939,6 +15606,34 @@ type SharedPrivateLinkResourceProperty struct {
 	Status *PrivateEndpointServiceConnectionStatus
 }
 
+func (s *SharedPrivateLinkResourceProperty) GetGroupID() (rv string) {
+	if s != nil && s.GroupID != nil {
+		return *s.GroupID
+	}
+	return
+}
+
+func (s *SharedPrivateLinkResourceProperty) GetPrivateLinkResourceID() (rv string) {
+	if s != nil && s.PrivateLinkResourceID != nil {
+		return *s.PrivateLinkResourceID
+	}
+	return
+}
+
+func (s *SharedPrivateLinkResourceProperty) GetRequestMessage() (rv string) {
+	if s != nil && s.RequestMessage != nil {
+		return *s.RequestMessage
+	}
+	return
+}
+
+func (s *SharedPrivateLinkResourceProperty) GetStatus() (rv *PrivateEndpointServiceConnectionStatus) {
+	if s != nil {
+		return s.Status
+	}
+	return
+}
+
 // StackEnsembleSettings - Advances setting to customize StackEnsemble run.
 type StackEnsembleSettings struct {
 	// Optional parameters to pass to the initializer of the meta-learner.
@@ -5950,6 +15645,27 @@ type StackEnsembleSettings struct {
 
 	// The meta-learner is a model trained on the output of the individual heterogeneous models.
 	StackMetaLearnerType *StackMetaLearnerType
+}
+
+func (s *StackEnsembleSettings) GetStackMetaLearnerKWargs() (rv any) {
+	if s != nil {
+		return s.StackMetaLearnerKWargs
+	}
+	return
+}
+
+func (s *StackEnsembleSettings) GetStackMetaLearnerTrainPercentage() (rv float64) {
+	if s != nil && s.StackMetaLearnerTrainPercentage != nil {
+		return *s.StackMetaLearnerTrainPercentage
+	}
+	return
+}
+
+func (s *StackEnsembleSettings) GetStackMetaLearnerType() (rv *StackMetaLearnerType) {
+	if s != nil {
+		return s.StackMetaLearnerType
+	}
+	return
 }
 
 // SweepJob - Sweep job definition.
@@ -6017,6 +15733,146 @@ type SweepJob struct {
 	Status *JobStatus
 }
 
+func (s *SweepJob) GetJobType() (rv *JobType) {
+	if s != nil {
+		return s.JobType
+	}
+	return
+}
+
+func (s *SweepJob) GetObjective() (rv *Objective) {
+	if s != nil {
+		return s.Objective
+	}
+	return
+}
+
+func (s *SweepJob) GetSamplingAlgorithm() (rv SamplingAlgorithmClassification) {
+	if s != nil {
+		return s.SamplingAlgorithm
+	}
+	return
+}
+
+func (s *SweepJob) GetSearchSpace() (rv any) {
+	if s != nil {
+		return s.SearchSpace
+	}
+	return
+}
+
+func (s *SweepJob) GetTrial() (rv *TrialComponent) {
+	if s != nil {
+		return s.Trial
+	}
+	return
+}
+
+func (s *SweepJob) GetComputeID() (rv string) {
+	if s != nil && s.ComputeID != nil {
+		return *s.ComputeID
+	}
+	return
+}
+
+func (s *SweepJob) GetDescription() (rv string) {
+	if s != nil && s.Description != nil {
+		return *s.Description
+	}
+	return
+}
+
+func (s *SweepJob) GetDisplayName() (rv string) {
+	if s != nil && s.DisplayName != nil {
+		return *s.DisplayName
+	}
+	return
+}
+
+func (s *SweepJob) GetEarlyTermination() (rv EarlyTerminationPolicyClassification) {
+	if s != nil {
+		return s.EarlyTermination
+	}
+	return
+}
+
+func (s *SweepJob) GetExperimentName() (rv string) {
+	if s != nil && s.ExperimentName != nil {
+		return *s.ExperimentName
+	}
+	return
+}
+
+func (s *SweepJob) GetIdentity() (rv IdentityConfigurationClassification) {
+	if s != nil {
+		return s.Identity
+	}
+	return
+}
+
+func (s *SweepJob) GetInputs() (rv map[string]JobInputClassification) {
+	if s != nil {
+		return s.Inputs
+	}
+	return
+}
+
+func (s *SweepJob) GetIsArchived() (rv bool) {
+	if s != nil && s.IsArchived != nil {
+		return *s.IsArchived
+	}
+	return
+}
+
+func (s *SweepJob) GetLimits() (rv *SweepJobLimits) {
+	if s != nil {
+		return s.Limits
+	}
+	return
+}
+
+func (s *SweepJob) GetOutputs() (rv map[string]JobOutputClassification) {
+	if s != nil {
+		return s.Outputs
+	}
+	return
+}
+
+func (s *SweepJob) GetProperties() (rv map[string]*string) {
+	if s != nil {
+		return s.Properties
+	}
+	return
+}
+
+func (s *SweepJob) GetSchedule() (rv ScheduleBaseClassification) {
+	if s != nil {
+		return s.Schedule
+	}
+	return
+}
+
+func (s *SweepJob) GetServices() (rv map[string]*JobService) {
+	if s != nil {
+		return s.Services
+	}
+	return
+}
+
+func (s *SweepJob) GetTags() (rv map[string]*string) {
+	if s != nil {
+		return s.Tags
+	}
+	return
+}
+
+func (s *SweepJob) GetStatus() (rv *JobStatus) {
+	if s != nil {
+		return s.Status
+	}
+	return
+}
+
 // GetJobBaseDetails implements the JobBaseDetailsClassification interface for type SweepJob.
 func (s *SweepJob) GetJobBaseDetails() *JobBaseDetails {
 	return &JobBaseDetails{
@@ -6052,6 +15908,41 @@ type SweepJobLimits struct {
 
 	// Sweep Job Trial timeout value.
 	TrialTimeout *string
+}
+
+func (s *SweepJobLimits) GetJobLimitsType() (rv *JobLimitsType) {
+	if s != nil {
+		return s.JobLimitsType
+	}
+	return
+}
+
+func (s *SweepJobLimits) GetMaxConcurrentTrials() (rv int32) {
+	if s != nil && s.MaxConcurrentTrials != nil {
+		return *s.MaxConcurrentTrials
+	}
+	return
+}
+
+func (s *SweepJobLimits) GetMaxTotalTrials() (rv int32) {
+	if s != nil && s.MaxTotalTrials != nil {
+		return *s.MaxTotalTrials
+	}
+	return
+}
+
+func (s *SweepJobLimits) GetTimeout() (rv string) {
+	if s != nil && s.Timeout != nil {
+		return *s.Timeout
+	}
+	return
+}
+
+func (s *SweepJobLimits) GetTrialTimeout() (rv string) {
+	if s != nil && s.TrialTimeout != nil {
+		return *s.TrialTimeout
+	}
+	return
 }
 
 // GetJobLimits implements the JobLimitsClassification interface for type SweepJobLimits.
@@ -6095,6 +15986,83 @@ type SynapseSpark struct {
 
 	// READ-ONLY; The provision state of the cluster. Valid values are Unknown, Updating, Provisioning, Succeeded, and Failed.
 	ProvisioningState *ProvisioningState
+}
+
+func (s *SynapseSpark) GetComputeType() (rv *ComputeType) {
+	if s != nil {
+		return s.ComputeType
+	}
+	return
+}
+
+func (s *SynapseSpark) GetDescription() (rv string) {
+	if s != nil && s.Description != nil {
+		return *s.Description
+	}
+	return
+}
+
+func (s *SynapseSpark) GetDisableLocalAuth() (rv bool) {
+	if s != nil && s.DisableLocalAuth != nil {
+		return *s.DisableLocalAuth
+	}
+	return
+}
+
+func (s *SynapseSpark) GetProperties() (rv *SynapseSparkProperties) {
+	if s != nil {
+		return s.Properties
+	}
+	return
+}
+
+func (s *SynapseSpark) GetResourceID() (rv string) {
+	if s != nil && s.ResourceID != nil {
+		return *s.ResourceID
+	}
+	return
+}
+
+func (s *SynapseSpark) GetComputeLocation() (rv string) {
+	if s != nil && s.ComputeLocation != nil {
+		return *s.ComputeLocation
+	}
+	return
+}
+
+func (s *SynapseSpark) GetCreatedOn() (rv *time.Time) {
+	if s != nil {
+		return s.CreatedOn
+	}
+	return
+}
+
+func (s *SynapseSpark) GetIsAttachedCompute() (rv bool) {
+	if s != nil && s.IsAttachedCompute != nil {
+		return *s.IsAttachedCompute
+	}
+	return
+}
+
+func (s *SynapseSpark) GetModifiedOn() (rv *time.Time) {
+	if s != nil {
+		return s.ModifiedOn
+	}
+	return
+}
+
+func (s *SynapseSpark) GetProvisioningErrors() (rv []*ErrorResponse) {
+	if s != nil {
+		return s.ProvisioningErrors
+	}
+	return
+}
+
+func (s *SynapseSpark) GetProvisioningState() (rv *ProvisioningState) {
+	if s != nil {
+		return s.ProvisioningState
+	}
+	return
 }
 
 // GetCompute implements the ComputeClassification interface for type SynapseSpark.
@@ -6145,6 +16113,76 @@ type SynapseSparkProperties struct {
 	WorkspaceName *string
 }
 
+func (s *SynapseSparkProperties) GetAutoPauseProperties() (rv *AutoPauseProperties) {
+	if s != nil {
+		return s.AutoPauseProperties
+	}
+	return
+}
+
+func (s *SynapseSparkProperties) GetAutoScaleProperties() (rv *AutoScaleProperties) {
+	if s != nil {
+		return s.AutoScaleProperties
+	}
+	return
+}
+
+func (s *SynapseSparkProperties) GetNodeCount() (rv int32) {
+	if s != nil && s.NodeCount != nil {
+		return *s.NodeCount
+	}
+	return
+}
+
+func (s *SynapseSparkProperties) GetNodeSize() (rv string) {
+	if s != nil && s.NodeSize != nil {
+		return *s.NodeSize
+	}
+	return
+}
+
+func (s *SynapseSparkProperties) GetNodeSizeFamily() (rv string) {
+	if s != nil && s.NodeSizeFamily != nil {
+		return *s.NodeSizeFamily
+	}
+	return
+}
+
+func (s *SynapseSparkProperties) GetPoolName() (rv string) {
+	if s != nil && s.PoolName != nil {
+		return *s.PoolName
+	}
+	return
+}
+
+func (s *SynapseSparkProperties) GetResourceGroup() (rv string) {
+	if s != nil && s.ResourceGroup != nil {
+		return *s.ResourceGroup
+	}
+	return
+}
+
+func (s *SynapseSparkProperties) GetSparkVersion() (rv string) {
+	if s != nil && s.SparkVersion != nil {
+		return *s.SparkVersion
+	}
+	return
+}
+
+func (s *SynapseSparkProperties) GetSubscriptionID() (rv string) {
+	if s != nil && s.SubscriptionID != nil {
+		return *s.SubscriptionID
+	}
+	return
+}
+
+func (s *SynapseSparkProperties) GetWorkspaceName() (rv string) {
+	if s != nil && s.WorkspaceName != nil {
+		return *s.WorkspaceName
+	}
+	return
+}
+
 // SystemData - Metadata pertaining to creation and last modification of the resource.
 type SystemData struct {
 	// The timestamp of resource creation (UTC).
@@ -6166,6 +16204,48 @@ type SystemData struct {
 	LastModifiedByType *CreatedByType
 }
 
+func (s *SystemData) GetCreatedAt() (rv *time.Time) {
+	if s != nil {
+		return s.CreatedAt
+	}
+	return
+}
+
+func (s *SystemData) GetCreatedBy() (rv string) {
+	if s != nil && s.CreatedBy != nil {
+		return *s.CreatedBy
+	}
+	return
+}
+
+func (s *SystemData) GetCreatedByType() (rv *CreatedByType) {
+	if s != nil {
+		return s.CreatedByType
+	}
+	return
+}
+
+func (s *SystemData) GetLastModifiedAt() (rv *time.Time) {
+	if s != nil {
+		return s.LastModifiedAt
+	}
+	return
+}
+
+func (s *SystemData) GetLastModifiedBy() (rv string) {
+	if s != nil && s.LastModifiedBy != nil {
+		return *s.LastModifiedBy
+	}
+	return
+}
+
+func (s *SystemData) GetLastModifiedByType() (rv *CreatedByType) {
+	if s != nil {
+		return s.LastModifiedByType
+	}
+	return
+}
+
 // SystemService - A system service running on a compute.
 type SystemService struct {
 	// READ-ONLY; Public IP address
@@ -6176,6 +16256,27 @@ type SystemService struct {
 
 	// READ-ONLY; The version for this type.
 	Version *string
+}
+
+func (s *SystemService) GetPublicIPAddress() (rv string) {
+	if s != nil && s.PublicIPAddress != nil {
+		return *s.PublicIPAddress
+	}
+	return
+}
+
+func (s *SystemService) GetSystemServiceType() (rv string) {
+	if s != nil && s.SystemServiceType != nil {
+		return *s.SystemServiceType
+	}
+	return
+}
+
+func (s *SystemService) GetVersion() (rv string) {
+	if s != nil && s.Version != nil {
+		return *s.Version
+	}
+	return
 }
 
 // TableVerticalDataSettings - Class for data inputs.
@@ -6196,6 +16297,41 @@ type TableVerticalDataSettings struct {
 	// The name of the sample weight column. Automated ML supports a weighted column as an input, causing rows in the data to
 	// be weighted up or down.
 	WeightColumnName *string
+}
+
+func (t *TableVerticalDataSettings) GetTargetColumnName() (rv string) {
+	if t != nil && t.TargetColumnName != nil {
+		return *t.TargetColumnName
+	}
+	return
+}
+
+func (t *TableVerticalDataSettings) GetTrainingData() (rv *TrainingDataSettings) {
+	if t != nil {
+		return t.TrainingData
+	}
+	return
+}
+
+func (t *TableVerticalDataSettings) GetTestData() (rv *TestDataSettings) {
+	if t != nil {
+		return t.TestData
+	}
+	return
+}
+
+func (t *TableVerticalDataSettings) GetValidationData() (rv *TableVerticalValidationDataSettings) {
+	if t != nil {
+		return t.ValidationData
+	}
+	return
+}
+
+func (t *TableVerticalDataSettings) GetWeightColumnName() (rv string) {
+	if t != nil && t.WeightColumnName != nil {
+		return *t.WeightColumnName
+	}
+	return
 }
 
 // TableVerticalFeaturizationSettings - Featurization Configuration.
@@ -6225,6 +16361,55 @@ type TableVerticalFeaturizationSettings struct {
 	TransformerParams map[string][]*ColumnTransformer
 }
 
+func (t *TableVerticalFeaturizationSettings) GetBlockedTransformers() (rv []*string) {
+	if t != nil {
+		return t.BlockedTransformers
+	}
+	return
+}
+
+func (t *TableVerticalFeaturizationSettings) GetColumnNameAndTypes() (rv map[string]*string) {
+	if t != nil {
+		return t.ColumnNameAndTypes
+	}
+	return
+}
+
+func (t *TableVerticalFeaturizationSettings) GetDatasetLanguage() (rv string) {
+	if t != nil && t.DatasetLanguage != nil {
+		return *t.DatasetLanguage
+	}
+	return
+}
+
+func (t *TableVerticalFeaturizationSettings) GetDropColumns() (rv []*string) {
+	if t != nil {
+		return t.DropColumns
+	}
+	return
+}
+
+func (t *TableVerticalFeaturizationSettings) GetEnableDnnFeaturization() (rv bool) {
+	if t != nil && t.EnableDnnFeaturization != nil {
+		return *t.EnableDnnFeaturization
+	}
+	return
+}
+
+func (t *TableVerticalFeaturizationSettings) GetMode() (rv *FeaturizationMode) {
+	if t != nil {
+		return t.Mode
+	}
+	return
+}
+
+func (t *TableVerticalFeaturizationSettings) GetTransformerParams() (rv map[string][]*ColumnTransformer) {
+	if t != nil {
+		return t.TransformerParams
+	}
+	return
+}
+
 // TableVerticalLimitSettings - Job execution constraints.
 type TableVerticalLimitSettings struct {
 	// Enable early termination, determines whether or not if AutoMLJob will terminate early if there is no score improvement
@@ -6250,6 +16435,55 @@ type TableVerticalLimitSettings struct {
 	TrialTimeout *string
 }
 
+func (t *TableVerticalLimitSettings) GetEnableEarlyTermination() (rv bool) {
+	if t != nil && t.EnableEarlyTermination != nil {
+		return *t.EnableEarlyTermination
+	}
+	return
+}
+
+func (t *TableVerticalLimitSettings) GetExitScore() (rv float64) {
+	if t != nil && t.ExitScore != nil {
+		return *t.ExitScore
+	}
+	return
+}
+
+func (t *TableVerticalLimitSettings) GetMaxConcurrentTrials() (rv int32) {
+	if t != nil && t.MaxConcurrentTrials != nil {
+		return *t.MaxConcurrentTrials
+	}
+	return
+}
+
+func (t *TableVerticalLimitSettings) GetMaxCoresPerTrial() (rv int32) {
+	if t != nil && t.MaxCoresPerTrial != nil {
+		return *t.MaxCoresPerTrial
+	}
+	return
+}
+
+func (t *TableVerticalLimitSettings) GetMaxTrials() (rv int32) {
+	if t != nil && t.MaxTrials != nil {
+		return *t.MaxTrials
+	}
+	return
+}
+
+func (t *TableVerticalLimitSettings) GetTimeout() (rv string) {
+	if t != nil && t.Timeout != nil {
+		return *t.Timeout
+	}
+	return
+}
+
+func (t *TableVerticalLimitSettings) GetTrialTimeout() (rv string) {
+	if t != nil && t.TrialTimeout != nil {
+		return *t.TrialTimeout
+	}
+	return
+}
+
 // TableVerticalValidationDataSettings - Validation settings for AutoML Table vertical tasks - Classification/Regression/Forecasting.
 type TableVerticalValidationDataSettings struct {
 	// Columns to use for CVSplit data.
@@ -6266,10 +16500,45 @@ type TableVerticalValidationDataSettings struct {
 	ValidationDataSize *float64
 }
 
+func (t *TableVerticalValidationDataSettings) GetCvSplitColumnNames() (rv []*string) {
+	if t != nil {
+		return t.CvSplitColumnNames
+	}
+	return
+}
+
+func (t *TableVerticalValidationDataSettings) GetData() (rv *MLTableJobInput) {
+	if t != nil {
+		return t.Data
+	}
+	return
+}
+
+func (t *TableVerticalValidationDataSettings) GetNCrossValidations() (rv NCrossValidationsClassification) {
+	if t != nil {
+		return t.NCrossValidations
+	}
+	return
+}
+
+func (t *TableVerticalValidationDataSettings) GetValidationDataSize() (rv float64) {
+	if t != nil && t.ValidationDataSize != nil {
+		return *t.ValidationDataSize
+	}
+	return
+}
+
 // TargetLags - The number of past periods to lag from the target column.
 type TargetLags struct {
 	// REQUIRED; [Required] Set target lags mode - Auto/Custom
 	Mode *TargetLagsMode
+}
+
+func (t *TargetLags) GetMode() (rv *TargetLagsMode) {
+	if t != nil {
+		return t.Mode
+	}
+	return
 }
 
 // GetTargetLags implements the TargetLagsClassification interface for type TargetLags.
@@ -6279,6 +16548,13 @@ func (t *TargetLags) GetTargetLags() *TargetLags { return t }
 type TargetRollingWindowSize struct {
 	// REQUIRED; [Required] TargetRollingWindowSiz detection mode.
 	Mode *TargetRollingWindowSizeMode
+}
+
+func (t *TargetRollingWindowSize) GetMode() (rv *TargetRollingWindowSizeMode) {
+	if t != nil {
+		return t.Mode
+	}
+	return
 }
 
 // GetTargetRollingWindowSize implements the TargetRollingWindowSizeClassification interface for type TargetRollingWindowSize.
@@ -6301,6 +16577,41 @@ type TargetUtilizationScaleSettings struct {
 	TargetUtilizationPercentage *int32
 }
 
+func (t *TargetUtilizationScaleSettings) GetScaleType() (rv *ScaleType) {
+	if t != nil {
+		return t.ScaleType
+	}
+	return
+}
+
+func (t *TargetUtilizationScaleSettings) GetMaxInstances() (rv int32) {
+	if t != nil && t.MaxInstances != nil {
+		return *t.MaxInstances
+	}
+	return
+}
+
+func (t *TargetUtilizationScaleSettings) GetMinInstances() (rv int32) {
+	if t != nil && t.MinInstances != nil {
+		return *t.MinInstances
+	}
+	return
+}
+
+func (t *TargetUtilizationScaleSettings) GetPollingInterval() (rv string) {
+	if t != nil && t.PollingInterval != nil {
+		return *t.PollingInterval
+	}
+	return
+}
+
+func (t *TargetUtilizationScaleSettings) GetTargetUtilizationPercentage() (rv int32) {
+	if t != nil && t.TargetUtilizationPercentage != nil {
+		return *t.TargetUtilizationPercentage
+	}
+	return
+}
+
 // GetOnlineScaleSettings implements the OnlineScaleSettingsClassification interface for type TargetUtilizationScaleSettings.
 func (t *TargetUtilizationScaleSettings) GetOnlineScaleSettings() *OnlineScaleSettings {
 	return &OnlineScaleSettings{
@@ -6320,6 +16631,27 @@ type TensorFlow struct {
 	WorkerCount *int32
 }
 
+func (t *TensorFlow) GetDistributionType() (rv *DistributionType) {
+	if t != nil {
+		return t.DistributionType
+	}
+	return
+}
+
+func (t *TensorFlow) GetParameterServerCount() (rv int32) {
+	if t != nil && t.ParameterServerCount != nil {
+		return *t.ParameterServerCount
+	}
+	return
+}
+
+func (t *TensorFlow) GetWorkerCount() (rv int32) {
+	if t != nil && t.WorkerCount != nil {
+		return *t.WorkerCount
+	}
+	return
+}
+
 // GetDistributionConfiguration implements the DistributionConfigurationClassification interface for type TensorFlow.
 func (t *TensorFlow) GetDistributionConfiguration() *DistributionConfiguration {
 	return &DistributionConfiguration{
@@ -6335,6 +16667,20 @@ type TestDataSettings struct {
 	// The fraction of test dataset that needs to be set aside for validation purpose. Values between (0.0 , 1.0) Applied when
 	// validation dataset is not provided.
 	TestDataSize *float64
+}
+
+func (t *TestDataSettings) GetData() (rv *MLTableJobInput) {
+	if t != nil {
+		return t.Data
+	}
+	return
+}
+
+func (t *TestDataSettings) GetTestDataSize() (rv float64) {
+	if t != nil && t.TestDataSize != nil {
+		return *t.TestDataSize
+	}
+	return
 }
 
 // TextClassification - Text Classification task in AutoML NLP vertical. NLP - Natural Language Processing.
@@ -6356,6 +16702,48 @@ type TextClassification struct {
 
 	// Primary metric for Text-Classification task.
 	PrimaryMetric *ClassificationPrimaryMetrics
+}
+
+func (t *TextClassification) GetTaskType() (rv *TaskType) {
+	if t != nil {
+		return t.TaskType
+	}
+	return
+}
+
+func (t *TextClassification) GetDataSettings() (rv *NlpVerticalDataSettings) {
+	if t != nil {
+		return t.DataSettings
+	}
+	return
+}
+
+func (t *TextClassification) GetFeaturizationSettings() (rv *NlpVerticalFeaturizationSettings) {
+	if t != nil {
+		return t.FeaturizationSettings
+	}
+	return
+}
+
+func (t *TextClassification) GetLimitSettings() (rv *NlpVerticalLimitSettings) {
+	if t != nil {
+		return t.LimitSettings
+	}
+	return
+}
+
+func (t *TextClassification) GetLogVerbosity() (rv *LogVerbosity) {
+	if t != nil {
+		return t.LogVerbosity
+	}
+	return
+}
+
+func (t *TextClassification) GetPrimaryMetric() (rv *ClassificationPrimaryMetrics) {
+	if t != nil {
+		return t.PrimaryMetric
+	}
+	return
 }
 
 // GetAutoMLVertical implements the AutoMLVerticalClassification interface for type TextClassification.
@@ -6388,6 +16776,48 @@ type TextClassificationMultilabel struct {
 	PrimaryMetric *ClassificationMultilabelPrimaryMetrics
 }
 
+func (t *TextClassificationMultilabel) GetTaskType() (rv *TaskType) {
+	if t != nil {
+		return t.TaskType
+	}
+	return
+}
+
+func (t *TextClassificationMultilabel) GetDataSettings() (rv *NlpVerticalDataSettings) {
+	if t != nil {
+		return t.DataSettings
+	}
+	return
+}
+
+func (t *TextClassificationMultilabel) GetFeaturizationSettings() (rv *NlpVerticalFeaturizationSettings) {
+	if t != nil {
+		return t.FeaturizationSettings
+	}
+	return
+}
+
+func (t *TextClassificationMultilabel) GetLimitSettings() (rv *NlpVerticalLimitSettings) {
+	if t != nil {
+		return t.LimitSettings
+	}
+	return
+}
+
+func (t *TextClassificationMultilabel) GetLogVerbosity() (rv *LogVerbosity) {
+	if t != nil {
+		return t.LogVerbosity
+	}
+	return
+}
+
+func (t *TextClassificationMultilabel) GetPrimaryMetric() (rv *ClassificationMultilabelPrimaryMetrics) {
+	if t != nil {
+		return t.PrimaryMetric
+	}
+	return
+}
+
 // GetAutoMLVertical implements the AutoMLVerticalClassification interface for type TextClassificationMultilabel.
 func (t *TextClassificationMultilabel) GetAutoMLVertical() *AutoMLVertical {
 	return &AutoMLVertical{
@@ -6417,6 +16847,48 @@ type TextNer struct {
 	PrimaryMetric *ClassificationPrimaryMetrics
 }
 
+func (t *TextNer) GetTaskType() (rv *TaskType) {
+	if t != nil {
+		return t.TaskType
+	}
+	return
+}
+
+func (t *TextNer) GetDataSettings() (rv *NlpVerticalDataSettings) {
+	if t != nil {
+		return t.DataSettings
+	}
+	return
+}
+
+func (t *TextNer) GetFeaturizationSettings() (rv *NlpVerticalFeaturizationSettings) {
+	if t != nil {
+		return t.FeaturizationSettings
+	}
+	return
+}
+
+func (t *TextNer) GetLimitSettings() (rv *NlpVerticalLimitSettings) {
+	if t != nil {
+		return t.LimitSettings
+	}
+	return
+}
+
+func (t *TextNer) GetLogVerbosity() (rv *LogVerbosity) {
+	if t != nil {
+		return t.LogVerbosity
+	}
+	return
+}
+
+func (t *TextNer) GetPrimaryMetric() (rv *ClassificationPrimaryMetrics) {
+	if t != nil {
+		return t.PrimaryMetric
+	}
+	return
+}
+
 // GetAutoMLVertical implements the AutoMLVerticalClassification interface for type TextNer.
 func (t *TextNer) GetAutoMLVertical() *AutoMLVertical {
 	return &AutoMLVertical{
@@ -6429,6 +16901,13 @@ func (t *TextNer) GetAutoMLVertical() *AutoMLVertical {
 type TrainingDataSettings struct {
 	// REQUIRED; [Required] Training data MLTable.
 	Data *MLTableJobInput
+}
+
+func (t *TrainingDataSettings) GetData() (rv *MLTableJobInput) {
+	if t != nil {
+		return t.Data
+	}
+	return
 }
 
 // TrainingSettings - Training related configuration.
@@ -6457,6 +16936,55 @@ type TrainingSettings struct {
 	StackEnsembleSettings *StackEnsembleSettings
 }
 
+func (t *TrainingSettings) GetEnableDnnTraining() (rv bool) {
+	if t != nil && t.EnableDnnTraining != nil {
+		return *t.EnableDnnTraining
+	}
+	return
+}
+
+func (t *TrainingSettings) GetEnableModelExplainability() (rv bool) {
+	if t != nil && t.EnableModelExplainability != nil {
+		return *t.EnableModelExplainability
+	}
+	return
+}
+
+func (t *TrainingSettings) GetEnableOnnxCompatibleModels() (rv bool) {
+	if t != nil && t.EnableOnnxCompatibleModels != nil {
+		return *t.EnableOnnxCompatibleModels
+	}
+	return
+}
+
+func (t *TrainingSettings) GetEnableStackEnsemble() (rv bool) {
+	if t != nil && t.EnableStackEnsemble != nil {
+		return *t.EnableStackEnsemble
+	}
+	return
+}
+
+func (t *TrainingSettings) GetEnableVoteEnsemble() (rv bool) {
+	if t != nil && t.EnableVoteEnsemble != nil {
+		return *t.EnableVoteEnsemble
+	}
+	return
+}
+
+func (t *TrainingSettings) GetEnsembleModelDownloadTimeout() (rv string) {
+	if t != nil && t.EnsembleModelDownloadTimeout != nil {
+		return *t.EnsembleModelDownloadTimeout
+	}
+	return
+}
+
+func (t *TrainingSettings) GetStackEnsembleSettings() (rv *StackEnsembleSettings) {
+	if t != nil {
+		return t.StackEnsembleSettings
+	}
+	return
+}
+
 // TrialComponent - Trial component definition.
 type TrialComponent struct {
 	// REQUIRED; [Required] The command to execute on startup of the job. eg. "python train.py"
@@ -6478,6 +17006,48 @@ type TrialComponent struct {
 	Resources *ResourceConfiguration
 }
 
+func (t *TrialComponent) GetCommand() (rv string) {
+	if t != nil && t.Command != nil {
+		return *t.Command
+	}
+	return
+}
+
+func (t *TrialComponent) GetEnvironmentID() (rv string) {
+	if t != nil && t.EnvironmentID != nil {
+		return *t.EnvironmentID
+	}
+	return
+}
+
+func (t *TrialComponent) GetCodeID() (rv string) {
+	if t != nil && t.CodeID != nil {
+		return *t.CodeID
+	}
+	return
+}
+
+func (t *TrialComponent) GetDistribution() (rv DistributionConfigurationClassification) {
+	if t != nil {
+		return t.Distribution
+	}
+	return
+}
+
+func (t *TrialComponent) GetEnvironmentVariables() (rv map[string]*string) {
+	if t != nil {
+		return t.EnvironmentVariables
+	}
+	return
+}
+
+func (t *TrialComponent) GetResources() (rv *ResourceConfiguration) {
+	if t != nil {
+		return t.Resources
+	}
+	return
+}
+
 type TritonModelJobInput struct {
 	// REQUIRED; [Required] Specifies the type of job.
 	JobInputType *JobInputType
@@ -6490,6 +17060,34 @@ type TritonModelJobInput struct {
 
 	// Input Asset Delivery Mode.
 	Mode *InputDeliveryMode
+}
+
+func (t *TritonModelJobInput) GetJobInputType() (rv *JobInputType) {
+	if t != nil {
+		return t.JobInputType
+	}
+	return
+}
+
+func (t *TritonModelJobInput) GetURI() (rv string) {
+	if t != nil && t.URI != nil {
+		return *t.URI
+	}
+	return
+}
+
+func (t *TritonModelJobInput) GetDescription() (rv string) {
+	if t != nil && t.Description != nil {
+		return *t.Description
+	}
+	return
+}
+
+func (t *TritonModelJobInput) GetMode() (rv *InputDeliveryMode) {
+	if t != nil {
+		return t.Mode
+	}
+	return
 }
 
 // GetJobInput implements the JobInputClassification interface for type TritonModelJobInput.
@@ -6514,6 +17112,34 @@ type TritonModelJobOutput struct {
 	URI *string
 }
 
+func (t *TritonModelJobOutput) GetJobOutputType() (rv *JobOutputType) {
+	if t != nil {
+		return t.JobOutputType
+	}
+	return
+}
+
+func (t *TritonModelJobOutput) GetDescription() (rv string) {
+	if t != nil && t.Description != nil {
+		return *t.Description
+	}
+	return
+}
+
+func (t *TritonModelJobOutput) GetMode() (rv *OutputDeliveryMode) {
+	if t != nil {
+		return t.Mode
+	}
+	return
+}
+
+func (t *TritonModelJobOutput) GetURI() (rv string) {
+	if t != nil && t.URI != nil {
+		return *t.URI
+	}
+	return
+}
+
 // GetJobOutput implements the JobOutputClassification interface for type TritonModelJobOutput.
 func (t *TritonModelJobOutput) GetJobOutput() *JobOutput {
 	return &JobOutput{
@@ -6536,6 +17162,34 @@ type TruncationSelectionPolicy struct {
 
 	// The percentage of runs to cancel at each evaluation interval.
 	TruncationPercentage *int32
+}
+
+func (t *TruncationSelectionPolicy) GetPolicyType() (rv *EarlyTerminationPolicyType) {
+	if t != nil {
+		return t.PolicyType
+	}
+	return
+}
+
+func (t *TruncationSelectionPolicy) GetDelayEvaluation() (rv int32) {
+	if t != nil && t.DelayEvaluation != nil {
+		return *t.DelayEvaluation
+	}
+	return
+}
+
+func (t *TruncationSelectionPolicy) GetEvaluationInterval() (rv int32) {
+	if t != nil && t.EvaluationInterval != nil {
+		return *t.EvaluationInterval
+	}
+	return
+}
+
+func (t *TruncationSelectionPolicy) GetTruncationPercentage() (rv int32) {
+	if t != nil && t.TruncationPercentage != nil {
+		return *t.TruncationPercentage
+	}
+	return
 }
 
 // GetEarlyTerminationPolicy implements the EarlyTerminationPolicyClassification interface for type TruncationSelectionPolicy.
@@ -6571,6 +17225,55 @@ type URIFileDataVersion struct {
 	Tags map[string]*string
 }
 
+func (u *URIFileDataVersion) GetDataType() (rv *DataType) {
+	if u != nil {
+		return u.DataType
+	}
+	return
+}
+
+func (u *URIFileDataVersion) GetDataURI() (rv string) {
+	if u != nil && u.DataURI != nil {
+		return *u.DataURI
+	}
+	return
+}
+
+func (u *URIFileDataVersion) GetDescription() (rv string) {
+	if u != nil && u.Description != nil {
+		return *u.Description
+	}
+	return
+}
+
+func (u *URIFileDataVersion) GetIsAnonymous() (rv bool) {
+	if u != nil && u.IsAnonymous != nil {
+		return *u.IsAnonymous
+	}
+	return
+}
+
+func (u *URIFileDataVersion) GetIsArchived() (rv bool) {
+	if u != nil && u.IsArchived != nil {
+		return *u.IsArchived
+	}
+	return
+}
+
+func (u *URIFileDataVersion) GetProperties() (rv map[string]*string) {
+	if u != nil {
+		return u.Properties
+	}
+	return
+}
+
+func (u *URIFileDataVersion) GetTags() (rv map[string]*string) {
+	if u != nil {
+		return u.Tags
+	}
+	return
+}
+
 // GetDataVersionBaseDetails implements the DataVersionBaseDetailsClassification interface for type URIFileDataVersion.
 func (u *URIFileDataVersion) GetDataVersionBaseDetails() *DataVersionBaseDetails {
 	return &DataVersionBaseDetails{
@@ -6598,6 +17301,34 @@ type URIFileJobInput struct {
 	Mode *InputDeliveryMode
 }
 
+func (u *URIFileJobInput) GetJobInputType() (rv *JobInputType) {
+	if u != nil {
+		return u.JobInputType
+	}
+	return
+}
+
+func (u *URIFileJobInput) GetURI() (rv string) {
+	if u != nil && u.URI != nil {
+		return *u.URI
+	}
+	return
+}
+
+func (u *URIFileJobInput) GetDescription() (rv string) {
+	if u != nil && u.Description != nil {
+		return *u.Description
+	}
+	return
+}
+
+func (u *URIFileJobInput) GetMode() (rv *InputDeliveryMode) {
+	if u != nil {
+		return u.Mode
+	}
+	return
+}
+
 // GetJobInput implements the JobInputClassification interface for type URIFileJobInput.
 func (u *URIFileJobInput) GetJobInput() *JobInput {
 	return &JobInput{
@@ -6618,6 +17349,34 @@ type URIFileJobOutput struct {
 
 	// Output Asset URI.
 	URI *string
+}
+
+func (u *URIFileJobOutput) GetJobOutputType() (rv *JobOutputType) {
+	if u != nil {
+		return u.JobOutputType
+	}
+	return
+}
+
+func (u *URIFileJobOutput) GetDescription() (rv string) {
+	if u != nil && u.Description != nil {
+		return *u.Description
+	}
+	return
+}
+
+func (u *URIFileJobOutput) GetMode() (rv *OutputDeliveryMode) {
+	if u != nil {
+		return u.Mode
+	}
+	return
+}
+
+func (u *URIFileJobOutput) GetURI() (rv string) {
+	if u != nil && u.URI != nil {
+		return *u.URI
+	}
+	return
 }
 
 // GetJobOutput implements the JobOutputClassification interface for type URIFileJobOutput.
@@ -6652,6 +17411,55 @@ type URIFolderDataVersion struct {
 	Tags map[string]*string
 }
 
+func (u *URIFolderDataVersion) GetDataType() (rv *DataType) {
+	if u != nil {
+		return u.DataType
+	}
+	return
+}
+
+func (u *URIFolderDataVersion) GetDataURI() (rv string) {
+	if u != nil && u.DataURI != nil {
+		return *u.DataURI
+	}
+	return
+}
+
+func (u *URIFolderDataVersion) GetDescription() (rv string) {
+	if u != nil && u.Description != nil {
+		return *u.Description
+	}
+	return
+}
+
+func (u *URIFolderDataVersion) GetIsAnonymous() (rv bool) {
+	if u != nil && u.IsAnonymous != nil {
+		return *u.IsAnonymous
+	}
+	return
+}
+
+func (u *URIFolderDataVersion) GetIsArchived() (rv bool) {
+	if u != nil && u.IsArchived != nil {
+		return *u.IsArchived
+	}
+	return
+}
+
+func (u *URIFolderDataVersion) GetProperties() (rv map[string]*string) {
+	if u != nil {
+		return u.Properties
+	}
+	return
+}
+
+func (u *URIFolderDataVersion) GetTags() (rv map[string]*string) {
+	if u != nil {
+		return u.Tags
+	}
+	return
+}
+
 // GetDataVersionBaseDetails implements the DataVersionBaseDetailsClassification interface for type URIFolderDataVersion.
 func (u *URIFolderDataVersion) GetDataVersionBaseDetails() *DataVersionBaseDetails {
 	return &DataVersionBaseDetails{
@@ -6679,6 +17487,34 @@ type URIFolderJobInput struct {
 	Mode *InputDeliveryMode
 }
 
+func (u *URIFolderJobInput) GetJobInputType() (rv *JobInputType) {
+	if u != nil {
+		return u.JobInputType
+	}
+	return
+}
+
+func (u *URIFolderJobInput) GetURI() (rv string) {
+	if u != nil && u.URI != nil {
+		return *u.URI
+	}
+	return
+}
+
+func (u *URIFolderJobInput) GetDescription() (rv string) {
+	if u != nil && u.Description != nil {
+		return *u.Description
+	}
+	return
+}
+
+func (u *URIFolderJobInput) GetMode() (rv *InputDeliveryMode) {
+	if u != nil {
+		return u.Mode
+	}
+	return
+}
+
 // GetJobInput implements the JobInputClassification interface for type URIFolderJobInput.
 func (u *URIFolderJobInput) GetJobInput() *JobInput {
 	return &JobInput{
@@ -6699,6 +17535,34 @@ type URIFolderJobOutput struct {
 
 	// Output Asset URI.
 	URI *string
+}
+
+func (u *URIFolderJobOutput) GetJobOutputType() (rv *JobOutputType) {
+	if u != nil {
+		return u.JobOutputType
+	}
+	return
+}
+
+func (u *URIFolderJobOutput) GetDescription() (rv string) {
+	if u != nil && u.Description != nil {
+		return *u.Description
+	}
+	return
+}
+
+func (u *URIFolderJobOutput) GetMode() (rv *OutputDeliveryMode) {
+	if u != nil {
+		return u.Mode
+	}
+	return
+}
+
+func (u *URIFolderJobOutput) GetURI() (rv string) {
+	if u != nil && u.URI != nil {
+		return *u.URI
+	}
+	return
 }
 
 // GetJobOutput implements the JobOutputClassification interface for type URIFolderJobOutput.
@@ -6727,6 +17591,41 @@ type UpdateWorkspaceQuotas struct {
 	Unit *QuotaUnit
 }
 
+func (u *UpdateWorkspaceQuotas) GetLimit() (rv int64) {
+	if u != nil && u.Limit != nil {
+		return *u.Limit
+	}
+	return
+}
+
+func (u *UpdateWorkspaceQuotas) GetStatus() (rv *Status) {
+	if u != nil {
+		return u.Status
+	}
+	return
+}
+
+func (u *UpdateWorkspaceQuotas) GetID() (rv string) {
+	if u != nil && u.ID != nil {
+		return *u.ID
+	}
+	return
+}
+
+func (u *UpdateWorkspaceQuotas) GetType() (rv string) {
+	if u != nil && u.Type != nil {
+		return *u.Type
+	}
+	return
+}
+
+func (u *UpdateWorkspaceQuotas) GetUnit() (rv *QuotaUnit) {
+	if u != nil {
+		return u.Unit
+	}
+	return
+}
+
 // UpdateWorkspaceQuotasResult - The result of update workspace quota.
 type UpdateWorkspaceQuotasResult struct {
 	// READ-ONLY; The URI to fetch the next page of workspace quota update result. Call ListNext() with this to fetch the next
@@ -6735,6 +17634,20 @@ type UpdateWorkspaceQuotasResult struct {
 
 	// READ-ONLY; The list of workspace quota update result.
 	Value []*UpdateWorkspaceQuotas
+}
+
+func (u *UpdateWorkspaceQuotasResult) GetNextLink() (rv string) {
+	if u != nil && u.NextLink != nil {
+		return *u.NextLink
+	}
+	return
+}
+
+func (u *UpdateWorkspaceQuotasResult) GetValue() (rv []*UpdateWorkspaceQuotas) {
+	if u != nil {
+		return u.Value
+	}
+	return
 }
 
 // Usage - Describes AML Resource Usage.
@@ -6761,6 +17674,55 @@ type Usage struct {
 	Unit *UsageUnit
 }
 
+func (u *Usage) GetAmlWorkspaceLocation() (rv string) {
+	if u != nil && u.AmlWorkspaceLocation != nil {
+		return *u.AmlWorkspaceLocation
+	}
+	return
+}
+
+func (u *Usage) GetCurrentValue() (rv int64) {
+	if u != nil && u.CurrentValue != nil {
+		return *u.CurrentValue
+	}
+	return
+}
+
+func (u *Usage) GetID() (rv string) {
+	if u != nil && u.ID != nil {
+		return *u.ID
+	}
+	return
+}
+
+func (u *Usage) GetLimit() (rv int64) {
+	if u != nil && u.Limit != nil {
+		return *u.Limit
+	}
+	return
+}
+
+func (u *Usage) GetName() (rv *UsageName) {
+	if u != nil {
+		return u.Name
+	}
+	return
+}
+
+func (u *Usage) GetType() (rv string) {
+	if u != nil && u.Type != nil {
+		return *u.Type
+	}
+	return
+}
+
+func (u *Usage) GetUnit() (rv *UsageUnit) {
+	if u != nil {
+		return u.Unit
+	}
+	return
+}
+
 // UsageName - The Usage Names.
 type UsageName struct {
 	// READ-ONLY; The localized name of the resource.
@@ -6768,6 +17730,20 @@ type UsageName struct {
 
 	// READ-ONLY; The name of the resource.
 	Value *string
+}
+
+func (u *UsageName) GetLocalizedValue() (rv string) {
+	if u != nil && u.LocalizedValue != nil {
+		return *u.LocalizedValue
+	}
+	return
+}
+
+func (u *UsageName) GetValue() (rv string) {
+	if u != nil && u.Value != nil {
+		return *u.Value
+	}
+	return
 }
 
 // UserAccountCredentials - Settings for user account that gets created on each on the nodes of a compute.
@@ -6782,6 +17758,27 @@ type UserAccountCredentials struct {
 	AdminUserSSHPublicKey *string
 }
 
+func (u *UserAccountCredentials) GetAdminUserName() (rv string) {
+	if u != nil && u.AdminUserName != nil {
+		return *u.AdminUserName
+	}
+	return
+}
+
+func (u *UserAccountCredentials) GetAdminUserPassword() (rv string) {
+	if u != nil && u.AdminUserPassword != nil {
+		return *u.AdminUserPassword
+	}
+	return
+}
+
+func (u *UserAccountCredentials) GetAdminUserSSHPublicKey() (rv string) {
+	if u != nil && u.AdminUserSSHPublicKey != nil {
+		return *u.AdminUserSSHPublicKey
+	}
+	return
+}
+
 // UserAssignedIdentity - User assigned identity properties
 type UserAssignedIdentity struct {
 	// READ-ONLY; The client ID of the assigned identity.
@@ -6791,10 +17788,31 @@ type UserAssignedIdentity struct {
 	PrincipalID *string
 }
 
+func (u *UserAssignedIdentity) GetClientID() (rv string) {
+	if u != nil && u.ClientID != nil {
+		return *u.ClientID
+	}
+	return
+}
+
+func (u *UserAssignedIdentity) GetPrincipalID() (rv string) {
+	if u != nil && u.PrincipalID != nil {
+		return *u.PrincipalID
+	}
+	return
+}
+
 // UserIdentity - User identity configuration.
 type UserIdentity struct {
 	// REQUIRED; [Required] Specifies the type of identity framework.
 	IdentityType *IdentityConfigurationType
+}
+
+func (u *UserIdentity) GetIdentityType() (rv *IdentityConfigurationType) {
+	if u != nil {
+		return u.IdentityType
+	}
+	return
 }
 
 // GetIdentityConfiguration implements the IdentityConfigurationClassification interface for type UserIdentity.
@@ -6839,6 +17857,83 @@ type VirtualMachine struct {
 	ProvisioningState *ProvisioningState
 }
 
+func (v *VirtualMachine) GetComputeType() (rv *ComputeType) {
+	if v != nil {
+		return v.ComputeType
+	}
+	return
+}
+
+func (v *VirtualMachine) GetDescription() (rv string) {
+	if v != nil && v.Description != nil {
+		return *v.Description
+	}
+	return
+}
+
+func (v *VirtualMachine) GetDisableLocalAuth() (rv bool) {
+	if v != nil && v.DisableLocalAuth != nil {
+		return *v.DisableLocalAuth
+	}
+	return
+}
+
+func (v *VirtualMachine) GetProperties() (rv *VirtualMachineSchemaProperties) {
+	if v != nil {
+		return v.Properties
+	}
+	return
+}
+
+func (v *VirtualMachine) GetResourceID() (rv string) {
+	if v != nil && v.ResourceID != nil {
+		return *v.ResourceID
+	}
+	return
+}
+
+func (v *VirtualMachine) GetComputeLocation() (rv string) {
+	if v != nil && v.ComputeLocation != nil {
+		return *v.ComputeLocation
+	}
+	return
+}
+
+func (v *VirtualMachine) GetCreatedOn() (rv *time.Time) {
+	if v != nil {
+		return v.CreatedOn
+	}
+	return
+}
+
+func (v *VirtualMachine) GetIsAttachedCompute() (rv bool) {
+	if v != nil && v.IsAttachedCompute != nil {
+		return *v.IsAttachedCompute
+	}
+	return
+}
+
+func (v *VirtualMachine) GetModifiedOn() (rv *time.Time) {
+	if v != nil {
+		return v.ModifiedOn
+	}
+	return
+}
+
+func (v *VirtualMachine) GetProvisioningErrors() (rv []*ErrorResponse) {
+	if v != nil {
+		return v.ProvisioningErrors
+	}
+	return
+}
+
+func (v *VirtualMachine) GetProvisioningState() (rv *ProvisioningState) {
+	if v != nil {
+		return v.ProvisioningState
+	}
+	return
+}
+
 // GetCompute implements the ComputeClassification interface for type VirtualMachine.
 func (v *VirtualMachine) GetCompute() *Compute {
 	return &Compute{
@@ -6861,6 +17956,13 @@ type VirtualMachineImage struct {
 	ID *string
 }
 
+func (v *VirtualMachineImage) GetID() (rv string) {
+	if v != nil && v.ID != nil {
+		return *v.ID
+	}
+	return
+}
+
 // VirtualMachineSSHCredentials - Admin credentials for virtual machine
 type VirtualMachineSSHCredentials struct {
 	// Password of admin account
@@ -6874,6 +17976,34 @@ type VirtualMachineSSHCredentials struct {
 
 	// Username of admin account
 	Username *string
+}
+
+func (v *VirtualMachineSSHCredentials) GetPassword() (rv string) {
+	if v != nil && v.Password != nil {
+		return *v.Password
+	}
+	return
+}
+
+func (v *VirtualMachineSSHCredentials) GetPrivateKeyData() (rv string) {
+	if v != nil && v.PrivateKeyData != nil {
+		return *v.PrivateKeyData
+	}
+	return
+}
+
+func (v *VirtualMachineSSHCredentials) GetPublicKeyData() (rv string) {
+	if v != nil && v.PublicKeyData != nil {
+		return *v.PublicKeyData
+	}
+	return
+}
+
+func (v *VirtualMachineSSHCredentials) GetUsername() (rv string) {
+	if v != nil && v.Username != nil {
+		return *v.Username
+	}
+	return
 }
 
 type VirtualMachineSchemaProperties struct {
@@ -6896,6 +18026,48 @@ type VirtualMachineSchemaProperties struct {
 	VirtualMachineSize *string
 }
 
+func (v *VirtualMachineSchemaProperties) GetAddress() (rv string) {
+	if v != nil && v.Address != nil {
+		return *v.Address
+	}
+	return
+}
+
+func (v *VirtualMachineSchemaProperties) GetAdministratorAccount() (rv *VirtualMachineSSHCredentials) {
+	if v != nil {
+		return v.AdministratorAccount
+	}
+	return
+}
+
+func (v *VirtualMachineSchemaProperties) GetIsNotebookInstanceCompute() (rv bool) {
+	if v != nil && v.IsNotebookInstanceCompute != nil {
+		return *v.IsNotebookInstanceCompute
+	}
+	return
+}
+
+func (v *VirtualMachineSchemaProperties) GetNotebookServerPort() (rv int32) {
+	if v != nil && v.NotebookServerPort != nil {
+		return *v.NotebookServerPort
+	}
+	return
+}
+
+func (v *VirtualMachineSchemaProperties) GetSSHPort() (rv int32) {
+	if v != nil && v.SSHPort != nil {
+		return *v.SSHPort
+	}
+	return
+}
+
+func (v *VirtualMachineSchemaProperties) GetVirtualMachineSize() (rv string) {
+	if v != nil && v.VirtualMachineSize != nil {
+		return *v.VirtualMachineSize
+	}
+	return
+}
+
 // VirtualMachineSecrets - Secrets related to a Machine Learning compute based on AKS.
 type VirtualMachineSecrets struct {
 	// REQUIRED; The type of compute
@@ -6903,6 +18075,20 @@ type VirtualMachineSecrets struct {
 
 	// Admin credentials for virtual machine.
 	AdministratorAccount *VirtualMachineSSHCredentials
+}
+
+func (v *VirtualMachineSecrets) GetComputeType() (rv *ComputeType) {
+	if v != nil {
+		return v.ComputeType
+	}
+	return
+}
+
+func (v *VirtualMachineSecrets) GetAdministratorAccount() (rv *VirtualMachineSSHCredentials) {
+	if v != nil {
+		return v.AdministratorAccount
+	}
+	return
 }
 
 // GetComputeSecrets implements the ComputeSecretsClassification interface for type VirtualMachineSecrets.
@@ -6948,10 +18134,94 @@ type VirtualMachineSize struct {
 	VCPUs *int32
 }
 
+func (v *VirtualMachineSize) GetEstimatedVMPrices() (rv *EstimatedVMPrices) {
+	if v != nil {
+		return v.EstimatedVMPrices
+	}
+	return
+}
+
+func (v *VirtualMachineSize) GetSupportedComputeTypes() (rv []*string) {
+	if v != nil {
+		return v.SupportedComputeTypes
+	}
+	return
+}
+
+func (v *VirtualMachineSize) GetFamily() (rv string) {
+	if v != nil && v.Family != nil {
+		return *v.Family
+	}
+	return
+}
+
+func (v *VirtualMachineSize) GetGpus() (rv int32) {
+	if v != nil && v.Gpus != nil {
+		return *v.Gpus
+	}
+	return
+}
+
+func (v *VirtualMachineSize) GetLowPriorityCapable() (rv bool) {
+	if v != nil && v.LowPriorityCapable != nil {
+		return *v.LowPriorityCapable
+	}
+	return
+}
+
+func (v *VirtualMachineSize) GetMaxResourceVolumeMB() (rv int32) {
+	if v != nil && v.MaxResourceVolumeMB != nil {
+		return *v.MaxResourceVolumeMB
+	}
+	return
+}
+
+func (v *VirtualMachineSize) GetMemoryGB() (rv float64) {
+	if v != nil && v.MemoryGB != nil {
+		return *v.MemoryGB
+	}
+	return
+}
+
+func (v *VirtualMachineSize) GetName() (rv string) {
+	if v != nil && v.Name != nil {
+		return *v.Name
+	}
+	return
+}
+
+func (v *VirtualMachineSize) GetOSVhdSizeMB() (rv int32) {
+	if v != nil && v.OSVhdSizeMB != nil {
+		return *v.OSVhdSizeMB
+	}
+	return
+}
+
+func (v *VirtualMachineSize) GetPremiumIO() (rv bool) {
+	if v != nil && v.PremiumIO != nil {
+		return *v.PremiumIO
+	}
+	return
+}
+
+func (v *VirtualMachineSize) GetVCPUs() (rv int32) {
+	if v != nil && v.VCPUs != nil {
+		return *v.VCPUs
+	}
+	return
+}
+
 // VirtualMachineSizeListResult - The List Virtual Machine size operation response.
 type VirtualMachineSizeListResult struct {
 	// The list of virtual machine sizes supported by AmlCompute.
 	Value []*VirtualMachineSize
+}
+
+func (v *VirtualMachineSizeListResult) GetValue() (rv []*VirtualMachineSize) {
+	if v != nil {
+		return v.Value
+	}
+	return
 }
 
 // Workspace - An object that represents a machine learning workspace.
@@ -6984,6 +18254,69 @@ type Workspace struct {
 	Type *string
 }
 
+func (w *Workspace) GetIdentity() (rv *ManagedServiceIdentity) {
+	if w != nil {
+		return w.Identity
+	}
+	return
+}
+
+func (w *Workspace) GetLocation() (rv string) {
+	if w != nil && w.Location != nil {
+		return *w.Location
+	}
+	return
+}
+
+func (w *Workspace) GetProperties() (rv *WorkspaceProperties) {
+	if w != nil {
+		return w.Properties
+	}
+	return
+}
+
+func (w *Workspace) GetSKU() (rv *SKU) {
+	if w != nil {
+		return w.SKU
+	}
+	return
+}
+
+func (w *Workspace) GetTags() (rv map[string]*string) {
+	if w != nil {
+		return w.Tags
+	}
+	return
+}
+
+func (w *Workspace) GetID() (rv string) {
+	if w != nil && w.ID != nil {
+		return *w.ID
+	}
+	return
+}
+
+func (w *Workspace) GetName() (rv string) {
+	if w != nil && w.Name != nil {
+		return *w.Name
+	}
+	return
+}
+
+func (w *Workspace) GetSystemData() (rv *SystemData) {
+	if w != nil {
+		return w.SystemData
+	}
+	return
+}
+
+func (w *Workspace) GetType() (rv string) {
+	if w != nil && w.Type != nil {
+		return *w.Type
+	}
+	return
+}
+
 // WorkspaceConnection - Workspace connection.
 type WorkspaceConnection struct {
 	// Properties of workspace connection.
@@ -7000,6 +18333,41 @@ type WorkspaceConnection struct {
 
 	// READ-ONLY; The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type *string
+}
+
+func (w *WorkspaceConnection) GetProperties() (rv *WorkspaceConnectionProps) {
+	if w != nil {
+		return w.Properties
+	}
+	return
+}
+
+func (w *WorkspaceConnection) GetID() (rv string) {
+	if w != nil && w.ID != nil {
+		return *w.ID
+	}
+	return
+}
+
+func (w *WorkspaceConnection) GetName() (rv string) {
+	if w != nil && w.Name != nil {
+		return *w.Name
+	}
+	return
+}
+
+func (w *WorkspaceConnection) GetSystemData() (rv *SystemData) {
+	if w != nil {
+		return w.SystemData
+	}
+	return
+}
+
+func (w *WorkspaceConnection) GetType() (rv string) {
+	if w != nil && w.Type != nil {
+		return *w.Type
+	}
+	return
 }
 
 // WorkspaceConnectionProps - Workspace Connection specific properties.
@@ -7020,6 +18388,41 @@ type WorkspaceConnectionProps struct {
 	ValueFormat *ValueFormat
 }
 
+func (w *WorkspaceConnectionProps) GetAuthType() (rv string) {
+	if w != nil && w.AuthType != nil {
+		return *w.AuthType
+	}
+	return
+}
+
+func (w *WorkspaceConnectionProps) GetCategory() (rv string) {
+	if w != nil && w.Category != nil {
+		return *w.Category
+	}
+	return
+}
+
+func (w *WorkspaceConnectionProps) GetTarget() (rv string) {
+	if w != nil && w.Target != nil {
+		return *w.Target
+	}
+	return
+}
+
+func (w *WorkspaceConnectionProps) GetValue() (rv string) {
+	if w != nil && w.Value != nil {
+		return *w.Value
+	}
+	return
+}
+
+func (w *WorkspaceConnectionProps) GetValueFormat() (rv *ValueFormat) {
+	if w != nil {
+		return w.ValueFormat
+	}
+	return
+}
+
 // WorkspaceListResult - The result of a request to list machine learning workspaces.
 type WorkspaceListResult struct {
 	// The URI that can be used to request the next list of machine learning workspaces.
@@ -7028,6 +18431,20 @@ type WorkspaceListResult struct {
 	// The list of machine learning workspaces. Since this list may be incomplete, the nextLink field should be used to request
 	// the next list of machine learning workspaces.
 	Value []*Workspace
+}
+
+func (w *WorkspaceListResult) GetNextLink() (rv string) {
+	if w != nil && w.NextLink != nil {
+		return *w.NextLink
+	}
+	return
+}
+
+func (w *WorkspaceListResult) GetValue() (rv []*Workspace) {
+	if w != nil {
+		return w.Value
+	}
+	return
 }
 
 // WorkspaceProperties - The properties of a machine learning workspace.
@@ -7107,6 +18524,174 @@ type WorkspaceProperties struct {
 	WorkspaceID *string
 }
 
+func (w *WorkspaceProperties) GetAllowPublicAccessWhenBehindVnet() (rv bool) {
+	if w != nil && w.AllowPublicAccessWhenBehindVnet != nil {
+		return *w.AllowPublicAccessWhenBehindVnet
+	}
+	return
+}
+
+func (w *WorkspaceProperties) GetApplicationInsights() (rv string) {
+	if w != nil && w.ApplicationInsights != nil {
+		return *w.ApplicationInsights
+	}
+	return
+}
+
+func (w *WorkspaceProperties) GetContainerRegistry() (rv string) {
+	if w != nil && w.ContainerRegistry != nil {
+		return *w.ContainerRegistry
+	}
+	return
+}
+
+func (w *WorkspaceProperties) GetDescription() (rv string) {
+	if w != nil && w.Description != nil {
+		return *w.Description
+	}
+	return
+}
+
+func (w *WorkspaceProperties) GetDiscoveryURL() (rv string) {
+	if w != nil && w.DiscoveryURL != nil {
+		return *w.DiscoveryURL
+	}
+	return
+}
+
+func (w *WorkspaceProperties) GetEncryption() (rv *EncryptionProperty) {
+	if w != nil {
+		return w.Encryption
+	}
+	return
+}
+
+func (w *WorkspaceProperties) GetFriendlyName() (rv string) {
+	if w != nil && w.FriendlyName != nil {
+		return *w.FriendlyName
+	}
+	return
+}
+
+func (w *WorkspaceProperties) GetHbiWorkspace() (rv bool) {
+	if w != nil && w.HbiWorkspace != nil {
+		return *w.HbiWorkspace
+	}
+	return
+}
+
+func (w *WorkspaceProperties) GetImageBuildCompute() (rv string) {
+	if w != nil && w.ImageBuildCompute != nil {
+		return *w.ImageBuildCompute
+	}
+	return
+}
+
+func (w *WorkspaceProperties) GetKeyVault() (rv string) {
+	if w != nil && w.KeyVault != nil {
+		return *w.KeyVault
+	}
+	return
+}
+
+func (w *WorkspaceProperties) GetPrimaryUserAssignedIdentity() (rv string) {
+	if w != nil && w.PrimaryUserAssignedIdentity != nil {
+		return *w.PrimaryUserAssignedIdentity
+	}
+	return
+}
+
+func (w *WorkspaceProperties) GetPublicNetworkAccess() (rv *PublicNetworkAccess) {
+	if w != nil {
+		return w.PublicNetworkAccess
+	}
+	return
+}
+
+func (w *WorkspaceProperties) GetServiceManagedResourcesSettings() (rv *ServiceManagedResourcesSettings) {
+	if w != nil {
+		return w.ServiceManagedResourcesSettings
+	}
+	return
+}
+
+func (w *WorkspaceProperties) GetSharedPrivateLinkResources() (rv []*SharedPrivateLinkResource) {
+	if w != nil {
+		return w.SharedPrivateLinkResources
+	}
+	return
+}
+
+func (w *WorkspaceProperties) GetStorageAccount() (rv string) {
+	if w != nil && w.StorageAccount != nil {
+		return *w.StorageAccount
+	}
+	return
+}
+
+func (w *WorkspaceProperties) GetMlFlowTrackingURI() (rv string) {
+	if w != nil && w.MlFlowTrackingURI != nil {
+		return *w.MlFlowTrackingURI
+	}
+	return
+}
+
+func (w *WorkspaceProperties) GetNotebookInfo() (rv *NotebookResourceInfo) {
+	if w != nil {
+		return w.NotebookInfo
+	}
+	return
+}
+
+func (w *WorkspaceProperties) GetPrivateEndpointConnections() (rv []*PrivateEndpointConnection) {
+	if w != nil {
+		return w.PrivateEndpointConnections
+	}
+	return
+}
+
+func (w *WorkspaceProperties) GetPrivateLinkCount() (rv int32) {
+	if w != nil && w.PrivateLinkCount != nil {
+		return *w.PrivateLinkCount
+	}
+	return
+}
+
+func (w *WorkspaceProperties) GetProvisioningState() (rv *ProvisioningState) {
+	if w != nil {
+		return w.ProvisioningState
+	}
+	return
+}
+
+func (w *WorkspaceProperties) GetServiceProvisionedResourceGroup() (rv string) {
+	if w != nil && w.ServiceProvisionedResourceGroup != nil {
+		return *w.ServiceProvisionedResourceGroup
+	}
+	return
+}
+
+func (w *WorkspaceProperties) GetStorageHnsEnabled() (rv bool) {
+	if w != nil && w.StorageHnsEnabled != nil {
+		return *w.StorageHnsEnabled
+	}
+	return
+}
+
+func (w *WorkspaceProperties) GetTenantID() (rv string) {
+	if w != nil && w.TenantID != nil {
+		return *w.TenantID
+	}
+	return
+}
+
+func (w *WorkspaceProperties) GetWorkspaceID() (rv string) {
+	if w != nil && w.WorkspaceID != nil {
+		return *w.WorkspaceID
+	}
+	return
+}
+
 // WorkspacePropertiesUpdateParameters - The parameters for updating the properties of a machine learning workspace.
 type WorkspacePropertiesUpdateParameters struct {
 	// ARM id of the application insights associated with this workspace.
@@ -7134,6 +18719,62 @@ type WorkspacePropertiesUpdateParameters struct {
 	ServiceManagedResourcesSettings *ServiceManagedResourcesSettings
 }
 
+func (w *WorkspacePropertiesUpdateParameters) GetApplicationInsights() (rv string) {
+	if w != nil && w.ApplicationInsights != nil {
+		return *w.ApplicationInsights
+	}
+	return
+}
+
+func (w *WorkspacePropertiesUpdateParameters) GetContainerRegistry() (rv string) {
+	if w != nil && w.ContainerRegistry != nil {
+		return *w.ContainerRegistry
+	}
+	return
+}
+
+func (w *WorkspacePropertiesUpdateParameters) GetDescription() (rv string) {
+	if w != nil && w.Description != nil {
+		return *w.Description
+	}
+	return
+}
+
+func (w *WorkspacePropertiesUpdateParameters) GetFriendlyName() (rv string) {
+	if w != nil && w.FriendlyName != nil {
+		return *w.FriendlyName
+	}
+	return
+}
+
+func (w *WorkspacePropertiesUpdateParameters) GetImageBuildCompute() (rv string) {
+	if w != nil && w.ImageBuildCompute != nil {
+		return *w.ImageBuildCompute
+	}
+	return
+}
+
+func (w *WorkspacePropertiesUpdateParameters) GetPrimaryUserAssignedIdentity() (rv string) {
+	if w != nil && w.PrimaryUserAssignedIdentity != nil {
+		return *w.PrimaryUserAssignedIdentity
+	}
+	return
+}
+
+func (w *WorkspacePropertiesUpdateParameters) GetPublicNetworkAccess() (rv *PublicNetworkAccess) {
+	if w != nil {
+		return w.PublicNetworkAccess
+	}
+	return
+}
+
+func (w *WorkspacePropertiesUpdateParameters) GetServiceManagedResourcesSettings() (rv *ServiceManagedResourcesSettings) {
+	if w != nil {
+		return w.ServiceManagedResourcesSettings
+	}
+	return
+}
+
 // WorkspaceUpdateParameters - The parameters for updating a machine learning workspace.
 type WorkspaceUpdateParameters struct {
 	// The identity of the resource.
@@ -7147,4 +18788,32 @@ type WorkspaceUpdateParameters struct {
 
 	// The resource tags for the machine learning workspace.
 	Tags map[string]*string
+}
+
+func (w *WorkspaceUpdateParameters) GetIdentity() (rv *ManagedServiceIdentity) {
+	if w != nil {
+		return w.Identity
+	}
+	return
+}
+
+func (w *WorkspaceUpdateParameters) GetProperties() (rv *WorkspacePropertiesUpdateParameters) {
+	if w != nil {
+		return w.Properties
+	}
+	return
+}
+
+func (w *WorkspaceUpdateParameters) GetSKU() (rv *SKU) {
+	if w != nil {
+		return w.SKU
+	}
+	return
+}
+
+func (w *WorkspaceUpdateParameters) GetTags() (rv map[string]*string) {
+	if w != nil {
+		return w.Tags
+	}
+	return
 }

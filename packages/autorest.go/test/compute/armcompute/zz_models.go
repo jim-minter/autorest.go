@@ -16,6 +16,13 @@ type APIEntityReference struct {
 	ID *string
 }
 
+func (a *APIEntityReference) GetID() (rv string) {
+	if a != nil && a.ID != nil {
+		return *a.ID
+	}
+	return
+}
+
 // APIError - Api error.
 type APIError struct {
 	// The error code.
@@ -34,6 +41,41 @@ type APIError struct {
 	Target *string
 }
 
+func (a *APIError) GetCode() (rv string) {
+	if a != nil && a.Code != nil {
+		return *a.Code
+	}
+	return
+}
+
+func (a *APIError) GetDetails() (rv []APIErrorBase) {
+	if a != nil {
+		return a.Details
+	}
+	return
+}
+
+func (a *APIError) GetInnererror() (rv *InnerError) {
+	if a != nil {
+		return a.Innererror
+	}
+	return
+}
+
+func (a *APIError) GetMessage() (rv string) {
+	if a != nil && a.Message != nil {
+		return *a.Message
+	}
+	return
+}
+
+func (a *APIError) GetTarget() (rv string) {
+	if a != nil && a.Target != nil {
+		return *a.Target
+	}
+	return
+}
+
 // APIErrorBase - Api error base.
 type APIErrorBase struct {
 	// The error code.
@@ -46,6 +88,27 @@ type APIErrorBase struct {
 	Target *string
 }
 
+func (a *APIErrorBase) GetCode() (rv string) {
+	if a != nil && a.Code != nil {
+		return *a.Code
+	}
+	return
+}
+
+func (a *APIErrorBase) GetMessage() (rv string) {
+	if a != nil && a.Message != nil {
+		return *a.Message
+	}
+	return
+}
+
+func (a *APIErrorBase) GetTarget() (rv string) {
+	if a != nil && a.Target != nil {
+		return *a.Target
+	}
+	return
+}
+
 // AccessURI - A disk access SAS uri.
 type AccessURI struct {
 	// READ-ONLY; A SAS uri for accessing a disk.
@@ -53,6 +116,20 @@ type AccessURI struct {
 
 	// READ-ONLY; A SAS uri for accessing a VM guest state.
 	SecurityDataAccessSAS *string
+}
+
+func (a *AccessURI) GetAccessSAS() (rv string) {
+	if a != nil && a.AccessSAS != nil {
+		return *a.AccessSAS
+	}
+	return
+}
+
+func (a *AccessURI) GetSecurityDataAccessSAS() (rv string) {
+	if a != nil && a.SecurityDataAccessSAS != nil {
+		return *a.SecurityDataAccessSAS
+	}
+	return
 }
 
 // AdditionalCapabilities - Enables or disables a capability on the virtual machine or virtual machine scale set.
@@ -64,6 +141,20 @@ type AdditionalCapabilities struct {
 	// type on the VM or VMSS. Managed disks with storage account type UltraSSDLRS can
 	// be added to a virtual machine or virtual machine scale set only if this property is enabled.
 	UltraSSDEnabled *bool
+}
+
+func (a *AdditionalCapabilities) GetHibernationEnabled() (rv bool) {
+	if a != nil && a.HibernationEnabled != nil {
+		return *a.HibernationEnabled
+	}
+	return
+}
+
+func (a *AdditionalCapabilities) GetUltraSSDEnabled() (rv bool) {
+	if a != nil && a.UltraSSDEnabled != nil {
+		return *a.UltraSSDEnabled
+	}
+	return
 }
 
 // AdditionalUnattendContent - Specifies additional XML formatted information that can be included in the Unattend.xml file,
@@ -85,10 +176,45 @@ type AdditionalUnattendContent struct {
 	SettingName *SettingNames
 }
 
+func (a *AdditionalUnattendContent) GetComponentName() (rv *string) {
+	if a != nil {
+		return a.ComponentName
+	}
+	return
+}
+
+func (a *AdditionalUnattendContent) GetContent() (rv string) {
+	if a != nil && a.Content != nil {
+		return *a.Content
+	}
+	return
+}
+
+func (a *AdditionalUnattendContent) GetPassName() (rv *string) {
+	if a != nil {
+		return a.PassName
+	}
+	return
+}
+
+func (a *AdditionalUnattendContent) GetSettingName() (rv *SettingNames) {
+	if a != nil {
+		return a.SettingName
+	}
+	return
+}
+
 // ApplicationProfile - Contains the list of gallery applications that should be made available to the VM/VMSS
 type ApplicationProfile struct {
 	// Specifies the gallery applications that should be made available to the VM/VMSS
 	GalleryApplications []VMGalleryApplication
+}
+
+func (a *ApplicationProfile) GetGalleryApplications() (rv []VMGalleryApplication) {
+	if a != nil {
+		return a.GalleryApplications
+	}
+	return
 }
 
 // AutomaticOSUpgradePolicy - The configuration parameters used for performing automatic OS upgrade.
@@ -104,10 +230,31 @@ type AutomaticOSUpgradePolicy struct {
 	EnableAutomaticOSUpgrade *bool
 }
 
+func (a *AutomaticOSUpgradePolicy) GetDisableAutomaticRollback() (rv bool) {
+	if a != nil && a.DisableAutomaticRollback != nil {
+		return *a.DisableAutomaticRollback
+	}
+	return
+}
+
+func (a *AutomaticOSUpgradePolicy) GetEnableAutomaticOSUpgrade() (rv bool) {
+	if a != nil && a.EnableAutomaticOSUpgrade != nil {
+		return *a.EnableAutomaticOSUpgrade
+	}
+	return
+}
+
 // AutomaticOSUpgradeProperties - Describes automatic OS upgrade properties on the image.
 type AutomaticOSUpgradeProperties struct {
 	// REQUIRED; Specifies whether automatic OS upgrade is supported on the image.
 	AutomaticOSUpgradeSupported *bool
+}
+
+func (a *AutomaticOSUpgradeProperties) GetAutomaticOSUpgradeSupported() (rv bool) {
+	if a != nil && a.AutomaticOSUpgradeSupported != nil {
+		return *a.AutomaticOSUpgradeSupported
+	}
+	return
 }
 
 // AutomaticRepairsPolicy - Specifies the configuration parameters for automatic repairs on the virtual machine scale set.
@@ -125,6 +272,27 @@ type AutomaticRepairsPolicy struct {
 	// Type of repair action (replace, restart, reimage) that will be used for repairing unhealthy virtual machines in the scale
 	// set. Default value is replace.
 	RepairAction *RepairAction
+}
+
+func (a *AutomaticRepairsPolicy) GetEnabled() (rv bool) {
+	if a != nil && a.Enabled != nil {
+		return *a.Enabled
+	}
+	return
+}
+
+func (a *AutomaticRepairsPolicy) GetGracePeriod() (rv string) {
+	if a != nil && a.GracePeriod != nil {
+		return *a.GracePeriod
+	}
+	return
+}
+
+func (a *AutomaticRepairsPolicy) GetRepairAction() (rv *RepairAction) {
+	if a != nil {
+		return a.RepairAction
+	}
+	return
 }
 
 // AvailabilitySet - Specifies information about the availability set that the virtual machine should be assigned to. Virtual
@@ -158,6 +326,55 @@ type AvailabilitySet struct {
 	Type *string
 }
 
+func (a *AvailabilitySet) GetLocation() (rv string) {
+	if a != nil && a.Location != nil {
+		return *a.Location
+	}
+	return
+}
+
+func (a *AvailabilitySet) GetProperties() (rv *AvailabilitySetProperties) {
+	if a != nil {
+		return a.Properties
+	}
+	return
+}
+
+func (a *AvailabilitySet) GetSKU() (rv *SKU) {
+	if a != nil {
+		return a.SKU
+	}
+	return
+}
+
+func (a *AvailabilitySet) GetTags() (rv map[string]*string) {
+	if a != nil {
+		return a.Tags
+	}
+	return
+}
+
+func (a *AvailabilitySet) GetID() (rv string) {
+	if a != nil && a.ID != nil {
+		return *a.ID
+	}
+	return
+}
+
+func (a *AvailabilitySet) GetName() (rv string) {
+	if a != nil && a.Name != nil {
+		return *a.Name
+	}
+	return
+}
+
+func (a *AvailabilitySet) GetType() (rv string) {
+	if a != nil && a.Type != nil {
+		return *a.Type
+	}
+	return
+}
+
 // AvailabilitySetListResult - The List Availability Set operation response.
 type AvailabilitySetListResult struct {
 	// REQUIRED; The list of availability sets
@@ -165,6 +382,20 @@ type AvailabilitySetListResult struct {
 
 	// The URI to fetch the next page of AvailabilitySets. Call ListNext() with this URI to fetch the next page of AvailabilitySets.
 	NextLink *string
+}
+
+func (a *AvailabilitySetListResult) GetValue() (rv []AvailabilitySet) {
+	if a != nil {
+		return a.Value
+	}
+	return
+}
+
+func (a *AvailabilitySetListResult) GetNextLink() (rv string) {
+	if a != nil && a.NextLink != nil {
+		return *a.NextLink
+	}
+	return
 }
 
 // AvailabilitySetProperties - The instance view of a resource.
@@ -186,6 +417,41 @@ type AvailabilitySetProperties struct {
 	Statuses []InstanceViewStatus
 }
 
+func (a *AvailabilitySetProperties) GetPlatformFaultDomainCount() (rv int32) {
+	if a != nil && a.PlatformFaultDomainCount != nil {
+		return *a.PlatformFaultDomainCount
+	}
+	return
+}
+
+func (a *AvailabilitySetProperties) GetPlatformUpdateDomainCount() (rv int32) {
+	if a != nil && a.PlatformUpdateDomainCount != nil {
+		return *a.PlatformUpdateDomainCount
+	}
+	return
+}
+
+func (a *AvailabilitySetProperties) GetProximityPlacementGroup() (rv *SubResource) {
+	if a != nil {
+		return a.ProximityPlacementGroup
+	}
+	return
+}
+
+func (a *AvailabilitySetProperties) GetVirtualMachines() (rv []SubResource) {
+	if a != nil {
+		return a.VirtualMachines
+	}
+	return
+}
+
+func (a *AvailabilitySetProperties) GetStatuses() (rv []InstanceViewStatus) {
+	if a != nil {
+		return a.Statuses
+	}
+	return
+}
+
 // AvailabilitySetUpdate - Specifies information about the availability set that the virtual machine should be assigned to.
 // Only tags may be updated.
 type AvailabilitySetUpdate struct {
@@ -197,6 +463,27 @@ type AvailabilitySetUpdate struct {
 
 	// Resource tags
 	Tags map[string]*string
+}
+
+func (a *AvailabilitySetUpdate) GetProperties() (rv *AvailabilitySetProperties) {
+	if a != nil {
+		return a.Properties
+	}
+	return
+}
+
+func (a *AvailabilitySetUpdate) GetSKU() (rv *SKU) {
+	if a != nil {
+		return a.SKU
+	}
+	return
+}
+
+func (a *AvailabilitySetUpdate) GetTags() (rv map[string]*string) {
+	if a != nil {
+		return a.Tags
+	}
+	return
 }
 
 // AvailablePatchSummary - Describes the properties of an virtual machine instance view for available patch summary.
@@ -230,6 +517,62 @@ type AvailablePatchSummary struct {
 	Status *PatchOperationStatus
 }
 
+func (a *AvailablePatchSummary) GetAssessmentActivityID() (rv string) {
+	if a != nil && a.AssessmentActivityID != nil {
+		return *a.AssessmentActivityID
+	}
+	return
+}
+
+func (a *AvailablePatchSummary) GetCriticalAndSecurityPatchCount() (rv int32) {
+	if a != nil && a.CriticalAndSecurityPatchCount != nil {
+		return *a.CriticalAndSecurityPatchCount
+	}
+	return
+}
+
+func (a *AvailablePatchSummary) GetError() (rv *APIError) {
+	if a != nil {
+		return a.Error
+	}
+	return
+}
+
+func (a *AvailablePatchSummary) GetLastModifiedTime() (rv *time.Time) {
+	if a != nil {
+		return a.LastModifiedTime
+	}
+	return
+}
+
+func (a *AvailablePatchSummary) GetOtherPatchCount() (rv int32) {
+	if a != nil && a.OtherPatchCount != nil {
+		return *a.OtherPatchCount
+	}
+	return
+}
+
+func (a *AvailablePatchSummary) GetRebootPending() (rv bool) {
+	if a != nil && a.RebootPending != nil {
+		return *a.RebootPending
+	}
+	return
+}
+
+func (a *AvailablePatchSummary) GetStartTime() (rv *time.Time) {
+	if a != nil {
+		return a.StartTime
+	}
+	return
+}
+
+func (a *AvailablePatchSummary) GetStatus() (rv *PatchOperationStatus) {
+	if a != nil {
+		return a.Status
+	}
+	return
+}
+
 // BillingProfile - Specifies the billing related details of a Azure Spot VM or VMSS.
 // Minimum api-version: 2019-03-01.
 type BillingProfile struct {
@@ -248,6 +591,13 @@ type BillingProfile struct {
 	MaxPrice *float64
 }
 
+func (b *BillingProfile) GetMaxPrice() (rv float64) {
+	if b != nil && b.MaxPrice != nil {
+		return *b.MaxPrice
+	}
+	return
+}
+
 // BootDiagnostics - Boot Diagnostics is a debugging feature which allows you to view Console Output and Screenshot to diagnose
 // VM status.
 // You can easily view the output of your console log.
@@ -259,6 +609,20 @@ type BootDiagnostics struct {
 	// Uri of the storage account to use for placing the console output and screenshot.
 	// If storageUri is not specified while enabling boot diagnostics, managed storage will be used.
 	StorageURI *string
+}
+
+func (b *BootDiagnostics) GetEnabled() (rv bool) {
+	if b != nil && b.Enabled != nil {
+		return *b.Enabled
+	}
+	return
+}
+
+func (b *BootDiagnostics) GetStorageURI() (rv string) {
+	if b != nil && b.StorageURI != nil {
+		return *b.StorageURI
+	}
+	return
 }
 
 // BootDiagnosticsInstanceView - The instance view of a virtual machine boot diagnostics.
@@ -274,6 +638,27 @@ type BootDiagnosticsInstanceView struct {
 	// READ-ONLY; The boot diagnostics status information for the VM.
 	// NOTE: It will be set only if there are errors encountered in enabling boot diagnostics.
 	Status *InstanceViewStatus
+}
+
+func (b *BootDiagnosticsInstanceView) GetConsoleScreenshotBlobURI() (rv string) {
+	if b != nil && b.ConsoleScreenshotBlobURI != nil {
+		return *b.ConsoleScreenshotBlobURI
+	}
+	return
+}
+
+func (b *BootDiagnosticsInstanceView) GetSerialConsoleLogBlobURI() (rv string) {
+	if b != nil && b.SerialConsoleLogBlobURI != nil {
+		return *b.SerialConsoleLogBlobURI
+	}
+	return
+}
+
+func (b *BootDiagnosticsInstanceView) GetStatus() (rv *InstanceViewStatus) {
+	if b != nil {
+		return b.Status
+	}
+	return
 }
 
 // CapacityReservation - Specifies information about the capacity reservation.
@@ -309,6 +694,62 @@ type CapacityReservation struct {
 	Type *string
 }
 
+func (c *CapacityReservation) GetLocation() (rv string) {
+	if c != nil && c.Location != nil {
+		return *c.Location
+	}
+	return
+}
+
+func (c *CapacityReservation) GetSKU() (rv *SKU) {
+	if c != nil {
+		return c.SKU
+	}
+	return
+}
+
+func (c *CapacityReservation) GetProperties() (rv *CapacityReservationProperties) {
+	if c != nil {
+		return c.Properties
+	}
+	return
+}
+
+func (c *CapacityReservation) GetTags() (rv map[string]*string) {
+	if c != nil {
+		return c.Tags
+	}
+	return
+}
+
+func (c *CapacityReservation) GetZones() (rv []string) {
+	if c != nil {
+		return c.Zones
+	}
+	return
+}
+
+func (c *CapacityReservation) GetID() (rv string) {
+	if c != nil && c.ID != nil {
+		return *c.ID
+	}
+	return
+}
+
+func (c *CapacityReservation) GetName() (rv string) {
+	if c != nil && c.Name != nil {
+		return *c.Name
+	}
+	return
+}
+
+func (c *CapacityReservation) GetType() (rv string) {
+	if c != nil && c.Type != nil {
+		return *c.Type
+	}
+	return
+}
+
 // CapacityReservationGroup - Specifies information about the capacity reservation group that the capacity reservations should
 // be assigned to.
 // Currently, a capacity reservation can only be added to a capacity reservation group at creation time. An existing capacity
@@ -338,9 +779,65 @@ type CapacityReservationGroup struct {
 	Type *string
 }
 
+func (c *CapacityReservationGroup) GetLocation() (rv string) {
+	if c != nil && c.Location != nil {
+		return *c.Location
+	}
+	return
+}
+
+func (c *CapacityReservationGroup) GetProperties() (rv *CapacityReservationGroupProperties) {
+	if c != nil {
+		return c.Properties
+	}
+	return
+}
+
+func (c *CapacityReservationGroup) GetTags() (rv map[string]*string) {
+	if c != nil {
+		return c.Tags
+	}
+	return
+}
+
+func (c *CapacityReservationGroup) GetZones() (rv []string) {
+	if c != nil {
+		return c.Zones
+	}
+	return
+}
+
+func (c *CapacityReservationGroup) GetID() (rv string) {
+	if c != nil && c.ID != nil {
+		return *c.ID
+	}
+	return
+}
+
+func (c *CapacityReservationGroup) GetName() (rv string) {
+	if c != nil && c.Name != nil {
+		return *c.Name
+	}
+	return
+}
+
+func (c *CapacityReservationGroup) GetType() (rv string) {
+	if c != nil && c.Type != nil {
+		return *c.Type
+	}
+	return
+}
+
 type CapacityReservationGroupInstanceView struct {
 	// READ-ONLY; List of instance view of the capacity reservations under the capacity reservation group.
 	CapacityReservations []CapacityReservationInstanceViewWithName
+}
+
+func (c *CapacityReservationGroupInstanceView) GetCapacityReservations() (rv []CapacityReservationInstanceViewWithName) {
+	if c != nil {
+		return c.CapacityReservations
+	}
+	return
 }
 
 // CapacityReservationGroupListResult - The List capacity reservation group with resource group response.
@@ -351,6 +848,20 @@ type CapacityReservationGroupListResult struct {
 	// The URI to fetch the next page of capacity reservation groups. Call ListNext() with this URI to fetch the next page of
 	// capacity reservation groups.
 	NextLink *string
+}
+
+func (c *CapacityReservationGroupListResult) GetValue() (rv []CapacityReservationGroup) {
+	if c != nil {
+		return c.Value
+	}
+	return
+}
+
+func (c *CapacityReservationGroupListResult) GetNextLink() (rv string) {
+	if c != nil && c.NextLink != nil {
+		return *c.NextLink
+	}
+	return
 }
 
 // CapacityReservationGroupProperties - capacity reservation group Properties.
@@ -366,6 +877,27 @@ type CapacityReservationGroupProperties struct {
 	VirtualMachinesAssociated []SubResourceReadOnly
 }
 
+func (c *CapacityReservationGroupProperties) GetCapacityReservations() (rv []SubResourceReadOnly) {
+	if c != nil {
+		return c.CapacityReservations
+	}
+	return
+}
+
+func (c *CapacityReservationGroupProperties) GetInstanceView() (rv *CapacityReservationGroupInstanceView) {
+	if c != nil {
+		return c.InstanceView
+	}
+	return
+}
+
+func (c *CapacityReservationGroupProperties) GetVirtualMachinesAssociated() (rv []SubResourceReadOnly) {
+	if c != nil {
+		return c.VirtualMachinesAssociated
+	}
+	return
+}
+
 // CapacityReservationGroupUpdate - Specifies information about the capacity reservation group. Only tags can be updated.
 type CapacityReservationGroupUpdate struct {
 	// capacity reservation group Properties.
@@ -373,6 +905,20 @@ type CapacityReservationGroupUpdate struct {
 
 	// Resource tags
 	Tags map[string]*string
+}
+
+func (c *CapacityReservationGroupUpdate) GetProperties() (rv *CapacityReservationGroupProperties) {
+	if c != nil {
+		return c.Properties
+	}
+	return
+}
+
+func (c *CapacityReservationGroupUpdate) GetTags() (rv map[string]*string) {
+	if c != nil {
+		return c.Tags
+	}
+	return
 }
 
 // CapacityReservationInstanceView - The instance view of a capacity reservation that provides as snapshot of the runtime
@@ -384,6 +930,20 @@ type CapacityReservationInstanceView struct {
 
 	// Unutilized capacity of the capacity reservation.
 	UtilizationInfo *CapacityReservationUtilization
+}
+
+func (c *CapacityReservationInstanceView) GetStatuses() (rv []InstanceViewStatus) {
+	if c != nil {
+		return c.Statuses
+	}
+	return
+}
+
+func (c *CapacityReservationInstanceView) GetUtilizationInfo() (rv *CapacityReservationUtilization) {
+	if c != nil {
+		return c.UtilizationInfo
+	}
+	return
 }
 
 // CapacityReservationInstanceViewWithName - The instance view of a capacity reservation that includes the name of the capacity
@@ -399,6 +959,27 @@ type CapacityReservationInstanceViewWithName struct {
 	Name *string
 }
 
+func (c *CapacityReservationInstanceViewWithName) GetStatuses() (rv []InstanceViewStatus) {
+	if c != nil {
+		return c.Statuses
+	}
+	return
+}
+
+func (c *CapacityReservationInstanceViewWithName) GetUtilizationInfo() (rv *CapacityReservationUtilization) {
+	if c != nil {
+		return c.UtilizationInfo
+	}
+	return
+}
+
+func (c *CapacityReservationInstanceViewWithName) GetName() (rv string) {
+	if c != nil && c.Name != nil {
+		return *c.Name
+	}
+	return
+}
+
 // CapacityReservationListResult - The list capacity reservation operation response.
 type CapacityReservationListResult struct {
 	// REQUIRED; The list of capacity reservations
@@ -409,12 +990,33 @@ type CapacityReservationListResult struct {
 	NextLink *string
 }
 
+func (c *CapacityReservationListResult) GetValue() (rv []CapacityReservation) {
+	if c != nil {
+		return c.Value
+	}
+	return
+}
+
+func (c *CapacityReservationListResult) GetNextLink() (rv string) {
+	if c != nil && c.NextLink != nil {
+		return *c.NextLink
+	}
+	return
+}
+
 // CapacityReservationProfile - The parameters of a capacity reservation Profile.
 type CapacityReservationProfile struct {
 	// Specifies the capacity reservation group resource id that should be used for allocating the virtual machine or scaleset
 	// vm instances provided enough capacity has been reserved. Please refer to
 	// https://aka.ms/CapacityReservation for more details.
 	CapacityReservationGroup *SubResource
+}
+
+func (c *CapacityReservationProfile) GetCapacityReservationGroup() (rv *SubResource) {
+	if c != nil {
+		return c.CapacityReservationGroup
+	}
+	return
 }
 
 // CapacityReservationProperties - Properties of the Capacity reservation.
@@ -440,6 +1042,48 @@ type CapacityReservationProperties struct {
 	VirtualMachinesAssociated []SubResourceReadOnly
 }
 
+func (c *CapacityReservationProperties) GetInstanceView() (rv *CapacityReservationInstanceView) {
+	if c != nil {
+		return c.InstanceView
+	}
+	return
+}
+
+func (c *CapacityReservationProperties) GetProvisioningState() (rv string) {
+	if c != nil && c.ProvisioningState != nil {
+		return *c.ProvisioningState
+	}
+	return
+}
+
+func (c *CapacityReservationProperties) GetProvisioningTime() (rv *time.Time) {
+	if c != nil {
+		return c.ProvisioningTime
+	}
+	return
+}
+
+func (c *CapacityReservationProperties) GetReservationID() (rv string) {
+	if c != nil && c.ReservationID != nil {
+		return *c.ReservationID
+	}
+	return
+}
+
+func (c *CapacityReservationProperties) GetTimeCreated() (rv *time.Time) {
+	if c != nil {
+		return c.TimeCreated
+	}
+	return
+}
+
+func (c *CapacityReservationProperties) GetVirtualMachinesAssociated() (rv []SubResourceReadOnly) {
+	if c != nil {
+		return c.VirtualMachinesAssociated
+	}
+	return
+}
+
 // CapacityReservationUpdate - Specifies information about the capacity reservation. Only tags and sku.capacity can be updated.
 type CapacityReservationUpdate struct {
 	// Properties of the Capacity reservation.
@@ -455,10 +1099,38 @@ type CapacityReservationUpdate struct {
 	Tags map[string]*string
 }
 
+func (c *CapacityReservationUpdate) GetProperties() (rv *CapacityReservationProperties) {
+	if c != nil {
+		return c.Properties
+	}
+	return
+}
+
+func (c *CapacityReservationUpdate) GetSKU() (rv *SKU) {
+	if c != nil {
+		return c.SKU
+	}
+	return
+}
+
+func (c *CapacityReservationUpdate) GetTags() (rv map[string]*string) {
+	if c != nil {
+		return c.Tags
+	}
+	return
+}
+
 // CapacityReservationUtilization - Represents the capacity reservation utilization in terms of resources allocated.
 type CapacityReservationUtilization struct {
 	// READ-ONLY; A list of all virtual machines resource ids allocated against the capacity reservation.
 	VirtualMachinesAllocated []SubResourceReadOnly
+}
+
+func (c *CapacityReservationUtilization) GetVirtualMachinesAllocated() (rv []SubResourceReadOnly) {
+	if c != nil {
+		return c.VirtualMachinesAllocated
+	}
+	return
 }
 
 // CloudService - Describes the cloud service.
@@ -482,10 +1154,59 @@ type CloudService struct {
 	Type *string
 }
 
+func (c *CloudService) GetLocation() (rv string) {
+	if c != nil && c.Location != nil {
+		return *c.Location
+	}
+	return
+}
+
+func (c *CloudService) GetProperties() (rv *CloudServiceProperties) {
+	if c != nil {
+		return c.Properties
+	}
+	return
+}
+
+func (c *CloudService) GetTags() (rv map[string]*string) {
+	if c != nil {
+		return c.Tags
+	}
+	return
+}
+
+func (c *CloudService) GetID() (rv string) {
+	if c != nil && c.ID != nil {
+		return *c.ID
+	}
+	return
+}
+
+func (c *CloudService) GetName() (rv string) {
+	if c != nil && c.Name != nil {
+		return *c.Name
+	}
+	return
+}
+
+func (c *CloudService) GetType() (rv string) {
+	if c != nil && c.Type != nil {
+		return *c.Type
+	}
+	return
+}
+
 // CloudServiceExtensionProfile - Describes a cloud service extension profile.
 type CloudServiceExtensionProfile struct {
 	// List of extensions for the cloud service.
 	Extensions []Extension
+}
+
+func (c *CloudServiceExtensionProfile) GetExtensions() (rv []Extension) {
+	if c != nil {
+		return c.Extensions
+	}
+	return
 }
 
 // CloudServiceExtensionProperties - Extension Properties.
@@ -531,6 +1252,76 @@ type CloudServiceExtensionProperties struct {
 	ProvisioningState *string
 }
 
+func (c *CloudServiceExtensionProperties) GetAutoUpgradeMinorVersion() (rv bool) {
+	if c != nil && c.AutoUpgradeMinorVersion != nil {
+		return *c.AutoUpgradeMinorVersion
+	}
+	return
+}
+
+func (c *CloudServiceExtensionProperties) GetForceUpdateTag() (rv string) {
+	if c != nil && c.ForceUpdateTag != nil {
+		return *c.ForceUpdateTag
+	}
+	return
+}
+
+func (c *CloudServiceExtensionProperties) GetProtectedSettings() (rv string) {
+	if c != nil && c.ProtectedSettings != nil {
+		return *c.ProtectedSettings
+	}
+	return
+}
+
+func (c *CloudServiceExtensionProperties) GetProtectedSettingsFromKeyVault() (rv *CloudServiceVaultAndSecretReference) {
+	if c != nil {
+		return c.ProtectedSettingsFromKeyVault
+	}
+	return
+}
+
+func (c *CloudServiceExtensionProperties) GetPublisher() (rv string) {
+	if c != nil && c.Publisher != nil {
+		return *c.Publisher
+	}
+	return
+}
+
+func (c *CloudServiceExtensionProperties) GetRolesAppliedTo() (rv []string) {
+	if c != nil {
+		return c.RolesAppliedTo
+	}
+	return
+}
+
+func (c *CloudServiceExtensionProperties) GetSettings() (rv string) {
+	if c != nil && c.Settings != nil {
+		return *c.Settings
+	}
+	return
+}
+
+func (c *CloudServiceExtensionProperties) GetType() (rv string) {
+	if c != nil && c.Type != nil {
+		return *c.Type
+	}
+	return
+}
+
+func (c *CloudServiceExtensionProperties) GetTypeHandlerVersion() (rv string) {
+	if c != nil && c.TypeHandlerVersion != nil {
+		return *c.TypeHandlerVersion
+	}
+	return
+}
+
+func (c *CloudServiceExtensionProperties) GetProvisioningState() (rv string) {
+	if c != nil && c.ProvisioningState != nil {
+		return *c.ProvisioningState
+	}
+	return
+}
+
 // CloudServiceInstanceView - InstanceView of CloudService as a whole
 type CloudServiceInstanceView struct {
 	// Instance view statuses.
@@ -547,10 +1338,52 @@ type CloudServiceInstanceView struct {
 	Statuses []ResourceInstanceViewStatus
 }
 
+func (c *CloudServiceInstanceView) GetRoleInstance() (rv *InstanceViewStatusesSummary) {
+	if c != nil {
+		return c.RoleInstance
+	}
+	return
+}
+
+func (c *CloudServiceInstanceView) GetPrivateIDs() (rv []string) {
+	if c != nil {
+		return c.PrivateIDs
+	}
+	return
+}
+
+func (c *CloudServiceInstanceView) GetSdkVersion() (rv string) {
+	if c != nil && c.SdkVersion != nil {
+		return *c.SdkVersion
+	}
+	return
+}
+
+func (c *CloudServiceInstanceView) GetStatuses() (rv []ResourceInstanceViewStatus) {
+	if c != nil {
+		return c.Statuses
+	}
+	return
+}
+
 type CloudServiceListResult struct {
 	// REQUIRED
 	Value    []CloudService
 	NextLink *string
+}
+
+func (c *CloudServiceListResult) GetValue() (rv []CloudService) {
+	if c != nil {
+		return c.Value
+	}
+	return
+}
+
+func (c *CloudServiceListResult) GetNextLink() (rv string) {
+	if c != nil && c.NextLink != nil {
+		return *c.NextLink
+	}
+	return
 }
 
 // CloudServiceNetworkProfile - Network Profile for the cloud service.
@@ -565,10 +1398,31 @@ type CloudServiceNetworkProfile struct {
 	SwappableCloudService *SubResource
 }
 
+func (c *CloudServiceNetworkProfile) GetLoadBalancerConfigurations() (rv []LoadBalancerConfiguration) {
+	if c != nil {
+		return c.LoadBalancerConfigurations
+	}
+	return
+}
+
+func (c *CloudServiceNetworkProfile) GetSwappableCloudService() (rv *SubResource) {
+	if c != nil {
+		return c.SwappableCloudService
+	}
+	return
+}
+
 // CloudServiceOsProfile - Describes the OS profile for the cloud service.
 type CloudServiceOsProfile struct {
 	// Specifies set of certificates that should be installed onto the role instances.
 	Secrets []CloudServiceVaultSecretGroup
+}
+
+func (c *CloudServiceOsProfile) GetSecrets() (rv []CloudServiceVaultSecretGroup) {
+	if c != nil {
+		return c.Secrets
+	}
+	return
 }
 
 // CloudServiceProperties - Cloud service properties
@@ -627,6 +1481,90 @@ type CloudServiceProperties struct {
 	UniqueID *string
 }
 
+func (c *CloudServiceProperties) GetAllowModelOverride() (rv bool) {
+	if c != nil && c.AllowModelOverride != nil {
+		return *c.AllowModelOverride
+	}
+	return
+}
+
+func (c *CloudServiceProperties) GetConfiguration() (rv string) {
+	if c != nil && c.Configuration != nil {
+		return *c.Configuration
+	}
+	return
+}
+
+func (c *CloudServiceProperties) GetConfigurationURL() (rv string) {
+	if c != nil && c.ConfigurationURL != nil {
+		return *c.ConfigurationURL
+	}
+	return
+}
+
+func (c *CloudServiceProperties) GetExtensionProfile() (rv *CloudServiceExtensionProfile) {
+	if c != nil {
+		return c.ExtensionProfile
+	}
+	return
+}
+
+func (c *CloudServiceProperties) GetNetworkProfile() (rv *CloudServiceNetworkProfile) {
+	if c != nil {
+		return c.NetworkProfile
+	}
+	return
+}
+
+func (c *CloudServiceProperties) GetOSProfile() (rv *CloudServiceOsProfile) {
+	if c != nil {
+		return c.OSProfile
+	}
+	return
+}
+
+func (c *CloudServiceProperties) GetPackageURL() (rv string) {
+	if c != nil && c.PackageURL != nil {
+		return *c.PackageURL
+	}
+	return
+}
+
+func (c *CloudServiceProperties) GetRoleProfile() (rv *CloudServiceRoleProfile) {
+	if c != nil {
+		return c.RoleProfile
+	}
+	return
+}
+
+func (c *CloudServiceProperties) GetStartCloudService() (rv bool) {
+	if c != nil && c.StartCloudService != nil {
+		return *c.StartCloudService
+	}
+	return
+}
+
+func (c *CloudServiceProperties) GetUpgradeMode() (rv *CloudServiceUpgradeMode) {
+	if c != nil {
+		return c.UpgradeMode
+	}
+	return
+}
+
+func (c *CloudServiceProperties) GetProvisioningState() (rv string) {
+	if c != nil && c.ProvisioningState != nil {
+		return *c.ProvisioningState
+	}
+	return
+}
+
+func (c *CloudServiceProperties) GetUniqueID() (rv string) {
+	if c != nil && c.UniqueID != nil {
+		return *c.UniqueID
+	}
+	return
+}
+
 // CloudServiceRole - Describes a role of the cloud service.
 type CloudServiceRole struct {
 	Properties *CloudServiceRoleProperties
@@ -647,16 +1585,79 @@ type CloudServiceRole struct {
 	Type *string
 }
 
+func (c *CloudServiceRole) GetProperties() (rv *CloudServiceRoleProperties) {
+	if c != nil {
+		return c.Properties
+	}
+	return
+}
+
+func (c *CloudServiceRole) GetSKU() (rv *CloudServiceRoleSKU) {
+	if c != nil {
+		return c.SKU
+	}
+	return
+}
+
+func (c *CloudServiceRole) GetID() (rv string) {
+	if c != nil && c.ID != nil {
+		return *c.ID
+	}
+	return
+}
+
+func (c *CloudServiceRole) GetLocation() (rv string) {
+	if c != nil && c.Location != nil {
+		return *c.Location
+	}
+	return
+}
+
+func (c *CloudServiceRole) GetName() (rv string) {
+	if c != nil && c.Name != nil {
+		return *c.Name
+	}
+	return
+}
+
+func (c *CloudServiceRole) GetType() (rv string) {
+	if c != nil && c.Type != nil {
+		return *c.Type
+	}
+	return
+}
+
 type CloudServiceRoleListResult struct {
 	// REQUIRED
 	Value    []CloudServiceRole
 	NextLink *string
 }
 
+func (c *CloudServiceRoleListResult) GetValue() (rv []CloudServiceRole) {
+	if c != nil {
+		return c.Value
+	}
+	return
+}
+
+func (c *CloudServiceRoleListResult) GetNextLink() (rv string) {
+	if c != nil && c.NextLink != nil {
+		return *c.NextLink
+	}
+	return
+}
+
 // CloudServiceRoleProfile - Describes the role profile for the cloud service.
 type CloudServiceRoleProfile struct {
 	// List of roles for the cloud service.
 	Roles []CloudServiceRoleProfileProperties
+}
+
+func (c *CloudServiceRoleProfile) GetRoles() (rv []CloudServiceRoleProfileProperties) {
+	if c != nil {
+		return c.Roles
+	}
+	return
 }
 
 // CloudServiceRoleProfileProperties - Describes the role properties.
@@ -668,9 +1669,30 @@ type CloudServiceRoleProfileProperties struct {
 	SKU *CloudServiceRoleSKU
 }
 
+func (c *CloudServiceRoleProfileProperties) GetName() (rv string) {
+	if c != nil && c.Name != nil {
+		return *c.Name
+	}
+	return
+}
+
+func (c *CloudServiceRoleProfileProperties) GetSKU() (rv *CloudServiceRoleSKU) {
+	if c != nil {
+		return c.SKU
+	}
+	return
+}
+
 type CloudServiceRoleProperties struct {
 	// READ-ONLY; Specifies the ID which uniquely identifies a cloud service role.
 	UniqueID *string
+}
+
+func (c *CloudServiceRoleProperties) GetUniqueID() (rv string) {
+	if c != nil && c.UniqueID != nil {
+		return *c.UniqueID
+	}
+	return
 }
 
 // CloudServiceRoleSKU - Describes the cloud service role sku.
@@ -688,14 +1710,56 @@ type CloudServiceRoleSKU struct {
 	Tier *string
 }
 
+func (c *CloudServiceRoleSKU) GetCapacity() (rv int64) {
+	if c != nil && c.Capacity != nil {
+		return *c.Capacity
+	}
+	return
+}
+
+func (c *CloudServiceRoleSKU) GetName() (rv string) {
+	if c != nil && c.Name != nil {
+		return *c.Name
+	}
+	return
+}
+
+func (c *CloudServiceRoleSKU) GetTier() (rv string) {
+	if c != nil && c.Tier != nil {
+		return *c.Tier
+	}
+	return
+}
+
 type CloudServiceUpdate struct {
 	// Resource tags
 	Tags map[string]*string
 }
 
+func (c *CloudServiceUpdate) GetTags() (rv map[string]*string) {
+	if c != nil {
+		return c.Tags
+	}
+	return
+}
+
 type CloudServiceVaultAndSecretReference struct {
 	SecretURL   *string
 	SourceVault *SubResource
+}
+
+func (c *CloudServiceVaultAndSecretReference) GetSecretURL() (rv string) {
+	if c != nil && c.SecretURL != nil {
+		return *c.SecretURL
+	}
+	return
+}
+
+func (c *CloudServiceVaultAndSecretReference) GetSourceVault() (rv *SubResource) {
+	if c != nil {
+		return c.SourceVault
+	}
+	return
 }
 
 // CloudServiceVaultCertificate - Describes a single certificate reference in a Key Vault, and where the certificate should
@@ -705,6 +1769,13 @@ type CloudServiceVaultCertificate struct {
 	CertificateURL *string
 }
 
+func (c *CloudServiceVaultCertificate) GetCertificateURL() (rv string) {
+	if c != nil && c.CertificateURL != nil {
+		return *c.CertificateURL
+	}
+	return
+}
+
 // CloudServiceVaultSecretGroup - Describes a set of certificates which are all in the same Key Vault.
 type CloudServiceVaultSecretGroup struct {
 	// The relative URL of the Key Vault containing all of the certificates in VaultCertificates.
@@ -712,6 +1783,20 @@ type CloudServiceVaultSecretGroup struct {
 
 	// The list of key vault references in SourceVault which contain certificates.
 	VaultCertificates []CloudServiceVaultCertificate
+}
+
+func (c *CloudServiceVaultSecretGroup) GetSourceVault() (rv *SubResource) {
+	if c != nil {
+		return c.SourceVault
+	}
+	return
+}
+
+func (c *CloudServiceVaultSecretGroup) GetVaultCertificates() (rv []CloudServiceVaultCertificate) {
+	if c != nil {
+		return c.VaultCertificates
+	}
+	return
 }
 
 // CommunityGallery - Specifies information about the Community Gallery that you want to create or update.
@@ -729,10 +1814,45 @@ type CommunityGallery struct {
 	Type *string
 }
 
+func (c *CommunityGallery) GetIdentifier() (rv *CommunityGalleryIdentifier) {
+	if c != nil {
+		return c.Identifier
+	}
+	return
+}
+
+func (c *CommunityGallery) GetLocation() (rv string) {
+	if c != nil && c.Location != nil {
+		return *c.Location
+	}
+	return
+}
+
+func (c *CommunityGallery) GetName() (rv string) {
+	if c != nil && c.Name != nil {
+		return *c.Name
+	}
+	return
+}
+
+func (c *CommunityGallery) GetType() (rv string) {
+	if c != nil && c.Type != nil {
+		return *c.Type
+	}
+	return
+}
+
 // CommunityGalleryIdentifier - The identifier information of community gallery.
 type CommunityGalleryIdentifier struct {
 	// The unique id of this community gallery.
 	UniqueID *string
+}
+
+func (c *CommunityGalleryIdentifier) GetUniqueID() (rv string) {
+	if c != nil && c.UniqueID != nil {
+		return *c.UniqueID
+	}
+	return
 }
 
 // CommunityGalleryImage - Specifies information about the gallery image definition that you want to create or update.
@@ -751,6 +1871,41 @@ type CommunityGalleryImage struct {
 
 	// READ-ONLY; Resource type
 	Type *string
+}
+
+func (c *CommunityGalleryImage) GetIdentifier() (rv *CommunityGalleryIdentifier) {
+	if c != nil {
+		return c.Identifier
+	}
+	return
+}
+
+func (c *CommunityGalleryImage) GetProperties() (rv *CommunityGalleryImageProperties) {
+	if c != nil {
+		return c.Properties
+	}
+	return
+}
+
+func (c *CommunityGalleryImage) GetLocation() (rv string) {
+	if c != nil && c.Location != nil {
+		return *c.Location
+	}
+	return
+}
+
+func (c *CommunityGalleryImage) GetName() (rv string) {
+	if c != nil && c.Name != nil {
+		return *c.Name
+	}
+	return
+}
+
+func (c *CommunityGalleryImage) GetType() (rv string) {
+	if c != nil && c.Type != nil {
+		return *c.Type
+	}
+	return
 }
 
 // CommunityGalleryImageProperties - Describes the properties of a gallery image definition.
@@ -789,6 +1944,69 @@ type CommunityGalleryImageProperties struct {
 	Recommended *RecommendedMachineConfiguration
 }
 
+func (c *CommunityGalleryImageProperties) GetIdentifier() (rv *GalleryImageIdentifier) {
+	if c != nil {
+		return c.Identifier
+	}
+	return
+}
+
+func (c *CommunityGalleryImageProperties) GetOSState() (rv *OperatingSystemStateTypes) {
+	if c != nil {
+		return c.OSState
+	}
+	return
+}
+
+func (c *CommunityGalleryImageProperties) GetOSType() (rv *OperatingSystemTypes) {
+	if c != nil {
+		return c.OSType
+	}
+	return
+}
+
+func (c *CommunityGalleryImageProperties) GetDisallowed() (rv *Disallowed) {
+	if c != nil {
+		return c.Disallowed
+	}
+	return
+}
+
+func (c *CommunityGalleryImageProperties) GetEndOfLifeDate() (rv *time.Time) {
+	if c != nil {
+		return c.EndOfLifeDate
+	}
+	return
+}
+
+func (c *CommunityGalleryImageProperties) GetFeatures() (rv []GalleryImageFeature) {
+	if c != nil {
+		return c.Features
+	}
+	return
+}
+
+func (c *CommunityGalleryImageProperties) GetHyperVGeneration() (rv *HyperVGeneration) {
+	if c != nil {
+		return c.HyperVGeneration
+	}
+	return
+}
+
+func (c *CommunityGalleryImageProperties) GetPurchasePlan() (rv *ImagePurchasePlan) {
+	if c != nil {
+		return c.PurchasePlan
+	}
+	return
+}
+
+func (c *CommunityGalleryImageProperties) GetRecommended() (rv *RecommendedMachineConfiguration) {
+	if c != nil {
+		return c.Recommended
+	}
+	return
+}
+
 // CommunityGalleryImageVersion - Specifies information about the gallery image version that you want to create or update.
 type CommunityGalleryImageVersion struct {
 	// The identifier information of community gallery.
@@ -807,6 +2025,41 @@ type CommunityGalleryImageVersion struct {
 	Type *string
 }
 
+func (c *CommunityGalleryImageVersion) GetIdentifier() (rv *CommunityGalleryIdentifier) {
+	if c != nil {
+		return c.Identifier
+	}
+	return
+}
+
+func (c *CommunityGalleryImageVersion) GetProperties() (rv *CommunityGalleryImageVersionProperties) {
+	if c != nil {
+		return c.Properties
+	}
+	return
+}
+
+func (c *CommunityGalleryImageVersion) GetLocation() (rv string) {
+	if c != nil && c.Location != nil {
+		return *c.Location
+	}
+	return
+}
+
+func (c *CommunityGalleryImageVersion) GetName() (rv string) {
+	if c != nil && c.Name != nil {
+		return *c.Name
+	}
+	return
+}
+
+func (c *CommunityGalleryImageVersion) GetType() (rv string) {
+	if c != nil && c.Type != nil {
+		return *c.Type
+	}
+	return
+}
+
 // CommunityGalleryImageVersionProperties - Describes the properties of a gallery image version.
 type CommunityGalleryImageVersionProperties struct {
 	// The end of life date of the gallery image version Definition. This property can be used for decommissioning purposes. This
@@ -816,6 +2069,20 @@ type CommunityGalleryImageVersionProperties struct {
 	// The published date of the gallery image version Definition. This property can be used for decommissioning purposes. This
 	// property is updatable.
 	PublishedDate *time.Time
+}
+
+func (c *CommunityGalleryImageVersionProperties) GetEndOfLifeDate() (rv *time.Time) {
+	if c != nil {
+		return c.EndOfLifeDate
+	}
+	return
+}
+
+func (c *CommunityGalleryImageVersionProperties) GetPublishedDate() (rv *time.Time) {
+	if c != nil {
+		return c.PublishedDate
+	}
+	return
 }
 
 // CommunityGalleryInfo - Information of community gallery if current gallery is shared to community
@@ -837,6 +2104,48 @@ type CommunityGalleryInfo struct {
 
 	// READ-ONLY; Community gallery public name list.
 	PublicNames []string
+}
+
+func (c *CommunityGalleryInfo) GetEula() (rv string) {
+	if c != nil && c.Eula != nil {
+		return *c.Eula
+	}
+	return
+}
+
+func (c *CommunityGalleryInfo) GetPublicNamePrefix() (rv string) {
+	if c != nil && c.PublicNamePrefix != nil {
+		return *c.PublicNamePrefix
+	}
+	return
+}
+
+func (c *CommunityGalleryInfo) GetPublisherContact() (rv string) {
+	if c != nil && c.PublisherContact != nil {
+		return *c.PublisherContact
+	}
+	return
+}
+
+func (c *CommunityGalleryInfo) GetPublisherURI() (rv string) {
+	if c != nil && c.PublisherURI != nil {
+		return *c.PublisherURI
+	}
+	return
+}
+
+func (c *CommunityGalleryInfo) GetCommunityGalleryEnabled() (rv bool) {
+	if c != nil && c.CommunityGalleryEnabled != nil {
+		return *c.CommunityGalleryEnabled
+	}
+	return
+}
+
+func (c *CommunityGalleryInfo) GetPublicNames() (rv []string) {
+	if c != nil {
+		return c.PublicNames
+	}
+	return
 }
 
 // CreationData - Data used when creating a disk.
@@ -874,6 +2183,76 @@ type CreationData struct {
 
 	// READ-ONLY; If this field is set, this is the unique id identifying the source of this resource.
 	SourceUniqueID *string
+}
+
+func (c *CreationData) GetCreateOption() (rv *DiskCreateOption) {
+	if c != nil {
+		return c.CreateOption
+	}
+	return
+}
+
+func (c *CreationData) GetGalleryImageReference() (rv *ImageDiskReference) {
+	if c != nil {
+		return c.GalleryImageReference
+	}
+	return
+}
+
+func (c *CreationData) GetImageReference() (rv *ImageDiskReference) {
+	if c != nil {
+		return c.ImageReference
+	}
+	return
+}
+
+func (c *CreationData) GetLogicalSectorSize() (rv int32) {
+	if c != nil && c.LogicalSectorSize != nil {
+		return *c.LogicalSectorSize
+	}
+	return
+}
+
+func (c *CreationData) GetSecurityDataURI() (rv string) {
+	if c != nil && c.SecurityDataURI != nil {
+		return *c.SecurityDataURI
+	}
+	return
+}
+
+func (c *CreationData) GetSourceResourceID() (rv string) {
+	if c != nil && c.SourceResourceID != nil {
+		return *c.SourceResourceID
+	}
+	return
+}
+
+func (c *CreationData) GetSourceURI() (rv string) {
+	if c != nil && c.SourceURI != nil {
+		return *c.SourceURI
+	}
+	return
+}
+
+func (c *CreationData) GetStorageAccountID() (rv string) {
+	if c != nil && c.StorageAccountID != nil {
+		return *c.StorageAccountID
+	}
+	return
+}
+
+func (c *CreationData) GetUploadSizeBytes() (rv int64) {
+	if c != nil && c.UploadSizeBytes != nil {
+		return *c.UploadSizeBytes
+	}
+	return
+}
+
+func (c *CreationData) GetSourceUniqueID() (rv string) {
+	if c != nil && c.SourceUniqueID != nil {
+		return *c.SourceUniqueID
+	}
+	return
 }
 
 // DataDisk - Describes a data disk.
@@ -951,11 +2330,116 @@ type DataDisk struct {
 	DiskMBpsReadWrite *int64
 }
 
+func (d *DataDisk) GetCreateOption() (rv *DiskCreateOptionTypes) {
+	if d != nil {
+		return d.CreateOption
+	}
+	return
+}
+
+func (d *DataDisk) GetLun() (rv int32) {
+	if d != nil && d.Lun != nil {
+		return *d.Lun
+	}
+	return
+}
+
+func (d *DataDisk) GetCaching() (rv *CachingTypes) {
+	if d != nil {
+		return d.Caching
+	}
+	return
+}
+
+func (d *DataDisk) GetDeleteOption() (rv *DiskDeleteOptionTypes) {
+	if d != nil {
+		return d.DeleteOption
+	}
+	return
+}
+
+func (d *DataDisk) GetDetachOption() (rv *DiskDetachOptionTypes) {
+	if d != nil {
+		return d.DetachOption
+	}
+	return
+}
+
+func (d *DataDisk) GetDiskSizeGB() (rv int32) {
+	if d != nil && d.DiskSizeGB != nil {
+		return *d.DiskSizeGB
+	}
+	return
+}
+
+func (d *DataDisk) GetImage() (rv *VirtualHardDisk) {
+	if d != nil {
+		return d.Image
+	}
+	return
+}
+
+func (d *DataDisk) GetManagedDisk() (rv *ManagedDiskParameters) {
+	if d != nil {
+		return d.ManagedDisk
+	}
+	return
+}
+
+func (d *DataDisk) GetName() (rv string) {
+	if d != nil && d.Name != nil {
+		return *d.Name
+	}
+	return
+}
+
+func (d *DataDisk) GetToBeDetached() (rv bool) {
+	if d != nil && d.ToBeDetached != nil {
+		return *d.ToBeDetached
+	}
+	return
+}
+
+func (d *DataDisk) GetVhd() (rv *VirtualHardDisk) {
+	if d != nil {
+		return d.Vhd
+	}
+	return
+}
+
+func (d *DataDisk) GetWriteAcceleratorEnabled() (rv bool) {
+	if d != nil && d.WriteAcceleratorEnabled != nil {
+		return *d.WriteAcceleratorEnabled
+	}
+	return
+}
+
+func (d *DataDisk) GetDiskIOPSReadWrite() (rv int64) {
+	if d != nil && d.DiskIOPSReadWrite != nil {
+		return *d.DiskIOPSReadWrite
+	}
+	return
+}
+
+func (d *DataDisk) GetDiskMBpsReadWrite() (rv int64) {
+	if d != nil && d.DiskMBpsReadWrite != nil {
+		return *d.DiskMBpsReadWrite
+	}
+	return
+}
+
 // DataDiskImage - Contains the data disk images information.
 type DataDiskImage struct {
 	// READ-ONLY; Specifies the logical unit number of the data disk. This value is used to identify data disks within the VM
 	// and therefore must be unique for each data disk attached to a VM.
 	Lun *int32
+}
+
+func (d *DataDiskImage) GetLun() (rv int32) {
+	if d != nil && d.Lun != nil {
+		return *d.Lun
+	}
+	return
 }
 
 // DataDiskImageEncryption - Contains encryption settings for a data disk image.
@@ -967,6 +2451,20 @@ type DataDiskImageEncryption struct {
 
 	// A relative URI containing the resource ID of the disk encryption set.
 	DiskEncryptionSetID *string
+}
+
+func (d *DataDiskImageEncryption) GetLun() (rv int32) {
+	if d != nil && d.Lun != nil {
+		return *d.Lun
+	}
+	return
+}
+
+func (d *DataDiskImageEncryption) GetDiskEncryptionSetID() (rv string) {
+	if d != nil && d.DiskEncryptionSetID != nil {
+		return *d.DiskEncryptionSetID
+	}
+	return
 }
 
 // DedicatedHost - Specifies information about the Dedicated host.
@@ -994,6 +2492,55 @@ type DedicatedHost struct {
 	Type *string
 }
 
+func (d *DedicatedHost) GetLocation() (rv string) {
+	if d != nil && d.Location != nil {
+		return *d.Location
+	}
+	return
+}
+
+func (d *DedicatedHost) GetSKU() (rv *SKU) {
+	if d != nil {
+		return d.SKU
+	}
+	return
+}
+
+func (d *DedicatedHost) GetProperties() (rv *DedicatedHostProperties) {
+	if d != nil {
+		return d.Properties
+	}
+	return
+}
+
+func (d *DedicatedHost) GetTags() (rv map[string]*string) {
+	if d != nil {
+		return d.Tags
+	}
+	return
+}
+
+func (d *DedicatedHost) GetID() (rv string) {
+	if d != nil && d.ID != nil {
+		return *d.ID
+	}
+	return
+}
+
+func (d *DedicatedHost) GetName() (rv string) {
+	if d != nil && d.Name != nil {
+		return *d.Name
+	}
+	return
+}
+
+func (d *DedicatedHost) GetType() (rv string) {
+	if d != nil && d.Type != nil {
+		return *d.Type
+	}
+	return
+}
+
 // DedicatedHostAllocatableVM - Represents the dedicated host unutilized capacity in terms of a specific VM size.
 type DedicatedHostAllocatableVM struct {
 	// Maximum number of VMs of size vmSize that can fit in the dedicated host's remaining capacity.
@@ -1003,11 +2550,32 @@ type DedicatedHostAllocatableVM struct {
 	VMSize *string
 }
 
+func (d *DedicatedHostAllocatableVM) GetCount() (rv float64) {
+	if d != nil && d.Count != nil {
+		return *d.Count
+	}
+	return
+}
+
+func (d *DedicatedHostAllocatableVM) GetVMSize() (rv string) {
+	if d != nil && d.VMSize != nil {
+		return *d.VMSize
+	}
+	return
+}
+
 // DedicatedHostAvailableCapacity - Dedicated host unutilized capacity.
 type DedicatedHostAvailableCapacity struct {
 	// The unutilized capacity of the dedicated host represented in terms of each VM size that is allowed to be deployed to the
 	// dedicated host.
 	AllocatableVMs []DedicatedHostAllocatableVM
+}
+
+func (d *DedicatedHostAvailableCapacity) GetAllocatableVMs() (rv []DedicatedHostAllocatableVM) {
+	if d != nil {
+		return d.AllocatableVMs
+	}
+	return
 }
 
 // DedicatedHostGroup - Specifies information about the dedicated host group that the dedicated hosts should be assigned to.
@@ -1038,9 +2606,65 @@ type DedicatedHostGroup struct {
 	Type *string
 }
 
+func (d *DedicatedHostGroup) GetLocation() (rv string) {
+	if d != nil && d.Location != nil {
+		return *d.Location
+	}
+	return
+}
+
+func (d *DedicatedHostGroup) GetProperties() (rv *DedicatedHostGroupProperties) {
+	if d != nil {
+		return d.Properties
+	}
+	return
+}
+
+func (d *DedicatedHostGroup) GetTags() (rv map[string]*string) {
+	if d != nil {
+		return d.Tags
+	}
+	return
+}
+
+func (d *DedicatedHostGroup) GetZones() (rv []string) {
+	if d != nil {
+		return d.Zones
+	}
+	return
+}
+
+func (d *DedicatedHostGroup) GetID() (rv string) {
+	if d != nil && d.ID != nil {
+		return *d.ID
+	}
+	return
+}
+
+func (d *DedicatedHostGroup) GetName() (rv string) {
+	if d != nil && d.Name != nil {
+		return *d.Name
+	}
+	return
+}
+
+func (d *DedicatedHostGroup) GetType() (rv string) {
+	if d != nil && d.Type != nil {
+		return *d.Type
+	}
+	return
+}
+
 type DedicatedHostGroupInstanceView struct {
 	// List of instance view of the dedicated hosts under the dedicated host group.
 	Hosts []DedicatedHostInstanceViewWithName
+}
+
+func (d *DedicatedHostGroupInstanceView) GetHosts() (rv []DedicatedHostInstanceViewWithName) {
+	if d != nil {
+		return d.Hosts
+	}
+	return
 }
 
 // DedicatedHostGroupListResult - The List Dedicated Host Group with resource group response.
@@ -1051,6 +2675,20 @@ type DedicatedHostGroupListResult struct {
 	// The URI to fetch the next page of Dedicated Host Groups. Call ListNext() with this URI to fetch the next page of Dedicated
 	// Host Groups.
 	NextLink *string
+}
+
+func (d *DedicatedHostGroupListResult) GetValue() (rv []DedicatedHostGroup) {
+	if d != nil {
+		return d.Value
+	}
+	return
+}
+
+func (d *DedicatedHostGroupListResult) GetNextLink() (rv string) {
+	if d != nil && d.NextLink != nil {
+		return *d.NextLink
+	}
+	return
 }
 
 // DedicatedHostGroupProperties - Dedicated Host Group Properties.
@@ -1072,6 +2710,34 @@ type DedicatedHostGroupProperties struct {
 	InstanceView *DedicatedHostGroupInstanceView
 }
 
+func (d *DedicatedHostGroupProperties) GetPlatformFaultDomainCount() (rv int32) {
+	if d != nil && d.PlatformFaultDomainCount != nil {
+		return *d.PlatformFaultDomainCount
+	}
+	return
+}
+
+func (d *DedicatedHostGroupProperties) GetSupportAutomaticPlacement() (rv bool) {
+	if d != nil && d.SupportAutomaticPlacement != nil {
+		return *d.SupportAutomaticPlacement
+	}
+	return
+}
+
+func (d *DedicatedHostGroupProperties) GetHosts() (rv []SubResourceReadOnly) {
+	if d != nil {
+		return d.Hosts
+	}
+	return
+}
+
+func (d *DedicatedHostGroupProperties) GetInstanceView() (rv *DedicatedHostGroupInstanceView) {
+	if d != nil {
+		return d.InstanceView
+	}
+	return
+}
+
 // DedicatedHostGroupUpdate - Specifies information about the dedicated host group that the dedicated host should be assigned
 // to. Only tags may be updated.
 type DedicatedHostGroupUpdate struct {
@@ -1087,6 +2753,27 @@ type DedicatedHostGroupUpdate struct {
 	Zones []string
 }
 
+func (d *DedicatedHostGroupUpdate) GetProperties() (rv *DedicatedHostGroupProperties) {
+	if d != nil {
+		return d.Properties
+	}
+	return
+}
+
+func (d *DedicatedHostGroupUpdate) GetTags() (rv map[string]*string) {
+	if d != nil {
+		return d.Tags
+	}
+	return
+}
+
+func (d *DedicatedHostGroupUpdate) GetZones() (rv []string) {
+	if d != nil {
+		return d.Zones
+	}
+	return
+}
+
 // DedicatedHostInstanceView - The instance view of a dedicated host.
 type DedicatedHostInstanceView struct {
 	// Unutilized capacity of the dedicated host.
@@ -1097,6 +2784,27 @@ type DedicatedHostInstanceView struct {
 
 	// READ-ONLY; Specifies the unique id of the dedicated physical machine on which the dedicated host resides.
 	AssetID *string
+}
+
+func (d *DedicatedHostInstanceView) GetAvailableCapacity() (rv *DedicatedHostAvailableCapacity) {
+	if d != nil {
+		return d.AvailableCapacity
+	}
+	return
+}
+
+func (d *DedicatedHostInstanceView) GetStatuses() (rv []InstanceViewStatus) {
+	if d != nil {
+		return d.Statuses
+	}
+	return
+}
+
+func (d *DedicatedHostInstanceView) GetAssetID() (rv string) {
+	if d != nil && d.AssetID != nil {
+		return *d.AssetID
+	}
+	return
 }
 
 // DedicatedHostInstanceViewWithName - The instance view of a dedicated host that includes the name of the dedicated host.
@@ -1115,6 +2823,34 @@ type DedicatedHostInstanceViewWithName struct {
 	Name *string
 }
 
+func (d *DedicatedHostInstanceViewWithName) GetAvailableCapacity() (rv *DedicatedHostAvailableCapacity) {
+	if d != nil {
+		return d.AvailableCapacity
+	}
+	return
+}
+
+func (d *DedicatedHostInstanceViewWithName) GetStatuses() (rv []InstanceViewStatus) {
+	if d != nil {
+		return d.Statuses
+	}
+	return
+}
+
+func (d *DedicatedHostInstanceViewWithName) GetAssetID() (rv string) {
+	if d != nil && d.AssetID != nil {
+		return *d.AssetID
+	}
+	return
+}
+
+func (d *DedicatedHostInstanceViewWithName) GetName() (rv string) {
+	if d != nil && d.Name != nil {
+		return *d.Name
+	}
+	return
+}
+
 // DedicatedHostListResult - The list dedicated host operation response.
 type DedicatedHostListResult struct {
 	// REQUIRED; The list of dedicated hosts
@@ -1122,6 +2858,20 @@ type DedicatedHostListResult struct {
 
 	// The URI to fetch the next page of dedicated hosts. Call ListNext() with this URI to fetch the next page of dedicated hosts.
 	NextLink *string
+}
+
+func (d *DedicatedHostListResult) GetValue() (rv []DedicatedHost) {
+	if d != nil {
+		return d.Value
+	}
+	return
+}
+
+func (d *DedicatedHostListResult) GetNextLink() (rv string) {
+	if d != nil && d.NextLink != nil {
+		return *d.NextLink
+	}
+	return
 }
 
 // DedicatedHostProperties - Properties of the dedicated host.
@@ -1162,6 +2912,69 @@ type DedicatedHostProperties struct {
 	VirtualMachines []SubResourceReadOnly
 }
 
+func (d *DedicatedHostProperties) GetAutoReplaceOnFailure() (rv bool) {
+	if d != nil && d.AutoReplaceOnFailure != nil {
+		return *d.AutoReplaceOnFailure
+	}
+	return
+}
+
+func (d *DedicatedHostProperties) GetLicenseType() (rv *DedicatedHostLicenseTypes) {
+	if d != nil {
+		return d.LicenseType
+	}
+	return
+}
+
+func (d *DedicatedHostProperties) GetPlatformFaultDomain() (rv int32) {
+	if d != nil && d.PlatformFaultDomain != nil {
+		return *d.PlatformFaultDomain
+	}
+	return
+}
+
+func (d *DedicatedHostProperties) GetHostID() (rv string) {
+	if d != nil && d.HostID != nil {
+		return *d.HostID
+	}
+	return
+}
+
+func (d *DedicatedHostProperties) GetInstanceView() (rv *DedicatedHostInstanceView) {
+	if d != nil {
+		return d.InstanceView
+	}
+	return
+}
+
+func (d *DedicatedHostProperties) GetProvisioningState() (rv string) {
+	if d != nil && d.ProvisioningState != nil {
+		return *d.ProvisioningState
+	}
+	return
+}
+
+func (d *DedicatedHostProperties) GetProvisioningTime() (rv *time.Time) {
+	if d != nil {
+		return d.ProvisioningTime
+	}
+	return
+}
+
+func (d *DedicatedHostProperties) GetTimeCreated() (rv *time.Time) {
+	if d != nil {
+		return d.TimeCreated
+	}
+	return
+}
+
+func (d *DedicatedHostProperties) GetVirtualMachines() (rv []SubResourceReadOnly) {
+	if d != nil {
+		return d.VirtualMachines
+	}
+	return
+}
+
 // DedicatedHostUpdate - Specifies information about the dedicated host. Only tags, autoReplaceOnFailure and licenseType may
 // be updated.
 type DedicatedHostUpdate struct {
@@ -1170,6 +2983,20 @@ type DedicatedHostUpdate struct {
 
 	// Resource tags
 	Tags map[string]*string
+}
+
+func (d *DedicatedHostUpdate) GetProperties() (rv *DedicatedHostProperties) {
+	if d != nil {
+		return d.Properties
+	}
+	return
+}
+
+func (d *DedicatedHostUpdate) GetTags() (rv map[string]*string) {
+	if d != nil {
+		return d.Tags
+	}
+	return
 }
 
 // DiagnosticsProfile - Specifies the boot diagnostic settings state.
@@ -1181,6 +3008,13 @@ type DiagnosticsProfile struct {
 	// You can easily view the output of your console log.
 	// Azure also enables you to see a screenshot of the VM from the hypervisor.
 	BootDiagnostics *BootDiagnostics
+}
+
+func (d *DiagnosticsProfile) GetBootDiagnostics() (rv *BootDiagnostics) {
+	if d != nil {
+		return d.BootDiagnostics
+	}
+	return
 }
 
 // DiffDiskSettings - Describes the parameters of ephemeral disk settings that can be specified for operating system disk.
@@ -1200,16 +3034,44 @@ type DiffDiskSettings struct {
 	Placement *DiffDiskPlacement
 }
 
+func (d *DiffDiskSettings) GetOption() (rv *DiffDiskOptions) {
+	if d != nil {
+		return d.Option
+	}
+	return
+}
+
+func (d *DiffDiskSettings) GetPlacement() (rv *DiffDiskPlacement) {
+	if d != nil {
+		return d.Placement
+	}
+	return
+}
+
 // Disallowed - Describes the disallowed disk types.
 type Disallowed struct {
 	// A list of disk types.
 	DiskTypes []string
 }
 
+func (d *Disallowed) GetDiskTypes() (rv []string) {
+	if d != nil {
+		return d.DiskTypes
+	}
+	return
+}
+
 // DisallowedConfiguration - Specifies the disallowed configuration for a virtual machine image.
 type DisallowedConfiguration struct {
 	// VM disk types which are disallowed.
 	VMDiskType *VMDiskTypes
+}
+
+func (d *DisallowedConfiguration) GetVMDiskType() (rv *VMDiskTypes) {
+	if d != nil {
+		return d.VMDiskType
+	}
+	return
 }
 
 // Disk resource.
@@ -1249,6 +3111,83 @@ type Disk struct {
 	Type *string
 }
 
+func (d *Disk) GetLocation() (rv string) {
+	if d != nil && d.Location != nil {
+		return *d.Location
+	}
+	return
+}
+
+func (d *Disk) GetExtendedLocation() (rv *ExtendedLocation) {
+	if d != nil {
+		return d.ExtendedLocation
+	}
+	return
+}
+
+func (d *Disk) GetProperties() (rv *DiskProperties) {
+	if d != nil {
+		return d.Properties
+	}
+	return
+}
+
+func (d *Disk) GetSKU() (rv *DiskSKU) {
+	if d != nil {
+		return d.SKU
+	}
+	return
+}
+
+func (d *Disk) GetTags() (rv map[string]*string) {
+	if d != nil {
+		return d.Tags
+	}
+	return
+}
+
+func (d *Disk) GetZones() (rv []string) {
+	if d != nil {
+		return d.Zones
+	}
+	return
+}
+
+func (d *Disk) GetID() (rv string) {
+	if d != nil && d.ID != nil {
+		return *d.ID
+	}
+	return
+}
+
+func (d *Disk) GetManagedBy() (rv string) {
+	if d != nil && d.ManagedBy != nil {
+		return *d.ManagedBy
+	}
+	return
+}
+
+func (d *Disk) GetManagedByExtended() (rv []string) {
+	if d != nil {
+		return d.ManagedByExtended
+	}
+	return
+}
+
+func (d *Disk) GetName() (rv string) {
+	if d != nil && d.Name != nil {
+		return *d.Name
+	}
+	return
+}
+
+func (d *Disk) GetType() (rv string) {
+	if d != nil && d.Type != nil {
+		return *d.Type
+	}
+	return
+}
+
 // DiskAccess - disk access resource.
 type DiskAccess struct {
 	// REQUIRED; Resource location
@@ -1271,6 +3210,55 @@ type DiskAccess struct {
 	Type *string
 }
 
+func (d *DiskAccess) GetLocation() (rv string) {
+	if d != nil && d.Location != nil {
+		return *d.Location
+	}
+	return
+}
+
+func (d *DiskAccess) GetExtendedLocation() (rv *ExtendedLocation) {
+	if d != nil {
+		return d.ExtendedLocation
+	}
+	return
+}
+
+func (d *DiskAccess) GetProperties() (rv *DiskAccessProperties) {
+	if d != nil {
+		return d.Properties
+	}
+	return
+}
+
+func (d *DiskAccess) GetTags() (rv map[string]*string) {
+	if d != nil {
+		return d.Tags
+	}
+	return
+}
+
+func (d *DiskAccess) GetID() (rv string) {
+	if d != nil && d.ID != nil {
+		return *d.ID
+	}
+	return
+}
+
+func (d *DiskAccess) GetName() (rv string) {
+	if d != nil && d.Name != nil {
+		return *d.Name
+	}
+	return
+}
+
+func (d *DiskAccess) GetType() (rv string) {
+	if d != nil && d.Type != nil {
+		return *d.Type
+	}
+	return
+}
+
 // DiskAccessList - The List disk access operation response.
 type DiskAccessList struct {
 	// REQUIRED; A list of disk access resources.
@@ -1279,6 +3267,20 @@ type DiskAccessList struct {
 	// The uri to fetch the next page of disk access resources. Call ListNext() with this to fetch the next page of disk access
 	// resources.
 	NextLink *string
+}
+
+func (d *DiskAccessList) GetValue() (rv []DiskAccess) {
+	if d != nil {
+		return d.Value
+	}
+	return
+}
+
+func (d *DiskAccessList) GetNextLink() (rv string) {
+	if d != nil && d.NextLink != nil {
+		return *d.NextLink
+	}
+	return
 }
 
 type DiskAccessProperties struct {
@@ -1293,10 +3295,38 @@ type DiskAccessProperties struct {
 	TimeCreated *time.Time
 }
 
+func (d *DiskAccessProperties) GetPrivateEndpointConnections() (rv []PrivateEndpointConnection) {
+	if d != nil {
+		return d.PrivateEndpointConnections
+	}
+	return
+}
+
+func (d *DiskAccessProperties) GetProvisioningState() (rv string) {
+	if d != nil && d.ProvisioningState != nil {
+		return *d.ProvisioningState
+	}
+	return
+}
+
+func (d *DiskAccessProperties) GetTimeCreated() (rv *time.Time) {
+	if d != nil {
+		return d.TimeCreated
+	}
+	return
+}
+
 // DiskAccessUpdate - Used for updating a disk access resource.
 type DiskAccessUpdate struct {
 	// Resource tags
 	Tags map[string]*string
+}
+
+func (d *DiskAccessUpdate) GetTags() (rv map[string]*string) {
+	if d != nil {
+		return d.Tags
+	}
+	return
 }
 
 // DiskEncryptionSet - disk encryption set resource.
@@ -1322,6 +3352,55 @@ type DiskEncryptionSet struct {
 	Type *string
 }
 
+func (d *DiskEncryptionSet) GetLocation() (rv string) {
+	if d != nil && d.Location != nil {
+		return *d.Location
+	}
+	return
+}
+
+func (d *DiskEncryptionSet) GetIdentity() (rv *EncryptionSetIdentity) {
+	if d != nil {
+		return d.Identity
+	}
+	return
+}
+
+func (d *DiskEncryptionSet) GetProperties() (rv *EncryptionSetProperties) {
+	if d != nil {
+		return d.Properties
+	}
+	return
+}
+
+func (d *DiskEncryptionSet) GetTags() (rv map[string]*string) {
+	if d != nil {
+		return d.Tags
+	}
+	return
+}
+
+func (d *DiskEncryptionSet) GetID() (rv string) {
+	if d != nil && d.ID != nil {
+		return *d.ID
+	}
+	return
+}
+
+func (d *DiskEncryptionSet) GetName() (rv string) {
+	if d != nil && d.Name != nil {
+		return *d.Name
+	}
+	return
+}
+
+func (d *DiskEncryptionSet) GetType() (rv string) {
+	if d != nil && d.Type != nil {
+		return *d.Type
+	}
+	return
+}
+
 // DiskEncryptionSetList - The List disk encryption set operation response.
 type DiskEncryptionSetList struct {
 	// REQUIRED; A list of disk encryption sets.
@@ -1332,6 +3411,20 @@ type DiskEncryptionSetList struct {
 	NextLink *string
 }
 
+func (d *DiskEncryptionSetList) GetValue() (rv []DiskEncryptionSet) {
+	if d != nil {
+		return d.Value
+	}
+	return
+}
+
+func (d *DiskEncryptionSetList) GetNextLink() (rv string) {
+	if d != nil && d.NextLink != nil {
+		return *d.NextLink
+	}
+	return
+}
+
 // DiskEncryptionSetParameters - Describes the parameter of customer managed disk encryption set resource id that can be specified
 // for disk.
 // NOTE: The disk encryption set resource id can only be specified for managed disk. Please refer https://aka.ms/mdssewithcmkoverview
@@ -1339,6 +3432,13 @@ type DiskEncryptionSetList struct {
 type DiskEncryptionSetParameters struct {
 	// Resource Id
 	ID *string
+}
+
+func (d *DiskEncryptionSetParameters) GetID() (rv string) {
+	if d != nil && d.ID != nil {
+		return *d.ID
+	}
+	return
 }
 
 // DiskEncryptionSetUpdate - disk encryption set update resource.
@@ -1354,6 +3454,27 @@ type DiskEncryptionSetUpdate struct {
 	Tags map[string]*string
 }
 
+func (d *DiskEncryptionSetUpdate) GetIdentity() (rv *EncryptionSetIdentity) {
+	if d != nil {
+		return d.Identity
+	}
+	return
+}
+
+func (d *DiskEncryptionSetUpdate) GetProperties() (rv *DiskEncryptionSetUpdateProperties) {
+	if d != nil {
+		return d.Properties
+	}
+	return
+}
+
+func (d *DiskEncryptionSetUpdate) GetTags() (rv map[string]*string) {
+	if d != nil {
+		return d.Tags
+	}
+	return
+}
+
 // DiskEncryptionSetUpdateProperties - disk encryption set resource update properties.
 type DiskEncryptionSetUpdateProperties struct {
 	// Key Vault Key Url to be used for server side encryption of Managed Disks and Snapshots
@@ -1366,6 +3487,27 @@ type DiskEncryptionSetUpdateProperties struct {
 	RotationToLatestKeyVersionEnabled *bool
 }
 
+func (d *DiskEncryptionSetUpdateProperties) GetActiveKey() (rv *KeyForDiskEncryptionSet) {
+	if d != nil {
+		return d.ActiveKey
+	}
+	return
+}
+
+func (d *DiskEncryptionSetUpdateProperties) GetEncryptionType() (rv *DiskEncryptionSetType) {
+	if d != nil {
+		return d.EncryptionType
+	}
+	return
+}
+
+func (d *DiskEncryptionSetUpdateProperties) GetRotationToLatestKeyVersionEnabled() (rv bool) {
+	if d != nil && d.RotationToLatestKeyVersionEnabled != nil {
+		return *d.RotationToLatestKeyVersionEnabled
+	}
+	return
+}
+
 // DiskEncryptionSettings - Describes a Encryption Settings for a Disk
 type DiskEncryptionSettings struct {
 	// Specifies the location of the disk encryption key, which is a Key Vault Secret.
@@ -1376,6 +3518,27 @@ type DiskEncryptionSettings struct {
 
 	// Specifies the location of the key encryption key in Key Vault.
 	KeyEncryptionKey *KeyVaultKeyReference
+}
+
+func (d *DiskEncryptionSettings) GetDiskEncryptionKey() (rv *KeyVaultSecretReference) {
+	if d != nil {
+		return d.DiskEncryptionKey
+	}
+	return
+}
+
+func (d *DiskEncryptionSettings) GetEnabled() (rv bool) {
+	if d != nil && d.Enabled != nil {
+		return *d.Enabled
+	}
+	return
+}
+
+func (d *DiskEncryptionSettings) GetKeyEncryptionKey() (rv *KeyVaultKeyReference) {
+	if d != nil {
+		return d.KeyEncryptionKey
+	}
+	return
 }
 
 // DiskInstanceView - The instance view of the disk.
@@ -1391,6 +3554,27 @@ type DiskInstanceView struct {
 	Statuses []InstanceViewStatus
 }
 
+func (d *DiskInstanceView) GetEncryptionSettings() (rv []DiskEncryptionSettings) {
+	if d != nil {
+		return d.EncryptionSettings
+	}
+	return
+}
+
+func (d *DiskInstanceView) GetName() (rv string) {
+	if d != nil && d.Name != nil {
+		return *d.Name
+	}
+	return
+}
+
+func (d *DiskInstanceView) GetStatuses() (rv []InstanceViewStatus) {
+	if d != nil {
+		return d.Statuses
+	}
+	return
+}
+
 // DiskList - The List Disks operation response.
 type DiskList struct {
 	// REQUIRED; A list of disks.
@@ -1398,6 +3582,20 @@ type DiskList struct {
 
 	// The uri to fetch the next page of disks. Call ListNext() with this to fetch the next page of disks.
 	NextLink *string
+}
+
+func (d *DiskList) GetValue() (rv []Disk) {
+	if d != nil {
+		return d.Value
+	}
+	return
+}
+
+func (d *DiskList) GetNextLink() (rv string) {
+	if d != nil && d.NextLink != nil {
+		return *d.NextLink
+	}
+	return
 }
 
 // DiskProperties - Disk resource properties.
@@ -1501,6 +3699,209 @@ type DiskProperties struct {
 	UniqueID *string
 }
 
+func (d *DiskProperties) GetCreationData() (rv *CreationData) {
+	if d != nil {
+		return d.CreationData
+	}
+	return
+}
+
+func (d *DiskProperties) GetBurstingEnabled() (rv bool) {
+	if d != nil && d.BurstingEnabled != nil {
+		return *d.BurstingEnabled
+	}
+	return
+}
+
+func (d *DiskProperties) GetCompletionPercent() (rv float32) {
+	if d != nil && d.CompletionPercent != nil {
+		return *d.CompletionPercent
+	}
+	return
+}
+
+func (d *DiskProperties) GetDataAccessAuthMode() (rv *DataAccessAuthMode) {
+	if d != nil {
+		return d.DataAccessAuthMode
+	}
+	return
+}
+
+func (d *DiskProperties) GetDiskAccessID() (rv string) {
+	if d != nil && d.DiskAccessID != nil {
+		return *d.DiskAccessID
+	}
+	return
+}
+
+func (d *DiskProperties) GetDiskIOPSReadOnly() (rv int64) {
+	if d != nil && d.DiskIOPSReadOnly != nil {
+		return *d.DiskIOPSReadOnly
+	}
+	return
+}
+
+func (d *DiskProperties) GetDiskIOPSReadWrite() (rv int64) {
+	if d != nil && d.DiskIOPSReadWrite != nil {
+		return *d.DiskIOPSReadWrite
+	}
+	return
+}
+
+func (d *DiskProperties) GetDiskMBpsReadOnly() (rv int64) {
+	if d != nil && d.DiskMBpsReadOnly != nil {
+		return *d.DiskMBpsReadOnly
+	}
+	return
+}
+
+func (d *DiskProperties) GetDiskMBpsReadWrite() (rv int64) {
+	if d != nil && d.DiskMBpsReadWrite != nil {
+		return *d.DiskMBpsReadWrite
+	}
+	return
+}
+
+func (d *DiskProperties) GetDiskSizeGB() (rv int32) {
+	if d != nil && d.DiskSizeGB != nil {
+		return *d.DiskSizeGB
+	}
+	return
+}
+
+func (d *DiskProperties) GetEncryption() (rv *Encryption) {
+	if d != nil {
+		return d.Encryption
+	}
+	return
+}
+
+func (d *DiskProperties) GetEncryptionSettingsCollection() (rv *EncryptionSettingsCollection) {
+	if d != nil {
+		return d.EncryptionSettingsCollection
+	}
+	return
+}
+
+func (d *DiskProperties) GetHyperVGeneration() (rv *HyperVGeneration) {
+	if d != nil {
+		return d.HyperVGeneration
+	}
+	return
+}
+
+func (d *DiskProperties) GetMaxShares() (rv int32) {
+	if d != nil && d.MaxShares != nil {
+		return *d.MaxShares
+	}
+	return
+}
+
+func (d *DiskProperties) GetNetworkAccessPolicy() (rv *NetworkAccessPolicy) {
+	if d != nil {
+		return d.NetworkAccessPolicy
+	}
+	return
+}
+
+func (d *DiskProperties) GetOSType() (rv *OperatingSystemTypes) {
+	if d != nil {
+		return d.OSType
+	}
+	return
+}
+
+func (d *DiskProperties) GetPublicNetworkAccess() (rv *PublicNetworkAccess) {
+	if d != nil {
+		return d.PublicNetworkAccess
+	}
+	return
+}
+
+func (d *DiskProperties) GetPurchasePlan() (rv *PurchasePlanAutoGenerated) {
+	if d != nil {
+		return d.PurchasePlan
+	}
+	return
+}
+
+func (d *DiskProperties) GetSecurityProfile() (rv *DiskSecurityProfile) {
+	if d != nil {
+		return d.SecurityProfile
+	}
+	return
+}
+
+func (d *DiskProperties) GetSupportedCapabilities() (rv *SupportedCapabilities) {
+	if d != nil {
+		return d.SupportedCapabilities
+	}
+	return
+}
+
+func (d *DiskProperties) GetSupportsHibernation() (rv bool) {
+	if d != nil && d.SupportsHibernation != nil {
+		return *d.SupportsHibernation
+	}
+	return
+}
+
+func (d *DiskProperties) GetTier() (rv string) {
+	if d != nil && d.Tier != nil {
+		return *d.Tier
+	}
+	return
+}
+
+func (d *DiskProperties) GetDiskSizeBytes() (rv int64) {
+	if d != nil && d.DiskSizeBytes != nil {
+		return *d.DiskSizeBytes
+	}
+	return
+}
+
+func (d *DiskProperties) GetDiskState() (rv *DiskState) {
+	if d != nil {
+		return d.DiskState
+	}
+	return
+}
+
+func (d *DiskProperties) GetPropertyUpdatesInProgress() (rv *PropertyUpdatesInProgress) {
+	if d != nil {
+		return d.PropertyUpdatesInProgress
+	}
+	return
+}
+
+func (d *DiskProperties) GetProvisioningState() (rv string) {
+	if d != nil && d.ProvisioningState != nil {
+		return *d.ProvisioningState
+	}
+	return
+}
+
+func (d *DiskProperties) GetShareInfo() (rv []ShareInfoElement) {
+	if d != nil {
+		return d.ShareInfo
+	}
+	return
+}
+
+func (d *DiskProperties) GetTimeCreated() (rv *time.Time) {
+	if d != nil {
+		return d.TimeCreated
+	}
+	return
+}
+
+func (d *DiskProperties) GetUniqueID() (rv string) {
+	if d != nil && d.UniqueID != nil {
+		return *d.UniqueID
+	}
+	return
+}
+
 // DiskRestorePoint - Properties of disk restore point
 type DiskRestorePoint struct {
 	// Properties of an incremental disk restore point
@@ -1516,6 +3917,34 @@ type DiskRestorePoint struct {
 	Type *string
 }
 
+func (d *DiskRestorePoint) GetProperties() (rv *DiskRestorePointProperties) {
+	if d != nil {
+		return d.Properties
+	}
+	return
+}
+
+func (d *DiskRestorePoint) GetID() (rv string) {
+	if d != nil && d.ID != nil {
+		return *d.ID
+	}
+	return
+}
+
+func (d *DiskRestorePoint) GetName() (rv string) {
+	if d != nil && d.Name != nil {
+		return *d.Name
+	}
+	return
+}
+
+func (d *DiskRestorePoint) GetType() (rv string) {
+	if d != nil && d.Type != nil {
+		return *d.Type
+	}
+	return
+}
+
 // DiskRestorePointInstanceView - The instance view of a disk restore point.
 type DiskRestorePointInstanceView struct {
 	// Disk restore point Id.
@@ -1523,6 +3952,20 @@ type DiskRestorePointInstanceView struct {
 
 	// The disk restore point replication status information.
 	ReplicationStatus any
+}
+
+func (d *DiskRestorePointInstanceView) GetID() (rv string) {
+	if d != nil && d.ID != nil {
+		return *d.ID
+	}
+	return
+}
+
+func (d *DiskRestorePointInstanceView) GetReplicationStatus() (rv any) {
+	if d != nil {
+		return d.ReplicationStatus
+	}
+	return
 }
 
 // DiskRestorePointList - The List Disk Restore Points operation response.
@@ -1533,6 +3976,20 @@ type DiskRestorePointList struct {
 	// The uri to fetch the next page of disk restore points. Call ListNext() with this to fetch the next page of disk restore
 	// points.
 	NextLink *string
+}
+
+func (d *DiskRestorePointList) GetValue() (rv []DiskRestorePoint) {
+	if d != nil {
+		return d.Value
+	}
+	return
+}
+
+func (d *DiskRestorePointList) GetNextLink() (rv string) {
+	if d != nil && d.NextLink != nil {
+		return *d.NextLink
+	}
+	return
 }
 
 // DiskRestorePointProperties - Properties of an incremental disk restore point
@@ -1586,6 +4043,118 @@ type DiskRestorePointProperties struct {
 	TimeCreated *time.Time
 }
 
+func (d *DiskRestorePointProperties) GetCompletionPercent() (rv float32) {
+	if d != nil && d.CompletionPercent != nil {
+		return *d.CompletionPercent
+	}
+	return
+}
+
+func (d *DiskRestorePointProperties) GetDiskAccessID() (rv string) {
+	if d != nil && d.DiskAccessID != nil {
+		return *d.DiskAccessID
+	}
+	return
+}
+
+func (d *DiskRestorePointProperties) GetHyperVGeneration() (rv *HyperVGeneration) {
+	if d != nil {
+		return d.HyperVGeneration
+	}
+	return
+}
+
+func (d *DiskRestorePointProperties) GetNetworkAccessPolicy() (rv *NetworkAccessPolicy) {
+	if d != nil {
+		return d.NetworkAccessPolicy
+	}
+	return
+}
+
+func (d *DiskRestorePointProperties) GetPublicNetworkAccess() (rv *PublicNetworkAccess) {
+	if d != nil {
+		return d.PublicNetworkAccess
+	}
+	return
+}
+
+func (d *DiskRestorePointProperties) GetPurchasePlan() (rv *PurchasePlanAutoGenerated) {
+	if d != nil {
+		return d.PurchasePlan
+	}
+	return
+}
+
+func (d *DiskRestorePointProperties) GetSupportedCapabilities() (rv *SupportedCapabilities) {
+	if d != nil {
+		return d.SupportedCapabilities
+	}
+	return
+}
+
+func (d *DiskRestorePointProperties) GetSupportsHibernation() (rv bool) {
+	if d != nil && d.SupportsHibernation != nil {
+		return *d.SupportsHibernation
+	}
+	return
+}
+
+func (d *DiskRestorePointProperties) GetEncryption() (rv *Encryption) {
+	if d != nil {
+		return d.Encryption
+	}
+	return
+}
+
+func (d *DiskRestorePointProperties) GetFamilyID() (rv string) {
+	if d != nil && d.FamilyID != nil {
+		return *d.FamilyID
+	}
+	return
+}
+
+func (d *DiskRestorePointProperties) GetOSType() (rv *OperatingSystemTypes) {
+	if d != nil {
+		return d.OSType
+	}
+	return
+}
+
+func (d *DiskRestorePointProperties) GetReplicationState() (rv string) {
+	if d != nil && d.ReplicationState != nil {
+		return *d.ReplicationState
+	}
+	return
+}
+
+func (d *DiskRestorePointProperties) GetSourceResourceID() (rv string) {
+	if d != nil && d.SourceResourceID != nil {
+		return *d.SourceResourceID
+	}
+	return
+}
+
+func (d *DiskRestorePointProperties) GetSourceResourceLocation() (rv string) {
+	if d != nil && d.SourceResourceLocation != nil {
+		return *d.SourceResourceLocation
+	}
+	return
+}
+
+func (d *DiskRestorePointProperties) GetSourceUniqueID() (rv string) {
+	if d != nil && d.SourceUniqueID != nil {
+		return *d.SourceUniqueID
+	}
+	return
+}
+
+func (d *DiskRestorePointProperties) GetTimeCreated() (rv *time.Time) {
+	if d != nil {
+		return d.TimeCreated
+	}
+	return
+}
+
 // DiskSKU - The disks sku name. Can be StandardLRS, PremiumLRS, StandardSSDLRS, UltraSSDLRS, PremiumZRS, or StandardSSDZRS.
 type DiskSKU struct {
 	// The sku name.
@@ -1595,6 +4164,20 @@ type DiskSKU struct {
 	Tier *string
 }
 
+func (d *DiskSKU) GetName() (rv *DiskStorageAccountTypes) {
+	if d != nil {
+		return d.Name
+	}
+	return
+}
+
+func (d *DiskSKU) GetTier() (rv string) {
+	if d != nil && d.Tier != nil {
+		return *d.Tier
+	}
+	return
+}
+
 // DiskSecurityProfile - Contains the security related information for the resource.
 type DiskSecurityProfile struct {
 	// ResourceId of the disk encryption set associated to Confidential VM supported disk encrypted with customer managed key
@@ -1602,6 +4185,20 @@ type DiskSecurityProfile struct {
 
 	// Specifies the SecurityType of the VM. Applicable for OS disks only.
 	SecurityType *DiskSecurityTypes
+}
+
+func (d *DiskSecurityProfile) GetSecureVMDiskEncryptionSetID() (rv string) {
+	if d != nil && d.SecureVMDiskEncryptionSetID != nil {
+		return *d.SecureVMDiskEncryptionSetID
+	}
+	return
+}
+
+func (d *DiskSecurityProfile) GetSecurityType() (rv *DiskSecurityTypes) {
+	if d != nil {
+		return d.SecurityType
+	}
+	return
 }
 
 // DiskUpdate - Disk update resource.
@@ -1614,6 +4211,27 @@ type DiskUpdate struct {
 
 	// Resource tags
 	Tags map[string]*string
+}
+
+func (d *DiskUpdate) GetProperties() (rv *DiskUpdateProperties) {
+	if d != nil {
+		return d.Properties
+	}
+	return
+}
+
+func (d *DiskUpdate) GetSKU() (rv *DiskSKU) {
+	if d != nil {
+		return d.SKU
+	}
+	return
+}
+
+func (d *DiskUpdate) GetTags() (rv map[string]*string) {
+	if d != nil {
+		return d.Tags
+	}
+	return
 }
 
 // DiskUpdateProperties - Disk resource update properties.
@@ -1685,6 +4303,139 @@ type DiskUpdateProperties struct {
 	PropertyUpdatesInProgress *PropertyUpdatesInProgress
 }
 
+func (d *DiskUpdateProperties) GetBurstingEnabled() (rv bool) {
+	if d != nil && d.BurstingEnabled != nil {
+		return *d.BurstingEnabled
+	}
+	return
+}
+
+func (d *DiskUpdateProperties) GetDataAccessAuthMode() (rv *DataAccessAuthMode) {
+	if d != nil {
+		return d.DataAccessAuthMode
+	}
+	return
+}
+
+func (d *DiskUpdateProperties) GetDiskAccessID() (rv string) {
+	if d != nil && d.DiskAccessID != nil {
+		return *d.DiskAccessID
+	}
+	return
+}
+
+func (d *DiskUpdateProperties) GetDiskIOPSReadOnly() (rv int64) {
+	if d != nil && d.DiskIOPSReadOnly != nil {
+		return *d.DiskIOPSReadOnly
+	}
+	return
+}
+
+func (d *DiskUpdateProperties) GetDiskIOPSReadWrite() (rv int64) {
+	if d != nil && d.DiskIOPSReadWrite != nil {
+		return *d.DiskIOPSReadWrite
+	}
+	return
+}
+
+func (d *DiskUpdateProperties) GetDiskMBpsReadOnly() (rv int64) {
+	if d != nil && d.DiskMBpsReadOnly != nil {
+		return *d.DiskMBpsReadOnly
+	}
+	return
+}
+
+func (d *DiskUpdateProperties) GetDiskMBpsReadWrite() (rv int64) {
+	if d != nil && d.DiskMBpsReadWrite != nil {
+		return *d.DiskMBpsReadWrite
+	}
+	return
+}
+
+func (d *DiskUpdateProperties) GetDiskSizeGB() (rv int32) {
+	if d != nil && d.DiskSizeGB != nil {
+		return *d.DiskSizeGB
+	}
+	return
+}
+
+func (d *DiskUpdateProperties) GetEncryption() (rv *Encryption) {
+	if d != nil {
+		return d.Encryption
+	}
+	return
+}
+
+func (d *DiskUpdateProperties) GetEncryptionSettingsCollection() (rv *EncryptionSettingsCollection) {
+	if d != nil {
+		return d.EncryptionSettingsCollection
+	}
+	return
+}
+
+func (d *DiskUpdateProperties) GetMaxShares() (rv int32) {
+	if d != nil && d.MaxShares != nil {
+		return *d.MaxShares
+	}
+	return
+}
+
+func (d *DiskUpdateProperties) GetNetworkAccessPolicy() (rv *NetworkAccessPolicy) {
+	if d != nil {
+		return d.NetworkAccessPolicy
+	}
+	return
+}
+
+func (d *DiskUpdateProperties) GetOSType() (rv *OperatingSystemTypes) {
+	if d != nil {
+		return d.OSType
+	}
+	return
+}
+
+func (d *DiskUpdateProperties) GetPublicNetworkAccess() (rv *PublicNetworkAccess) {
+	if d != nil {
+		return d.PublicNetworkAccess
+	}
+	return
+}
+
+func (d *DiskUpdateProperties) GetPurchasePlan() (rv *PurchasePlanAutoGenerated) {
+	if d != nil {
+		return d.PurchasePlan
+	}
+	return
+}
+
+func (d *DiskUpdateProperties) GetSupportedCapabilities() (rv *SupportedCapabilities) {
+	if d != nil {
+		return d.SupportedCapabilities
+	}
+	return
+}
+
+func (d *DiskUpdateProperties) GetSupportsHibernation() (rv bool) {
+	if d != nil && d.SupportsHibernation != nil {
+		return *d.SupportsHibernation
+	}
+	return
+}
+
+func (d *DiskUpdateProperties) GetTier() (rv string) {
+	if d != nil && d.Tier != nil {
+		return *d.Tier
+	}
+	return
+}
+
+func (d *DiskUpdateProperties) GetPropertyUpdatesInProgress() (rv *PropertyUpdatesInProgress) {
+	if d != nil {
+		return d.PropertyUpdatesInProgress
+	}
+	return
+}
+
 // Encryption at rest settings for disk or snapshot
 type Encryption struct {
 	// ResourceId of the disk encryption set to use for enabling encryption at rest.
@@ -1692,6 +4443,20 @@ type Encryption struct {
 
 	// The type of key used to encrypt the data of the disk.
 	Type *EncryptionType
+}
+
+func (e *Encryption) GetDiskEncryptionSetID() (rv string) {
+	if e != nil && e.DiskEncryptionSetID != nil {
+		return *e.DiskEncryptionSetID
+	}
+	return
+}
+
+func (e *Encryption) GetType() (rv *EncryptionType) {
+	if e != nil {
+		return e.Type
+	}
+	return
 }
 
 // EncryptionImages - Optional. Allows users to provide customer managed keys for encrypting the OS and data disks in the
@@ -1702,6 +4467,20 @@ type EncryptionImages struct {
 
 	// Contains encryption settings for an OS disk image.
 	OSDiskImage *OSDiskImageEncryption
+}
+
+func (e *EncryptionImages) GetDataDiskImages() (rv []DataDiskImageEncryption) {
+	if e != nil {
+		return e.DataDiskImages
+	}
+	return
+}
+
+func (e *EncryptionImages) GetOSDiskImage() (rv *OSDiskImageEncryption) {
+	if e != nil {
+		return e.OSDiskImage
+	}
+	return
 }
 
 // EncryptionSetIdentity - The managed identity for the disk encryption set. It should be given permission on the key vault
@@ -1720,6 +4499,27 @@ type EncryptionSetIdentity struct {
 	// READ-ONLY; The tenant id of the Managed Identity Resource. This will be sent to the RP from ARM via the x-ms-client-tenant-id
 	// header in the PUT request if the resource has a systemAssigned(implicit) identity
 	TenantID *string
+}
+
+func (e *EncryptionSetIdentity) GetType() (rv *DiskEncryptionSetIdentityType) {
+	if e != nil {
+		return e.Type
+	}
+	return
+}
+
+func (e *EncryptionSetIdentity) GetPrincipalID() (rv string) {
+	if e != nil && e.PrincipalID != nil {
+		return *e.PrincipalID
+	}
+	return
+}
+
+func (e *EncryptionSetIdentity) GetTenantID() (rv string) {
+	if e != nil && e.TenantID != nil {
+		return *e.TenantID
+	}
+	return
 }
 
 type EncryptionSetProperties struct {
@@ -1747,6 +4547,55 @@ type EncryptionSetProperties struct {
 	ProvisioningState *string
 }
 
+func (e *EncryptionSetProperties) GetActiveKey() (rv *KeyForDiskEncryptionSet) {
+	if e != nil {
+		return e.ActiveKey
+	}
+	return
+}
+
+func (e *EncryptionSetProperties) GetEncryptionType() (rv *DiskEncryptionSetType) {
+	if e != nil {
+		return e.EncryptionType
+	}
+	return
+}
+
+func (e *EncryptionSetProperties) GetRotationToLatestKeyVersionEnabled() (rv bool) {
+	if e != nil && e.RotationToLatestKeyVersionEnabled != nil {
+		return *e.RotationToLatestKeyVersionEnabled
+	}
+	return
+}
+
+func (e *EncryptionSetProperties) GetAutoKeyRotationError() (rv *APIError) {
+	if e != nil {
+		return e.AutoKeyRotationError
+	}
+	return
+}
+
+func (e *EncryptionSetProperties) GetLastKeyRotationTimestamp() (rv *time.Time) {
+	if e != nil {
+		return e.LastKeyRotationTimestamp
+	}
+	return
+}
+
+func (e *EncryptionSetProperties) GetPreviousKeys() (rv []KeyForDiskEncryptionSet) {
+	if e != nil {
+		return e.PreviousKeys
+	}
+	return
+}
+
+func (e *EncryptionSetProperties) GetProvisioningState() (rv string) {
+	if e != nil && e.ProvisioningState != nil {
+		return *e.ProvisioningState
+	}
+	return
+}
+
 // EncryptionSettingsCollection - Encryption settings for disk or snapshot
 type EncryptionSettingsCollection struct {
 	// REQUIRED; Set this flag to true and provide DiskEncryptionKey and optional KeyEncryptionKey to enable encryption. Set this
@@ -1763,6 +4612,27 @@ type EncryptionSettingsCollection struct {
 	EncryptionSettingsVersion *string
 }
 
+func (e *EncryptionSettingsCollection) GetEnabled() (rv bool) {
+	if e != nil && e.Enabled != nil {
+		return *e.Enabled
+	}
+	return
+}
+
+func (e *EncryptionSettingsCollection) GetEncryptionSettings() (rv []EncryptionSettingsElement) {
+	if e != nil {
+		return e.EncryptionSettings
+	}
+	return
+}
+
+func (e *EncryptionSettingsCollection) GetEncryptionSettingsVersion() (rv string) {
+	if e != nil && e.EncryptionSettingsVersion != nil {
+		return *e.EncryptionSettingsVersion
+	}
+	return
+}
+
 // EncryptionSettingsElement - Encryption settings for one disk volume.
 type EncryptionSettingsElement struct {
 	// Key Vault Secret Url and vault id of the disk encryption key
@@ -1771,6 +4641,20 @@ type EncryptionSettingsElement struct {
 	// Key Vault Key Url and vault id of the key encryption key. KeyEncryptionKey is optional and when provided is used to unwrap
 	// the disk encryption key.
 	KeyEncryptionKey *KeyVaultAndKeyReference
+}
+
+func (e *EncryptionSettingsElement) GetDiskEncryptionKey() (rv *KeyVaultAndSecretReference) {
+	if e != nil {
+		return e.DiskEncryptionKey
+	}
+	return
+}
+
+func (e *EncryptionSettingsElement) GetKeyEncryptionKey() (rv *KeyVaultAndKeyReference) {
+	if e != nil {
+		return e.KeyEncryptionKey
+	}
+	return
 }
 
 // ExtendedLocation - The complex type of the extended location.
@@ -1782,6 +4666,20 @@ type ExtendedLocation struct {
 	Type *ExtendedLocationTypes
 }
 
+func (e *ExtendedLocation) GetName() (rv string) {
+	if e != nil && e.Name != nil {
+		return *e.Name
+	}
+	return
+}
+
+func (e *ExtendedLocation) GetType() (rv *ExtendedLocationTypes) {
+	if e != nil {
+		return e.Type
+	}
+	return
+}
+
 // Extension - Describes a cloud service Extension.
 type Extension struct {
 	// The name of the extension.
@@ -1789,6 +4687,20 @@ type Extension struct {
 
 	// Extension Properties.
 	Properties *CloudServiceExtensionProperties
+}
+
+func (e *Extension) GetName() (rv string) {
+	if e != nil && e.Name != nil {
+		return *e.Name
+	}
+	return
+}
+
+func (e *Extension) GetProperties() (rv *CloudServiceExtensionProperties) {
+	if e != nil {
+		return e.Properties
+	}
+	return
 }
 
 // Gallery - Specifies information about the Shared Image Gallery that you want to create or update.
@@ -1812,6 +4724,48 @@ type Gallery struct {
 	Type *string
 }
 
+func (g *Gallery) GetLocation() (rv string) {
+	if g != nil && g.Location != nil {
+		return *g.Location
+	}
+	return
+}
+
+func (g *Gallery) GetProperties() (rv *GalleryProperties) {
+	if g != nil {
+		return g.Properties
+	}
+	return
+}
+
+func (g *Gallery) GetTags() (rv map[string]*string) {
+	if g != nil {
+		return g.Tags
+	}
+	return
+}
+
+func (g *Gallery) GetID() (rv string) {
+	if g != nil && g.ID != nil {
+		return *g.ID
+	}
+	return
+}
+
+func (g *Gallery) GetName() (rv string) {
+	if g != nil && g.Name != nil {
+		return *g.Name
+	}
+	return
+}
+
+func (g *Gallery) GetType() (rv string) {
+	if g != nil && g.Type != nil {
+		return *g.Type
+	}
+	return
+}
+
 // GalleryApplication - Specifies information about the gallery Application Definition that you want to create or update.
 type GalleryApplication struct {
 	// REQUIRED; Resource location
@@ -1833,6 +4787,48 @@ type GalleryApplication struct {
 	Type *string
 }
 
+func (g *GalleryApplication) GetLocation() (rv string) {
+	if g != nil && g.Location != nil {
+		return *g.Location
+	}
+	return
+}
+
+func (g *GalleryApplication) GetProperties() (rv *GalleryApplicationProperties) {
+	if g != nil {
+		return g.Properties
+	}
+	return
+}
+
+func (g *GalleryApplication) GetTags() (rv map[string]*string) {
+	if g != nil {
+		return g.Tags
+	}
+	return
+}
+
+func (g *GalleryApplication) GetID() (rv string) {
+	if g != nil && g.ID != nil {
+		return *g.ID
+	}
+	return
+}
+
+func (g *GalleryApplication) GetName() (rv string) {
+	if g != nil && g.Name != nil {
+		return *g.Name
+	}
+	return
+}
+
+func (g *GalleryApplication) GetType() (rv string) {
+	if g != nil && g.Type != nil {
+		return *g.Type
+	}
+	return
+}
+
 // GalleryApplicationList - The List Gallery Applications operation response.
 type GalleryApplicationList struct {
 	// REQUIRED; A list of Gallery Applications.
@@ -1841,6 +4837,20 @@ type GalleryApplicationList struct {
 	// The uri to fetch the next page of Application Definitions in the Application Gallery. Call ListNext() with this to fetch
 	// the next page of gallery Application Definitions.
 	NextLink *string
+}
+
+func (g *GalleryApplicationList) GetValue() (rv []GalleryApplication) {
+	if g != nil {
+		return g.Value
+	}
+	return
+}
+
+func (g *GalleryApplicationList) GetNextLink() (rv string) {
+	if g != nil && g.NextLink != nil {
+		return *g.NextLink
+	}
+	return
 }
 
 // GalleryApplicationProperties - Describes the properties of a gallery Application Definition.
@@ -1868,6 +4878,48 @@ type GalleryApplicationProperties struct {
 	ReleaseNoteURI *string
 }
 
+func (g *GalleryApplicationProperties) GetSupportedOSType() (rv *OperatingSystemTypes) {
+	if g != nil {
+		return g.SupportedOSType
+	}
+	return
+}
+
+func (g *GalleryApplicationProperties) GetDescription() (rv string) {
+	if g != nil && g.Description != nil {
+		return *g.Description
+	}
+	return
+}
+
+func (g *GalleryApplicationProperties) GetEndOfLifeDate() (rv *time.Time) {
+	if g != nil {
+		return g.EndOfLifeDate
+	}
+	return
+}
+
+func (g *GalleryApplicationProperties) GetEula() (rv string) {
+	if g != nil && g.Eula != nil {
+		return *g.Eula
+	}
+	return
+}
+
+func (g *GalleryApplicationProperties) GetPrivacyStatementURI() (rv string) {
+	if g != nil && g.PrivacyStatementURI != nil {
+		return *g.PrivacyStatementURI
+	}
+	return
+}
+
+func (g *GalleryApplicationProperties) GetReleaseNoteURI() (rv string) {
+	if g != nil && g.ReleaseNoteURI != nil {
+		return *g.ReleaseNoteURI
+	}
+	return
+}
+
 // GalleryApplicationUpdate - Specifies information about the gallery Application Definition that you want to update.
 type GalleryApplicationUpdate struct {
 	// Describes the properties of a gallery Application Definition.
@@ -1884,6 +4936,41 @@ type GalleryApplicationUpdate struct {
 
 	// READ-ONLY; Resource type
 	Type *string
+}
+
+func (g *GalleryApplicationUpdate) GetProperties() (rv *GalleryApplicationProperties) {
+	if g != nil {
+		return g.Properties
+	}
+	return
+}
+
+func (g *GalleryApplicationUpdate) GetTags() (rv map[string]*string) {
+	if g != nil {
+		return g.Tags
+	}
+	return
+}
+
+func (g *GalleryApplicationUpdate) GetID() (rv string) {
+	if g != nil && g.ID != nil {
+		return *g.ID
+	}
+	return
+}
+
+func (g *GalleryApplicationUpdate) GetName() (rv string) {
+	if g != nil && g.Name != nil {
+		return *g.Name
+	}
+	return
+}
+
+func (g *GalleryApplicationUpdate) GetType() (rv string) {
+	if g != nil && g.Type != nil {
+		return *g.Type
+	}
+	return
 }
 
 // GalleryApplicationVersion - Specifies information about the gallery Application Version that you want to create or update.
@@ -1907,6 +4994,48 @@ type GalleryApplicationVersion struct {
 	Type *string
 }
 
+func (g *GalleryApplicationVersion) GetLocation() (rv string) {
+	if g != nil && g.Location != nil {
+		return *g.Location
+	}
+	return
+}
+
+func (g *GalleryApplicationVersion) GetProperties() (rv *GalleryApplicationVersionProperties) {
+	if g != nil {
+		return g.Properties
+	}
+	return
+}
+
+func (g *GalleryApplicationVersion) GetTags() (rv map[string]*string) {
+	if g != nil {
+		return g.Tags
+	}
+	return
+}
+
+func (g *GalleryApplicationVersion) GetID() (rv string) {
+	if g != nil && g.ID != nil {
+		return *g.ID
+	}
+	return
+}
+
+func (g *GalleryApplicationVersion) GetName() (rv string) {
+	if g != nil && g.Name != nil {
+		return *g.Name
+	}
+	return
+}
+
+func (g *GalleryApplicationVersion) GetType() (rv string) {
+	if g != nil && g.Type != nil {
+		return *g.Type
+	}
+	return
+}
+
 // GalleryApplicationVersionList - The List Gallery Application version operation response.
 type GalleryApplicationVersionList struct {
 	// REQUIRED; A list of gallery Application Versions.
@@ -1915,6 +5044,20 @@ type GalleryApplicationVersionList struct {
 	// The uri to fetch the next page of gallery Application Versions. Call ListNext() with this to fetch the next page of gallery
 	// Application Versions.
 	NextLink *string
+}
+
+func (g *GalleryApplicationVersionList) GetValue() (rv []GalleryApplicationVersion) {
+	if g != nil {
+		return g.Value
+	}
+	return
+}
+
+func (g *GalleryApplicationVersionList) GetNextLink() (rv string) {
+	if g != nil && g.NextLink != nil {
+		return *g.NextLink
+	}
+	return
 }
 
 // GalleryApplicationVersionProperties - Describes the properties of a gallery image version.
@@ -1927,6 +5070,27 @@ type GalleryApplicationVersionProperties struct {
 
 	// READ-ONLY; This is the replication status of the gallery image version.
 	ReplicationStatus *ReplicationStatus
+}
+
+func (g *GalleryApplicationVersionProperties) GetPublishingProfile() (rv *GalleryApplicationVersionPublishingProfile) {
+	if g != nil {
+		return g.PublishingProfile
+	}
+	return
+}
+
+func (g *GalleryApplicationVersionProperties) GetProvisioningState() (rv *GalleryApplicationVersionPropertiesProvisioningState) {
+	if g != nil {
+		return g.ProvisioningState
+	}
+	return
+}
+
+func (g *GalleryApplicationVersionProperties) GetReplicationStatus() (rv *ReplicationStatus) {
+	if g != nil {
+		return g.ReplicationStatus
+	}
+	return
 }
 
 // GalleryApplicationVersionPublishingProfile - The publishing profile of a gallery image version.
@@ -1965,6 +5129,83 @@ type GalleryApplicationVersionPublishingProfile struct {
 	PublishedDate *time.Time
 }
 
+func (g *GalleryApplicationVersionPublishingProfile) GetSource() (rv *UserArtifactSource) {
+	if g != nil {
+		return g.Source
+	}
+	return
+}
+
+func (g *GalleryApplicationVersionPublishingProfile) GetEnableHealthCheck() (rv bool) {
+	if g != nil && g.EnableHealthCheck != nil {
+		return *g.EnableHealthCheck
+	}
+	return
+}
+
+func (g *GalleryApplicationVersionPublishingProfile) GetEndOfLifeDate() (rv *time.Time) {
+	if g != nil {
+		return g.EndOfLifeDate
+	}
+	return
+}
+
+func (g *GalleryApplicationVersionPublishingProfile) GetExcludeFromLatest() (rv bool) {
+	if g != nil && g.ExcludeFromLatest != nil {
+		return *g.ExcludeFromLatest
+	}
+	return
+}
+
+func (g *GalleryApplicationVersionPublishingProfile) GetManageActions() (rv *UserArtifactManage) {
+	if g != nil {
+		return g.ManageActions
+	}
+	return
+}
+
+func (g *GalleryApplicationVersionPublishingProfile) GetReplicaCount() (rv int32) {
+	if g != nil && g.ReplicaCount != nil {
+		return *g.ReplicaCount
+	}
+	return
+}
+
+func (g *GalleryApplicationVersionPublishingProfile) GetReplicationMode() (rv *ReplicationMode) {
+	if g != nil {
+		return g.ReplicationMode
+	}
+	return
+}
+
+func (g *GalleryApplicationVersionPublishingProfile) GetStorageAccountType() (rv *StorageAccountType) {
+	if g != nil {
+		return g.StorageAccountType
+	}
+	return
+}
+
+func (g *GalleryApplicationVersionPublishingProfile) GetTargetExtendedLocations() (rv []GalleryTargetExtendedLocation) {
+	if g != nil {
+		return g.TargetExtendedLocations
+	}
+	return
+}
+
+func (g *GalleryApplicationVersionPublishingProfile) GetTargetRegions() (rv []TargetRegion) {
+	if g != nil {
+		return g.TargetRegions
+	}
+	return
+}
+
+func (g *GalleryApplicationVersionPublishingProfile) GetPublishedDate() (rv *time.Time) {
+	if g != nil {
+		return g.PublishedDate
+	}
+	return
+}
+
 // GalleryApplicationVersionUpdate - Specifies information about the gallery Application Version that you want to update.
 type GalleryApplicationVersionUpdate struct {
 	// Describes the properties of a gallery image version.
@@ -1983,6 +5224,41 @@ type GalleryApplicationVersionUpdate struct {
 	Type *string
 }
 
+func (g *GalleryApplicationVersionUpdate) GetProperties() (rv *GalleryApplicationVersionProperties) {
+	if g != nil {
+		return g.Properties
+	}
+	return
+}
+
+func (g *GalleryApplicationVersionUpdate) GetTags() (rv map[string]*string) {
+	if g != nil {
+		return g.Tags
+	}
+	return
+}
+
+func (g *GalleryApplicationVersionUpdate) GetID() (rv string) {
+	if g != nil && g.ID != nil {
+		return *g.ID
+	}
+	return
+}
+
+func (g *GalleryApplicationVersionUpdate) GetName() (rv string) {
+	if g != nil && g.Name != nil {
+		return *g.Name
+	}
+	return
+}
+
+func (g *GalleryApplicationVersionUpdate) GetType() (rv string) {
+	if g != nil && g.Type != nil {
+		return *g.Type
+	}
+	return
+}
+
 // GalleryArtifactVersionSource - The gallery artifact version source.
 type GalleryArtifactVersionSource struct {
 	// The id of the gallery artifact version source. Can specify a disk uri, snapshot uri, user image or storage account resource.
@@ -1990,6 +5266,20 @@ type GalleryArtifactVersionSource struct {
 
 	// The uri of the gallery artifact version source. Currently used to specify vhd/blob source.
 	URI *string
+}
+
+func (g *GalleryArtifactVersionSource) GetID() (rv string) {
+	if g != nil && g.ID != nil {
+		return *g.ID
+	}
+	return
+}
+
+func (g *GalleryArtifactVersionSource) GetURI() (rv string) {
+	if g != nil && g.URI != nil {
+		return *g.URI
+	}
+	return
 }
 
 // GalleryDataDiskImage - This is the data disk image.
@@ -2009,6 +5299,34 @@ type GalleryDataDiskImage struct {
 	SizeInGB *int32
 }
 
+func (g *GalleryDataDiskImage) GetLun() (rv int32) {
+	if g != nil && g.Lun != nil {
+		return *g.Lun
+	}
+	return
+}
+
+func (g *GalleryDataDiskImage) GetHostCaching() (rv *HostCaching) {
+	if g != nil {
+		return g.HostCaching
+	}
+	return
+}
+
+func (g *GalleryDataDiskImage) GetSource() (rv *GalleryArtifactVersionSource) {
+	if g != nil {
+		return g.Source
+	}
+	return
+}
+
+func (g *GalleryDataDiskImage) GetSizeInGB() (rv int32) {
+	if g != nil && g.SizeInGB != nil {
+		return *g.SizeInGB
+	}
+	return
+}
+
 // GalleryExtendedLocation - The name of the extended location.
 type GalleryExtendedLocation struct {
 	Name *string
@@ -2017,10 +5335,31 @@ type GalleryExtendedLocation struct {
 	Type *GalleryExtendedLocationType
 }
 
+func (g *GalleryExtendedLocation) GetName() (rv string) {
+	if g != nil && g.Name != nil {
+		return *g.Name
+	}
+	return
+}
+
+func (g *GalleryExtendedLocation) GetType() (rv *GalleryExtendedLocationType) {
+	if g != nil {
+		return g.Type
+	}
+	return
+}
+
 // GalleryIdentifier - Describes the gallery unique name.
 type GalleryIdentifier struct {
 	// READ-ONLY; The unique name of the Shared Image Gallery. This name is generated automatically by Azure.
 	UniqueName *string
+}
+
+func (g *GalleryIdentifier) GetUniqueName() (rv string) {
+	if g != nil && g.UniqueName != nil {
+		return *g.UniqueName
+	}
+	return
 }
 
 // GalleryImage - Specifies information about the gallery image definition that you want to create or update.
@@ -2044,6 +5383,48 @@ type GalleryImage struct {
 	Type *string
 }
 
+func (g *GalleryImage) GetLocation() (rv string) {
+	if g != nil && g.Location != nil {
+		return *g.Location
+	}
+	return
+}
+
+func (g *GalleryImage) GetProperties() (rv *GalleryImageProperties) {
+	if g != nil {
+		return g.Properties
+	}
+	return
+}
+
+func (g *GalleryImage) GetTags() (rv map[string]*string) {
+	if g != nil {
+		return g.Tags
+	}
+	return
+}
+
+func (g *GalleryImage) GetID() (rv string) {
+	if g != nil && g.ID != nil {
+		return *g.ID
+	}
+	return
+}
+
+func (g *GalleryImage) GetName() (rv string) {
+	if g != nil && g.Name != nil {
+		return *g.Name
+	}
+	return
+}
+
+func (g *GalleryImage) GetType() (rv string) {
+	if g != nil && g.Type != nil {
+		return *g.Type
+	}
+	return
+}
+
 // GalleryImageFeature - A feature for gallery image.
 type GalleryImageFeature struct {
 	// The name of the gallery image feature.
@@ -2051,6 +5432,20 @@ type GalleryImageFeature struct {
 
 	// The value of the gallery image feature.
 	Value *string
+}
+
+func (g *GalleryImageFeature) GetName() (rv string) {
+	if g != nil && g.Name != nil {
+		return *g.Name
+	}
+	return
+}
+
+func (g *GalleryImageFeature) GetValue() (rv string) {
+	if g != nil && g.Value != nil {
+		return *g.Value
+	}
+	return
 }
 
 // GalleryImageIdentifier - This is the gallery image definition identifier.
@@ -2065,6 +5460,27 @@ type GalleryImageIdentifier struct {
 	SKU *string
 }
 
+func (g *GalleryImageIdentifier) GetOffer() (rv string) {
+	if g != nil && g.Offer != nil {
+		return *g.Offer
+	}
+	return
+}
+
+func (g *GalleryImageIdentifier) GetPublisher() (rv string) {
+	if g != nil && g.Publisher != nil {
+		return *g.Publisher
+	}
+	return
+}
+
+func (g *GalleryImageIdentifier) GetSKU() (rv string) {
+	if g != nil && g.SKU != nil {
+		return *g.SKU
+	}
+	return
+}
+
 // GalleryImageList - The List Gallery Images operation response.
 type GalleryImageList struct {
 	// REQUIRED; A list of Shared Image Gallery images.
@@ -2073,6 +5489,20 @@ type GalleryImageList struct {
 	// The uri to fetch the next page of Image Definitions in the Shared Image Gallery. Call ListNext() with this to fetch the
 	// next page of gallery image definitions.
 	NextLink *string
+}
+
+func (g *GalleryImageList) GetValue() (rv []GalleryImage) {
+	if g != nil {
+		return g.Value
+	}
+	return
+}
+
+func (g *GalleryImageList) GetNextLink() (rv string) {
+	if g != nil && g.NextLink != nil {
+		return *g.NextLink
+	}
+	return
 }
 
 // GalleryImageProperties - Describes the properties of a gallery image definition.
@@ -2129,6 +5559,111 @@ type GalleryImageProperties struct {
 	ProvisioningState *GalleryImagePropertiesProvisioningState
 }
 
+func (g *GalleryImageProperties) GetIdentifier() (rv *GalleryImageIdentifier) {
+	if g != nil {
+		return g.Identifier
+	}
+	return
+}
+
+func (g *GalleryImageProperties) GetOSState() (rv *OperatingSystemStateTypes) {
+	if g != nil {
+		return g.OSState
+	}
+	return
+}
+
+func (g *GalleryImageProperties) GetOSType() (rv *OperatingSystemTypes) {
+	if g != nil {
+		return g.OSType
+	}
+	return
+}
+
+func (g *GalleryImageProperties) GetArchitecture() (rv *Architecture) {
+	if g != nil {
+		return g.Architecture
+	}
+	return
+}
+
+func (g *GalleryImageProperties) GetDescription() (rv string) {
+	if g != nil && g.Description != nil {
+		return *g.Description
+	}
+	return
+}
+
+func (g *GalleryImageProperties) GetDisallowed() (rv *Disallowed) {
+	if g != nil {
+		return g.Disallowed
+	}
+	return
+}
+
+func (g *GalleryImageProperties) GetEndOfLifeDate() (rv *time.Time) {
+	if g != nil {
+		return g.EndOfLifeDate
+	}
+	return
+}
+
+func (g *GalleryImageProperties) GetEula() (rv string) {
+	if g != nil && g.Eula != nil {
+		return *g.Eula
+	}
+	return
+}
+
+func (g *GalleryImageProperties) GetFeatures() (rv []GalleryImageFeature) {
+	if g != nil {
+		return g.Features
+	}
+	return
+}
+
+func (g *GalleryImageProperties) GetHyperVGeneration() (rv *HyperVGeneration) {
+	if g != nil {
+		return g.HyperVGeneration
+	}
+	return
+}
+
+func (g *GalleryImageProperties) GetPrivacyStatementURI() (rv string) {
+	if g != nil && g.PrivacyStatementURI != nil {
+		return *g.PrivacyStatementURI
+	}
+	return
+}
+
+func (g *GalleryImageProperties) GetPurchasePlan() (rv *ImagePurchasePlan) {
+	if g != nil {
+		return g.PurchasePlan
+	}
+	return
+}
+
+func (g *GalleryImageProperties) GetRecommended() (rv *RecommendedMachineConfiguration) {
+	if g != nil {
+		return g.Recommended
+	}
+	return
+}
+
+func (g *GalleryImageProperties) GetReleaseNoteURI() (rv string) {
+	if g != nil && g.ReleaseNoteURI != nil {
+		return *g.ReleaseNoteURI
+	}
+	return
+}
+
+func (g *GalleryImageProperties) GetProvisioningState() (rv *GalleryImagePropertiesProvisioningState) {
+	if g != nil {
+		return g.ProvisioningState
+	}
+	return
+}
+
 // GalleryImageUpdate - Specifies information about the gallery image definition that you want to update.
 type GalleryImageUpdate struct {
 	// Describes the properties of a gallery image definition.
@@ -2145,6 +5680,41 @@ type GalleryImageUpdate struct {
 
 	// READ-ONLY; Resource type
 	Type *string
+}
+
+func (g *GalleryImageUpdate) GetProperties() (rv *GalleryImageProperties) {
+	if g != nil {
+		return g.Properties
+	}
+	return
+}
+
+func (g *GalleryImageUpdate) GetTags() (rv map[string]*string) {
+	if g != nil {
+		return g.Tags
+	}
+	return
+}
+
+func (g *GalleryImageUpdate) GetID() (rv string) {
+	if g != nil && g.ID != nil {
+		return *g.ID
+	}
+	return
+}
+
+func (g *GalleryImageUpdate) GetName() (rv string) {
+	if g != nil && g.Name != nil {
+		return *g.Name
+	}
+	return
+}
+
+func (g *GalleryImageUpdate) GetType() (rv string) {
+	if g != nil && g.Type != nil {
+		return *g.Type
+	}
+	return
 }
 
 // GalleryImageVersion - Specifies information about the gallery image version that you want to create or update.
@@ -2168,6 +5738,48 @@ type GalleryImageVersion struct {
 	Type *string
 }
 
+func (g *GalleryImageVersion) GetLocation() (rv string) {
+	if g != nil && g.Location != nil {
+		return *g.Location
+	}
+	return
+}
+
+func (g *GalleryImageVersion) GetProperties() (rv *GalleryImageVersionProperties) {
+	if g != nil {
+		return g.Properties
+	}
+	return
+}
+
+func (g *GalleryImageVersion) GetTags() (rv map[string]*string) {
+	if g != nil {
+		return g.Tags
+	}
+	return
+}
+
+func (g *GalleryImageVersion) GetID() (rv string) {
+	if g != nil && g.ID != nil {
+		return *g.ID
+	}
+	return
+}
+
+func (g *GalleryImageVersion) GetName() (rv string) {
+	if g != nil && g.Name != nil {
+		return *g.Name
+	}
+	return
+}
+
+func (g *GalleryImageVersion) GetType() (rv string) {
+	if g != nil && g.Type != nil {
+		return *g.Type
+	}
+	return
+}
+
 // GalleryImageVersionList - The List Gallery Image version operation response.
 type GalleryImageVersionList struct {
 	// REQUIRED; A list of gallery image versions.
@@ -2176,6 +5788,20 @@ type GalleryImageVersionList struct {
 	// The uri to fetch the next page of gallery image versions. Call ListNext() with this to fetch the next page of gallery image
 	// versions.
 	NextLink *string
+}
+
+func (g *GalleryImageVersionList) GetValue() (rv []GalleryImageVersion) {
+	if g != nil {
+		return g.Value
+	}
+	return
+}
+
+func (g *GalleryImageVersionList) GetNextLink() (rv string) {
+	if g != nil && g.NextLink != nil {
+		return *g.NextLink
+	}
+	return
 }
 
 // GalleryImageVersionProperties - Describes the properties of a gallery image version.
@@ -2191,6 +5817,34 @@ type GalleryImageVersionProperties struct {
 
 	// READ-ONLY; This is the replication status of the gallery image version.
 	ReplicationStatus *ReplicationStatus
+}
+
+func (g *GalleryImageVersionProperties) GetStorageProfile() (rv *GalleryImageVersionStorageProfile) {
+	if g != nil {
+		return g.StorageProfile
+	}
+	return
+}
+
+func (g *GalleryImageVersionProperties) GetPublishingProfile() (rv *GalleryImageVersionPublishingProfile) {
+	if g != nil {
+		return g.PublishingProfile
+	}
+	return
+}
+
+func (g *GalleryImageVersionProperties) GetProvisioningState() (rv *GalleryImageVersionPropertiesProvisioningState) {
+	if g != nil {
+		return g.ProvisioningState
+	}
+	return
+}
+
+func (g *GalleryImageVersionProperties) GetReplicationStatus() (rv *ReplicationStatus) {
+	if g != nil {
+		return g.ReplicationStatus
+	}
+	return
 }
 
 // GalleryImageVersionPublishingProfile - The publishing profile of a gallery image Version.
@@ -2222,6 +5876,62 @@ type GalleryImageVersionPublishingProfile struct {
 	PublishedDate *time.Time
 }
 
+func (g *GalleryImageVersionPublishingProfile) GetEndOfLifeDate() (rv *time.Time) {
+	if g != nil {
+		return g.EndOfLifeDate
+	}
+	return
+}
+
+func (g *GalleryImageVersionPublishingProfile) GetExcludeFromLatest() (rv bool) {
+	if g != nil && g.ExcludeFromLatest != nil {
+		return *g.ExcludeFromLatest
+	}
+	return
+}
+
+func (g *GalleryImageVersionPublishingProfile) GetReplicaCount() (rv int32) {
+	if g != nil && g.ReplicaCount != nil {
+		return *g.ReplicaCount
+	}
+	return
+}
+
+func (g *GalleryImageVersionPublishingProfile) GetReplicationMode() (rv *ReplicationMode) {
+	if g != nil {
+		return g.ReplicationMode
+	}
+	return
+}
+
+func (g *GalleryImageVersionPublishingProfile) GetStorageAccountType() (rv *StorageAccountType) {
+	if g != nil {
+		return g.StorageAccountType
+	}
+	return
+}
+
+func (g *GalleryImageVersionPublishingProfile) GetTargetExtendedLocations() (rv []GalleryTargetExtendedLocation) {
+	if g != nil {
+		return g.TargetExtendedLocations
+	}
+	return
+}
+
+func (g *GalleryImageVersionPublishingProfile) GetTargetRegions() (rv []TargetRegion) {
+	if g != nil {
+		return g.TargetRegions
+	}
+	return
+}
+
+func (g *GalleryImageVersionPublishingProfile) GetPublishedDate() (rv *time.Time) {
+	if g != nil {
+		return g.PublishedDate
+	}
+	return
+}
+
 // GalleryImageVersionStorageProfile - This is the storage profile of a Gallery Image Version.
 type GalleryImageVersionStorageProfile struct {
 	// A list of data disk images.
@@ -2232,6 +5942,27 @@ type GalleryImageVersionStorageProfile struct {
 
 	// The gallery artifact version source.
 	Source *GalleryArtifactVersionSource
+}
+
+func (g *GalleryImageVersionStorageProfile) GetDataDiskImages() (rv []GalleryDataDiskImage) {
+	if g != nil {
+		return g.DataDiskImages
+	}
+	return
+}
+
+func (g *GalleryImageVersionStorageProfile) GetOSDiskImage() (rv *GalleryOSDiskImage) {
+	if g != nil {
+		return g.OSDiskImage
+	}
+	return
+}
+
+func (g *GalleryImageVersionStorageProfile) GetSource() (rv *GalleryArtifactVersionSource) {
+	if g != nil {
+		return g.Source
+	}
+	return
 }
 
 // GalleryImageVersionUpdate - Specifies information about the gallery image version that you want to update.
@@ -2252,6 +5983,41 @@ type GalleryImageVersionUpdate struct {
 	Type *string
 }
 
+func (g *GalleryImageVersionUpdate) GetProperties() (rv *GalleryImageVersionProperties) {
+	if g != nil {
+		return g.Properties
+	}
+	return
+}
+
+func (g *GalleryImageVersionUpdate) GetTags() (rv map[string]*string) {
+	if g != nil {
+		return g.Tags
+	}
+	return
+}
+
+func (g *GalleryImageVersionUpdate) GetID() (rv string) {
+	if g != nil && g.ID != nil {
+		return *g.ID
+	}
+	return
+}
+
+func (g *GalleryImageVersionUpdate) GetName() (rv string) {
+	if g != nil && g.Name != nil {
+		return *g.Name
+	}
+	return
+}
+
+func (g *GalleryImageVersionUpdate) GetType() (rv string) {
+	if g != nil && g.Type != nil {
+		return *g.Type
+	}
+	return
+}
+
 // GalleryList - The List Galleries operation response.
 type GalleryList struct {
 	// REQUIRED; A list of galleries.
@@ -2259,6 +6025,20 @@ type GalleryList struct {
 
 	// The uri to fetch the next page of galleries. Call ListNext() with this to fetch the next page of galleries.
 	NextLink *string
+}
+
+func (g *GalleryList) GetValue() (rv []Gallery) {
+	if g != nil {
+		return g.Value
+	}
+	return
+}
+
+func (g *GalleryList) GetNextLink() (rv string) {
+	if g != nil && g.NextLink != nil {
+		return *g.NextLink
+	}
+	return
 }
 
 // GalleryOSDiskImage - This is the OS disk image.
@@ -2271,6 +6051,27 @@ type GalleryOSDiskImage struct {
 
 	// READ-ONLY; This property indicates the size of the VHD to be created.
 	SizeInGB *int32
+}
+
+func (g *GalleryOSDiskImage) GetHostCaching() (rv *HostCaching) {
+	if g != nil {
+		return g.HostCaching
+	}
+	return
+}
+
+func (g *GalleryOSDiskImage) GetSource() (rv *GalleryArtifactVersionSource) {
+	if g != nil {
+		return g.Source
+	}
+	return
+}
+
+func (g *GalleryOSDiskImage) GetSizeInGB() (rv int32) {
+	if g != nil && g.SizeInGB != nil {
+		return *g.SizeInGB
+	}
+	return
 }
 
 // GalleryProperties - Describes the properties of a Shared Image Gallery.
@@ -2294,6 +6095,48 @@ type GalleryProperties struct {
 	SharingStatus *SharingStatus
 }
 
+func (g *GalleryProperties) GetDescription() (rv string) {
+	if g != nil && g.Description != nil {
+		return *g.Description
+	}
+	return
+}
+
+func (g *GalleryProperties) GetIdentifier() (rv *GalleryIdentifier) {
+	if g != nil {
+		return g.Identifier
+	}
+	return
+}
+
+func (g *GalleryProperties) GetSharingProfile() (rv *SharingProfile) {
+	if g != nil {
+		return g.SharingProfile
+	}
+	return
+}
+
+func (g *GalleryProperties) GetSoftDeletePolicy() (rv *SoftDeletePolicy) {
+	if g != nil {
+		return g.SoftDeletePolicy
+	}
+	return
+}
+
+func (g *GalleryProperties) GetProvisioningState() (rv *GalleryPropertiesProvisioningState) {
+	if g != nil {
+		return g.ProvisioningState
+	}
+	return
+}
+
+func (g *GalleryProperties) GetSharingStatus() (rv *SharingStatus) {
+	if g != nil {
+		return g.SharingStatus
+	}
+	return
+}
+
 type GalleryTargetExtendedLocation struct {
 	// Optional. Allows users to provide customer managed keys for encrypting the OS and data disks in the gallery artifact.
 	Encryption *EncryptionImages
@@ -2309,6 +6152,41 @@ type GalleryTargetExtendedLocation struct {
 
 	// Specifies the storage account type to be used to store the image. This property is not updatable.
 	StorageAccountType *StorageAccountType
+}
+
+func (g *GalleryTargetExtendedLocation) GetEncryption() (rv *EncryptionImages) {
+	if g != nil {
+		return g.Encryption
+	}
+	return
+}
+
+func (g *GalleryTargetExtendedLocation) GetExtendedLocation() (rv *GalleryExtendedLocation) {
+	if g != nil {
+		return g.ExtendedLocation
+	}
+	return
+}
+
+func (g *GalleryTargetExtendedLocation) GetExtendedLocationReplicaCount() (rv int32) {
+	if g != nil && g.ExtendedLocationReplicaCount != nil {
+		return *g.ExtendedLocationReplicaCount
+	}
+	return
+}
+
+func (g *GalleryTargetExtendedLocation) GetName() (rv string) {
+	if g != nil && g.Name != nil {
+		return *g.Name
+	}
+	return
+}
+
+func (g *GalleryTargetExtendedLocation) GetStorageAccountType() (rv *StorageAccountType) {
+	if g != nil {
+		return g.StorageAccountType
+	}
+	return
 }
 
 // GalleryUpdate - Specifies information about the Shared Image Gallery that you want to update.
@@ -2329,6 +6207,41 @@ type GalleryUpdate struct {
 	Type *string
 }
 
+func (g *GalleryUpdate) GetProperties() (rv *GalleryProperties) {
+	if g != nil {
+		return g.Properties
+	}
+	return
+}
+
+func (g *GalleryUpdate) GetTags() (rv map[string]*string) {
+	if g != nil {
+		return g.Tags
+	}
+	return
+}
+
+func (g *GalleryUpdate) GetID() (rv string) {
+	if g != nil && g.ID != nil {
+		return *g.ID
+	}
+	return
+}
+
+func (g *GalleryUpdate) GetName() (rv string) {
+	if g != nil && g.Name != nil {
+		return *g.Name
+	}
+	return
+}
+
+func (g *GalleryUpdate) GetType() (rv string) {
+	if g != nil && g.Type != nil {
+		return *g.Type
+	}
+	return
+}
+
 // GrantAccessData - Data used for requesting a SAS.
 type GrantAccessData struct {
 	// REQUIRED
@@ -2339,6 +6252,27 @@ type GrantAccessData struct {
 
 	// Set this flag to true to get additional SAS for VM guest state
 	GetSecureVMGuestStateSAS *bool
+}
+
+func (g *GrantAccessData) GetAccess() (rv *AccessLevel) {
+	if g != nil {
+		return g.Access
+	}
+	return
+}
+
+func (g *GrantAccessData) GetDurationInSeconds() (rv int32) {
+	if g != nil && g.DurationInSeconds != nil {
+		return *g.DurationInSeconds
+	}
+	return
+}
+
+func (g *GrantAccessData) GetGetSecureVMGuestStateSAS() (rv bool) {
+	if g != nil && g.GetSecureVMGuestStateSAS != nil {
+		return *g.GetSecureVMGuestStateSAS
+	}
+	return
 }
 
 // HardwareProfile - Specifies the hardware settings for the virtual machine.
@@ -2358,6 +6292,20 @@ type HardwareProfile struct {
 	// This feature is still in preview mode and is not supported for VirtualMachineScaleSet.
 	// Please follow the instructions in VM Customization [https://aka.ms/vmcustomization] for more details.
 	VMSizeProperties *VMSizeProperties
+}
+
+func (h *HardwareProfile) GetVMSize() (rv *VirtualMachineSizeTypes) {
+	if h != nil {
+		return h.VMSize
+	}
+	return
+}
+
+func (h *HardwareProfile) GetVMSizeProperties() (rv *VMSizeProperties) {
+	if h != nil {
+		return h.VMSizeProperties
+	}
+	return
 }
 
 // Image - The source user image virtual hard disk. The virtual hard disk will be copied before being attached to the virtual
@@ -2384,6 +6332,55 @@ type Image struct {
 
 	// READ-ONLY; Resource type
 	Type *string
+}
+
+func (i *Image) GetLocation() (rv string) {
+	if i != nil && i.Location != nil {
+		return *i.Location
+	}
+	return
+}
+
+func (i *Image) GetExtendedLocation() (rv *ExtendedLocation) {
+	if i != nil {
+		return i.ExtendedLocation
+	}
+	return
+}
+
+func (i *Image) GetProperties() (rv *ImageProperties) {
+	if i != nil {
+		return i.Properties
+	}
+	return
+}
+
+func (i *Image) GetTags() (rv map[string]*string) {
+	if i != nil {
+		return i.Tags
+	}
+	return
+}
+
+func (i *Image) GetID() (rv string) {
+	if i != nil && i.ID != nil {
+		return *i.ID
+	}
+	return
+}
+
+func (i *Image) GetName() (rv string) {
+	if i != nil && i.Name != nil {
+		return *i.Name
+	}
+	return
+}
+
+func (i *Image) GetType() (rv string) {
+	if i != nil && i.Type != nil {
+		return *i.Type
+	}
+	return
 }
 
 // ImageDataDisk - Describes a data disk.
@@ -2422,6 +6419,62 @@ type ImageDataDisk struct {
 	StorageAccountType *StorageAccountTypes
 }
 
+func (i *ImageDataDisk) GetLun() (rv int32) {
+	if i != nil && i.Lun != nil {
+		return *i.Lun
+	}
+	return
+}
+
+func (i *ImageDataDisk) GetBlobURI() (rv string) {
+	if i != nil && i.BlobURI != nil {
+		return *i.BlobURI
+	}
+	return
+}
+
+func (i *ImageDataDisk) GetCaching() (rv *CachingTypes) {
+	if i != nil {
+		return i.Caching
+	}
+	return
+}
+
+func (i *ImageDataDisk) GetDiskEncryptionSet() (rv *DiskEncryptionSetParameters) {
+	if i != nil {
+		return i.DiskEncryptionSet
+	}
+	return
+}
+
+func (i *ImageDataDisk) GetDiskSizeGB() (rv int32) {
+	if i != nil && i.DiskSizeGB != nil {
+		return *i.DiskSizeGB
+	}
+	return
+}
+
+func (i *ImageDataDisk) GetManagedDisk() (rv *SubResource) {
+	if i != nil {
+		return i.ManagedDisk
+	}
+	return
+}
+
+func (i *ImageDataDisk) GetSnapshot() (rv *SubResource) {
+	if i != nil {
+		return i.Snapshot
+	}
+	return
+}
+
+func (i *ImageDataDisk) GetStorageAccountType() (rv *StorageAccountTypes) {
+	if i != nil {
+		return i.StorageAccountType
+	}
+	return
+}
+
 // ImageDiskReference - The source image used for creating the disk.
 type ImageDiskReference struct {
 	// REQUIRED; A relative uri containing either a Platform Image Repository or user image reference.
@@ -2432,6 +6485,20 @@ type ImageDiskReference struct {
 	Lun *int32
 }
 
+func (i *ImageDiskReference) GetID() (rv string) {
+	if i != nil && i.ID != nil {
+		return *i.ID
+	}
+	return
+}
+
+func (i *ImageDiskReference) GetLun() (rv int32) {
+	if i != nil && i.Lun != nil {
+		return *i.Lun
+	}
+	return
+}
+
 // ImageListResult - The List Image operation response.
 type ImageListResult struct {
 	// REQUIRED; The list of Images.
@@ -2439,6 +6506,20 @@ type ImageListResult struct {
 
 	// The uri to fetch the next page of Images. Call ListNext() with this to fetch the next page of Images.
 	NextLink *string
+}
+
+func (i *ImageListResult) GetValue() (rv []Image) {
+	if i != nil {
+		return i.Value
+	}
+	return
+}
+
+func (i *ImageListResult) GetNextLink() (rv string) {
+	if i != nil && i.NextLink != nil {
+		return *i.NextLink
+	}
+	return
 }
 
 // ImageOSDisk - Describes an Operating System disk.
@@ -2483,6 +6564,69 @@ type ImageOSDisk struct {
 	StorageAccountType *StorageAccountTypes
 }
 
+func (i *ImageOSDisk) GetOSState() (rv *OperatingSystemStateTypes) {
+	if i != nil {
+		return i.OSState
+	}
+	return
+}
+
+func (i *ImageOSDisk) GetOSType() (rv *OperatingSystemTypes) {
+	if i != nil {
+		return i.OSType
+	}
+	return
+}
+
+func (i *ImageOSDisk) GetBlobURI() (rv string) {
+	if i != nil && i.BlobURI != nil {
+		return *i.BlobURI
+	}
+	return
+}
+
+func (i *ImageOSDisk) GetCaching() (rv *CachingTypes) {
+	if i != nil {
+		return i.Caching
+	}
+	return
+}
+
+func (i *ImageOSDisk) GetDiskEncryptionSet() (rv *DiskEncryptionSetParameters) {
+	if i != nil {
+		return i.DiskEncryptionSet
+	}
+	return
+}
+
+func (i *ImageOSDisk) GetDiskSizeGB() (rv int32) {
+	if i != nil && i.DiskSizeGB != nil {
+		return *i.DiskSizeGB
+	}
+	return
+}
+
+func (i *ImageOSDisk) GetManagedDisk() (rv *SubResource) {
+	if i != nil {
+		return i.ManagedDisk
+	}
+	return
+}
+
+func (i *ImageOSDisk) GetSnapshot() (rv *SubResource) {
+	if i != nil {
+		return i.Snapshot
+	}
+	return
+}
+
+func (i *ImageOSDisk) GetStorageAccountType() (rv *StorageAccountTypes) {
+	if i != nil {
+		return i.StorageAccountType
+	}
+	return
+}
+
 // ImageProperties - Describes the properties of an Image.
 type ImageProperties struct {
 	// Specifies the HyperVGenerationType of the VirtualMachine created from the image. From API Version 2019-03-01 if the image
@@ -2501,6 +6645,34 @@ type ImageProperties struct {
 	ProvisioningState *string
 }
 
+func (i *ImageProperties) GetHyperVGeneration() (rv *HyperVGenerationTypes) {
+	if i != nil {
+		return i.HyperVGeneration
+	}
+	return
+}
+
+func (i *ImageProperties) GetSourceVirtualMachine() (rv *SubResource) {
+	if i != nil {
+		return i.SourceVirtualMachine
+	}
+	return
+}
+
+func (i *ImageProperties) GetStorageProfile() (rv *ImageStorageProfile) {
+	if i != nil {
+		return i.StorageProfile
+	}
+	return
+}
+
+func (i *ImageProperties) GetProvisioningState() (rv string) {
+	if i != nil && i.ProvisioningState != nil {
+		return *i.ProvisioningState
+	}
+	return
+}
+
 // ImagePurchasePlan - Describes the gallery image definition purchase plan. This is used by marketplace images.
 type ImagePurchasePlan struct {
 	// The plan ID.
@@ -2511,6 +6683,27 @@ type ImagePurchasePlan struct {
 
 	// The publisher ID.
 	Publisher *string
+}
+
+func (i *ImagePurchasePlan) GetName() (rv string) {
+	if i != nil && i.Name != nil {
+		return *i.Name
+	}
+	return
+}
+
+func (i *ImagePurchasePlan) GetProduct() (rv string) {
+	if i != nil && i.Product != nil {
+		return *i.Product
+	}
+	return
+}
+
+func (i *ImagePurchasePlan) GetPublisher() (rv string) {
+	if i != nil && i.Publisher != nil {
+		return *i.Publisher
+	}
+	return
 }
 
 // ImageReference - Specifies information about the image to use. You can specify information about platform images, marketplace
@@ -2553,6 +6746,62 @@ type ImageReference struct {
 	ExactVersion *string
 }
 
+func (i *ImageReference) GetCommunityGalleryImageID() (rv string) {
+	if i != nil && i.CommunityGalleryImageID != nil {
+		return *i.CommunityGalleryImageID
+	}
+	return
+}
+
+func (i *ImageReference) GetID() (rv string) {
+	if i != nil && i.ID != nil {
+		return *i.ID
+	}
+	return
+}
+
+func (i *ImageReference) GetOffer() (rv string) {
+	if i != nil && i.Offer != nil {
+		return *i.Offer
+	}
+	return
+}
+
+func (i *ImageReference) GetPublisher() (rv string) {
+	if i != nil && i.Publisher != nil {
+		return *i.Publisher
+	}
+	return
+}
+
+func (i *ImageReference) GetSKU() (rv string) {
+	if i != nil && i.SKU != nil {
+		return *i.SKU
+	}
+	return
+}
+
+func (i *ImageReference) GetSharedGalleryImageID() (rv string) {
+	if i != nil && i.SharedGalleryImageID != nil {
+		return *i.SharedGalleryImageID
+	}
+	return
+}
+
+func (i *ImageReference) GetVersion() (rv string) {
+	if i != nil && i.Version != nil {
+		return *i.Version
+	}
+	return
+}
+
+func (i *ImageReference) GetExactVersion() (rv string) {
+	if i != nil && i.ExactVersion != nil {
+		return *i.ExactVersion
+	}
+	return
+}
+
 // ImageStorageProfile - Describes a storage profile.
 type ImageStorageProfile struct {
 	// Specifies the parameters that are used to add a data disk to a virtual machine.
@@ -2568,6 +6817,27 @@ type ImageStorageProfile struct {
 	ZoneResilient *bool
 }
 
+func (i *ImageStorageProfile) GetDataDisks() (rv []ImageDataDisk) {
+	if i != nil {
+		return i.DataDisks
+	}
+	return
+}
+
+func (i *ImageStorageProfile) GetOSDisk() (rv *ImageOSDisk) {
+	if i != nil {
+		return i.OSDisk
+	}
+	return
+}
+
+func (i *ImageStorageProfile) GetZoneResilient() (rv bool) {
+	if i != nil && i.ZoneResilient != nil {
+		return *i.ZoneResilient
+	}
+	return
+}
+
 // ImageUpdate - The source user image virtual hard disk. Only tags may be updated.
 type ImageUpdate struct {
 	// Describes the properties of an Image.
@@ -2575,6 +6845,20 @@ type ImageUpdate struct {
 
 	// Resource tags
 	Tags map[string]*string
+}
+
+func (i *ImageUpdate) GetProperties() (rv *ImageProperties) {
+	if i != nil {
+		return i.Properties
+	}
+	return
+}
+
+func (i *ImageUpdate) GetTags() (rv map[string]*string) {
+	if i != nil {
+		return i.Tags
+	}
+	return
 }
 
 // InnerError - Inner error details.
@@ -2586,12 +6870,40 @@ type InnerError struct {
 	Exceptiontype *string
 }
 
+func (i *InnerError) GetErrordetail() (rv string) {
+	if i != nil && i.Errordetail != nil {
+		return *i.Errordetail
+	}
+	return
+}
+
+func (i *InnerError) GetExceptiontype() (rv string) {
+	if i != nil && i.Exceptiontype != nil {
+		return *i.Exceptiontype
+	}
+	return
+}
+
 type InstanceSKU struct {
 	// READ-ONLY; The sku name.
 	Name *string
 
 	// READ-ONLY; The tier of the cloud service role instance.
 	Tier *string
+}
+
+func (i *InstanceSKU) GetName() (rv string) {
+	if i != nil && i.Name != nil {
+		return *i.Name
+	}
+	return
+}
+
+func (i *InstanceSKU) GetTier() (rv string) {
+	if i != nil && i.Tier != nil {
+		return *i.Tier
+	}
+	return
 }
 
 // InstanceViewStatus - Instance view status.
@@ -2612,10 +6924,52 @@ type InstanceViewStatus struct {
 	Time *time.Time
 }
 
+func (i *InstanceViewStatus) GetCode() (rv string) {
+	if i != nil && i.Code != nil {
+		return *i.Code
+	}
+	return
+}
+
+func (i *InstanceViewStatus) GetDisplayStatus() (rv string) {
+	if i != nil && i.DisplayStatus != nil {
+		return *i.DisplayStatus
+	}
+	return
+}
+
+func (i *InstanceViewStatus) GetLevel() (rv *StatusLevelTypes) {
+	if i != nil {
+		return i.Level
+	}
+	return
+}
+
+func (i *InstanceViewStatus) GetMessage() (rv string) {
+	if i != nil && i.Message != nil {
+		return *i.Message
+	}
+	return
+}
+
+func (i *InstanceViewStatus) GetTime() (rv *time.Time) {
+	if i != nil {
+		return i.Time
+	}
+	return
+}
+
 // InstanceViewStatusesSummary - Instance view statuses.
 type InstanceViewStatusesSummary struct {
 	// READ-ONLY
 	StatusesSummary []StatusCodeCount
+}
+
+func (i *InstanceViewStatusesSummary) GetStatusesSummary() (rv []StatusCodeCount) {
+	if i != nil {
+		return i.StatusesSummary
+	}
+	return
 }
 
 // KeyForDiskEncryptionSet - Key Vault Key Url to be used for server side encryption of Managed Disks and Snapshots
@@ -2629,6 +6983,20 @@ type KeyForDiskEncryptionSet struct {
 	SourceVault *SourceVault
 }
 
+func (k *KeyForDiskEncryptionSet) GetKeyURL() (rv string) {
+	if k != nil && k.KeyURL != nil {
+		return *k.KeyURL
+	}
+	return
+}
+
+func (k *KeyForDiskEncryptionSet) GetSourceVault() (rv *SourceVault) {
+	if k != nil {
+		return k.SourceVault
+	}
+	return
+}
+
 // KeyVaultAndKeyReference - Key Vault Key Url and vault id of KeK, KeK is optional and when provided is used to unwrap the
 // encryptionKey
 type KeyVaultAndKeyReference struct {
@@ -2637,6 +7005,20 @@ type KeyVaultAndKeyReference struct {
 
 	// REQUIRED; Resource id of the KeyVault containing the key or secret
 	SourceVault *SourceVault
+}
+
+func (k *KeyVaultAndKeyReference) GetKeyURL() (rv string) {
+	if k != nil && k.KeyURL != nil {
+		return *k.KeyURL
+	}
+	return
+}
+
+func (k *KeyVaultAndKeyReference) GetSourceVault() (rv *SourceVault) {
+	if k != nil {
+		return k.SourceVault
+	}
+	return
 }
 
 // KeyVaultAndSecretReference - Key Vault Secret Url and vault id of the encryption key
@@ -2648,6 +7030,20 @@ type KeyVaultAndSecretReference struct {
 	SourceVault *SourceVault
 }
 
+func (k *KeyVaultAndSecretReference) GetSecretURL() (rv string) {
+	if k != nil && k.SecretURL != nil {
+		return *k.SecretURL
+	}
+	return
+}
+
+func (k *KeyVaultAndSecretReference) GetSourceVault() (rv *SourceVault) {
+	if k != nil {
+		return k.SourceVault
+	}
+	return
+}
+
 // KeyVaultKeyReference - Describes a reference to Key Vault Key
 type KeyVaultKeyReference struct {
 	// REQUIRED; The URL referencing a key encryption key in Key Vault.
@@ -2657,6 +7053,20 @@ type KeyVaultKeyReference struct {
 	SourceVault *SubResource
 }
 
+func (k *KeyVaultKeyReference) GetKeyURL() (rv string) {
+	if k != nil && k.KeyURL != nil {
+		return *k.KeyURL
+	}
+	return
+}
+
+func (k *KeyVaultKeyReference) GetSourceVault() (rv *SubResource) {
+	if k != nil {
+		return k.SourceVault
+	}
+	return
+}
+
 // KeyVaultSecretReference - Describes a reference to Key Vault Secret
 type KeyVaultSecretReference struct {
 	// REQUIRED; The URL referencing a secret in a Key Vault.
@@ -2664,6 +7074,20 @@ type KeyVaultSecretReference struct {
 
 	// REQUIRED; The relative URL of the Key Vault containing the secret.
 	SourceVault *SubResource
+}
+
+func (k *KeyVaultSecretReference) GetSecretURL() (rv string) {
+	if k != nil && k.SecretURL != nil {
+		return *k.SecretURL
+	}
+	return
+}
+
+func (k *KeyVaultSecretReference) GetSourceVault() (rv *SubResource) {
+	if k != nil {
+		return k.SourceVault
+	}
+	return
 }
 
 // LastPatchInstallationSummary - Describes the properties of the last installed patch summary.
@@ -2706,6 +7130,83 @@ type LastPatchInstallationSummary struct {
 	Status *PatchOperationStatus
 }
 
+func (l *LastPatchInstallationSummary) GetError() (rv *APIError) {
+	if l != nil {
+		return l.Error
+	}
+	return
+}
+
+func (l *LastPatchInstallationSummary) GetExcludedPatchCount() (rv int32) {
+	if l != nil && l.ExcludedPatchCount != nil {
+		return *l.ExcludedPatchCount
+	}
+	return
+}
+
+func (l *LastPatchInstallationSummary) GetFailedPatchCount() (rv int32) {
+	if l != nil && l.FailedPatchCount != nil {
+		return *l.FailedPatchCount
+	}
+	return
+}
+
+func (l *LastPatchInstallationSummary) GetInstallationActivityID() (rv string) {
+	if l != nil && l.InstallationActivityID != nil {
+		return *l.InstallationActivityID
+	}
+	return
+}
+
+func (l *LastPatchInstallationSummary) GetInstalledPatchCount() (rv int32) {
+	if l != nil && l.InstalledPatchCount != nil {
+		return *l.InstalledPatchCount
+	}
+	return
+}
+
+func (l *LastPatchInstallationSummary) GetLastModifiedTime() (rv *time.Time) {
+	if l != nil {
+		return l.LastModifiedTime
+	}
+	return
+}
+
+func (l *LastPatchInstallationSummary) GetMaintenanceWindowExceeded() (rv bool) {
+	if l != nil && l.MaintenanceWindowExceeded != nil {
+		return *l.MaintenanceWindowExceeded
+	}
+	return
+}
+
+func (l *LastPatchInstallationSummary) GetNotSelectedPatchCount() (rv int32) {
+	if l != nil && l.NotSelectedPatchCount != nil {
+		return *l.NotSelectedPatchCount
+	}
+	return
+}
+
+func (l *LastPatchInstallationSummary) GetPendingPatchCount() (rv int32) {
+	if l != nil && l.PendingPatchCount != nil {
+		return *l.PendingPatchCount
+	}
+	return
+}
+
+func (l *LastPatchInstallationSummary) GetStartTime() (rv *time.Time) {
+	if l != nil {
+		return l.StartTime
+	}
+	return
+}
+
+func (l *LastPatchInstallationSummary) GetStatus() (rv *PatchOperationStatus) {
+	if l != nil {
+		return l.Status
+	}
+	return
+}
+
 // LinuxConfiguration - Specifies the Linux operating system settings on the virtual machine.
 // For a list of supported Linux distributions, see Linux on Azure-Endorsed Distributions [https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros].
 type LinuxConfiguration struct {
@@ -2724,6 +7225,34 @@ type LinuxConfiguration struct {
 	SSH *SSHConfiguration
 }
 
+func (l *LinuxConfiguration) GetDisablePasswordAuthentication() (rv bool) {
+	if l != nil && l.DisablePasswordAuthentication != nil {
+		return *l.DisablePasswordAuthentication
+	}
+	return
+}
+
+func (l *LinuxConfiguration) GetPatchSettings() (rv *LinuxPatchSettings) {
+	if l != nil {
+		return l.PatchSettings
+	}
+	return
+}
+
+func (l *LinuxConfiguration) GetProvisionVMAgent() (rv bool) {
+	if l != nil && l.ProvisionVMAgent != nil {
+		return *l.ProvisionVMAgent
+	}
+	return
+}
+
+func (l *LinuxConfiguration) GetSSH() (rv *SSHConfiguration) {
+	if l != nil {
+		return l.SSH
+	}
+	return
+}
+
 // LinuxParameters - Input for InstallPatches on a Linux VM, as directly received by the API
 type LinuxParameters struct {
 	// The update classifications to select when installing patches for Linux.
@@ -2737,6 +7266,34 @@ type LinuxParameters struct {
 
 	// packages to include in the patch operation. Format: packageName_packageVersion
 	PackageNameMasksToInclude []string
+}
+
+func (l *LinuxParameters) GetClassificationsToInclude() (rv []VMGuestPatchClassificationLinux) {
+	if l != nil {
+		return l.ClassificationsToInclude
+	}
+	return
+}
+
+func (l *LinuxParameters) GetMaintenanceRunID() (rv string) {
+	if l != nil && l.MaintenanceRunID != nil {
+		return *l.MaintenanceRunID
+	}
+	return
+}
+
+func (l *LinuxParameters) GetPackageNameMasksToExclude() (rv []string) {
+	if l != nil {
+		return l.PackageNameMasksToExclude
+	}
+	return
+}
+
+func (l *LinuxParameters) GetPackageNameMasksToInclude() (rv []string) {
+	if l != nil {
+		return l.PackageNameMasksToInclude
+	}
+	return
 }
 
 // LinuxPatchSettings - Specifies settings related to VM Guest Patching on Linux.
@@ -2756,6 +7313,20 @@ type LinuxPatchSettings struct {
 	PatchMode *LinuxVMGuestPatchMode
 }
 
+func (l *LinuxPatchSettings) GetAssessmentMode() (rv *LinuxPatchAssessmentMode) {
+	if l != nil {
+		return l.AssessmentMode
+	}
+	return
+}
+
+func (l *LinuxPatchSettings) GetPatchMode() (rv *LinuxVMGuestPatchMode) {
+	if l != nil {
+		return l.PatchMode
+	}
+	return
+}
+
 // ListUsagesResult - The List Usages operation response.
 type ListUsagesResult struct {
 	// REQUIRED; The list of compute resource usages.
@@ -2764,6 +7335,20 @@ type ListUsagesResult struct {
 	// The URI to fetch the next page of compute resource usage information. Call ListNext() with this to fetch the next page
 	// of compute resource usage information.
 	NextLink *string
+}
+
+func (l *ListUsagesResult) GetValue() (rv []Usage) {
+	if l != nil {
+		return l.Value
+	}
+	return
+}
+
+func (l *ListUsagesResult) GetNextLink() (rv string) {
+	if l != nil && l.NextLink != nil {
+		return *l.NextLink
+	}
+	return
 }
 
 // LoadBalancerConfiguration - Describes the load balancer configuration.
@@ -2778,10 +7363,38 @@ type LoadBalancerConfiguration struct {
 	ID *string
 }
 
+func (l *LoadBalancerConfiguration) GetName() (rv string) {
+	if l != nil && l.Name != nil {
+		return *l.Name
+	}
+	return
+}
+
+func (l *LoadBalancerConfiguration) GetProperties() (rv *LoadBalancerConfigurationProperties) {
+	if l != nil {
+		return l.Properties
+	}
+	return
+}
+
+func (l *LoadBalancerConfiguration) GetID() (rv string) {
+	if l != nil && l.ID != nil {
+		return *l.ID
+	}
+	return
+}
+
 type LoadBalancerConfigurationProperties struct {
 	// REQUIRED; Specifies the frontend IP to be used for the load balancer. Only IPv4 frontend IP address is supported. Each
 	// load balancer configuration must have exactly one frontend IP configuration.
 	FrontendIPConfigurations []LoadBalancerFrontendIPConfiguration
+}
+
+func (l *LoadBalancerConfigurationProperties) GetFrontendIPConfigurations() (rv []LoadBalancerFrontendIPConfiguration) {
+	if l != nil {
+		return l.FrontendIPConfigurations
+	}
+	return
 }
 
 type LoadBalancerFrontendIPConfiguration struct {
@@ -2791,6 +7404,20 @@ type LoadBalancerFrontendIPConfiguration struct {
 
 	// REQUIRED; Properties of load balancer frontend ip configuration.
 	Properties *LoadBalancerFrontendIPConfigurationProperties
+}
+
+func (l *LoadBalancerFrontendIPConfiguration) GetName() (rv string) {
+	if l != nil && l.Name != nil {
+		return *l.Name
+	}
+	return
+}
+
+func (l *LoadBalancerFrontendIPConfiguration) GetProperties() (rv *LoadBalancerFrontendIPConfigurationProperties) {
+	if l != nil {
+		return l.Properties
+	}
+	return
 }
 
 // LoadBalancerFrontendIPConfigurationProperties - Describes a cloud service IP Configuration
@@ -2805,16 +7432,51 @@ type LoadBalancerFrontendIPConfigurationProperties struct {
 	Subnet *SubResource
 }
 
+func (l *LoadBalancerFrontendIPConfigurationProperties) GetPrivateIPAddress() (rv string) {
+	if l != nil && l.PrivateIPAddress != nil {
+		return *l.PrivateIPAddress
+	}
+	return
+}
+
+func (l *LoadBalancerFrontendIPConfigurationProperties) GetPublicIPAddress() (rv *SubResource) {
+	if l != nil {
+		return l.PublicIPAddress
+	}
+	return
+}
+
+func (l *LoadBalancerFrontendIPConfigurationProperties) GetSubnet() (rv *SubResource) {
+	if l != nil {
+		return l.Subnet
+	}
+	return
+}
+
 // LogAnalyticsOperationResult - LogAnalytics operation status response
 type LogAnalyticsOperationResult struct {
 	// READ-ONLY; LogAnalyticsOutput
 	Properties *LogAnalyticsOutput
 }
 
+func (l *LogAnalyticsOperationResult) GetProperties() (rv *LogAnalyticsOutput) {
+	if l != nil {
+		return l.Properties
+	}
+	return
+}
+
 // LogAnalyticsOutput - LogAnalytics output properties
 type LogAnalyticsOutput struct {
 	// READ-ONLY; Output file Uri path to blob container.
 	Output *string
+}
+
+func (l *LogAnalyticsOutput) GetOutput() (rv string) {
+	if l != nil && l.Output != nil {
+		return *l.Output
+	}
+	return
 }
 
 // MaintenanceRedeployStatus - Maintenance Operation Status.
@@ -2841,6 +7503,55 @@ type MaintenanceRedeployStatus struct {
 	PreMaintenanceWindowStartTime *time.Time
 }
 
+func (m *MaintenanceRedeployStatus) GetIsCustomerInitiatedMaintenanceAllowed() (rv bool) {
+	if m != nil && m.IsCustomerInitiatedMaintenanceAllowed != nil {
+		return *m.IsCustomerInitiatedMaintenanceAllowed
+	}
+	return
+}
+
+func (m *MaintenanceRedeployStatus) GetLastOperationMessage() (rv string) {
+	if m != nil && m.LastOperationMessage != nil {
+		return *m.LastOperationMessage
+	}
+	return
+}
+
+func (m *MaintenanceRedeployStatus) GetLastOperationResultCode() (rv *MaintenanceOperationResultCodeTypes) {
+	if m != nil {
+		return m.LastOperationResultCode
+	}
+	return
+}
+
+func (m *MaintenanceRedeployStatus) GetMaintenanceWindowEndTime() (rv *time.Time) {
+	if m != nil {
+		return m.MaintenanceWindowEndTime
+	}
+	return
+}
+
+func (m *MaintenanceRedeployStatus) GetMaintenanceWindowStartTime() (rv *time.Time) {
+	if m != nil {
+		return m.MaintenanceWindowStartTime
+	}
+	return
+}
+
+func (m *MaintenanceRedeployStatus) GetPreMaintenanceWindowEndTime() (rv *time.Time) {
+	if m != nil {
+		return m.PreMaintenanceWindowEndTime
+	}
+	return
+}
+
+func (m *MaintenanceRedeployStatus) GetPreMaintenanceWindowStartTime() (rv *time.Time) {
+	if m != nil {
+		return m.PreMaintenanceWindowStartTime
+	}
+	return
+}
+
 // ManagedDiskParameters - The parameters of a managed disk.
 type ManagedDiskParameters struct {
 	// Specifies the customer managed disk encryption set resource id for the managed disk.
@@ -2857,6 +7568,34 @@ type ManagedDiskParameters struct {
 	StorageAccountType *StorageAccountTypes
 }
 
+func (m *ManagedDiskParameters) GetDiskEncryptionSet() (rv *DiskEncryptionSetParameters) {
+	if m != nil {
+		return m.DiskEncryptionSet
+	}
+	return
+}
+
+func (m *ManagedDiskParameters) GetID() (rv string) {
+	if m != nil && m.ID != nil {
+		return *m.ID
+	}
+	return
+}
+
+func (m *ManagedDiskParameters) GetSecurityProfile() (rv *VMDiskSecurityProfile) {
+	if m != nil {
+		return m.SecurityProfile
+	}
+	return
+}
+
+func (m *ManagedDiskParameters) GetStorageAccountType() (rv *StorageAccountTypes) {
+	if m != nil {
+		return m.StorageAccountType
+	}
+	return
+}
+
 // NetworkInterfaceReference - Describes a network interface reference.
 type NetworkInterfaceReference struct {
 	// Resource Id
@@ -2866,6 +7605,20 @@ type NetworkInterfaceReference struct {
 	Properties *NetworkInterfaceReferenceProperties
 }
 
+func (n *NetworkInterfaceReference) GetID() (rv string) {
+	if n != nil && n.ID != nil {
+		return *n.ID
+	}
+	return
+}
+
+func (n *NetworkInterfaceReference) GetProperties() (rv *NetworkInterfaceReferenceProperties) {
+	if n != nil {
+		return n.Properties
+	}
+	return
+}
+
 // NetworkInterfaceReferenceProperties - Describes a network interface reference properties.
 type NetworkInterfaceReferenceProperties struct {
 	// Specify what happens to the network interface when the VM is deleted
@@ -2873,6 +7626,20 @@ type NetworkInterfaceReferenceProperties struct {
 
 	// Specifies the primary network interface in case the virtual machine has more than 1 network interface.
 	Primary *bool
+}
+
+func (n *NetworkInterfaceReferenceProperties) GetDeleteOption() (rv *DeleteOptions) {
+	if n != nil {
+		return n.DeleteOption
+	}
+	return
+}
+
+func (n *NetworkInterfaceReferenceProperties) GetPrimary() (rv bool) {
+	if n != nil && n.Primary != nil {
+		return *n.Primary
+	}
+	return
 }
 
 // NetworkProfile - Specifies the network interfaces or the networking configuration of the virtual machine.
@@ -2885,6 +7652,27 @@ type NetworkProfile struct {
 
 	// Specifies the list of resource Ids for the network interfaces associated with the virtual machine.
 	NetworkInterfaces []NetworkInterfaceReference
+}
+
+func (n *NetworkProfile) GetNetworkAPIVersion() (rv *NetworkAPIVersion) {
+	if n != nil {
+		return n.NetworkAPIVersion
+	}
+	return
+}
+
+func (n *NetworkProfile) GetNetworkInterfaceConfigurations() (rv []VirtualMachineNetworkInterfaceConfiguration) {
+	if n != nil {
+		return n.NetworkInterfaceConfigurations
+	}
+	return
+}
+
+func (n *NetworkProfile) GetNetworkInterfaces() (rv []NetworkInterfaceReference) {
+	if n != nil {
+		return n.NetworkInterfaces
+	}
+	return
 }
 
 // OSDisk - Specifies information about the operating system disk used by the virtual machine.
@@ -2951,10 +7739,101 @@ type OSDisk struct {
 	WriteAcceleratorEnabled *bool
 }
 
+func (o *OSDisk) GetCreateOption() (rv *DiskCreateOptionTypes) {
+	if o != nil {
+		return o.CreateOption
+	}
+	return
+}
+
+func (o *OSDisk) GetCaching() (rv *CachingTypes) {
+	if o != nil {
+		return o.Caching
+	}
+	return
+}
+
+func (o *OSDisk) GetDeleteOption() (rv *DiskDeleteOptionTypes) {
+	if o != nil {
+		return o.DeleteOption
+	}
+	return
+}
+
+func (o *OSDisk) GetDiffDiskSettings() (rv *DiffDiskSettings) {
+	if o != nil {
+		return o.DiffDiskSettings
+	}
+	return
+}
+
+func (o *OSDisk) GetDiskSizeGB() (rv int32) {
+	if o != nil && o.DiskSizeGB != nil {
+		return *o.DiskSizeGB
+	}
+	return
+}
+
+func (o *OSDisk) GetEncryptionSettings() (rv *DiskEncryptionSettings) {
+	if o != nil {
+		return o.EncryptionSettings
+	}
+	return
+}
+
+func (o *OSDisk) GetImage() (rv *VirtualHardDisk) {
+	if o != nil {
+		return o.Image
+	}
+	return
+}
+
+func (o *OSDisk) GetManagedDisk() (rv *ManagedDiskParameters) {
+	if o != nil {
+		return o.ManagedDisk
+	}
+	return
+}
+
+func (o *OSDisk) GetName() (rv string) {
+	if o != nil && o.Name != nil {
+		return *o.Name
+	}
+	return
+}
+
+func (o *OSDisk) GetOSType() (rv *OperatingSystemTypes) {
+	if o != nil {
+		return o.OSType
+	}
+	return
+}
+
+func (o *OSDisk) GetVhd() (rv *VirtualHardDisk) {
+	if o != nil {
+		return o.Vhd
+	}
+	return
+}
+
+func (o *OSDisk) GetWriteAcceleratorEnabled() (rv bool) {
+	if o != nil && o.WriteAcceleratorEnabled != nil {
+		return *o.WriteAcceleratorEnabled
+	}
+	return
+}
+
 // OSDiskImage - Contains the os disk image information.
 type OSDiskImage struct {
 	// REQUIRED; The operating system of the osDiskImage.
 	OperatingSystem *OperatingSystemTypes
+}
+
+func (o *OSDiskImage) GetOperatingSystem() (rv *OperatingSystemTypes) {
+	if o != nil {
+		return o.OperatingSystem
+	}
+	return
 }
 
 // OSDiskImageEncryption - Contains encryption settings for an OS disk image.
@@ -2966,6 +7845,20 @@ type OSDiskImageEncryption struct {
 	SecurityProfile *OSDiskImageSecurityProfile
 }
 
+func (o *OSDiskImageEncryption) GetDiskEncryptionSetID() (rv string) {
+	if o != nil && o.DiskEncryptionSetID != nil {
+		return *o.DiskEncryptionSetID
+	}
+	return
+}
+
+func (o *OSDiskImageEncryption) GetSecurityProfile() (rv *OSDiskImageSecurityProfile) {
+	if o != nil {
+		return o.SecurityProfile
+	}
+	return
+}
+
 // OSDiskImageSecurityProfile - Contains security profile for an OS disk image.
 type OSDiskImageSecurityProfile struct {
 	// confidential VM encryption types
@@ -2973,6 +7866,20 @@ type OSDiskImageSecurityProfile struct {
 
 	// secure VM disk encryption set id
 	SecureVMDiskEncryptionSetID *string
+}
+
+func (o *OSDiskImageSecurityProfile) GetConfidentialVMEncryptionType() (rv *ConfidentialVMEncryptionType) {
+	if o != nil {
+		return o.ConfidentialVMEncryptionType
+	}
+	return
+}
+
+func (o *OSDiskImageSecurityProfile) GetSecureVMDiskEncryptionSetID() (rv string) {
+	if o != nil && o.SecureVMDiskEncryptionSetID != nil {
+		return *o.SecureVMDiskEncryptionSetID
+	}
+	return
 }
 
 // OSFamily - Describes a cloud service OS family.
@@ -2993,10 +7900,59 @@ type OSFamily struct {
 	Type *string
 }
 
+func (o *OSFamily) GetProperties() (rv *OSFamilyProperties) {
+	if o != nil {
+		return o.Properties
+	}
+	return
+}
+
+func (o *OSFamily) GetID() (rv string) {
+	if o != nil && o.ID != nil {
+		return *o.ID
+	}
+	return
+}
+
+func (o *OSFamily) GetLocation() (rv string) {
+	if o != nil && o.Location != nil {
+		return *o.Location
+	}
+	return
+}
+
+func (o *OSFamily) GetName() (rv string) {
+	if o != nil && o.Name != nil {
+		return *o.Name
+	}
+	return
+}
+
+func (o *OSFamily) GetType() (rv string) {
+	if o != nil && o.Type != nil {
+		return *o.Type
+	}
+	return
+}
+
 type OSFamilyListResult struct {
 	// REQUIRED
 	Value    []OSFamily
 	NextLink *string
+}
+
+func (o *OSFamilyListResult) GetValue() (rv []OSFamily) {
+	if o != nil {
+		return o.Value
+	}
+	return
+}
+
+func (o *OSFamilyListResult) GetNextLink() (rv string) {
+	if o != nil && o.NextLink != nil {
+		return *o.NextLink
+	}
+	return
 }
 
 // OSFamilyProperties - OS family properties.
@@ -3009,6 +7965,27 @@ type OSFamilyProperties struct {
 
 	// READ-ONLY; List of OS versions belonging to this family.
 	Versions []OSVersionPropertiesBase
+}
+
+func (o *OSFamilyProperties) GetLabel() (rv string) {
+	if o != nil && o.Label != nil {
+		return *o.Label
+	}
+	return
+}
+
+func (o *OSFamilyProperties) GetName() (rv string) {
+	if o != nil && o.Name != nil {
+		return *o.Name
+	}
+	return
+}
+
+func (o *OSFamilyProperties) GetVersions() (rv []OSVersionPropertiesBase) {
+	if o != nil {
+		return o.Versions
+	}
+	return
 }
 
 // OSProfile - Specifies the operating system settings for the virtual machine. Some of the settings cannot be changed once
@@ -3080,6 +8057,69 @@ type OSProfile struct {
 	WindowsConfiguration *WindowsConfiguration
 }
 
+func (o *OSProfile) GetAdminPassword() (rv string) {
+	if o != nil && o.AdminPassword != nil {
+		return *o.AdminPassword
+	}
+	return
+}
+
+func (o *OSProfile) GetAdminUsername() (rv string) {
+	if o != nil && o.AdminUsername != nil {
+		return *o.AdminUsername
+	}
+	return
+}
+
+func (o *OSProfile) GetAllowExtensionOperations() (rv bool) {
+	if o != nil && o.AllowExtensionOperations != nil {
+		return *o.AllowExtensionOperations
+	}
+	return
+}
+
+func (o *OSProfile) GetComputerName() (rv string) {
+	if o != nil && o.ComputerName != nil {
+		return *o.ComputerName
+	}
+	return
+}
+
+func (o *OSProfile) GetCustomData() (rv string) {
+	if o != nil && o.CustomData != nil {
+		return *o.CustomData
+	}
+	return
+}
+
+func (o *OSProfile) GetLinuxConfiguration() (rv *LinuxConfiguration) {
+	if o != nil {
+		return o.LinuxConfiguration
+	}
+	return
+}
+
+func (o *OSProfile) GetRequireGuestProvisionSignal() (rv bool) {
+	if o != nil && o.RequireGuestProvisionSignal != nil {
+		return *o.RequireGuestProvisionSignal
+	}
+	return
+}
+
+func (o *OSProfile) GetSecrets() (rv []VaultSecretGroup) {
+	if o != nil {
+		return o.Secrets
+	}
+	return
+}
+
+func (o *OSProfile) GetWindowsConfiguration() (rv *WindowsConfiguration) {
+	if o != nil {
+		return o.WindowsConfiguration
+	}
+	return
+}
+
 // OSVersion - Describes a cloud service OS version.
 type OSVersion struct {
 	// OS version properties.
@@ -3098,10 +8138,59 @@ type OSVersion struct {
 	Type *string
 }
 
+func (o *OSVersion) GetProperties() (rv *OSVersionProperties) {
+	if o != nil {
+		return o.Properties
+	}
+	return
+}
+
+func (o *OSVersion) GetID() (rv string) {
+	if o != nil && o.ID != nil {
+		return *o.ID
+	}
+	return
+}
+
+func (o *OSVersion) GetLocation() (rv string) {
+	if o != nil && o.Location != nil {
+		return *o.Location
+	}
+	return
+}
+
+func (o *OSVersion) GetName() (rv string) {
+	if o != nil && o.Name != nil {
+		return *o.Name
+	}
+	return
+}
+
+func (o *OSVersion) GetType() (rv string) {
+	if o != nil && o.Type != nil {
+		return *o.Type
+	}
+	return
+}
+
 type OSVersionListResult struct {
 	// REQUIRED
 	Value    []OSVersion
 	NextLink *string
+}
+
+func (o *OSVersionListResult) GetValue() (rv []OSVersion) {
+	if o != nil {
+		return o.Value
+	}
+	return
+}
+
+func (o *OSVersionListResult) GetNextLink() (rv string) {
+	if o != nil && o.NextLink != nil {
+		return *o.NextLink
+	}
+	return
 }
 
 // OSVersionProperties - OS version properties.
@@ -3125,6 +8214,48 @@ type OSVersionProperties struct {
 	Version *string
 }
 
+func (o *OSVersionProperties) GetFamily() (rv string) {
+	if o != nil && o.Family != nil {
+		return *o.Family
+	}
+	return
+}
+
+func (o *OSVersionProperties) GetFamilyLabel() (rv string) {
+	if o != nil && o.FamilyLabel != nil {
+		return *o.FamilyLabel
+	}
+	return
+}
+
+func (o *OSVersionProperties) GetIsActive() (rv bool) {
+	if o != nil && o.IsActive != nil {
+		return *o.IsActive
+	}
+	return
+}
+
+func (o *OSVersionProperties) GetIsDefault() (rv bool) {
+	if o != nil && o.IsDefault != nil {
+		return *o.IsDefault
+	}
+	return
+}
+
+func (o *OSVersionProperties) GetLabel() (rv string) {
+	if o != nil && o.Label != nil {
+		return *o.Label
+	}
+	return
+}
+
+func (o *OSVersionProperties) GetVersion() (rv string) {
+	if o != nil && o.Version != nil {
+		return *o.Version
+	}
+	return
+}
+
 // OSVersionPropertiesBase - Configuration view of an OS version.
 type OSVersionPropertiesBase struct {
 	// READ-ONLY; Specifies whether this OS version is active.
@@ -3140,10 +8271,45 @@ type OSVersionPropertiesBase struct {
 	Version *string
 }
 
+func (o *OSVersionPropertiesBase) GetIsActive() (rv bool) {
+	if o != nil && o.IsActive != nil {
+		return *o.IsActive
+	}
+	return
+}
+
+func (o *OSVersionPropertiesBase) GetIsDefault() (rv bool) {
+	if o != nil && o.IsDefault != nil {
+		return *o.IsDefault
+	}
+	return
+}
+
+func (o *OSVersionPropertiesBase) GetLabel() (rv string) {
+	if o != nil && o.Label != nil {
+		return *o.Label
+	}
+	return
+}
+
+func (o *OSVersionPropertiesBase) GetVersion() (rv string) {
+	if o != nil && o.Version != nil {
+		return *o.Version
+	}
+	return
+}
+
 // OperationListResult - The List Compute Operation operation response.
 type OperationListResult struct {
 	// READ-ONLY; The list of compute operations
 	Value []OperationValue
+}
+
+func (o *OperationListResult) GetValue() (rv []OperationValue) {
+	if o != nil {
+		return o.Value
+	}
+	return
 }
 
 // OperationValue - Describes the properties of a Compute Operation value.
@@ -3156,6 +8322,27 @@ type OperationValue struct {
 
 	// READ-ONLY; The origin of the compute operation.
 	Origin *string
+}
+
+func (o *OperationValue) GetDisplay() (rv *OperationValueDisplay) {
+	if o != nil {
+		return o.Display
+	}
+	return
+}
+
+func (o *OperationValue) GetName() (rv string) {
+	if o != nil && o.Name != nil {
+		return *o.Name
+	}
+	return
+}
+
+func (o *OperationValue) GetOrigin() (rv string) {
+	if o != nil && o.Origin != nil {
+		return *o.Origin
+	}
+	return
 }
 
 // OperationValueDisplay - Describes the properties of a Compute Operation Value Display.
@@ -3173,6 +8360,34 @@ type OperationValueDisplay struct {
 	Resource *string
 }
 
+func (o *OperationValueDisplay) GetDescription() (rv string) {
+	if o != nil && o.Description != nil {
+		return *o.Description
+	}
+	return
+}
+
+func (o *OperationValueDisplay) GetOperation() (rv string) {
+	if o != nil && o.Operation != nil {
+		return *o.Operation
+	}
+	return
+}
+
+func (o *OperationValueDisplay) GetProvider() (rv string) {
+	if o != nil && o.Provider != nil {
+		return *o.Provider
+	}
+	return
+}
+
+func (o *OperationValueDisplay) GetResource() (rv string) {
+	if o != nil && o.Resource != nil {
+		return *o.Resource
+	}
+	return
+}
+
 // OrchestrationServiceStateInput - The input for OrchestrationServiceState
 type OrchestrationServiceStateInput struct {
 	// REQUIRED; The action to be performed.
@@ -3182,6 +8397,20 @@ type OrchestrationServiceStateInput struct {
 	ServiceName *OrchestrationServiceNames
 }
 
+func (o *OrchestrationServiceStateInput) GetAction() (rv *OrchestrationServiceStateAction) {
+	if o != nil {
+		return o.Action
+	}
+	return
+}
+
+func (o *OrchestrationServiceStateInput) GetServiceName() (rv *OrchestrationServiceNames) {
+	if o != nil {
+		return o.ServiceName
+	}
+	return
+}
+
 // OrchestrationServiceSummary - Summary for an orchestration service of a virtual machine scale set.
 type OrchestrationServiceSummary struct {
 	// READ-ONLY; The name of the service.
@@ -3189,6 +8418,20 @@ type OrchestrationServiceSummary struct {
 
 	// READ-ONLY; The current state of the service.
 	ServiceState *OrchestrationServiceState
+}
+
+func (o *OrchestrationServiceSummary) GetServiceName() (rv *OrchestrationServiceNames) {
+	if o != nil {
+		return o.ServiceName
+	}
+	return
+}
+
+func (o *OrchestrationServiceSummary) GetServiceState() (rv *OrchestrationServiceState) {
+	if o != nil {
+		return o.ServiceState
+	}
+	return
 }
 
 // PatchInstallationDetail - Information about a specific patch that was encountered during an installation action.
@@ -3210,6 +8453,48 @@ type PatchInstallationDetail struct {
 
 	// READ-ONLY; The version string of the package. It may conform to Semantic Versioning. Only applies to Linux.
 	Version *string
+}
+
+func (p *PatchInstallationDetail) GetClassifications() (rv []string) {
+	if p != nil {
+		return p.Classifications
+	}
+	return
+}
+
+func (p *PatchInstallationDetail) GetInstallationState() (rv *PatchInstallationState) {
+	if p != nil {
+		return p.InstallationState
+	}
+	return
+}
+
+func (p *PatchInstallationDetail) GetKbID() (rv string) {
+	if p != nil && p.KbID != nil {
+		return *p.KbID
+	}
+	return
+}
+
+func (p *PatchInstallationDetail) GetName() (rv string) {
+	if p != nil && p.Name != nil {
+		return *p.Name
+	}
+	return
+}
+
+func (p *PatchInstallationDetail) GetPatchID() (rv string) {
+	if p != nil && p.PatchID != nil {
+		return *p.PatchID
+	}
+	return
+}
+
+func (p *PatchInstallationDetail) GetVersion() (rv string) {
+	if p != nil && p.Version != nil {
+		return *p.Version
+	}
+	return
 }
 
 // PatchSettings - Specifies settings related to VM Guest Patching on Windows.
@@ -3237,6 +8522,27 @@ type PatchSettings struct {
 	PatchMode *WindowsVMGuestPatchMode
 }
 
+func (p *PatchSettings) GetAssessmentMode() (rv *WindowsPatchAssessmentMode) {
+	if p != nil {
+		return p.AssessmentMode
+	}
+	return
+}
+
+func (p *PatchSettings) GetEnableHotpatching() (rv bool) {
+	if p != nil && p.EnableHotpatching != nil {
+		return *p.EnableHotpatching
+	}
+	return
+}
+
+func (p *PatchSettings) GetPatchMode() (rv *WindowsVMGuestPatchMode) {
+	if p != nil {
+		return p.PatchMode
+	}
+	return
+}
+
 // Plan - Specifies information about the marketplace image used to create the virtual machine. This element is only used
 // for marketplace images. Before you can use a marketplace image from an API, you must
 // enable the image for programmatic use. In the Azure portal, find the marketplace image that you want to use and then click
@@ -3256,10 +8562,45 @@ type Plan struct {
 	Publisher *string
 }
 
+func (p *Plan) GetName() (rv string) {
+	if p != nil && p.Name != nil {
+		return *p.Name
+	}
+	return
+}
+
+func (p *Plan) GetProduct() (rv string) {
+	if p != nil && p.Product != nil {
+		return *p.Product
+	}
+	return
+}
+
+func (p *Plan) GetPromotionCode() (rv string) {
+	if p != nil && p.PromotionCode != nil {
+		return *p.PromotionCode
+	}
+	return
+}
+
+func (p *Plan) GetPublisher() (rv string) {
+	if p != nil && p.Publisher != nil {
+		return *p.Publisher
+	}
+	return
+}
+
 // PrivateEndpoint - The Private Endpoint resource.
 type PrivateEndpoint struct {
 	// READ-ONLY; The ARM identifier for Private Endpoint
 	ID *string
+}
+
+func (p *PrivateEndpoint) GetID() (rv string) {
+	if p != nil && p.ID != nil {
+		return *p.ID
+	}
+	return
 }
 
 // PrivateEndpointConnection - The Private Endpoint Connection resource.
@@ -3277,6 +8618,34 @@ type PrivateEndpointConnection struct {
 	Type *string
 }
 
+func (p *PrivateEndpointConnection) GetProperties() (rv *PrivateEndpointConnectionProperties) {
+	if p != nil {
+		return p.Properties
+	}
+	return
+}
+
+func (p *PrivateEndpointConnection) GetID() (rv string) {
+	if p != nil && p.ID != nil {
+		return *p.ID
+	}
+	return
+}
+
+func (p *PrivateEndpointConnection) GetName() (rv string) {
+	if p != nil && p.Name != nil {
+		return *p.Name
+	}
+	return
+}
+
+func (p *PrivateEndpointConnection) GetType() (rv string) {
+	if p != nil && p.Type != nil {
+		return *p.Type
+	}
+	return
+}
+
 // PrivateEndpointConnectionListResult - A list of private link resources
 type PrivateEndpointConnectionListResult struct {
 	// The uri to fetch the next page of snapshots. Call ListNext() with this to fetch the next page of snapshots.
@@ -3284,6 +8653,20 @@ type PrivateEndpointConnectionListResult struct {
 
 	// Array of private endpoint connections
 	Value []PrivateEndpointConnection
+}
+
+func (p *PrivateEndpointConnectionListResult) GetNextLink() (rv string) {
+	if p != nil && p.NextLink != nil {
+		return *p.NextLink
+	}
+	return
+}
+
+func (p *PrivateEndpointConnectionListResult) GetValue() (rv []PrivateEndpointConnection) {
+	if p != nil {
+		return p.Value
+	}
+	return
 }
 
 // PrivateEndpointConnectionProperties - Properties of the PrivateEndpointConnectProperties.
@@ -3296,6 +8679,27 @@ type PrivateEndpointConnectionProperties struct {
 
 	// READ-ONLY; The provisioning state of the private endpoint connection resource.
 	ProvisioningState *PrivateEndpointConnectionProvisioningState
+}
+
+func (p *PrivateEndpointConnectionProperties) GetPrivateLinkServiceConnectionState() (rv *PrivateLinkServiceConnectionState) {
+	if p != nil {
+		return p.PrivateLinkServiceConnectionState
+	}
+	return
+}
+
+func (p *PrivateEndpointConnectionProperties) GetPrivateEndpoint() (rv *PrivateEndpoint) {
+	if p != nil {
+		return p.PrivateEndpoint
+	}
+	return
+}
+
+func (p *PrivateEndpointConnectionProperties) GetProvisioningState() (rv *PrivateEndpointConnectionProvisioningState) {
+	if p != nil {
+		return p.ProvisioningState
+	}
+	return
 }
 
 // PrivateLinkResource - A private link resource
@@ -3313,10 +8717,45 @@ type PrivateLinkResource struct {
 	Type *string
 }
 
+func (p *PrivateLinkResource) GetProperties() (rv *PrivateLinkResourceProperties) {
+	if p != nil {
+		return p.Properties
+	}
+	return
+}
+
+func (p *PrivateLinkResource) GetID() (rv string) {
+	if p != nil && p.ID != nil {
+		return *p.ID
+	}
+	return
+}
+
+func (p *PrivateLinkResource) GetName() (rv string) {
+	if p != nil && p.Name != nil {
+		return *p.Name
+	}
+	return
+}
+
+func (p *PrivateLinkResource) GetType() (rv string) {
+	if p != nil && p.Type != nil {
+		return *p.Type
+	}
+	return
+}
+
 // PrivateLinkResourceListResult - A list of private link resources
 type PrivateLinkResourceListResult struct {
 	// Array of private link resources
 	Value []PrivateLinkResource
+}
+
+func (p *PrivateLinkResourceListResult) GetValue() (rv []PrivateLinkResource) {
+	if p != nil {
+		return p.Value
+	}
+	return
 }
 
 // PrivateLinkResourceProperties - Properties of a private link resource.
@@ -3329,6 +8768,27 @@ type PrivateLinkResourceProperties struct {
 
 	// READ-ONLY; The private link resource required member names.
 	RequiredMembers []string
+}
+
+func (p *PrivateLinkResourceProperties) GetRequiredZoneNames() (rv []string) {
+	if p != nil {
+		return p.RequiredZoneNames
+	}
+	return
+}
+
+func (p *PrivateLinkResourceProperties) GetGroupID() (rv string) {
+	if p != nil && p.GroupID != nil {
+		return *p.GroupID
+	}
+	return
+}
+
+func (p *PrivateLinkResourceProperties) GetRequiredMembers() (rv []string) {
+	if p != nil {
+		return p.RequiredMembers
+	}
+	return
 }
 
 // PrivateLinkServiceConnectionState - A collection of information about the state of the connection between service consumer
@@ -3344,10 +8804,38 @@ type PrivateLinkServiceConnectionState struct {
 	Status *PrivateEndpointServiceConnectionStatus
 }
 
+func (p *PrivateLinkServiceConnectionState) GetActionsRequired() (rv string) {
+	if p != nil && p.ActionsRequired != nil {
+		return *p.ActionsRequired
+	}
+	return
+}
+
+func (p *PrivateLinkServiceConnectionState) GetDescription() (rv string) {
+	if p != nil && p.Description != nil {
+		return *p.Description
+	}
+	return
+}
+
+func (p *PrivateLinkServiceConnectionState) GetStatus() (rv *PrivateEndpointServiceConnectionStatus) {
+	if p != nil {
+		return p.Status
+	}
+	return
+}
+
 // PropertyUpdatesInProgress - Properties of the disk for which update is pending.
 type PropertyUpdatesInProgress struct {
 	// The target performance tier of the disk if a tier change operation is in progress.
 	TargetTier *string
+}
+
+func (p *PropertyUpdatesInProgress) GetTargetTier() (rv string) {
+	if p != nil && p.TargetTier != nil {
+		return *p.TargetTier
+	}
+	return
 }
 
 // ProximityPlacementGroup - Specifies information about the proximity placement group.
@@ -3371,6 +8859,48 @@ type ProximityPlacementGroup struct {
 	Type *string
 }
 
+func (p *ProximityPlacementGroup) GetLocation() (rv string) {
+	if p != nil && p.Location != nil {
+		return *p.Location
+	}
+	return
+}
+
+func (p *ProximityPlacementGroup) GetProperties() (rv *ProximityPlacementGroupProperties) {
+	if p != nil {
+		return p.Properties
+	}
+	return
+}
+
+func (p *ProximityPlacementGroup) GetTags() (rv map[string]*string) {
+	if p != nil {
+		return p.Tags
+	}
+	return
+}
+
+func (p *ProximityPlacementGroup) GetID() (rv string) {
+	if p != nil && p.ID != nil {
+		return *p.ID
+	}
+	return
+}
+
+func (p *ProximityPlacementGroup) GetName() (rv string) {
+	if p != nil && p.Name != nil {
+		return *p.Name
+	}
+	return
+}
+
+func (p *ProximityPlacementGroup) GetType() (rv string) {
+	if p != nil && p.Type != nil {
+		return *p.Type
+	}
+	return
+}
+
 // ProximityPlacementGroupListResult - The List Proximity Placement Group operation response.
 type ProximityPlacementGroupListResult struct {
 	// REQUIRED; The list of proximity placement groups
@@ -3378,6 +8908,20 @@ type ProximityPlacementGroupListResult struct {
 
 	// The URI to fetch the next page of proximity placement groups.
 	NextLink *string
+}
+
+func (p *ProximityPlacementGroupListResult) GetValue() (rv []ProximityPlacementGroup) {
+	if p != nil {
+		return p.Value
+	}
+	return
+}
+
+func (p *ProximityPlacementGroupListResult) GetNextLink() (rv string) {
+	if p != nil && p.NextLink != nil {
+		return *p.NextLink
+	}
+	return
 }
 
 // ProximityPlacementGroupProperties - Describes the properties of a Proximity Placement Group.
@@ -3401,10 +8945,52 @@ type ProximityPlacementGroupProperties struct {
 	VirtualMachines []SubResourceWithColocationStatus
 }
 
+func (p *ProximityPlacementGroupProperties) GetColocationStatus() (rv *InstanceViewStatus) {
+	if p != nil {
+		return p.ColocationStatus
+	}
+	return
+}
+
+func (p *ProximityPlacementGroupProperties) GetProximityPlacementGroupType() (rv *ProximityPlacementGroupType) {
+	if p != nil {
+		return p.ProximityPlacementGroupType
+	}
+	return
+}
+
+func (p *ProximityPlacementGroupProperties) GetAvailabilitySets() (rv []SubResourceWithColocationStatus) {
+	if p != nil {
+		return p.AvailabilitySets
+	}
+	return
+}
+
+func (p *ProximityPlacementGroupProperties) GetVirtualMachineScaleSets() (rv []SubResourceWithColocationStatus) {
+	if p != nil {
+		return p.VirtualMachineScaleSets
+	}
+	return
+}
+
+func (p *ProximityPlacementGroupProperties) GetVirtualMachines() (rv []SubResourceWithColocationStatus) {
+	if p != nil {
+		return p.VirtualMachines
+	}
+	return
+}
+
 // ProximityPlacementGroupUpdate - Specifies information about the proximity placement group.
 type ProximityPlacementGroupUpdate struct {
 	// Resource tags
 	Tags map[string]*string
+}
+
+func (p *ProximityPlacementGroupUpdate) GetTags() (rv map[string]*string) {
+	if p != nil {
+		return p.Tags
+	}
+	return
 }
 
 // PublicIPAddressSKU - Describes the public IP Sku. It can only be set with OrchestrationMode as Flexible.
@@ -3414,6 +9000,20 @@ type PublicIPAddressSKU struct {
 
 	// Specify public IP sku tier
 	Tier *PublicIPAddressSKUTier
+}
+
+func (p *PublicIPAddressSKU) GetName() (rv *PublicIPAddressSKUName) {
+	if p != nil {
+		return p.Name
+	}
+	return
+}
+
+func (p *PublicIPAddressSKU) GetTier() (rv *PublicIPAddressSKUTier) {
+	if p != nil {
+		return p.Tier
+	}
+	return
 }
 
 // PurchasePlan - Used for establishing the purchase context of any 3rd Party artifact through MarketPlace.
@@ -3427,6 +9027,27 @@ type PurchasePlan struct {
 
 	// REQUIRED; The publisher ID.
 	Publisher *string
+}
+
+func (p *PurchasePlan) GetName() (rv string) {
+	if p != nil && p.Name != nil {
+		return *p.Name
+	}
+	return
+}
+
+func (p *PurchasePlan) GetProduct() (rv string) {
+	if p != nil && p.Product != nil {
+		return *p.Product
+	}
+	return
+}
+
+func (p *PurchasePlan) GetPublisher() (rv string) {
+	if p != nil && p.Publisher != nil {
+		return *p.Publisher
+	}
+	return
 }
 
 // PurchasePlanAutoGenerated - Used for establishing the purchase context of any 3rd Party artifact through MarketPlace.
@@ -3445,6 +9066,34 @@ type PurchasePlanAutoGenerated struct {
 	PromotionCode *string
 }
 
+func (p *PurchasePlanAutoGenerated) GetName() (rv string) {
+	if p != nil && p.Name != nil {
+		return *p.Name
+	}
+	return
+}
+
+func (p *PurchasePlanAutoGenerated) GetProduct() (rv string) {
+	if p != nil && p.Product != nil {
+		return *p.Product
+	}
+	return
+}
+
+func (p *PurchasePlanAutoGenerated) GetPublisher() (rv string) {
+	if p != nil && p.Publisher != nil {
+		return *p.Publisher
+	}
+	return
+}
+
+func (p *PurchasePlanAutoGenerated) GetPromotionCode() (rv string) {
+	if p != nil && p.PromotionCode != nil {
+		return *p.PromotionCode
+	}
+	return
+}
+
 // RecommendedMachineConfiguration - The properties describe the recommended machine configuration for this Image Definition.
 // These properties are updatable.
 type RecommendedMachineConfiguration struct {
@@ -3455,6 +9104,20 @@ type RecommendedMachineConfiguration struct {
 	VCPUs *ResourceRange
 }
 
+func (r *RecommendedMachineConfiguration) GetMemory() (rv *ResourceRange) {
+	if r != nil {
+		return r.Memory
+	}
+	return
+}
+
+func (r *RecommendedMachineConfiguration) GetVCPUs() (rv *ResourceRange) {
+	if r != nil {
+		return r.VCPUs
+	}
+	return
+}
+
 // RecoveryWalkResponse - Response after calling a manual recovery walk
 type RecoveryWalkResponse struct {
 	// READ-ONLY; The next update domain that needs to be walked. Null means walk spanning all update domains has been completed
@@ -3462,6 +9125,20 @@ type RecoveryWalkResponse struct {
 
 	// READ-ONLY; Whether the recovery walk was performed
 	WalkPerformed *bool
+}
+
+func (r *RecoveryWalkResponse) GetNextPlatformUpdateDomain() (rv int32) {
+	if r != nil && r.NextPlatformUpdateDomain != nil {
+		return *r.NextPlatformUpdateDomain
+	}
+	return
+}
+
+func (r *RecoveryWalkResponse) GetWalkPerformed() (rv bool) {
+	if r != nil && r.WalkPerformed != nil {
+		return *r.WalkPerformed
+	}
+	return
 }
 
 // RegionalReplicationStatus - This is the regional replication status.
@@ -3479,6 +9156,34 @@ type RegionalReplicationStatus struct {
 	State *ReplicationState
 }
 
+func (r *RegionalReplicationStatus) GetDetails() (rv string) {
+	if r != nil && r.Details != nil {
+		return *r.Details
+	}
+	return
+}
+
+func (r *RegionalReplicationStatus) GetProgress() (rv int32) {
+	if r != nil && r.Progress != nil {
+		return *r.Progress
+	}
+	return
+}
+
+func (r *RegionalReplicationStatus) GetRegion() (rv string) {
+	if r != nil && r.Region != nil {
+		return *r.Region
+	}
+	return
+}
+
+func (r *RegionalReplicationStatus) GetState() (rv *ReplicationState) {
+	if r != nil {
+		return r.State
+	}
+	return
+}
+
 // RegionalSharingStatus - Gallery regional sharing status
 type RegionalSharingStatus struct {
 	// Details of gallery regional sharing failure.
@@ -3491,6 +9196,27 @@ type RegionalSharingStatus struct {
 	State *SharingState
 }
 
+func (r *RegionalSharingStatus) GetDetails() (rv string) {
+	if r != nil && r.Details != nil {
+		return *r.Details
+	}
+	return
+}
+
+func (r *RegionalSharingStatus) GetRegion() (rv string) {
+	if r != nil && r.Region != nil {
+		return *r.Region
+	}
+	return
+}
+
+func (r *RegionalSharingStatus) GetState() (rv *SharingState) {
+	if r != nil {
+		return r.State
+	}
+	return
+}
+
 // ReplicationStatus - This is the replication status of the gallery image version.
 type ReplicationStatus struct {
 	// READ-ONLY; This is the aggregated replication status based on all the regional replication status flags.
@@ -3498,6 +9224,20 @@ type ReplicationStatus struct {
 
 	// READ-ONLY; This is a summary of replication status for each region.
 	Summary []RegionalReplicationStatus
+}
+
+func (r *ReplicationStatus) GetAggregatedState() (rv *AggregatedReplicationState) {
+	if r != nil {
+		return r.AggregatedState
+	}
+	return
+}
+
+func (r *ReplicationStatus) GetSummary() (rv []RegionalReplicationStatus) {
+	if r != nil {
+		return r.Summary
+	}
+	return
 }
 
 // RequestRateByIntervalInput - Api request input for LogAnalytics getRequestRateByInterval Api.
@@ -3530,6 +9270,69 @@ type RequestRateByIntervalInput struct {
 	GroupByUserAgent *bool
 }
 
+func (r *RequestRateByIntervalInput) GetBlobContainerSasURI() (rv string) {
+	if r != nil && r.BlobContainerSasURI != nil {
+		return *r.BlobContainerSasURI
+	}
+	return
+}
+
+func (r *RequestRateByIntervalInput) GetFromTime() (rv *time.Time) {
+	if r != nil {
+		return r.FromTime
+	}
+	return
+}
+
+func (r *RequestRateByIntervalInput) GetIntervalLength() (rv *IntervalInMins) {
+	if r != nil {
+		return r.IntervalLength
+	}
+	return
+}
+
+func (r *RequestRateByIntervalInput) GetToTime() (rv *time.Time) {
+	if r != nil {
+		return r.ToTime
+	}
+	return
+}
+
+func (r *RequestRateByIntervalInput) GetGroupByClientApplicationID() (rv bool) {
+	if r != nil && r.GroupByClientApplicationID != nil {
+		return *r.GroupByClientApplicationID
+	}
+	return
+}
+
+func (r *RequestRateByIntervalInput) GetGroupByOperationName() (rv bool) {
+	if r != nil && r.GroupByOperationName != nil {
+		return *r.GroupByOperationName
+	}
+	return
+}
+
+func (r *RequestRateByIntervalInput) GetGroupByResourceName() (rv bool) {
+	if r != nil && r.GroupByResourceName != nil {
+		return *r.GroupByResourceName
+	}
+	return
+}
+
+func (r *RequestRateByIntervalInput) GetGroupByThrottlePolicy() (rv bool) {
+	if r != nil && r.GroupByThrottlePolicy != nil {
+		return *r.GroupByThrottlePolicy
+	}
+	return
+}
+
+func (r *RequestRateByIntervalInput) GetGroupByUserAgent() (rv bool) {
+	if r != nil && r.GroupByUserAgent != nil {
+		return *r.GroupByUserAgent
+	}
+	return
+}
+
 // ResourceInstanceViewStatus - Instance view status.
 type ResourceInstanceViewStatus struct {
 	// The level code.
@@ -3548,6 +9351,41 @@ type ResourceInstanceViewStatus struct {
 	Time *time.Time
 }
 
+func (r *ResourceInstanceViewStatus) GetLevel() (rv *StatusLevelTypes) {
+	if r != nil {
+		return r.Level
+	}
+	return
+}
+
+func (r *ResourceInstanceViewStatus) GetCode() (rv string) {
+	if r != nil && r.Code != nil {
+		return *r.Code
+	}
+	return
+}
+
+func (r *ResourceInstanceViewStatus) GetDisplayStatus() (rv string) {
+	if r != nil && r.DisplayStatus != nil {
+		return *r.DisplayStatus
+	}
+	return
+}
+
+func (r *ResourceInstanceViewStatus) GetMessage() (rv string) {
+	if r != nil && r.Message != nil {
+		return *r.Message
+	}
+	return
+}
+
+func (r *ResourceInstanceViewStatus) GetTime() (rv *time.Time) {
+	if r != nil {
+		return r.Time
+	}
+	return
+}
+
 // ResourceRange - Describes the resource range.
 type ResourceRange struct {
 	// The maximum number of the resource.
@@ -3555,6 +9393,20 @@ type ResourceRange struct {
 
 	// The minimum number of the resource.
 	Min *int32
+}
+
+func (r *ResourceRange) GetMax() (rv int32) {
+	if r != nil && r.Max != nil {
+		return *r.Max
+	}
+	return
+}
+
+func (r *ResourceRange) GetMin() (rv int32) {
+	if r != nil && r.Min != nil {
+		return *r.Min
+	}
+	return
 }
 
 // ResourceSKU - Describes an available Compute SKU.
@@ -3602,6 +9454,97 @@ type ResourceSKU struct {
 	Tier *string
 }
 
+func (r *ResourceSKU) GetAPIVersions() (rv []string) {
+	if r != nil {
+		return r.APIVersions
+	}
+	return
+}
+
+func (r *ResourceSKU) GetCapabilities() (rv []ResourceSKUCapabilities) {
+	if r != nil {
+		return r.Capabilities
+	}
+	return
+}
+
+func (r *ResourceSKU) GetCapacity() (rv *ResourceSKUCapacity) {
+	if r != nil {
+		return r.Capacity
+	}
+	return
+}
+
+func (r *ResourceSKU) GetCosts() (rv []ResourceSKUCosts) {
+	if r != nil {
+		return r.Costs
+	}
+	return
+}
+
+func (r *ResourceSKU) GetFamily() (rv string) {
+	if r != nil && r.Family != nil {
+		return *r.Family
+	}
+	return
+}
+
+func (r *ResourceSKU) GetKind() (rv string) {
+	if r != nil && r.Kind != nil {
+		return *r.Kind
+	}
+	return
+}
+
+func (r *ResourceSKU) GetLocationInfo() (rv []ResourceSKULocationInfo) {
+	if r != nil {
+		return r.LocationInfo
+	}
+	return
+}
+
+func (r *ResourceSKU) GetLocations() (rv []string) {
+	if r != nil {
+		return r.Locations
+	}
+	return
+}
+
+func (r *ResourceSKU) GetName() (rv string) {
+	if r != nil && r.Name != nil {
+		return *r.Name
+	}
+	return
+}
+
+func (r *ResourceSKU) GetResourceType() (rv string) {
+	if r != nil && r.ResourceType != nil {
+		return *r.ResourceType
+	}
+	return
+}
+
+func (r *ResourceSKU) GetRestrictions() (rv []ResourceSKURestrictions) {
+	if r != nil {
+		return r.Restrictions
+	}
+	return
+}
+
+func (r *ResourceSKU) GetSize() (rv string) {
+	if r != nil && r.Size != nil {
+		return *r.Size
+	}
+	return
+}
+
+func (r *ResourceSKU) GetTier() (rv string) {
+	if r != nil && r.Tier != nil {
+		return *r.Tier
+	}
+	return
+}
+
 // ResourceSKUCapabilities - Describes The SKU capabilities object.
 type ResourceSKUCapabilities struct {
 	// READ-ONLY; An invariant to describe the feature.
@@ -3609,6 +9552,20 @@ type ResourceSKUCapabilities struct {
 
 	// READ-ONLY; An invariant if the feature is measured by quantity.
 	Value *string
+}
+
+func (r *ResourceSKUCapabilities) GetName() (rv string) {
+	if r != nil && r.Name != nil {
+		return *r.Name
+	}
+	return
+}
+
+func (r *ResourceSKUCapabilities) GetValue() (rv string) {
+	if r != nil && r.Value != nil {
+		return *r.Value
+	}
+	return
 }
 
 // ResourceSKUCapacity - Describes scaling information of a SKU.
@@ -3626,6 +9583,34 @@ type ResourceSKUCapacity struct {
 	ScaleType *ResourceSKUCapacityScaleType
 }
 
+func (r *ResourceSKUCapacity) GetDefault() (rv int64) {
+	if r != nil && r.Default != nil {
+		return *r.Default
+	}
+	return
+}
+
+func (r *ResourceSKUCapacity) GetMaximum() (rv int64) {
+	if r != nil && r.Maximum != nil {
+		return *r.Maximum
+	}
+	return
+}
+
+func (r *ResourceSKUCapacity) GetMinimum() (rv int64) {
+	if r != nil && r.Minimum != nil {
+		return *r.Minimum
+	}
+	return
+}
+
+func (r *ResourceSKUCapacity) GetScaleType() (rv *ResourceSKUCapacityScaleType) {
+	if r != nil {
+		return r.ScaleType
+	}
+	return
+}
+
 // ResourceSKUCosts - Describes metadata for retrieving price info.
 type ResourceSKUCosts struct {
 	// READ-ONLY; An invariant to show the extended unit.
@@ -3636,6 +9621,27 @@ type ResourceSKUCosts struct {
 
 	// READ-ONLY; The multiplier is needed to extend the base metered cost.
 	Quantity *int64
+}
+
+func (r *ResourceSKUCosts) GetExtendedUnit() (rv string) {
+	if r != nil && r.ExtendedUnit != nil {
+		return *r.ExtendedUnit
+	}
+	return
+}
+
+func (r *ResourceSKUCosts) GetMeterID() (rv string) {
+	if r != nil && r.MeterID != nil {
+		return *r.MeterID
+	}
+	return
+}
+
+func (r *ResourceSKUCosts) GetQuantity() (rv int64) {
+	if r != nil && r.Quantity != nil {
+		return *r.Quantity
+	}
+	return
 }
 
 // ResourceSKULocationInfo - Describes an available Compute SKU Location Information.
@@ -3656,6 +9662,41 @@ type ResourceSKULocationInfo struct {
 	Zones []string
 }
 
+func (r *ResourceSKULocationInfo) GetExtendedLocations() (rv []string) {
+	if r != nil {
+		return r.ExtendedLocations
+	}
+	return
+}
+
+func (r *ResourceSKULocationInfo) GetLocation() (rv string) {
+	if r != nil && r.Location != nil {
+		return *r.Location
+	}
+	return
+}
+
+func (r *ResourceSKULocationInfo) GetType() (rv *ExtendedLocationType) {
+	if r != nil {
+		return r.Type
+	}
+	return
+}
+
+func (r *ResourceSKULocationInfo) GetZoneDetails() (rv []ResourceSKUZoneDetails) {
+	if r != nil {
+		return r.ZoneDetails
+	}
+	return
+}
+
+func (r *ResourceSKULocationInfo) GetZones() (rv []string) {
+	if r != nil {
+		return r.Zones
+	}
+	return
+}
+
 // ResourceSKURestrictionInfo - Describes an available Compute SKU Restriction Information.
 type ResourceSKURestrictionInfo struct {
 	// READ-ONLY; Locations where the SKU is restricted
@@ -3663,6 +9704,20 @@ type ResourceSKURestrictionInfo struct {
 
 	// READ-ONLY; List of availability zones where the SKU is restricted.
 	Zones []string
+}
+
+func (r *ResourceSKURestrictionInfo) GetLocations() (rv []string) {
+	if r != nil {
+		return r.Locations
+	}
+	return
+}
+
+func (r *ResourceSKURestrictionInfo) GetZones() (rv []string) {
+	if r != nil {
+		return r.Zones
+	}
+	return
 }
 
 // ResourceSKURestrictions - Describes scaling information of a SKU.
@@ -3681,6 +9736,34 @@ type ResourceSKURestrictions struct {
 	Values []string
 }
 
+func (r *ResourceSKURestrictions) GetReasonCode() (rv *ResourceSKURestrictionsReasonCode) {
+	if r != nil {
+		return r.ReasonCode
+	}
+	return
+}
+
+func (r *ResourceSKURestrictions) GetRestrictionInfo() (rv *ResourceSKURestrictionInfo) {
+	if r != nil {
+		return r.RestrictionInfo
+	}
+	return
+}
+
+func (r *ResourceSKURestrictions) GetType() (rv *ResourceSKURestrictionsType) {
+	if r != nil {
+		return r.Type
+	}
+	return
+}
+
+func (r *ResourceSKURestrictions) GetValues() (rv []string) {
+	if r != nil {
+		return r.Values
+	}
+	return
+}
+
 // ResourceSKUZoneDetails - Describes The zonal capabilities of a SKU.
 type ResourceSKUZoneDetails struct {
 	// READ-ONLY; A list of capabilities that are available for the SKU in the specified list of zones.
@@ -3688,6 +9771,20 @@ type ResourceSKUZoneDetails struct {
 
 	// READ-ONLY; The set of zones that the SKU is available in with the specified capabilities.
 	Name []string
+}
+
+func (r *ResourceSKUZoneDetails) GetCapabilities() (rv []ResourceSKUCapabilities) {
+	if r != nil {
+		return r.Capabilities
+	}
+	return
+}
+
+func (r *ResourceSKUZoneDetails) GetName() (rv []string) {
+	if r != nil {
+		return r.Name
+	}
+	return
 }
 
 // ResourceSKUsResult - The List Resource Skus operation response.
@@ -3699,6 +9796,20 @@ type ResourceSKUsResult struct {
 	NextLink *string
 }
 
+func (r *ResourceSKUsResult) GetValue() (rv []ResourceSKU) {
+	if r != nil {
+		return r.Value
+	}
+	return
+}
+
+func (r *ResourceSKUsResult) GetNextLink() (rv string) {
+	if r != nil && r.NextLink != nil {
+		return *r.NextLink
+	}
+	return
+}
+
 // ResourceURIList - The List resources which are encrypted with the disk encryption set.
 type ResourceURIList struct {
 	// REQUIRED; A list of IDs or Owner IDs of resources which are encrypted with the disk encryption set.
@@ -3706,6 +9817,20 @@ type ResourceURIList struct {
 
 	// The uri to fetch the next page of encrypted resources. Call ListNext() with this to fetch the next page of encrypted resources.
 	NextLink *string
+}
+
+func (r *ResourceURIList) GetValue() (rv []string) {
+	if r != nil {
+		return r.Value
+	}
+	return
+}
+
+func (r *ResourceURIList) GetNextLink() (rv string) {
+	if r != nil && r.NextLink != nil {
+		return *r.NextLink
+	}
+	return
 }
 
 // RestorePoint - Restore Point details.
@@ -3721,6 +9846,34 @@ type RestorePoint struct {
 
 	// READ-ONLY; Resource type
 	Type *string
+}
+
+func (r *RestorePoint) GetProperties() (rv *RestorePointProperties) {
+	if r != nil {
+		return r.Properties
+	}
+	return
+}
+
+func (r *RestorePoint) GetID() (rv string) {
+	if r != nil && r.ID != nil {
+		return *r.ID
+	}
+	return
+}
+
+func (r *RestorePoint) GetName() (rv string) {
+	if r != nil && r.Name != nil {
+		return *r.Name
+	}
+	return
+}
+
+func (r *RestorePoint) GetType() (rv string) {
+	if r != nil && r.Type != nil {
+		return *r.Type
+	}
+	return
 }
 
 // RestorePointCollection - Create or update Restore Point collection parameters.
@@ -3744,6 +9897,48 @@ type RestorePointCollection struct {
 	Type *string
 }
 
+func (r *RestorePointCollection) GetLocation() (rv string) {
+	if r != nil && r.Location != nil {
+		return *r.Location
+	}
+	return
+}
+
+func (r *RestorePointCollection) GetProperties() (rv *RestorePointCollectionProperties) {
+	if r != nil {
+		return r.Properties
+	}
+	return
+}
+
+func (r *RestorePointCollection) GetTags() (rv map[string]*string) {
+	if r != nil {
+		return r.Tags
+	}
+	return
+}
+
+func (r *RestorePointCollection) GetID() (rv string) {
+	if r != nil && r.ID != nil {
+		return *r.ID
+	}
+	return
+}
+
+func (r *RestorePointCollection) GetName() (rv string) {
+	if r != nil && r.Name != nil {
+		return *r.Name
+	}
+	return
+}
+
+func (r *RestorePointCollection) GetType() (rv string) {
+	if r != nil && r.Type != nil {
+		return *r.Type
+	}
+	return
+}
+
 // RestorePointCollectionListResult - The List restore point collection operation response.
 type RestorePointCollectionListResult struct {
 	// The uri to fetch the next page of RestorePointCollections. Call ListNext() with this to fetch the next page of RestorePointCollections
@@ -3751,6 +9946,20 @@ type RestorePointCollectionListResult struct {
 
 	// Gets the list of restore point collections.
 	Value []RestorePointCollection
+}
+
+func (r *RestorePointCollectionListResult) GetNextLink() (rv string) {
+	if r != nil && r.NextLink != nil {
+		return *r.NextLink
+	}
+	return
+}
+
+func (r *RestorePointCollectionListResult) GetValue() (rv []RestorePointCollection) {
+	if r != nil {
+		return r.Value
+	}
+	return
 }
 
 // RestorePointCollectionProperties - The restore point collection properties.
@@ -3768,6 +9977,34 @@ type RestorePointCollectionProperties struct {
 	RestorePoints []RestorePoint
 }
 
+func (r *RestorePointCollectionProperties) GetSource() (rv *RestorePointCollectionSourceProperties) {
+	if r != nil {
+		return r.Source
+	}
+	return
+}
+
+func (r *RestorePointCollectionProperties) GetProvisioningState() (rv string) {
+	if r != nil && r.ProvisioningState != nil {
+		return *r.ProvisioningState
+	}
+	return
+}
+
+func (r *RestorePointCollectionProperties) GetRestorePointCollectionID() (rv string) {
+	if r != nil && r.RestorePointCollectionID != nil {
+		return *r.RestorePointCollectionID
+	}
+	return
+}
+
+func (r *RestorePointCollectionProperties) GetRestorePoints() (rv []RestorePoint) {
+	if r != nil {
+		return r.RestorePoints
+	}
+	return
+}
+
 // RestorePointCollectionSourceProperties - The properties of the source resource that this restore point collection is created
 // from.
 type RestorePointCollectionSourceProperties struct {
@@ -3776,6 +10013,20 @@ type RestorePointCollectionSourceProperties struct {
 
 	// READ-ONLY; Location of the source resource used to create this restore point collection.
 	Location *string
+}
+
+func (r *RestorePointCollectionSourceProperties) GetID() (rv string) {
+	if r != nil && r.ID != nil {
+		return *r.ID
+	}
+	return
+}
+
+func (r *RestorePointCollectionSourceProperties) GetLocation() (rv string) {
+	if r != nil && r.Location != nil {
+		return *r.Location
+	}
+	return
 }
 
 // RestorePointCollectionUpdate - Update Restore Point collection parameters.
@@ -3787,6 +10038,20 @@ type RestorePointCollectionUpdate struct {
 	Tags map[string]*string
 }
 
+func (r *RestorePointCollectionUpdate) GetProperties() (rv *RestorePointCollectionProperties) {
+	if r != nil {
+		return r.Properties
+	}
+	return
+}
+
+func (r *RestorePointCollectionUpdate) GetTags() (rv map[string]*string) {
+	if r != nil {
+		return r.Tags
+	}
+	return
+}
+
 // RestorePointInstanceView - The instance view of a restore point.
 type RestorePointInstanceView struct {
 	// The disk restore points information.
@@ -3794,6 +10059,20 @@ type RestorePointInstanceView struct {
 
 	// The resource status information.
 	Statuses []InstanceViewStatus
+}
+
+func (r *RestorePointInstanceView) GetDiskRestorePoints() (rv []DiskRestorePointInstanceView) {
+	if r != nil {
+		return r.DiskRestorePoints
+	}
+	return
+}
+
+func (r *RestorePointInstanceView) GetStatuses() (rv []InstanceViewStatus) {
+	if r != nil {
+		return r.Statuses
+	}
+	return
 }
 
 // RestorePointProperties - The restore point properties.
@@ -3819,6 +10098,55 @@ type RestorePointProperties struct {
 
 	// READ-ONLY; Gets the details of the VM captured at the time of the restore point creation.
 	SourceMetadata *RestorePointSourceMetadata
+}
+
+func (r *RestorePointProperties) GetExcludeDisks() (rv []APIEntityReference) {
+	if r != nil {
+		return r.ExcludeDisks
+	}
+	return
+}
+
+func (r *RestorePointProperties) GetSourceRestorePoint() (rv *APIEntityReference) {
+	if r != nil {
+		return r.SourceRestorePoint
+	}
+	return
+}
+
+func (r *RestorePointProperties) GetTimeCreated() (rv *time.Time) {
+	if r != nil {
+		return r.TimeCreated
+	}
+	return
+}
+
+func (r *RestorePointProperties) GetConsistencyMode() (rv *ConsistencyModeTypes) {
+	if r != nil {
+		return r.ConsistencyMode
+	}
+	return
+}
+
+func (r *RestorePointProperties) GetInstanceView() (rv *RestorePointInstanceView) {
+	if r != nil {
+		return r.InstanceView
+	}
+	return
+}
+
+func (r *RestorePointProperties) GetProvisioningState() (rv string) {
+	if r != nil && r.ProvisioningState != nil {
+		return *r.ProvisioningState
+	}
+	return
+}
+
+func (r *RestorePointProperties) GetSourceMetadata() (rv *RestorePointSourceMetadata) {
+	if r != nil {
+		return r.SourceMetadata
+	}
+	return
 }
 
 // RestorePointSourceMetadata - Describes the properties of the Virtual Machine for which the restore point was created. The
@@ -3850,6 +10178,62 @@ type RestorePointSourceMetadata struct {
 	VMID *string
 }
 
+func (r *RestorePointSourceMetadata) GetDiagnosticsProfile() (rv *DiagnosticsProfile) {
+	if r != nil {
+		return r.DiagnosticsProfile
+	}
+	return
+}
+
+func (r *RestorePointSourceMetadata) GetHardwareProfile() (rv *HardwareProfile) {
+	if r != nil {
+		return r.HardwareProfile
+	}
+	return
+}
+
+func (r *RestorePointSourceMetadata) GetLicenseType() (rv string) {
+	if r != nil && r.LicenseType != nil {
+		return *r.LicenseType
+	}
+	return
+}
+
+func (r *RestorePointSourceMetadata) GetLocation() (rv string) {
+	if r != nil && r.Location != nil {
+		return *r.Location
+	}
+	return
+}
+
+func (r *RestorePointSourceMetadata) GetOSProfile() (rv *OSProfile) {
+	if r != nil {
+		return r.OSProfile
+	}
+	return
+}
+
+func (r *RestorePointSourceMetadata) GetSecurityProfile() (rv *SecurityProfile) {
+	if r != nil {
+		return r.SecurityProfile
+	}
+	return
+}
+
+func (r *RestorePointSourceMetadata) GetStorageProfile() (rv *RestorePointSourceVMStorageProfile) {
+	if r != nil {
+		return r.StorageProfile
+	}
+	return
+}
+
+func (r *RestorePointSourceMetadata) GetVMID() (rv string) {
+	if r != nil && r.VMID != nil {
+		return *r.VMID
+	}
+	return
+}
+
 // RestorePointSourceVMDataDisk - Describes a data disk.
 type RestorePointSourceVMDataDisk struct {
 	// Gets the caching type.
@@ -3869,6 +10253,48 @@ type RestorePointSourceVMDataDisk struct {
 
 	// Gets the disk name.
 	Name *string
+}
+
+func (r *RestorePointSourceVMDataDisk) GetCaching() (rv *CachingTypes) {
+	if r != nil {
+		return r.Caching
+	}
+	return
+}
+
+func (r *RestorePointSourceVMDataDisk) GetDiskRestorePoint() (rv *APIEntityReference) {
+	if r != nil {
+		return r.DiskRestorePoint
+	}
+	return
+}
+
+func (r *RestorePointSourceVMDataDisk) GetDiskSizeGB() (rv int32) {
+	if r != nil && r.DiskSizeGB != nil {
+		return *r.DiskSizeGB
+	}
+	return
+}
+
+func (r *RestorePointSourceVMDataDisk) GetLun() (rv int32) {
+	if r != nil && r.Lun != nil {
+		return *r.Lun
+	}
+	return
+}
+
+func (r *RestorePointSourceVMDataDisk) GetManagedDisk() (rv *ManagedDiskParameters) {
+	if r != nil {
+		return r.ManagedDisk
+	}
+	return
+}
+
+func (r *RestorePointSourceVMDataDisk) GetName() (rv string) {
+	if r != nil && r.Name != nil {
+		return *r.Name
+	}
+	return
 }
 
 // RestorePointSourceVMOSDisk - Describes an Operating System disk.
@@ -3895,6 +10321,55 @@ type RestorePointSourceVMOSDisk struct {
 	OSType *OperatingSystemType
 }
 
+func (r *RestorePointSourceVMOSDisk) GetCaching() (rv *CachingTypes) {
+	if r != nil {
+		return r.Caching
+	}
+	return
+}
+
+func (r *RestorePointSourceVMOSDisk) GetDiskRestorePoint() (rv *APIEntityReference) {
+	if r != nil {
+		return r.DiskRestorePoint
+	}
+	return
+}
+
+func (r *RestorePointSourceVMOSDisk) GetDiskSizeGB() (rv int32) {
+	if r != nil && r.DiskSizeGB != nil {
+		return *r.DiskSizeGB
+	}
+	return
+}
+
+func (r *RestorePointSourceVMOSDisk) GetEncryptionSettings() (rv *DiskEncryptionSettings) {
+	if r != nil {
+		return r.EncryptionSettings
+	}
+	return
+}
+
+func (r *RestorePointSourceVMOSDisk) GetManagedDisk() (rv *ManagedDiskParameters) {
+	if r != nil {
+		return r.ManagedDisk
+	}
+	return
+}
+
+func (r *RestorePointSourceVMOSDisk) GetName() (rv string) {
+	if r != nil && r.Name != nil {
+		return *r.Name
+	}
+	return
+}
+
+func (r *RestorePointSourceVMOSDisk) GetOSType() (rv *OperatingSystemType) {
+	if r != nil {
+		return r.OSType
+	}
+	return
+}
+
 // RestorePointSourceVMStorageProfile - Describes the storage profile.
 type RestorePointSourceVMStorageProfile struct {
 	// Gets the data disks of the VM captured at the time of the restore point creation.
@@ -3904,6 +10379,20 @@ type RestorePointSourceVMStorageProfile struct {
 	OSDisk *RestorePointSourceVMOSDisk
 }
 
+func (r *RestorePointSourceVMStorageProfile) GetDataDisks() (rv []RestorePointSourceVMDataDisk) {
+	if r != nil {
+		return r.DataDisks
+	}
+	return
+}
+
+func (r *RestorePointSourceVMStorageProfile) GetOSDisk() (rv *RestorePointSourceVMOSDisk) {
+	if r != nil {
+		return r.OSDisk
+	}
+	return
+}
+
 // RetrieveBootDiagnosticsDataResult - The SAS URIs of the console screenshot and serial log blobs.
 type RetrieveBootDiagnosticsDataResult struct {
 	// READ-ONLY; The console screenshot blob URI
@@ -3911,6 +10400,20 @@ type RetrieveBootDiagnosticsDataResult struct {
 
 	// READ-ONLY; The serial console log blob URI.
 	SerialConsoleLogBlobURI *string
+}
+
+func (r *RetrieveBootDiagnosticsDataResult) GetConsoleScreenshotBlobURI() (rv string) {
+	if r != nil && r.ConsoleScreenshotBlobURI != nil {
+		return *r.ConsoleScreenshotBlobURI
+	}
+	return
+}
+
+func (r *RetrieveBootDiagnosticsDataResult) GetSerialConsoleLogBlobURI() (rv string) {
+	if r != nil && r.SerialConsoleLogBlobURI != nil {
+		return *r.SerialConsoleLogBlobURI
+	}
+	return
 }
 
 type RoleInstance struct {
@@ -3933,10 +10436,73 @@ type RoleInstance struct {
 	Type *string
 }
 
+func (r *RoleInstance) GetProperties() (rv *RoleInstanceProperties) {
+	if r != nil {
+		return r.Properties
+	}
+	return
+}
+
+func (r *RoleInstance) GetSKU() (rv *InstanceSKU) {
+	if r != nil {
+		return r.SKU
+	}
+	return
+}
+
+func (r *RoleInstance) GetID() (rv string) {
+	if r != nil && r.ID != nil {
+		return *r.ID
+	}
+	return
+}
+
+func (r *RoleInstance) GetLocation() (rv string) {
+	if r != nil && r.Location != nil {
+		return *r.Location
+	}
+	return
+}
+
+func (r *RoleInstance) GetName() (rv string) {
+	if r != nil && r.Name != nil {
+		return *r.Name
+	}
+	return
+}
+
+func (r *RoleInstance) GetTags() (rv map[string]*string) {
+	if r != nil {
+		return r.Tags
+	}
+	return
+}
+
+func (r *RoleInstance) GetType() (rv string) {
+	if r != nil && r.Type != nil {
+		return *r.Type
+	}
+	return
+}
+
 type RoleInstanceListResult struct {
 	// REQUIRED
 	Value    []RoleInstance
 	NextLink *string
+}
+
+func (r *RoleInstanceListResult) GetValue() (rv []RoleInstance) {
+	if r != nil {
+		return r.Value
+	}
+	return
+}
+
+func (r *RoleInstanceListResult) GetNextLink() (rv string) {
+	if r != nil && r.NextLink != nil {
+		return *r.NextLink
+	}
+	return
 }
 
 // RoleInstanceNetworkProfile - Describes the network profile for the role instance.
@@ -3945,12 +10511,33 @@ type RoleInstanceNetworkProfile struct {
 	NetworkInterfaces []SubResource
 }
 
+func (r *RoleInstanceNetworkProfile) GetNetworkInterfaces() (rv []SubResource) {
+	if r != nil {
+		return r.NetworkInterfaces
+	}
+	return
+}
+
 type RoleInstanceProperties struct {
 	// The instance view of the role instance.
 	InstanceView *RoleInstanceView
 
 	// Describes the network profile for the role instance.
 	NetworkProfile *RoleInstanceNetworkProfile
+}
+
+func (r *RoleInstanceProperties) GetInstanceView() (rv *RoleInstanceView) {
+	if r != nil {
+		return r.InstanceView
+	}
+	return
+}
+
+func (r *RoleInstanceProperties) GetNetworkProfile() (rv *RoleInstanceNetworkProfile) {
+	if r != nil {
+		return r.NetworkProfile
+	}
+	return
 }
 
 // RoleInstanceView - The instance view of the role instance.
@@ -3969,10 +10556,45 @@ type RoleInstanceView struct {
 	Statuses []ResourceInstanceViewStatus
 }
 
+func (r *RoleInstanceView) GetPlatformFaultDomain() (rv int32) {
+	if r != nil && r.PlatformFaultDomain != nil {
+		return *r.PlatformFaultDomain
+	}
+	return
+}
+
+func (r *RoleInstanceView) GetPlatformUpdateDomain() (rv int32) {
+	if r != nil && r.PlatformUpdateDomain != nil {
+		return *r.PlatformUpdateDomain
+	}
+	return
+}
+
+func (r *RoleInstanceView) GetPrivateID() (rv string) {
+	if r != nil && r.PrivateID != nil {
+		return *r.PrivateID
+	}
+	return
+}
+
+func (r *RoleInstanceView) GetStatuses() (rv []ResourceInstanceViewStatus) {
+	if r != nil {
+		return r.Statuses
+	}
+	return
+}
+
 // RoleInstances - Specifies a list of role instances from the cloud service.
 type RoleInstances struct {
 	// REQUIRED; List of cloud service role instance names. Value of '*' will signify all role instances of the cloud service.
 	RoleInstances []string
+}
+
+func (r *RoleInstances) GetRoleInstances() (rv []string) {
+	if r != nil {
+		return r.RoleInstances
+	}
+	return
 }
 
 // RollbackStatusInfo - Information about rollback on failed VM instances after a OS Upgrade operation.
@@ -3985,6 +10607,27 @@ type RollbackStatusInfo struct {
 
 	// READ-ONLY; The number of instances which have been successfully rolled back.
 	SuccessfullyRolledbackInstanceCount *int32
+}
+
+func (r *RollbackStatusInfo) GetFailedRolledbackInstanceCount() (rv int32) {
+	if r != nil && r.FailedRolledbackInstanceCount != nil {
+		return *r.FailedRolledbackInstanceCount
+	}
+	return
+}
+
+func (r *RollbackStatusInfo) GetRollbackError() (rv *APIError) {
+	if r != nil {
+		return r.RollbackError
+	}
+	return
+}
+
+func (r *RollbackStatusInfo) GetSuccessfullyRolledbackInstanceCount() (rv int32) {
+	if r != nil && r.SuccessfullyRolledbackInstanceCount != nil {
+		return *r.SuccessfullyRolledbackInstanceCount
+	}
+	return
 }
 
 // RollingUpgradePolicy - The configuration parameters used while performing a rolling upgrade.
@@ -4019,6 +10662,48 @@ type RollingUpgradePolicy struct {
 	PrioritizeUnhealthyInstances *bool
 }
 
+func (r *RollingUpgradePolicy) GetEnableCrossZoneUpgrade() (rv bool) {
+	if r != nil && r.EnableCrossZoneUpgrade != nil {
+		return *r.EnableCrossZoneUpgrade
+	}
+	return
+}
+
+func (r *RollingUpgradePolicy) GetMaxBatchInstancePercent() (rv int32) {
+	if r != nil && r.MaxBatchInstancePercent != nil {
+		return *r.MaxBatchInstancePercent
+	}
+	return
+}
+
+func (r *RollingUpgradePolicy) GetMaxUnhealthyInstancePercent() (rv int32) {
+	if r != nil && r.MaxUnhealthyInstancePercent != nil {
+		return *r.MaxUnhealthyInstancePercent
+	}
+	return
+}
+
+func (r *RollingUpgradePolicy) GetMaxUnhealthyUpgradedInstancePercent() (rv int32) {
+	if r != nil && r.MaxUnhealthyUpgradedInstancePercent != nil {
+		return *r.MaxUnhealthyUpgradedInstancePercent
+	}
+	return
+}
+
+func (r *RollingUpgradePolicy) GetPauseTimeBetweenBatches() (rv string) {
+	if r != nil && r.PauseTimeBetweenBatches != nil {
+		return *r.PauseTimeBetweenBatches
+	}
+	return
+}
+
+func (r *RollingUpgradePolicy) GetPrioritizeUnhealthyInstances() (rv bool) {
+	if r != nil && r.PrioritizeUnhealthyInstances != nil {
+		return *r.PrioritizeUnhealthyInstances
+	}
+	return
+}
+
 // RollingUpgradeProgressInfo - Information about the number of virtual machine instances in each upgrade state.
 type RollingUpgradeProgressInfo struct {
 	// READ-ONLY; The number of instances that have failed to be upgraded successfully.
@@ -4034,6 +10719,34 @@ type RollingUpgradeProgressInfo struct {
 	SuccessfulInstanceCount *int32
 }
 
+func (r *RollingUpgradeProgressInfo) GetFailedInstanceCount() (rv int32) {
+	if r != nil && r.FailedInstanceCount != nil {
+		return *r.FailedInstanceCount
+	}
+	return
+}
+
+func (r *RollingUpgradeProgressInfo) GetInProgressInstanceCount() (rv int32) {
+	if r != nil && r.InProgressInstanceCount != nil {
+		return *r.InProgressInstanceCount
+	}
+	return
+}
+
+func (r *RollingUpgradeProgressInfo) GetPendingInstanceCount() (rv int32) {
+	if r != nil && r.PendingInstanceCount != nil {
+		return *r.PendingInstanceCount
+	}
+	return
+}
+
+func (r *RollingUpgradeProgressInfo) GetSuccessfulInstanceCount() (rv int32) {
+	if r != nil && r.SuccessfulInstanceCount != nil {
+		return *r.SuccessfulInstanceCount
+	}
+	return
+}
+
 // RollingUpgradeRunningStatus - Information about the current running state of the overall upgrade.
 type RollingUpgradeRunningStatus struct {
 	// READ-ONLY; Code indicating the current status of the upgrade.
@@ -4047,6 +10760,34 @@ type RollingUpgradeRunningStatus struct {
 
 	// READ-ONLY; Start time of the upgrade.
 	StartTime *time.Time
+}
+
+func (r *RollingUpgradeRunningStatus) GetCode() (rv *RollingUpgradeStatusCode) {
+	if r != nil {
+		return r.Code
+	}
+	return
+}
+
+func (r *RollingUpgradeRunningStatus) GetLastAction() (rv *RollingUpgradeActionType) {
+	if r != nil {
+		return r.LastAction
+	}
+	return
+}
+
+func (r *RollingUpgradeRunningStatus) GetLastActionTime() (rv *time.Time) {
+	if r != nil {
+		return r.LastActionTime
+	}
+	return
+}
+
+func (r *RollingUpgradeRunningStatus) GetStartTime() (rv *time.Time) {
+	if r != nil {
+		return r.StartTime
+	}
+	return
 }
 
 // RollingUpgradeStatusInfo - The status of the latest virtual machine scale set rolling upgrade.
@@ -4070,6 +10811,48 @@ type RollingUpgradeStatusInfo struct {
 	Type *string
 }
 
+func (r *RollingUpgradeStatusInfo) GetLocation() (rv string) {
+	if r != nil && r.Location != nil {
+		return *r.Location
+	}
+	return
+}
+
+func (r *RollingUpgradeStatusInfo) GetProperties() (rv *RollingUpgradeStatusInfoProperties) {
+	if r != nil {
+		return r.Properties
+	}
+	return
+}
+
+func (r *RollingUpgradeStatusInfo) GetTags() (rv map[string]*string) {
+	if r != nil {
+		return r.Tags
+	}
+	return
+}
+
+func (r *RollingUpgradeStatusInfo) GetID() (rv string) {
+	if r != nil && r.ID != nil {
+		return *r.ID
+	}
+	return
+}
+
+func (r *RollingUpgradeStatusInfo) GetName() (rv string) {
+	if r != nil && r.Name != nil {
+		return *r.Name
+	}
+	return
+}
+
+func (r *RollingUpgradeStatusInfo) GetType() (rv string) {
+	if r != nil && r.Type != nil {
+		return *r.Type
+	}
+	return
+}
+
 // RollingUpgradeStatusInfoProperties - The status of the latest virtual machine scale set rolling upgrade.
 type RollingUpgradeStatusInfoProperties struct {
 	// READ-ONLY; Error details for this upgrade, if there are any.
@@ -4083,6 +10866,34 @@ type RollingUpgradeStatusInfoProperties struct {
 
 	// READ-ONLY; Information about the current running state of the overall upgrade.
 	RunningStatus *RollingUpgradeRunningStatus
+}
+
+func (r *RollingUpgradeStatusInfoProperties) GetError() (rv *APIError) {
+	if r != nil {
+		return r.Error
+	}
+	return
+}
+
+func (r *RollingUpgradeStatusInfoProperties) GetPolicy() (rv *RollingUpgradePolicy) {
+	if r != nil {
+		return r.Policy
+	}
+	return
+}
+
+func (r *RollingUpgradeStatusInfoProperties) GetProgress() (rv *RollingUpgradeProgressInfo) {
+	if r != nil {
+		return r.Progress
+	}
+	return
+}
+
+func (r *RollingUpgradeStatusInfoProperties) GetRunningStatus() (rv *RollingUpgradeRunningStatus) {
+	if r != nil {
+		return r.RunningStatus
+	}
+	return
 }
 
 // RunCommandDocument - Describes the properties of a Run Command.
@@ -4109,6 +10920,55 @@ type RunCommandDocument struct {
 	Parameters []RunCommandParameterDefinition
 }
 
+func (r *RunCommandDocument) GetDescription() (rv string) {
+	if r != nil && r.Description != nil {
+		return *r.Description
+	}
+	return
+}
+
+func (r *RunCommandDocument) GetID() (rv string) {
+	if r != nil && r.ID != nil {
+		return *r.ID
+	}
+	return
+}
+
+func (r *RunCommandDocument) GetLabel() (rv string) {
+	if r != nil && r.Label != nil {
+		return *r.Label
+	}
+	return
+}
+
+func (r *RunCommandDocument) GetOSType() (rv *OperatingSystemTypes) {
+	if r != nil {
+		return r.OSType
+	}
+	return
+}
+
+func (r *RunCommandDocument) GetSchema() (rv string) {
+	if r != nil && r.Schema != nil {
+		return *r.Schema
+	}
+	return
+}
+
+func (r *RunCommandDocument) GetScript() (rv []string) {
+	if r != nil {
+		return r.Script
+	}
+	return
+}
+
+func (r *RunCommandDocument) GetParameters() (rv []RunCommandParameterDefinition) {
+	if r != nil {
+		return r.Parameters
+	}
+	return
+}
+
 // RunCommandDocumentBase - Describes the properties of a Run Command metadata.
 type RunCommandDocumentBase struct {
 	// REQUIRED; The VM run command description.
@@ -4127,6 +10987,41 @@ type RunCommandDocumentBase struct {
 	Schema *string
 }
 
+func (r *RunCommandDocumentBase) GetDescription() (rv string) {
+	if r != nil && r.Description != nil {
+		return *r.Description
+	}
+	return
+}
+
+func (r *RunCommandDocumentBase) GetID() (rv string) {
+	if r != nil && r.ID != nil {
+		return *r.ID
+	}
+	return
+}
+
+func (r *RunCommandDocumentBase) GetLabel() (rv string) {
+	if r != nil && r.Label != nil {
+		return *r.Label
+	}
+	return
+}
+
+func (r *RunCommandDocumentBase) GetOSType() (rv *OperatingSystemTypes) {
+	if r != nil {
+		return r.OSType
+	}
+	return
+}
+
+func (r *RunCommandDocumentBase) GetSchema() (rv string) {
+	if r != nil && r.Schema != nil {
+		return *r.Schema
+	}
+	return
+}
+
 // RunCommandInput - Capture Virtual Machine parameters.
 type RunCommandInput struct {
 	// REQUIRED; The run command id.
@@ -4140,6 +11035,27 @@ type RunCommandInput struct {
 	Script []string
 }
 
+func (r *RunCommandInput) GetCommandID() (rv string) {
+	if r != nil && r.CommandID != nil {
+		return *r.CommandID
+	}
+	return
+}
+
+func (r *RunCommandInput) GetParameters() (rv []RunCommandInputParameter) {
+	if r != nil {
+		return r.Parameters
+	}
+	return
+}
+
+func (r *RunCommandInput) GetScript() (rv []string) {
+	if r != nil {
+		return r.Script
+	}
+	return
+}
+
 // RunCommandInputParameter - Describes the properties of a run command parameter.
 type RunCommandInputParameter struct {
 	// REQUIRED; The run command parameter name.
@@ -4149,6 +11065,20 @@ type RunCommandInputParameter struct {
 	Value *string
 }
 
+func (r *RunCommandInputParameter) GetName() (rv string) {
+	if r != nil && r.Name != nil {
+		return *r.Name
+	}
+	return
+}
+
+func (r *RunCommandInputParameter) GetValue() (rv string) {
+	if r != nil && r.Value != nil {
+		return *r.Value
+	}
+	return
+}
+
 // RunCommandListResult - The List Virtual Machine operation response.
 type RunCommandListResult struct {
 	// REQUIRED; The list of virtual machine run commands.
@@ -4156,6 +11086,20 @@ type RunCommandListResult struct {
 
 	// The uri to fetch the next page of run commands. Call ListNext() with this to fetch the next page of run commands.
 	NextLink *string
+}
+
+func (r *RunCommandListResult) GetValue() (rv []RunCommandDocumentBase) {
+	if r != nil {
+		return r.Value
+	}
+	return
+}
+
+func (r *RunCommandListResult) GetNextLink() (rv string) {
+	if r != nil && r.NextLink != nil {
+		return *r.NextLink
+	}
+	return
 }
 
 // RunCommandParameterDefinition - Describes the properties of a run command parameter.
@@ -4173,9 +11117,44 @@ type RunCommandParameterDefinition struct {
 	Required *bool
 }
 
+func (r *RunCommandParameterDefinition) GetName() (rv string) {
+	if r != nil && r.Name != nil {
+		return *r.Name
+	}
+	return
+}
+
+func (r *RunCommandParameterDefinition) GetType() (rv string) {
+	if r != nil && r.Type != nil {
+		return *r.Type
+	}
+	return
+}
+
+func (r *RunCommandParameterDefinition) GetDefaultValue() (rv string) {
+	if r != nil && r.DefaultValue != nil {
+		return *r.DefaultValue
+	}
+	return
+}
+
+func (r *RunCommandParameterDefinition) GetRequired() (rv bool) {
+	if r != nil && r.Required != nil {
+		return *r.Required
+	}
+	return
+}
+
 type RunCommandResult struct {
 	// Run command operation response.
 	Value []InstanceViewStatus
+}
+
+func (r *RunCommandResult) GetValue() (rv []InstanceViewStatus) {
+	if r != nil {
+		return r.Value
+	}
+	return
 }
 
 // SKU - Describes a virtual machine scale set sku. NOTE: If the new VM SKU is not supported on the hardware the scale set
@@ -4195,10 +11174,38 @@ type SKU struct {
 	Tier *string
 }
 
+func (s *SKU) GetCapacity() (rv int64) {
+	if s != nil && s.Capacity != nil {
+		return *s.Capacity
+	}
+	return
+}
+
+func (s *SKU) GetName() (rv string) {
+	if s != nil && s.Name != nil {
+		return *s.Name
+	}
+	return
+}
+
+func (s *SKU) GetTier() (rv string) {
+	if s != nil && s.Tier != nil {
+		return *s.Tier
+	}
+	return
+}
+
 // SSHConfiguration - SSH configuration for Linux based VMs running on Azure
 type SSHConfiguration struct {
 	// The list of SSH public keys used to authenticate with linux based VMs.
 	PublicKeys []SSHPublicKey
+}
+
+func (s *SSHConfiguration) GetPublicKeys() (rv []SSHPublicKey) {
+	if s != nil {
+		return s.PublicKeys
+	}
+	return
 }
 
 // SSHPublicKey - Contains information about SSH certificate public key and the path on the Linux VM where the public key
@@ -4214,6 +11221,20 @@ type SSHPublicKey struct {
 	Path *string
 }
 
+func (s *SSHPublicKey) GetKeyData() (rv string) {
+	if s != nil && s.KeyData != nil {
+		return *s.KeyData
+	}
+	return
+}
+
+func (s *SSHPublicKey) GetPath() (rv string) {
+	if s != nil && s.Path != nil {
+		return *s.Path
+	}
+	return
+}
+
 // SSHPublicKeyGenerateKeyPairResult - Response from generation of an SSH key pair.
 type SSHPublicKeyGenerateKeyPairResult struct {
 	// REQUIRED; The ARM resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.Compute/sshPublicKeys/{SshPublicKeyName}
@@ -4226,6 +11247,27 @@ type SSHPublicKeyGenerateKeyPairResult struct {
 	// REQUIRED; Public key portion of the key pair used to authenticate to a virtual machine through ssh. The public key is in
 	// ssh-rsa format.
 	PublicKey *string
+}
+
+func (s *SSHPublicKeyGenerateKeyPairResult) GetID() (rv string) {
+	if s != nil && s.ID != nil {
+		return *s.ID
+	}
+	return
+}
+
+func (s *SSHPublicKeyGenerateKeyPairResult) GetPrivateKey() (rv string) {
+	if s != nil && s.PrivateKey != nil {
+		return *s.PrivateKey
+	}
+	return
+}
+
+func (s *SSHPublicKeyGenerateKeyPairResult) GetPublicKey() (rv string) {
+	if s != nil && s.PublicKey != nil {
+		return *s.PublicKey
+	}
+	return
 }
 
 // SSHPublicKeyResource - Specifies information about the SSH public key.
@@ -4249,6 +11291,48 @@ type SSHPublicKeyResource struct {
 	Type *string
 }
 
+func (s *SSHPublicKeyResource) GetLocation() (rv string) {
+	if s != nil && s.Location != nil {
+		return *s.Location
+	}
+	return
+}
+
+func (s *SSHPublicKeyResource) GetProperties() (rv *SSHPublicKeyResourceProperties) {
+	if s != nil {
+		return s.Properties
+	}
+	return
+}
+
+func (s *SSHPublicKeyResource) GetTags() (rv map[string]*string) {
+	if s != nil {
+		return s.Tags
+	}
+	return
+}
+
+func (s *SSHPublicKeyResource) GetID() (rv string) {
+	if s != nil && s.ID != nil {
+		return *s.ID
+	}
+	return
+}
+
+func (s *SSHPublicKeyResource) GetName() (rv string) {
+	if s != nil && s.Name != nil {
+		return *s.Name
+	}
+	return
+}
+
+func (s *SSHPublicKeyResource) GetType() (rv string) {
+	if s != nil && s.Type != nil {
+		return *s.Type
+	}
+	return
+}
+
 // SSHPublicKeyResourceProperties - Properties of the SSH public key.
 type SSHPublicKeyResourceProperties struct {
 	// SSH public key used to authenticate to a virtual machine through ssh. If this property is not initially provided when the
@@ -4256,6 +11340,13 @@ type SSHPublicKeyResourceProperties struct {
 	// generateKeyPair is called. If the public key is provided upon resource creation, the provided public key needs to be at
 	// least 2048-bit and in ssh-rsa format.
 	PublicKey *string
+}
+
+func (s *SSHPublicKeyResourceProperties) GetPublicKey() (rv string) {
+	if s != nil && s.PublicKey != nil {
+		return *s.PublicKey
+	}
+	return
 }
 
 // SSHPublicKeyUpdateResource - Specifies information about the SSH public key.
@@ -4267,6 +11358,20 @@ type SSHPublicKeyUpdateResource struct {
 	Tags map[string]*string
 }
 
+func (s *SSHPublicKeyUpdateResource) GetProperties() (rv *SSHPublicKeyResourceProperties) {
+	if s != nil {
+		return s.Properties
+	}
+	return
+}
+
+func (s *SSHPublicKeyUpdateResource) GetTags() (rv map[string]*string) {
+	if s != nil {
+		return s.Tags
+	}
+	return
+}
+
 // SSHPublicKeysGroupListResult - The list SSH public keys operation response.
 type SSHPublicKeysGroupListResult struct {
 	// REQUIRED; The list of SSH public keys
@@ -4274,6 +11379,20 @@ type SSHPublicKeysGroupListResult struct {
 
 	// The URI to fetch the next page of SSH public keys. Call ListNext() with this URI to fetch the next page of SSH public keys.
 	NextLink *string
+}
+
+func (s *SSHPublicKeysGroupListResult) GetValue() (rv []SSHPublicKeyResource) {
+	if s != nil {
+		return s.Value
+	}
+	return
+}
+
+func (s *SSHPublicKeysGroupListResult) GetNextLink() (rv string) {
+	if s != nil && s.NextLink != nil {
+		return *s.NextLink
+	}
+	return
 }
 
 // ScaleInPolicy - Describes a scale-in policy for a virtual machine scale set.
@@ -4298,9 +11417,30 @@ type ScaleInPolicy struct {
 	Rules []VirtualMachineScaleSetScaleInRules
 }
 
+func (s *ScaleInPolicy) GetForceDeletion() (rv bool) {
+	if s != nil && s.ForceDeletion != nil {
+		return *s.ForceDeletion
+	}
+	return
+}
+
+func (s *ScaleInPolicy) GetRules() (rv []VirtualMachineScaleSetScaleInRules) {
+	if s != nil {
+		return s.Rules
+	}
+	return
+}
+
 type ScheduledEventsProfile struct {
 	// Specifies Terminate Scheduled Event related configurations.
 	TerminateNotificationProfile *TerminateNotificationProfile
+}
+
+func (s *ScheduledEventsProfile) GetTerminateNotificationProfile() (rv *TerminateNotificationProfile) {
+	if s != nil {
+		return s.TerminateNotificationProfile
+	}
+	return
 }
 
 // SecurityProfile - Specifies the Security profile settings for the virtual machine or virtual machine scale set.
@@ -4320,9 +11460,37 @@ type SecurityProfile struct {
 	UefiSettings *UefiSettings
 }
 
+func (s *SecurityProfile) GetEncryptionAtHost() (rv bool) {
+	if s != nil && s.EncryptionAtHost != nil {
+		return *s.EncryptionAtHost
+	}
+	return
+}
+
+func (s *SecurityProfile) GetSecurityType() (rv *SecurityTypes) {
+	if s != nil {
+		return s.SecurityType
+	}
+	return
+}
+
+func (s *SecurityProfile) GetUefiSettings() (rv *UefiSettings) {
+	if s != nil {
+		return s.UefiSettings
+	}
+	return
+}
+
 type ShareInfoElement struct {
 	// READ-ONLY; A relative URI containing the ID of the VM that has the disk attached.
 	VMURI *string
+}
+
+func (s *ShareInfoElement) GetVMURI() (rv string) {
+	if s != nil && s.VMURI != nil {
+		return *s.VMURI
+	}
+	return
 }
 
 // SharedGallery - Specifies information about the Shared Gallery that you want to create or update.
@@ -4337,10 +11505,38 @@ type SharedGallery struct {
 	Name *string
 }
 
+func (s *SharedGallery) GetIdentifier() (rv *SharedGalleryIdentifier) {
+	if s != nil {
+		return s.Identifier
+	}
+	return
+}
+
+func (s *SharedGallery) GetLocation() (rv string) {
+	if s != nil && s.Location != nil {
+		return *s.Location
+	}
+	return
+}
+
+func (s *SharedGallery) GetName() (rv string) {
+	if s != nil && s.Name != nil {
+		return *s.Name
+	}
+	return
+}
+
 // SharedGalleryIdentifier - The identifier information of shared gallery.
 type SharedGalleryIdentifier struct {
 	// The unique id of this shared gallery.
 	UniqueID *string
+}
+
+func (s *SharedGalleryIdentifier) GetUniqueID() (rv string) {
+	if s != nil && s.UniqueID != nil {
+		return *s.UniqueID
+	}
+	return
 }
 
 // SharedGalleryImage - Specifies information about the gallery image definition that you want to create or update.
@@ -4358,6 +11554,34 @@ type SharedGalleryImage struct {
 	Name *string
 }
 
+func (s *SharedGalleryImage) GetIdentifier() (rv *SharedGalleryIdentifier) {
+	if s != nil {
+		return s.Identifier
+	}
+	return
+}
+
+func (s *SharedGalleryImage) GetProperties() (rv *SharedGalleryImageProperties) {
+	if s != nil {
+		return s.Properties
+	}
+	return
+}
+
+func (s *SharedGalleryImage) GetLocation() (rv string) {
+	if s != nil && s.Location != nil {
+		return *s.Location
+	}
+	return
+}
+
+func (s *SharedGalleryImage) GetName() (rv string) {
+	if s != nil && s.Name != nil {
+		return *s.Name
+	}
+	return
+}
+
 // SharedGalleryImageList - The List Shared Gallery Images operation response.
 type SharedGalleryImageList struct {
 	// REQUIRED; A list of shared gallery images.
@@ -4366,6 +11590,20 @@ type SharedGalleryImageList struct {
 	// The uri to fetch the next page of shared gallery images. Call ListNext() with this to fetch the next page of shared gallery
 	// images.
 	NextLink *string
+}
+
+func (s *SharedGalleryImageList) GetValue() (rv []SharedGalleryImage) {
+	if s != nil {
+		return s.Value
+	}
+	return
+}
+
+func (s *SharedGalleryImageList) GetNextLink() (rv string) {
+	if s != nil && s.NextLink != nil {
+		return *s.NextLink
+	}
+	return
 }
 
 // SharedGalleryImageProperties - Describes the properties of a gallery image definition.
@@ -4404,6 +11642,69 @@ type SharedGalleryImageProperties struct {
 	Recommended *RecommendedMachineConfiguration
 }
 
+func (s *SharedGalleryImageProperties) GetIdentifier() (rv *GalleryImageIdentifier) {
+	if s != nil {
+		return s.Identifier
+	}
+	return
+}
+
+func (s *SharedGalleryImageProperties) GetOSState() (rv *OperatingSystemStateTypes) {
+	if s != nil {
+		return s.OSState
+	}
+	return
+}
+
+func (s *SharedGalleryImageProperties) GetOSType() (rv *OperatingSystemTypes) {
+	if s != nil {
+		return s.OSType
+	}
+	return
+}
+
+func (s *SharedGalleryImageProperties) GetDisallowed() (rv *Disallowed) {
+	if s != nil {
+		return s.Disallowed
+	}
+	return
+}
+
+func (s *SharedGalleryImageProperties) GetEndOfLifeDate() (rv *time.Time) {
+	if s != nil {
+		return s.EndOfLifeDate
+	}
+	return
+}
+
+func (s *SharedGalleryImageProperties) GetFeatures() (rv []GalleryImageFeature) {
+	if s != nil {
+		return s.Features
+	}
+	return
+}
+
+func (s *SharedGalleryImageProperties) GetHyperVGeneration() (rv *HyperVGeneration) {
+	if s != nil {
+		return s.HyperVGeneration
+	}
+	return
+}
+
+func (s *SharedGalleryImageProperties) GetPurchasePlan() (rv *ImagePurchasePlan) {
+	if s != nil {
+		return s.PurchasePlan
+	}
+	return
+}
+
+func (s *SharedGalleryImageProperties) GetRecommended() (rv *RecommendedMachineConfiguration) {
+	if s != nil {
+		return s.Recommended
+	}
+	return
+}
+
 // SharedGalleryImageVersion - Specifies information about the gallery image version that you want to create or update.
 type SharedGalleryImageVersion struct {
 	// The identifier information of shared gallery.
@@ -4419,6 +11720,34 @@ type SharedGalleryImageVersion struct {
 	Name *string
 }
 
+func (s *SharedGalleryImageVersion) GetIdentifier() (rv *SharedGalleryIdentifier) {
+	if s != nil {
+		return s.Identifier
+	}
+	return
+}
+
+func (s *SharedGalleryImageVersion) GetProperties() (rv *SharedGalleryImageVersionProperties) {
+	if s != nil {
+		return s.Properties
+	}
+	return
+}
+
+func (s *SharedGalleryImageVersion) GetLocation() (rv string) {
+	if s != nil && s.Location != nil {
+		return *s.Location
+	}
+	return
+}
+
+func (s *SharedGalleryImageVersion) GetName() (rv string) {
+	if s != nil && s.Name != nil {
+		return *s.Name
+	}
+	return
+}
+
 // SharedGalleryImageVersionList - The List Shared Gallery Image versions operation response.
 type SharedGalleryImageVersionList struct {
 	// REQUIRED; A list of shared gallery images versions.
@@ -4427,6 +11756,20 @@ type SharedGalleryImageVersionList struct {
 	// The uri to fetch the next page of shared gallery image versions. Call ListNext() with this to fetch the next page of shared
 	// gallery image versions.
 	NextLink *string
+}
+
+func (s *SharedGalleryImageVersionList) GetValue() (rv []SharedGalleryImageVersion) {
+	if s != nil {
+		return s.Value
+	}
+	return
+}
+
+func (s *SharedGalleryImageVersionList) GetNextLink() (rv string) {
+	if s != nil && s.NextLink != nil {
+		return *s.NextLink
+	}
+	return
 }
 
 // SharedGalleryImageVersionProperties - Describes the properties of a gallery image version.
@@ -4440,6 +11783,20 @@ type SharedGalleryImageVersionProperties struct {
 	PublishedDate *time.Time
 }
 
+func (s *SharedGalleryImageVersionProperties) GetEndOfLifeDate() (rv *time.Time) {
+	if s != nil {
+		return s.EndOfLifeDate
+	}
+	return
+}
+
+func (s *SharedGalleryImageVersionProperties) GetPublishedDate() (rv *time.Time) {
+	if s != nil {
+		return s.PublishedDate
+	}
+	return
+}
+
 // SharedGalleryList - The List Shared Galleries operation response.
 type SharedGalleryList struct {
 	// REQUIRED; A list of shared galleries.
@@ -4447,6 +11804,20 @@ type SharedGalleryList struct {
 
 	// The uri to fetch the next page of shared galleries. Call ListNext() with this to fetch the next page of shared galleries.
 	NextLink *string
+}
+
+func (s *SharedGalleryList) GetValue() (rv []SharedGallery) {
+	if s != nil {
+		return s.Value
+	}
+	return
+}
+
+func (s *SharedGalleryList) GetNextLink() (rv string) {
+	if s != nil && s.NextLink != nil {
+		return *s.NextLink
+	}
+	return
 }
 
 // SharingProfile - Profile for gallery sharing to subscription or tenant
@@ -4464,6 +11835,27 @@ type SharingProfile struct {
 	Groups []SharingProfileGroup
 }
 
+func (s *SharingProfile) GetCommunityGalleryInfo() (rv *CommunityGalleryInfo) {
+	if s != nil {
+		return s.CommunityGalleryInfo
+	}
+	return
+}
+
+func (s *SharingProfile) GetPermissions() (rv *GallerySharingPermissionTypes) {
+	if s != nil {
+		return s.Permissions
+	}
+	return
+}
+
+func (s *SharingProfile) GetGroups() (rv []SharingProfileGroup) {
+	if s != nil {
+		return s.Groups
+	}
+	return
+}
+
 // SharingProfileGroup - Group of the gallery sharing profile
 type SharingProfileGroup struct {
 	// A list of subscription/tenant ids the gallery is aimed to be shared to.
@@ -4477,6 +11869,20 @@ type SharingProfileGroup struct {
 	Type *SharingProfileGroupTypes
 }
 
+func (s *SharingProfileGroup) GetIDs() (rv []string) {
+	if s != nil {
+		return s.IDs
+	}
+	return
+}
+
+func (s *SharingProfileGroup) GetType() (rv *SharingProfileGroupTypes) {
+	if s != nil {
+		return s.Type
+	}
+	return
+}
+
 // SharingStatus - Sharing status of current gallery.
 type SharingStatus struct {
 	// Summary of all regional sharing status.
@@ -4484,6 +11890,20 @@ type SharingStatus struct {
 
 	// READ-ONLY; Aggregated sharing state of current gallery.
 	AggregatedState *SharingState
+}
+
+func (s *SharingStatus) GetSummary() (rv []RegionalSharingStatus) {
+	if s != nil {
+		return s.Summary
+	}
+	return
+}
+
+func (s *SharingStatus) GetAggregatedState() (rv *SharingState) {
+	if s != nil {
+		return s.AggregatedState
+	}
+	return
 }
 
 // SharingUpdate - Specifies information about the gallery sharing profile update.
@@ -4497,6 +11917,20 @@ type SharingUpdate struct {
 
 	// A list of sharing profile groups.
 	Groups []SharingProfileGroup
+}
+
+func (s *SharingUpdate) GetOperationType() (rv *SharingUpdateOperationTypes) {
+	if s != nil {
+		return s.OperationType
+	}
+	return
+}
+
+func (s *SharingUpdate) GetGroups() (rv []SharingProfileGroup) {
+	if s != nil {
+		return s.Groups
+	}
+	return
 }
 
 // Snapshot resource.
@@ -4531,6 +11965,69 @@ type Snapshot struct {
 	Type *string
 }
 
+func (s *Snapshot) GetLocation() (rv string) {
+	if s != nil && s.Location != nil {
+		return *s.Location
+	}
+	return
+}
+
+func (s *Snapshot) GetExtendedLocation() (rv *ExtendedLocation) {
+	if s != nil {
+		return s.ExtendedLocation
+	}
+	return
+}
+
+func (s *Snapshot) GetProperties() (rv *SnapshotProperties) {
+	if s != nil {
+		return s.Properties
+	}
+	return
+}
+
+func (s *Snapshot) GetSKU() (rv *SnapshotSKU) {
+	if s != nil {
+		return s.SKU
+	}
+	return
+}
+
+func (s *Snapshot) GetTags() (rv map[string]*string) {
+	if s != nil {
+		return s.Tags
+	}
+	return
+}
+
+func (s *Snapshot) GetID() (rv string) {
+	if s != nil && s.ID != nil {
+		return *s.ID
+	}
+	return
+}
+
+func (s *Snapshot) GetManagedBy() (rv string) {
+	if s != nil && s.ManagedBy != nil {
+		return *s.ManagedBy
+	}
+	return
+}
+
+func (s *Snapshot) GetName() (rv string) {
+	if s != nil && s.Name != nil {
+		return *s.Name
+	}
+	return
+}
+
+func (s *Snapshot) GetType() (rv string) {
+	if s != nil && s.Type != nil {
+		return *s.Type
+	}
+	return
+}
+
 // SnapshotList - The List Snapshots operation response.
 type SnapshotList struct {
 	// REQUIRED; A list of snapshots.
@@ -4538,6 +12035,20 @@ type SnapshotList struct {
 
 	// The uri to fetch the next page of snapshots. Call ListNext() with this to fetch the next page of snapshots.
 	NextLink *string
+}
+
+func (s *SnapshotList) GetValue() (rv []Snapshot) {
+	if s != nil {
+		return s.Value
+	}
+	return
+}
+
+func (s *SnapshotList) GetNextLink() (rv string) {
+	if s != nil && s.NextLink != nil {
+		return *s.NextLink
+	}
+	return
 }
 
 // SnapshotProperties - Snapshot resource properties.
@@ -4609,6 +12120,153 @@ type SnapshotProperties struct {
 	UniqueID *string
 }
 
+func (s *SnapshotProperties) GetCreationData() (rv *CreationData) {
+	if s != nil {
+		return s.CreationData
+	}
+	return
+}
+
+func (s *SnapshotProperties) GetCompletionPercent() (rv float32) {
+	if s != nil && s.CompletionPercent != nil {
+		return *s.CompletionPercent
+	}
+	return
+}
+
+func (s *SnapshotProperties) GetDataAccessAuthMode() (rv *DataAccessAuthMode) {
+	if s != nil {
+		return s.DataAccessAuthMode
+	}
+	return
+}
+
+func (s *SnapshotProperties) GetDiskAccessID() (rv string) {
+	if s != nil && s.DiskAccessID != nil {
+		return *s.DiskAccessID
+	}
+	return
+}
+
+func (s *SnapshotProperties) GetDiskSizeGB() (rv int32) {
+	if s != nil && s.DiskSizeGB != nil {
+		return *s.DiskSizeGB
+	}
+	return
+}
+
+func (s *SnapshotProperties) GetEncryption() (rv *Encryption) {
+	if s != nil {
+		return s.Encryption
+	}
+	return
+}
+
+func (s *SnapshotProperties) GetEncryptionSettingsCollection() (rv *EncryptionSettingsCollection) {
+	if s != nil {
+		return s.EncryptionSettingsCollection
+	}
+	return
+}
+
+func (s *SnapshotProperties) GetHyperVGeneration() (rv *HyperVGeneration) {
+	if s != nil {
+		return s.HyperVGeneration
+	}
+	return
+}
+
+func (s *SnapshotProperties) GetIncremental() (rv bool) {
+	if s != nil && s.Incremental != nil {
+		return *s.Incremental
+	}
+	return
+}
+
+func (s *SnapshotProperties) GetNetworkAccessPolicy() (rv *NetworkAccessPolicy) {
+	if s != nil {
+		return s.NetworkAccessPolicy
+	}
+	return
+}
+
+func (s *SnapshotProperties) GetOSType() (rv *OperatingSystemTypes) {
+	if s != nil {
+		return s.OSType
+	}
+	return
+}
+
+func (s *SnapshotProperties) GetPublicNetworkAccess() (rv *PublicNetworkAccess) {
+	if s != nil {
+		return s.PublicNetworkAccess
+	}
+	return
+}
+
+func (s *SnapshotProperties) GetPurchasePlan() (rv *PurchasePlanAutoGenerated) {
+	if s != nil {
+		return s.PurchasePlan
+	}
+	return
+}
+
+func (s *SnapshotProperties) GetSecurityProfile() (rv *DiskSecurityProfile) {
+	if s != nil {
+		return s.SecurityProfile
+	}
+	return
+}
+
+func (s *SnapshotProperties) GetSupportedCapabilities() (rv *SupportedCapabilities) {
+	if s != nil {
+		return s.SupportedCapabilities
+	}
+	return
+}
+
+func (s *SnapshotProperties) GetSupportsHibernation() (rv bool) {
+	if s != nil && s.SupportsHibernation != nil {
+		return *s.SupportsHibernation
+	}
+	return
+}
+
+func (s *SnapshotProperties) GetDiskSizeBytes() (rv int64) {
+	if s != nil && s.DiskSizeBytes != nil {
+		return *s.DiskSizeBytes
+	}
+	return
+}
+
+func (s *SnapshotProperties) GetDiskState() (rv *DiskState) {
+	if s != nil {
+		return s.DiskState
+	}
+	return
+}
+
+func (s *SnapshotProperties) GetProvisioningState() (rv string) {
+	if s != nil && s.ProvisioningState != nil {
+		return *s.ProvisioningState
+	}
+	return
+}
+
+func (s *SnapshotProperties) GetTimeCreated() (rv *time.Time) {
+	if s != nil {
+		return s.TimeCreated
+	}
+	return
+}
+
+func (s *SnapshotProperties) GetUniqueID() (rv string) {
+	if s != nil && s.UniqueID != nil {
+		return *s.UniqueID
+	}
+	return
+}
+
 // SnapshotSKU - The snapshots sku name. Can be StandardLRS, PremiumLRS, or Standard_ZRS. This is an optional parameter for
 // incremental snapshot and the default behavior is the SKU will be set to the same sku as the
 // previous snapshot
@@ -4618,6 +12276,20 @@ type SnapshotSKU struct {
 
 	// READ-ONLY; The sku tier.
 	Tier *string
+}
+
+func (s *SnapshotSKU) GetName() (rv *SnapshotStorageAccountTypes) {
+	if s != nil {
+		return s.Name
+	}
+	return
+}
+
+func (s *SnapshotSKU) GetTier() (rv string) {
+	if s != nil && s.Tier != nil {
+		return *s.Tier
+	}
+	return
 }
 
 // SnapshotUpdate - Snapshot update resource.
@@ -4632,6 +12304,27 @@ type SnapshotUpdate struct {
 
 	// Resource tags
 	Tags map[string]*string
+}
+
+func (s *SnapshotUpdate) GetProperties() (rv *SnapshotUpdateProperties) {
+	if s != nil {
+		return s.Properties
+	}
+	return
+}
+
+func (s *SnapshotUpdate) GetSKU() (rv *SnapshotSKU) {
+	if s != nil {
+		return s.SKU
+	}
+	return
+}
+
+func (s *SnapshotUpdate) GetTags() (rv map[string]*string) {
+	if s != nil {
+		return s.Tags
+	}
+	return
 }
 
 // SnapshotUpdateProperties - Snapshot resource update properties.
@@ -4669,16 +12362,100 @@ type SnapshotUpdateProperties struct {
 	SupportsHibernation *bool
 }
 
+func (s *SnapshotUpdateProperties) GetDataAccessAuthMode() (rv *DataAccessAuthMode) {
+	if s != nil {
+		return s.DataAccessAuthMode
+	}
+	return
+}
+
+func (s *SnapshotUpdateProperties) GetDiskAccessID() (rv string) {
+	if s != nil && s.DiskAccessID != nil {
+		return *s.DiskAccessID
+	}
+	return
+}
+
+func (s *SnapshotUpdateProperties) GetDiskSizeGB() (rv int32) {
+	if s != nil && s.DiskSizeGB != nil {
+		return *s.DiskSizeGB
+	}
+	return
+}
+
+func (s *SnapshotUpdateProperties) GetEncryption() (rv *Encryption) {
+	if s != nil {
+		return s.Encryption
+	}
+	return
+}
+
+func (s *SnapshotUpdateProperties) GetEncryptionSettingsCollection() (rv *EncryptionSettingsCollection) {
+	if s != nil {
+		return s.EncryptionSettingsCollection
+	}
+	return
+}
+
+func (s *SnapshotUpdateProperties) GetNetworkAccessPolicy() (rv *NetworkAccessPolicy) {
+	if s != nil {
+		return s.NetworkAccessPolicy
+	}
+	return
+}
+
+func (s *SnapshotUpdateProperties) GetOSType() (rv *OperatingSystemTypes) {
+	if s != nil {
+		return s.OSType
+	}
+	return
+}
+
+func (s *SnapshotUpdateProperties) GetPublicNetworkAccess() (rv *PublicNetworkAccess) {
+	if s != nil {
+		return s.PublicNetworkAccess
+	}
+	return
+}
+
+func (s *SnapshotUpdateProperties) GetSupportedCapabilities() (rv *SupportedCapabilities) {
+	if s != nil {
+		return s.SupportedCapabilities
+	}
+	return
+}
+
+func (s *SnapshotUpdateProperties) GetSupportsHibernation() (rv bool) {
+	if s != nil && s.SupportsHibernation != nil {
+		return *s.SupportsHibernation
+	}
+	return
+}
+
 // SoftDeletePolicy - Contains information about the soft deletion policy of the gallery.
 type SoftDeletePolicy struct {
 	// Enables soft-deletion for resources in this gallery, allowing them to be recovered within retention time.
 	IsSoftDeleteEnabled *bool
 }
 
+func (s *SoftDeletePolicy) GetIsSoftDeleteEnabled() (rv bool) {
+	if s != nil && s.IsSoftDeleteEnabled != nil {
+		return *s.IsSoftDeleteEnabled
+	}
+	return
+}
+
 // SourceVault - The vault id is an Azure Resource Manager Resource id in the form /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/vaults/{vaultName}
 type SourceVault struct {
 	// Resource Id
 	ID *string
+}
+
+func (s *SourceVault) GetID() (rv string) {
+	if s != nil && s.ID != nil {
+		return *s.ID
+	}
+	return
 }
 
 // SpotRestorePolicy - Specifies the Spot-Try-Restore properties for the virtual machine scale set.
@@ -4693,12 +12470,40 @@ type SpotRestorePolicy struct {
 	RestoreTimeout *string
 }
 
+func (s *SpotRestorePolicy) GetEnabled() (rv bool) {
+	if s != nil && s.Enabled != nil {
+		return *s.Enabled
+	}
+	return
+}
+
+func (s *SpotRestorePolicy) GetRestoreTimeout() (rv string) {
+	if s != nil && s.RestoreTimeout != nil {
+		return *s.RestoreTimeout
+	}
+	return
+}
+
 type StatusCodeCount struct {
 	// READ-ONLY; The instance view status code
 	Code *string
 
 	// READ-ONLY; Number of instances having this status code
 	Count *int32
+}
+
+func (s *StatusCodeCount) GetCode() (rv string) {
+	if s != nil && s.Code != nil {
+		return *s.Code
+	}
+	return
+}
+
+func (s *StatusCodeCount) GetCount() (rv int32) {
+	if s != nil && s.Count != nil {
+		return *s.Count
+	}
+	return
 }
 
 // StorageProfile - Specifies the storage settings for the virtual machine disks.
@@ -4717,14 +12522,49 @@ type StorageProfile struct {
 	OSDisk *OSDisk
 }
 
+func (s *StorageProfile) GetDataDisks() (rv []DataDisk) {
+	if s != nil {
+		return s.DataDisks
+	}
+	return
+}
+
+func (s *StorageProfile) GetImageReference() (rv *ImageReference) {
+	if s != nil {
+		return s.ImageReference
+	}
+	return
+}
+
+func (s *StorageProfile) GetOSDisk() (rv *OSDisk) {
+	if s != nil {
+		return s.OSDisk
+	}
+	return
+}
+
 type SubResource struct {
 	// Resource Id
 	ID *string
 }
 
+func (s *SubResource) GetID() (rv string) {
+	if s != nil && s.ID != nil {
+		return *s.ID
+	}
+	return
+}
+
 type SubResourceReadOnly struct {
 	// READ-ONLY; Resource Id
 	ID *string
+}
+
+func (s *SubResourceReadOnly) GetID() (rv string) {
+	if s != nil && s.ID != nil {
+		return *s.ID
+	}
+	return
 }
 
 type SubResourceWithColocationStatus struct {
@@ -4735,6 +12575,20 @@ type SubResourceWithColocationStatus struct {
 	ID *string
 }
 
+func (s *SubResourceWithColocationStatus) GetColocationStatus() (rv *InstanceViewStatus) {
+	if s != nil {
+		return s.ColocationStatus
+	}
+	return
+}
+
+func (s *SubResourceWithColocationStatus) GetID() (rv string) {
+	if s != nil && s.ID != nil {
+		return *s.ID
+	}
+	return
+}
+
 // SupportedCapabilities - List of supported capabilities persisted on the disk resource for VM use.
 type SupportedCapabilities struct {
 	// True if the image from which the OS disk is created supports accelerated networking.
@@ -4742,6 +12596,20 @@ type SupportedCapabilities struct {
 
 	// CPU architecture supported by an OS disk.
 	Architecture *Architecture
+}
+
+func (s *SupportedCapabilities) GetAcceleratedNetwork() (rv bool) {
+	if s != nil && s.AcceleratedNetwork != nil {
+		return *s.AcceleratedNetwork
+	}
+	return
+}
+
+func (s *SupportedCapabilities) GetArchitecture() (rv *Architecture) {
+	if s != nil {
+		return s.Architecture
+	}
+	return
 }
 
 // TargetRegion - Describes the target region information.
@@ -4759,6 +12627,34 @@ type TargetRegion struct {
 	StorageAccountType *StorageAccountType
 }
 
+func (t *TargetRegion) GetName() (rv string) {
+	if t != nil && t.Name != nil {
+		return *t.Name
+	}
+	return
+}
+
+func (t *TargetRegion) GetEncryption() (rv *EncryptionImages) {
+	if t != nil {
+		return t.Encryption
+	}
+	return
+}
+
+func (t *TargetRegion) GetRegionalReplicaCount() (rv int32) {
+	if t != nil && t.RegionalReplicaCount != nil {
+		return *t.RegionalReplicaCount
+	}
+	return
+}
+
+func (t *TargetRegion) GetStorageAccountType() (rv *StorageAccountType) {
+	if t != nil {
+		return t.StorageAccountType
+	}
+	return
+}
+
 type TerminateNotificationProfile struct {
 	// Specifies whether the Terminate Scheduled event is enabled or disabled.
 	Enable *bool
@@ -4767,6 +12663,20 @@ type TerminateNotificationProfile struct {
 	// before the event is auto approved (timed out). The configuration must be
 	// specified in ISO 8601 format, the default value is 5 minutes (PT5M)
 	NotBeforeTimeout *string
+}
+
+func (t *TerminateNotificationProfile) GetEnable() (rv bool) {
+	if t != nil && t.Enable != nil {
+		return *t.Enable
+	}
+	return
+}
+
+func (t *TerminateNotificationProfile) GetNotBeforeTimeout() (rv string) {
+	if t != nil && t.NotBeforeTimeout != nil {
+		return *t.NotBeforeTimeout
+	}
+	return
 }
 
 // ThrottledRequestsInput - Api request input for LogAnalytics getThrottledRequests Api.
@@ -4796,6 +12706,62 @@ type ThrottledRequestsInput struct {
 	GroupByUserAgent *bool
 }
 
+func (t *ThrottledRequestsInput) GetBlobContainerSasURI() (rv string) {
+	if t != nil && t.BlobContainerSasURI != nil {
+		return *t.BlobContainerSasURI
+	}
+	return
+}
+
+func (t *ThrottledRequestsInput) GetFromTime() (rv *time.Time) {
+	if t != nil {
+		return t.FromTime
+	}
+	return
+}
+
+func (t *ThrottledRequestsInput) GetToTime() (rv *time.Time) {
+	if t != nil {
+		return t.ToTime
+	}
+	return
+}
+
+func (t *ThrottledRequestsInput) GetGroupByClientApplicationID() (rv bool) {
+	if t != nil && t.GroupByClientApplicationID != nil {
+		return *t.GroupByClientApplicationID
+	}
+	return
+}
+
+func (t *ThrottledRequestsInput) GetGroupByOperationName() (rv bool) {
+	if t != nil && t.GroupByOperationName != nil {
+		return *t.GroupByOperationName
+	}
+	return
+}
+
+func (t *ThrottledRequestsInput) GetGroupByResourceName() (rv bool) {
+	if t != nil && t.GroupByResourceName != nil {
+		return *t.GroupByResourceName
+	}
+	return
+}
+
+func (t *ThrottledRequestsInput) GetGroupByThrottlePolicy() (rv bool) {
+	if t != nil && t.GroupByThrottlePolicy != nil {
+		return *t.GroupByThrottlePolicy
+	}
+	return
+}
+
+func (t *ThrottledRequestsInput) GetGroupByUserAgent() (rv bool) {
+	if t != nil && t.GroupByUserAgent != nil {
+		return *t.GroupByUserAgent
+	}
+	return
+}
+
 // UefiSettings - Specifies the security settings like secure boot and vTPM used while creating the virtual machine.
 // Minimum api-version: 2020-12-01
 type UefiSettings struct {
@@ -4808,6 +12774,20 @@ type UefiSettings struct {
 	VTpmEnabled *bool
 }
 
+func (u *UefiSettings) GetSecureBootEnabled() (rv bool) {
+	if u != nil && u.SecureBootEnabled != nil {
+		return *u.SecureBootEnabled
+	}
+	return
+}
+
+func (u *UefiSettings) GetVTpmEnabled() (rv bool) {
+	if u != nil && u.VTpmEnabled != nil {
+		return *u.VTpmEnabled
+	}
+	return
+}
+
 // UpdateDomain - Defines an update domain for the cloud service.
 type UpdateDomain struct {
 	// READ-ONLY; Resource Id
@@ -4817,10 +12797,38 @@ type UpdateDomain struct {
 	Name *string
 }
 
+func (u *UpdateDomain) GetID() (rv string) {
+	if u != nil && u.ID != nil {
+		return *u.ID
+	}
+	return
+}
+
+func (u *UpdateDomain) GetName() (rv string) {
+	if u != nil && u.Name != nil {
+		return *u.Name
+	}
+	return
+}
+
 type UpdateDomainListResult struct {
 	// REQUIRED
 	Value    []UpdateDomain
 	NextLink *string
+}
+
+func (u *UpdateDomainListResult) GetValue() (rv []UpdateDomain) {
+	if u != nil {
+		return u.Value
+	}
+	return
+}
+
+func (u *UpdateDomainListResult) GetNextLink() (rv string) {
+	if u != nil && u.NextLink != nil {
+		return *u.NextLink
+	}
+	return
 }
 
 // UpgradeOperationHistoricalStatusInfo - Virtual Machine Scale Set OS Upgrade History operation response.
@@ -4833,6 +12841,27 @@ type UpgradeOperationHistoricalStatusInfo struct {
 
 	// READ-ONLY; Resource type
 	Type *string
+}
+
+func (u *UpgradeOperationHistoricalStatusInfo) GetLocation() (rv string) {
+	if u != nil && u.Location != nil {
+		return *u.Location
+	}
+	return
+}
+
+func (u *UpgradeOperationHistoricalStatusInfo) GetProperties() (rv *UpgradeOperationHistoricalStatusInfoProperties) {
+	if u != nil {
+		return u.Properties
+	}
+	return
+}
+
+func (u *UpgradeOperationHistoricalStatusInfo) GetType() (rv string) {
+	if u != nil && u.Type != nil {
+		return *u.Type
+	}
+	return
 }
 
 // UpgradeOperationHistoricalStatusInfoProperties - Describes each OS upgrade on the Virtual Machine Scale Set.
@@ -4856,6 +12885,48 @@ type UpgradeOperationHistoricalStatusInfoProperties struct {
 	TargetImageReference *ImageReference
 }
 
+func (u *UpgradeOperationHistoricalStatusInfoProperties) GetError() (rv *APIError) {
+	if u != nil {
+		return u.Error
+	}
+	return
+}
+
+func (u *UpgradeOperationHistoricalStatusInfoProperties) GetProgress() (rv *RollingUpgradeProgressInfo) {
+	if u != nil {
+		return u.Progress
+	}
+	return
+}
+
+func (u *UpgradeOperationHistoricalStatusInfoProperties) GetRollbackInfo() (rv *RollbackStatusInfo) {
+	if u != nil {
+		return u.RollbackInfo
+	}
+	return
+}
+
+func (u *UpgradeOperationHistoricalStatusInfoProperties) GetRunningStatus() (rv *UpgradeOperationHistoryStatus) {
+	if u != nil {
+		return u.RunningStatus
+	}
+	return
+}
+
+func (u *UpgradeOperationHistoricalStatusInfoProperties) GetStartedBy() (rv *UpgradeOperationInvoker) {
+	if u != nil {
+		return u.StartedBy
+	}
+	return
+}
+
+func (u *UpgradeOperationHistoricalStatusInfoProperties) GetTargetImageReference() (rv *ImageReference) {
+	if u != nil {
+		return u.TargetImageReference
+	}
+	return
+}
+
 // UpgradeOperationHistoryStatus - Information about the current running state of the overall upgrade.
 type UpgradeOperationHistoryStatus struct {
 	// READ-ONLY; Code indicating the current status of the upgrade.
@@ -4866,6 +12937,27 @@ type UpgradeOperationHistoryStatus struct {
 
 	// READ-ONLY; Start time of the upgrade.
 	StartTime *time.Time
+}
+
+func (u *UpgradeOperationHistoryStatus) GetCode() (rv *UpgradeState) {
+	if u != nil {
+		return u.Code
+	}
+	return
+}
+
+func (u *UpgradeOperationHistoryStatus) GetEndTime() (rv *time.Time) {
+	if u != nil {
+		return u.EndTime
+	}
+	return
+}
+
+func (u *UpgradeOperationHistoryStatus) GetStartTime() (rv *time.Time) {
+	if u != nil {
+		return u.StartTime
+	}
+	return
 }
 
 // UpgradePolicy - Describes an upgrade policy - automatic, manual, or rolling.
@@ -4884,6 +12976,27 @@ type UpgradePolicy struct {
 	RollingUpgradePolicy *RollingUpgradePolicy
 }
 
+func (u *UpgradePolicy) GetAutomaticOSUpgradePolicy() (rv *AutomaticOSUpgradePolicy) {
+	if u != nil {
+		return u.AutomaticOSUpgradePolicy
+	}
+	return
+}
+
+func (u *UpgradePolicy) GetMode() (rv *UpgradeMode) {
+	if u != nil {
+		return u.Mode
+	}
+	return
+}
+
+func (u *UpgradePolicy) GetRollingUpgradePolicy() (rv *RollingUpgradePolicy) {
+	if u != nil {
+		return u.RollingUpgradePolicy
+	}
+	return
+}
+
 // Usage - Describes Compute Resource Usage.
 type Usage struct {
 	// REQUIRED; The current usage of the resource.
@@ -4899,6 +13012,34 @@ type Usage struct {
 	Unit *string
 }
 
+func (u *Usage) GetCurrentValue() (rv int32) {
+	if u != nil && u.CurrentValue != nil {
+		return *u.CurrentValue
+	}
+	return
+}
+
+func (u *Usage) GetLimit() (rv int64) {
+	if u != nil && u.Limit != nil {
+		return *u.Limit
+	}
+	return
+}
+
+func (u *Usage) GetName() (rv *UsageName) {
+	if u != nil {
+		return u.Name
+	}
+	return
+}
+
+func (u *Usage) GetUnit() (rv *string) {
+	if u != nil {
+		return u.Unit
+	}
+	return
+}
+
 // UsageName - The Usage Names.
 type UsageName struct {
 	// The localized name of the resource.
@@ -4906,6 +13047,20 @@ type UsageName struct {
 
 	// The name of the resource.
 	Value *string
+}
+
+func (u *UsageName) GetLocalizedValue() (rv string) {
+	if u != nil && u.LocalizedValue != nil {
+		return *u.LocalizedValue
+	}
+	return
+}
+
+func (u *UsageName) GetValue() (rv string) {
+	if u != nil && u.Value != nil {
+		return *u.Value
+	}
+	return
 }
 
 type UserArtifactManage struct {
@@ -4921,6 +13076,27 @@ type UserArtifactManage struct {
 	Update *string
 }
 
+func (u *UserArtifactManage) GetInstall() (rv string) {
+	if u != nil && u.Install != nil {
+		return *u.Install
+	}
+	return
+}
+
+func (u *UserArtifactManage) GetRemove() (rv string) {
+	if u != nil && u.Remove != nil {
+		return *u.Remove
+	}
+	return
+}
+
+func (u *UserArtifactManage) GetUpdate() (rv string) {
+	if u != nil && u.Update != nil {
+		return *u.Update
+	}
+	return
+}
+
 // UserArtifactSource - The source image from which the Image Version is going to be created.
 type UserArtifactSource struct {
 	// REQUIRED; Required. The mediaLink of the artifact, must be a readable storage page blob.
@@ -4930,12 +13106,40 @@ type UserArtifactSource struct {
 	DefaultConfigurationLink *string
 }
 
+func (u *UserArtifactSource) GetMediaLink() (rv string) {
+	if u != nil && u.MediaLink != nil {
+		return *u.MediaLink
+	}
+	return
+}
+
+func (u *UserArtifactSource) GetDefaultConfigurationLink() (rv string) {
+	if u != nil && u.DefaultConfigurationLink != nil {
+		return *u.DefaultConfigurationLink
+	}
+	return
+}
+
 type UserAssignedIdentitiesValue struct {
 	// READ-ONLY; The client id of user assigned identity.
 	ClientID *string
 
 	// READ-ONLY; The principal id of user assigned identity.
 	PrincipalID *string
+}
+
+func (u *UserAssignedIdentitiesValue) GetClientID() (rv string) {
+	if u != nil && u.ClientID != nil {
+		return *u.ClientID
+	}
+	return
+}
+
+func (u *UserAssignedIdentitiesValue) GetPrincipalID() (rv string) {
+	if u != nil && u.PrincipalID != nil {
+		return *u.PrincipalID
+	}
+	return
 }
 
 // VMDiskSecurityProfile - Specifies the security profile settings for the managed disk.
@@ -4950,6 +13154,20 @@ type VMDiskSecurityProfile struct {
 	// for encryption of just the VMGuestState blob.
 	// NOTE: It can be set for only Confidential VMs.
 	SecurityEncryptionType *SecurityEncryptionTypes
+}
+
+func (v *VMDiskSecurityProfile) GetDiskEncryptionSet() (rv *DiskEncryptionSetParameters) {
+	if v != nil {
+		return v.DiskEncryptionSet
+	}
+	return
+}
+
+func (v *VMDiskSecurityProfile) GetSecurityEncryptionType() (rv *SecurityEncryptionTypes) {
+	if v != nil {
+		return v.SecurityEncryptionType
+	}
+	return
 }
 
 // VMGalleryApplication - Specifies the required information to reference a compute gallery application version
@@ -4968,11 +13186,46 @@ type VMGalleryApplication struct {
 	Tags *string
 }
 
+func (v *VMGalleryApplication) GetPackageReferenceID() (rv string) {
+	if v != nil && v.PackageReferenceID != nil {
+		return *v.PackageReferenceID
+	}
+	return
+}
+
+func (v *VMGalleryApplication) GetConfigurationReference() (rv string) {
+	if v != nil && v.ConfigurationReference != nil {
+		return *v.ConfigurationReference
+	}
+	return
+}
+
+func (v *VMGalleryApplication) GetOrder() (rv int32) {
+	if v != nil && v.Order != nil {
+		return *v.Order
+	}
+	return
+}
+
+func (v *VMGalleryApplication) GetTags() (rv string) {
+	if v != nil && v.Tags != nil {
+		return *v.Tags
+	}
+	return
+}
+
 type VMScaleSetConvertToSinglePlacementGroupInput struct {
 	// Id of the placement group in which you want future virtual machine instances to be placed. To query placement group Id,
 	// please use Virtual Machine Scale Set VMs - Get API. If not provided, the
 	// platform will choose one with maximum number of virtual machine instances.
 	ActivePlacementGroupID *string
+}
+
+func (v *VMScaleSetConvertToSinglePlacementGroupInput) GetActivePlacementGroupID() (rv string) {
+	if v != nil && v.ActivePlacementGroupID != nil {
+		return *v.ActivePlacementGroupID
+	}
+	return
 }
 
 // VMSizeProperties - Specifies VM Size Property settings on the virtual machine.
@@ -4989,6 +13242,20 @@ type VMSizeProperties struct {
 	// a region [https://docs.microsoft.com/en-us/rest/api/compute/resource-skus/list]
 	// Setting this property to 1 also means that hyper-threading is disabled.
 	VCPUsPerCore *int32
+}
+
+func (v *VMSizeProperties) GetVCPUsAvailable() (rv int32) {
+	if v != nil && v.VCPUsAvailable != nil {
+		return *v.VCPUsAvailable
+	}
+	return
+}
+
+func (v *VMSizeProperties) GetVCPUsPerCore() (rv int32) {
+	if v != nil && v.VCPUsPerCore != nil {
+		return *v.VCPUsPerCore
+	}
+	return
 }
 
 // VaultCertificate - Describes a single certificate reference in a Key Vault, and where the certificate should reside on
@@ -5018,6 +13285,20 @@ type VaultCertificate struct {
 	CertificateURL *string
 }
 
+func (v *VaultCertificate) GetCertificateStore() (rv string) {
+	if v != nil && v.CertificateStore != nil {
+		return *v.CertificateStore
+	}
+	return
+}
+
+func (v *VaultCertificate) GetCertificateURL() (rv string) {
+	if v != nil && v.CertificateURL != nil {
+		return *v.CertificateURL
+	}
+	return
+}
+
 // VaultSecretGroup - Describes a set of certificates which are all in the same Key Vault.
 type VaultSecretGroup struct {
 	// The relative URL of the Key Vault containing all of the certificates in VaultCertificates.
@@ -5027,10 +13308,31 @@ type VaultSecretGroup struct {
 	VaultCertificates []VaultCertificate
 }
 
+func (v *VaultSecretGroup) GetSourceVault() (rv *SubResource) {
+	if v != nil {
+		return v.SourceVault
+	}
+	return
+}
+
+func (v *VaultSecretGroup) GetVaultCertificates() (rv []VaultCertificate) {
+	if v != nil {
+		return v.VaultCertificates
+	}
+	return
+}
+
 // VirtualHardDisk - Describes the uri of a disk.
 type VirtualHardDisk struct {
 	// Specifies the virtual hard disk's uri.
 	URI *string
+}
+
+func (v *VirtualHardDisk) GetURI() (rv string) {
+	if v != nil && v.URI != nil {
+		return *v.URI
+	}
+	return
 }
 
 // VirtualMachine - Describes a Virtual Machine.
@@ -5073,6 +13375,83 @@ type VirtualMachine struct {
 	Type *string
 }
 
+func (v *VirtualMachine) GetLocation() (rv string) {
+	if v != nil && v.Location != nil {
+		return *v.Location
+	}
+	return
+}
+
+func (v *VirtualMachine) GetExtendedLocation() (rv *ExtendedLocation) {
+	if v != nil {
+		return v.ExtendedLocation
+	}
+	return
+}
+
+func (v *VirtualMachine) GetIdentity() (rv *VirtualMachineIdentity) {
+	if v != nil {
+		return v.Identity
+	}
+	return
+}
+
+func (v *VirtualMachine) GetPlan() (rv *Plan) {
+	if v != nil {
+		return v.Plan
+	}
+	return
+}
+
+func (v *VirtualMachine) GetProperties() (rv *VirtualMachineProperties) {
+	if v != nil {
+		return v.Properties
+	}
+	return
+}
+
+func (v *VirtualMachine) GetTags() (rv map[string]*string) {
+	if v != nil {
+		return v.Tags
+	}
+	return
+}
+
+func (v *VirtualMachine) GetZones() (rv []string) {
+	if v != nil {
+		return v.Zones
+	}
+	return
+}
+
+func (v *VirtualMachine) GetID() (rv string) {
+	if v != nil && v.ID != nil {
+		return *v.ID
+	}
+	return
+}
+
+func (v *VirtualMachine) GetName() (rv string) {
+	if v != nil && v.Name != nil {
+		return *v.Name
+	}
+	return
+}
+
+func (v *VirtualMachine) GetResources() (rv []VirtualMachineExtension) {
+	if v != nil {
+		return v.Resources
+	}
+	return
+}
+
+func (v *VirtualMachine) GetType() (rv string) {
+	if v != nil && v.Type != nil {
+		return *v.Type
+	}
+	return
+}
+
 // VirtualMachineAgentInstanceView - The instance view of the VM Agent running on the virtual machine.
 type VirtualMachineAgentInstanceView struct {
 	// The virtual machine extension handler instance view.
@@ -5083,6 +13462,27 @@ type VirtualMachineAgentInstanceView struct {
 
 	// The VM Agent full version.
 	VMAgentVersion *string
+}
+
+func (v *VirtualMachineAgentInstanceView) GetExtensionHandlers() (rv []VirtualMachineExtensionHandlerInstanceView) {
+	if v != nil {
+		return v.ExtensionHandlers
+	}
+	return
+}
+
+func (v *VirtualMachineAgentInstanceView) GetStatuses() (rv []InstanceViewStatus) {
+	if v != nil {
+		return v.Statuses
+	}
+	return
+}
+
+func (v *VirtualMachineAgentInstanceView) GetVMAgentVersion() (rv string) {
+	if v != nil && v.VMAgentVersion != nil {
+		return *v.VMAgentVersion
+	}
+	return
 }
 
 // VirtualMachineAssessPatchesResult - Describes the properties of an AssessPatches result.
@@ -5116,6 +13516,62 @@ type VirtualMachineAssessPatchesResult struct {
 	Status *PatchOperationStatus
 }
 
+func (v *VirtualMachineAssessPatchesResult) GetAssessmentActivityID() (rv string) {
+	if v != nil && v.AssessmentActivityID != nil {
+		return *v.AssessmentActivityID
+	}
+	return
+}
+
+func (v *VirtualMachineAssessPatchesResult) GetAvailablePatches() (rv []VirtualMachineSoftwarePatchProperties) {
+	if v != nil {
+		return v.AvailablePatches
+	}
+	return
+}
+
+func (v *VirtualMachineAssessPatchesResult) GetCriticalAndSecurityPatchCount() (rv int32) {
+	if v != nil && v.CriticalAndSecurityPatchCount != nil {
+		return *v.CriticalAndSecurityPatchCount
+	}
+	return
+}
+
+func (v *VirtualMachineAssessPatchesResult) GetError() (rv *APIError) {
+	if v != nil {
+		return v.Error
+	}
+	return
+}
+
+func (v *VirtualMachineAssessPatchesResult) GetOtherPatchCount() (rv int32) {
+	if v != nil && v.OtherPatchCount != nil {
+		return *v.OtherPatchCount
+	}
+	return
+}
+
+func (v *VirtualMachineAssessPatchesResult) GetRebootPending() (rv bool) {
+	if v != nil && v.RebootPending != nil {
+		return *v.RebootPending
+	}
+	return
+}
+
+func (v *VirtualMachineAssessPatchesResult) GetStartDateTime() (rv *time.Time) {
+	if v != nil {
+		return v.StartDateTime
+	}
+	return
+}
+
+func (v *VirtualMachineAssessPatchesResult) GetStatus() (rv *PatchOperationStatus) {
+	if v != nil {
+		return v.Status
+	}
+	return
+}
+
 // VirtualMachineCaptureParameters - Capture Virtual Machine parameters.
 type VirtualMachineCaptureParameters struct {
 	// REQUIRED; The destination container name.
@@ -5126,6 +13582,27 @@ type VirtualMachineCaptureParameters struct {
 
 	// REQUIRED; The captured virtual hard disk's name prefix.
 	VhdPrefix *string
+}
+
+func (v *VirtualMachineCaptureParameters) GetDestinationContainerName() (rv string) {
+	if v != nil && v.DestinationContainerName != nil {
+		return *v.DestinationContainerName
+	}
+	return
+}
+
+func (v *VirtualMachineCaptureParameters) GetOverwriteVhds() (rv bool) {
+	if v != nil && v.OverwriteVhds != nil {
+		return *v.OverwriteVhds
+	}
+	return
+}
+
+func (v *VirtualMachineCaptureParameters) GetVhdPrefix() (rv string) {
+	if v != nil && v.VhdPrefix != nil {
+		return *v.VhdPrefix
+	}
+	return
 }
 
 // VirtualMachineCaptureResult - Output of virtual machine capture operation.
@@ -5144,6 +13621,41 @@ type VirtualMachineCaptureResult struct {
 
 	// READ-ONLY; the schema of the captured virtual machine
 	Schema *string
+}
+
+func (v *VirtualMachineCaptureResult) GetID() (rv string) {
+	if v != nil && v.ID != nil {
+		return *v.ID
+	}
+	return
+}
+
+func (v *VirtualMachineCaptureResult) GetContentVersion() (rv string) {
+	if v != nil && v.ContentVersion != nil {
+		return *v.ContentVersion
+	}
+	return
+}
+
+func (v *VirtualMachineCaptureResult) GetParameters() (rv any) {
+	if v != nil {
+		return v.Parameters
+	}
+	return
+}
+
+func (v *VirtualMachineCaptureResult) GetResources() (rv []any) {
+	if v != nil {
+		return v.Resources
+	}
+	return
+}
+
+func (v *VirtualMachineCaptureResult) GetSchema() (rv string) {
+	if v != nil && v.Schema != nil {
+		return *v.Schema
+	}
+	return
 }
 
 // VirtualMachineExtension - Describes a Virtual Machine Extension.
@@ -5167,6 +13679,48 @@ type VirtualMachineExtension struct {
 	Type *string
 }
 
+func (v *VirtualMachineExtension) GetLocation() (rv string) {
+	if v != nil && v.Location != nil {
+		return *v.Location
+	}
+	return
+}
+
+func (v *VirtualMachineExtension) GetProperties() (rv *VirtualMachineExtensionProperties) {
+	if v != nil {
+		return v.Properties
+	}
+	return
+}
+
+func (v *VirtualMachineExtension) GetTags() (rv map[string]*string) {
+	if v != nil {
+		return v.Tags
+	}
+	return
+}
+
+func (v *VirtualMachineExtension) GetID() (rv string) {
+	if v != nil && v.ID != nil {
+		return *v.ID
+	}
+	return
+}
+
+func (v *VirtualMachineExtension) GetName() (rv string) {
+	if v != nil && v.Name != nil {
+		return *v.Name
+	}
+	return
+}
+
+func (v *VirtualMachineExtension) GetType() (rv string) {
+	if v != nil && v.Type != nil {
+		return *v.Type
+	}
+	return
+}
+
 // VirtualMachineExtensionHandlerInstanceView - The instance view of a virtual machine extension handler.
 type VirtualMachineExtensionHandlerInstanceView struct {
 	// The extension handler status.
@@ -5177,6 +13731,27 @@ type VirtualMachineExtensionHandlerInstanceView struct {
 
 	// Specifies the version of the script handler.
 	TypeHandlerVersion *string
+}
+
+func (v *VirtualMachineExtensionHandlerInstanceView) GetStatus() (rv *InstanceViewStatus) {
+	if v != nil {
+		return v.Status
+	}
+	return
+}
+
+func (v *VirtualMachineExtensionHandlerInstanceView) GetType() (rv string) {
+	if v != nil && v.Type != nil {
+		return *v.Type
+	}
+	return
+}
+
+func (v *VirtualMachineExtensionHandlerInstanceView) GetTypeHandlerVersion() (rv string) {
+	if v != nil && v.TypeHandlerVersion != nil {
+		return *v.TypeHandlerVersion
+	}
+	return
 }
 
 // VirtualMachineExtensionImage - Describes a Virtual Machine Extension Image.
@@ -5200,6 +13775,48 @@ type VirtualMachineExtensionImage struct {
 	Type *string
 }
 
+func (v *VirtualMachineExtensionImage) GetLocation() (rv string) {
+	if v != nil && v.Location != nil {
+		return *v.Location
+	}
+	return
+}
+
+func (v *VirtualMachineExtensionImage) GetProperties() (rv *VirtualMachineExtensionImageProperties) {
+	if v != nil {
+		return v.Properties
+	}
+	return
+}
+
+func (v *VirtualMachineExtensionImage) GetTags() (rv map[string]*string) {
+	if v != nil {
+		return v.Tags
+	}
+	return
+}
+
+func (v *VirtualMachineExtensionImage) GetID() (rv string) {
+	if v != nil && v.ID != nil {
+		return *v.ID
+	}
+	return
+}
+
+func (v *VirtualMachineExtensionImage) GetName() (rv string) {
+	if v != nil && v.Name != nil {
+		return *v.Name
+	}
+	return
+}
+
+func (v *VirtualMachineExtensionImage) GetType() (rv string) {
+	if v != nil && v.Type != nil {
+		return *v.Type
+	}
+	return
+}
+
 // VirtualMachineExtensionImageProperties - Describes the properties of a Virtual Machine Extension Image.
 type VirtualMachineExtensionImageProperties struct {
 	// REQUIRED; The type of role (IaaS or PaaS) this extension supports.
@@ -5220,6 +13837,41 @@ type VirtualMachineExtensionImageProperties struct {
 	VMScaleSetEnabled *bool
 }
 
+func (v *VirtualMachineExtensionImageProperties) GetComputeRole() (rv string) {
+	if v != nil && v.ComputeRole != nil {
+		return *v.ComputeRole
+	}
+	return
+}
+
+func (v *VirtualMachineExtensionImageProperties) GetHandlerSchema() (rv string) {
+	if v != nil && v.HandlerSchema != nil {
+		return *v.HandlerSchema
+	}
+	return
+}
+
+func (v *VirtualMachineExtensionImageProperties) GetOperatingSystem() (rv string) {
+	if v != nil && v.OperatingSystem != nil {
+		return *v.OperatingSystem
+	}
+	return
+}
+
+func (v *VirtualMachineExtensionImageProperties) GetSupportsMultipleExtensions() (rv bool) {
+	if v != nil && v.SupportsMultipleExtensions != nil {
+		return *v.SupportsMultipleExtensions
+	}
+	return
+}
+
+func (v *VirtualMachineExtensionImageProperties) GetVMScaleSetEnabled() (rv bool) {
+	if v != nil && v.VMScaleSetEnabled != nil {
+		return *v.VMScaleSetEnabled
+	}
+	return
+}
+
 // VirtualMachineExtensionInstanceView - The instance view of a virtual machine extension.
 type VirtualMachineExtensionInstanceView struct {
 	// The virtual machine extension name.
@@ -5236,6 +13888,41 @@ type VirtualMachineExtensionInstanceView struct {
 
 	// Specifies the version of the script handler.
 	TypeHandlerVersion *string
+}
+
+func (v *VirtualMachineExtensionInstanceView) GetName() (rv string) {
+	if v != nil && v.Name != nil {
+		return *v.Name
+	}
+	return
+}
+
+func (v *VirtualMachineExtensionInstanceView) GetStatuses() (rv []InstanceViewStatus) {
+	if v != nil {
+		return v.Statuses
+	}
+	return
+}
+
+func (v *VirtualMachineExtensionInstanceView) GetSubstatuses() (rv []InstanceViewStatus) {
+	if v != nil {
+		return v.Substatuses
+	}
+	return
+}
+
+func (v *VirtualMachineExtensionInstanceView) GetType() (rv string) {
+	if v != nil && v.Type != nil {
+		return *v.Type
+	}
+	return
+}
+
+func (v *VirtualMachineExtensionInstanceView) GetTypeHandlerVersion() (rv string) {
+	if v != nil && v.TypeHandlerVersion != nil {
+		return *v.TypeHandlerVersion
+	}
+	return
 }
 
 // VirtualMachineExtensionProperties - Describes the properties of a Virtual Machine Extension.
@@ -5281,6 +13968,90 @@ type VirtualMachineExtensionProperties struct {
 	ProvisioningState *string
 }
 
+func (v *VirtualMachineExtensionProperties) GetAutoUpgradeMinorVersion() (rv bool) {
+	if v != nil && v.AutoUpgradeMinorVersion != nil {
+		return *v.AutoUpgradeMinorVersion
+	}
+	return
+}
+
+func (v *VirtualMachineExtensionProperties) GetEnableAutomaticUpgrade() (rv bool) {
+	if v != nil && v.EnableAutomaticUpgrade != nil {
+		return *v.EnableAutomaticUpgrade
+	}
+	return
+}
+
+func (v *VirtualMachineExtensionProperties) GetForceUpdateTag() (rv string) {
+	if v != nil && v.ForceUpdateTag != nil {
+		return *v.ForceUpdateTag
+	}
+	return
+}
+
+func (v *VirtualMachineExtensionProperties) GetInstanceView() (rv *VirtualMachineExtensionInstanceView) {
+	if v != nil {
+		return v.InstanceView
+	}
+	return
+}
+
+func (v *VirtualMachineExtensionProperties) GetProtectedSettings() (rv any) {
+	if v != nil {
+		return v.ProtectedSettings
+	}
+	return
+}
+
+func (v *VirtualMachineExtensionProperties) GetProtectedSettingsFromKeyVault() (rv any) {
+	if v != nil {
+		return v.ProtectedSettingsFromKeyVault
+	}
+	return
+}
+
+func (v *VirtualMachineExtensionProperties) GetPublisher() (rv string) {
+	if v != nil && v.Publisher != nil {
+		return *v.Publisher
+	}
+	return
+}
+
+func (v *VirtualMachineExtensionProperties) GetSettings() (rv any) {
+	if v != nil {
+		return v.Settings
+	}
+	return
+}
+
+func (v *VirtualMachineExtensionProperties) GetSuppressFailures() (rv bool) {
+	if v != nil && v.SuppressFailures != nil {
+		return *v.SuppressFailures
+	}
+	return
+}
+
+func (v *VirtualMachineExtensionProperties) GetType() (rv string) {
+	if v != nil && v.Type != nil {
+		return *v.Type
+	}
+	return
+}
+
+func (v *VirtualMachineExtensionProperties) GetTypeHandlerVersion() (rv string) {
+	if v != nil && v.TypeHandlerVersion != nil {
+		return *v.TypeHandlerVersion
+	}
+	return
+}
+
+func (v *VirtualMachineExtensionProperties) GetProvisioningState() (rv string) {
+	if v != nil && v.ProvisioningState != nil {
+		return *v.ProvisioningState
+	}
+	return
+}
+
 // VirtualMachineExtensionUpdate - Describes a Virtual Machine Extension.
 type VirtualMachineExtensionUpdate struct {
 	// Describes the properties of a Virtual Machine Extension.
@@ -5288,6 +14059,20 @@ type VirtualMachineExtensionUpdate struct {
 
 	// Resource tags
 	Tags map[string]*string
+}
+
+func (v *VirtualMachineExtensionUpdate) GetProperties() (rv *VirtualMachineExtensionUpdateProperties) {
+	if v != nil {
+		return v.Properties
+	}
+	return
+}
+
+func (v *VirtualMachineExtensionUpdate) GetTags() (rv map[string]*string) {
+	if v != nil {
+		return v.Tags
+	}
+	return
 }
 
 // VirtualMachineExtensionUpdateProperties - Describes the properties of a Virtual Machine Extension.
@@ -5327,16 +14112,100 @@ type VirtualMachineExtensionUpdateProperties struct {
 	TypeHandlerVersion *string
 }
 
+func (v *VirtualMachineExtensionUpdateProperties) GetAutoUpgradeMinorVersion() (rv bool) {
+	if v != nil && v.AutoUpgradeMinorVersion != nil {
+		return *v.AutoUpgradeMinorVersion
+	}
+	return
+}
+
+func (v *VirtualMachineExtensionUpdateProperties) GetEnableAutomaticUpgrade() (rv bool) {
+	if v != nil && v.EnableAutomaticUpgrade != nil {
+		return *v.EnableAutomaticUpgrade
+	}
+	return
+}
+
+func (v *VirtualMachineExtensionUpdateProperties) GetForceUpdateTag() (rv string) {
+	if v != nil && v.ForceUpdateTag != nil {
+		return *v.ForceUpdateTag
+	}
+	return
+}
+
+func (v *VirtualMachineExtensionUpdateProperties) GetProtectedSettings() (rv any) {
+	if v != nil {
+		return v.ProtectedSettings
+	}
+	return
+}
+
+func (v *VirtualMachineExtensionUpdateProperties) GetProtectedSettingsFromKeyVault() (rv any) {
+	if v != nil {
+		return v.ProtectedSettingsFromKeyVault
+	}
+	return
+}
+
+func (v *VirtualMachineExtensionUpdateProperties) GetPublisher() (rv string) {
+	if v != nil && v.Publisher != nil {
+		return *v.Publisher
+	}
+	return
+}
+
+func (v *VirtualMachineExtensionUpdateProperties) GetSettings() (rv any) {
+	if v != nil {
+		return v.Settings
+	}
+	return
+}
+
+func (v *VirtualMachineExtensionUpdateProperties) GetSuppressFailures() (rv bool) {
+	if v != nil && v.SuppressFailures != nil {
+		return *v.SuppressFailures
+	}
+	return
+}
+
+func (v *VirtualMachineExtensionUpdateProperties) GetType() (rv string) {
+	if v != nil && v.Type != nil {
+		return *v.Type
+	}
+	return
+}
+
+func (v *VirtualMachineExtensionUpdateProperties) GetTypeHandlerVersion() (rv string) {
+	if v != nil && v.TypeHandlerVersion != nil {
+		return *v.TypeHandlerVersion
+	}
+	return
+}
+
 // VirtualMachineExtensionsListResult - The List Extension operation response
 type VirtualMachineExtensionsListResult struct {
 	// The list of extensions
 	Value []VirtualMachineExtension
 }
 
+func (v *VirtualMachineExtensionsListResult) GetValue() (rv []VirtualMachineExtension) {
+	if v != nil {
+		return v.Value
+	}
+	return
+}
+
 // VirtualMachineHealthStatus - The health status of the VM.
 type VirtualMachineHealthStatus struct {
 	// READ-ONLY; The health status information for the VM.
 	Status *InstanceViewStatus
+}
+
+func (v *VirtualMachineHealthStatus) GetStatus() (rv *InstanceViewStatus) {
+	if v != nil {
+		return v.Status
+	}
+	return
 }
 
 // VirtualMachineIPTag - Contains the IP tag associated with the public IP address.
@@ -5346,6 +14215,20 @@ type VirtualMachineIPTag struct {
 
 	// IP tag associated with the public IP. Example: SQL, Storage etc.
 	Tag *string
+}
+
+func (v *VirtualMachineIPTag) GetIPTagType() (rv string) {
+	if v != nil && v.IPTagType != nil {
+		return *v.IPTagType
+	}
+	return
+}
+
+func (v *VirtualMachineIPTag) GetTag() (rv string) {
+	if v != nil && v.Tag != nil {
+		return *v.Tag
+	}
+	return
 }
 
 // VirtualMachineIdentity - Identity for the virtual machine.
@@ -5366,6 +14249,34 @@ type VirtualMachineIdentity struct {
 	// READ-ONLY; The tenant id associated with the virtual machine. This property will only be provided for a system assigned
 	// identity.
 	TenantID *string
+}
+
+func (v *VirtualMachineIdentity) GetType() (rv *ResourceIdentityType) {
+	if v != nil {
+		return v.Type
+	}
+	return
+}
+
+func (v *VirtualMachineIdentity) GetUserAssignedIdentities() (rv map[string]*UserAssignedIdentitiesValue) {
+	if v != nil {
+		return v.UserAssignedIdentities
+	}
+	return
+}
+
+func (v *VirtualMachineIdentity) GetPrincipalID() (rv string) {
+	if v != nil && v.PrincipalID != nil {
+		return *v.PrincipalID
+	}
+	return
+}
+
+func (v *VirtualMachineIdentity) GetTenantID() (rv string) {
+	if v != nil && v.TenantID != nil {
+		return *v.TenantID
+	}
+	return
 }
 
 // VirtualMachineImage - Describes a Virtual Machine Image.
@@ -5391,6 +14302,48 @@ type VirtualMachineImage struct {
 	Tags map[string]*string
 }
 
+func (v *VirtualMachineImage) GetLocation() (rv string) {
+	if v != nil && v.Location != nil {
+		return *v.Location
+	}
+	return
+}
+
+func (v *VirtualMachineImage) GetName() (rv string) {
+	if v != nil && v.Name != nil {
+		return *v.Name
+	}
+	return
+}
+
+func (v *VirtualMachineImage) GetExtendedLocation() (rv *ExtendedLocation) {
+	if v != nil {
+		return v.ExtendedLocation
+	}
+	return
+}
+
+func (v *VirtualMachineImage) GetID() (rv string) {
+	if v != nil && v.ID != nil {
+		return *v.ID
+	}
+	return
+}
+
+func (v *VirtualMachineImage) GetProperties() (rv *VirtualMachineImageProperties) {
+	if v != nil {
+		return v.Properties
+	}
+	return
+}
+
+func (v *VirtualMachineImage) GetTags() (rv map[string]*string) {
+	if v != nil {
+		return v.Tags
+	}
+	return
+}
+
 // VirtualMachineImageFeature - Specifies additional capabilities supported by the image
 type VirtualMachineImageFeature struct {
 	// The name of the feature.
@@ -5398,6 +14351,20 @@ type VirtualMachineImageFeature struct {
 
 	// The corresponding value for the feature.
 	Value *string
+}
+
+func (v *VirtualMachineImageFeature) GetName() (rv string) {
+	if v != nil && v.Name != nil {
+		return *v.Name
+	}
+	return
+}
+
+func (v *VirtualMachineImageFeature) GetValue() (rv string) {
+	if v != nil && v.Value != nil {
+		return *v.Value
+	}
+	return
 }
 
 // VirtualMachineImageProperties - Describes the properties of a Virtual Machine Image.
@@ -5423,6 +14390,62 @@ type VirtualMachineImageProperties struct {
 	Plan *PurchasePlan
 }
 
+func (v *VirtualMachineImageProperties) GetArchitecture() (rv *ArchitectureTypes) {
+	if v != nil {
+		return v.Architecture
+	}
+	return
+}
+
+func (v *VirtualMachineImageProperties) GetAutomaticOSUpgradeProperties() (rv *AutomaticOSUpgradeProperties) {
+	if v != nil {
+		return v.AutomaticOSUpgradeProperties
+	}
+	return
+}
+
+func (v *VirtualMachineImageProperties) GetDataDiskImages() (rv []DataDiskImage) {
+	if v != nil {
+		return v.DataDiskImages
+	}
+	return
+}
+
+func (v *VirtualMachineImageProperties) GetDisallowed() (rv *DisallowedConfiguration) {
+	if v != nil {
+		return v.Disallowed
+	}
+	return
+}
+
+func (v *VirtualMachineImageProperties) GetFeatures() (rv []VirtualMachineImageFeature) {
+	if v != nil {
+		return v.Features
+	}
+	return
+}
+
+func (v *VirtualMachineImageProperties) GetHyperVGeneration() (rv *HyperVGenerationTypes) {
+	if v != nil {
+		return v.HyperVGeneration
+	}
+	return
+}
+
+func (v *VirtualMachineImageProperties) GetOSDiskImage() (rv *OSDiskImage) {
+	if v != nil {
+		return v.OSDiskImage
+	}
+	return
+}
+
+func (v *VirtualMachineImageProperties) GetPlan() (rv *PurchasePlan) {
+	if v != nil {
+		return v.Plan
+	}
+	return
+}
+
 // VirtualMachineImageResource - Virtual machine image resource information.
 type VirtualMachineImageResource struct {
 	// REQUIRED; The supported Azure location of the resource.
@@ -5443,6 +14466,41 @@ type VirtualMachineImageResource struct {
 	Tags map[string]*string
 }
 
+func (v *VirtualMachineImageResource) GetLocation() (rv string) {
+	if v != nil && v.Location != nil {
+		return *v.Location
+	}
+	return
+}
+
+func (v *VirtualMachineImageResource) GetName() (rv string) {
+	if v != nil && v.Name != nil {
+		return *v.Name
+	}
+	return
+}
+
+func (v *VirtualMachineImageResource) GetExtendedLocation() (rv *ExtendedLocation) {
+	if v != nil {
+		return v.ExtendedLocation
+	}
+	return
+}
+
+func (v *VirtualMachineImageResource) GetID() (rv string) {
+	if v != nil && v.ID != nil {
+		return *v.ID
+	}
+	return
+}
+
+func (v *VirtualMachineImageResource) GetTags() (rv map[string]*string) {
+	if v != nil {
+		return v.Tags
+	}
+	return
+}
+
 // VirtualMachineInstallPatchesParameters - Input for InstallPatches as directly received by the API
 type VirtualMachineInstallPatchesParameters struct {
 	// REQUIRED; Defines when it is acceptable to reboot a VM during a software update operation.
@@ -5457,6 +14515,34 @@ type VirtualMachineInstallPatchesParameters struct {
 
 	// Input for InstallPatches on a Windows VM, as directly received by the API
 	WindowsParameters *WindowsParameters
+}
+
+func (v *VirtualMachineInstallPatchesParameters) GetRebootSetting() (rv *VMGuestPatchRebootSetting) {
+	if v != nil {
+		return v.RebootSetting
+	}
+	return
+}
+
+func (v *VirtualMachineInstallPatchesParameters) GetLinuxParameters() (rv *LinuxParameters) {
+	if v != nil {
+		return v.LinuxParameters
+	}
+	return
+}
+
+func (v *VirtualMachineInstallPatchesParameters) GetMaximumDuration() (rv string) {
+	if v != nil && v.MaximumDuration != nil {
+		return *v.MaximumDuration
+	}
+	return
+}
+
+func (v *VirtualMachineInstallPatchesParameters) GetWindowsParameters() (rv *WindowsParameters) {
+	if v != nil {
+		return v.WindowsParameters
+	}
+	return
 }
 
 // VirtualMachineInstallPatchesResult - The result summary of an installation operation.
@@ -5499,6 +14585,90 @@ type VirtualMachineInstallPatchesResult struct {
 	// READ-ONLY; The overall success or failure status of the operation. It remains "InProgress" until the operation completes.
 	// At that point it will become "Failed", "Succeeded", "Unknown" or "CompletedWithWarnings."
 	Status *PatchOperationStatus
+}
+
+func (v *VirtualMachineInstallPatchesResult) GetError() (rv *APIError) {
+	if v != nil {
+		return v.Error
+	}
+	return
+}
+
+func (v *VirtualMachineInstallPatchesResult) GetExcludedPatchCount() (rv int32) {
+	if v != nil && v.ExcludedPatchCount != nil {
+		return *v.ExcludedPatchCount
+	}
+	return
+}
+
+func (v *VirtualMachineInstallPatchesResult) GetFailedPatchCount() (rv int32) {
+	if v != nil && v.FailedPatchCount != nil {
+		return *v.FailedPatchCount
+	}
+	return
+}
+
+func (v *VirtualMachineInstallPatchesResult) GetInstallationActivityID() (rv string) {
+	if v != nil && v.InstallationActivityID != nil {
+		return *v.InstallationActivityID
+	}
+	return
+}
+
+func (v *VirtualMachineInstallPatchesResult) GetInstalledPatchCount() (rv int32) {
+	if v != nil && v.InstalledPatchCount != nil {
+		return *v.InstalledPatchCount
+	}
+	return
+}
+
+func (v *VirtualMachineInstallPatchesResult) GetMaintenanceWindowExceeded() (rv bool) {
+	if v != nil && v.MaintenanceWindowExceeded != nil {
+		return *v.MaintenanceWindowExceeded
+	}
+	return
+}
+
+func (v *VirtualMachineInstallPatchesResult) GetNotSelectedPatchCount() (rv int32) {
+	if v != nil && v.NotSelectedPatchCount != nil {
+		return *v.NotSelectedPatchCount
+	}
+	return
+}
+
+func (v *VirtualMachineInstallPatchesResult) GetPatches() (rv []PatchInstallationDetail) {
+	if v != nil {
+		return v.Patches
+	}
+	return
+}
+
+func (v *VirtualMachineInstallPatchesResult) GetPendingPatchCount() (rv int32) {
+	if v != nil && v.PendingPatchCount != nil {
+		return *v.PendingPatchCount
+	}
+	return
+}
+
+func (v *VirtualMachineInstallPatchesResult) GetRebootStatus() (rv *VMGuestPatchRebootStatus) {
+	if v != nil {
+		return v.RebootStatus
+	}
+	return
+}
+
+func (v *VirtualMachineInstallPatchesResult) GetStartDateTime() (rv *time.Time) {
+	if v != nil {
+		return v.StartDateTime
+	}
+	return
+}
+
+func (v *VirtualMachineInstallPatchesResult) GetStatus() (rv *PatchOperationStatus) {
+	if v != nil {
+		return v.Status
+	}
+	return
 }
 
 // VirtualMachineInstanceView - The instance view of a virtual machine.
@@ -5557,6 +14727,118 @@ type VirtualMachineInstanceView struct {
 	VMHealth *VirtualMachineHealthStatus
 }
 
+func (v *VirtualMachineInstanceView) GetBootDiagnostics() (rv *BootDiagnosticsInstanceView) {
+	if v != nil {
+		return v.BootDiagnostics
+	}
+	return
+}
+
+func (v *VirtualMachineInstanceView) GetComputerName() (rv string) {
+	if v != nil && v.ComputerName != nil {
+		return *v.ComputerName
+	}
+	return
+}
+
+func (v *VirtualMachineInstanceView) GetDisks() (rv []DiskInstanceView) {
+	if v != nil {
+		return v.Disks
+	}
+	return
+}
+
+func (v *VirtualMachineInstanceView) GetExtensions() (rv []VirtualMachineExtensionInstanceView) {
+	if v != nil {
+		return v.Extensions
+	}
+	return
+}
+
+func (v *VirtualMachineInstanceView) GetHyperVGeneration() (rv *HyperVGenerationType) {
+	if v != nil {
+		return v.HyperVGeneration
+	}
+	return
+}
+
+func (v *VirtualMachineInstanceView) GetMaintenanceRedeployStatus() (rv *MaintenanceRedeployStatus) {
+	if v != nil {
+		return v.MaintenanceRedeployStatus
+	}
+	return
+}
+
+func (v *VirtualMachineInstanceView) GetOSName() (rv string) {
+	if v != nil && v.OSName != nil {
+		return *v.OSName
+	}
+	return
+}
+
+func (v *VirtualMachineInstanceView) GetOSVersion() (rv string) {
+	if v != nil && v.OSVersion != nil {
+		return *v.OSVersion
+	}
+	return
+}
+
+func (v *VirtualMachineInstanceView) GetPatchStatus() (rv *VirtualMachinePatchStatus) {
+	if v != nil {
+		return v.PatchStatus
+	}
+	return
+}
+
+func (v *VirtualMachineInstanceView) GetPlatformFaultDomain() (rv int32) {
+	if v != nil && v.PlatformFaultDomain != nil {
+		return *v.PlatformFaultDomain
+	}
+	return
+}
+
+func (v *VirtualMachineInstanceView) GetPlatformUpdateDomain() (rv int32) {
+	if v != nil && v.PlatformUpdateDomain != nil {
+		return *v.PlatformUpdateDomain
+	}
+	return
+}
+
+func (v *VirtualMachineInstanceView) GetRdpThumbPrint() (rv string) {
+	if v != nil && v.RdpThumbPrint != nil {
+		return *v.RdpThumbPrint
+	}
+	return
+}
+
+func (v *VirtualMachineInstanceView) GetStatuses() (rv []InstanceViewStatus) {
+	if v != nil {
+		return v.Statuses
+	}
+	return
+}
+
+func (v *VirtualMachineInstanceView) GetVMAgent() (rv *VirtualMachineAgentInstanceView) {
+	if v != nil {
+		return v.VMAgent
+	}
+	return
+}
+
+func (v *VirtualMachineInstanceView) GetAssignedHost() (rv string) {
+	if v != nil && v.AssignedHost != nil {
+		return *v.AssignedHost
+	}
+	return
+}
+
+func (v *VirtualMachineInstanceView) GetVMHealth() (rv *VirtualMachineHealthStatus) {
+	if v != nil {
+		return v.VMHealth
+	}
+	return
+}
+
 // VirtualMachineListResult - The List Virtual Machine operation response.
 type VirtualMachineListResult struct {
 	// REQUIRED; The list of virtual machines.
@@ -5566,6 +14848,20 @@ type VirtualMachineListResult struct {
 	NextLink *string
 }
 
+func (v *VirtualMachineListResult) GetValue() (rv []VirtualMachine) {
+	if v != nil {
+		return v.Value
+	}
+	return
+}
+
+func (v *VirtualMachineListResult) GetNextLink() (rv string) {
+	if v != nil && v.NextLink != nil {
+		return *v.NextLink
+	}
+	return
+}
+
 // VirtualMachineNetworkInterfaceConfiguration - Describes a virtual machine network interface configurations.
 type VirtualMachineNetworkInterfaceConfiguration struct {
 	// REQUIRED; The network interface configuration name.
@@ -5573,6 +14869,20 @@ type VirtualMachineNetworkInterfaceConfiguration struct {
 
 	// Describes a virtual machine network profile's IP configuration.
 	Properties *VirtualMachineNetworkInterfaceConfigurationProperties
+}
+
+func (v *VirtualMachineNetworkInterfaceConfiguration) GetName() (rv string) {
+	if v != nil && v.Name != nil {
+		return *v.Name
+	}
+	return
+}
+
+func (v *VirtualMachineNetworkInterfaceConfiguration) GetProperties() (rv *VirtualMachineNetworkInterfaceConfigurationProperties) {
+	if v != nil {
+		return v.Properties
+	}
+	return
 }
 
 // VirtualMachineNetworkInterfaceConfigurationProperties - Describes a virtual machine network profile's IP configuration.
@@ -5603,10 +14913,80 @@ type VirtualMachineNetworkInterfaceConfigurationProperties struct {
 	Primary *bool
 }
 
+func (v *VirtualMachineNetworkInterfaceConfigurationProperties) GetIPConfigurations() (rv []VirtualMachineNetworkInterfaceIPConfiguration) {
+	if v != nil {
+		return v.IPConfigurations
+	}
+	return
+}
+
+func (v *VirtualMachineNetworkInterfaceConfigurationProperties) GetDNSSettings() (rv *VirtualMachineNetworkInterfaceDNSSettingsConfiguration) {
+	if v != nil {
+		return v.DNSSettings
+	}
+	return
+}
+
+func (v *VirtualMachineNetworkInterfaceConfigurationProperties) GetDeleteOption() (rv *DeleteOptions) {
+	if v != nil {
+		return v.DeleteOption
+	}
+	return
+}
+
+func (v *VirtualMachineNetworkInterfaceConfigurationProperties) GetDscpConfiguration() (rv *SubResource) {
+	if v != nil {
+		return v.DscpConfiguration
+	}
+	return
+}
+
+func (v *VirtualMachineNetworkInterfaceConfigurationProperties) GetEnableAcceleratedNetworking() (rv bool) {
+	if v != nil && v.EnableAcceleratedNetworking != nil {
+		return *v.EnableAcceleratedNetworking
+	}
+	return
+}
+
+func (v *VirtualMachineNetworkInterfaceConfigurationProperties) GetEnableFpga() (rv bool) {
+	if v != nil && v.EnableFpga != nil {
+		return *v.EnableFpga
+	}
+	return
+}
+
+func (v *VirtualMachineNetworkInterfaceConfigurationProperties) GetEnableIPForwarding() (rv bool) {
+	if v != nil && v.EnableIPForwarding != nil {
+		return *v.EnableIPForwarding
+	}
+	return
+}
+
+func (v *VirtualMachineNetworkInterfaceConfigurationProperties) GetNetworkSecurityGroup() (rv *SubResource) {
+	if v != nil {
+		return v.NetworkSecurityGroup
+	}
+	return
+}
+
+func (v *VirtualMachineNetworkInterfaceConfigurationProperties) GetPrimary() (rv bool) {
+	if v != nil && v.Primary != nil {
+		return *v.Primary
+	}
+	return
+}
+
 // VirtualMachineNetworkInterfaceDNSSettingsConfiguration - Describes a virtual machines network configuration's DNS settings.
 type VirtualMachineNetworkInterfaceDNSSettingsConfiguration struct {
 	// List of DNS servers IP addresses
 	DNSServers []string
+}
+
+func (v *VirtualMachineNetworkInterfaceDNSSettingsConfiguration) GetDNSServers() (rv []string) {
+	if v != nil {
+		return v.DNSServers
+	}
+	return
 }
 
 // VirtualMachineNetworkInterfaceIPConfiguration - Describes a virtual machine network profile's IP configuration.
@@ -5616,6 +14996,20 @@ type VirtualMachineNetworkInterfaceIPConfiguration struct {
 
 	// Describes a virtual machine network interface IP configuration properties.
 	Properties *VirtualMachineNetworkInterfaceIPConfigurationProperties
+}
+
+func (v *VirtualMachineNetworkInterfaceIPConfiguration) GetName() (rv string) {
+	if v != nil && v.Name != nil {
+		return *v.Name
+	}
+	return
+}
+
+func (v *VirtualMachineNetworkInterfaceIPConfiguration) GetProperties() (rv *VirtualMachineNetworkInterfaceIPConfigurationProperties) {
+	if v != nil {
+		return v.Properties
+	}
+	return
 }
 
 // VirtualMachineNetworkInterfaceIPConfigurationProperties - Describes a virtual machine network interface IP configuration
@@ -5648,6 +15042,55 @@ type VirtualMachineNetworkInterfaceIPConfigurationProperties struct {
 	Subnet *SubResource
 }
 
+func (v *VirtualMachineNetworkInterfaceIPConfigurationProperties) GetApplicationGatewayBackendAddressPools() (rv []SubResource) {
+	if v != nil {
+		return v.ApplicationGatewayBackendAddressPools
+	}
+	return
+}
+
+func (v *VirtualMachineNetworkInterfaceIPConfigurationProperties) GetApplicationSecurityGroups() (rv []SubResource) {
+	if v != nil {
+		return v.ApplicationSecurityGroups
+	}
+	return
+}
+
+func (v *VirtualMachineNetworkInterfaceIPConfigurationProperties) GetLoadBalancerBackendAddressPools() (rv []SubResource) {
+	if v != nil {
+		return v.LoadBalancerBackendAddressPools
+	}
+	return
+}
+
+func (v *VirtualMachineNetworkInterfaceIPConfigurationProperties) GetPrimary() (rv bool) {
+	if v != nil && v.Primary != nil {
+		return *v.Primary
+	}
+	return
+}
+
+func (v *VirtualMachineNetworkInterfaceIPConfigurationProperties) GetPrivateIPAddressVersion() (rv *IPVersions) {
+	if v != nil {
+		return v.PrivateIPAddressVersion
+	}
+	return
+}
+
+func (v *VirtualMachineNetworkInterfaceIPConfigurationProperties) GetPublicIPAddressConfiguration() (rv *VirtualMachinePublicIPAddressConfiguration) {
+	if v != nil {
+		return v.PublicIPAddressConfiguration
+	}
+	return
+}
+
+func (v *VirtualMachineNetworkInterfaceIPConfigurationProperties) GetSubnet() (rv *SubResource) {
+	if v != nil {
+		return v.Subnet
+	}
+	return
+}
+
 // VirtualMachinePatchStatus - The status of virtual machine patch operations.
 type VirtualMachinePatchStatus struct {
 	// The available patch summary of the latest assessment operation for the virtual machine.
@@ -5658,6 +15101,27 @@ type VirtualMachinePatchStatus struct {
 
 	// READ-ONLY; The enablement status of the specified patchMode
 	ConfigurationStatuses []InstanceViewStatus
+}
+
+func (v *VirtualMachinePatchStatus) GetAvailablePatchSummary() (rv *AvailablePatchSummary) {
+	if v != nil {
+		return v.AvailablePatchSummary
+	}
+	return
+}
+
+func (v *VirtualMachinePatchStatus) GetLastPatchInstallationSummary() (rv *LastPatchInstallationSummary) {
+	if v != nil {
+		return v.LastPatchInstallationSummary
+	}
+	return
+}
+
+func (v *VirtualMachinePatchStatus) GetConfigurationStatuses() (rv []InstanceViewStatus) {
+	if v != nil {
+		return v.ConfigurationStatuses
+	}
+	return
 }
 
 // VirtualMachineProperties - Describes the properties of a Virtual Machine.
@@ -5786,6 +15250,188 @@ type VirtualMachineProperties struct {
 	VMID *string
 }
 
+func (v *VirtualMachineProperties) GetAdditionalCapabilities() (rv *AdditionalCapabilities) {
+	if v != nil {
+		return v.AdditionalCapabilities
+	}
+	return
+}
+
+func (v *VirtualMachineProperties) GetApplicationProfile() (rv *ApplicationProfile) {
+	if v != nil {
+		return v.ApplicationProfile
+	}
+	return
+}
+
+func (v *VirtualMachineProperties) GetAvailabilitySet() (rv *SubResource) {
+	if v != nil {
+		return v.AvailabilitySet
+	}
+	return
+}
+
+func (v *VirtualMachineProperties) GetBillingProfile() (rv *BillingProfile) {
+	if v != nil {
+		return v.BillingProfile
+	}
+	return
+}
+
+func (v *VirtualMachineProperties) GetCapacityReservation() (rv *CapacityReservationProfile) {
+	if v != nil {
+		return v.CapacityReservation
+	}
+	return
+}
+
+func (v *VirtualMachineProperties) GetDiagnosticsProfile() (rv *DiagnosticsProfile) {
+	if v != nil {
+		return v.DiagnosticsProfile
+	}
+	return
+}
+
+func (v *VirtualMachineProperties) GetEvictionPolicy() (rv *VirtualMachineEvictionPolicyTypes) {
+	if v != nil {
+		return v.EvictionPolicy
+	}
+	return
+}
+
+func (v *VirtualMachineProperties) GetExtensionsTimeBudget() (rv string) {
+	if v != nil && v.ExtensionsTimeBudget != nil {
+		return *v.ExtensionsTimeBudget
+	}
+	return
+}
+
+func (v *VirtualMachineProperties) GetHardwareProfile() (rv *HardwareProfile) {
+	if v != nil {
+		return v.HardwareProfile
+	}
+	return
+}
+
+func (v *VirtualMachineProperties) GetHost() (rv *SubResource) {
+	if v != nil {
+		return v.Host
+	}
+	return
+}
+
+func (v *VirtualMachineProperties) GetHostGroup() (rv *SubResource) {
+	if v != nil {
+		return v.HostGroup
+	}
+	return
+}
+
+func (v *VirtualMachineProperties) GetLicenseType() (rv string) {
+	if v != nil && v.LicenseType != nil {
+		return *v.LicenseType
+	}
+	return
+}
+
+func (v *VirtualMachineProperties) GetNetworkProfile() (rv *NetworkProfile) {
+	if v != nil {
+		return v.NetworkProfile
+	}
+	return
+}
+
+func (v *VirtualMachineProperties) GetOSProfile() (rv *OSProfile) {
+	if v != nil {
+		return v.OSProfile
+	}
+	return
+}
+
+func (v *VirtualMachineProperties) GetPlatformFaultDomain() (rv int32) {
+	if v != nil && v.PlatformFaultDomain != nil {
+		return *v.PlatformFaultDomain
+	}
+	return
+}
+
+func (v *VirtualMachineProperties) GetPriority() (rv *VirtualMachinePriorityTypes) {
+	if v != nil {
+		return v.Priority
+	}
+	return
+}
+
+func (v *VirtualMachineProperties) GetProximityPlacementGroup() (rv *SubResource) {
+	if v != nil {
+		return v.ProximityPlacementGroup
+	}
+	return
+}
+
+func (v *VirtualMachineProperties) GetScheduledEventsProfile() (rv *ScheduledEventsProfile) {
+	if v != nil {
+		return v.ScheduledEventsProfile
+	}
+	return
+}
+
+func (v *VirtualMachineProperties) GetSecurityProfile() (rv *SecurityProfile) {
+	if v != nil {
+		return v.SecurityProfile
+	}
+	return
+}
+
+func (v *VirtualMachineProperties) GetStorageProfile() (rv *StorageProfile) {
+	if v != nil {
+		return v.StorageProfile
+	}
+	return
+}
+
+func (v *VirtualMachineProperties) GetUserData() (rv string) {
+	if v != nil && v.UserData != nil {
+		return *v.UserData
+	}
+	return
+}
+
+func (v *VirtualMachineProperties) GetVirtualMachineScaleSet() (rv *SubResource) {
+	if v != nil {
+		return v.VirtualMachineScaleSet
+	}
+	return
+}
+
+func (v *VirtualMachineProperties) GetInstanceView() (rv *VirtualMachineInstanceView) {
+	if v != nil {
+		return v.InstanceView
+	}
+	return
+}
+
+func (v *VirtualMachineProperties) GetProvisioningState() (rv string) {
+	if v != nil && v.ProvisioningState != nil {
+		return *v.ProvisioningState
+	}
+	return
+}
+
+func (v *VirtualMachineProperties) GetTimeCreated() (rv *time.Time) {
+	if v != nil {
+		return v.TimeCreated
+	}
+	return
+}
+
+func (v *VirtualMachineProperties) GetVMID() (rv string) {
+	if v != nil && v.VMID != nil {
+		return *v.VMID
+	}
+	return
+}
+
 // VirtualMachinePublicIPAddressConfiguration - Describes a virtual machines IP Configuration's PublicIPAddress configuration
 type VirtualMachinePublicIPAddressConfiguration struct {
 	// REQUIRED; The publicIP address configuration name.
@@ -5796,6 +15442,27 @@ type VirtualMachinePublicIPAddressConfiguration struct {
 
 	// Describes the public IP Sku. It can only be set with OrchestrationMode as Flexible.
 	SKU *PublicIPAddressSKU
+}
+
+func (v *VirtualMachinePublicIPAddressConfiguration) GetName() (rv string) {
+	if v != nil && v.Name != nil {
+		return *v.Name
+	}
+	return
+}
+
+func (v *VirtualMachinePublicIPAddressConfiguration) GetProperties() (rv *VirtualMachinePublicIPAddressConfigurationProperties) {
+	if v != nil {
+		return v.Properties
+	}
+	return
+}
+
+func (v *VirtualMachinePublicIPAddressConfiguration) GetSKU() (rv *PublicIPAddressSKU) {
+	if v != nil {
+		return v.SKU
+	}
+	return
 }
 
 // VirtualMachinePublicIPAddressConfigurationProperties - Describes a virtual machines IP Configuration's PublicIPAddress
@@ -5824,11 +15491,67 @@ type VirtualMachinePublicIPAddressConfigurationProperties struct {
 	PublicIPPrefix *SubResource
 }
 
+func (v *VirtualMachinePublicIPAddressConfigurationProperties) GetDNSSettings() (rv *VirtualMachinePublicIPAddressDNSSettingsConfiguration) {
+	if v != nil {
+		return v.DNSSettings
+	}
+	return
+}
+
+func (v *VirtualMachinePublicIPAddressConfigurationProperties) GetDeleteOption() (rv *DeleteOptions) {
+	if v != nil {
+		return v.DeleteOption
+	}
+	return
+}
+
+func (v *VirtualMachinePublicIPAddressConfigurationProperties) GetIPTags() (rv []VirtualMachineIPTag) {
+	if v != nil {
+		return v.IPTags
+	}
+	return
+}
+
+func (v *VirtualMachinePublicIPAddressConfigurationProperties) GetIdleTimeoutInMinutes() (rv int32) {
+	if v != nil && v.IdleTimeoutInMinutes != nil {
+		return *v.IdleTimeoutInMinutes
+	}
+	return
+}
+
+func (v *VirtualMachinePublicIPAddressConfigurationProperties) GetPublicIPAddressVersion() (rv *IPVersions) {
+	if v != nil {
+		return v.PublicIPAddressVersion
+	}
+	return
+}
+
+func (v *VirtualMachinePublicIPAddressConfigurationProperties) GetPublicIPAllocationMethod() (rv *PublicIPAllocationMethod) {
+	if v != nil {
+		return v.PublicIPAllocationMethod
+	}
+	return
+}
+
+func (v *VirtualMachinePublicIPAddressConfigurationProperties) GetPublicIPPrefix() (rv *SubResource) {
+	if v != nil {
+		return v.PublicIPPrefix
+	}
+	return
+}
+
 // VirtualMachinePublicIPAddressDNSSettingsConfiguration - Describes a virtual machines network configuration's DNS settings.
 type VirtualMachinePublicIPAddressDNSSettingsConfiguration struct {
 	// REQUIRED; The Domain name label prefix of the PublicIPAddress resources that will be created. The generated name label
 	// is the concatenation of the domain name label and vm network profile unique ID.
 	DomainNameLabel *string
+}
+
+func (v *VirtualMachinePublicIPAddressDNSSettingsConfiguration) GetDomainNameLabel() (rv string) {
+	if v != nil && v.DomainNameLabel != nil {
+		return *v.DomainNameLabel
+	}
+	return
 }
 
 // VirtualMachineReimageParameters - Parameters for Reimaging Virtual Machine. NOTE: Virtual Machine OS disk will always be
@@ -5837,6 +15560,13 @@ type VirtualMachineReimageParameters struct {
 	// Specifies whether to reimage temp disk. Default value: false. Note: This temp disk reimage parameter is only supported
 	// for VM/VMSS with Ephemeral OS disk.
 	TempDisk *bool
+}
+
+func (v *VirtualMachineReimageParameters) GetTempDisk() (rv bool) {
+	if v != nil && v.TempDisk != nil {
+		return *v.TempDisk
+	}
+	return
 }
 
 // VirtualMachineRunCommand - Describes a Virtual Machine run command.
@@ -5858,6 +15588,48 @@ type VirtualMachineRunCommand struct {
 
 	// READ-ONLY; Resource type
 	Type *string
+}
+
+func (v *VirtualMachineRunCommand) GetLocation() (rv string) {
+	if v != nil && v.Location != nil {
+		return *v.Location
+	}
+	return
+}
+
+func (v *VirtualMachineRunCommand) GetProperties() (rv *VirtualMachineRunCommandProperties) {
+	if v != nil {
+		return v.Properties
+	}
+	return
+}
+
+func (v *VirtualMachineRunCommand) GetTags() (rv map[string]*string) {
+	if v != nil {
+		return v.Tags
+	}
+	return
+}
+
+func (v *VirtualMachineRunCommand) GetID() (rv string) {
+	if v != nil && v.ID != nil {
+		return *v.ID
+	}
+	return
+}
+
+func (v *VirtualMachineRunCommand) GetName() (rv string) {
+	if v != nil && v.Name != nil {
+		return *v.Name
+	}
+	return
+}
+
+func (v *VirtualMachineRunCommand) GetType() (rv string) {
+	if v != nil && v.Type != nil {
+		return *v.Type
+	}
+	return
 }
 
 // VirtualMachineRunCommandInstanceView - The instance view of a virtual machine run command.
@@ -5885,6 +15657,62 @@ type VirtualMachineRunCommandInstanceView struct {
 
 	// The resource status information.
 	Statuses []InstanceViewStatus
+}
+
+func (v *VirtualMachineRunCommandInstanceView) GetEndTime() (rv *time.Time) {
+	if v != nil {
+		return v.EndTime
+	}
+	return
+}
+
+func (v *VirtualMachineRunCommandInstanceView) GetError() (rv string) {
+	if v != nil && v.Error != nil {
+		return *v.Error
+	}
+	return
+}
+
+func (v *VirtualMachineRunCommandInstanceView) GetExecutionMessage() (rv string) {
+	if v != nil && v.ExecutionMessage != nil {
+		return *v.ExecutionMessage
+	}
+	return
+}
+
+func (v *VirtualMachineRunCommandInstanceView) GetExecutionState() (rv *ExecutionState) {
+	if v != nil {
+		return v.ExecutionState
+	}
+	return
+}
+
+func (v *VirtualMachineRunCommandInstanceView) GetExitCode() (rv int32) {
+	if v != nil && v.ExitCode != nil {
+		return *v.ExitCode
+	}
+	return
+}
+
+func (v *VirtualMachineRunCommandInstanceView) GetOutput() (rv string) {
+	if v != nil && v.Output != nil {
+		return *v.Output
+	}
+	return
+}
+
+func (v *VirtualMachineRunCommandInstanceView) GetStartTime() (rv *time.Time) {
+	if v != nil {
+		return v.StartTime
+	}
+	return
+}
+
+func (v *VirtualMachineRunCommandInstanceView) GetStatuses() (rv []InstanceViewStatus) {
+	if v != nil {
+		return v.Statuses
+	}
+	return
 }
 
 // VirtualMachineRunCommandProperties - Describes the properties of a Virtual Machine run command.
@@ -5923,6 +15751,83 @@ type VirtualMachineRunCommandProperties struct {
 	ProvisioningState *string
 }
 
+func (v *VirtualMachineRunCommandProperties) GetAsyncExecution() (rv bool) {
+	if v != nil && v.AsyncExecution != nil {
+		return *v.AsyncExecution
+	}
+	return
+}
+
+func (v *VirtualMachineRunCommandProperties) GetErrorBlobURI() (rv string) {
+	if v != nil && v.ErrorBlobURI != nil {
+		return *v.ErrorBlobURI
+	}
+	return
+}
+
+func (v *VirtualMachineRunCommandProperties) GetOutputBlobURI() (rv string) {
+	if v != nil && v.OutputBlobURI != nil {
+		return *v.OutputBlobURI
+	}
+	return
+}
+
+func (v *VirtualMachineRunCommandProperties) GetParameters() (rv []RunCommandInputParameter) {
+	if v != nil {
+		return v.Parameters
+	}
+	return
+}
+
+func (v *VirtualMachineRunCommandProperties) GetProtectedParameters() (rv []RunCommandInputParameter) {
+	if v != nil {
+		return v.ProtectedParameters
+	}
+	return
+}
+
+func (v *VirtualMachineRunCommandProperties) GetRunAsPassword() (rv string) {
+	if v != nil && v.RunAsPassword != nil {
+		return *v.RunAsPassword
+	}
+	return
+}
+
+func (v *VirtualMachineRunCommandProperties) GetRunAsUser() (rv string) {
+	if v != nil && v.RunAsUser != nil {
+		return *v.RunAsUser
+	}
+	return
+}
+
+func (v *VirtualMachineRunCommandProperties) GetSource() (rv *VirtualMachineRunCommandScriptSource) {
+	if v != nil {
+		return v.Source
+	}
+	return
+}
+
+func (v *VirtualMachineRunCommandProperties) GetTimeoutInSeconds() (rv int32) {
+	if v != nil && v.TimeoutInSeconds != nil {
+		return *v.TimeoutInSeconds
+	}
+	return
+}
+
+func (v *VirtualMachineRunCommandProperties) GetInstanceView() (rv *VirtualMachineRunCommandInstanceView) {
+	if v != nil {
+		return v.InstanceView
+	}
+	return
+}
+
+func (v *VirtualMachineRunCommandProperties) GetProvisioningState() (rv string) {
+	if v != nil && v.ProvisioningState != nil {
+		return *v.ProvisioningState
+	}
+	return
+}
+
 // VirtualMachineRunCommandScriptSource - Describes the script sources for run command.
 type VirtualMachineRunCommandScriptSource struct {
 	// Specifies a commandId of predefined built-in script.
@@ -5935,6 +15840,27 @@ type VirtualMachineRunCommandScriptSource struct {
 	ScriptURI *string
 }
 
+func (v *VirtualMachineRunCommandScriptSource) GetCommandID() (rv string) {
+	if v != nil && v.CommandID != nil {
+		return *v.CommandID
+	}
+	return
+}
+
+func (v *VirtualMachineRunCommandScriptSource) GetScript() (rv string) {
+	if v != nil && v.Script != nil {
+		return *v.Script
+	}
+	return
+}
+
+func (v *VirtualMachineRunCommandScriptSource) GetScriptURI() (rv string) {
+	if v != nil && v.ScriptURI != nil {
+		return *v.ScriptURI
+	}
+	return
+}
+
 // VirtualMachineRunCommandUpdate - Describes a Virtual Machine run command.
 type VirtualMachineRunCommandUpdate struct {
 	// Describes the properties of a Virtual Machine run command.
@@ -5944,6 +15870,20 @@ type VirtualMachineRunCommandUpdate struct {
 	Tags map[string]*string
 }
 
+func (v *VirtualMachineRunCommandUpdate) GetProperties() (rv *VirtualMachineRunCommandProperties) {
+	if v != nil {
+		return v.Properties
+	}
+	return
+}
+
+func (v *VirtualMachineRunCommandUpdate) GetTags() (rv map[string]*string) {
+	if v != nil {
+		return v.Tags
+	}
+	return
+}
+
 // VirtualMachineRunCommandsListResult - The List run command operation response
 type VirtualMachineRunCommandsListResult struct {
 	// REQUIRED; The list of run commands
@@ -5951,6 +15891,20 @@ type VirtualMachineRunCommandsListResult struct {
 
 	// The uri to fetch the next page of run commands.
 	NextLink *string
+}
+
+func (v *VirtualMachineRunCommandsListResult) GetValue() (rv []VirtualMachineRunCommand) {
+	if v != nil {
+		return v.Value
+	}
+	return
+}
+
+func (v *VirtualMachineRunCommandsListResult) GetNextLink() (rv string) {
+	if v != nil && v.NextLink != nil {
+		return *v.NextLink
+	}
+	return
 }
 
 // VirtualMachineScaleSet - Describes a Virtual Machine Scale Set.
@@ -5993,6 +15947,83 @@ type VirtualMachineScaleSet struct {
 	Type *string
 }
 
+func (v *VirtualMachineScaleSet) GetLocation() (rv string) {
+	if v != nil && v.Location != nil {
+		return *v.Location
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSet) GetExtendedLocation() (rv *ExtendedLocation) {
+	if v != nil {
+		return v.ExtendedLocation
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSet) GetIdentity() (rv *VirtualMachineScaleSetIdentity) {
+	if v != nil {
+		return v.Identity
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSet) GetPlan() (rv *Plan) {
+	if v != nil {
+		return v.Plan
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSet) GetProperties() (rv *VirtualMachineScaleSetProperties) {
+	if v != nil {
+		return v.Properties
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSet) GetSKU() (rv *SKU) {
+	if v != nil {
+		return v.SKU
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSet) GetTags() (rv map[string]*string) {
+	if v != nil {
+		return v.Tags
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSet) GetZones() (rv []string) {
+	if v != nil {
+		return v.Zones
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSet) GetID() (rv string) {
+	if v != nil && v.ID != nil {
+		return *v.ID
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSet) GetName() (rv string) {
+	if v != nil && v.Name != nil {
+		return *v.Name
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSet) GetType() (rv string) {
+	if v != nil && v.Type != nil {
+		return *v.Type
+	}
+	return
+}
+
 // VirtualMachineScaleSetDataDisk - Describes a virtual machine scale set data disk.
 type VirtualMachineScaleSetDataDisk struct {
 	// REQUIRED; The create option.
@@ -6033,6 +16064,69 @@ type VirtualMachineScaleSetDataDisk struct {
 	WriteAcceleratorEnabled *bool
 }
 
+func (v *VirtualMachineScaleSetDataDisk) GetCreateOption() (rv *DiskCreateOptionTypes) {
+	if v != nil {
+		return v.CreateOption
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetDataDisk) GetLun() (rv int32) {
+	if v != nil && v.Lun != nil {
+		return *v.Lun
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetDataDisk) GetCaching() (rv *CachingTypes) {
+	if v != nil {
+		return v.Caching
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetDataDisk) GetDiskIOPSReadWrite() (rv int64) {
+	if v != nil && v.DiskIOPSReadWrite != nil {
+		return *v.DiskIOPSReadWrite
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetDataDisk) GetDiskMBpsReadWrite() (rv int64) {
+	if v != nil && v.DiskMBpsReadWrite != nil {
+		return *v.DiskMBpsReadWrite
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetDataDisk) GetDiskSizeGB() (rv int32) {
+	if v != nil && v.DiskSizeGB != nil {
+		return *v.DiskSizeGB
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetDataDisk) GetManagedDisk() (rv *VirtualMachineScaleSetManagedDiskParameters) {
+	if v != nil {
+		return v.ManagedDisk
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetDataDisk) GetName() (rv string) {
+	if v != nil && v.Name != nil {
+		return *v.Name
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetDataDisk) GetWriteAcceleratorEnabled() (rv bool) {
+	if v != nil && v.WriteAcceleratorEnabled != nil {
+		return *v.WriteAcceleratorEnabled
+	}
+	return
+}
+
 // VirtualMachineScaleSetExtension - Describes a Virtual Machine Scale Set Extension.
 type VirtualMachineScaleSetExtension struct {
 	// The name of the extension.
@@ -6048,6 +16142,34 @@ type VirtualMachineScaleSetExtension struct {
 	Type *string
 }
 
+func (v *VirtualMachineScaleSetExtension) GetName() (rv string) {
+	if v != nil && v.Name != nil {
+		return *v.Name
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetExtension) GetProperties() (rv *VirtualMachineScaleSetExtensionProperties) {
+	if v != nil {
+		return v.Properties
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetExtension) GetID() (rv string) {
+	if v != nil && v.ID != nil {
+		return *v.ID
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetExtension) GetType() (rv string) {
+	if v != nil && v.Type != nil {
+		return *v.Type
+	}
+	return
+}
+
 // VirtualMachineScaleSetExtensionListResult - The List VM scale set extension operation response.
 type VirtualMachineScaleSetExtensionListResult struct {
 	// REQUIRED; The list of VM scale set extensions.
@@ -6056,6 +16178,20 @@ type VirtualMachineScaleSetExtensionListResult struct {
 	// The uri to fetch the next page of VM scale set extensions. Call ListNext() with this to fetch the next page of VM scale
 	// set extensions.
 	NextLink *string
+}
+
+func (v *VirtualMachineScaleSetExtensionListResult) GetValue() (rv []VirtualMachineScaleSetExtension) {
+	if v != nil {
+		return v.Value
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetExtensionListResult) GetNextLink() (rv string) {
+	if v != nil && v.NextLink != nil {
+		return *v.NextLink
+	}
+	return
 }
 
 // VirtualMachineScaleSetExtensionProfile - Describes a virtual machine scale set extension profile.
@@ -6068,6 +16204,20 @@ type VirtualMachineScaleSetExtensionProfile struct {
 	// minutes (PT1H30M).
 	// Minimum api-version: 2020-06-01
 	ExtensionsTimeBudget *string
+}
+
+func (v *VirtualMachineScaleSetExtensionProfile) GetExtensions() (rv []VirtualMachineScaleSetExtension) {
+	if v != nil {
+		return v.Extensions
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetExtensionProfile) GetExtensionsTimeBudget() (rv string) {
+	if v != nil && v.ExtensionsTimeBudget != nil {
+		return *v.ExtensionsTimeBudget
+	}
+	return
 }
 
 // VirtualMachineScaleSetExtensionProperties - Describes the properties of a Virtual Machine Scale Set Extension.
@@ -6114,6 +16264,90 @@ type VirtualMachineScaleSetExtensionProperties struct {
 	ProvisioningState *string
 }
 
+func (v *VirtualMachineScaleSetExtensionProperties) GetAutoUpgradeMinorVersion() (rv bool) {
+	if v != nil && v.AutoUpgradeMinorVersion != nil {
+		return *v.AutoUpgradeMinorVersion
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetExtensionProperties) GetEnableAutomaticUpgrade() (rv bool) {
+	if v != nil && v.EnableAutomaticUpgrade != nil {
+		return *v.EnableAutomaticUpgrade
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetExtensionProperties) GetForceUpdateTag() (rv string) {
+	if v != nil && v.ForceUpdateTag != nil {
+		return *v.ForceUpdateTag
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetExtensionProperties) GetProtectedSettings() (rv any) {
+	if v != nil {
+		return v.ProtectedSettings
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetExtensionProperties) GetProtectedSettingsFromKeyVault() (rv any) {
+	if v != nil {
+		return v.ProtectedSettingsFromKeyVault
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetExtensionProperties) GetProvisionAfterExtensions() (rv []string) {
+	if v != nil {
+		return v.ProvisionAfterExtensions
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetExtensionProperties) GetPublisher() (rv string) {
+	if v != nil && v.Publisher != nil {
+		return *v.Publisher
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetExtensionProperties) GetSettings() (rv any) {
+	if v != nil {
+		return v.Settings
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetExtensionProperties) GetSuppressFailures() (rv bool) {
+	if v != nil && v.SuppressFailures != nil {
+		return *v.SuppressFailures
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetExtensionProperties) GetType() (rv string) {
+	if v != nil && v.Type != nil {
+		return *v.Type
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetExtensionProperties) GetTypeHandlerVersion() (rv string) {
+	if v != nil && v.TypeHandlerVersion != nil {
+		return *v.TypeHandlerVersion
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetExtensionProperties) GetProvisioningState() (rv string) {
+	if v != nil && v.ProvisioningState != nil {
+		return *v.ProvisioningState
+	}
+	return
+}
+
 // VirtualMachineScaleSetExtensionUpdate - Describes a Virtual Machine Scale Set Extension.
 type VirtualMachineScaleSetExtensionUpdate struct {
 	// Describes the properties of a Virtual Machine Scale Set Extension.
@@ -6129,11 +16363,46 @@ type VirtualMachineScaleSetExtensionUpdate struct {
 	Type *string
 }
 
+func (v *VirtualMachineScaleSetExtensionUpdate) GetProperties() (rv *VirtualMachineScaleSetExtensionProperties) {
+	if v != nil {
+		return v.Properties
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetExtensionUpdate) GetID() (rv string) {
+	if v != nil && v.ID != nil {
+		return *v.ID
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetExtensionUpdate) GetName() (rv string) {
+	if v != nil && v.Name != nil {
+		return *v.Name
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetExtensionUpdate) GetType() (rv string) {
+	if v != nil && v.Type != nil {
+		return *v.Type
+	}
+	return
+}
+
 // VirtualMachineScaleSetHardwareProfile - Specifies the hardware settings for the virtual machine scale set.
 type VirtualMachineScaleSetHardwareProfile struct {
 	// Specifies the properties for customizing the size of the virtual machine. Minimum api-version: 2021-11-01.
 	// Please follow the instructions in VM Customization [https://aka.ms/vmcustomization] for more details.
 	VMSizeProperties *VMSizeProperties
+}
+
+func (v *VirtualMachineScaleSetHardwareProfile) GetVMSizeProperties() (rv *VMSizeProperties) {
+	if v != nil {
+		return v.VMSizeProperties
+	}
+	return
 }
 
 // VirtualMachineScaleSetIPConfiguration - Describes a virtual machine scale set network profile's IP configuration.
@@ -6146,6 +16415,27 @@ type VirtualMachineScaleSetIPConfiguration struct {
 
 	// Describes a virtual machine scale set network profile's IP configuration properties.
 	Properties *VirtualMachineScaleSetIPConfigurationProperties
+}
+
+func (v *VirtualMachineScaleSetIPConfiguration) GetName() (rv string) {
+	if v != nil && v.Name != nil {
+		return *v.Name
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetIPConfiguration) GetID() (rv string) {
+	if v != nil && v.ID != nil {
+		return *v.ID
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetIPConfiguration) GetProperties() (rv *VirtualMachineScaleSetIPConfigurationProperties) {
+	if v != nil {
+		return v.Properties
+	}
+	return
 }
 
 // VirtualMachineScaleSetIPConfigurationProperties - Describes a virtual machine scale set network profile's IP configuration
@@ -6183,6 +16473,62 @@ type VirtualMachineScaleSetIPConfigurationProperties struct {
 	Subnet *APIEntityReference
 }
 
+func (v *VirtualMachineScaleSetIPConfigurationProperties) GetApplicationGatewayBackendAddressPools() (rv []SubResource) {
+	if v != nil {
+		return v.ApplicationGatewayBackendAddressPools
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetIPConfigurationProperties) GetApplicationSecurityGroups() (rv []SubResource) {
+	if v != nil {
+		return v.ApplicationSecurityGroups
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetIPConfigurationProperties) GetLoadBalancerBackendAddressPools() (rv []SubResource) {
+	if v != nil {
+		return v.LoadBalancerBackendAddressPools
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetIPConfigurationProperties) GetLoadBalancerInboundNatPools() (rv []SubResource) {
+	if v != nil {
+		return v.LoadBalancerInboundNatPools
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetIPConfigurationProperties) GetPrimary() (rv bool) {
+	if v != nil && v.Primary != nil {
+		return *v.Primary
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetIPConfigurationProperties) GetPrivateIPAddressVersion() (rv *IPVersion) {
+	if v != nil {
+		return v.PrivateIPAddressVersion
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetIPConfigurationProperties) GetPublicIPAddressConfiguration() (rv *VirtualMachineScaleSetPublicIPAddressConfiguration) {
+	if v != nil {
+		return v.PublicIPAddressConfiguration
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetIPConfigurationProperties) GetSubnet() (rv *APIEntityReference) {
+	if v != nil {
+		return v.Subnet
+	}
+	return
+}
+
 // VirtualMachineScaleSetIPTag - Contains the IP tag associated with the public IP address.
 type VirtualMachineScaleSetIPTag struct {
 	// IP tag type. Example: FirstPartyUsage.
@@ -6190,6 +16536,20 @@ type VirtualMachineScaleSetIPTag struct {
 
 	// IP tag associated with the public IP. Example: SQL, Storage etc.
 	Tag *string
+}
+
+func (v *VirtualMachineScaleSetIPTag) GetIPTagType() (rv string) {
+	if v != nil && v.IPTagType != nil {
+		return *v.IPTagType
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetIPTag) GetTag() (rv string) {
+	if v != nil && v.Tag != nil {
+		return *v.Tag
+	}
+	return
 }
 
 // VirtualMachineScaleSetIdentity - Identity for the virtual machine scale set.
@@ -6213,12 +16573,54 @@ type VirtualMachineScaleSetIdentity struct {
 	TenantID *string
 }
 
+func (v *VirtualMachineScaleSetIdentity) GetType() (rv *ResourceIdentityType) {
+	if v != nil {
+		return v.Type
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetIdentity) GetUserAssignedIdentities() (rv map[string]*VirtualMachineScaleSetIdentityUserAssignedIdentitiesValue) {
+	if v != nil {
+		return v.UserAssignedIdentities
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetIdentity) GetPrincipalID() (rv string) {
+	if v != nil && v.PrincipalID != nil {
+		return *v.PrincipalID
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetIdentity) GetTenantID() (rv string) {
+	if v != nil && v.TenantID != nil {
+		return *v.TenantID
+	}
+	return
+}
+
 type VirtualMachineScaleSetIdentityUserAssignedIdentitiesValue struct {
 	// READ-ONLY; The client id of user assigned identity.
 	ClientID *string
 
 	// READ-ONLY; The principal id of user assigned identity.
 	PrincipalID *string
+}
+
+func (v *VirtualMachineScaleSetIdentityUserAssignedIdentitiesValue) GetClientID() (rv string) {
+	if v != nil && v.ClientID != nil {
+		return *v.ClientID
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetIdentityUserAssignedIdentitiesValue) GetPrincipalID() (rv string) {
+	if v != nil && v.PrincipalID != nil {
+		return *v.PrincipalID
+	}
+	return
 }
 
 // VirtualMachineScaleSetInstanceView - The instance view of a virtual machine scale set.
@@ -6236,11 +16638,46 @@ type VirtualMachineScaleSetInstanceView struct {
 	VirtualMachine *VirtualMachineScaleSetInstanceViewStatusesSummary
 }
 
+func (v *VirtualMachineScaleSetInstanceView) GetStatuses() (rv []InstanceViewStatus) {
+	if v != nil {
+		return v.Statuses
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetInstanceView) GetExtensions() (rv []VirtualMachineScaleSetVMExtensionsSummary) {
+	if v != nil {
+		return v.Extensions
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetInstanceView) GetOrchestrationServices() (rv []OrchestrationServiceSummary) {
+	if v != nil {
+		return v.OrchestrationServices
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetInstanceView) GetVirtualMachine() (rv *VirtualMachineScaleSetInstanceViewStatusesSummary) {
+	if v != nil {
+		return v.VirtualMachine
+	}
+	return
+}
+
 // VirtualMachineScaleSetInstanceViewStatusesSummary - Instance view statuses summary for virtual machines of a virtual machine
 // scale set.
 type VirtualMachineScaleSetInstanceViewStatusesSummary struct {
 	// READ-ONLY; The extensions information.
 	StatusesSummary []VirtualMachineStatusCodeCount
+}
+
+func (v *VirtualMachineScaleSetInstanceViewStatusesSummary) GetStatusesSummary() (rv []VirtualMachineStatusCodeCount) {
+	if v != nil {
+		return v.StatusesSummary
+	}
+	return
 }
 
 // VirtualMachineScaleSetListOSUpgradeHistory - List of Virtual Machine Scale Set OS Upgrade History operation response.
@@ -6252,6 +16689,20 @@ type VirtualMachineScaleSetListOSUpgradeHistory struct {
 	NextLink *string
 }
 
+func (v *VirtualMachineScaleSetListOSUpgradeHistory) GetValue() (rv []UpgradeOperationHistoricalStatusInfo) {
+	if v != nil {
+		return v.Value
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetListOSUpgradeHistory) GetNextLink() (rv string) {
+	if v != nil && v.NextLink != nil {
+		return *v.NextLink
+	}
+	return
+}
+
 // VirtualMachineScaleSetListResult - The List Virtual Machine operation response.
 type VirtualMachineScaleSetListResult struct {
 	// REQUIRED; The list of virtual machine scale sets.
@@ -6259,6 +16710,20 @@ type VirtualMachineScaleSetListResult struct {
 
 	// The uri to fetch the next page of Virtual Machine Scale Sets. Call ListNext() with this to fetch the next page of VMSS.
 	NextLink *string
+}
+
+func (v *VirtualMachineScaleSetListResult) GetValue() (rv []VirtualMachineScaleSet) {
+	if v != nil {
+		return v.Value
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetListResult) GetNextLink() (rv string) {
+	if v != nil && v.NextLink != nil {
+		return *v.NextLink
+	}
+	return
 }
 
 // VirtualMachineScaleSetListSKUsResult - The Virtual Machine Scale Set List Skus operation response.
@@ -6271,6 +16736,20 @@ type VirtualMachineScaleSetListSKUsResult struct {
 	NextLink *string
 }
 
+func (v *VirtualMachineScaleSetListSKUsResult) GetValue() (rv []VirtualMachineScaleSetSKU) {
+	if v != nil {
+		return v.Value
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetListSKUsResult) GetNextLink() (rv string) {
+	if v != nil && v.NextLink != nil {
+		return *v.NextLink
+	}
+	return
+}
+
 // VirtualMachineScaleSetListWithLinkResult - The List Virtual Machine operation response.
 type VirtualMachineScaleSetListWithLinkResult struct {
 	// REQUIRED; The list of virtual machine scale sets.
@@ -6279,6 +16758,20 @@ type VirtualMachineScaleSetListWithLinkResult struct {
 	// The uri to fetch the next page of Virtual Machine Scale Sets. Call ListNext() with this to fetch the next page of Virtual
 	// Machine Scale Sets.
 	NextLink *string
+}
+
+func (v *VirtualMachineScaleSetListWithLinkResult) GetValue() (rv []VirtualMachineScaleSet) {
+	if v != nil {
+		return v.Value
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetListWithLinkResult) GetNextLink() (rv string) {
+	if v != nil && v.NextLink != nil {
+		return *v.NextLink
+	}
+	return
 }
 
 // VirtualMachineScaleSetManagedDiskParameters - Describes the parameters of a ScaleSet managed disk.
@@ -6294,6 +16787,27 @@ type VirtualMachineScaleSetManagedDiskParameters struct {
 	StorageAccountType *StorageAccountTypes
 }
 
+func (v *VirtualMachineScaleSetManagedDiskParameters) GetDiskEncryptionSet() (rv *DiskEncryptionSetParameters) {
+	if v != nil {
+		return v.DiskEncryptionSet
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetManagedDiskParameters) GetSecurityProfile() (rv *VMDiskSecurityProfile) {
+	if v != nil {
+		return v.SecurityProfile
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetManagedDiskParameters) GetStorageAccountType() (rv *StorageAccountTypes) {
+	if v != nil {
+		return v.StorageAccountType
+	}
+	return
+}
+
 // VirtualMachineScaleSetNetworkConfiguration - Describes a virtual machine scale set network profile's network configurations.
 type VirtualMachineScaleSetNetworkConfiguration struct {
 	// REQUIRED; The network configuration name.
@@ -6306,11 +16820,39 @@ type VirtualMachineScaleSetNetworkConfiguration struct {
 	Properties *VirtualMachineScaleSetNetworkConfigurationProperties
 }
 
+func (v *VirtualMachineScaleSetNetworkConfiguration) GetName() (rv string) {
+	if v != nil && v.Name != nil {
+		return *v.Name
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetNetworkConfiguration) GetID() (rv string) {
+	if v != nil && v.ID != nil {
+		return *v.ID
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetNetworkConfiguration) GetProperties() (rv *VirtualMachineScaleSetNetworkConfigurationProperties) {
+	if v != nil {
+		return v.Properties
+	}
+	return
+}
+
 // VirtualMachineScaleSetNetworkConfigurationDNSSettings - Describes a virtual machines scale sets network configuration's
 // DNS settings.
 type VirtualMachineScaleSetNetworkConfigurationDNSSettings struct {
 	// List of DNS servers IP addresses
 	DNSServers []string
+}
+
+func (v *VirtualMachineScaleSetNetworkConfigurationDNSSettings) GetDNSServers() (rv []string) {
+	if v != nil {
+		return v.DNSServers
+	}
+	return
 }
 
 // VirtualMachineScaleSetNetworkConfigurationProperties - Describes a virtual machine scale set network profile's IP configuration.
@@ -6340,6 +16882,62 @@ type VirtualMachineScaleSetNetworkConfigurationProperties struct {
 	Primary *bool
 }
 
+func (v *VirtualMachineScaleSetNetworkConfigurationProperties) GetIPConfigurations() (rv []VirtualMachineScaleSetIPConfiguration) {
+	if v != nil {
+		return v.IPConfigurations
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetNetworkConfigurationProperties) GetDNSSettings() (rv *VirtualMachineScaleSetNetworkConfigurationDNSSettings) {
+	if v != nil {
+		return v.DNSSettings
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetNetworkConfigurationProperties) GetDeleteOption() (rv *DeleteOptions) {
+	if v != nil {
+		return v.DeleteOption
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetNetworkConfigurationProperties) GetEnableAcceleratedNetworking() (rv bool) {
+	if v != nil && v.EnableAcceleratedNetworking != nil {
+		return *v.EnableAcceleratedNetworking
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetNetworkConfigurationProperties) GetEnableFpga() (rv bool) {
+	if v != nil && v.EnableFpga != nil {
+		return *v.EnableFpga
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetNetworkConfigurationProperties) GetEnableIPForwarding() (rv bool) {
+	if v != nil && v.EnableIPForwarding != nil {
+		return *v.EnableIPForwarding
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetNetworkConfigurationProperties) GetNetworkSecurityGroup() (rv *SubResource) {
+	if v != nil {
+		return v.NetworkSecurityGroup
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetNetworkConfigurationProperties) GetPrimary() (rv bool) {
+	if v != nil && v.Primary != nil {
+		return *v.Primary
+	}
+	return
+}
+
 // VirtualMachineScaleSetNetworkProfile - Describes a virtual machine scale set network profile.
 type VirtualMachineScaleSetNetworkProfile struct {
 	// A reference to a load balancer probe used to determine the health of an instance in the virtual machine scale set. The
@@ -6353,6 +16951,27 @@ type VirtualMachineScaleSetNetworkProfile struct {
 
 	// The list of network configurations.
 	NetworkInterfaceConfigurations []VirtualMachineScaleSetNetworkConfiguration
+}
+
+func (v *VirtualMachineScaleSetNetworkProfile) GetHealthProbe() (rv *APIEntityReference) {
+	if v != nil {
+		return v.HealthProbe
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetNetworkProfile) GetNetworkAPIVersion() (rv *NetworkAPIVersion) {
+	if v != nil {
+		return v.NetworkAPIVersion
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetNetworkProfile) GetNetworkInterfaceConfigurations() (rv []VirtualMachineScaleSetNetworkConfiguration) {
+	if v != nil {
+		return v.NetworkInterfaceConfigurations
+	}
+	return
 }
 
 // VirtualMachineScaleSetOSDisk - Describes a virtual machine scale set operating system disk.
@@ -6400,6 +17019,76 @@ type VirtualMachineScaleSetOSDisk struct {
 
 	// Specifies whether writeAccelerator should be enabled or disabled on the disk.
 	WriteAcceleratorEnabled *bool
+}
+
+func (v *VirtualMachineScaleSetOSDisk) GetCreateOption() (rv *DiskCreateOptionTypes) {
+	if v != nil {
+		return v.CreateOption
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetOSDisk) GetCaching() (rv *CachingTypes) {
+	if v != nil {
+		return v.Caching
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetOSDisk) GetDiffDiskSettings() (rv *DiffDiskSettings) {
+	if v != nil {
+		return v.DiffDiskSettings
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetOSDisk) GetDiskSizeGB() (rv int32) {
+	if v != nil && v.DiskSizeGB != nil {
+		return *v.DiskSizeGB
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetOSDisk) GetImage() (rv *VirtualHardDisk) {
+	if v != nil {
+		return v.Image
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetOSDisk) GetManagedDisk() (rv *VirtualMachineScaleSetManagedDiskParameters) {
+	if v != nil {
+		return v.ManagedDisk
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetOSDisk) GetName() (rv string) {
+	if v != nil && v.Name != nil {
+		return *v.Name
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetOSDisk) GetOSType() (rv *OperatingSystemTypes) {
+	if v != nil {
+		return v.OSType
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetOSDisk) GetVhdContainers() (rv []string) {
+	if v != nil {
+		return v.VhdContainers
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetOSDisk) GetWriteAcceleratorEnabled() (rv bool) {
+	if v != nil && v.WriteAcceleratorEnabled != nil {
+		return *v.WriteAcceleratorEnabled
+	}
+	return
 }
 
 // VirtualMachineScaleSetOSProfile - Describes a virtual machine scale set OS profile.
@@ -6458,6 +17147,62 @@ type VirtualMachineScaleSetOSProfile struct {
 
 	// Specifies Windows operating system settings on the virtual machine.
 	WindowsConfiguration *WindowsConfiguration
+}
+
+func (v *VirtualMachineScaleSetOSProfile) GetAdminPassword() (rv string) {
+	if v != nil && v.AdminPassword != nil {
+		return *v.AdminPassword
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetOSProfile) GetAdminUsername() (rv string) {
+	if v != nil && v.AdminUsername != nil {
+		return *v.AdminUsername
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetOSProfile) GetAllowExtensionOperations() (rv bool) {
+	if v != nil && v.AllowExtensionOperations != nil {
+		return *v.AllowExtensionOperations
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetOSProfile) GetComputerNamePrefix() (rv string) {
+	if v != nil && v.ComputerNamePrefix != nil {
+		return *v.ComputerNamePrefix
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetOSProfile) GetCustomData() (rv string) {
+	if v != nil && v.CustomData != nil {
+		return *v.CustomData
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetOSProfile) GetLinuxConfiguration() (rv *LinuxConfiguration) {
+	if v != nil {
+		return v.LinuxConfiguration
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetOSProfile) GetSecrets() (rv []VaultSecretGroup) {
+	if v != nil {
+		return v.Secrets
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetOSProfile) GetWindowsConfiguration() (rv *WindowsConfiguration) {
+	if v != nil {
+		return v.WindowsConfiguration
+	}
+	return
 }
 
 // VirtualMachineScaleSetProperties - Describes the properties of a Virtual Machine Scale Set.
@@ -6525,6 +17270,125 @@ type VirtualMachineScaleSetProperties struct {
 	UniqueID *string
 }
 
+func (v *VirtualMachineScaleSetProperties) GetAdditionalCapabilities() (rv *AdditionalCapabilities) {
+	if v != nil {
+		return v.AdditionalCapabilities
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetProperties) GetAutomaticRepairsPolicy() (rv *AutomaticRepairsPolicy) {
+	if v != nil {
+		return v.AutomaticRepairsPolicy
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetProperties) GetDoNotRunExtensionsOnOverprovisionedVMs() (rv bool) {
+	if v != nil && v.DoNotRunExtensionsOnOverprovisionedVMs != nil {
+		return *v.DoNotRunExtensionsOnOverprovisionedVMs
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetProperties) GetHostGroup() (rv *SubResource) {
+	if v != nil {
+		return v.HostGroup
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetProperties) GetOrchestrationMode() (rv *OrchestrationMode) {
+	if v != nil {
+		return v.OrchestrationMode
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetProperties) GetOverprovision() (rv bool) {
+	if v != nil && v.Overprovision != nil {
+		return *v.Overprovision
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetProperties) GetPlatformFaultDomainCount() (rv int32) {
+	if v != nil && v.PlatformFaultDomainCount != nil {
+		return *v.PlatformFaultDomainCount
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetProperties) GetProximityPlacementGroup() (rv *SubResource) {
+	if v != nil {
+		return v.ProximityPlacementGroup
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetProperties) GetScaleInPolicy() (rv *ScaleInPolicy) {
+	if v != nil {
+		return v.ScaleInPolicy
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetProperties) GetSinglePlacementGroup() (rv bool) {
+	if v != nil && v.SinglePlacementGroup != nil {
+		return *v.SinglePlacementGroup
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetProperties) GetSpotRestorePolicy() (rv *SpotRestorePolicy) {
+	if v != nil {
+		return v.SpotRestorePolicy
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetProperties) GetUpgradePolicy() (rv *UpgradePolicy) {
+	if v != nil {
+		return v.UpgradePolicy
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetProperties) GetVirtualMachineProfile() (rv *VirtualMachineScaleSetVMProfile) {
+	if v != nil {
+		return v.VirtualMachineProfile
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetProperties) GetZoneBalance() (rv bool) {
+	if v != nil && v.ZoneBalance != nil {
+		return *v.ZoneBalance
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetProperties) GetProvisioningState() (rv string) {
+	if v != nil && v.ProvisioningState != nil {
+		return *v.ProvisioningState
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetProperties) GetTimeCreated() (rv *time.Time) {
+	if v != nil {
+		return v.TimeCreated
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetProperties) GetUniqueID() (rv string) {
+	if v != nil && v.UniqueID != nil {
+		return *v.UniqueID
+	}
+	return
+}
+
 // VirtualMachineScaleSetPublicIPAddressConfiguration - Describes a virtual machines scale set IP Configuration's PublicIPAddress
 // configuration
 type VirtualMachineScaleSetPublicIPAddressConfiguration struct {
@@ -6538,12 +17402,40 @@ type VirtualMachineScaleSetPublicIPAddressConfiguration struct {
 	SKU *PublicIPAddressSKU
 }
 
+func (v *VirtualMachineScaleSetPublicIPAddressConfiguration) GetName() (rv string) {
+	if v != nil && v.Name != nil {
+		return *v.Name
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetPublicIPAddressConfiguration) GetProperties() (rv *VirtualMachineScaleSetPublicIPAddressConfigurationProperties) {
+	if v != nil {
+		return v.Properties
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetPublicIPAddressConfiguration) GetSKU() (rv *PublicIPAddressSKU) {
+	if v != nil {
+		return v.SKU
+	}
+	return
+}
+
 // VirtualMachineScaleSetPublicIPAddressConfigurationDNSSettings - Describes a virtual machines scale sets network configuration's
 // DNS settings.
 type VirtualMachineScaleSetPublicIPAddressConfigurationDNSSettings struct {
 	// REQUIRED; The Domain name label.The concatenation of the domain name label and vm index will be the domain name labels
 	// of the PublicIPAddress resources that will be created
 	DomainNameLabel *string
+}
+
+func (v *VirtualMachineScaleSetPublicIPAddressConfigurationDNSSettings) GetDomainNameLabel() (rv string) {
+	if v != nil && v.DomainNameLabel != nil {
+		return *v.DomainNameLabel
+	}
+	return
 }
 
 // VirtualMachineScaleSetPublicIPAddressConfigurationProperties - Describes a virtual machines scale set IP Configuration's
@@ -6569,6 +17461,48 @@ type VirtualMachineScaleSetPublicIPAddressConfigurationProperties struct {
 	PublicIPPrefix *SubResource
 }
 
+func (v *VirtualMachineScaleSetPublicIPAddressConfigurationProperties) GetDNSSettings() (rv *VirtualMachineScaleSetPublicIPAddressConfigurationDNSSettings) {
+	if v != nil {
+		return v.DNSSettings
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetPublicIPAddressConfigurationProperties) GetDeleteOption() (rv *DeleteOptions) {
+	if v != nil {
+		return v.DeleteOption
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetPublicIPAddressConfigurationProperties) GetIPTags() (rv []VirtualMachineScaleSetIPTag) {
+	if v != nil {
+		return v.IPTags
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetPublicIPAddressConfigurationProperties) GetIdleTimeoutInMinutes() (rv int32) {
+	if v != nil && v.IdleTimeoutInMinutes != nil {
+		return *v.IdleTimeoutInMinutes
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetPublicIPAddressConfigurationProperties) GetPublicIPAddressVersion() (rv *IPVersion) {
+	if v != nil {
+		return v.PublicIPAddressVersion
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetPublicIPAddressConfigurationProperties) GetPublicIPPrefix() (rv *SubResource) {
+	if v != nil {
+		return v.PublicIPPrefix
+	}
+	return
+}
+
 // VirtualMachineScaleSetReimageParameters - Describes a Virtual Machine Scale Set VM Reimage Parameters.
 type VirtualMachineScaleSetReimageParameters struct {
 	// The virtual machine scale set instance ids. Omitting the virtual machine scale set instance ids will result in the operation
@@ -6578,6 +17512,20 @@ type VirtualMachineScaleSetReimageParameters struct {
 	// Specifies whether to reimage temp disk. Default value: false. Note: This temp disk reimage parameter is only supported
 	// for VM/VMSS with Ephemeral OS disk.
 	TempDisk *bool
+}
+
+func (v *VirtualMachineScaleSetReimageParameters) GetInstanceIDs() (rv []string) {
+	if v != nil {
+		return v.InstanceIDs
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetReimageParameters) GetTempDisk() (rv bool) {
+	if v != nil && v.TempDisk != nil {
+		return *v.TempDisk
+	}
+	return
 }
 
 // VirtualMachineScaleSetSKU - Describes an available virtual machine scale set sku.
@@ -6590,6 +17538,27 @@ type VirtualMachineScaleSetSKU struct {
 
 	// READ-ONLY; The Sku.
 	SKU *SKU
+}
+
+func (v *VirtualMachineScaleSetSKU) GetCapacity() (rv *VirtualMachineScaleSetSKUCapacity) {
+	if v != nil {
+		return v.Capacity
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetSKU) GetResourceType() (rv string) {
+	if v != nil && v.ResourceType != nil {
+		return *v.ResourceType
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetSKU) GetSKU() (rv *SKU) {
+	if v != nil {
+		return v.SKU
+	}
+	return
 }
 
 // VirtualMachineScaleSetSKUCapacity - Describes scaling information of a sku.
@@ -6607,6 +17576,34 @@ type VirtualMachineScaleSetSKUCapacity struct {
 	ScaleType *VirtualMachineScaleSetSKUScaleType
 }
 
+func (v *VirtualMachineScaleSetSKUCapacity) GetDefaultCapacity() (rv int64) {
+	if v != nil && v.DefaultCapacity != nil {
+		return *v.DefaultCapacity
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetSKUCapacity) GetMaximum() (rv int64) {
+	if v != nil && v.Maximum != nil {
+		return *v.Maximum
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetSKUCapacity) GetMinimum() (rv int64) {
+	if v != nil && v.Minimum != nil {
+		return *v.Minimum
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetSKUCapacity) GetScaleType() (rv *VirtualMachineScaleSetSKUScaleType) {
+	if v != nil {
+		return v.ScaleType
+	}
+	return
+}
+
 // VirtualMachineScaleSetStorageProfile - Describes a virtual machine scale set storage profile.
 type VirtualMachineScaleSetStorageProfile struct {
 	// Specifies the parameters that are used to add data disks to the virtual machines in the scale set.
@@ -6621,6 +17618,27 @@ type VirtualMachineScaleSetStorageProfile struct {
 	// Specifies information about the operating system disk used by the virtual machines in the scale set.
 	// For more information about disks, see About disks and VHDs for Azure virtual machines [https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview].
 	OSDisk *VirtualMachineScaleSetOSDisk
+}
+
+func (v *VirtualMachineScaleSetStorageProfile) GetDataDisks() (rv []VirtualMachineScaleSetDataDisk) {
+	if v != nil {
+		return v.DataDisks
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetStorageProfile) GetImageReference() (rv *ImageReference) {
+	if v != nil {
+		return v.ImageReference
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetStorageProfile) GetOSDisk() (rv *VirtualMachineScaleSetOSDisk) {
+	if v != nil {
+		return v.OSDisk
+	}
+	return
 }
 
 // VirtualMachineScaleSetUpdate - Describes a Virtual Machine Scale Set.
@@ -6641,6 +17659,41 @@ type VirtualMachineScaleSetUpdate struct {
 	Tags map[string]*string
 }
 
+func (v *VirtualMachineScaleSetUpdate) GetIdentity() (rv *VirtualMachineScaleSetIdentity) {
+	if v != nil {
+		return v.Identity
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetUpdate) GetPlan() (rv *Plan) {
+	if v != nil {
+		return v.Plan
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetUpdate) GetProperties() (rv *VirtualMachineScaleSetUpdateProperties) {
+	if v != nil {
+		return v.Properties
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetUpdate) GetSKU() (rv *SKU) {
+	if v != nil {
+		return v.SKU
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetUpdate) GetTags() (rv map[string]*string) {
+	if v != nil {
+		return v.Tags
+	}
+	return
+}
+
 // VirtualMachineScaleSetUpdateIPConfiguration - Describes a virtual machine scale set network profile's IP configuration.
 // NOTE: The subnet of a scale set may be modified as long as the original subnet and the new subnet are in the same virtual
 // network
@@ -6653,6 +17706,27 @@ type VirtualMachineScaleSetUpdateIPConfiguration struct {
 
 	// Describes a virtual machine scale set network profile's IP configuration properties.
 	Properties *VirtualMachineScaleSetUpdateIPConfigurationProperties
+}
+
+func (v *VirtualMachineScaleSetUpdateIPConfiguration) GetID() (rv string) {
+	if v != nil && v.ID != nil {
+		return *v.ID
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetUpdateIPConfiguration) GetName() (rv string) {
+	if v != nil && v.Name != nil {
+		return *v.Name
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetUpdateIPConfiguration) GetProperties() (rv *VirtualMachineScaleSetUpdateIPConfigurationProperties) {
+	if v != nil {
+		return v.Properties
+	}
+	return
 }
 
 // VirtualMachineScaleSetUpdateIPConfigurationProperties - Describes a virtual machine scale set network profile's IP configuration
@@ -6684,6 +17758,62 @@ type VirtualMachineScaleSetUpdateIPConfigurationProperties struct {
 	Subnet *APIEntityReference
 }
 
+func (v *VirtualMachineScaleSetUpdateIPConfigurationProperties) GetApplicationGatewayBackendAddressPools() (rv []SubResource) {
+	if v != nil {
+		return v.ApplicationGatewayBackendAddressPools
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetUpdateIPConfigurationProperties) GetApplicationSecurityGroups() (rv []SubResource) {
+	if v != nil {
+		return v.ApplicationSecurityGroups
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetUpdateIPConfigurationProperties) GetLoadBalancerBackendAddressPools() (rv []SubResource) {
+	if v != nil {
+		return v.LoadBalancerBackendAddressPools
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetUpdateIPConfigurationProperties) GetLoadBalancerInboundNatPools() (rv []SubResource) {
+	if v != nil {
+		return v.LoadBalancerInboundNatPools
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetUpdateIPConfigurationProperties) GetPrimary() (rv bool) {
+	if v != nil && v.Primary != nil {
+		return *v.Primary
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetUpdateIPConfigurationProperties) GetPrivateIPAddressVersion() (rv *IPVersion) {
+	if v != nil {
+		return v.PrivateIPAddressVersion
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetUpdateIPConfigurationProperties) GetPublicIPAddressConfiguration() (rv *VirtualMachineScaleSetUpdatePublicIPAddressConfiguration) {
+	if v != nil {
+		return v.PublicIPAddressConfiguration
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetUpdateIPConfigurationProperties) GetSubnet() (rv *APIEntityReference) {
+	if v != nil {
+		return v.Subnet
+	}
+	return
+}
+
 // VirtualMachineScaleSetUpdateNetworkConfiguration - Describes a virtual machine scale set network profile's network configurations.
 type VirtualMachineScaleSetUpdateNetworkConfiguration struct {
 	// Resource Id
@@ -6695,6 +17825,27 @@ type VirtualMachineScaleSetUpdateNetworkConfiguration struct {
 	// Describes a virtual machine scale set updatable network profile's IP configuration.Use this object for updating network
 	// profile's IP Configuration.
 	Properties *VirtualMachineScaleSetUpdateNetworkConfigurationProperties
+}
+
+func (v *VirtualMachineScaleSetUpdateNetworkConfiguration) GetID() (rv string) {
+	if v != nil && v.ID != nil {
+		return *v.ID
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetUpdateNetworkConfiguration) GetName() (rv string) {
+	if v != nil && v.Name != nil {
+		return *v.Name
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetUpdateNetworkConfiguration) GetProperties() (rv *VirtualMachineScaleSetUpdateNetworkConfigurationProperties) {
+	if v != nil {
+		return v.Properties
+	}
+	return
 }
 
 // VirtualMachineScaleSetUpdateNetworkConfigurationProperties - Describes a virtual machine scale set updatable network profile's
@@ -6725,6 +17876,62 @@ type VirtualMachineScaleSetUpdateNetworkConfigurationProperties struct {
 	Primary *bool
 }
 
+func (v *VirtualMachineScaleSetUpdateNetworkConfigurationProperties) GetDNSSettings() (rv *VirtualMachineScaleSetNetworkConfigurationDNSSettings) {
+	if v != nil {
+		return v.DNSSettings
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetUpdateNetworkConfigurationProperties) GetDeleteOption() (rv *DeleteOptions) {
+	if v != nil {
+		return v.DeleteOption
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetUpdateNetworkConfigurationProperties) GetEnableAcceleratedNetworking() (rv bool) {
+	if v != nil && v.EnableAcceleratedNetworking != nil {
+		return *v.EnableAcceleratedNetworking
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetUpdateNetworkConfigurationProperties) GetEnableFpga() (rv bool) {
+	if v != nil && v.EnableFpga != nil {
+		return *v.EnableFpga
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetUpdateNetworkConfigurationProperties) GetEnableIPForwarding() (rv bool) {
+	if v != nil && v.EnableIPForwarding != nil {
+		return *v.EnableIPForwarding
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetUpdateNetworkConfigurationProperties) GetIPConfigurations() (rv []VirtualMachineScaleSetUpdateIPConfiguration) {
+	if v != nil {
+		return v.IPConfigurations
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetUpdateNetworkConfigurationProperties) GetNetworkSecurityGroup() (rv *SubResource) {
+	if v != nil {
+		return v.NetworkSecurityGroup
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetUpdateNetworkConfigurationProperties) GetPrimary() (rv bool) {
+	if v != nil && v.Primary != nil {
+		return *v.Primary
+	}
+	return
+}
+
 // VirtualMachineScaleSetUpdateNetworkProfile - Describes a virtual machine scale set network profile.
 type VirtualMachineScaleSetUpdateNetworkProfile struct {
 	// A reference to a load balancer probe used to determine the health of an instance in the virtual machine scale set. The
@@ -6738,6 +17945,27 @@ type VirtualMachineScaleSetUpdateNetworkProfile struct {
 
 	// The list of network configurations.
 	NetworkInterfaceConfigurations []VirtualMachineScaleSetUpdateNetworkConfiguration
+}
+
+func (v *VirtualMachineScaleSetUpdateNetworkProfile) GetHealthProbe() (rv *APIEntityReference) {
+	if v != nil {
+		return v.HealthProbe
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetUpdateNetworkProfile) GetNetworkAPIVersion() (rv *NetworkAPIVersion) {
+	if v != nil {
+		return v.NetworkAPIVersion
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetUpdateNetworkProfile) GetNetworkInterfaceConfigurations() (rv []VirtualMachineScaleSetUpdateNetworkConfiguration) {
+	if v != nil {
+		return v.NetworkInterfaceConfigurations
+	}
+	return
 }
 
 // VirtualMachineScaleSetUpdateOSDisk - Describes virtual machine scale set operating system disk Update Object. This should
@@ -6766,6 +17994,48 @@ type VirtualMachineScaleSetUpdateOSDisk struct {
 	WriteAcceleratorEnabled *bool
 }
 
+func (v *VirtualMachineScaleSetUpdateOSDisk) GetCaching() (rv *CachingTypes) {
+	if v != nil {
+		return v.Caching
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetUpdateOSDisk) GetDiskSizeGB() (rv int32) {
+	if v != nil && v.DiskSizeGB != nil {
+		return *v.DiskSizeGB
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetUpdateOSDisk) GetImage() (rv *VirtualHardDisk) {
+	if v != nil {
+		return v.Image
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetUpdateOSDisk) GetManagedDisk() (rv *VirtualMachineScaleSetManagedDiskParameters) {
+	if v != nil {
+		return v.ManagedDisk
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetUpdateOSDisk) GetVhdContainers() (rv []string) {
+	if v != nil {
+		return v.VhdContainers
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetUpdateOSDisk) GetWriteAcceleratorEnabled() (rv bool) {
+	if v != nil && v.WriteAcceleratorEnabled != nil {
+		return *v.WriteAcceleratorEnabled
+	}
+	return
+}
+
 // VirtualMachineScaleSetUpdateOSProfile - Describes a virtual machine scale set OS profile.
 type VirtualMachineScaleSetUpdateOSProfile struct {
 	// A base-64 encoded string of custom data.
@@ -6779,6 +18049,34 @@ type VirtualMachineScaleSetUpdateOSProfile struct {
 
 	// The Windows Configuration of the OS profile.
 	WindowsConfiguration *WindowsConfiguration
+}
+
+func (v *VirtualMachineScaleSetUpdateOSProfile) GetCustomData() (rv string) {
+	if v != nil && v.CustomData != nil {
+		return *v.CustomData
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetUpdateOSProfile) GetLinuxConfiguration() (rv *LinuxConfiguration) {
+	if v != nil {
+		return v.LinuxConfiguration
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetUpdateOSProfile) GetSecrets() (rv []VaultSecretGroup) {
+	if v != nil {
+		return v.Secrets
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetUpdateOSProfile) GetWindowsConfiguration() (rv *WindowsConfiguration) {
+	if v != nil {
+		return v.WindowsConfiguration
+	}
+	return
 }
 
 // VirtualMachineScaleSetUpdateProperties - Describes the properties of a Virtual Machine Scale Set.
@@ -6818,6 +18116,69 @@ type VirtualMachineScaleSetUpdateProperties struct {
 	VirtualMachineProfile *VirtualMachineScaleSetUpdateVMProfile
 }
 
+func (v *VirtualMachineScaleSetUpdateProperties) GetAdditionalCapabilities() (rv *AdditionalCapabilities) {
+	if v != nil {
+		return v.AdditionalCapabilities
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetUpdateProperties) GetAutomaticRepairsPolicy() (rv *AutomaticRepairsPolicy) {
+	if v != nil {
+		return v.AutomaticRepairsPolicy
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetUpdateProperties) GetDoNotRunExtensionsOnOverprovisionedVMs() (rv bool) {
+	if v != nil && v.DoNotRunExtensionsOnOverprovisionedVMs != nil {
+		return *v.DoNotRunExtensionsOnOverprovisionedVMs
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetUpdateProperties) GetOverprovision() (rv bool) {
+	if v != nil && v.Overprovision != nil {
+		return *v.Overprovision
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetUpdateProperties) GetProximityPlacementGroup() (rv *SubResource) {
+	if v != nil {
+		return v.ProximityPlacementGroup
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetUpdateProperties) GetScaleInPolicy() (rv *ScaleInPolicy) {
+	if v != nil {
+		return v.ScaleInPolicy
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetUpdateProperties) GetSinglePlacementGroup() (rv bool) {
+	if v != nil && v.SinglePlacementGroup != nil {
+		return *v.SinglePlacementGroup
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetUpdateProperties) GetUpgradePolicy() (rv *UpgradePolicy) {
+	if v != nil {
+		return v.UpgradePolicy
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetUpdateProperties) GetVirtualMachineProfile() (rv *VirtualMachineScaleSetUpdateVMProfile) {
+	if v != nil {
+		return v.VirtualMachineProfile
+	}
+	return
+}
+
 // VirtualMachineScaleSetUpdatePublicIPAddressConfiguration - Describes a virtual machines scale set IP Configuration's PublicIPAddress
 // configuration
 type VirtualMachineScaleSetUpdatePublicIPAddressConfiguration struct {
@@ -6826,6 +18187,20 @@ type VirtualMachineScaleSetUpdatePublicIPAddressConfiguration struct {
 
 	// Describes a virtual machines scale set IP Configuration's PublicIPAddress configuration
 	Properties *VirtualMachineScaleSetUpdatePublicIPAddressConfigurationProperties
+}
+
+func (v *VirtualMachineScaleSetUpdatePublicIPAddressConfiguration) GetName() (rv string) {
+	if v != nil && v.Name != nil {
+		return *v.Name
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetUpdatePublicIPAddressConfiguration) GetProperties() (rv *VirtualMachineScaleSetUpdatePublicIPAddressConfigurationProperties) {
+	if v != nil {
+		return v.Properties
+	}
+	return
 }
 
 // VirtualMachineScaleSetUpdatePublicIPAddressConfigurationProperties - Describes a virtual machines scale set IP Configuration's
@@ -6844,6 +18219,34 @@ type VirtualMachineScaleSetUpdatePublicIPAddressConfigurationProperties struct {
 	PublicIPPrefix *SubResource
 }
 
+func (v *VirtualMachineScaleSetUpdatePublicIPAddressConfigurationProperties) GetDNSSettings() (rv *VirtualMachineScaleSetPublicIPAddressConfigurationDNSSettings) {
+	if v != nil {
+		return v.DNSSettings
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetUpdatePublicIPAddressConfigurationProperties) GetDeleteOption() (rv *DeleteOptions) {
+	if v != nil {
+		return v.DeleteOption
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetUpdatePublicIPAddressConfigurationProperties) GetIdleTimeoutInMinutes() (rv int32) {
+	if v != nil && v.IdleTimeoutInMinutes != nil {
+		return *v.IdleTimeoutInMinutes
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetUpdatePublicIPAddressConfigurationProperties) GetPublicIPPrefix() (rv *SubResource) {
+	if v != nil {
+		return v.PublicIPPrefix
+	}
+	return
+}
+
 // VirtualMachineScaleSetUpdateStorageProfile - Describes a virtual machine scale set storage profile.
 type VirtualMachineScaleSetUpdateStorageProfile struct {
 	// The data disks.
@@ -6854,6 +18257,27 @@ type VirtualMachineScaleSetUpdateStorageProfile struct {
 
 	// The OS disk.
 	OSDisk *VirtualMachineScaleSetUpdateOSDisk
+}
+
+func (v *VirtualMachineScaleSetUpdateStorageProfile) GetDataDisks() (rv []VirtualMachineScaleSetDataDisk) {
+	if v != nil {
+		return v.DataDisks
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetUpdateStorageProfile) GetImageReference() (rv *ImageReference) {
+	if v != nil {
+		return v.ImageReference
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetUpdateStorageProfile) GetOSDisk() (rv *VirtualMachineScaleSetUpdateOSDisk) {
+	if v != nil {
+		return v.OSDisk
+	}
+	return
 }
 
 // VirtualMachineScaleSetUpdateVMProfile - Describes a virtual machine scale set virtual machine profile.
@@ -6889,6 +18313,76 @@ type VirtualMachineScaleSetUpdateVMProfile struct {
 	// UserData for the VM, which must be base-64 encoded. Customer should not pass any secrets in here.
 	// Minimum api-version: 2021-03-01
 	UserData *string
+}
+
+func (v *VirtualMachineScaleSetUpdateVMProfile) GetBillingProfile() (rv *BillingProfile) {
+	if v != nil {
+		return v.BillingProfile
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetUpdateVMProfile) GetDiagnosticsProfile() (rv *DiagnosticsProfile) {
+	if v != nil {
+		return v.DiagnosticsProfile
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetUpdateVMProfile) GetExtensionProfile() (rv *VirtualMachineScaleSetExtensionProfile) {
+	if v != nil {
+		return v.ExtensionProfile
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetUpdateVMProfile) GetLicenseType() (rv string) {
+	if v != nil && v.LicenseType != nil {
+		return *v.LicenseType
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetUpdateVMProfile) GetNetworkProfile() (rv *VirtualMachineScaleSetUpdateNetworkProfile) {
+	if v != nil {
+		return v.NetworkProfile
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetUpdateVMProfile) GetOSProfile() (rv *VirtualMachineScaleSetUpdateOSProfile) {
+	if v != nil {
+		return v.OSProfile
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetUpdateVMProfile) GetScheduledEventsProfile() (rv *ScheduledEventsProfile) {
+	if v != nil {
+		return v.ScheduledEventsProfile
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetUpdateVMProfile) GetSecurityProfile() (rv *SecurityProfile) {
+	if v != nil {
+		return v.SecurityProfile
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetUpdateVMProfile) GetStorageProfile() (rv *VirtualMachineScaleSetUpdateStorageProfile) {
+	if v != nil {
+		return v.StorageProfile
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetUpdateVMProfile) GetUserData() (rv string) {
+	if v != nil && v.UserData != nil {
+		return *v.UserData
+	}
+	return
 }
 
 // VirtualMachineScaleSetVM - Describes a virtual machine scale set virtual machine.
@@ -6931,6 +18425,83 @@ type VirtualMachineScaleSetVM struct {
 	Zones []string
 }
 
+func (v *VirtualMachineScaleSetVM) GetLocation() (rv string) {
+	if v != nil && v.Location != nil {
+		return *v.Location
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetVM) GetPlan() (rv *Plan) {
+	if v != nil {
+		return v.Plan
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetVM) GetProperties() (rv *VirtualMachineScaleSetVMProperties) {
+	if v != nil {
+		return v.Properties
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetVM) GetTags() (rv map[string]*string) {
+	if v != nil {
+		return v.Tags
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetVM) GetID() (rv string) {
+	if v != nil && v.ID != nil {
+		return *v.ID
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetVM) GetInstanceID() (rv string) {
+	if v != nil && v.InstanceID != nil {
+		return *v.InstanceID
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetVM) GetName() (rv string) {
+	if v != nil && v.Name != nil {
+		return *v.Name
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetVM) GetResources() (rv []VirtualMachineExtension) {
+	if v != nil {
+		return v.Resources
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetVM) GetSKU() (rv *SKU) {
+	if v != nil {
+		return v.SKU
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetVM) GetType() (rv string) {
+	if v != nil && v.Type != nil {
+		return *v.Type
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetVM) GetZones() (rv []string) {
+	if v != nil {
+		return v.Zones
+	}
+	return
+}
+
 // VirtualMachineScaleSetVMExtension - Describes a VMSS VM Extension.
 type VirtualMachineScaleSetVMExtension struct {
 	// Describes the properties of a Virtual Machine Extension.
@@ -6944,6 +18515,34 @@ type VirtualMachineScaleSetVMExtension struct {
 
 	// READ-ONLY; Resource type
 	Type *string
+}
+
+func (v *VirtualMachineScaleSetVMExtension) GetProperties() (rv *VirtualMachineExtensionProperties) {
+	if v != nil {
+		return v.Properties
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetVMExtension) GetID() (rv string) {
+	if v != nil && v.ID != nil {
+		return *v.ID
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetVMExtension) GetName() (rv string) {
+	if v != nil && v.Name != nil {
+		return *v.Name
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetVMExtension) GetType() (rv string) {
+	if v != nil && v.Type != nil {
+		return *v.Type
+	}
+	return
 }
 
 // VirtualMachineScaleSetVMExtensionUpdate - Describes a VMSS VM Extension.
@@ -6961,10 +18560,45 @@ type VirtualMachineScaleSetVMExtensionUpdate struct {
 	Type *string
 }
 
+func (v *VirtualMachineScaleSetVMExtensionUpdate) GetProperties() (rv *VirtualMachineExtensionUpdateProperties) {
+	if v != nil {
+		return v.Properties
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetVMExtensionUpdate) GetID() (rv string) {
+	if v != nil && v.ID != nil {
+		return *v.ID
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetVMExtensionUpdate) GetName() (rv string) {
+	if v != nil && v.Name != nil {
+		return *v.Name
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetVMExtensionUpdate) GetType() (rv string) {
+	if v != nil && v.Type != nil {
+		return *v.Type
+	}
+	return
+}
+
 // VirtualMachineScaleSetVMExtensionsListResult - The List VMSS VM Extension operation response
 type VirtualMachineScaleSetVMExtensionsListResult struct {
 	// The list of VMSS VM extensions
 	Value []VirtualMachineScaleSetVMExtension
+}
+
+func (v *VirtualMachineScaleSetVMExtensionsListResult) GetValue() (rv []VirtualMachineScaleSetVMExtension) {
+	if v != nil {
+		return v.Value
+	}
+	return
 }
 
 // VirtualMachineScaleSetVMExtensionsSummary - Extensions summary for virtual machines of a virtual machine scale set.
@@ -6976,6 +18610,20 @@ type VirtualMachineScaleSetVMExtensionsSummary struct {
 	StatusesSummary []VirtualMachineStatusCodeCount
 }
 
+func (v *VirtualMachineScaleSetVMExtensionsSummary) GetName() (rv string) {
+	if v != nil && v.Name != nil {
+		return *v.Name
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetVMExtensionsSummary) GetStatusesSummary() (rv []VirtualMachineStatusCodeCount) {
+	if v != nil {
+		return v.StatusesSummary
+	}
+	return
+}
+
 // VirtualMachineScaleSetVMInstanceIDs - Specifies a list of virtual machine instance IDs from the VM scale set.
 type VirtualMachineScaleSetVMInstanceIDs struct {
 	// The virtual machine scale set instance ids. Omitting the virtual machine scale set instance ids will result in the operation
@@ -6983,10 +18631,24 @@ type VirtualMachineScaleSetVMInstanceIDs struct {
 	InstanceIDs []string
 }
 
+func (v *VirtualMachineScaleSetVMInstanceIDs) GetInstanceIDs() (rv []string) {
+	if v != nil {
+		return v.InstanceIDs
+	}
+	return
+}
+
 // VirtualMachineScaleSetVMInstanceRequiredIDs - Specifies a list of virtual machine instance IDs from the VM scale set.
 type VirtualMachineScaleSetVMInstanceRequiredIDs struct {
 	// REQUIRED; The virtual machine scale set instance ids.
 	InstanceIDs []string
+}
+
+func (v *VirtualMachineScaleSetVMInstanceRequiredIDs) GetInstanceIDs() (rv []string) {
+	if v != nil {
+		return v.InstanceIDs
+	}
+	return
 }
 
 // VirtualMachineScaleSetVMInstanceView - The instance view of a virtual machine scale set VM.
@@ -7033,6 +18695,90 @@ type VirtualMachineScaleSetVMInstanceView struct {
 	VMHealth *VirtualMachineHealthStatus
 }
 
+func (v *VirtualMachineScaleSetVMInstanceView) GetBootDiagnostics() (rv *BootDiagnosticsInstanceView) {
+	if v != nil {
+		return v.BootDiagnostics
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetVMInstanceView) GetDisks() (rv []DiskInstanceView) {
+	if v != nil {
+		return v.Disks
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetVMInstanceView) GetExtensions() (rv []VirtualMachineExtensionInstanceView) {
+	if v != nil {
+		return v.Extensions
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetVMInstanceView) GetMaintenanceRedeployStatus() (rv *MaintenanceRedeployStatus) {
+	if v != nil {
+		return v.MaintenanceRedeployStatus
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetVMInstanceView) GetPlacementGroupID() (rv string) {
+	if v != nil && v.PlacementGroupID != nil {
+		return *v.PlacementGroupID
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetVMInstanceView) GetPlatformFaultDomain() (rv int32) {
+	if v != nil && v.PlatformFaultDomain != nil {
+		return *v.PlatformFaultDomain
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetVMInstanceView) GetPlatformUpdateDomain() (rv int32) {
+	if v != nil && v.PlatformUpdateDomain != nil {
+		return *v.PlatformUpdateDomain
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetVMInstanceView) GetRdpThumbPrint() (rv string) {
+	if v != nil && v.RdpThumbPrint != nil {
+		return *v.RdpThumbPrint
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetVMInstanceView) GetStatuses() (rv []InstanceViewStatus) {
+	if v != nil {
+		return v.Statuses
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetVMInstanceView) GetVMAgent() (rv *VirtualMachineAgentInstanceView) {
+	if v != nil {
+		return v.VMAgent
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetVMInstanceView) GetAssignedHost() (rv string) {
+	if v != nil && v.AssignedHost != nil {
+		return *v.AssignedHost
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetVMInstanceView) GetVMHealth() (rv *VirtualMachineHealthStatus) {
+	if v != nil {
+		return v.VMHealth
+	}
+	return
+}
+
 // VirtualMachineScaleSetVMListResult - The List Virtual Machine Scale Set VMs operation response.
 type VirtualMachineScaleSetVMListResult struct {
 	// REQUIRED; The list of virtual machine scale sets VMs.
@@ -7043,10 +18789,31 @@ type VirtualMachineScaleSetVMListResult struct {
 	NextLink *string
 }
 
+func (v *VirtualMachineScaleSetVMListResult) GetValue() (rv []VirtualMachineScaleSetVM) {
+	if v != nil {
+		return v.Value
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetVMListResult) GetNextLink() (rv string) {
+	if v != nil && v.NextLink != nil {
+		return *v.NextLink
+	}
+	return
+}
+
 // VirtualMachineScaleSetVMNetworkProfileConfiguration - Describes a virtual machine scale set VM network profile.
 type VirtualMachineScaleSetVMNetworkProfileConfiguration struct {
 	// The list of network configurations.
 	NetworkInterfaceConfigurations []VirtualMachineScaleSetNetworkConfiguration
+}
+
+func (v *VirtualMachineScaleSetVMNetworkProfileConfiguration) GetNetworkInterfaceConfigurations() (rv []VirtualMachineScaleSetNetworkConfiguration) {
+	if v != nil {
+		return v.NetworkInterfaceConfigurations
+	}
+	return
 }
 
 // VirtualMachineScaleSetVMProfile - Describes a virtual machine scale set virtual machine profile.
@@ -7113,6 +18880,111 @@ type VirtualMachineScaleSetVMProfile struct {
 	// in here.
 	// Minimum api-version: 2021-03-01
 	UserData *string
+}
+
+func (v *VirtualMachineScaleSetVMProfile) GetApplicationProfile() (rv *ApplicationProfile) {
+	if v != nil {
+		return v.ApplicationProfile
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetVMProfile) GetBillingProfile() (rv *BillingProfile) {
+	if v != nil {
+		return v.BillingProfile
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetVMProfile) GetCapacityReservation() (rv *CapacityReservationProfile) {
+	if v != nil {
+		return v.CapacityReservation
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetVMProfile) GetDiagnosticsProfile() (rv *DiagnosticsProfile) {
+	if v != nil {
+		return v.DiagnosticsProfile
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetVMProfile) GetEvictionPolicy() (rv *VirtualMachineEvictionPolicyTypes) {
+	if v != nil {
+		return v.EvictionPolicy
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetVMProfile) GetExtensionProfile() (rv *VirtualMachineScaleSetExtensionProfile) {
+	if v != nil {
+		return v.ExtensionProfile
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetVMProfile) GetHardwareProfile() (rv *VirtualMachineScaleSetHardwareProfile) {
+	if v != nil {
+		return v.HardwareProfile
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetVMProfile) GetLicenseType() (rv string) {
+	if v != nil && v.LicenseType != nil {
+		return *v.LicenseType
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetVMProfile) GetNetworkProfile() (rv *VirtualMachineScaleSetNetworkProfile) {
+	if v != nil {
+		return v.NetworkProfile
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetVMProfile) GetOSProfile() (rv *VirtualMachineScaleSetOSProfile) {
+	if v != nil {
+		return v.OSProfile
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetVMProfile) GetPriority() (rv *VirtualMachinePriorityTypes) {
+	if v != nil {
+		return v.Priority
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetVMProfile) GetScheduledEventsProfile() (rv *ScheduledEventsProfile) {
+	if v != nil {
+		return v.ScheduledEventsProfile
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetVMProfile) GetSecurityProfile() (rv *SecurityProfile) {
+	if v != nil {
+		return v.SecurityProfile
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetVMProfile) GetStorageProfile() (rv *VirtualMachineScaleSetStorageProfile) {
+	if v != nil {
+		return v.StorageProfile
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetVMProfile) GetUserData() (rv string) {
+	if v != nil && v.UserData != nil {
+		return *v.UserData
+	}
+	return
 }
 
 // VirtualMachineScaleSetVMProperties - Describes the properties of a virtual machine scale set virtual machine.
@@ -7188,6 +19060,125 @@ type VirtualMachineScaleSetVMProperties struct {
 	VMID *string
 }
 
+func (v *VirtualMachineScaleSetVMProperties) GetAdditionalCapabilities() (rv *AdditionalCapabilities) {
+	if v != nil {
+		return v.AdditionalCapabilities
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetVMProperties) GetAvailabilitySet() (rv *SubResource) {
+	if v != nil {
+		return v.AvailabilitySet
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetVMProperties) GetDiagnosticsProfile() (rv *DiagnosticsProfile) {
+	if v != nil {
+		return v.DiagnosticsProfile
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetVMProperties) GetHardwareProfile() (rv *HardwareProfile) {
+	if v != nil {
+		return v.HardwareProfile
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetVMProperties) GetLicenseType() (rv string) {
+	if v != nil && v.LicenseType != nil {
+		return *v.LicenseType
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetVMProperties) GetNetworkProfile() (rv *NetworkProfile) {
+	if v != nil {
+		return v.NetworkProfile
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetVMProperties) GetNetworkProfileConfiguration() (rv *VirtualMachineScaleSetVMNetworkProfileConfiguration) {
+	if v != nil {
+		return v.NetworkProfileConfiguration
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetVMProperties) GetOSProfile() (rv *OSProfile) {
+	if v != nil {
+		return v.OSProfile
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetVMProperties) GetProtectionPolicy() (rv *VirtualMachineScaleSetVMProtectionPolicy) {
+	if v != nil {
+		return v.ProtectionPolicy
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetVMProperties) GetSecurityProfile() (rv *SecurityProfile) {
+	if v != nil {
+		return v.SecurityProfile
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetVMProperties) GetStorageProfile() (rv *StorageProfile) {
+	if v != nil {
+		return v.StorageProfile
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetVMProperties) GetUserData() (rv string) {
+	if v != nil && v.UserData != nil {
+		return *v.UserData
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetVMProperties) GetInstanceView() (rv *VirtualMachineScaleSetVMInstanceView) {
+	if v != nil {
+		return v.InstanceView
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetVMProperties) GetLatestModelApplied() (rv bool) {
+	if v != nil && v.LatestModelApplied != nil {
+		return *v.LatestModelApplied
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetVMProperties) GetModelDefinitionApplied() (rv string) {
+	if v != nil && v.ModelDefinitionApplied != nil {
+		return *v.ModelDefinitionApplied
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetVMProperties) GetProvisioningState() (rv string) {
+	if v != nil && v.ProvisioningState != nil {
+		return *v.ProvisioningState
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetVMProperties) GetVMID() (rv string) {
+	if v != nil && v.VMID != nil {
+		return *v.VMID
+	}
+	return
+}
+
 // VirtualMachineScaleSetVMProtectionPolicy - The protection policy of a virtual machine scale set VM.
 type VirtualMachineScaleSetVMProtectionPolicy struct {
 	// Indicates that the virtual machine scale set VM shouldn't be considered for deletion during a scale-in operation.
@@ -7198,11 +19189,32 @@ type VirtualMachineScaleSetVMProtectionPolicy struct {
 	ProtectFromScaleSetActions *bool
 }
 
+func (v *VirtualMachineScaleSetVMProtectionPolicy) GetProtectFromScaleIn() (rv bool) {
+	if v != nil && v.ProtectFromScaleIn != nil {
+		return *v.ProtectFromScaleIn
+	}
+	return
+}
+
+func (v *VirtualMachineScaleSetVMProtectionPolicy) GetProtectFromScaleSetActions() (rv bool) {
+	if v != nil && v.ProtectFromScaleSetActions != nil {
+		return *v.ProtectFromScaleSetActions
+	}
+	return
+}
+
 // VirtualMachineScaleSetVMReimageParameters - Describes a Virtual Machine Scale Set VM Reimage Parameters.
 type VirtualMachineScaleSetVMReimageParameters struct {
 	// Specifies whether to reimage temp disk. Default value: false. Note: This temp disk reimage parameter is only supported
 	// for VM/VMSS with Ephemeral OS disk.
 	TempDisk *bool
+}
+
+func (v *VirtualMachineScaleSetVMReimageParameters) GetTempDisk() (rv bool) {
+	if v != nil && v.TempDisk != nil {
+		return *v.TempDisk
+	}
+	return
 }
 
 // VirtualMachineSize - Describes the properties of a VM size.
@@ -7228,10 +19240,59 @@ type VirtualMachineSize struct {
 	ResourceDiskSizeInMB *int32
 }
 
+func (v *VirtualMachineSize) GetMaxDataDiskCount() (rv int32) {
+	if v != nil && v.MaxDataDiskCount != nil {
+		return *v.MaxDataDiskCount
+	}
+	return
+}
+
+func (v *VirtualMachineSize) GetMemoryInMB() (rv int32) {
+	if v != nil && v.MemoryInMB != nil {
+		return *v.MemoryInMB
+	}
+	return
+}
+
+func (v *VirtualMachineSize) GetName() (rv string) {
+	if v != nil && v.Name != nil {
+		return *v.Name
+	}
+	return
+}
+
+func (v *VirtualMachineSize) GetNumberOfCores() (rv int32) {
+	if v != nil && v.NumberOfCores != nil {
+		return *v.NumberOfCores
+	}
+	return
+}
+
+func (v *VirtualMachineSize) GetOSDiskSizeInMB() (rv int32) {
+	if v != nil && v.OSDiskSizeInMB != nil {
+		return *v.OSDiskSizeInMB
+	}
+	return
+}
+
+func (v *VirtualMachineSize) GetResourceDiskSizeInMB() (rv int32) {
+	if v != nil && v.ResourceDiskSizeInMB != nil {
+		return *v.ResourceDiskSizeInMB
+	}
+	return
+}
+
 // VirtualMachineSizeListResult - The List Virtual Machine operation response.
 type VirtualMachineSizeListResult struct {
 	// The list of virtual machine sizes.
 	Value []VirtualMachineSize
+}
+
+func (v *VirtualMachineSizeListResult) GetValue() (rv []VirtualMachineSize) {
+	if v != nil {
+		return v.Value
+	}
+	return
 }
 
 // VirtualMachineSoftwarePatchProperties - Describes the properties of a Virtual Machine software patch.
@@ -7268,6 +19329,76 @@ type VirtualMachineSoftwarePatchProperties struct {
 	Version *string
 }
 
+func (v *VirtualMachineSoftwarePatchProperties) GetActivityID() (rv string) {
+	if v != nil && v.ActivityID != nil {
+		return *v.ActivityID
+	}
+	return
+}
+
+func (v *VirtualMachineSoftwarePatchProperties) GetAssessmentState() (rv *PatchAssessmentState) {
+	if v != nil {
+		return v.AssessmentState
+	}
+	return
+}
+
+func (v *VirtualMachineSoftwarePatchProperties) GetClassifications() (rv []string) {
+	if v != nil {
+		return v.Classifications
+	}
+	return
+}
+
+func (v *VirtualMachineSoftwarePatchProperties) GetKbID() (rv string) {
+	if v != nil && v.KbID != nil {
+		return *v.KbID
+	}
+	return
+}
+
+func (v *VirtualMachineSoftwarePatchProperties) GetLastModifiedDateTime() (rv *time.Time) {
+	if v != nil {
+		return v.LastModifiedDateTime
+	}
+	return
+}
+
+func (v *VirtualMachineSoftwarePatchProperties) GetName() (rv string) {
+	if v != nil && v.Name != nil {
+		return *v.Name
+	}
+	return
+}
+
+func (v *VirtualMachineSoftwarePatchProperties) GetPatchID() (rv string) {
+	if v != nil && v.PatchID != nil {
+		return *v.PatchID
+	}
+	return
+}
+
+func (v *VirtualMachineSoftwarePatchProperties) GetPublishedDate() (rv *time.Time) {
+	if v != nil {
+		return v.PublishedDate
+	}
+	return
+}
+
+func (v *VirtualMachineSoftwarePatchProperties) GetRebootBehavior() (rv *VMGuestPatchRebootBehavior) {
+	if v != nil {
+		return v.RebootBehavior
+	}
+	return
+}
+
+func (v *VirtualMachineSoftwarePatchProperties) GetVersion() (rv string) {
+	if v != nil && v.Version != nil {
+		return *v.Version
+	}
+	return
+}
+
 // VirtualMachineStatusCodeCount - The status code and count of the virtual machine scale set instance view status summary.
 type VirtualMachineStatusCodeCount struct {
 	// READ-ONLY; The instance view status code.
@@ -7275,6 +19406,20 @@ type VirtualMachineStatusCodeCount struct {
 
 	// READ-ONLY; The number of instances having a particular status code.
 	Count *int32
+}
+
+func (v *VirtualMachineStatusCodeCount) GetCode() (rv string) {
+	if v != nil && v.Code != nil {
+		return *v.Code
+	}
+	return
+}
+
+func (v *VirtualMachineStatusCodeCount) GetCount() (rv int32) {
+	if v != nil && v.Count != nil {
+		return *v.Count
+	}
+	return
 }
 
 // VirtualMachineUpdate - Describes a Virtual Machine Update.
@@ -7299,10 +19444,52 @@ type VirtualMachineUpdate struct {
 	Zones []string
 }
 
+func (v *VirtualMachineUpdate) GetIdentity() (rv *VirtualMachineIdentity) {
+	if v != nil {
+		return v.Identity
+	}
+	return
+}
+
+func (v *VirtualMachineUpdate) GetPlan() (rv *Plan) {
+	if v != nil {
+		return v.Plan
+	}
+	return
+}
+
+func (v *VirtualMachineUpdate) GetProperties() (rv *VirtualMachineProperties) {
+	if v != nil {
+		return v.Properties
+	}
+	return
+}
+
+func (v *VirtualMachineUpdate) GetTags() (rv map[string]*string) {
+	if v != nil {
+		return v.Tags
+	}
+	return
+}
+
+func (v *VirtualMachineUpdate) GetZones() (rv []string) {
+	if v != nil {
+		return v.Zones
+	}
+	return
+}
+
 // WinRMConfiguration - Describes Windows Remote Management configuration of the VM
 type WinRMConfiguration struct {
 	// The list of Windows Remote Management listeners
 	Listeners []WinRMListener
+}
+
+func (w *WinRMConfiguration) GetListeners() (rv []WinRMListener) {
+	if w != nil {
+		return w.Listeners
+	}
+	return
 }
 
 // WinRMListener - Describes Protocol and thumbprint of Windows Remote Management listener
@@ -7328,6 +19515,20 @@ type WinRMListener struct {
 	// http
 	// https
 	Protocol *ProtocolTypes
+}
+
+func (w *WinRMListener) GetCertificateURL() (rv string) {
+	if w != nil && w.CertificateURL != nil {
+		return *w.CertificateURL
+	}
+	return
+}
+
+func (w *WinRMListener) GetProtocol() (rv *ProtocolTypes) {
+	if w != nil {
+		return w.Protocol
+	}
+	return
 }
 
 // WindowsConfiguration - Specifies Windows operating system settings on the virtual machine.
@@ -7358,6 +19559,48 @@ type WindowsConfiguration struct {
 	WinRM *WinRMConfiguration
 }
 
+func (w *WindowsConfiguration) GetAdditionalUnattendContent() (rv []AdditionalUnattendContent) {
+	if w != nil {
+		return w.AdditionalUnattendContent
+	}
+	return
+}
+
+func (w *WindowsConfiguration) GetEnableAutomaticUpdates() (rv bool) {
+	if w != nil && w.EnableAutomaticUpdates != nil {
+		return *w.EnableAutomaticUpdates
+	}
+	return
+}
+
+func (w *WindowsConfiguration) GetPatchSettings() (rv *PatchSettings) {
+	if w != nil {
+		return w.PatchSettings
+	}
+	return
+}
+
+func (w *WindowsConfiguration) GetProvisionVMAgent() (rv bool) {
+	if w != nil && w.ProvisionVMAgent != nil {
+		return *w.ProvisionVMAgent
+	}
+	return
+}
+
+func (w *WindowsConfiguration) GetTimeZone() (rv string) {
+	if w != nil && w.TimeZone != nil {
+		return *w.TimeZone
+	}
+	return
+}
+
+func (w *WindowsConfiguration) GetWinRM() (rv *WinRMConfiguration) {
+	if w != nil {
+		return w.WinRM
+	}
+	return
+}
+
 // WindowsParameters - Input for InstallPatches on a Windows VM, as directly received by the API
 type WindowsParameters struct {
 	// The update classifications to select when installing patches for Windows.
@@ -7374,4 +19617,39 @@ type WindowsParameters struct {
 
 	// This is used to install patches that were published on or before this given max published date.
 	MaxPatchPublishDate *time.Time
+}
+
+func (w *WindowsParameters) GetClassificationsToInclude() (rv []VMGuestPatchClassificationWindows) {
+	if w != nil {
+		return w.ClassificationsToInclude
+	}
+	return
+}
+
+func (w *WindowsParameters) GetExcludeKbsRequiringReboot() (rv bool) {
+	if w != nil && w.ExcludeKbsRequiringReboot != nil {
+		return *w.ExcludeKbsRequiringReboot
+	}
+	return
+}
+
+func (w *WindowsParameters) GetKbNumbersToExclude() (rv []string) {
+	if w != nil {
+		return w.KbNumbersToExclude
+	}
+	return
+}
+
+func (w *WindowsParameters) GetKbNumbersToInclude() (rv []string) {
+	if w != nil {
+		return w.KbNumbersToInclude
+	}
+	return
+}
+
+func (w *WindowsParameters) GetMaxPatchPublishDate() (rv *time.Time) {
+	if w != nil {
+		return w.MaxPatchPublishDate
+	}
+	return
 }
